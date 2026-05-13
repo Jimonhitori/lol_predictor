@@ -14,6 +14,7 @@ from .data import load_match_rows, load_patch_notes
 from .inference import build_prediction_row
 from .league_groups import filter_leagues
 from .patches import filter_patch, latest_patch
+from .schedule import today_matches
 
 
 APP_HTML = """<!doctype html>
@@ -47,6 +48,16 @@ APP_HTML = """<!doctype html>
           <option value="international">International</option>
         </select>
       </div>
+    </section>
+
+    <section class="matchStrip panel">
+      <div class="sectionHead">
+        <div>
+          <h2>Today's Matches</h2>
+          <p id="matchSource">loading...</p>
+        </div>
+      </div>
+      <div id="matches" class="matches"></div>
     </section>
 
     <section class="grid">
@@ -97,6 +108,14 @@ p, label { color: var(--muted); font-size: 13px; }
 .filters { display: flex; gap: 8px; }
 .grid { display: grid; grid-template-columns: 420px 1fr; gap: 16px; align-items: start; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+.matchStrip { margin-bottom: 16px; }
+.sectionHead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
+.match { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #111820; cursor: pointer; }
+.match:hover { border-color: var(--accent); }
+.matchMeta { color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.versus { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; font-weight: 800; }
+.versus span:last-child { text-align: right; }
 .formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 label { display: grid; gap: 6px; }
 input, select, button { width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #0f1419; color: var(--text); padding: 10px; }
@@ -138,8 +157,6 @@ async function loadOptions() {
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
   setValue('league', 'LCK');
-  $('leagueGroup').value = 'major';
-  $('region').value = 'korea';
   $('team').value = 'T1';
   $('opponent').value = 'Gen.G';
   setValue('top_champion', 'Gnar');
@@ -154,6 +171,30 @@ async function loadSummary() {
   $('meta').textContent = `Patch ${data.patch} | ${data.games} games | ${data.leagues.join(', ')}`;
   renderTable('champions', data.champions, 'Champion');
   renderTable('teams', data.teams, 'Team');
+}
+
+async function loadMatches() {
+  const data = await api('/api/matches/today?' + qs());
+  $('matchSource').textContent = `${data.matches.length} matches | ${data.source}`;
+  if (!data.matches.length) {
+    $('matches').innerHTML = '<p>No matches for the selected filters.</p>';
+    return;
+  }
+  $('matches').innerHTML = data.matches.map(match => `
+    <button class="match" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}">
+      <div class="matchMeta"><span>${escapeHtml(match.league)}</span><span>${escapeHtml(match.status)}</span></div>
+      <div class="versus"><span>${escapeHtml(match.blue_team)}</span><b>vs</b><span>${escapeHtml(match.red_team)}</span></div>
+    </button>
+  `).join('');
+  for (const el of document.querySelectorAll('.match')) {
+    el.addEventListener('click', () => {
+      setValue('league', el.dataset.league || $('league').value);
+      $('team').value = el.dataset.blue || '';
+      $('opponent').value = el.dataset.red || '';
+      $('side').value = 'Blue';
+      $('predictForm').requestSubmit();
+    });
+  }
 }
 
 async function predict(event) {
@@ -177,9 +218,9 @@ function setValue(id, value) {
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
-for (const id of ['leagueGroup','region']) $(id).addEventListener('change', loadSummary);
+for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
 $('predictForm').addEventListener('submit', predict);
-loadOptions().then(loadSummary);
+loadOptions().then(() => { loadSummary(); loadMatches(); });
 """
 
 
@@ -191,6 +232,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model-path", type=Path, default=Path("models/2026_all_patches_lck_lpl_regions_synergy.joblib"))
     parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2026_patch_notes.json"))
     parser.add_argument("--champion-reference", type=Path, default=Path("data/features/champion_reference.csv"))
+    parser.add_argument("--today-cache", type=Path, default=Path("data/raw/today_matches.json"))
     return parser.parse_args()
 
 
@@ -210,6 +252,7 @@ class AppContext:
         self.patch_notes = load_patch_notes(args.patch_notes)
         self.champion_reference = load_patch_notes(args.champion_reference)
         self.model_bundle = joblib.load(args.model_path) if args.model_path.exists() else None
+        self.today_cache = args.today_cache
 
 
 def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
@@ -226,6 +269,8 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
                 return self.send_json(options_payload(context.rows))
             if parsed.path == "/api/summary":
                 return self.send_json(summary_payload(context.rows, parse_qs(parsed.query)))
+            if parsed.path == "/api/matches/today":
+                return self.send_json(matches_payload(context, parse_qs(parsed.query)))
             self.send_error(HTTPStatus.NOT_FOUND)
 
         def do_POST(self) -> None:
@@ -284,6 +329,20 @@ def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]]) -> dict[str
         "champions": champion_rows(player_rows),
         "teams": team_rows_payload(team_rows),
     }
+
+
+def matches_payload(context: AppContext, query: dict[str, list[str]]) -> dict[str, object]:
+    league_group = first_query(query, "league_group", "all")
+    region = first_query(query, "region", "all")
+    matches = today_matches(context.rows, context.today_cache)
+    filtered = [
+        match
+        for match in matches
+        if (league_group == "all" or match.get("league_group") == league_group)
+        and (region == "all" or match.get("region") == region)
+    ]
+    source = filtered[0].get("source", "none") if filtered else "none"
+    return {"source": source, "matches": filtered}
 
 
 def champion_rows(rows: pd.DataFrame) -> list[dict[str, object]]:

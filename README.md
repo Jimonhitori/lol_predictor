@@ -184,6 +184,22 @@ python -m lol_predictor.web_app --port 8765
 Open http://127.0.0.1:8765 to inspect latest-patch meta by league tier/region
 and run a draft-based win probability prediction.
 
+The intended product flow is match-day first:
+
+1. Load today's scheduled matches.
+2. Click a match card to prefill league, blue side, and red side.
+3. Add or update champion picks as draft information becomes available.
+4. Show win probability from team, side, patch, champion, and historical form features.
+
+If `CITO_API_KEY` is set, the web UI tries Cito's LoL schedule endpoint for
+today's matches. Without an API key, it falls back to `data/raw/today_matches.json`
+or the latest local Oracle's Elixir games so the UI remains usable offline.
+
+```powershell
+$env:CITO_API_KEY = "your-api-key"
+python -m lol_predictor.web_app --port 8765
+```
+
 ## Modeling Notes
 
 The baseline intentionally starts simple:
