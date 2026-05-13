@@ -203,14 +203,14 @@ p, label { color: var(--muted); font-size: 13px; }
 .teamBlock { display: grid; justify-items: center; gap: 8px; min-width: 0; }
 .teamBlock img { width: 64px; height: 64px; object-fit: contain; }
 .teamBlock strong { text-align: center; overflow-wrap: anywhere; }
-.teamRecord { color: #b9cdf5; font-size: 13px; font-weight: 800; text-align: center; }
+.teamRecord { color: var(--muted); font-size: 13px; font-weight: 800; text-align: center; }
 .winPill { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); text-align: center; }
-.matchInfo { min-width: 190px; color: #b9cdf5; text-align: center; display: grid; gap: 5px; }
+.matchInfo { min-width: 190px; color: var(--text); text-align: center; display: grid; gap: 5px; }
 .matchInfoLeague { font-size: 16px; font-weight: 900; }
-.matchInfoBo { font-size: 13px; font-weight: 800; letter-spacing: 0; }
-.matchInfoScore { font-size: 13px; color: var(--text); }
+.matchInfoBo { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: 0; }
+.matchInfoScore { font-size: 13px; color: var(--muted); }
 .matchInfoVs { font-size: 28px; line-height: 1; font-weight: 900; color: var(--text); }
-.matchInfoStart { color: #c7d7f5; font-size: 13px; font-weight: 800; }
+.matchInfoStart { color: var(--muted); font-size: 13px; font-weight: 800; }
 .matchInfoModel { color: var(--muted); font-size: 12px; }
 .matchInfoModel strong { color: var(--accent); font-size: 14px; }
 #centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
