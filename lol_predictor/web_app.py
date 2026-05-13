@@ -334,9 +334,12 @@ function renderSelectedMatch(details) {
   `).join('');
 }
 
-function teamBlock(team) {
+function teamBlock(team, recordId) {
   const image = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
-  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong><span>${escapeHtml(team.game_wins || '0')} wins</span></div>`;
+  const record = recordId
+    ? `<span id="${recordId}" class="teamRecord">Loading 2026 record...</span>`
+    : `<span>${escapeHtml(team.game_wins || '0')} wins</span>`;
+  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}</div>`;
 }
 
 function matchCardTeam(name, image) {
@@ -381,7 +384,8 @@ async function refreshMatchDetail(initial) {
   $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
   $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh 20s`;
   const currentPrediction = $('detailPrediction').textContent || '-';
-  $('detailTeams').innerHTML = `${teamBlock(left)}<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${escapeHtml(currentPrediction)}</strong></div>${teamBlock(right)}`;
+  $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord')}<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${escapeHtml(currentPrediction)}</strong></div>${teamBlock(right, 'redTeamRecord')}`;
+  loadTeamRecords(left, right, details.league);
   $('detailGames').innerHTML = (details.games || []).map(game => `
     <div class="gameItem">
       <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
@@ -480,6 +484,23 @@ async function loadRosters(blueTeam, redTeam) {
   $('redRoster').innerHTML = rosterCards(red.players || []);
 }
 
+async function loadTeamRecords(blueTeam, redTeam, league) {
+  const blueName = blueTeam.name || blueTeam.code || '';
+  const redName = redTeam.name || redTeam.code || '';
+  const [blue, red] = await Promise.all([
+    api('/api/team-record?team=' + encodeURIComponent(blueName) + '&league=' + encodeURIComponent(league || '')),
+    api('/api/team-record?team=' + encodeURIComponent(redName) + '&league=' + encodeURIComponent(league || '')),
+  ]);
+  setTeamRecord('blueTeamRecord', blue);
+  setTeamRecord('redTeamRecord', red);
+}
+
+function setTeamRecord(id, record) {
+  const el = $(id);
+  if (!el) return;
+  el.textContent = record.record ? `${record.record} · ${record.label}` : '2026 record unavailable';
+}
+
 function rosterCards(players) {
   if (!players.length) return '<p>No local roster match yet.</p>';
   return players.map(player => `
@@ -565,6 +586,11 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
             if parsed.path == "/api/roster":
                 team = first_query(parse_qs(parsed.query), "team", "")
                 return self.send_json(roster_payload(context.rows, team))
+            if parsed.path == "/api/team-record":
+                query = parse_qs(parsed.query)
+                team = first_query(query, "team", "")
+                league = first_query(query, "league", "")
+                return self.send_json(team_record_payload(context.rows, team, league))
             self.send_error(HTTPStatus.NOT_FOUND)
 
         def do_POST(self) -> None:
@@ -716,6 +742,42 @@ def roster_payload(rows: pd.DataFrame, team: str) -> dict[str, object]:
     for player in players:
         player.pop("role_order", None)
     return {"team": team, "matched_team": players[0]["team"] if players else "", "source": "oracles_elixir_local", "players": players}
+
+
+def team_record_payload(rows: pd.DataFrame, team: str, league: str = "") -> dict[str, object]:
+    team_rows = rows[rows["position"].eq("team")].copy()
+    if team_rows.empty or not team:
+        return {"team": team, "source": "oracles_elixir_local", "record": ""}
+    if league:
+        league_rows = team_rows[team_rows["league"].astype(str).eq(league)].copy()
+        if not league_rows.empty:
+            team_rows = league_rows
+    team_rows["_team_key"] = team_rows["teamname"].astype(str).map(_team_key)
+    target_key = _team_key(team)
+    matched_rows = team_rows[team_rows["_team_key"].eq(target_key)].copy()
+    if matched_rows.empty:
+        matched_rows = _best_team_match(team_rows, target_key)
+    if matched_rows.empty:
+        return {"team": team, "source": "oracles_elixir_local", "record": ""}
+
+    result = pd.to_numeric(matched_rows.get("result"), errors="coerce").fillna(0)
+    games = int(len(matched_rows))
+    wins = int(result.sum())
+    losses = games - wins
+    winrate = float(wins / games) if games else 0.0
+    matched_league = str(matched_rows["league"].dropna().iloc[-1]) if "league" in matched_rows and not matched_rows.empty else league
+    return {
+        "team": team,
+        "matched_team": str(matched_rows["teamname"].dropna().iloc[-1]),
+        "league": matched_league,
+        "games": games,
+        "wins": wins,
+        "losses": losses,
+        "winrate": winrate,
+        "record": f"{wins}-{losses} ({winrate:.1%})",
+        "label": f"2026 {matched_league}" if matched_league else "2026",
+        "source": "oracles_elixir_local",
+    }
 
 
 def _best_team_match(player_rows: pd.DataFrame, target_key: str) -> pd.DataFrame:
