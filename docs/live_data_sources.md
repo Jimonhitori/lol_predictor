@@ -37,6 +37,18 @@ Useful community starting points:
 - `getSchedule`
 - `getEventDetails`
 - `getLive`
+- `https://feed.lolesports.com/livestats/v1/window/{gameId}`
+- `https://feed.lolesports.com/livestats/v1/details/{gameId}`
+
+The `AndyDanger/live-lol-esports` project confirms a practical implementation:
+
+- `getSchedule` comes from `https://esports-api.lolesports.com/persisted/gw`.
+- live frames come from `https://feed.lolesports.com/livestats/v1`.
+- the app can show match schedule, start times, series info, stream delay,
+  patch version, items, and in-game state.
+
+This repository now tries the LoL Esports schedule source before paid/provider
+APIs. Disable it with `LOL_ESPORTS_DISABLED=1`.
 
 ### PandaScore
 
@@ -57,9 +69,10 @@ For now:
 
 1. Keep Oracle's Elixir as the historical training source.
 2. Use Cito-style endpoints as the configurable live/schedule adapter.
-3. Fall back to a local `data/raw/today_matches.json` file or latest local match
+3. Use LoL Esports unofficial schedule as the no-key match-day source.
+4. Fall back to a local `data/raw/today_matches.json` file or latest local match
    rows when no live API key is configured.
-4. Add a response normalizer before binding tightly to any single provider.
+5. Add a response normalizer before binding tightly to any single provider.
 
 Next implementation step: once a real API key is available, capture one live or
 scheduled response and add provider-specific normalization tests.

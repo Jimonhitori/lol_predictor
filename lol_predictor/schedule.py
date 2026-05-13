@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from urllib.error import URLError
@@ -10,13 +10,20 @@ from urllib.request import Request, urlopen
 
 import pandas as pd
 
+from .league_groups import LEAGUE_REGION_BY_LABEL, PRIMARY_LEAGUE_LABELS
 from .patches import latest_patch
 
 
 CITO_MATCHES_URL = "https://api.citoapi.com/v1/lol/matches/live"
+LOLESPORTS_SCHEDULE_URL = "https://esports-api.lolesports.com/persisted/gw/getSchedule?hl=en-US"
+LOLESPORTS_API_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z"
 
 
 def today_matches(rows: pd.DataFrame, cache_path: Path | None = None) -> list[dict[str, Any]]:
+    lol_esports_matches = _load_lolesports_schedule()
+    if lol_esports_matches:
+        return lol_esports_matches
+
     api_matches = _load_cito_today()
     if api_matches:
         return api_matches
@@ -26,6 +33,56 @@ def today_matches(rows: pd.DataFrame, cache_path: Path | None = None) -> list[di
         return _normalize_match_list(cached)
 
     return _matches_from_rows(rows)
+
+
+def _load_lolesports_schedule() -> list[dict[str, Any]]:
+    if os.environ.get("LOL_ESPORTS_DISABLED") == "1":
+        return []
+    url = os.environ.get("LOL_ESPORTS_SCHEDULE_URL", LOLESPORTS_SCHEDULE_URL)
+    api_key = os.environ.get("LOL_ESPORTS_API_KEY", LOLESPORTS_API_KEY)
+    request = Request(url, headers={"x-api-key": api_key, "accept": "application/json"})
+    try:
+        with urlopen(request, timeout=15) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except (OSError, URLError, json.JSONDecodeError):
+        return []
+    events = payload.get("data", {}).get("schedule", {}).get("events", [])
+    if not isinstance(events, list):
+        return []
+    return _normalize_lolesports_events(events)
+
+
+def _normalize_lolesports_events(events: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    today_utc = datetime.now(timezone.utc).date()
+    tomorrow_utc = today_utc + timedelta(days=1)
+    matches = []
+    for event in events:
+        if event.get("type") != "match" or not isinstance(event.get("match"), dict):
+            continue
+        start_time = str(event.get("startTime") or "")
+        event_date = _parse_utc_date(start_time)
+        if event_date not in {today_utc, tomorrow_utc}:
+            continue
+        match = event["match"]
+        teams = match.get("teams") or []
+        blue, red = _team_pair(teams)
+        league = str((event.get("league") or {}).get("name") or "Unknown")
+        strategy = match.get("strategy") or {}
+        matches.append(
+            {
+                "id": str(match.get("id") or len(matches) + 1),
+                "league": league,
+                "league_group": _league_group(league),
+                "region": _league_region(league),
+                "start_time": start_time,
+                "status": str(event.get("state") or "scheduled"),
+                "blue_team": blue,
+                "red_team": red,
+                "best_of": str(strategy.get("count") or ""),
+                "source": "lolesports_api",
+            }
+        )
+    return matches
 
 
 def _load_cito_today() -> list[dict[str, Any]]:
@@ -83,6 +140,21 @@ def _team_pair(teams: Any) -> tuple[str, str]:
         else:
             names.append(str(team))
     return names[0], names[1]
+
+
+def _parse_utc_date(value: str) -> date | None:
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).date()
+    except ValueError:
+        return None
+
+
+def _league_group(league: str) -> str:
+    return "major" if league in PRIMARY_LEAGUE_LABELS else "secondary"
+
+
+def _league_region(league: str) -> str:
+    return LEAGUE_REGION_BY_LABEL.get(league, "other")
 
 
 def _matches_from_rows(rows: pd.DataFrame) -> list[dict[str, Any]]:
