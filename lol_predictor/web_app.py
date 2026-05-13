@@ -131,7 +131,7 @@ MATCH_HTML = """<!doctype html>
       <div id="detailGames" class="gameList"></div>
     </section>
 
-    <section class="grid">
+    <section class="grid detailGrid">
       <section class="panel">
         <h2>Prediction Inputs</h2>
         <div id="detailInputs" class="table"></div>
@@ -183,6 +183,7 @@ h2 { font-size: 16px; margin-bottom: 14px; }
 p, label { color: var(--muted); font-size: 13px; }
 .filters { display: flex; gap: 8px; }
 .grid { display: grid; grid-template-columns: 420px 1fr; gap: 16px; align-items: start; }
+.detailGrid { margin-bottom: 24px; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
 .backLink { display: inline-block; color: var(--accent); font-size: 13px; margin-bottom: 8px; text-decoration: none; }
 .matchStrip { margin-bottom: 16px; }
@@ -213,9 +214,10 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchInfoModel { color: var(--muted); font-size: 12px; }
 .matchInfoModel strong { color: var(--accent); font-size: 14px; }
 #centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
-.detailHero { margin-bottom: 16px; }
+.detailHero { margin-bottom: 24px; }
+.detailHero .sectionHead { margin-bottom: 18px; }
 .draftGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.draftSlot { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 8px 0; font-size: 13px; }
+.draftSlot { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding: 10px 0; font-size: 13px; }
 .draftSlot.live b { color: var(--accent); }
 .liveState { border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px; color: var(--muted); font-size: 12px; font-weight: 800; }
 .liveState.active { border-color: var(--accent); color: var(--accent); }
