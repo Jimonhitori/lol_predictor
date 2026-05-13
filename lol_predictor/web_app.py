@@ -107,6 +107,50 @@ APP_HTML = """<!doctype html>
 """
 
 
+MATCH_HTML = """<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Match Detail - LoL Esports Predictor</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <a class="backLink" href="/">Matches</a>
+        <h1 id="matchTitle">Match Detail</h1>
+        <p id="matchMeta">loading...</p>
+      </div>
+      <strong id="detailPrediction">-</strong>
+    </section>
+
+    <section class="panel detailHero">
+      <div id="detailTeams" class="selectedMatch"></div>
+      <div id="detailGames" class="gameList"></div>
+    </section>
+
+    <section class="grid">
+      <section class="panel">
+        <h2>Prediction Inputs</h2>
+        <div id="detailInputs" class="table"></div>
+      </section>
+      <section class="panel">
+        <h2>Draft Preview</h2>
+        <div class="draftGrid">
+          <div id="blueDraft"></div>
+          <div id="redDraft"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+"""
+
+
 APP_CSS = """
 :root { color-scheme: dark; --bg:#101418; --panel:#171d23; --line:#2a333d; --text:#edf2f7; --muted:#9ba8b5; --accent:#27c7a7; }
 * { box-sizing: border-box; }
@@ -120,6 +164,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .filters { display: flex; gap: 8px; }
 .grid { display: grid; grid-template-columns: 420px 1fr; gap: 16px; align-items: start; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+.backLink { display: inline-block; color: var(--accent); font-size: 13px; margin-bottom: 8px; text-decoration: none; }
 .matchStrip { margin-bottom: 16px; }
 .sectionHead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
@@ -134,7 +179,10 @@ p, label { color: var(--muted); font-size: 13px; }
 .teamBlock img { width: 64px; height: 64px; object-fit: contain; }
 .teamBlock strong { text-align: center; overflow-wrap: anywhere; }
 .winPill { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); text-align: center; }
-#centerPrediction { color: var(--accent); font-size: 22px; }
+#centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
+.detailHero { margin-bottom: 16px; }
+.draftGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.draftSlot { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 8px 0; font-size: 13px; }
 .gameList { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
 .gameItem { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; font-size: 13px; }
 .gameItem b { display: block; margin-bottom: 6px; }
@@ -146,7 +194,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .table { display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
-@media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .selectedMatch { grid-template-columns: 1fr; } }
 """
 
@@ -208,6 +256,7 @@ async function loadMatches() {
     <button class="match" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(match.status)}</span></div>
       <div class="versus"><span>${escapeHtml(match.blue_team)}</span><b>vs</b><span>${escapeHtml(match.red_team)}</span></div>
+      <a class="backLink" href="/match?id=${encodeURIComponent(match.id)}">Details</a>
     </button>
   `).join('');
   for (const el of document.querySelectorAll('.match')) {
@@ -272,6 +321,62 @@ async function predict(event) {
   if (inline) inline.textContent = $('prediction').textContent;
 }
 
+async function loadMatchDetailPage() {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+  if (!id || !$('matchTitle')) return;
+  const details = await api('/api/match?id=' + encodeURIComponent(id));
+  if (!details.id) {
+    $('matchTitle').textContent = 'Match not found';
+    return;
+  }
+  const teams = details.teams || [];
+  const left = teams[0] || {};
+  const right = teams[1] || {};
+  $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
+  $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''}`;
+  $('detailTeams').innerHTML = `${teamBlock(left)}<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">-</strong></div>${teamBlock(right)}`;
+  $('detailGames').innerHTML = (details.games || []).map(game => `
+    <div class="gameItem">
+      <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
+      <span>Blue: ${escapeHtml(game.blue?.team_code || game.blue?.team_name || '-')}</span><br>
+      <span>Red: ${escapeHtml(game.red?.team_code || game.red?.team_name || '-')}</span>
+    </div>
+  `).join('');
+  setDetailInputs(details);
+  await predictDetail(left, right, details.league);
+}
+
+function setDetailInputs(details) {
+  const teams = details.teams || [];
+  const left = teams[0] || {};
+  const right = teams[1] || {};
+  $('detailInputs').innerHTML = `
+    <div class="row"><span>League</span><span></span><span></span><span>${escapeHtml(details.league || '-')}</span></div>
+    <div class="row"><span>Blue</span><span></span><span></span><span>${escapeHtml(left.name || '-')}</span></div>
+    <div class="row"><span>Red</span><span></span><span></span><span>${escapeHtml(right.name || '-')}</span></div>
+  `;
+  $('blueDraft').innerHTML = draftSlots('Blue');
+  $('redDraft').innerHTML = draftSlots('Red');
+}
+
+function draftSlots(side) {
+  return ['Top','Jungle','Mid','Bot','Support'].map(role => `<div class="draftSlot"><span>${side} ${role}</span><b>TBD</b></div>`).join('');
+}
+
+async function predictDetail(left, right, league) {
+  const payload = {
+    league: league || 'LCK', side: 'Blue', team: left.name || left.code || '', opponent: right.name || right.code || '',
+    top_champion: 'Gnar', jng_champion: 'Xin Zhao', mid_champion: 'Ahri', bot_champion: 'Ashe', sup_champion: 'Rakan'
+  };
+  const response = await fetch('/api/predict', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+  const data = await response.json();
+  const text = response.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
+  $('detailPrediction').textContent = text;
+  const inline = $('inlinePrediction');
+  if (inline) inline.textContent = text;
+}
+
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
@@ -281,9 +386,13 @@ function setValue(id, value) {
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
-for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
-$('predictForm').addEventListener('submit', predict);
-loadOptions().then(() => { loadSummary(); loadMatches(); });
+if ($('predictForm')) {
+  for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
+  $('predictForm').addEventListener('submit', predict);
+  loadOptions().then(() => { loadSummary(); loadMatches(); });
+} else {
+  loadMatchDetailPage();
+}
 """
 
 
@@ -324,6 +433,8 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
             parsed = urlparse(self.path)
             if parsed.path == "/":
                 return self.send_text(APP_HTML, "text/html")
+            if parsed.path == "/match":
+                return self.send_text(MATCH_HTML, "text/html")
             if parsed.path == "/static/styles.css":
                 return self.send_text(APP_CSS, "text/css")
             if parsed.path == "/static/app.js":
