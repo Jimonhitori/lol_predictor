@@ -173,6 +173,9 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchMeta { color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
 .versus { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; font-weight: 800; }
 .versus span:last-child { text-align: right; }
+.cardTeam { display: grid; justify-items: center; gap: 6px; min-width: 0; text-align: center; }
+.cardTeam img { width: 44px; height: 44px; object-fit: contain; }
+.cardTeam span { overflow-wrap: anywhere; }
 .matchCenter { margin-bottom: 16px; }
 .selectedMatch { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px; margin-bottom: 12px; }
 .teamBlock { display: grid; justify-items: center; gap: 8px; min-width: 0; }
@@ -255,7 +258,7 @@ async function loadMatches() {
   $('matches').innerHTML = data.matches.map(match => `
     <button class="match" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(match.status)}</span></div>
-      <div class="versus"><span>${escapeHtml(match.blue_team)}</span><b>vs</b><span>${escapeHtml(match.red_team)}</span></div>
+      <div class="versus">${matchCardTeam(match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_team, match.red_image)}</div>
       <a class="backLink" href="/match?id=${encodeURIComponent(match.id)}">Details</a>
     </button>
   `).join('');
@@ -304,6 +307,11 @@ function renderSelectedMatch(details) {
 function teamBlock(team) {
   const image = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
   return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong><span>${escapeHtml(team.game_wins || '0')} wins</span></div>`;
+}
+
+function matchCardTeam(name, image) {
+  const logo = image ? `<img src="${escapeHtml(image)}" alt="">` : '<span></span>';
+  return `<span class="cardTeam">${logo}<span>${escapeHtml(name || '-')}</span></span>`;
 }
 
 async function predict(event) {

@@ -136,6 +136,7 @@ def _normalize_lolesports_events(events: list[dict[str, Any]]) -> list[dict[str,
         match = event["match"]
         teams = match.get("teams") or []
         blue, red = _team_pair(teams)
+        blue_image, red_image = _team_images(teams)
         league = str((event.get("league") or {}).get("name") or "Unknown")
         strategy = match.get("strategy") or {}
         matches.append(
@@ -148,6 +149,8 @@ def _normalize_lolesports_events(events: list[dict[str, Any]]) -> list[dict[str,
                 "status": str(event.get("state") or "scheduled"),
                 "blue_team": blue,
                 "red_team": red,
+                "blue_image": blue_image,
+                "red_image": red_image,
                 "best_of": str(strategy.get("count") or ""),
                 "source": "lolesports_api",
             }
@@ -183,6 +186,7 @@ def _normalize_match_list(payload: Any) -> list[dict[str, Any]]:
             continue
         teams = item.get("teams") or item.get("competitors") or []
         blue, red = _team_pair(teams)
+        blue_image, red_image = _team_images(teams)
         matches.append(
             {
                 "id": str(item.get("id") or item.get("matchId") or item.get("gameId") or len(matches) + 1),
@@ -193,6 +197,8 @@ def _normalize_match_list(payload: Any) -> list[dict[str, Any]]:
                 "status": str(item.get("status") or item.get("state") or "scheduled"),
                 "blue_team": str(item.get("blueTeam") or item.get("blue_team") or blue or ""),
                 "red_team": str(item.get("redTeam") or item.get("red_team") or red or ""),
+                "blue_image": str(item.get("blueImage") or item.get("blue_image") or blue_image or ""),
+                "red_image": str(item.get("redImage") or item.get("red_image") or red_image or ""),
                 "best_of": str(item.get("bestOf") or item.get("best_of") or item.get("strategy") or ""),
                 "source": "cito_api",
             }
@@ -210,6 +216,18 @@ def _team_pair(teams: Any) -> tuple[str, str]:
         else:
             names.append(str(team))
     return names[0], names[1]
+
+
+def _team_images(teams: Any) -> tuple[str, str]:
+    if not isinstance(teams, list) or len(teams) < 2:
+        return "", ""
+    images = []
+    for team in teams[:2]:
+        if isinstance(team, dict):
+            images.append(str(team.get("image") or team.get("logo") or ""))
+        else:
+            images.append("")
+    return images[0], images[1]
 
 
 def _parse_utc_date(value: str) -> date | None:
@@ -261,6 +279,8 @@ def _matches_from_rows(rows: pd.DataFrame) -> list[dict[str, Any]]:
                 "status": "completed" if source == "local_latest" else "scheduled",
                 "blue_team": blue,
                 "red_team": red,
+                "blue_image": "",
+                "red_image": "",
                 "best_of": "",
                 "source": source,
             }
