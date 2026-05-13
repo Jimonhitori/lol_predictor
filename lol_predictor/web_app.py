@@ -137,6 +137,8 @@ MATCH_HTML = """<!doctype html>
         <div id="detailInputs" class="table"></div>
         <h2 class="subsectionTitle">2026 Game Record</h2>
         <div id="seasonRecords" class="table compactTable"></div>
+        <h2 class="subsectionTitle">Head-to-Head</h2>
+        <div id="headToHead" class="h2hList"></div>
       </section>
       <section class="panel">
         <h2>Player Rosters</h2>
@@ -240,6 +242,13 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .row.header { color: var(--muted); font-size: 12px; }
 .compactTable .row { grid-template-columns: minmax(80px, 1fr) 80px 80px 80px; padding: 6px 0; }
 .subsectionTitle { margin-top: 14px; }
+.h2hList { display: grid; gap: 4px; }
+.h2hRow { display: grid; grid-template-columns: 58px minmax(78px, 1fr) 54px minmax(78px, 1fr); gap: 8px; align-items: center; border-bottom: 1px solid var(--line); padding: 7px 0; font-size: 12px; }
+.h2hRow:last-child { border-bottom: 0; }
+.h2hDate { color: var(--muted); }
+.h2hTeam { color: var(--text); font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.h2hScore { justify-self: center; border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; background: #10161d; font-weight: 900; }
+.h2hEmpty { color: var(--muted); font-size: 12px; }
 @media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .selectedMatch { grid-template-columns: 1fr; } }
 """
@@ -399,6 +408,7 @@ async function refreshMatchDetail(initial) {
   $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh 20s`;
   $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord')}${matchInfoBlock(details)}${teamBlock(right, 'redTeamRecord')}`;
   loadTeamRecords(left, right, details.league);
+  loadHeadToHead(left, right, details.league);
   $('detailGames').innerHTML = (details.games || []).map(game => `
     <div class="gameItem">
       <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
@@ -546,6 +556,13 @@ async function loadTeamRecords(blueTeam, redTeam, league) {
   renderSeasonRecords(blue, red);
 }
 
+async function loadHeadToHead(leftTeam, rightTeam, league) {
+  const leftName = leftTeam.name || leftTeam.code || '';
+  const rightName = rightTeam.name || rightTeam.code || '';
+  const data = await api('/api/head-to-head?team_a=' + encodeURIComponent(leftName) + '&team_b=' + encodeURIComponent(rightName) + '&league=' + encodeURIComponent(league || ''));
+  renderHeadToHead(data.matches || []);
+}
+
 function setTeamRecord(id, record) {
   const el = $(id);
   if (!el) return;
@@ -568,6 +585,34 @@ function seasonRecordRow(record) {
   const games = record.games ?? '-';
   const winrate = typeof record.winrate === 'number' ? `${(record.winrate * 100).toFixed(1)}%` : '-';
   return `<div class="row"><span>${escapeHtml(name)}</span><span>${escapeHtml(games)}</span><span>${escapeHtml(gameRecord)}</span><span>${escapeHtml(winrate)}</span></div>`;
+}
+
+function renderHeadToHead(matches) {
+  const el = $('headToHead');
+  if (!el) return;
+  if (!matches.length) {
+    el.innerHTML = '<p class="h2hEmpty">No recent direct matches in local data.</p>';
+    return;
+  }
+  el.innerHTML = matches.map(match => `
+    <div class="h2hRow" title="${escapeHtml(match.split || '')}">
+      <span class="h2hDate">${escapeHtml(relativeDate(match.date))}</span>
+      <span class="h2hTeam">${escapeHtml(match.left_team)}</span>
+      <span class="h2hScore">${escapeHtml(match.left_score)} - ${escapeHtml(match.right_score)}</span>
+      <span class="h2hTeam">${escapeHtml(match.right_team)}</span>
+    </div>
+  `).join('');
+}
+
+function relativeDate(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '-';
+  const days = Math.max(0, Math.round((Date.now() - date.getTime()) / 86400000));
+  if (days === 0) return 'Today';
+  if (days === 1) return '1d ago';
+  if (days < 31) return `${days}d ago`;
+  const months = Math.round(days / 30);
+  return `${months}mo ago`;
 }
 
 function rosterCards(players) {
@@ -660,6 +705,12 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
                 team = first_query(query, "team", "")
                 league = first_query(query, "league", "")
                 return self.send_json(team_record_payload(context.rows, team, league))
+            if parsed.path == "/api/head-to-head":
+                query = parse_qs(parsed.query)
+                team_a = first_query(query, "team_a", "")
+                team_b = first_query(query, "team_b", "")
+                league = first_query(query, "league", "")
+                return self.send_json(head_to_head_payload(context.rows, team_a, team_b, league))
             self.send_error(HTTPStatus.NOT_FOUND)
 
         def do_POST(self) -> None:
@@ -869,6 +920,44 @@ def team_record_payload(rows: pd.DataFrame, team: str, league: str = "") -> dict
         "label": f"2026 {matched_league}" if matched_league else "2026",
         "source": "oracles_elixir_local",
     }
+
+
+def head_to_head_payload(rows: pd.DataFrame, team_a: str, team_b: str, league: str = "") -> dict[str, object]:
+    team_rows = rows[rows["position"].eq("team")].copy()
+    if team_rows.empty or not team_a or not team_b:
+        return {"team_a": team_a, "team_b": team_b, "matches": []}
+    if league:
+        league_rows = team_rows[team_rows["league"].astype(str).eq(league)].copy()
+        if not league_rows.empty:
+            team_rows = league_rows
+    team_rows["_team_key"] = team_rows["teamname"].astype(str).map(_team_key)
+    left_key = _team_key(team_a)
+    right_key = _team_key(team_b)
+    matches = []
+    for _, group in team_rows.groupby(team_rows["date"].dt.date, sort=True):
+        teams = group[["_team_key", "teamname"]].drop_duplicates()
+        keys = set(teams["_team_key"].astype(str))
+        if left_key not in keys or right_key not in keys:
+            continue
+        left_rows = group[group["_team_key"].eq(left_key)]
+        right_rows = group[group["_team_key"].eq(right_key)]
+        left_score = int(pd.to_numeric(left_rows["result"], errors="coerce").fillna(0).sum())
+        right_score = int(pd.to_numeric(right_rows["result"], errors="coerce").fillna(0).sum())
+        if left_score == right_score:
+            continue
+        date_value = group["date"].max()
+        matches.append(
+            {
+                "date": date_value.isoformat(),
+                "league": str(group["league"].dropna().iloc[-1]) if "league" in group else league,
+                "split": str(group["split"].dropna().iloc[-1]) if "split" in group else "",
+                "left_team": str(left_rows["teamname"].dropna().iloc[-1]),
+                "right_team": str(right_rows["teamname"].dropna().iloc[-1]),
+                "left_score": left_score,
+                "right_score": right_score,
+            }
+        )
+    return {"team_a": team_a, "team_b": team_b, "matches": list(reversed(matches[-5:]))}
 
 
 def _current_split(rows: pd.DataFrame) -> str:
