@@ -81,7 +81,7 @@ python -m lol_predictor.train --data-dir data/raw --league-group major --model-p
 python -m lol_predictor.train --data-dir data/raw --league LCK --league LPL --model-path models/east.joblib
 ```
 
-Download Riot patch notes from 2025 through the current 2026 patch cycle:
+Download Riot patch notes from 2024 through the current 2026 patch cycle:
 
 ```powershell
 python -m lol_predictor.download_riot_patch_notes
@@ -90,7 +90,7 @@ python -m lol_predictor.download_riot_patch_notes
 Patch notes are saved under `data/patch_notes/`. The training pipeline uses
 them by default when present, mapping Riot patch `26.09` to Oracle's Elixir API
 patch `16.09`. Champion reference data also records each champion's latest
-detected change in the 2025-2026 patch-note window.
+detected change in the 2024-2026 patch-note window.
 
 Build champion reference stats with patch-aware fallback:
 

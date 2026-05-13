@@ -16,7 +16,7 @@ def parse_args() -> argparse.Namespace:
         description="Build champion reference stats using current-patch data for changed champions and history for unchanged champions."
     )
     parser.add_argument("--data-dir", type=Path, default=Path("data/raw"))
-    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.json"))
+    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2024_2026_patch_notes.json"))
     parser.add_argument("--patch", default="latest")
     parser.add_argument("--league", action="append", dest="leagues")
     parser.add_argument("--region", choices=["all", "americas", "china", "emea", "international", "korea", "other", "pacific"], default="all")
@@ -56,7 +56,7 @@ def main() -> None:
                 "changed_champions": sorted(changed),
                 "changed_count": len(changed),
                 "patch_note_window": patch_note_window(patch_notes),
-                "champions_with_2025_2026_change": sum(1 for champion in champion_universe if champion in latest_change),
+                "champions_with_patch_window_change": sum(1 for champion in champion_universe if champion in latest_change),
             },
             ensure_ascii=False,
             indent=2,

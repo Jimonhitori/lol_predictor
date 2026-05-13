@@ -27,9 +27,9 @@ class PatchNoteLink:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Download Riot League patch notes.")
-    parser.add_argument("--output-json", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.json"))
-    parser.add_argument("--output-csv", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.csv"))
-    parser.add_argument("--year-prefix", action="append", default=["25", "26"])
+    parser.add_argument("--output-json", type=Path, default=Path("data/patch_notes/riot_2024_2026_patch_notes.json"))
+    parser.add_argument("--output-csv", type=Path, default=Path("data/patch_notes/riot_2024_2026_patch_notes.csv"))
+    parser.add_argument("--year-prefix", action="append", default=["14", "25", "26"])
     return parser.parse_args()
 
 
@@ -84,6 +84,8 @@ def generated_patch_note_links(year_prefix: str) -> list[PatchNoteLink]:
     for minor in range(1, 25):
         patch = f"{int(year_prefix)}.{minor:02d}"
         slugs = [f"patch-{int(year_prefix)}-{minor:02d}-notes"]
+        if year_prefix == "14":
+            slugs.insert(0, f"patch-14-{minor}-notes")
         if year_prefix == "25" and minor <= 3:
             slugs.append(f"patch-25-s1-{minor}-notes")
         for slug in slugs:
@@ -142,7 +144,9 @@ def normalize_patch(patch: str) -> str:
 
 def riot_patch_to_oe_patch(patch: str) -> str:
     major, minor = normalize_patch(patch).split(".")
-    return f"{int(major) - 10}.{minor}"
+    major_number = int(major)
+    oe_major = major_number - 10 if major_number >= 25 else major_number
+    return f"{oe_major}.{minor}"
 
 
 def patch_key(patch: str) -> tuple[int, int]:

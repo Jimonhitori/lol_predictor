@@ -37,7 +37,7 @@ def parse_args() -> argparse.Namespace:
         default="all",
         help="Filter by major or secondary league group.",
     )
-    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.json"))
+    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2024_2026_patch_notes.json"))
     parser.add_argument("--champion-reference", type=Path, default=Path("data/features/champion_reference.csv"))
     return parser.parse_args()
 
