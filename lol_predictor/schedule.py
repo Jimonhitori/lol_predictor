@@ -16,6 +16,7 @@ from .patches import latest_patch
 
 CITO_MATCHES_URL = "https://api.citoapi.com/v1/lol/matches/live"
 LOLESPORTS_SCHEDULE_URL = "https://esports-api.lolesports.com/persisted/gw/getSchedule?hl=en-US"
+LOLESPORTS_EVENT_DETAILS_URL = "https://esports-api.lolesports.com/persisted/gw/getEventDetails"
 LOLESPORTS_API_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z"
 
 
@@ -33,6 +34,75 @@ def today_matches(rows: pd.DataFrame, cache_path: Path | None = None) -> list[di
         return _normalize_match_list(cached)
 
     return _matches_from_rows(rows)
+
+
+def lolesports_event_details(match_id: str) -> dict[str, Any]:
+    if os.environ.get("LOL_ESPORTS_DISABLED") == "1":
+        return {}
+    api_key = os.environ.get("LOL_ESPORTS_API_KEY", LOLESPORTS_API_KEY)
+    url = os.environ.get("LOL_ESPORTS_EVENT_DETAILS_URL", LOLESPORTS_EVENT_DETAILS_URL)
+    separator = "&" if "?" in url else "?"
+    request = Request(
+        f"{url}{separator}hl=en-US&id={match_id}",
+        headers={"x-api-key": api_key, "accept": "application/json"},
+    )
+    try:
+        with urlopen(request, timeout=15) as response:
+            payload = json.loads(response.read().decode("utf-8"))
+    except (OSError, URLError, json.JSONDecodeError):
+        return {}
+    event = payload.get("data", {}).get("event", {})
+    return _normalize_lolesports_event_detail(event) if isinstance(event, dict) else {}
+
+
+def _normalize_lolesports_event_detail(event: dict[str, Any]) -> dict[str, Any]:
+    match = event.get("match") or {}
+    teams = match.get("teams") or []
+    games = match.get("games") or []
+    league = event.get("league") or {}
+    team_by_id = {str(team.get("id")): team for team in teams if isinstance(team, dict)}
+    return {
+        "id": str(event.get("id") or ""),
+        "league": str(league.get("name") or "Unknown"),
+        "league_group": _league_group(str(league.get("name") or "Unknown")),
+        "region": _league_region(str(league.get("name") or "Unknown")),
+        "block_name": str(event.get("blockName") or ""),
+        "best_of": str((match.get("strategy") or {}).get("count") or ""),
+        "teams": [_normalize_team(team) for team in teams if isinstance(team, dict)],
+        "games": [_normalize_game(game, team_by_id) for game in games if isinstance(game, dict)],
+        "source": "lolesports_api",
+    }
+
+
+def _normalize_team(team: dict[str, Any]) -> dict[str, str]:
+    result = team.get("result") or {}
+    return {
+        "id": str(team.get("id") or ""),
+        "name": str(team.get("name") or ""),
+        "code": str(team.get("code") or ""),
+        "image": str(team.get("image") or ""),
+        "game_wins": str(result.get("gameWins") or "0"),
+    }
+
+
+def _normalize_game(game: dict[str, Any], team_by_id: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    sides = {}
+    for team in game.get("teams") or []:
+        if not isinstance(team, dict):
+            continue
+        source_team = team_by_id.get(str(team.get("id")), {})
+        sides[str(team.get("side") or "")] = {
+            "team_id": str(team.get("id") or ""),
+            "team_name": str(source_team.get("name") or ""),
+            "team_code": str(source_team.get("code") or ""),
+        }
+    return {
+        "id": str(game.get("id") or ""),
+        "number": int(game.get("number") or 0),
+        "state": str(game.get("state") or ""),
+        "blue": sides.get("blue", {}),
+        "red": sides.get("red", {}),
+    }
 
 
 def _load_lolesports_schedule() -> list[dict[str, Any]]:

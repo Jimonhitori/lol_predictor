@@ -14,7 +14,7 @@ from .data import load_match_rows, load_patch_notes
 from .inference import build_prediction_row
 from .league_groups import filter_leagues
 from .patches import filter_patch, latest_patch
-from .schedule import today_matches
+from .schedule import lolesports_event_details, today_matches
 
 
 APP_HTML = """<!doctype html>
@@ -58,6 +58,18 @@ APP_HTML = """<!doctype html>
         </div>
       </div>
       <div id="matches" class="matches"></div>
+    </section>
+
+    <section id="matchCenter" class="matchCenter panel">
+      <div class="sectionHead">
+        <div>
+          <h2>Match Center</h2>
+          <p id="selectedMatchMeta">Select a match to preview prediction context.</p>
+        </div>
+        <strong id="centerPrediction">-</strong>
+      </div>
+      <div id="selectedMatch" class="selectedMatch"></div>
+      <div id="gameList" class="gameList"></div>
     </section>
 
     <section class="grid">
@@ -116,6 +128,16 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchMeta { color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
 .versus { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; font-weight: 800; }
 .versus span:last-child { text-align: right; }
+.matchCenter { margin-bottom: 16px; }
+.selectedMatch { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px; margin-bottom: 12px; }
+.teamBlock { display: grid; justify-items: center; gap: 8px; min-width: 0; }
+.teamBlock img { width: 64px; height: 64px; object-fit: contain; }
+.teamBlock strong { text-align: center; overflow-wrap: anywhere; }
+.winPill { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); text-align: center; }
+#centerPrediction { color: var(--accent); font-size: 22px; }
+.gameList { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+.gameItem { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; font-size: 13px; }
+.gameItem b { display: block; margin-bottom: 6px; }
 .formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 label { display: grid; gap: 6px; }
 input, select, button { width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #0f1419; color: var(--text); padding: 10px; }
@@ -125,6 +147,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
 @media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid { grid-template-columns: 1fr; } }
+@media (max-width: 640px) { .selectedMatch { grid-template-columns: 1fr; } }
 """
 
 
@@ -156,6 +179,7 @@ async function loadOptions() {
   state.options = await api('/api/options');
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
+  $('leagueGroup').value = 'major';
   setValue('league', 'LCK');
   $('team').value = 'T1';
   $('opponent').value = 'Gen.G';
@@ -181,24 +205,60 @@ async function loadMatches() {
     return;
   }
   $('matches').innerHTML = data.matches.map(match => `
-    <button class="match" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}">
-      <div class="matchMeta"><span>${escapeHtml(match.league)}</span><span>${escapeHtml(match.status)}</span></div>
+    <button class="match" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
+      <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(match.status)}</span></div>
       <div class="versus"><span>${escapeHtml(match.blue_team)}</span><b>vs</b><span>${escapeHtml(match.red_team)}</span></div>
     </button>
   `).join('');
   for (const el of document.querySelectorAll('.match')) {
-    el.addEventListener('click', () => {
-      setValue('league', el.dataset.league || $('league').value);
-      $('team').value = el.dataset.blue || '';
-      $('opponent').value = el.dataset.red || '';
-      $('side').value = 'Blue';
-      $('predictForm').requestSubmit();
-    });
+    el.addEventListener('click', () => selectMatch(el.dataset));
+  }
+  selectMatch(document.querySelector('.match').dataset);
+}
+
+async function selectMatch(match) {
+  setValue('league', match.league || $('league').value);
+  $('team').value = match.blue || '';
+  $('opponent').value = match.red || '';
+  $('side').value = 'Blue';
+  renderSelectedMatch({ teams: [{ name: match.blue, code: match.blue }, { name: match.red, code: match.red }], games: [], best_of: match.bestof, league: match.league, status: match.status });
+  await predict();
+  if (match.id) {
+    try {
+      const details = await api('/api/match?id=' + encodeURIComponent(match.id));
+      if (details.id) renderSelectedMatch(details);
+    } catch (error) {
+      $('selectedMatchMeta').textContent = `${match.league || ''} · details unavailable`;
+    }
   }
 }
 
+function renderSelectedMatch(details) {
+  const teams = details.teams || [];
+  const left = teams[0] || {};
+  const right = teams[1] || {};
+  $('selectedMatchMeta').textContent = `${details.league || $('league').value} · BO${details.best_of || '-'} · ${details.source || details.status || ''}`;
+  $('selectedMatch').innerHTML = `
+    ${teamBlock(left)}
+    <div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction').textContent}</strong></div>
+    ${teamBlock(right)}
+  `;
+  $('gameList').innerHTML = (details.games || []).map(game => `
+    <div class="gameItem">
+      <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
+      <span>Blue: ${escapeHtml(game.blue?.team_code || game.blue?.team_name || '-')}</span><br>
+      <span>Red: ${escapeHtml(game.red?.team_code || game.red?.team_name || '-')}</span>
+    </div>
+  `).join('');
+}
+
+function teamBlock(team) {
+  const image = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
+  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong><span>${escapeHtml(team.game_wins || '0')} wins</span></div>`;
+}
+
 async function predict(event) {
-  event.preventDefault();
+  if (event) event.preventDefault();
   const payload = {
     league: $('league').value, side: $('side').value, team: $('team').value, opponent: $('opponent').value,
     top_champion: $('top_champion').value, jng_champion: $('jng_champion').value, mid_champion: $('mid_champion').value,
@@ -207,6 +267,9 @@ async function predict(event) {
   const response = await fetch('/api/predict', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
   const data = await response.json();
   $('prediction').textContent = response.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
+  $('centerPrediction').textContent = $('prediction').textContent;
+  const inline = $('inlinePrediction');
+  if (inline) inline.textContent = $('prediction').textContent;
 }
 
 function escapeHtml(value) {
@@ -271,6 +334,9 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
                 return self.send_json(summary_payload(context.rows, parse_qs(parsed.query)))
             if parsed.path == "/api/matches/today":
                 return self.send_json(matches_payload(context, parse_qs(parsed.query)))
+            if parsed.path == "/api/match":
+                match_id = first_query(parse_qs(parsed.query), "id", "")
+                return self.send_json(lolesports_event_details(match_id) if match_id else {})
             self.send_error(HTTPStatus.NOT_FOUND)
 
         def do_POST(self) -> None:
