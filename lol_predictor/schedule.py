@@ -5,7 +5,7 @@ import os
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 import pandas as pd
@@ -17,6 +17,7 @@ from .patches import latest_patch
 CITO_MATCHES_URL = "https://api.citoapi.com/v1/lol/matches/live"
 LOLESPORTS_SCHEDULE_URL = "https://esports-api.lolesports.com/persisted/gw/getSchedule?hl=en-US"
 LOLESPORTS_EVENT_DETAILS_URL = "https://esports-api.lolesports.com/persisted/gw/getEventDetails"
+LOLESPORTS_LIVE_WINDOW_URL = "https://feed.lolesports.com/livestats/v1/window/{game_id}"
 LOLESPORTS_API_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z"
 
 
@@ -53,6 +54,21 @@ def lolesports_event_details(match_id: str) -> dict[str, Any]:
         return {}
     event = payload.get("data", {}).get("event", {})
     return _normalize_lolesports_event_detail(event) if isinstance(event, dict) else {}
+
+
+def lolesports_live_window(game_id: str) -> dict[str, Any]:
+    if os.environ.get("LOL_ESPORTS_DISABLED") == "1" or not game_id:
+        return {}
+    url_template = os.environ.get("LOL_ESPORTS_LIVE_WINDOW_URL", LOLESPORTS_LIVE_WINDOW_URL)
+    request = Request(url_template.format(game_id=game_id), headers={"accept": "application/json"})
+    try:
+        with urlopen(request, timeout=8) as response:
+            if getattr(response, "status", 200) == 204:
+                return {}
+            payload = json.loads(response.read().decode("utf-8"))
+    except (HTTPError, OSError, URLError, json.JSONDecodeError):
+        return {}
+    return _normalize_live_window(payload) if isinstance(payload, dict) else {}
 
 
 def _normalize_lolesports_event_detail(event: dict[str, Any]) -> dict[str, Any]:
@@ -96,13 +112,48 @@ def _normalize_game(game: dict[str, Any], team_by_id: dict[str, dict[str, Any]])
             "team_name": str(source_team.get("name") or ""),
             "team_code": str(source_team.get("code") or ""),
         }
+    game_id = str(game.get("id") or "")
+    state = str(game.get("state") or "")
+    live = lolesports_live_window(game_id) if state.lower() != "unstarted" else {}
     return {
-        "id": str(game.get("id") or ""),
+        "id": game_id,
         "number": int(game.get("number") or 0),
-        "state": str(game.get("state") or ""),
+        "state": state,
         "blue": sides.get("blue", {}),
         "red": sides.get("red", {}),
+        "live": live,
     }
+
+
+def _normalize_live_window(payload: dict[str, Any]) -> dict[str, Any]:
+    metadata = payload.get("gameMetadata") or {}
+    frame = payload.get("frames", [{}])[-1] if isinstance(payload.get("frames"), list) and payload.get("frames") else {}
+    return {
+        "game_state": str(frame.get("gameState") or payload.get("gameState") or ""),
+        "game_time": int(frame.get("gameTime") or payload.get("gameTime") or 0),
+        "blue": _live_participants(metadata.get("blueTeamMetadata") or {}),
+        "red": _live_participants(metadata.get("redTeamMetadata") or {}),
+        "source": "lolesports_livestats",
+    }
+
+
+def _live_participants(team_metadata: dict[str, Any]) -> list[dict[str, str]]:
+    participants = team_metadata.get("participantMetadata") or []
+    if not isinstance(participants, list):
+        return []
+    result = []
+    for participant in participants:
+        if not isinstance(participant, dict):
+            continue
+        champion = participant.get("championName") or participant.get("championId") or ""
+        result.append(
+            {
+                "player": str(participant.get("summonerName") or participant.get("name") or ""),
+                "champion": str(champion),
+                "champion_id": str(participant.get("championId") or ""),
+            }
+        )
+    return result
 
 
 def _load_lolesports_schedule() -> list[dict[str, Any]]:

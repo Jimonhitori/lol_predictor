@@ -152,7 +152,13 @@ MATCH_HTML = """<!doctype html>
     </section>
 
     <section class="panel detailHero">
-      <h2>Draft Preview</h2>
+      <div class="sectionHead">
+        <div>
+          <h2>Draft Preview</h2>
+          <p id="liveRefreshMeta">Auto refresh is starting...</p>
+        </div>
+        <span id="liveState" class="liveState">WAITING</span>
+      </div>
       <div class="draftGrid">
         <div id="blueDraft"></div>
         <div id="redDraft"></div>
@@ -201,6 +207,9 @@ p, label { color: var(--muted); font-size: 13px; }
 .detailHero { margin-bottom: 16px; }
 .draftGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .draftSlot { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 8px 0; font-size: 13px; }
+.draftSlot.live b { color: var(--accent); }
+.liveState { border: 1px solid var(--line); border-radius: 999px; padding: 5px 10px; color: var(--muted); font-size: 12px; font-weight: 800; }
+.liveState.active { border-color: var(--accent); color: var(--accent); }
 .rosterList { display: grid; gap: 8px; }
 .playerCard { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; }
 .playerCardTop { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
@@ -223,7 +232,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 
 
 APP_JS = """
-const state = { options: null };
+const state = { options: null, detailMatchId: null, detailTimer: null, rosterKey: '' };
 const $ = (id) => document.getElementById(id);
 
 async function api(path) {
@@ -354,6 +363,13 @@ async function loadMatchDetailPage() {
   const params = new URLSearchParams(location.search);
   const id = params.get('id');
   if (!id || !$('matchTitle')) return;
+  state.detailMatchId = id;
+  await refreshMatchDetail(true);
+  state.detailTimer = window.setInterval(() => refreshMatchDetail(false), 20000);
+}
+
+async function refreshMatchDetail(initial) {
+  const id = state.detailMatchId;
   const details = await api('/api/match?id=' + encodeURIComponent(id));
   if (!details.id) {
     $('matchTitle').textContent = 'Match not found';
@@ -363,8 +379,9 @@ async function loadMatchDetailPage() {
   const left = teams[0] || {};
   const right = teams[1] || {};
   $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
-  $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''}`;
-  $('detailTeams').innerHTML = `${teamBlock(left)}<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">-</strong></div>${teamBlock(right)}`;
+  $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh 20s`;
+  const currentPrediction = $('detailPrediction').textContent || '-';
+  $('detailTeams').innerHTML = `${teamBlock(left)}<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${escapeHtml(currentPrediction)}</strong></div>${teamBlock(right)}`;
   $('detailGames').innerHTML = (details.games || []).map(game => `
     <div class="gameItem">
       <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
@@ -373,7 +390,9 @@ async function loadMatchDetailPage() {
     </div>
   `).join('');
   setDetailInputs(details);
-  await predictDetail(left, right, details.league);
+  renderLiveDraft(details);
+  if (initial) await predictDetail(left, right, details.league);
+  updateLiveRefreshMeta(details);
 }
 
 function setDetailInputs(details) {
@@ -385,13 +404,54 @@ function setDetailInputs(details) {
     <div class="row"><span>Blue</span><span></span><span></span><span>${escapeHtml(left.name || '-')}</span></div>
     <div class="row"><span>Red</span><span></span><span></span><span>${escapeHtml(right.name || '-')}</span></div>
   `;
-  $('blueDraft').innerHTML = draftSlots('Blue');
-  $('redDraft').innerHTML = draftSlots('Red');
-  loadRosters(left, right);
+  const rosterKey = `${left.name || left.code || ''}|${right.name || right.code || ''}`;
+  if (rosterKey !== state.rosterKey) {
+    state.rosterKey = rosterKey;
+    loadRosters(left, right);
+  }
 }
 
 function draftSlots(side) {
   return ['Top','Jungle','Mid','Bot','Support'].map(role => `<div class="draftSlot"><span>${side} ${role}</span><b>TBD</b></div>`).join('');
+}
+
+function renderLiveDraft(details) {
+  const game = activeGame(details.games || []);
+  const live = game?.live || {};
+  $('blueDraft').innerHTML = draftSideSlots('Blue', live.blue || []);
+  $('redDraft').innerHTML = draftSideSlots('Red', live.red || []);
+  const hasLiveDraft = Boolean((live.blue || []).length || (live.red || []).length);
+  $('liveState').textContent = hasLiveDraft ? 'LIVE DATA' : (game?.state || 'WAITING').toUpperCase();
+  $('liveState').classList.toggle('active', hasLiveDraft);
+}
+
+function activeGame(games) {
+  return games.find(game => (game.live?.blue || []).length || (game.live?.red || []).length)
+    || games.find(game => String(game.state || '').toLowerCase() !== 'unstarted')
+    || games[0]
+    || {};
+}
+
+function draftSideSlots(side, picks) {
+  if (!picks.length) return draftSlots(side);
+  return picks.map((pick, index) => `
+    <div class="draftSlot live">
+      <span>${side} ${['Top','Jungle','Mid','Bot','Support'][index] || `P${index + 1}`} ${escapeHtml(pick.player || '')}</span>
+      <b>${escapeHtml(championLabel(pick))}</b>
+    </div>
+  `).join('');
+}
+
+function championLabel(pick) {
+  if (!pick?.champion) return 'TBD';
+  return String(pick.champion).match(/^\\d+$/) ? `Champion #${pick.champion}` : pick.champion;
+}
+
+function updateLiveRefreshMeta(details) {
+  const updatedAt = new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  const liveGame = activeGame(details.games || []);
+  const liveSource = liveGame?.live?.source ? ` · ${liveGame.live.source}` : '';
+  $('liveRefreshMeta').textContent = `Last checked ${updatedAt}${liveSource}`;
 }
 
 async function predictDetail(left, right, league) {
