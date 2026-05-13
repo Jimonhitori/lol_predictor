@@ -135,6 +135,8 @@ MATCH_HTML = """<!doctype html>
         <h2>Model Sandbox</h2>
         <div class="modelSandboxValue"><span>Blue-side test output</span><strong id="detailPrediction">-</strong></div>
         <div id="detailInputs" class="table"></div>
+        <h2 class="subsectionTitle">2026 Game Record</h2>
+        <div id="seasonRecords" class="table compactTable"></div>
       </section>
       <section class="panel">
         <h2>Player Rosters</h2>
@@ -236,6 +238,8 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .table { display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
+.compactTable .row { grid-template-columns: minmax(80px, 1fr) 80px 80px 80px; padding: 6px 0; }
+.subsectionTitle { margin-top: 14px; }
 @media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } }
 @media (max-width: 640px) { .selectedMatch { grid-template-columns: 1fr; } }
 """
@@ -539,12 +543,31 @@ async function loadTeamRecords(blueTeam, redTeam, league) {
   ]);
   setTeamRecord('blueTeamRecord', blue);
   setTeamRecord('redTeamRecord', red);
+  renderSeasonRecords(blue, red);
 }
 
 function setTeamRecord(id, record) {
   const el = $(id);
   if (!el) return;
-  el.textContent = record.record ? `${record.record} · ${record.label}` : '2026 record unavailable';
+  el.textContent = record.league_record || 'League record unavailable';
+}
+
+function renderSeasonRecords(blue, red) {
+  const el = $('seasonRecords');
+  if (!el) return;
+  el.innerHTML = `
+    <div class="row header"><span>Team</span><span>Games</span><span>Record</span><span>WR</span></div>
+    ${seasonRecordRow(blue)}
+    ${seasonRecordRow(red)}
+  `;
+}
+
+function seasonRecordRow(record) {
+  const name = record.matched_team || record.team || '-';
+  const gameRecord = record.record || '-';
+  const games = record.games ?? '-';
+  const winrate = typeof record.winrate === 'number' ? `${(record.winrate * 100).toFixed(1)}%` : '-';
+  return `<div class="row"><span>${escapeHtml(name)}</span><span>${escapeHtml(games)}</span><span>${escapeHtml(gameRecord)}</span><span>${escapeHtml(winrate)}</span></div>`;
 }
 
 function rosterCards(players) {
@@ -804,18 +827,24 @@ def roster_payload(rows: pd.DataFrame, team: str) -> dict[str, object]:
 def team_record_payload(rows: pd.DataFrame, team: str, league: str = "") -> dict[str, object]:
     team_rows = rows[rows["position"].eq("team")].copy()
     if team_rows.empty or not team:
-        return {"team": team, "source": "oracles_elixir_local", "record": ""}
+        return {"team": team, "source": "oracles_elixir_local", "record": "", "league_record": ""}
     if league:
         league_rows = team_rows[team_rows["league"].astype(str).eq(league)].copy()
         if not league_rows.empty:
             team_rows = league_rows
+    current_split = _current_split(team_rows)
+    current_split_rows = team_rows[team_rows["split"].astype(str).eq(current_split)].copy() if current_split else team_rows
     team_rows["_team_key"] = team_rows["teamname"].astype(str).map(_team_key)
+    current_split_rows["_team_key"] = current_split_rows["teamname"].astype(str).map(_team_key)
     target_key = _team_key(team)
     matched_rows = team_rows[team_rows["_team_key"].eq(target_key)].copy()
+    league_rows = current_split_rows[current_split_rows["_team_key"].eq(target_key)].copy()
     if matched_rows.empty:
         matched_rows = _best_team_match(team_rows, target_key)
+    if league_rows.empty:
+        league_rows = _best_team_match(current_split_rows, target_key)
     if matched_rows.empty:
-        return {"team": team, "source": "oracles_elixir_local", "record": ""}
+        return {"team": team, "source": "oracles_elixir_local", "record": "", "league_record": ""}
 
     result = pd.to_numeric(matched_rows.get("result"), errors="coerce").fillna(0)
     games = int(len(matched_rows))
@@ -823,10 +852,15 @@ def team_record_payload(rows: pd.DataFrame, team: str, league: str = "") -> dict
     losses = games - wins
     winrate = float(wins / games) if games else 0.0
     matched_league = str(matched_rows["league"].dropna().iloc[-1]) if "league" in matched_rows and not matched_rows.empty else league
+    series_wins, series_losses = _series_record(league_rows)
     return {
         "team": team,
         "matched_team": str(matched_rows["teamname"].dropna().iloc[-1]),
         "league": matched_league,
+        "split": current_split,
+        "league_wins": series_wins,
+        "league_losses": series_losses,
+        "league_record": f"{series_wins}-{series_losses}" if series_wins + series_losses else "",
         "games": games,
         "wins": wins,
         "losses": losses,
@@ -835,6 +869,24 @@ def team_record_payload(rows: pd.DataFrame, team: str, league: str = "") -> dict
         "label": f"2026 {matched_league}" if matched_league else "2026",
         "source": "oracles_elixir_local",
     }
+
+
+def _current_split(rows: pd.DataFrame) -> str:
+    if rows.empty or "split" not in rows:
+        return ""
+    latest_idx = rows["date"].idxmax()
+    return str(rows.loc[latest_idx, "split"])
+
+
+def _series_record(rows: pd.DataFrame) -> tuple[int, int]:
+    if rows.empty:
+        return 0, 0
+    data = rows.copy()
+    data["match_date"] = data["date"].dt.date
+    series = data.groupby("match_date", sort=True)["result"].agg(["sum", "count"])
+    wins = int((series["sum"] > (series["count"] - series["sum"])).sum())
+    losses = int((series["sum"] < (series["count"] - series["sum"])).sum())
+    return wins, losses
 
 
 def _best_team_match(player_rows: pd.DataFrame, target_key: str) -> pd.DataFrame:
