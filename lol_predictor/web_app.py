@@ -200,18 +200,9 @@ p, label { color: var(--muted); font-size: 13px; }
 .lineup.blue .lineupArrow { border-left: 9px solid #ef4444; }
 .lineup.red .lineupArrow { border-right: 9px solid #60a5fa; }
 .lineupPlayers { display: grid; grid-template-columns: repeat(5, minmax(64px, 1fr)); gap: 0; border: 1px solid #637080; border-radius: 6px; overflow: hidden; background: #252d37; }
-.lineupPlayer { display: grid; justify-items: center; gap: 6px; padding: 10px 8px; border-right: 1px solid #3b4552; min-width: 0; }
+.lineupPlayer { display: grid; justify-items: center; gap: 5px; padding: 9px 8px; border-right: 1px solid #3b4552; min-width: 0; }
 .lineupPlayer:last-child { border-right: 0; }
-.playerPortrait { position: relative; width: 44px; height: 44px; border-radius: 50%; overflow: hidden; border: 1px solid rgba(231, 238, 247, 0.2); background: linear-gradient(145deg, #354255, #141b24 72%); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 8px 16px rgba(0,0,0,0.22); }
-.playerPortrait::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 38% 18%, rgba(255,255,255,0.36), transparent 30%); }
-.portraitHead { position: absolute; top: 9px; left: 50%; width: 14px; height: 14px; transform: translateX(-50%); border-radius: 50%; background: linear-gradient(145deg, #f2d4bf, #b9876d); box-shadow: 0 0 0 2px rgba(22, 28, 36, 0.18); }
-.portraitBody { position: absolute; bottom: 5px; left: 50%; width: 30px; height: 18px; transform: translateX(-50%); border-radius: 15px 15px 7px 7px; background: linear-gradient(145deg, #d7e0ea, #728197); }
-.portraitHair { position: absolute; top: 6px; left: 50%; width: 18px; height: 10px; transform: translateX(-50%); border-radius: 12px 12px 5px 5px; background: #15191f; }
-.role-top { background: linear-gradient(145deg, #48384c, #151b24 72%); }
-.role-jng { background: linear-gradient(145deg, #244637, #151b24 72%); }
-.role-mid { background: linear-gradient(145deg, #293f62, #151b24 72%); }
-.role-bot { background: linear-gradient(145deg, #553a35, #151b24 72%); }
-.role-sup { background: linear-gradient(145deg, #454321, #151b24 72%); }
+.playerAvatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #f1f5f9, #8aa0b8); color: #101418; font-weight: 900; font-size: 13px; }
 .playerName { color: var(--text); font-weight: 800; font-size: 13px; overflow-wrap: anywhere; text-align: center; }
 .gameList { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
 .gameItem { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; font-size: 13px; }
@@ -434,21 +425,11 @@ function lineupBlock(side, team, players) {
   `;
 }
 
-function roleClass(role) {
-  const key = String(role || '').toLowerCase();
-  if (key === 'top') return 'role-top';
-  if (key === 'jng' || key === 'jun' || key === 'jungle') return 'role-jng';
-  if (key === 'mid') return 'role-mid';
-  if (key === 'bot' || key === 'adc') return 'role-bot';
-  if (key === 'sup' || key === 'support') return 'role-sup';
-  return '';
-}
-
 function lineupPlayers(players) {
   if (!players.length) return '<div class="lineupPlayer"><span class="playerName">No local roster match yet.</span></div>';
   return players.map(player => `
     <div class="lineupPlayer" title="${escapeHtml(player.games)} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)} · ${escapeHtml(player.top_champions.join(', ') || '-')}">
-      <span class="playerPortrait ${roleClass(player.role)}" aria-hidden="true"><span class="portraitHair"></span><span class="portraitHead"></span><span class="portraitBody"></span></span>
+      <span class="playerAvatar">${escapeHtml(player.player.slice(0, 1).toUpperCase())}</span>
       <span class="playerName">${escapeHtml(player.player)}</span>
     </div>
   `).join('');
