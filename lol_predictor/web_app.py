@@ -202,7 +202,16 @@ p, label { color: var(--muted); font-size: 13px; }
 .teamBlock { display: grid; justify-items: center; gap: 8px; min-width: 0; }
 .teamBlock img { width: 64px; height: 64px; object-fit: contain; }
 .teamBlock strong { text-align: center; overflow-wrap: anywhere; }
+.teamRecord { color: #b9cdf5; font-size: 13px; font-weight: 800; text-align: center; }
 .winPill { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); text-align: center; }
+.matchInfo { min-width: 190px; color: #b9cdf5; text-align: center; display: grid; gap: 5px; }
+.matchInfoLeague { font-size: 16px; font-weight: 900; }
+.matchInfoBo { font-size: 13px; font-weight: 800; letter-spacing: 0; }
+.matchInfoScore { font-size: 13px; color: var(--text); }
+.matchInfoVs { font-size: 28px; line-height: 1; font-weight: 900; color: var(--text); }
+.matchInfoStart { color: #c7d7f5; font-size: 13px; font-weight: 800; }
+.matchInfoModel { color: var(--muted); font-size: 12px; }
+.matchInfoModel strong { color: var(--accent); font-size: 14px; }
 #centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
 .detailHero { margin-bottom: 16px; }
 .draftGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -384,7 +393,7 @@ async function refreshMatchDetail(initial) {
   $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
   $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh 20s`;
   const currentPrediction = $('detailPrediction').textContent || '-';
-  $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord')}<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${escapeHtml(currentPrediction)}</strong></div>${teamBlock(right, 'redTeamRecord')}`;
+  $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord')}${matchInfoBlock(details, currentPrediction)}${teamBlock(right, 'redTeamRecord')}`;
   loadTeamRecords(left, right, details.league);
   $('detailGames').innerHTML = (details.games || []).map(game => `
     <div class="gameItem">
@@ -417,6 +426,46 @@ function setDetailInputs(details) {
 
 function draftSlots(side) {
   return ['Top','Jungle','Mid','Bot','Support'].map(role => `<div class="draftSlot"><span>${side} ${role}</span><b>TBD</b></div>`).join('');
+}
+
+function matchInfoBlock(details, prediction) {
+  const bestOf = details.best_of || '-';
+  const score = seriesScore(details.teams || []);
+  return `
+    <div class="matchInfo">
+      <span class="matchInfoLeague">${escapeHtml(details.league || '-')}</span>
+      <span class="matchInfoBo">BEST OF ${escapeHtml(bestOf)}</span>
+      <span class="matchInfoScore">${escapeHtml(score)}</span>
+      <strong class="matchInfoVs">VS</strong>
+      <span class="matchInfoStart">${escapeHtml(startLine(details))}</span>
+      <span class="matchInfoModel">Blue-side model <strong id="inlinePrediction">${escapeHtml(prediction)}</strong></span>
+    </div>
+  `;
+}
+
+function seriesScore(teams) {
+  const left = teams[0]?.game_wins ?? '0';
+  const right = teams[1]?.game_wins ?? '0';
+  return `${left} - ${right}`;
+}
+
+function startLine(details) {
+  const game = activeGame(details.games || []);
+  const gameNumber = game?.number || 1;
+  const bestOf = details.best_of || (details.games || []).length || '-';
+  const time = localStartTime(details.start_time);
+  if (!time) return `Game ${gameNumber} out of ${bestOf} start time TBD`;
+  return `Game ${gameNumber} out of ${bestOf} will start at ${time}`;
+}
+
+function localStartTime(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat(undefined, {
+    year: 'numeric', month: 'numeric', day: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  }).format(date);
 }
 
 function renderLiveDraft(details) {
@@ -582,7 +631,7 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
                 return self.send_json(matches_payload(context, parse_qs(parsed.query)))
             if parsed.path == "/api/match":
                 match_id = first_query(parse_qs(parsed.query), "id", "")
-                return self.send_json(lolesports_event_details(match_id) if match_id else {})
+                return self.send_json(match_detail_payload(context, match_id) if match_id else {})
             if parsed.path == "/api/roster":
                 team = first_query(parse_qs(parsed.query), "team", "")
                 return self.send_json(roster_payload(context.rows, team))
@@ -663,6 +712,17 @@ def matches_payload(context: AppContext, query: dict[str, list[str]]) -> dict[st
     ]
     source = filtered[0].get("source", "none") if filtered else "none"
     return {"source": source, "matches": filtered}
+
+
+def match_detail_payload(context: AppContext, match_id: str) -> dict[str, object]:
+    details = lolesports_event_details(match_id)
+    if not details:
+        return {}
+    schedule_match = next((match for match in today_matches(context.rows, context.today_cache) if str(match.get("id")) == str(match_id)), {})
+    if schedule_match:
+        details["start_time"] = details.get("start_time") or schedule_match.get("start_time", "")
+        details["status"] = details.get("status") or schedule_match.get("status", "")
+    return details
 
 
 def champion_rows(rows: pd.DataFrame) -> list[dict[str, object]]:
