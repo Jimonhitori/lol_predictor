@@ -13,7 +13,7 @@ import pandas as pd
 from .patches import latest_patch
 
 
-CITO_TODAY_URL = "https://api.citoapi.com/api/v1/lol/schedule/today"
+CITO_MATCHES_URL = "https://api.citoapi.com/v1/lol/matches/live"
 
 
 def today_matches(rows: pd.DataFrame, cache_path: Path | None = None) -> list[dict[str, Any]]:
@@ -32,7 +32,8 @@ def _load_cito_today() -> list[dict[str, Any]]:
     api_key = os.environ.get("CITO_API_KEY")
     if not api_key:
         return []
-    request = Request(CITO_TODAY_URL, headers={"x-api-key": api_key, "accept": "application/json"})
+    url = os.environ.get("CITO_LOL_MATCHES_URL", CITO_MATCHES_URL)
+    request = Request(url, headers={"Authorization": f"Bearer {api_key}", "accept": "application/json"})
     try:
         with urlopen(request, timeout=15) as response:
             payload = json.loads(response.read().decode("utf-8"))
