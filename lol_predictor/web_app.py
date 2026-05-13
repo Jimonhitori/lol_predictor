@@ -259,7 +259,7 @@ async function loadMatches() {
   $('matches').innerHTML = data.matches.map(match => `
     <button class="match" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(match.status)}</span></div>
-      <div class="versus">${matchCardTeam(match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_team, match.red_image)}</div>
+      <div class="versus">${matchCardTeam(match.blue_code || match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_code || match.red_team, match.red_image)}</div>
       <a class="backLink" href="/match?id=${encodeURIComponent(match.id)}">Details</a>
     </button>
   `).join('');
