@@ -138,7 +138,16 @@ MATCH_HTML = """<!doctype html>
       </section>
       <section class="panel">
         <h2>Player Rosters</h2>
-        <div id="lineups" class="lineups"></div>
+        <div class="draftGrid">
+          <div>
+            <h2 id="blueRosterTitle">Blue</h2>
+            <div id="blueRoster" class="rosterList"></div>
+          </div>
+          <div>
+            <h2 id="redRosterTitle">Red</h2>
+            <div id="redRoster" class="rosterList"></div>
+          </div>
+        </div>
       </section>
     </section>
 
@@ -192,18 +201,11 @@ p, label { color: var(--muted); font-size: 13px; }
 .detailHero { margin-bottom: 16px; }
 .draftGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .draftSlot { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 8px 0; font-size: 13px; }
-.lineups { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.lineup { border: 1px solid var(--line); border-radius: 8px; background: #202730; padding: 12px; min-width: 0; }
-.lineupHeader { display: flex; align-items: center; gap: 8px; color: #d7dee8; font-weight: 800; margin-bottom: 10px; }
-.lineupHeader img { width: 18px; height: 18px; object-fit: contain; }
-.lineupArrow { width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-.lineup.blue .lineupArrow { border-left: 9px solid #ef4444; }
-.lineup.red .lineupArrow { border-right: 9px solid #60a5fa; }
-.lineupPlayers { display: grid; grid-template-columns: repeat(5, minmax(64px, 1fr)); gap: 0; border: 1px solid #637080; border-radius: 6px; overflow: hidden; background: #252d37; }
-.lineupPlayer { display: grid; justify-items: center; gap: 5px; padding: 9px 8px; border-right: 1px solid #3b4552; min-width: 0; }
-.lineupPlayer:last-child { border-right: 0; }
-.playerAvatar { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: radial-gradient(circle at 35% 30%, #f1f5f9, #8aa0b8); color: #101418; font-weight: 900; font-size: 13px; }
-.playerName { color: var(--text); font-weight: 800; font-size: 13px; overflow-wrap: anywhere; text-align: center; }
+.rosterList { display: grid; gap: 8px; }
+.playerCard { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; }
+.playerCardTop { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
+.playerCard strong { color: var(--text); }
+.playerMeta { color: var(--muted); font-size: 12px; margin-top: 6px; }
 .gameList { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
 .gameItem { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; font-size: 13px; }
 .gameItem b { display: block; margin-bottom: 6px; }
@@ -215,9 +217,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .table { display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
-@media (max-width: 1100px) { .lineups { grid-template-columns: 1fr; } }
 @media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } }
-@media (max-width: 560px) { .lineupPlayers { grid-template-columns: repeat(2, minmax(90px, 1fr)); } .lineupPlayer { border-bottom: 1px solid #3b4552; } }
 @media (max-width: 640px) { .selectedMatch { grid-template-columns: 1fr; } }
 """
 
@@ -408,29 +408,25 @@ async function predictDetail(left, right, league) {
 }
 
 async function loadRosters(blueTeam, redTeam) {
+  const blueName = blueTeam.name || blueTeam.code || '';
+  const redName = redTeam.name || redTeam.code || '';
+  $('blueRosterTitle').textContent = blueName || 'Blue';
+  $('redRosterTitle').textContent = redName || 'Red';
   const [blue, red] = await Promise.all([
-    api('/api/roster?team=' + encodeURIComponent(blueTeam.name || blueTeam.code || '')),
-    api('/api/roster?team=' + encodeURIComponent(redTeam.name || redTeam.code || '')),
+    api('/api/roster?team=' + encodeURIComponent(blueName)),
+    api('/api/roster?team=' + encodeURIComponent(redName)),
   ]);
-  $('lineups').innerHTML = lineupBlock('blue', blueTeam, blue.players || []) + lineupBlock('red', redTeam, red.players || []);
+  $('blueRoster').innerHTML = rosterCards(blue.players || []);
+  $('redRoster').innerHTML = rosterCards(red.players || []);
 }
 
-function lineupBlock(side, team, players) {
-  const logo = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '<span class="lineupArrow"></span>';
-  return `
-    <section class="lineup ${side}">
-      <div class="lineupHeader"><span class="lineupArrow"></span>${logo}<span>${escapeHtml(team.name || team.code || side)} ラインアップ</span></div>
-      <div class="lineupPlayers">${lineupPlayers(players)}</div>
-    </section>
-  `;
-}
-
-function lineupPlayers(players) {
-  if (!players.length) return '<div class="lineupPlayer"><span class="playerName">No local roster match yet.</span></div>';
+function rosterCards(players) {
+  if (!players.length) return '<p>No local roster match yet.</p>';
   return players.map(player => `
-    <div class="lineupPlayer" title="${escapeHtml(player.games)} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)} · ${escapeHtml(player.top_champions.join(', ') || '-')}">
-      <span class="playerAvatar">${escapeHtml(player.player.slice(0, 1).toUpperCase())}</span>
-      <span class="playerName">${escapeHtml(player.player)}</span>
+    <div class="playerCard">
+      <div class="playerCardTop"><strong>${escapeHtml(player.role)}</strong><strong>${escapeHtml(player.player)}</strong></div>
+      <div class="playerMeta">${escapeHtml(player.games)} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}</div>
+      <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
     </div>
   `).join('');
 }
