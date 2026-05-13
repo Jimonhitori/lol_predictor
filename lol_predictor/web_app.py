@@ -137,10 +137,40 @@ MATCH_HTML = """<!doctype html>
         <div id="detailInputs" class="table"></div>
       </section>
       <section class="panel">
-        <h2>Draft Preview</h2>
+        <h2>Player Rosters</h2>
         <div class="draftGrid">
-          <div id="blueDraft"></div>
-          <div id="redDraft"></div>
+          <div>
+            <h2 id="blueRosterTitle">Blue</h2>
+            <div id="blueRoster" class="rosterList"></div>
+          </div>
+          <div>
+            <h2 id="redRosterTitle">Red</h2>
+            <div id="redRoster" class="rosterList"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="panel detailHero">
+      <h2>Draft Preview</h2>
+      <div class="draftGrid">
+        <div id="blueDraft"></div>
+        <div id="redDraft"></div>
+      </div>
+    </section>
+    <section class="grid">
+      <section class="panel">
+        <h2>Roster Source Plan</h2>
+        <div class="table">
+          <div class="row"><span>Oracle's Elixir</span><span></span><span></span><span>current</span></div>
+          <div class="row"><span>Leaguepedia</span><span></span><span></span><span>planned</span></div>
+          <div class="row"><span>Riot/Cito live APIs</span><span></span><span></span><span>planned</span></div>
+        </div>
+      </section>
+      <section class="panel">
+        <h2>Draft Preview Notes</h2>
+        <div class="draftGrid">
+          <p>Live draft picks will be filled from the live game feed once a game id has active data.</p>
         </div>
       </section>
     </section>
@@ -187,6 +217,11 @@ p, label { color: var(--muted); font-size: 13px; }
 .detailHero { margin-bottom: 16px; }
 .draftGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .draftSlot { display: flex; justify-content: space-between; gap: 8px; border-bottom: 1px solid var(--line); padding: 8px 0; font-size: 13px; }
+.rosterList { display: grid; gap: 8px; }
+.playerCard { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; }
+.playerCardTop { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
+.playerCard strong { color: var(--text); }
+.playerMeta { color: var(--muted); font-size: 12px; margin-top: 6px; }
 .gameList { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
 .gameItem { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; font-size: 13px; }
 .gameItem b { display: block; margin-bottom: 6px; }
@@ -368,6 +403,7 @@ function setDetailInputs(details) {
   `;
   $('blueDraft').innerHTML = draftSlots('Blue');
   $('redDraft').innerHTML = draftSlots('Red');
+  loadRosters(left.name, right.name);
 }
 
 function draftSlots(side) {
@@ -385,6 +421,28 @@ async function predictDetail(left, right, league) {
   $('detailPrediction').textContent = text;
   const inline = $('inlinePrediction');
   if (inline) inline.textContent = text;
+}
+
+async function loadRosters(blueTeam, redTeam) {
+  $('blueRosterTitle').textContent = blueTeam || 'Blue';
+  $('redRosterTitle').textContent = redTeam || 'Red';
+  const [blue, red] = await Promise.all([
+    api('/api/roster?team=' + encodeURIComponent(blueTeam || '')),
+    api('/api/roster?team=' + encodeURIComponent(redTeam || '')),
+  ]);
+  $('blueRoster').innerHTML = rosterCards(blue.players || []);
+  $('redRoster').innerHTML = rosterCards(red.players || []);
+}
+
+function rosterCards(players) {
+  if (!players.length) return '<p>No local roster match yet.</p>';
+  return players.map(player => `
+    <div class="playerCard">
+      <div class="playerCardTop"><strong>${escapeHtml(player.role)}</strong><strong>${escapeHtml(player.player)}</strong></div>
+      <div class="playerMeta">${escapeHtml(player.games)} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}</div>
+      <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
+    </div>
+  `).join('');
 }
 
 function escapeHtml(value) {
@@ -458,6 +516,9 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
             if parsed.path == "/api/match":
                 match_id = first_query(parse_qs(parsed.query), "id", "")
                 return self.send_json(lolesports_event_details(match_id) if match_id else {})
+            if parsed.path == "/api/roster":
+                team = first_query(parse_qs(parsed.query), "team", "")
+                return self.send_json(roster_payload(context.rows, team))
             self.send_error(HTTPStatus.NOT_FOUND)
 
         def do_POST(self) -> None:
@@ -560,6 +621,71 @@ def team_rows_payload(rows: pd.DataFrame) -> list[dict[str, object]]:
         {"name": row.teamname, "games": int(row.games), "wins": int(row.wins), "winrate": f"{row.winrate:.1%}"}
         for row in data.itertuples()
     ]
+
+
+def roster_payload(rows: pd.DataFrame, team: str) -> dict[str, object]:
+    player_rows = rows[~rows["position"].eq("team")].copy()
+    if player_rows.empty or not team:
+        return {"team": team, "source": "oracles_elixir_local", "players": []}
+    player_rows["_team_key"] = player_rows["teamname"].astype(str).map(_team_key)
+    target_key = _team_key(team)
+    team_rows = player_rows[player_rows["_team_key"].eq(target_key)].copy()
+    if team_rows.empty:
+        team_rows = _best_team_match(player_rows, target_key)
+    if team_rows.empty:
+        return {"team": team, "source": "oracles_elixir_local", "players": []}
+
+    role_order = {"top": 1, "jng": 2, "mid": 3, "bot": 4, "sup": 5}
+    players = []
+    for role in ["top", "jng", "mid", "bot", "sup"]:
+        role_rows = team_rows[team_rows["position"].eq(role)].copy()
+        if role_rows.empty:
+            continue
+        latest = role_rows.sort_values("date").iloc[-1]
+        player = str(latest["playername"])
+        player_games = team_rows[team_rows["playername"].astype(str).eq(player)]
+        kills = pd.to_numeric(player_games.get("kills"), errors="coerce").fillna(0)
+        deaths = pd.to_numeric(player_games.get("deaths"), errors="coerce").fillna(0)
+        assists = pd.to_numeric(player_games.get("assists"), errors="coerce").fillna(0)
+        result = pd.to_numeric(player_games.get("result"), errors="coerce").fillna(0)
+        top_champions = (
+            player_games["champion"].dropna().astype(str).value_counts().head(3).index.tolist()
+            if "champion" in player_games.columns
+            else []
+        )
+        players.append(
+            {
+                "role": role.upper(),
+                "role_order": role_order[role],
+                "player": player,
+                "team": str(latest["teamname"]),
+                "games": int(len(player_games)),
+                "winrate": float(result.mean()) if len(player_games) else 0.0,
+                "kda": float((kills.sum() + assists.sum()) / max(1, deaths.sum())),
+                "top_champions": top_champions,
+                "last_seen": str(latest["date"]),
+            }
+        )
+    players = sorted(players, key=lambda player: player["role_order"])
+    for player in players:
+        player.pop("role_order", None)
+    return {"team": team, "matched_team": players[0]["team"] if players else "", "source": "oracles_elixir_local", "players": players}
+
+
+def _best_team_match(player_rows: pd.DataFrame, target_key: str) -> pd.DataFrame:
+    keys = player_rows[["_team_key", "teamname"]].drop_duplicates()
+    candidates = [
+        key
+        for key in keys["_team_key"].dropna().astype(str).unique()
+        if key and (key in target_key or target_key in key)
+    ]
+    if not candidates:
+        return player_rows.iloc[0:0].copy()
+    return player_rows[player_rows["_team_key"].eq(candidates[0])].copy()
+
+
+def _team_key(value: str) -> str:
+    return "".join(character for character in value.lower() if character.isalnum())
 
 
 def predict_payload(context: AppContext, payload: dict[str, object]) -> dict[str, float]:
