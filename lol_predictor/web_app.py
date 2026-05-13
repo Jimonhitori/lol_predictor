@@ -1,0 +1,343 @@
+from __future__ import annotations
+
+import argparse
+import json
+from http import HTTPStatus
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from urllib.parse import parse_qs, urlparse
+
+import joblib
+import pandas as pd
+
+from .data import load_match_rows, load_patch_notes
+from .inference import build_prediction_row
+from .league_groups import filter_leagues
+from .patches import filter_patch, latest_patch
+
+
+APP_HTML = """<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LoL Esports Predictor</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <h1>LoL Esports Predictor</h1>
+        <p id="meta">loading...</p>
+      </div>
+      <div class="filters">
+        <select id="leagueGroup">
+          <option value="all">All tiers</option>
+          <option value="major">Major</option>
+          <option value="secondary">Secondary</option>
+        </select>
+        <select id="region">
+          <option value="all">All regions</option>
+          <option value="korea">Korea</option>
+          <option value="china">China</option>
+          <option value="emea">EMEA</option>
+          <option value="americas">Americas</option>
+          <option value="pacific">Pacific</option>
+          <option value="international">International</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="grid">
+      <form id="predictForm" class="panel">
+        <h2>Predict</h2>
+        <div class="formGrid">
+          <label>League <select id="league"></select></label>
+          <label>Side <select id="side"><option>Blue</option><option>Red</option></select></label>
+          <label>Team <input id="team" placeholder="T1"></label>
+          <label>Opponent <input id="opponent" placeholder="Gen.G"></label>
+          <label>Top <select id="top_champion"></select></label>
+          <label>Jungle <select id="jng_champion"></select></label>
+          <label>Mid <select id="mid_champion"></select></label>
+          <label>Bot <select id="bot_champion"></select></label>
+          <label>Support <select id="sup_champion"></select></label>
+        </div>
+        <button type="submit">Predict win probability</button>
+        <output id="prediction">-</output>
+      </form>
+
+      <section class="panel">
+        <h2>Latest Patch Meta</h2>
+        <div id="champions" class="table"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Teams</h2>
+        <div id="teams" class="table"></div>
+      </section>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
+"""
+
+
+APP_CSS = """
+:root { color-scheme: dark; --bg:#101418; --panel:#171d23; --line:#2a333d; --text:#edf2f7; --muted:#9ba8b5; --accent:#27c7a7; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--text); }
+.shell { max-width: 1280px; margin: 0 auto; padding: 24px; }
+.topbar { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 18px; }
+h1, h2, p { margin: 0; }
+h1 { font-size: 28px; }
+h2 { font-size: 16px; margin-bottom: 14px; }
+p, label { color: var(--muted); font-size: 13px; }
+.filters { display: flex; gap: 8px; }
+.grid { display: grid; grid-template-columns: 420px 1fr; gap: 16px; align-items: start; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+.formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+label { display: grid; gap: 6px; }
+input, select, button { width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #0f1419; color: var(--text); padding: 10px; }
+button { margin-top: 14px; background: var(--accent); color: #08110f; font-weight: 700; cursor: pointer; }
+output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
+.table { display: grid; gap: 6px; }
+.row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.row.header { color: var(--muted); font-size: 12px; }
+@media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid { grid-template-columns: 1fr; } }
+"""
+
+
+APP_JS = """
+const state = { options: null };
+const $ = (id) => document.getElementById(id);
+
+async function api(path) {
+  const response = await fetch(path);
+  if (!response.ok) throw new Error(await response.text());
+  return response.json();
+}
+
+function qs() {
+  return new URLSearchParams({ league_group: $('leagueGroup').value, region: $('region').value }).toString();
+}
+
+function fillSelect(id, values) {
+  const el = $(id);
+  el.innerHTML = values.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join('');
+}
+
+function renderTable(id, rows, firstLabel) {
+  const header = `<div class="row header"><span>${firstLabel}</span><span>Picks</span><span>Wins</span><span>Winrate</span></div>`;
+  $(id).innerHTML = header + rows.map(r => `<div class="row"><span>${escapeHtml(r.name)}</span><span>${r.games ?? r.picks}</span><span>${r.wins}</span><span>${r.winrate}</span></div>`).join('');
+}
+
+async function loadOptions() {
+  state.options = await api('/api/options');
+  fillSelect('league', state.options.leagues);
+  for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
+  setValue('league', 'LCK');
+  $('leagueGroup').value = 'major';
+  $('region').value = 'korea';
+  $('team').value = 'T1';
+  $('opponent').value = 'Gen.G';
+  setValue('top_champion', 'Gnar');
+  setValue('jng_champion', 'Xin Zhao');
+  setValue('mid_champion', 'Ahri');
+  setValue('bot_champion', 'Ashe');
+  setValue('sup_champion', 'Rakan');
+}
+
+async function loadSummary() {
+  const data = await api('/api/summary?' + qs());
+  $('meta').textContent = `Patch ${data.patch} | ${data.games} games | ${data.leagues.join(', ')}`;
+  renderTable('champions', data.champions, 'Champion');
+  renderTable('teams', data.teams, 'Team');
+}
+
+async function predict(event) {
+  event.preventDefault();
+  const payload = {
+    league: $('league').value, side: $('side').value, team: $('team').value, opponent: $('opponent').value,
+    top_champion: $('top_champion').value, jng_champion: $('jng_champion').value, mid_champion: $('mid_champion').value,
+    bot_champion: $('bot_champion').value, sup_champion: $('sup_champion').value
+  };
+  const response = await fetch('/api/predict', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+  const data = await response.json();
+  $('prediction').textContent = response.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function setValue(id, value) {
+  const el = $(id);
+  if ([...el.options].some(option => option.value === value)) el.value = value;
+}
+
+for (const id of ['leagueGroup','region']) $(id).addEventListener('change', loadSummary);
+$('predictForm').addEventListener('submit', predict);
+loadOptions().then(loadSummary);
+"""
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Serve a local LoL esports predictor UI.")
+    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=8765)
+    parser.add_argument("--data-dir", type=Path, default=Path("data/raw"))
+    parser.add_argument("--model-path", type=Path, default=Path("models/2026_all_patches_lck_lpl_regions_synergy.joblib"))
+    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2026_patch_notes.json"))
+    parser.add_argument("--champion-reference", type=Path, default=Path("data/features/champion_reference.csv"))
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    context = AppContext(args)
+    handler = make_handler(context)
+    server = ThreadingHTTPServer((args.host, args.port), handler)
+    print(f"Serving http://{args.host}:{args.port}")
+    server.serve_forever()
+
+
+class AppContext:
+    def __init__(self, args: argparse.Namespace) -> None:
+        self.rows = load_match_rows(args.data_dir)
+        self.patch = latest_patch(self.rows)
+        self.patch_notes = load_patch_notes(args.patch_notes)
+        self.champion_reference = load_patch_notes(args.champion_reference)
+        self.model_bundle = joblib.load(args.model_path) if args.model_path.exists() else None
+
+
+def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
+    class Handler(BaseHTTPRequestHandler):
+        def do_GET(self) -> None:
+            parsed = urlparse(self.path)
+            if parsed.path == "/":
+                return self.send_text(APP_HTML, "text/html")
+            if parsed.path == "/static/styles.css":
+                return self.send_text(APP_CSS, "text/css")
+            if parsed.path == "/static/app.js":
+                return self.send_text(APP_JS, "application/javascript")
+            if parsed.path == "/api/options":
+                return self.send_json(options_payload(context.rows))
+            if parsed.path == "/api/summary":
+                return self.send_json(summary_payload(context.rows, parse_qs(parsed.query)))
+            self.send_error(HTTPStatus.NOT_FOUND)
+
+        def do_POST(self) -> None:
+            if self.path != "/api/predict":
+                return self.send_error(HTTPStatus.NOT_FOUND)
+            length = int(self.headers.get("Content-Length", "0"))
+            payload = json.loads(self.rfile.read(length).decode("utf-8"))
+            try:
+                result = predict_payload(context, payload)
+            except Exception as error:  # noqa: BLE001
+                return self.send_json({"error": str(error)}, HTTPStatus.BAD_REQUEST)
+            return self.send_json(result)
+
+        def send_text(self, body: str, content_type: str) -> None:
+            encoded = body.encode("utf-8")
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", f"{content_type}; charset=utf-8")
+            self.send_header("Content-Length", str(len(encoded)))
+            self.end_headers()
+            self.wfile.write(encoded)
+
+        def send_json(self, body: object, status: HTTPStatus = HTTPStatus.OK) -> None:
+            encoded = json.dumps(body, ensure_ascii=False).encode("utf-8")
+            self.send_response(status)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(encoded)))
+            self.end_headers()
+            self.wfile.write(encoded)
+
+        def log_message(self, format: str, *args: object) -> None:
+            return
+
+    return Handler
+
+
+def options_payload(rows: pd.DataFrame) -> dict[str, list[str]]:
+    player_rows = rows[~rows["position"].eq("team")]
+    return {
+        "leagues": sorted(rows["league"].dropna().astype(str).unique().tolist()),
+        "champions": sorted(player_rows["champion"].dropna().astype(str).unique().tolist()),
+    }
+
+
+def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]]) -> dict[str, object]:
+    league_group = first_query(query, "league_group", "all")
+    region = first_query(query, "region", "all")
+    filtered = filter_leagues(rows, league_group=league_group, region=region)
+    patch = latest_patch(filtered)
+    patch_rows = filter_patch(filtered, patch=str(patch))
+    player_rows = patch_rows[~patch_rows["position"].eq("team")]
+    team_rows = patch_rows[patch_rows["position"].eq("team")]
+    return {
+        "patch": str(patch),
+        "games": int(patch_rows["gameid"].nunique()),
+        "leagues": sorted(patch_rows["league"].dropna().astype(str).unique().tolist()),
+        "champions": champion_rows(player_rows),
+        "teams": team_rows_payload(team_rows),
+    }
+
+
+def champion_rows(rows: pd.DataFrame) -> list[dict[str, object]]:
+    data = (
+        rows.groupby("champion")
+        .agg(picks=("champion", "size"), wins=("result", "sum"))
+        .assign(winrate=lambda frame: frame["wins"] / frame["picks"])
+        .sort_values(["picks", "winrate"], ascending=[False, False])
+        .head(20)
+        .reset_index()
+    )
+    return [
+        {"name": row.champion, "picks": int(row.picks), "wins": int(row.wins), "winrate": f"{row.winrate:.1%}"}
+        for row in data.itertuples()
+    ]
+
+
+def team_rows_payload(rows: pd.DataFrame) -> list[dict[str, object]]:
+    data = (
+        rows.groupby("teamname")
+        .agg(games=("teamname", "size"), wins=("result", "sum"))
+        .assign(winrate=lambda frame: frame["wins"] / frame["games"])
+        .sort_values(["games", "winrate"], ascending=[False, False])
+        .head(20)
+        .reset_index()
+    )
+    return [
+        {"name": row.teamname, "games": int(row.games), "wins": int(row.wins), "winrate": f"{row.winrate:.1%}"}
+        for row in data.itertuples()
+    ]
+
+
+def predict_payload(context: AppContext, payload: dict[str, object]) -> dict[str, float]:
+    if context.model_bundle is None:
+        raise ValueError("Model file not found. Train a model first.")
+    row = build_prediction_row(
+        payload,
+        rows=context.rows,
+        patch_notes=context.patch_notes,
+        champion_reference=context.champion_reference,
+        patch=str(context.patch),
+    )
+    feature_columns = context.model_bundle["feature_columns"]
+    for column in feature_columns:
+        if column not in row.columns:
+            row[column] = None
+    probability = float(context.model_bundle["pipeline"].predict_proba(row[feature_columns])[:, 1][0])
+    return {"win_probability": probability}
+
+
+def first_query(query: dict[str, list[str]], key: str, default: str) -> str:
+    values = query.get(key)
+    return values[0] if values else default
+
+
+if __name__ == "__main__":
+    main()
