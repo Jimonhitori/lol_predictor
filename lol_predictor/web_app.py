@@ -149,22 +149,6 @@ MATCH_HTML = """<!doctype html>
         <div id="redDraft"></div>
       </div>
     </section>
-    <section class="grid">
-      <section class="panel">
-        <h2>Roster Source Plan</h2>
-        <div class="table">
-          <div class="row"><span>Oracle's Elixir</span><span></span><span></span><span>current</span></div>
-          <div class="row"><span>Leaguepedia</span><span></span><span></span><span>planned</span></div>
-          <div class="row"><span>Riot/Cito live APIs</span><span></span><span></span><span>planned</span></div>
-        </div>
-      </section>
-      <section class="panel">
-        <h2>Draft Preview Notes</h2>
-        <div class="draftGrid">
-          <p>Live draft picks will be filled from the live game feed once a game id has active data.</p>
-        </div>
-      </section>
-    </section>
   </main>
   <script src="/static/app.js"></script>
 </body>
