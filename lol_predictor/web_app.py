@@ -168,7 +168,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchStrip { margin-bottom: 16px; }
 .sectionHead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
-.match { border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #111820; color: var(--text); cursor: pointer; font: inherit; text-align: inherit; }
+.match { display: block; border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #111820; color: var(--text); cursor: pointer; font: inherit; text-align: inherit; text-decoration: none; }
 .match:hover { border-color: var(--accent); }
 .match .backLink { color: var(--accent); margin: 10px 0 0; }
 .matchMeta { color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
@@ -257,14 +257,15 @@ async function loadMatches() {
     return;
   }
   $('matches').innerHTML = data.matches.map(match => `
-    <button class="match" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
+    <a class="match" href="/match?id=${encodeURIComponent(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(match.status)}</span></div>
       <div class="versus">${matchCardTeam(match.blue_code || match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_code || match.red_team, match.red_image)}</div>
-      <a class="backLink" href="/match?id=${encodeURIComponent(match.id)}">Details</a>
-    </button>
+      <span class="backLink">Details</span>
+    </a>
   `).join('');
   for (const el of document.querySelectorAll('.match')) {
-    el.addEventListener('click', () => selectMatch(el.dataset));
+    el.addEventListener('mouseenter', () => selectMatch(el.dataset));
+    el.addEventListener('focus', () => selectMatch(el.dataset));
   }
   selectMatch(document.querySelector('.match').dataset);
 }
