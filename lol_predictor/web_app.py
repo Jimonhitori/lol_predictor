@@ -123,7 +123,6 @@ MATCH_HTML = """<!doctype html>
         <h1 id="matchTitle">Match Detail</h1>
         <p id="matchMeta">loading...</p>
       </div>
-      <strong id="detailPrediction">-</strong>
     </section>
 
     <section class="panel detailHero">
@@ -133,7 +132,8 @@ MATCH_HTML = """<!doctype html>
 
     <section class="grid detailGrid">
       <section class="panel">
-        <h2>Prediction Inputs</h2>
+        <h2>Model Sandbox</h2>
+        <div class="modelSandboxValue"><span>Blue-side test output</span><strong id="detailPrediction">-</strong></div>
         <div id="detailInputs" class="table"></div>
       </section>
       <section class="panel">
@@ -211,9 +211,8 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchInfoScore { font-size: 13px; color: var(--muted); }
 .matchInfoVs { font-size: 28px; line-height: 1; font-weight: 900; color: var(--text); }
 .matchInfoStart { color: var(--muted); font-size: 13px; font-weight: 800; }
-.matchInfoModel { color: var(--muted); font-size: 12px; }
-.matchInfoModel strong { color: var(--accent); font-size: 14px; }
 #centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
+.modelSandboxValue { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin-bottom: 12px; background: #10161d; color: var(--muted); font-size: 12px; }
 .detailHero { margin-bottom: 24px; }
 .detailHero .sectionHead { margin-bottom: 18px; }
 .draftGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -394,8 +393,7 @@ async function refreshMatchDetail(initial) {
   const right = teams[1] || {};
   $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
   $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh 20s`;
-  const currentPrediction = $('detailPrediction').textContent || '-';
-  $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord')}${matchInfoBlock(details, currentPrediction)}${teamBlock(right, 'redTeamRecord')}`;
+  $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord')}${matchInfoBlock(details)}${teamBlock(right, 'redTeamRecord')}`;
   loadTeamRecords(left, right, details.league);
   $('detailGames').innerHTML = (details.games || []).map(game => `
     <div class="gameItem">
@@ -430,7 +428,7 @@ function draftSlots(side) {
   return ['Top','Jungle','Mid','Bot','Support'].map(role => `<div class="draftSlot"><span>${side} ${role}</span><b>TBD</b></div>`).join('');
 }
 
-function matchInfoBlock(details, prediction) {
+function matchInfoBlock(details) {
   const bestOf = details.best_of || '-';
   const score = seriesScore(details.teams || []);
   return `
@@ -440,7 +438,6 @@ function matchInfoBlock(details, prediction) {
       <span class="matchInfoScore">${escapeHtml(score)}</span>
       <strong class="matchInfoVs">VS</strong>
       <span class="matchInfoStart">${escapeHtml(startLine(details))}</span>
-      <span class="matchInfoModel">Blue-side model <strong id="inlinePrediction">${escapeHtml(prediction)}</strong></span>
     </div>
   `;
 }
@@ -518,8 +515,6 @@ async function predictDetail(left, right, league) {
   const data = await response.json();
   const text = response.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
   $('detailPrediction').textContent = text;
-  const inline = $('inlinePrediction');
-  if (inline) inline.textContent = text;
 }
 
 async function loadRosters(blueTeam, redTeam) {
