@@ -207,12 +207,12 @@ p, label { color: var(--muted); font-size: 13px; }
 .teamBlock strong { text-align: center; overflow-wrap: anywhere; }
 .teamRecord { color: var(--muted); font-size: 13px; font-weight: 800; text-align: center; }
 .winPill { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); text-align: center; }
-.matchInfo { min-width: 190px; color: var(--text); text-align: center; display: grid; gap: 5px; }
+.matchInfo { min-width: 210px; color: var(--text); text-align: center; display: grid; gap: 8px; }
 .matchInfoLeague { font-size: 16px; font-weight: 900; }
 .matchInfoBo { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: 0; }
 .matchInfoScore { font-size: 13px; color: var(--muted); }
-.matchInfoVs { font-size: 28px; line-height: 1; font-weight: 900; color: var(--text); }
-.matchInfoStart { color: var(--muted); font-size: 13px; font-weight: 800; }
+.matchInfoVs { font-size: 28px; line-height: 1.05; font-weight: 900; color: var(--text); margin: 2px 0; }
+.matchInfoStart { color: var(--muted); font-size: 13px; font-weight: 800; margin-top: 2px; }
 #centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
 .modelSandboxValue { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin-bottom: 12px; background: #10161d; color: var(--muted); font-size: 12px; }
 .detailHero { margin-bottom: 24px; }
