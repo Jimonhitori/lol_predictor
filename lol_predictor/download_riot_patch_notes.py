@@ -7,6 +7,7 @@ import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.parse import urljoin
 
 from .sources import fetch_text
@@ -25,10 +26,10 @@ class PatchNoteLink:
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Download Riot's 2026 League patch notes.")
-    parser.add_argument("--output-json", type=Path, default=Path("data/patch_notes/riot_2026_patch_notes.json"))
-    parser.add_argument("--output-csv", type=Path, default=Path("data/patch_notes/riot_2026_patch_notes.csv"))
-    parser.add_argument("--year-prefix", default="26")
+    parser = argparse.ArgumentParser(description="Download Riot League patch notes.")
+    parser.add_argument("--output-json", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.json"))
+    parser.add_argument("--output-csv", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.csv"))
+    parser.add_argument("--year-prefix", action="append", default=["25", "26"])
     return parser.parse_args()
 
 
@@ -52,24 +53,52 @@ def main() -> None:
     print(f"Saved CSV: {args.output_csv}")
 
 
-def discover_patch_notes(year_prefix: str = "26") -> list[PatchNoteLink]:
+def discover_patch_notes(year_prefix: str | list[str] = "26") -> list[PatchNoteLink]:
+    year_prefixes = [year_prefix] if isinstance(year_prefix, str) else year_prefix
     html_text = fetch_text(PATCH_NOTES_URL)
     pattern = re.compile(r'<a role="button".*?</a>', re.IGNORECASE | re.DOTALL)
     links: dict[str, PatchNoteLink] = {}
     for card in pattern.findall(html_text):
-        title_match = re.search(r'aria-label="([^"]*Patch (' + re.escape(year_prefix) + r'\.\d+) Notes)"', card)
+        title_match = re.search(r'aria-label="([^"]*Patch ((?:\d+\.\d+)|(?:\d+\.S\d+\.\d+)) Notes)"', card)
         href_match = re.search(r'href="([^"]+)"', card)
         published_match = re.search(r'<time dateTime="([^"]+)"', card)
         if not (title_match and href_match and published_match):
             continue
         patch = normalize_patch(title_match.group(2))
+        if patch.split(".", 1)[0] not in year_prefixes:
+            continue
         links[patch] = PatchNoteLink(
             patch=patch,
             title=html.unescape(title_match.group(1)),
             url=urljoin(BASE_URL, href_match.group(1)),
             published_at=published_match.group(1),
         )
+    for prefix in year_prefixes:
+        for link in generated_patch_note_links(prefix):
+            links.setdefault(link.patch, link)
     return sorted(links.values(), key=lambda item: patch_key(item.patch))
+
+
+def generated_patch_note_links(year_prefix: str) -> list[PatchNoteLink]:
+    candidates = []
+    for minor in range(1, 25):
+        patch = f"{int(year_prefix)}.{minor:02d}"
+        slugs = [f"patch-{int(year_prefix)}-{minor:02d}-notes"]
+        if year_prefix == "25" and minor <= 3:
+            slugs.append(f"patch-25-s1-{minor}-notes")
+        for slug in slugs:
+            url = f"{BASE_URL}/en-us/news/game-updates/{slug}/"
+            try:
+                html_text = fetch_text(url)
+            except (HTTPError, URLError):
+                continue
+            title_match = re.search(r"<h1[^>]*>(.*?)</h1>", html_text, flags=re.IGNORECASE | re.DOTALL)
+            published_match = re.search(r'<time dateTime="([^"]+)"', html_text)
+            title = html_to_text(title_match.group(1)) if title_match else f"Patch {patch} Notes"
+            published_at = published_match.group(1) if published_match else ""
+            candidates.append(PatchNoteLink(patch=patch, title=title, url=url, published_at=published_at))
+            break
+    return candidates
 
 
 def download_patch_note(link: PatchNoteLink) -> dict[str, str]:
@@ -106,6 +135,7 @@ def extract_description(html_text: str) -> str:
 
 
 def normalize_patch(patch: str) -> str:
+    patch = patch.upper().replace(".S1.", ".")
     major, minor = patch.split(".", 1)
     return f"{int(major)}.{int(minor):02d}"
 

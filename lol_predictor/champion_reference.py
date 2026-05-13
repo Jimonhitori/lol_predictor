@@ -16,7 +16,7 @@ def parse_args() -> argparse.Namespace:
         description="Build champion reference stats using current-patch data for changed champions and history for unchanged champions."
     )
     parser.add_argument("--data-dir", type=Path, default=Path("data/raw"))
-    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2026_patch_notes.json"))
+    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.json"))
     parser.add_argument("--patch", default="latest")
     parser.add_argument("--league", action="append", dest="leagues")
     parser.add_argument("--region", choices=["all", "americas", "china", "emea", "international", "korea", "other", "pacific"], default="all")
@@ -35,7 +35,17 @@ def main() -> None:
     player_rows = rows[~rows["position"].eq("team")].copy()
     champion_universe = sorted(player_rows["champion"].dropna().astype(str).unique())
     changed = changed_champions_for_patch(patch_notes, str(patch), champion_universe)
+    latest_change = latest_champion_changes(patch_notes, champion_universe)
     reference = build_champion_reference(player_rows, str(patch), changed)
+    reference["latest_change_riot_patch"] = reference["champion"].map(
+        lambda champion: latest_change.get(str(champion), {}).get("riot_patch", "")
+    )
+    reference["latest_change_oe_patch"] = reference["champion"].map(
+        lambda champion: latest_change.get(str(champion), {}).get("oe_patch", "")
+    )
+    reference["latest_change_title"] = reference["champion"].map(
+        lambda champion: latest_change.get(str(champion), {}).get("title", "")
+    )
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     reference.to_csv(args.output, index=False)
@@ -45,6 +55,8 @@ def main() -> None:
                 "patch": str(patch),
                 "changed_champions": sorted(changed),
                 "changed_count": len(changed),
+                "patch_note_window": patch_note_window(patch_notes),
+                "champions_with_2025_2026_change": sum(1 for champion in champion_universe if champion in latest_change),
             },
             ensure_ascii=False,
             indent=2,
@@ -68,11 +80,66 @@ def changed_champions_for_patch(
         return set()
 
     text = "\n".join(
-        notes.get(column, pd.Series(dtype=str)).fillna("").astype(str).str.lower().str.cat(sep="\n")
-        for column in ["title", "summary", "text"]
-        if column in notes.columns
-    )
+        champion_change_text(value)
+        for value in notes.get("text", pd.Series(dtype=str)).fillna("").astype(str)
+    ).lower()
     return {champion for champion in champion_universe if champion.lower() in text}
+
+
+def latest_champion_changes(patch_notes: pd.DataFrame, champion_universe: list[str]) -> dict[str, dict[str, str]]:
+    if patch_notes.empty:
+        return {}
+    notes = patch_notes.copy()
+    if "riot_patch" not in notes.columns or "oe_patch" not in notes.columns:
+        return {}
+    notes["_patch_key"] = notes["riot_patch"].astype(str).map(_patch_sort_key)
+    latest: dict[str, dict[str, str]] = {}
+    for note in notes.sort_values("_patch_key").itertuples(index=False):
+        text = champion_change_text(str(getattr(note, "text", "") or "")).lower()
+        for champion in champion_universe:
+            if champion.lower() in text:
+                latest[champion] = {
+                    "riot_patch": str(getattr(note, "riot_patch", "")),
+                    "oe_patch": str(getattr(note, "oe_patch", "")),
+                    "title": str(getattr(note, "title", "")),
+                }
+    return latest
+
+
+def patch_note_window(patch_notes: pd.DataFrame) -> dict[str, str]:
+    if patch_notes.empty or "riot_patch" not in patch_notes.columns:
+        return {}
+    patches = sorted(patch_notes["riot_patch"].dropna().astype(str).unique(), key=_patch_sort_key)
+    return {"first": patches[0], "last": patches[-1]} if patches else {}
+
+
+def _patch_sort_key(patch: str) -> tuple[int, int]:
+    major, minor = str(patch).upper().replace(".S1.", ".").split(".", 1)
+    return int(major), int(minor)
+
+
+def champion_change_text(text: str) -> str:
+    marker = "\nChampions\n"
+    start = text.find(marker)
+    if start == -1:
+        return text
+    section = text[start + len(marker) :]
+    endings = [
+        "\nItems\n",
+        "\nRunes\n",
+        "\nSystems\n",
+        "\nSummoner's Rift\n",
+        "\nARAM\n",
+        "\nArena\n",
+        "\nSwiftplay\n",
+        "\nClash\n",
+        "\nBugfixes",
+        "\nSkins",
+    ]
+    end_positions = [section.find(ending) for ending in endings if section.find(ending) != -1]
+    if end_positions:
+        section = section[: min(end_positions)]
+    return section
 
 
 def build_champion_reference(

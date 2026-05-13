@@ -293,7 +293,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--data-dir", type=Path, default=Path("data/raw"))
     parser.add_argument("--model-path", type=Path, default=Path("models/2026_all_patches_lck_lpl_regions_synergy.joblib"))
-    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2026_patch_notes.json"))
+    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.json"))
     parser.add_argument("--champion-reference", type=Path, default=Path("data/features/champion_reference.csv"))
     parser.add_argument("--today-cache", type=Path, default=Path("data/raw/today_matches.json"))
     return parser.parse_args()

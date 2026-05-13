@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 
 import pandas as pd
 
@@ -69,8 +70,13 @@ def load_patch_notes(path: Path | None) -> pd.DataFrame:
     if path is None or not path.exists():
         return pd.DataFrame()
     if path.suffix.lower() == ".json":
-        return pd.read_json(path)
-    return pd.read_csv(path)
+        data = pd.DataFrame(json.loads(path.read_text(encoding="utf-8")))
+    else:
+        data = pd.read_csv(path, dtype=str)
+    for column in ["patch", "riot_patch", "oe_patch"]:
+        if column in data.columns:
+            data[column] = data[column].astype(str).map(_normalize_patch_text)
+    return data
 
 
 def _normalize_columns(data: pd.DataFrame) -> pd.DataFrame:
@@ -80,6 +86,17 @@ def _normalize_columns(data: pd.DataFrame) -> pd.DataFrame:
         if old in data.columns and new not in data.columns
     }
     return data.rename(columns=rename_map)
+
+
+def _normalize_patch_text(value: str) -> str:
+    if value.lower() in {"", "nan", "none"}:
+        return ""
+    if "." not in value:
+        return value
+    major, minor = value.split(".", 1)
+    if major.isdigit() and minor.isdigit():
+        return f"{int(major)}.{int(minor):02d}"
+    return value
 
 
 def to_team_games(rows: pd.DataFrame) -> pd.DataFrame:

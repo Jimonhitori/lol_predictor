@@ -16,7 +16,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model-path", type=Path, default=Path("models/post_draft.joblib"))
     parser.add_argument("--input", type=Path, required=True)
     parser.add_argument("--data-dir", type=Path, default=Path("data/raw"))
-    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2026_patch_notes.json"))
+    parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2025_2026_patch_notes.json"))
     parser.add_argument("--champion-reference", type=Path, default=Path("data/features/champion_reference.csv"))
     return parser.parse_args()
 
