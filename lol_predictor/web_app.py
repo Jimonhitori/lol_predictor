@@ -626,14 +626,14 @@ async function predict(event) {
   const result = await postPredict(payload);
   if (result.skipped) {
     $('prediction').textContent = '-';
-    $('centerPrediction').textContent = '';
+    if ($('centerPrediction')) $('centerPrediction').textContent = '';
     const inline = $('inlinePrediction');
     if (inline) inline.textContent = '';
     return;
   }
   const data = result.data;
   $('prediction').textContent = result.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
-  $('centerPrediction').textContent = $('prediction').textContent;
+  if ($('centerPrediction')) $('centerPrediction').textContent = $('prediction').textContent;
   const inline = $('inlinePrediction');
   if (inline) inline.textContent = $('prediction').textContent;
 }
