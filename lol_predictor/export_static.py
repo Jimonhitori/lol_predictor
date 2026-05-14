@@ -74,6 +74,9 @@ def main() -> None:
             if league_group == "all" and region == "all":
                 all_matches = list(payload.get("matches") or [])
 
+    for league in options_payload(context.rows).get("leagues", []):
+        write_json(data_dir / "summaries" / f"league__{static_key(league)}.json", safe_summary(context, {"league": [league]}))
+
     seen_teams: set[tuple[str, str]] = set()
     seen_pairs: set[tuple[str, str, str]] = set()
     for match in all_matches[: max(0, args.max_details)]:
