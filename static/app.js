@@ -315,7 +315,7 @@ function renderSelectedMatch(details) {
   const left = teams[0] || {};
   const right = teams[1] || {};
   $('selectedMatchMeta').textContent = `${details.league || $('league')?.value || ''} · BO${details.best_of || '-'} · ${details.source || details.status || ''}`;
-  $('selectedMatch').className = `selectedMatch ${STATIC_SITE ? 'twoTeams' : ''}`;
+  $('selectedMatch').className = 'selectedMatch';
   const seriesWinner = completedSeriesWinner(details);
   $('selectedMatch').innerHTML = `
     ${teamBlock(left, 'centerLeftRecord', seriesWinner)}
