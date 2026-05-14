@@ -116,6 +116,7 @@ def main() -> None:
 
 
 def static_html(html: str) -> str:
+    html = strip_static_model_blocks(html)
     return html.replace('<a class="backLink" href="/">', '<a class="backLink" href="index.html">').replace(
         '<script src="/static/app.js"></script>',
         '<script>window.STATIC_SITE = true;</script>\n  <script src="static/app.js"></script>',
@@ -123,6 +124,18 @@ def static_html(html: str) -> str:
         '<link rel="stylesheet" href="/static/styles.css">',
         '<link rel="stylesheet" href="static/styles.css">',
     )
+
+
+def strip_static_model_blocks(html: str) -> str:
+    html = re.sub(r'\s*<form id="predictForm" class="panel">.*?</form>', "", html, flags=re.S)
+    html = re.sub(
+        r'\s*<section class="panel">\s*<h2>Model Sandbox</h2>.*?<div id="seasonRecords" class="table compactTable"></div>\s*</section>',
+        "",
+        html,
+        flags=re.S,
+    )
+    html = html.replace('<strong id="centerPrediction">-</strong>', '<strong id="centerPrediction"></strong>')
+    return html
 
 
 def static_key(value: str) -> str:

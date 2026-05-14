@@ -374,7 +374,7 @@ function staticKey(value) {
 }
 
 async function postPredict(payload) {
-  if (STATIC_SITE) return { ok: false, data: { error: 'Static Pages版ではモデル推論なし' } };
+  if (STATIC_SITE) return { ok: false, skipped: true, data: { error: '' } };
   const response = await fetch('/api/predict', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
   return { ok: response.ok, data: await response.json() };
 }
@@ -591,7 +591,7 @@ function renderSelectedMatch(details) {
   $('selectedMatchMeta').textContent = `${details.league || $('league').value} · BO${details.best_of || '-'} · ${details.source || details.status || ''}`;
   $('selectedMatch').innerHTML = `
     ${teamBlock(left)}
-    <div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction').textContent}</strong></div>
+    ${STATIC_SITE ? '' : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction').textContent}</strong></div>`}
     ${teamBlock(right)}
   `;
   $('gameList').innerHTML = (details.games || []).map(game => `
@@ -624,6 +624,13 @@ async function predict(event) {
     bot_champion: $('bot_champion').value, sup_champion: $('sup_champion').value
   };
   const result = await postPredict(payload);
+  if (result.skipped) {
+    $('prediction').textContent = '-';
+    $('centerPrediction').textContent = '';
+    const inline = $('inlinePrediction');
+    if (inline) inline.textContent = '';
+    return;
+  }
   const data = result.data;
   $('prediction').textContent = result.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
   $('centerPrediction').textContent = $('prediction').textContent;
@@ -931,6 +938,10 @@ async function predictDetail(left, right, league) {
     top_champion: 'Gnar', jng_champion: 'Xin Zhao', mid_champion: 'Ahri', bot_champion: 'Ashe', sup_champion: 'Rakan'
   };
   const result = await postPredict(payload);
+  if (result.skipped) {
+    $('detailPrediction').textContent = '-';
+    return;
+  }
   const data = result.data;
   const text = result.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
   $('detailPrediction').textContent = text;
@@ -1271,14 +1282,14 @@ function setValue(id, value) {
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
-if ($('predictForm')) {
+if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
     renderDateTabs(state.allMatches);
     renderMatches();
   });
-  $('predictForm').addEventListener('submit', predict);
+  if ($('predictForm')) $('predictForm').addEventListener('submit', predict);
   loadOptions().then(() => { loadSummary(); loadMatches(); });
 } else {
   loadMatchDetailPage();
