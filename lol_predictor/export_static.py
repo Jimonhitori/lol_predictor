@@ -154,7 +154,7 @@ def static_key(value: str) -> str:
 
 def safe_summary(context: AppContext, query: dict[str, list[str]]) -> dict[str, object]:
     try:
-        return summary_payload(context.rows, query)
+        return summary_payload(context.rows, query, context)
     except ValueError:
         return {"patch": str(context.patch), "games": 0, "leagues": [], "champions": [], "teams": []}
 

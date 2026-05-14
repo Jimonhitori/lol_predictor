@@ -65,13 +65,13 @@ function renderTable(id, rows, firstLabel) {
 const STANDINGS_LEAGUES = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL', 'VCS', 'TCL', 'LFL', 'LCKC'];
 
 function renderTeamStandings(rows) {
-  const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Record</span><span>Winrate</span></div>';
+  const header = '<div class="row header"><span>#</span><span>Team</span><span>Series</span><span>Games</span><span>Winrate</span></div>';
   $('teams').innerHTML = header + rows.map((r, index) => `
     <div class="row">
       <span class="rankCell">${index + 1}</span>
       <span>${escapeHtml(r.name)}</span>
-      <span>${r.games ?? r.picks}</span>
       <span>${escapeHtml(teamRecordText(r))}</span>
+      <span>${escapeHtml(r.game_record || '')}</span>
       <span>${r.winrate}</span>
     </div>
   `).join('');
@@ -80,7 +80,7 @@ function renderTeamStandings(rows) {
 function teamRecordText(row) {
   const games = Number(row.games ?? row.picks ?? 0);
   const wins = Number(row.wins ?? 0);
-  const losses = Math.max(0, games - wins);
+  const losses = row.losses !== undefined ? Number(row.losses || 0) : Math.max(0, games - wins);
   return `${wins}-${losses}`;
 }
 
@@ -145,7 +145,8 @@ async function loadTeamStandings() {
   const data = await api('/api/summary?' + params.toString());
   renderTeamStandings(data.teams || []);
   const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'LCK';
-  $('teamStandingsMeta').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
+  const basis = data.standings_split || `Patch ${data.patch}`;
+  $('teamStandingsMeta').textContent = `${label} · ${basis} · ${data.standings_series ?? data.games} series`;
 }
 
 async function loadMatches() {

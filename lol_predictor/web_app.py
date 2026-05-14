@@ -417,13 +417,13 @@ function renderTable(id, rows, firstLabel) {
 const STANDINGS_LEAGUES = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL', 'VCS', 'TCL', 'LFL', 'LCKC'];
 
 function renderTeamStandings(rows) {
-  const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Record</span><span>Winrate</span></div>';
+  const header = '<div class="row header"><span>#</span><span>Team</span><span>Series</span><span>Games</span><span>Winrate</span></div>';
   $('teams').innerHTML = header + rows.map((r, index) => `
     <div class="row">
       <span class="rankCell">${index + 1}</span>
       <span>${escapeHtml(r.name)}</span>
-      <span>${r.games ?? r.picks}</span>
       <span>${escapeHtml(teamRecordText(r))}</span>
+      <span>${escapeHtml(r.game_record || '')}</span>
       <span>${r.winrate}</span>
     </div>
   `).join('');
@@ -432,7 +432,7 @@ function renderTeamStandings(rows) {
 function teamRecordText(row) {
   const games = Number(row.games ?? row.picks ?? 0);
   const wins = Number(row.wins ?? 0);
-  const losses = Math.max(0, games - wins);
+  const losses = row.losses !== undefined ? Number(row.losses || 0) : Math.max(0, games - wins);
   return `${wins}-${losses}`;
 }
 
@@ -497,7 +497,8 @@ async function loadTeamStandings() {
   const data = await api('/api/summary?' + params.toString());
   renderTeamStandings(data.teams || []);
   const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'LCK';
-  $('teamStandingsMeta').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
+  const basis = data.standings_split || `Patch ${data.patch}`;
+  $('teamStandingsMeta').textContent = `${label} · ${basis} · ${data.standings_series ?? data.games} series`;
 }
 
 async function loadMatches() {
@@ -1697,7 +1698,7 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
             if parsed.path == "/api/options":
                 return self.send_json(options_payload(context.rows))
             if parsed.path == "/api/summary":
-                return self.send_json(summary_payload(context.rows, parse_qs(parsed.query)))
+                return self.send_json(summary_payload(context.rows, parse_qs(parsed.query), context))
             if parsed.path == "/api/matches/today":
                 return self.send_json(matches_payload(context, parse_qs(parsed.query)))
             if parsed.path == "/api/match":
@@ -1767,7 +1768,7 @@ def options_payload(rows: pd.DataFrame) -> dict[str, list[str]]:
     }
 
 
-def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]]) -> dict[str, object]:
+def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]], context: AppContext | None = None) -> dict[str, object]:
     league_group = first_query(query, "league_group", "all")
     region = first_query(query, "region", "all")
     league = first_query(query, "league", "")
@@ -1778,12 +1779,15 @@ def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]]) -> dict[str
     patch_rows = filter_patch(filtered, patch=str(patch))
     player_rows = patch_rows[~patch_rows["position"].eq("team")]
     team_rows = patch_rows[patch_rows["position"].eq("team")]
+    standings = team_standings_payload(filtered, context, league)
     return {
         "patch": str(patch),
         "games": int(patch_rows["gameid"].nunique()),
         "leagues": sorted(patch_rows["league"].dropna().astype(str).unique().tolist()),
         "champions": champion_rows(player_rows),
-        "teams": team_rows_payload(team_rows),
+        "teams": standings["teams"],
+        "standings_split": standings["split"],
+        "standings_series": standings["series"],
     }
 
 
@@ -1868,6 +1872,49 @@ def team_rows_payload(rows: pd.DataFrame) -> list[dict[str, object]]:
         {"name": row.teamname, "games": int(row.games), "wins": int(row.wins), "winrate": f"{row.winrate:.1%}"}
         for row in data.itertuples()
     ]
+
+
+def team_standings_payload(rows: pd.DataFrame, context: AppContext | None = None, league: str = "") -> dict[str, object]:
+    team_rows = rows[rows["position"].eq("team")].copy()
+    if team_rows.empty:
+        return {"teams": [], "split": "", "series": 0}
+    current_split = _current_split(team_rows)
+    if current_split and "split" in team_rows:
+        team_rows = team_rows[team_rows["split"].astype(str).eq(current_split)].copy()
+    standings = []
+    for team, group in team_rows.groupby("teamname", sort=False):
+        wins, losses = _series_record(group)
+        if context is not None:
+            adjustment = _live_series_record_adjustment(context, group, str(team), league or _group_league(group))
+            wins += int(adjustment.get("wins") or 0)
+            losses += int(adjustment.get("losses") or 0)
+        series = wins + losses
+        if series <= 0:
+            continue
+        game_wins = int(pd.to_numeric(group.get("result"), errors="coerce").fillna(0).sum())
+        game_losses = int(len(group) - game_wins)
+        if context is not None:
+            game_wins += int(adjustment.get("game_wins") or 0)
+            game_losses += int(adjustment.get("game_losses") or 0)
+        winrate = wins / series if series else 0.0
+        standings.append(
+            {
+                "name": str(team),
+                "games": series,
+                "wins": wins,
+                "losses": losses,
+                "winrate": f"{winrate:.1%}",
+                "game_record": f"{game_wins}-{game_losses}",
+            }
+        )
+    standings.sort(key=lambda row: (-int(row["wins"]), int(row["losses"]), row["name"]))
+    return {"teams": standings, "split": current_split, "series": sum(int(row["games"]) for row in standings) // 2}
+
+
+def _group_league(rows: pd.DataFrame) -> str:
+    if rows.empty or "league" not in rows:
+        return ""
+    return str(rows["league"].dropna().iloc[-1])
 
 
 def roster_payload(rows: pd.DataFrame, team: str) -> dict[str, object]:
@@ -2146,6 +2193,8 @@ def _live_series_record_adjustment(
     target_key = _team_key(team)
     wins = 0
     losses = 0
+    game_wins = 0
+    game_losses = 0
     matches = []
     for match in today_matches(context.rows, context.today_cache):
         if league and str(match.get("league") or "") != league:
@@ -2163,12 +2212,18 @@ def _live_series_record_adjustment(
         red_keys = {_team_key(match.get("red_team")), _team_key(match.get("red_code"))}
         if target_key in blue_keys:
             did_win = blue_score > red_score
+            team_game_wins = blue_score
+            team_game_losses = red_score
         elif target_key in red_keys:
             did_win = red_score > blue_score
+            team_game_wins = red_score
+            team_game_losses = blue_score
         else:
             continue
         wins += 1 if did_win else 0
         losses += 0 if did_win else 1
+        game_wins += team_game_wins
+        game_losses += team_game_losses
         matches.append(
             {
                 "id": match.get("id", ""),
@@ -2177,7 +2232,7 @@ def _live_series_record_adjustment(
                 "source": match.get("source", ""),
             }
         )
-    return {"wins": wins, "losses": losses, "matches": matches}
+    return {"wins": wins, "losses": losses, "game_wins": game_wins, "game_losses": game_losses, "matches": matches}
 
 
 def _latest_local_record_date(rows: pd.DataFrame) -> date | None:
