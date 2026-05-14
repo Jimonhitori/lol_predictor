@@ -102,9 +102,20 @@ APP_HTML = """<!doctype html>
         <div id="champions" class="table"></div>
       </section>
 
-      <section class="panel">
-        <h2>Teams</h2>
-        <div id="teams" class="table"></div>
+      <section class="panel standingsPanel">
+        <div class="panelTitleRow">
+          <div>
+            <h2>Regional Team Standings</h2>
+            <p id="teamStandingsMeta" class="subtleText">Latest patch team-game results</p>
+          </div>
+          <select id="teamTier" class="compactSelect" aria-label="Team standings tier">
+            <option value="major">Major</option>
+            <option value="all">All tiers</option>
+            <option value="secondary">Secondary</option>
+          </select>
+        </div>
+        <div id="teamRegionTabs" class="regionTabs" aria-label="Team standings region"></div>
+        <div id="teams" class="table standingsTable"></div>
       </section>
     </section>
   </main>
@@ -195,6 +206,13 @@ p, label { color: var(--muted); font-size: 13px; }
 .hidden { display: none !important; }
 .backLink { display: inline-block; color: var(--accent); font-size: 13px; margin-bottom: 8px; text-decoration: none; }
 .matchStrip { margin-bottom: 16px; }
+.panelTitleRow { display: flex; align-items: start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.panelTitleRow h2 { margin-bottom: 4px; }
+.subtleText { color: var(--muted); font-size: 12px; margin: 0; }
+.compactSelect { width: auto; min-width: 118px; padding: 7px 9px; font-size: 12px; }
+.regionTabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 10px; }
+.regionTab { width: auto; margin: 0; border: 1px solid var(--line); border-radius: 6px; background: #10161d; color: var(--muted); padding: 6px 9px; font-size: 12px; font-weight: 900; }
+.regionTab.active { border-color: var(--accent); color: var(--accent); background: rgba(25, 211, 174, .08); }
 .sectionHead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .matchScheduleTools { display: flex; justify-content: flex-end; align-items: center; }
 .scheduleDate { width: 42px; height: 38px; min-width: 42px; padding: 0; color: transparent; color-scheme: dark; background: #202832; border-color: #2b3541; cursor: pointer; }
@@ -305,6 +323,8 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .table { display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
+.standingsTable .row { grid-template-columns: 42px minmax(120px, 1fr) 70px 70px 80px; }
+.rankCell { color: var(--muted); font-weight: 900; }
 .championMetaRow { grid-template-columns: minmax(160px, 1fr) 70px 70px 80px; align-items: center; }
 .championMetaCell { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 800; }
 .championMetaCell img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #222b35; border: 1px solid #344150; }
@@ -336,7 +356,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 
 
 APP_JS = """
-const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {} };
+const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamRegion: 'all', teamTier: 'major' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 
@@ -354,7 +374,7 @@ async function staticApi(path) {
   if (url.pathname === '/api/options') {
     target = 'static/data/options.json';
   } else if (url.pathname === '/api/summary') {
-    target = `static/data/summaries/${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
+    target = `static/data/summaries/${staticKey(params.get('league_group') || $('leagueGroup')?.value || 'all')}__${staticKey(params.get('region') || $('region')?.value || 'all')}.json`;
   } else if (url.pathname === '/api/matches/today') {
     target = `static/data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
   } else if (url.pathname === '/api/match') {
@@ -397,6 +417,42 @@ function renderTable(id, rows, firstLabel) {
   $(id).innerHTML = header + rows.map(r => `<div class="row"><span>${escapeHtml(r.name)}</span><span>${r.games ?? r.picks}</span><span>${r.wins}</span><span>${r.winrate}</span></div>`).join('');
 }
 
+const TEAM_REGIONS = [
+  ['all', 'All'],
+  ['korea', 'KR'],
+  ['china', 'CN'],
+  ['emea', 'EMEA'],
+  ['americas', 'AMER'],
+  ['pacific', 'PAC'],
+  ['international', 'INT'],
+];
+
+function renderTeamRegionTabs() {
+  const container = $('teamRegionTabs');
+  if (!container) return;
+  container.innerHTML = TEAM_REGIONS.map(([key, label]) => `
+    <button type="button" class="regionTab ${state.teamRegion === key ? 'active' : ''}" data-team-region="${escapeHtml(key)}">${escapeHtml(label)}</button>
+  `).join('');
+  container.querySelectorAll('[data-team-region]').forEach(tab => tab.addEventListener('click', () => {
+    state.teamRegion = tab.dataset.teamRegion || 'all';
+    renderTeamRegionTabs();
+    loadTeamStandings();
+  }));
+}
+
+function renderTeamStandings(rows) {
+  const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Wins</span><span>Winrate</span></div>';
+  $('teams').innerHTML = header + rows.map((r, index) => `
+    <div class="row">
+      <span class="rankCell">${index + 1}</span>
+      <span>${escapeHtml(r.name)}</span>
+      <span>${r.games ?? r.picks}</span>
+      <span>${r.wins}</span>
+      <span>${r.winrate}</span>
+    </div>
+  `).join('');
+}
+
 function renderChampionTable(id, rows, patch) {
   const version = ddragonVersion(patch);
   const header = `<div class="row header championMetaRow"><span>Champion</span><span>Picks</span><span>Wins</span><span>Winrate</span></div>`;
@@ -418,6 +474,8 @@ async function loadOptions() {
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
   $('leagueGroup').value = 'major';
+  if ($('teamTier')) $('teamTier').value = state.teamTier;
+  renderTeamRegionTabs();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
   if ($('opponent')) $('opponent').value = 'Gen.G';
@@ -432,7 +490,19 @@ async function loadSummary() {
   const data = await api('/api/summary?' + qs());
   $('meta').textContent = `Patch ${data.patch} | ${data.games} games | ${data.leagues.join(', ')}`;
   renderChampionTable('champions', data.champions, data.patch);
-  renderTable('teams', data.teams, 'Team');
+  await loadTeamStandings();
+}
+
+async function loadTeamStandings() {
+  if (!$('teams')) return;
+  const tier = $('teamTier')?.value || state.teamTier || 'major';
+  state.teamTier = tier;
+  const params = new URLSearchParams({ league_group: tier, region: state.teamRegion || 'all' });
+  const data = await api('/api/summary?' + params.toString());
+  renderTeamStandings(data.teams || []);
+  const regionLabel = TEAM_REGIONS.find(([key]) => key === state.teamRegion)?.[1] || 'All';
+  const tierLabel = tier === 'all' ? 'all tiers' : tier;
+  $('teamStandingsMeta').textContent = `${regionLabel} · ${tierLabel} · Patch ${data.patch} · ${data.games} games`;
 }
 
 async function loadMatches() {
@@ -1572,6 +1642,7 @@ function setValue(id, value) {
 
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
+  if ($('teamTier')) $('teamTier').addEventListener('change', loadTeamStandings);
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
     renderDateTabs(state.allMatches);

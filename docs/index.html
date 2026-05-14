@@ -64,13 +64,24 @@
         <div id="champions" class="table"></div>
       </section>
 
-      <section class="panel">
-        <h2>Teams</h2>
-        <div id="teams" class="table"></div>
+      <section class="panel standingsPanel">
+        <div class="panelTitleRow">
+          <div>
+            <h2>Regional Team Standings</h2>
+            <p id="teamStandingsMeta" class="subtleText">Latest patch team-game results</p>
+          </div>
+          <select id="teamTier" class="compactSelect" aria-label="Team standings tier">
+            <option value="major">Major</option>
+            <option value="all">All tiers</option>
+            <option value="secondary">Secondary</option>
+          </select>
+        </div>
+        <div id="teamRegionTabs" class="regionTabs" aria-label="Team standings region"></div>
+        <div id="teams" class="table standingsTable"></div>
       </section>
     </section>
   </main>
   <script>window.STATIC_SITE = true;</script>
-  <script src="static/app.js?v=da5e63df6d"></script>
+  <script src="static/app.js?v=e204dc03ee"></script>
 </body>
 </html>
