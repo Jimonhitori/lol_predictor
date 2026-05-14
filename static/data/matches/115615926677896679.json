@@ -5,53 +5,53 @@
   "region": "china",
   "block_name": "",
   "best_of": "3",
-  "status": "unstarted",
+  "status": "inProgress",
   "teams": [
-    {
-      "id": "99566404853058754",
-      "name": "WeiboGaming",
-      "code": "WBG",
-      "image": "http://static.lolesports.com/teams/1641202879910_3.png",
-      "game_wins": "0"
-    },
     {
       "id": "99566404852189289",
       "name": "Beijing JDG Esports",
       "code": "JDG",
       "image": "http://static.lolesports.com/teams/1627457924722_29.png",
       "game_wins": "0"
+    },
+    {
+      "id": "99566404853058754",
+      "name": "WeiboGaming",
+      "code": "WBG",
+      "image": "http://static.lolesports.com/teams/1641202879910_3.png",
+      "game_wins": "1"
     }
   ],
   "games": [
     {
       "id": "115615926677896680",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "99566404853058754",
-        "team_name": "WeiboGaming",
-        "team_code": "WBG"
-      },
-      "red": {
         "team_id": "99566404852189289",
         "team_name": "Beijing JDG Esports",
         "team_code": "JDG"
+      },
+      "red": {
+        "team_id": "99566404853058754",
+        "team_name": "WeiboGaming",
+        "team_code": "WBG"
       },
       "live": {}
     },
     {
       "id": "115615926677896681",
       "number": 2,
-      "state": "unstarted",
+      "state": "inProgress",
       "blue": {
-        "team_id": "99566404852189289",
-        "team_name": "Beijing JDG Esports",
-        "team_code": "JDG"
-      },
-      "red": {
         "team_id": "99566404853058754",
         "team_name": "WeiboGaming",
         "team_code": "WBG"
+      },
+      "red": {
+        "team_id": "99566404852189289",
+        "team_name": "Beijing JDG Esports",
+        "team_code": "JDG"
       },
       "live": {}
     },

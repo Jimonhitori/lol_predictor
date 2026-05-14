@@ -264,26 +264,23 @@ function renderSelectedMatch(details) {
   const left = teams[0] || {};
   const right = teams[1] || {};
   $('selectedMatchMeta').textContent = `${details.league || $('league')?.value || ''} · BO${details.best_of || '-'} · ${details.source || details.status || ''}`;
+  $('selectedMatch').className = `selectedMatch ${STATIC_SITE ? 'twoTeams' : ''}`;
+  const seriesWinner = completedSeriesWinner(details);
   $('selectedMatch').innerHTML = `
-    ${teamBlock(left)}
+    ${teamBlock(left, '', seriesWinner)}
     ${STATIC_SITE ? '' : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
-    ${teamBlock(right)}
+    ${teamBlock(right, '', seriesWinner)}
   `;
-  $('gameList').innerHTML = (details.games || []).map(game => `
-    <div class="gameItem">
-      <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
-      <span>Blue: ${escapeHtml(game.blue?.team_code || game.blue?.team_name || '-')}</span><br>
-      <span>Red: ${escapeHtml(game.red?.team_code || game.red?.team_name || '-')}</span>
-    </div>
-  `).join('');
+  $('gameList').innerHTML = gameListHtml(details);
 }
 
-function teamBlock(team, recordId) {
+function teamBlock(team, recordId, winnerTeam) {
   const image = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
   const record = recordId
     ? `<span id="${recordId}" class="teamRecord">Loading 2026 record...</span>`
     : `<span>${escapeHtml(team.game_wins || '0')} wins</span>`;
-  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}</div>`;
+  const winner = winnerTeam && sameTeamIdentity(team, winnerTeam) ? '<span class="winnerBadge">Winner</span>' : '';
+  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}${winner}</div>`;
 }
 
 function matchCardTeam(name, image) {
@@ -337,17 +334,12 @@ async function refreshMatchDetail(initial) {
   const right = teams[1] || {};
   $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
   $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh 10s`;
-  $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord')}${matchInfoBlock(details)}${teamBlock(right, 'redTeamRecord')}`;
+  const seriesWinner = completedSeriesWinner(details);
+  $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord', seriesWinner)}${matchInfoBlock(details)}${teamBlock(right, 'redTeamRecord', seriesWinner)}`;
   loadTeamRecords(left, right, details.league);
   updateStartedVisibility(details);
   loadHeadToHead(left, right, details.league);
-  $('detailGames').innerHTML = (details.games || []).map(game => `
-    <div class="gameItem">
-      <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
-      <span>Blue: ${escapeHtml(game.blue?.team_code || game.blue?.team_name || '-')}</span><br>
-      <span>Red: ${escapeHtml(game.red?.team_code || game.red?.team_name || '-')}</span>
-    </div>
-  `).join('');
+  $('detailGames').innerHTML = gameListHtml(details);
   setDetailInputs(details);
   renderLiveDraft(details);
   if (initial) await predictDetail(left, right, details.league);
@@ -571,9 +563,79 @@ function matchStatusLabel(match) {
     && String(match.blue_score) !== '' && String(match.red_score) !== ''
     && (Number(match.blue_score || 0) + Number(match.red_score || 0)) > 0;
   if (hasScore && ['completed', 'complete', 'inprogress'].includes(normalized)) {
-    return `${status} · ${match.blue_score}-${match.red_score}`;
+    const winner = ['completed', 'complete'].includes(normalized) ? matchWinnerLabel(match) : '';
+    return `${status} · ${match.blue_score}-${match.red_score}${winner ? ` · ${winner} wins` : ''}`;
   }
   return status;
+}
+
+function gameListHtml(details) {
+  return (details.games || []).map(game => {
+    const winner = gameWinnerTeam(details, game);
+    const winnerLabel = winner ? `<span class="gameWinner">Winner: ${escapeHtml(winner.code || winner.name || '-')}</span>` : '';
+    return `
+      <div class="gameItem">
+        <b>Game ${game.number} · ${escapeHtml(game.state)}</b>
+        <span>Blue: ${escapeHtml(game.blue?.team_code || game.blue?.team_name || '-')}</span><br>
+        <span>Red: ${escapeHtml(game.red?.team_code || game.red?.team_name || '-')}</span><br>
+        ${winnerLabel}
+      </div>
+    `;
+  }).join('');
+}
+
+function completedSeriesWinner(details) {
+  const status = String(details?.status || '').toLowerCase();
+  if (!['completed', 'complete'].includes(status)) return null;
+  return scoreWinnerTeam(details?.teams || []);
+}
+
+function scoreWinnerTeam(teams) {
+  const left = teams[0] || {};
+  const right = teams[1] || {};
+  const leftScore = scoreNumber(left.game_wins);
+  const rightScore = scoreNumber(right.game_wins);
+  if (leftScore === rightScore) return null;
+  return leftScore > rightScore ? left : right;
+}
+
+function gameWinnerTeam(details, game) {
+  const state = String(game?.state || '').toLowerCase();
+  if (state !== 'completed') return null;
+  const teams = details?.teams || [];
+  const explicitWinner = game?.winner || game?.winner_team || game?.winnerTeam;
+  if (explicitWinner) {
+    return teams.find(team => sameTeam(explicitWinner, team.name) || sameTeam(explicitWinner, team.code)) || null;
+  }
+  const completedGames = (details?.games || []).filter(item => String(item.state || '').toLowerCase() === 'completed').length;
+  const leftScore = scoreNumber(teams[0]?.game_wins);
+  const rightScore = scoreNumber(teams[1]?.game_wins);
+  const totalWins = leftScore + rightScore;
+  if (!totalWins || completedGames !== totalWins) return null;
+  if (completedGames === 1 || Math.min(leftScore, rightScore) === 0) return scoreWinnerTeam(teams);
+  return null;
+}
+
+function matchWinnerLabel(match) {
+  const blueScore = scoreNumber(match.blue_score);
+  const redScore = scoreNumber(match.red_score);
+  if (blueScore === redScore) return '';
+  return blueScore > redScore
+    ? (match.blue_code || match.blue_team || '')
+    : (match.red_code || match.red_team || '');
+}
+
+function scoreNumber(value) {
+  const number = Number(value || 0);
+  return Number.isFinite(number) ? number : 0;
+}
+
+function sameTeamIdentity(left, right) {
+  return sameTeam(left?.id, right?.id)
+    || sameTeam(left?.name, right?.name)
+    || sameTeam(left?.code, right?.code)
+    || sameTeam(left?.name, right?.code)
+    || sameTeam(left?.code, right?.name);
 }
 
 function localStartTime(value) {
