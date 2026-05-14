@@ -318,20 +318,22 @@ function renderSelectedMatch(details) {
   $('selectedMatch').className = `selectedMatch ${STATIC_SITE ? 'twoTeams' : ''}`;
   const seriesWinner = completedSeriesWinner(details);
   $('selectedMatch').innerHTML = `
-    ${teamBlock(left, '', seriesWinner)}
+    ${teamBlock(left, 'centerLeftRecord', seriesWinner, true)}
     ${STATIC_SITE ? '' : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
-    ${teamBlock(right, '', seriesWinner)}
+    ${teamBlock(right, 'centerRightRecord', seriesWinner, true)}
   `;
   $('gameList').innerHTML = gameListHtml(details);
+  loadInlineTeamRecords(left, right, details.league);
 }
 
-function teamBlock(team, recordId, winnerTeam) {
+function teamBlock(team, recordId, winnerTeam, showSeriesWins = false) {
   const image = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
+  const seriesRecord = showSeriesWins ? `<span class="teamSeriesRecord">${escapeHtml(team.game_wins || '0')} wins</span>` : '';
   const record = recordId
-    ? `<span id="${recordId}" class="teamRecord">Loading 2026 record...</span>`
-    : `<span>${escapeHtml(team.game_wins || '0')} wins</span>`;
+    ? `<span id="${recordId}" class="teamRecord">Loading league record...</span>`
+    : `<span class="teamSeriesRecord">${escapeHtml(team.game_wins || '0')} wins</span>`;
   const winner = winnerTeam && sameTeamIdentity(team, winnerTeam) ? '<span class="winnerBadge">Winner</span>' : '';
-  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}<span class="winnerSlot">${winner}</span></div>`;
+  return `<div class="teamBlock ${showSeriesWins ? 'withSeriesRecord' : ''}">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${seriesRecord}${record}<span class="winnerSlot">${winner}</span></div>`;
 }
 
 function matchCardTeam(name, image) {
@@ -918,6 +920,23 @@ async function loadTeamRecords(blueTeam, redTeam, league) {
   renderSeasonRecords(blue, red);
 }
 
+async function loadInlineTeamRecords(leftTeam, rightTeam, league) {
+  const leftName = leftTeam.name || leftTeam.code || '';
+  const rightName = rightTeam.name || rightTeam.code || '';
+  if (!leftName && !rightName) return;
+  try {
+    const [left, right] = await Promise.all([
+      api('/api/team-record?team=' + encodeURIComponent(leftName) + '&league=' + encodeURIComponent(league || '')),
+      api('/api/team-record?team=' + encodeURIComponent(rightName) + '&league=' + encodeURIComponent(league || '')),
+    ]);
+    setTeamRecord('centerLeftRecord', left);
+    setTeamRecord('centerRightRecord', right);
+  } catch (error) {
+    setFallbackTeamRecord('centerLeftRecord', leftTeam);
+    setFallbackTeamRecord('centerRightRecord', rightTeam);
+  }
+}
+
 async function loadHeadToHead(leftTeam, rightTeam, league) {
   const leftName = leftTeam.name || leftTeam.code || '';
   const rightName = rightTeam.name || rightTeam.code || '';
@@ -1105,6 +1124,12 @@ function setTeamRecord(id, record) {
   const el = $(id);
   if (!el) return;
   el.textContent = record.league_record || 'League record unavailable';
+}
+
+function setFallbackTeamRecord(id, team) {
+  const el = $(id);
+  if (!el) return;
+  el.textContent = 'League record unavailable';
 }
 
 function renderSeasonRecords(blue, red) {

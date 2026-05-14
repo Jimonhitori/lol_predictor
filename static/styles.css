@@ -46,9 +46,11 @@ p, label { color: var(--muted); font-size: 13px; }
 .selectedMatch { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-bottom: 10px; }
 .selectedMatch.twoTeams { grid-template-columns: minmax(0, 280px) minmax(0, 280px); justify-content: center; }
 .teamBlock { display: grid; grid-template-rows: auto minmax(38px, auto) 20px 22px; align-items: center; justify-items: center; gap: 6px; min-width: 0; }
+.teamBlock.withSeriesRecord { grid-template-rows: auto minmax(38px, auto) 18px 18px 22px; }
 .teamBlock img { width: 64px; height: 64px; object-fit: contain; }
 .teamBlock strong { text-align: center; overflow-wrap: anywhere; }
 .teamRecord { color: var(--muted); font-size: 13px; font-weight: 800; text-align: center; }
+.teamSeriesRecord { color: var(--text); font-size: 16px; font-weight: 800; text-align: center; }
 .winnerSlot { min-height: 22px; display: grid; place-items: center; }
 .winnerBadge { border-radius: 999px; background: rgba(56, 215, 123, .16); border: 1px solid rgba(56, 215, 123, .45); color: #38d77b; padding: 2px 8px; font-size: 11px; font-weight: 900; text-transform: uppercase; }
 .winPill { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); text-align: center; }
