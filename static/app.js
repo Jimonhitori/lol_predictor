@@ -51,6 +51,7 @@ function qs() {
 
 function fillSelect(id, values) {
   const el = $(id);
+  if (!el) return;
   el.innerHTML = values.map(v => `<option value="${escapeHtml(v)}">${escapeHtml(v)}</option>`).join('');
 }
 
@@ -81,8 +82,8 @@ async function loadOptions() {
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
   $('leagueGroup').value = 'major';
   setValue('league', 'LCK');
-  $('team').value = 'T1';
-  $('opponent').value = 'Gen.G';
+  if ($('team')) $('team').value = 'T1';
+  if ($('opponent')) $('opponent').value = 'Gen.G';
   setValue('top_champion', 'Gnar');
   setValue('jng_champion', 'Xin Zhao');
   setValue('mid_champion', 'Ahri');
@@ -234,12 +235,12 @@ function matchStartLabel(value) {
 }
 
 async function selectMatch(match) {
-  setValue('league', match.league || $('league').value);
-  $('team').value = match.blue || '';
-  $('opponent').value = match.red || '';
-  $('side').value = 'Blue';
+  setValue('league', match.league || $('league')?.value || '');
+  if ($('team')) $('team').value = match.blue || '';
+  if ($('opponent')) $('opponent').value = match.red || '';
+  if ($('side')) $('side').value = 'Blue';
   renderSelectedMatch({ teams: [{ name: match.blue, code: match.blue }, { name: match.red, code: match.red }], games: [], best_of: match.bestof, league: match.league, status: match.status });
-  await predict();
+  if (!STATIC_SITE && $('prediction')) await predict();
   if (match.id) {
     try {
       const details = await api('/api/match?id=' + encodeURIComponent(match.id));
@@ -254,10 +255,10 @@ function renderSelectedMatch(details) {
   const teams = details.teams || [];
   const left = teams[0] || {};
   const right = teams[1] || {};
-  $('selectedMatchMeta').textContent = `${details.league || $('league').value} · BO${details.best_of || '-'} · ${details.source || details.status || ''}`;
+  $('selectedMatchMeta').textContent = `${details.league || $('league')?.value || ''} · BO${details.best_of || '-'} · ${details.source || details.status || ''}`;
   $('selectedMatch').innerHTML = `
     ${teamBlock(left)}
-    ${STATIC_SITE ? '' : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction').textContent}</strong></div>`}
+    ${STATIC_SITE ? '' : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
     ${teamBlock(right)}
   `;
   $('gameList').innerHTML = (details.games || []).map(game => `
@@ -362,6 +363,17 @@ function hasMatchStarted(details) {
 }
 
 function setDetailInputs(details) {
+  if (!$('detailInputs')) {
+    const teams = details.teams || [];
+    const left = teams[0] || {};
+    const right = teams[1] || {};
+    const rosterKey = `${left.name || left.code || ''}|${right.name || right.code || ''}`;
+    if (rosterKey !== state.rosterKey) {
+      state.rosterKey = rosterKey;
+      loadRosters(left, right);
+    }
+    return;
+  }
   const teams = details.teams || [];
   const left = teams[0] || {};
   const right = teams[1] || {};
@@ -599,6 +611,7 @@ function updateLiveRefreshMeta(details) {
 }
 
 async function predictDetail(left, right, league) {
+  if (!$('detailPrediction')) return;
   const payload = {
     league: league || 'LCK', side: 'Blue', team: left.name || left.code || '', opponent: right.name || right.code || '',
     top_champion: 'Gnar', jng_champion: 'Xin Zhao', mid_champion: 'Ahri', bot_champion: 'Ashe', sup_champion: 'Rakan'
@@ -1008,6 +1021,7 @@ function escapeHtml(value) {
 
 function setValue(id, value) {
   const el = $(id);
+  if (!el) return;
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
