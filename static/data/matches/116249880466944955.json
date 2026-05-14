@@ -1,0 +1,77 @@
+{
+  "id": "116249880466944955",
+  "league": "LCK Challengers",
+  "league_group": "secondary",
+  "region": "other",
+  "block_name": "",
+  "best_of": "3",
+  "status": "inProgress",
+  "teams": [
+    {
+      "id": "105550024238752685",
+      "name": "DNS Challengers",
+      "code": "DNS",
+      "image": "http://static.lolesports.com/teams/1767340445199_DN_SOOPerslogo_profile.webp",
+      "game_wins": "0"
+    },
+    {
+      "id": "105550059790656435",
+      "name": "T1 Esports Academy",
+      "code": "T1A",
+      "image": "http://static.lolesports.com/teams/T1-FullonDark.png",
+      "game_wins": "1"
+    }
+  ],
+  "games": [
+    {
+      "id": "116249880466944956",
+      "number": 1,
+      "state": "completed",
+      "blue": {
+        "team_id": "105550024238752685",
+        "team_name": "DNS Challengers",
+        "team_code": "DNS"
+      },
+      "red": {
+        "team_id": "105550059790656435",
+        "team_name": "T1 Esports Academy",
+        "team_code": "T1A"
+      },
+      "live": {}
+    },
+    {
+      "id": "116249880466944957",
+      "number": 2,
+      "state": "inProgress",
+      "blue": {
+        "team_id": "105550024238752685",
+        "team_name": "DNS Challengers",
+        "team_code": "DNS"
+      },
+      "red": {
+        "team_id": "105550059790656435",
+        "team_name": "T1 Esports Academy",
+        "team_code": "T1A"
+      },
+      "live": {}
+    },
+    {
+      "id": "116249880466944958",
+      "number": 3,
+      "state": "unstarted",
+      "blue": {
+        "team_id": "105550059790656435",
+        "team_name": "T1 Esports Academy",
+        "team_code": "T1A"
+      },
+      "red": {
+        "team_id": "105550024238752685",
+        "team_name": "DNS Challengers",
+        "team_code": "DNS"
+      },
+      "live": {}
+    }
+  ],
+  "source": "lolesports_api",
+  "start_time": "2026-05-14T05:00:00Z"
+}

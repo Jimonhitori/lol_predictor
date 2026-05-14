@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Match Detail - LoL Esports Predictor</title>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <a class="backLink" href="index.html">Matches</a>
+        <h1 id="matchTitle">Match Detail</h1>
+        <p id="matchMeta">loading...</p>
+      </div>
+    </section>
+
+    <section class="panel detailHero">
+      <div id="detailTeams" class="selectedMatch"></div>
+      <div id="detailGames" class="gameList"></div>
+    </section>
+
+    <section class="panel livePanel">
+      <div id="liveBoard" class="liveBoard"></div>
+      <p id="liveRefreshMeta" class="liveRefreshMeta">Auto refresh is starting...</p>
+    </section>
+
+    <section class="grid detailGrid">
+      <div class="panelStack">
+        <section class="panel h2hPanel">
+          <h2>対戦履歴</h2>
+          <div id="headToHead" class="h2hList"></div>
+        </section>
+        <section class="panel">
+          <h2>Model Sandbox</h2>
+          <div class="modelSandboxValue"><span>Blue-side test output</span><strong id="detailPrediction">-</strong></div>
+          <div id="detailInputs" class="table"></div>
+          <h2 class="subsectionTitle">2026 Game Record</h2>
+          <div id="seasonRecords" class="table compactTable"></div>
+        </section>
+      </div>
+      <section class="panel">
+        <h2>Player Rosters</h2>
+        <div class="draftGrid">
+          <div>
+            <h2 id="blueRosterTitle">Blue</h2>
+            <div id="blueRoster" class="rosterList"></div>
+          </div>
+          <div>
+            <h2 id="redRosterTitle">Red</h2>
+            <div id="redRoster" class="rosterList"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script>window.STATIC_SITE = true;</script>
+  <script src="static/app.js"></script>
+</body>
+</html>
