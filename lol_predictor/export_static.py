@@ -63,7 +63,8 @@ def main() -> None:
     write_text(out_dir / "match.html", static_html(MATCH_HTML))
     write_text(out_dir / "static" / "styles.css", APP_CSS)
     write_text(out_dir / "static" / "app.js", APP_JS)
-    write_json(data_dir / "options.json", options_payload(context.rows))
+    options = options_payload(context.rows)
+    write_json(data_dir / "options.json", options)
 
     all_matches = []
     for league_group in LEAGUE_GROUPS:
@@ -75,7 +76,7 @@ def main() -> None:
             if league_group == "all" and region == "all":
                 all_matches = list(payload.get("matches") or [])
 
-    for league in options_payload(context.rows).get("leagues", []):
+    for league in options.get("standings_leagues", []):
         write_json(data_dir / "summaries" / f"league__{static_key(league)}.json", safe_summary(context, {"league": [league]}))
 
     seen_teams: set[tuple[str, str]] = set()

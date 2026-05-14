@@ -1,5 +1,5 @@
 
-const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'group:major' };
+const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 
@@ -78,15 +78,11 @@ function renderTeamStandings(rows) {
 function fillTeamStandingSelect() {
   const select = $('teamLeague');
   if (!select || !state.options) return;
-  const leagues = (state.options.leagues || []).map(league => String(league)).filter(Boolean);
-  const options = [
-    ['group:major', 'All major leagues'],
-    ['group:all', 'All leagues'],
-    ['group:secondary', 'All secondary leagues'],
-    ...leagues.map(league => [`league:${league}`, league]),
-  ];
+  const leagues = (state.options.standings_leagues || []).map(league => String(league)).filter(Boolean);
+  const options = leagues.map(league => [`league:${league}`, league]);
   select.innerHTML = options.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('');
-  select.value = state.teamStanding;
+  select.value = options.some(([value]) => value === state.teamStanding) ? state.teamStanding : (options[0]?.[0] || 'league:LCK');
+  state.teamStanding = select.value;
 }
 
 function renderChampionTable(id, rows, patch) {
@@ -133,12 +129,10 @@ async function loadTeamStandings() {
   const selection = $('teamLeague')?.value || state.teamStanding || 'group:major';
   state.teamStanding = selection;
   const [kind, value] = selection.split(':');
-  const params = kind === 'league'
-    ? new URLSearchParams({ league: value || '' })
-    : new URLSearchParams({ league_group: value || 'major', region: 'all' });
+  const params = new URLSearchParams({ league: kind === 'league' ? (value || 'LCK') : 'LCK' });
   const data = await api('/api/summary?' + params.toString());
   renderTeamStandings(data.teams || []);
-  const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'All major leagues';
+  const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'LCK';
   $('teamStandingsMeta').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
 }
 

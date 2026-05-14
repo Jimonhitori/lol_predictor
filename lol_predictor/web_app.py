@@ -109,7 +109,7 @@ APP_HTML = """<!doctype html>
             <p id="teamStandingsMeta" class="subtleText">Latest patch team-game results</p>
           </div>
           <select id="teamLeague" class="compactSelect" aria-label="Team standings league">
-            <option value="group:major">All major leagues</option>
+            <option value="league:LCK">LCK</option>
           </select>
         </div>
         <div id="teams" class="table standingsTable"></div>
@@ -351,7 +351,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 
 
 APP_JS = """
-const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'group:major' };
+const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 
@@ -430,15 +430,11 @@ function renderTeamStandings(rows) {
 function fillTeamStandingSelect() {
   const select = $('teamLeague');
   if (!select || !state.options) return;
-  const leagues = (state.options.leagues || []).map(league => String(league)).filter(Boolean);
-  const options = [
-    ['group:major', 'All major leagues'],
-    ['group:all', 'All leagues'],
-    ['group:secondary', 'All secondary leagues'],
-    ...leagues.map(league => [`league:${league}`, league]),
-  ];
+  const leagues = (state.options.standings_leagues || []).map(league => String(league)).filter(Boolean);
+  const options = leagues.map(league => [`league:${league}`, league]);
   select.innerHTML = options.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('');
-  select.value = state.teamStanding;
+  select.value = options.some(([value]) => value === state.teamStanding) ? state.teamStanding : (options[0]?.[0] || 'league:LCK');
+  state.teamStanding = select.value;
 }
 
 function renderChampionTable(id, rows, patch) {
@@ -485,12 +481,10 @@ async function loadTeamStandings() {
   const selection = $('teamLeague')?.value || state.teamStanding || 'group:major';
   state.teamStanding = selection;
   const [kind, value] = selection.split(':');
-  const params = kind === 'league'
-    ? new URLSearchParams({ league: value || '' })
-    : new URLSearchParams({ league_group: value || 'major', region: 'all' });
+  const params = new URLSearchParams({ league: kind === 'league' ? (value || 'LCK') : 'LCK' });
   const data = await api('/api/summary?' + params.toString());
   renderTeamStandings(data.teams || []);
-  const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'All major leagues';
+  const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'LCK';
   $('teamStandingsMeta').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
 }
 
@@ -1748,10 +1742,15 @@ def make_handler(context: AppContext) -> type[BaseHTTPRequestHandler]:
     return Handler
 
 
+STANDINGS_LEAGUES = ["LCK", "LPL", "LEC", "LCS", "LCP", "CBLOL", "VCS", "TCL", "LFL", "LCKC"]
+
+
 def options_payload(rows: pd.DataFrame) -> dict[str, list[str]]:
     player_rows = rows[~rows["position"].eq("team")]
+    leagues = sorted(rows["league"].dropna().astype(str).unique().tolist())
     return {
-        "leagues": sorted(rows["league"].dropna().astype(str).unique().tolist()),
+        "leagues": leagues,
+        "standings_leagues": [league for league in STANDINGS_LEAGUES if league in set(leagues)],
         "champions": sorted(player_rows["champion"].dropna().astype(str).unique().tolist()),
     }
 
