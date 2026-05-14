@@ -232,8 +232,8 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchCenter { margin-bottom: 16px; }
 .selectedMatch { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-bottom: 10px; }
 .selectedMatch.twoTeams { grid-template-columns: minmax(0, 280px) minmax(0, 280px); justify-content: center; }
-.teamBlock { display: grid; grid-template-rows: auto minmax(38px, auto) 20px 22px; align-items: center; justify-items: center; gap: 6px; min-width: 0; }
-.teamBlock.withSeriesRecord { grid-template-rows: auto minmax(38px, auto) 18px 18px 22px; }
+.teamBlock { display: grid; align-items: center; justify-items: center; gap: 6px; min-width: 0; }
+.teamRecords { min-height: 20px; display: grid; place-items: center; gap: 2px; }
 .teamBlock img { width: 64px; height: 64px; object-fit: contain; }
 .teamBlock strong { text-align: center; overflow-wrap: anywhere; }
 .teamRecord { color: var(--muted); font-size: 13px; font-weight: 800; text-align: center; }
@@ -241,6 +241,8 @@ p, label { color: var(--muted); font-size: 13px; }
 .winnerSlot { min-height: 22px; display: grid; place-items: center; }
 .winnerBadge { border-radius: 999px; background: rgba(56, 215, 123, .16); border: 1px solid rgba(56, 215, 123, .45); color: #38d77b; padding: 2px 8px; font-size: 11px; font-weight: 900; text-transform: uppercase; }
 .winPill { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; color: var(--muted); text-align: center; }
+.matchScorePill { min-width: 120px; display: grid; place-items: center; gap: 4px; color: var(--muted); font-weight: 800; }
+.matchScorePill strong { color: var(--text); font-size: 22px; line-height: 1; }
 .matchInfo { min-width: 200px; color: var(--text); text-align: center; display: grid; gap: 5px; }
 .matchInfoLeague { font-size: 16px; font-weight: 900; }
 .matchInfoBo { color: var(--muted); font-size: 13px; font-weight: 800; letter-spacing: 0; }
@@ -672,9 +674,9 @@ function renderSelectedMatch(details) {
   $('selectedMatch').className = `selectedMatch ${STATIC_SITE ? 'twoTeams' : ''}`;
   const seriesWinner = completedSeriesWinner(details);
   $('selectedMatch').innerHTML = `
-    ${teamBlock(left, 'centerLeftRecord', seriesWinner, true)}
-    ${STATIC_SITE ? '' : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
-    ${teamBlock(right, 'centerRightRecord', seriesWinner, true)}
+    ${teamBlock(left, 'centerLeftRecord', seriesWinner)}
+    ${STATIC_SITE ? matchScorePill(details) : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
+    ${teamBlock(right, 'centerRightRecord', seriesWinner)}
   `;
   $('gameList').innerHTML = gameListHtml(details);
   loadInlineTeamRecords(left, right, details.league);
@@ -682,12 +684,16 @@ function renderSelectedMatch(details) {
 
 function teamBlock(team, recordId, winnerTeam, showSeriesWins = false) {
   const image = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
-  const seriesRecord = showSeriesWins ? `<span class="teamSeriesRecord">${escapeHtml(team.game_wins || '0')} wins</span>` : '';
   const record = recordId
     ? `<span id="${recordId}" class="teamRecord">Loading league record...</span>`
     : `<span class="teamSeriesRecord">${escapeHtml(team.game_wins || '0')} wins</span>`;
   const winner = winnerTeam && sameTeamIdentity(team, winnerTeam) ? '<span class="winnerBadge">Winner</span>' : '';
-  return `<div class="teamBlock ${showSeriesWins ? 'withSeriesRecord' : ''}">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}${seriesRecord}<span class="winnerSlot">${winner}</span></div>`;
+  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong><span class="teamRecords">${record}</span><span class="winnerSlot">${winner}</span></div>`;
+}
+
+function matchScorePill(details) {
+  const score = seriesScore(details.teams || []).replace(/\\s/g, '');
+  return `<div class="matchScorePill"><span>Series</span><strong>${escapeHtml(score)}</strong></div>`;
 }
 
 function matchCardTeam(name, image) {
