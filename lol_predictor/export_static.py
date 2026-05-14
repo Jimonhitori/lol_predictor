@@ -135,6 +135,8 @@ def strip_static_model_blocks(html: str) -> str:
         flags=re.S,
     )
     html = html.replace('<strong id="centerPrediction">-</strong>', '<strong id="centerPrediction"></strong>')
+    html = html.replace("LoL Esports Predictor", "LoL Esports Dashboard")
+    html = html.replace("Select a match to preview prediction context.", "Select a match to preview match context.")
     return html
 
 
