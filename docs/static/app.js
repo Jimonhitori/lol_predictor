@@ -330,7 +330,7 @@ function teamBlock(team, recordId, winnerTeam) {
     ? `<span id="${recordId}" class="teamRecord">Loading 2026 record...</span>`
     : `<span>${escapeHtml(team.game_wins || '0')} wins</span>`;
   const winner = winnerTeam && sameTeamIdentity(team, winnerTeam) ? '<span class="winnerBadge">Winner</span>' : '';
-  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}${winner}</div>`;
+  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}<span class="winnerSlot">${winner}</span></div>`;
 }
 
 function matchCardTeam(name, image) {

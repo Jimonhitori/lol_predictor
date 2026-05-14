@@ -5,14 +5,14 @@
   "region": "pacific",
   "block_name": "",
   "best_of": "3",
-  "status": "unstarted",
+  "status": "inProgress",
   "teams": [
     {
       "id": "113843163628949793",
       "name": "Saigon Dino",
       "code": "DINO",
       "image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
-      "game_wins": "0"
+      "game_wins": "1"
     },
     {
       "id": "116520427289188052",
@@ -26,7 +26,7 @@
     {
       "id": "116520394663535869",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
         "team_id": "113843163628949793",
         "team_name": "Saigon Dino",
@@ -42,16 +42,16 @@
     {
       "id": "116520394663535870",
       "number": 2,
-      "state": "unstarted",
+      "state": "inProgress",
       "blue": {
-        "team_id": "113843163628949793",
-        "team_name": "Saigon Dino",
-        "team_code": "DINO"
-      },
-      "red": {
         "team_id": "116520427289188052",
         "team_name": "Saigon Zen Esport",
         "team_code": "ZEN"
+      },
+      "red": {
+        "team_id": "113843163628949793",
+        "team_name": "Saigon Dino",
+        "team_code": "DINO"
       },
       "live": {}
     },
