@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -26,6 +27,7 @@ from .web_app import (
 
 LEAGUE_GROUPS = ["all", "major", "secondary"]
 REGIONS = ["all", "korea", "china", "emea", "americas", "pacific", "international"]
+APP_JS_VERSION = hashlib.sha1(APP_JS.encode("utf-8")).hexdigest()[:10]
 
 
 def parse_args() -> argparse.Namespace:
@@ -119,7 +121,7 @@ def static_html(html: str) -> str:
     html = strip_static_model_blocks(html)
     return html.replace('<a class="backLink" href="/">', '<a class="backLink" href="index.html">').replace(
         '<script src="/static/app.js"></script>',
-        '<script>window.STATIC_SITE = true;</script>\n  <script src="static/app.js"></script>',
+        f'<script>window.STATIC_SITE = true;</script>\n  <script src="static/app.js?v={APP_JS_VERSION}"></script>',
     ).replace(
         '<link rel="stylesheet" href="/static/styles.css">',
         '<link rel="stylesheet" href="static/styles.css">',
