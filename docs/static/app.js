@@ -604,7 +604,7 @@ function renderLiveDraft(details) {
       <div class="liveTop">
         ${liveTeamHeader(blueTeam)}
         <div class="liveCenter">
-          <span class="liveBadge ${hasLive && !meaningfulLive ? 'warning' : ''}">${escapeHtml(liveBadgeText(hasLive, meaningfulLive))}</span>
+          <span class="liveBadge">${escapeHtml(liveBadgeText(hasLive, meaningfulLive))}</span>
           <span class="liveTimer">${escapeHtml(liveTimerText(live, meaningfulLive))}</span>
         </div>
         ${liveTeamHeader(redTeam)}
@@ -899,7 +899,7 @@ function deltaClass(value) {
 
 function liveBadgeText(hasLive, meaningfulLive) {
   if (!hasLive) return 'STATS TEMPORARILY DISABLED';
-  if (!meaningfulLive) return 'LIVE FEED RETURNING ZERO STATS';
+  if (!meaningfulLive) return 'Unstarted';
   return 'IN GAME';
 }
 
