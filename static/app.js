@@ -1,5 +1,5 @@
 
-const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamRegion: 'all', teamTier: 'major' };
+const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'group:major' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 
@@ -17,7 +17,9 @@ async function staticApi(path) {
   if (url.pathname === '/api/options') {
     target = 'static/data/options.json';
   } else if (url.pathname === '/api/summary') {
-    target = `static/data/summaries/${staticKey(params.get('league_group') || $('leagueGroup')?.value || 'all')}__${staticKey(params.get('region') || $('region')?.value || 'all')}.json`;
+    target = params.get('league')
+      ? `static/data/summaries/league__${staticKey(params.get('league'))}.json`
+      : `static/data/summaries/${staticKey(params.get('league_group') || $('leagueGroup')?.value || 'all')}__${staticKey(params.get('region') || $('region')?.value || 'all')}.json`;
   } else if (url.pathname === '/api/matches/today') {
     target = `static/data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
   } else if (url.pathname === '/api/match') {
@@ -60,29 +62,6 @@ function renderTable(id, rows, firstLabel) {
   $(id).innerHTML = header + rows.map(r => `<div class="row"><span>${escapeHtml(r.name)}</span><span>${r.games ?? r.picks}</span><span>${r.wins}</span><span>${r.winrate}</span></div>`).join('');
 }
 
-const TEAM_REGIONS = [
-  ['all', 'All'],
-  ['korea', 'KR'],
-  ['china', 'CN'],
-  ['emea', 'EMEA'],
-  ['americas', 'AMER'],
-  ['pacific', 'PAC'],
-  ['international', 'INT'],
-];
-
-function renderTeamRegionTabs() {
-  const container = $('teamRegionTabs');
-  if (!container) return;
-  container.innerHTML = TEAM_REGIONS.map(([key, label]) => `
-    <button type="button" class="regionTab ${state.teamRegion === key ? 'active' : ''}" data-team-region="${escapeHtml(key)}">${escapeHtml(label)}</button>
-  `).join('');
-  container.querySelectorAll('[data-team-region]').forEach(tab => tab.addEventListener('click', () => {
-    state.teamRegion = tab.dataset.teamRegion || 'all';
-    renderTeamRegionTabs();
-    loadTeamStandings();
-  }));
-}
-
 function renderTeamStandings(rows) {
   const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Wins</span><span>Winrate</span></div>';
   $('teams').innerHTML = header + rows.map((r, index) => `
@@ -94,6 +73,20 @@ function renderTeamStandings(rows) {
       <span>${r.winrate}</span>
     </div>
   `).join('');
+}
+
+function fillTeamStandingSelect() {
+  const select = $('teamLeague');
+  if (!select || !state.options) return;
+  const leagues = (state.options.leagues || []).map(league => String(league)).filter(Boolean);
+  const options = [
+    ['group:major', 'All major leagues'],
+    ['group:all', 'All leagues'],
+    ['group:secondary', 'All secondary leagues'],
+    ...leagues.map(league => [`league:${league}`, league]),
+  ];
+  select.innerHTML = options.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('');
+  select.value = state.teamStanding;
 }
 
 function renderChampionTable(id, rows, patch) {
@@ -117,8 +110,7 @@ async function loadOptions() {
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
   $('leagueGroup').value = 'major';
-  if ($('teamTier')) $('teamTier').value = state.teamTier;
-  renderTeamRegionTabs();
+  fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
   if ($('opponent')) $('opponent').value = 'Gen.G';
@@ -138,14 +130,16 @@ async function loadSummary() {
 
 async function loadTeamStandings() {
   if (!$('teams')) return;
-  const tier = $('teamTier')?.value || state.teamTier || 'major';
-  state.teamTier = tier;
-  const params = new URLSearchParams({ league_group: tier, region: state.teamRegion || 'all' });
+  const selection = $('teamLeague')?.value || state.teamStanding || 'group:major';
+  state.teamStanding = selection;
+  const [kind, value] = selection.split(':');
+  const params = kind === 'league'
+    ? new URLSearchParams({ league: value || '' })
+    : new URLSearchParams({ league_group: value || 'major', region: 'all' });
   const data = await api('/api/summary?' + params.toString());
   renderTeamStandings(data.teams || []);
-  const regionLabel = TEAM_REGIONS.find(([key]) => key === state.teamRegion)?.[1] || 'All';
-  const tierLabel = tier === 'all' ? 'all tiers' : tier;
-  $('teamStandingsMeta').textContent = `${regionLabel} · ${tierLabel} · Patch ${data.patch} · ${data.games} games`;
+  const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'All major leagues';
+  $('teamStandingsMeta').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
 }
 
 async function loadMatches() {
@@ -1285,7 +1279,7 @@ function setValue(id, value) {
 
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
-  if ($('teamTier')) $('teamTier').addEventListener('change', loadTeamStandings);
+  if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
     renderDateTabs(state.allMatches);
