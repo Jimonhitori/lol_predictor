@@ -318,9 +318,9 @@ function renderSelectedMatch(details) {
   $('selectedMatch').className = `selectedMatch ${STATIC_SITE ? 'twoTeams' : ''}`;
   const seriesWinner = completedSeriesWinner(details);
   $('selectedMatch').innerHTML = `
-    ${teamBlock(left, 'centerLeftRecord', seriesWinner, true)}
-    ${STATIC_SITE ? '' : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
-    ${teamBlock(right, 'centerRightRecord', seriesWinner, true)}
+    ${teamBlock(left, 'centerLeftRecord', seriesWinner)}
+    ${STATIC_SITE ? matchScorePill(details) : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
+    ${teamBlock(right, 'centerRightRecord', seriesWinner)}
   `;
   $('gameList').innerHTML = gameListHtml(details);
   loadInlineTeamRecords(left, right, details.league);
@@ -328,12 +328,16 @@ function renderSelectedMatch(details) {
 
 function teamBlock(team, recordId, winnerTeam, showSeriesWins = false) {
   const image = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
-  const seriesRecord = showSeriesWins ? `<span class="teamSeriesRecord">${escapeHtml(team.game_wins || '0')} wins</span>` : '';
   const record = recordId
     ? `<span id="${recordId}" class="teamRecord">Loading league record...</span>`
     : `<span class="teamSeriesRecord">${escapeHtml(team.game_wins || '0')} wins</span>`;
   const winner = winnerTeam && sameTeamIdentity(team, winnerTeam) ? '<span class="winnerBadge">Winner</span>' : '';
-  return `<div class="teamBlock ${showSeriesWins ? 'withSeriesRecord' : ''}">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong>${record}${seriesRecord}<span class="winnerSlot">${winner}</span></div>`;
+  return `<div class="teamBlock">${image}<strong>${escapeHtml(team.name || team.code || '-')}</strong><span class="teamRecords">${record}</span><span class="winnerSlot">${winner}</span></div>`;
+}
+
+function matchScorePill(details) {
+  const score = seriesScore(details.teams || []).replace(/\s/g, '');
+  return `<div class="matchScorePill"><span>Series</span><strong>${escapeHtml(score)}</strong></div>`;
 }
 
 function matchCardTeam(name, image) {
