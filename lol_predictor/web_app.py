@@ -335,11 +335,48 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 APP_JS = """
 const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '' };
 const $ = (id) => document.getElementById(id);
+const STATIC_SITE = Boolean(window.STATIC_SITE);
 
 async function api(path) {
+  if (STATIC_SITE) return staticApi(path);
   const response = await fetch(path);
   if (!response.ok) throw new Error(await response.text());
   return response.json();
+}
+
+async function staticApi(path) {
+  const url = new URL(path, location.origin);
+  const params = url.searchParams;
+  let target = '';
+  if (url.pathname === '/api/options') {
+    target = 'static/data/options.json';
+  } else if (url.pathname === '/api/summary') {
+    target = `static/data/summaries/${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
+  } else if (url.pathname === '/api/matches/today') {
+    target = `static/data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
+  } else if (url.pathname === '/api/match') {
+    target = `static/data/matches/${encodeURIComponent(params.get('id') || '')}.json`;
+  } else if (url.pathname === '/api/roster') {
+    target = `static/data/rosters/${staticKey(params.get('team') || '')}.json`;
+  } else if (url.pathname === '/api/team-record') {
+    target = `static/data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
+  } else if (url.pathname === '/api/head-to-head') {
+    target = `static/data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_a') || '')}__${staticKey(params.get('team_b') || '')}.json`;
+  }
+  if (!target) throw new Error(`Static data route is not available: ${path}`);
+  const response = await fetch(target);
+  if (!response.ok) throw new Error(`Static data missing: ${target}`);
+  return response.json();
+}
+
+function staticKey(value) {
+  return String(value || 'all').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'all';
+}
+
+async function postPredict(payload) {
+  if (STATIC_SITE) return { ok: false, data: { error: 'Static Pages版ではモデル推論なし' } };
+  const response = await fetch('/api/predict', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+  return { ok: response.ok, data: await response.json() };
 }
 
 function qs() {
@@ -413,7 +450,7 @@ function renderMatches() {
     return;
   }
   $('matches').innerHTML = matches.map(match => `
-    <a class="match" href="/match?id=${encodeURIComponent(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
+    <a class="match" href="${detailHref(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(matchStatusLabel(match))}</span></div>
       <div class="matchMeta"><span>${escapeHtml(matchStartLabel(match.start_time))}</span><span>${escapeHtml(matchDateLabel(match.start_time))}</span></div>
       <div class="versus">${matchCardTeam(match.blue_code || match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_code || match.red_team, match.red_image)}</div>
@@ -425,6 +462,10 @@ function renderMatches() {
     el.addEventListener('focus', () => selectMatch(el.dataset));
   }
   selectMatch(document.querySelector('.match').dataset);
+}
+
+function detailHref(id) {
+  return `${STATIC_SITE ? 'match.html' : '/match'}?id=${encodeURIComponent(id || '')}`;
 }
 
 function renderDateTabs(matches) {
@@ -582,9 +623,9 @@ async function predict(event) {
     top_champion: $('top_champion').value, jng_champion: $('jng_champion').value, mid_champion: $('mid_champion').value,
     bot_champion: $('bot_champion').value, sup_champion: $('sup_champion').value
   };
-  const response = await fetch('/api/predict', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-  const data = await response.json();
-  $('prediction').textContent = response.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
+  const result = await postPredict(payload);
+  const data = result.data;
+  $('prediction').textContent = result.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
   $('centerPrediction').textContent = $('prediction').textContent;
   const inline = $('inlinePrediction');
   if (inline) inline.textContent = $('prediction').textContent;
@@ -889,9 +930,9 @@ async function predictDetail(left, right, league) {
     league: league || 'LCK', side: 'Blue', team: left.name || left.code || '', opponent: right.name || right.code || '',
     top_champion: 'Gnar', jng_champion: 'Xin Zhao', mid_champion: 'Ahri', bot_champion: 'Ashe', sup_champion: 'Rakan'
   };
-  const response = await fetch('/api/predict', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-  const data = await response.json();
-  const text = response.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
+  const result = await postPredict(payload);
+  const data = result.data;
+  const text = result.ok ? `${(data.win_probability * 100).toFixed(1)}%` : data.error;
   $('detailPrediction').textContent = text;
 }
 

@@ -150,7 +150,11 @@ def _normalize_game(game: dict[str, Any], team_by_id: dict[str, dict[str, Any]])
         }
     game_id = str(game.get("id") or "")
     state = str(game.get("state") or "")
-    live = lolesports_live_window(game_id) if state.lower() != "unstarted" else {}
+    live = (
+        lolesports_live_window(game_id)
+        if state.lower() != "unstarted" and os.environ.get("LOL_ESPORTS_SKIP_LIVE") != "1"
+        else {}
+    )
     return {
         "id": game_id,
         "number": int(game.get("number") or 0),

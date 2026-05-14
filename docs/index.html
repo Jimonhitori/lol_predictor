@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LoL Esports Predictor</title>
+  <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="topbar">
+      <div>
+        <h1>LoL Esports Predictor</h1>
+        <p id="meta">loading...</p>
+      </div>
+      <div class="filters">
+        <select id="leagueGroup">
+          <option value="all">All tiers</option>
+          <option value="major">Major</option>
+          <option value="secondary">Secondary</option>
+        </select>
+        <select id="region">
+          <option value="all">All regions</option>
+          <option value="korea">Korea</option>
+          <option value="china">China</option>
+          <option value="emea">EMEA</option>
+          <option value="americas">Americas</option>
+          <option value="pacific">Pacific</option>
+          <option value="international">International</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="matchStrip panel">
+      <div class="sectionHead">
+        <div>
+          <h2>Matches</h2>
+          <p id="matchSource">loading...</p>
+        </div>
+        <div class="matchScheduleTools">
+          <input id="scheduleDate" class="scheduleDate" type="date" aria-label="Schedule date">
+        </div>
+      </div>
+      <div id="dateTabs" class="dateTabs"></div>
+      <div id="matches" class="matches"></div>
+    </section>
+
+    <section id="matchCenter" class="matchCenter panel">
+      <div class="sectionHead">
+        <div>
+          <h2>Match Center</h2>
+          <p id="selectedMatchMeta">Select a match to preview prediction context.</p>
+        </div>
+        <strong id="centerPrediction">-</strong>
+      </div>
+      <div id="selectedMatch" class="selectedMatch"></div>
+      <div id="gameList" class="gameList"></div>
+    </section>
+
+    <section class="grid">
+      <form id="predictForm" class="panel">
+        <h2>Predict</h2>
+        <div class="formGrid">
+          <label>League <select id="league"></select></label>
+          <label>Side <select id="side"><option>Blue</option><option>Red</option></select></label>
+          <label>Team <input id="team" placeholder="T1"></label>
+          <label>Opponent <input id="opponent" placeholder="Gen.G"></label>
+          <label>Top <select id="top_champion"></select></label>
+          <label>Jungle <select id="jng_champion"></select></label>
+          <label>Mid <select id="mid_champion"></select></label>
+          <label>Bot <select id="bot_champion"></select></label>
+          <label>Support <select id="sup_champion"></select></label>
+        </div>
+        <button type="submit">Predict win probability</button>
+        <output id="prediction">-</output>
+      </form>
+
+      <section class="panel">
+        <h2>Latest Patch Meta</h2>
+        <div id="champions" class="table"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Teams</h2>
+        <div id="teams" class="table"></div>
+      </section>
+    </section>
+  </main>
+  <script>window.STATIC_SITE = true;</script>
+  <script src="static/app.js"></script>
+</body>
+</html>
