@@ -62,6 +62,8 @@ function renderTable(id, rows, firstLabel) {
   $(id).innerHTML = header + rows.map(r => `<div class="row"><span>${escapeHtml(r.name)}</span><span>${r.games ?? r.picks}</span><span>${r.wins}</span><span>${r.winrate}</span></div>`).join('');
 }
 
+const STANDINGS_LEAGUES = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL', 'VCS', 'TCL', 'LFL', 'LCKC'];
+
 function renderTeamStandings(rows) {
   const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Wins</span><span>Winrate</span></div>';
   $('teams').innerHTML = header + rows.map((r, index) => `
@@ -78,7 +80,10 @@ function renderTeamStandings(rows) {
 function fillTeamStandingSelect() {
   const select = $('teamLeague');
   if (!select || !state.options) return;
-  const leagues = (state.options.standings_leagues || []).map(league => String(league)).filter(Boolean);
+  const optionLeagues = new Set((state.options.leagues || []).map(league => String(league)));
+  const leagues = (state.options.standings_leagues || []).length
+    ? (state.options.standings_leagues || []).map(league => String(league)).filter(Boolean)
+    : STANDINGS_LEAGUES.filter(league => optionLeagues.has(league));
   const options = leagues.map(league => [`league:${league}`, league]);
   select.innerHTML = options.map(([value, label]) => `<option value="${escapeHtml(value)}">${escapeHtml(label)}</option>`).join('');
   select.value = options.some(([value]) => value === state.teamStanding) ? state.teamStanding : (options[0]?.[0] || 'league:LCK');
