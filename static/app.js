@@ -900,7 +900,53 @@ function sameTeam(a, b) {
 }
 
 function teamKey(value) {
-  return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const key = String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const aliases = {
+    geng: 'geng',
+    gengesports: 'geng',
+    gen: 'geng',
+    drx: 'kiwoomdrx',
+    krx: 'kiwoomdrx',
+    kiwoomdrx: 'kiwoomdrx',
+    kt: 'ktrolster',
+    ktrolster: 'ktrolster',
+    dk: 'dpluskia',
+    dpluskia: 'dpluskia',
+    bnkfearx: 'bnkfearx',
+    fearx: 'bnkfearx',
+    nongshimredforce: 'nongshimredforce',
+    nongshimredforcechallengers: 'nongshimredforcechallengers',
+    ns: 'nongshimredforce',
+    t1: 't1',
+    hle: 'hanwhalifeesports',
+    hanwhalifeesports: 'hanwhalifeesports',
+    bro: 'brion',
+    brion: 'brion',
+    jdg: 'jdgaming',
+    jd: 'jdgaming',
+    jdgaming: 'jdgaming',
+    beijingjdgesports: 'jdgaming',
+    tes: 'topesports',
+    topesports: 'topesports',
+    blg: 'bilibiligaming',
+    bilibiligaming: 'bilibiligaming',
+    edg: 'edwardgaming',
+    edwardgaming: 'edwardgaming',
+    omg: 'ohmygod',
+    ohmygod: 'ohmygod',
+    lng: 'suzhoulngesports',
+    suzhoulngesports: 'suzhoulngesports',
+    lgd: 'lgdgaming',
+    lgdgaming: 'lgdgaming',
+    al: 'anyoneslegend',
+    anyoneslegend: 'anyoneslegend',
+    we: 'xianteamwe',
+    teamwe: 'xianteamwe',
+    xianteamwe: 'xianteamwe',
+    weibogaming: 'weibogaming',
+    wbg: 'weibogaming',
+  };
+  return aliases[key] || key;
 }
 
 function shortTeamName(value) {
