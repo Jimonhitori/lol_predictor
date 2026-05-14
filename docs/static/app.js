@@ -873,14 +873,16 @@ function renderHeadToHead(matches, leftTeam = {}, rightTeam = {}) {
 function h2hRow(match, context) {
   const leftWon = Number(match.left_score) > Number(match.right_score);
   const rightWon = Number(match.right_score) > Number(match.left_score);
+  const leftCurrent = currentTeamForHistorical(match.left_team, context);
+  const rightCurrent = currentTeamForHistorical(match.right_team, context);
   return `
     <div class="h2hRow" title="${escapeHtml(match.split || '')}">
       <span class="h2hDate">${escapeHtml(relativeDateJa(match.date))}</span>
-      <span class="h2hTeam ${leftWon ? 'isWinner' : ''}">${escapeHtml(match.left_team)}</span>
+      <span class="h2hTeam ${leftWon ? 'isWinner' : ''}">${escapeHtml(leftCurrent?.code || leftCurrent?.name || match.left_team)}</span>
       <span class="h2hMiniLogo">${teamLogoMarkup(match.left_team, context)}</span>
       <span class="h2hScore">${escapeHtml(match.left_score)} - ${escapeHtml(match.right_score)}</span>
       <span class="h2hMiniLogo">${teamLogoMarkup(match.right_team, context)}</span>
-      <span class="h2hTeam isRight ${rightWon ? 'isWinner' : ''}">${escapeHtml(match.right_team)}</span>
+      <span class="h2hTeam isRight ${rightWon ? 'isWinner' : ''}">${escapeHtml(rightCurrent?.code || rightCurrent?.name || match.right_team)}</span>
     </div>
   `;
 }
@@ -890,9 +892,14 @@ function winningTeamName(match) {
 }
 
 function teamLogoMarkup(teamName, context) {
-  const match = [context.leftTeam, context.rightTeam].find(team => sameTeam(teamName, team?.name) || sameTeam(teamName, team?.code));
+  const match = currentTeamForHistorical(teamName, context);
   if (match?.image) return `<img src="${escapeHtml(match.image)}" alt="">`;
   return `<span class="h2hLogoFallback">${escapeHtml(shortTeamName(teamName))}</span>`;
+}
+
+function currentTeamForHistorical(teamName, context) {
+  const teams = [context.leftTeam, context.rightTeam].filter(Boolean);
+  return teams.find(team => sameTeam(teamName, team?.name) || sameTeam(teamName, team?.code) || sameTeam(teamName, team?.slug));
 }
 
 function sameTeam(a, b) {
@@ -913,6 +920,7 @@ function teamKey(value) {
     dk: 'dpluskia',
     dpluskia: 'dpluskia',
     bnkfearx: 'bnkfearx',
+    bfx: 'bnkfearx',
     fearx: 'bnkfearx',
     nongshimredforce: 'nongshimredforce',
     nongshimredforcechallengers: 'nongshimredforcechallengers',
@@ -921,7 +929,10 @@ function teamKey(value) {
     hle: 'hanwhalifeesports',
     hanwhalifeesports: 'hanwhalifeesports',
     bro: 'brion',
+    hanjinbrion: 'brion',
     brion: 'brion',
+    dns: 'dnsoopers',
+    dnsoopers: 'dnsoopers',
     jdg: 'jdgaming',
     jd: 'jdgaming',
     jdgaming: 'jdgaming',
@@ -930,6 +941,8 @@ function teamKey(value) {
     topesports: 'topesports',
     blg: 'bilibiligaming',
     bilibiligaming: 'bilibiligaming',
+    ig: 'invictusgaming',
+    invictusgaming: 'invictusgaming',
     edg: 'edwardgaming',
     edwardgaming: 'edwardgaming',
     omg: 'ohmygod',
@@ -945,6 +958,10 @@ function teamKey(value) {
     xianteamwe: 'xianteamwe',
     weibogaming: 'weibogaming',
     wbg: 'weibogaming',
+    up: 'ultraprime',
+    ultraprime: 'ultraprime',
+    nip: 'shenzhenninjasinpyjamas',
+    shenzhenninjasinpyjamas: 'shenzhenninjasinpyjamas',
   };
   return aliases[key] || key;
 }
