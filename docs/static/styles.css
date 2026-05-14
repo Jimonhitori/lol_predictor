@@ -131,7 +131,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .table { display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
-.standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 70px 80px; align-items: center; }
+.standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 80px 80px; align-items: center; }
 .rankCell { color: var(--muted); font-weight: 900; }
 .championMetaRow { grid-template-columns: minmax(160px, 1fr) 70px 70px 80px; align-items: center; }
 .championMetaCell { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 800; }

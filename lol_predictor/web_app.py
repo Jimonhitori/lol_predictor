@@ -318,7 +318,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .table { display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
-.standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 70px 80px; align-items: center; }
+.standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 80px 80px; align-items: center; }
 .rankCell { color: var(--muted); font-weight: 900; }
 .championMetaRow { grid-template-columns: minmax(160px, 1fr) 70px 70px 80px; align-items: center; }
 .championMetaCell { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 800; }
@@ -417,16 +417,23 @@ function renderTable(id, rows, firstLabel) {
 const STANDINGS_LEAGUES = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL', 'VCS', 'TCL', 'LFL', 'LCKC'];
 
 function renderTeamStandings(rows) {
-  const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Wins</span><span>Winrate</span></div>';
+  const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Record</span><span>Winrate</span></div>';
   $('teams').innerHTML = header + rows.map((r, index) => `
     <div class="row">
       <span class="rankCell">${index + 1}</span>
       <span>${escapeHtml(r.name)}</span>
       <span>${r.games ?? r.picks}</span>
-      <span>${r.wins}</span>
+      <span>${escapeHtml(teamRecordText(r))}</span>
       <span>${r.winrate}</span>
     </div>
   `).join('');
+}
+
+function teamRecordText(row) {
+  const games = Number(row.games ?? row.picks ?? 0);
+  const wins = Number(row.wins ?? 0);
+  const losses = Math.max(0, games - wins);
+  return `${wins}-${losses}`;
 }
 
 function fillTeamStandingSelect() {
