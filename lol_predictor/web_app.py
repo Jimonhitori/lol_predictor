@@ -1294,7 +1294,7 @@ function roleLabel(value) {
 
 function championImageId(value) {
   const text = String(value || '').replace(/[^A-Za-z0-9]/g, '');
-  const aliases = { MonkeyKing: 'Wukong' };
+  const aliases = { Wukong: 'MonkeyKing' };
   return aliases[text] || text;
 }
 
