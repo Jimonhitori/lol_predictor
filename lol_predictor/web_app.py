@@ -660,6 +660,7 @@ async function loadMatchDetailPage() {
 async function refreshMatchDetail(initial) {
   const id = state.detailMatchId;
   const details = await api('/api/match?id=' + encodeURIComponent(id));
+  await enrichStaticLiveData(details);
   state.currentDetails = details;
   if (!details.id) {
     $('matchTitle').textContent = 'Match not found';
@@ -685,6 +686,129 @@ async function refreshMatchDetail(initial) {
   renderLiveDraft(details);
   if (initial) await predictDetail(left, right, details.league);
   updateLiveRefreshMeta(details);
+}
+
+async function enrichStaticLiveData(details) {
+  if (!STATIC_SITE || !details?.games?.length) return;
+  const targets = details.games.filter(game => {
+    const status = String(game.state || '').toLowerCase();
+    return game.id && !['unstarted', 'unneeded', ''].includes(status);
+  });
+  await Promise.all(targets.map(async game => {
+    const live = await fetchLolesportsLive(game.id);
+    if (live && ((live.blue || []).length || (live.red || []).length || live.source)) {
+      game.live = live;
+    }
+  }));
+}
+
+async function fetchLolesportsLive(gameId) {
+  const startingTime = liveFeedStartingTime();
+  const [windowPayload, detailsPayload] = await Promise.all([
+    fetchLiveJson(`https://feed.lolesports.com/livestats/v1/window/${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
+    fetchLiveJson(`https://feed.lolesports.com/livestats/v1/details/${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
+  ]);
+  const live = normalizeLiveWindow(windowPayload);
+  mergeLiveDetails(live, detailsPayload);
+  return live;
+}
+
+async function fetchLiveJson(url) {
+  try {
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok || response.status === 204) return {};
+    return await response.json();
+  } catch (error) {
+    return {};
+  }
+}
+
+function liveFeedStartingTime() {
+  const timestamp = Math.floor((Date.now() - 60000) / 1000);
+  const rounded = timestamp - (timestamp % 10);
+  return new Date(rounded * 1000).toISOString().replace(/\\.\\d{3}Z$/, '.000Z');
+}
+
+function normalizeLiveWindow(payload) {
+  if (!payload || typeof payload !== 'object') return {};
+  const metadata = payload.gameMetadata || {};
+  const frames = Array.isArray(payload.frames) ? payload.frames : [];
+  const frame = frames.length ? frames[frames.length - 1] || {} : {};
+  const blueFrame = frame.blueTeam || {};
+  const redFrame = frame.redTeam || {};
+  return {
+    game_state: String(frame.gameState || payload.gameState || ''),
+    game_time: Number(frame.gameTime || payload.gameTime || 0),
+    patch_version: String(metadata.patchVersion || ''),
+    blue: liveParticipants(metadata.blueTeamMetadata || {}, blueFrame),
+    red: liveParticipants(metadata.redTeamMetadata || {}, redFrame),
+    blue_stats: liveTeamStats(blueFrame),
+    red_stats: liveTeamStats(redFrame),
+    source: 'lolesports_livestats',
+  };
+}
+
+function liveParticipants(teamMetadata, teamFrame) {
+  const participants = Array.isArray(teamMetadata.participantMetadata) ? teamMetadata.participantMetadata : [];
+  const frameParticipants = Array.isArray(teamFrame.participants) ? teamFrame.participants : [];
+  const statsById = Object.fromEntries(frameParticipants.map(participant => [String(participant.participantId || ''), participant]));
+  return participants.map(participant => {
+    const stats = statsById[String(participant.participantId || '')] || {};
+    return {
+      player: String(participant.summonerName || participant.name || ''),
+      participant_id: String(participant.participantId || ''),
+      champion: String(participant.championName || participant.championId || ''),
+      champion_id: String(participant.championId || ''),
+      role: String(participant.role || ''),
+      level: Number(stats.level || 0),
+      kills: Number(stats.kills || 0),
+      deaths: Number(stats.deaths || 0),
+      assists: Number(stats.assists || 0),
+      creep_score: Number(stats.creepScore || 0),
+      gold: Number(stats.totalGold || 0),
+      current_health: Number(stats.currentHealth || 0),
+      max_health: Number(stats.maxHealth || 0),
+      items: liveItems(stats.items || []),
+    };
+  });
+}
+
+function mergeLiveDetails(live, payload) {
+  const frames = Array.isArray(payload?.frames) ? payload.frames : [];
+  if (!live || !frames.length) return;
+  const frame = frames[frames.length - 1] || {};
+  const participants = Array.isArray(frame.participants) ? frame.participants : [];
+  const detailsById = Object.fromEntries(participants.map(participant => [String(participant.participantId || ''), participant]));
+  for (const player of [...(live.blue || []), ...(live.red || [])]) {
+    const details = detailsById[String(player.participant_id || '')];
+    if (!details) continue;
+    player.level = Number(details.level || player.level || 0);
+    player.kills = Number(details.kills || player.kills || 0);
+    player.deaths = Number(details.deaths || player.deaths || 0);
+    player.assists = Number(details.assists || player.assists || 0);
+    player.creep_score = Number(details.creepScore || player.creep_score || 0);
+    player.gold = Number(details.totalGoldEarned || player.gold || 0);
+    player.items = liveItems(details.items || player.items || []);
+  }
+}
+
+function liveItems(items) {
+  if (!Array.isArray(items)) return [];
+  return items.map(item => {
+    if (item && typeof item === 'object') return String(item.itemID || item.itemId || item.id || '');
+    return String(item || '');
+  }).filter(Boolean).slice(0, 7);
+}
+
+function liveTeamStats(teamFrame) {
+  return {
+    gold: Number(teamFrame.totalGold || 0),
+    kills: Number(teamFrame.totalKills || 0),
+    towers: Number(teamFrame.towers || 0),
+    inhibitors: Number(teamFrame.inhibitors || 0),
+    barons: Number(teamFrame.barons || 0),
+    dragons: Array.isArray(teamFrame.dragons) ? teamFrame.dragons.length : 0,
+  };
 }
 
 function updateStartedVisibility(details) {
