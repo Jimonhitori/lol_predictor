@@ -505,6 +505,14 @@ function renderDateTabs(matches) {
 }
 
 function visibleDateOptions(options) {
+  const today = localDateKey(new Date().toISOString());
+  const futureOrToday = options.filter(option => option.key >= today);
+  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
+    return futureOrToday.slice(0, 3);
+  }
+  if (state.selectedMatchDate === today) {
+    return futureOrToday.slice(0, 3);
+  }
   if (options.length <= 3) return options;
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
     ? options.findIndex(option => option.key === state.selectedMatchDate)
