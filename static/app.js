@@ -65,16 +65,23 @@ function renderTable(id, rows, firstLabel) {
 const STANDINGS_LEAGUES = ['LCK', 'LPL', 'LEC', 'LCS', 'LCP', 'CBLOL', 'VCS', 'TCL', 'LFL', 'LCKC'];
 
 function renderTeamStandings(rows) {
-  const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Wins</span><span>Winrate</span></div>';
+  const header = '<div class="row header"><span>#</span><span>Team</span><span>Games</span><span>Record</span><span>Winrate</span></div>';
   $('teams').innerHTML = header + rows.map((r, index) => `
     <div class="row">
       <span class="rankCell">${index + 1}</span>
       <span>${escapeHtml(r.name)}</span>
       <span>${r.games ?? r.picks}</span>
-      <span>${r.wins}</span>
+      <span>${escapeHtml(teamRecordText(r))}</span>
       <span>${r.winrate}</span>
     </div>
   `).join('');
+}
+
+function teamRecordText(row) {
+  const games = Number(row.games ?? row.picks ?? 0);
+  const wins = Number(row.wins ?? 0);
+  const losses = Math.max(0, games - wins);
+  return `${wins}-${losses}`;
 }
 
 function fillTeamStandingSelect() {
