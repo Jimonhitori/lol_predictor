@@ -45,8 +45,8 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchCenter { margin-bottom: 16px; }
 .selectedMatch { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-bottom: 10px; }
 .selectedMatch.twoTeams { grid-template-columns: minmax(0, 280px) minmax(0, 280px); justify-content: center; }
-.teamBlock { display: grid; grid-template-rows: 48px minmax(38px, auto) 18px 22px; align-items: center; justify-items: center; gap: 6px; min-width: 0; }
-.teamBlock img { width: 48px; height: 48px; object-fit: contain; }
+.teamBlock { display: grid; grid-template-rows: auto minmax(38px, auto) 20px 22px; align-items: center; justify-items: center; gap: 6px; min-width: 0; }
+.teamBlock img { width: 64px; height: 64px; object-fit: contain; }
 .teamBlock strong { text-align: center; overflow-wrap: anywhere; }
 .teamRecord { color: var(--muted); font-size: 13px; font-weight: 800; text-align: center; }
 .winnerSlot { min-height: 22px; display: grid; place-items: center; }
