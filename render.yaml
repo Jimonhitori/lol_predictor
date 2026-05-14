@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: lol-predictor
+    env: python
+    plan: free
+    buildCommand: >
+      pip install -r requirements.txt &&
+      python -m lol_predictor.download_oe_api_2026 --league "LoL Champions Korea" --league "Tencent LoL Pro League" --output data/raw/2026_oracles_elixir_api_games_lck_lpl.csv &&
+      python -m lol_predictor.champion_reference --data-dir data/raw &&
+      python -m lol_predictor.train --data-dir data/raw --model-path models/2026_all_patches_lck_lpl_regions_synergy.joblib
+    startCommand: python -m lol_predictor.web_app --host 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.3
