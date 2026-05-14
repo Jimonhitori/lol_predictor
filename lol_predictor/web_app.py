@@ -333,7 +333,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 
 
 APP_JS = """
-const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '' };
+const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {} };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 
@@ -697,6 +697,10 @@ async function enrichStaticLiveData(details) {
   await Promise.all(targets.map(async game => {
     const live = await fetchLolesportsLive(game.id);
     if (live && ((live.blue || []).length || (live.red || []).length || live.source)) {
+      const previousFrame = state.liveFrames[String(game.id || '')] || '';
+      const currentFrame = String(live.frame_timestamp || '');
+      live.frame_changed = Boolean(currentFrame && currentFrame !== previousFrame);
+      if (currentFrame) state.liveFrames[String(game.id || '')] = currentFrame;
       game.live = live;
     }
   }));
@@ -739,6 +743,7 @@ function normalizeLiveWindow(payload) {
   return {
     game_state: String(frame.gameState || payload.gameState || ''),
     game_time: Number(frame.gameTime || payload.gameTime || 0),
+    frame_timestamp: String(frame.rfc460Timestamp || ''),
     patch_version: String(metadata.patchVersion || ''),
     blue: liveParticipants(metadata.blueTeamMetadata || {}, blueFrame),
     red: liveParticipants(metadata.redTeamMetadata || {}, redFrame),
@@ -1071,9 +1076,18 @@ function championLabel(pick) {
 
 function updateLiveRefreshMeta(details) {
   const updatedAt = new Date().toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  const liveGame = activeGame(details.games || []);
-  const liveSource = liveGame?.live?.source ? ` · ${liveGame.live.source}` : '';
-  $('liveRefreshMeta').textContent = `Last checked ${updatedAt}${liveSource}`;
+  const liveGame = selectedLiveGame(details.games || []);
+  const live = liveGame?.live || {};
+  const liveSource = live.source ? ` · ${live.source}` : '';
+  const frameTime = live.frame_timestamp ? ` · feed ${shortTime(live.frame_timestamp)}` : '';
+  const frameState = live.frame_timestamp ? ` · ${live.frame_changed ? 'new frame' : 'same frame'}` : '';
+  $('liveRefreshMeta').textContent = `Last checked ${updatedAt}${liveSource}${frameTime}${frameState}`;
+}
+
+function shortTime(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat('ja-JP', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(date);
 }
 
 async function predictDetail(left, right, league) {
