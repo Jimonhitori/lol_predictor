@@ -60,7 +60,20 @@
     <section class="grid">
 
       <section class="panel">
-        <h2>Latest Patch Meta</h2>
+        <div class="panelTitleRow">
+          <div>
+            <h2>Latest Patch Meta</h2>
+            <p id="championMetaSub" class="subtleText">All roles</p>
+          </div>
+          <select id="championRole" class="compactSelect" aria-label="Champion meta role">
+            <option value="all">All</option>
+            <option value="top">Top</option>
+            <option value="jng">Jungle</option>
+            <option value="mid">Mid</option>
+            <option value="bot">Bot</option>
+            <option value="sup">Support</option>
+          </select>
+        </div>
         <div id="champions" class="table"></div>
       </section>
 
@@ -79,6 +92,6 @@
     </section>
   </main>
   <script>window.STATIC_SITE = true;</script>
-  <script src="static/app.js?v=786b2eae4f"></script>
+  <script src="static/app.js?v=55fff62496"></script>
 </body>
 </html>
