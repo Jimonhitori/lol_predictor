@@ -1286,7 +1286,7 @@ function championImageId(value) {
     khazix: 'Khazix',
     kogmaw: 'KogMaw',
     ksante: 'KSante',
-    leblanc: 'LeBlanc',
+    leblanc: 'Leblanc',
     leesin: 'LeeSin',
     masteryi: 'MasterYi',
     missfortune: 'MissFortune',
