@@ -5,60 +5,60 @@
   "region": "other",
   "block_name": "",
   "best_of": "3",
-  "status": "unstarted",
+  "status": "completed",
   "teams": [
-    {
-      "id": "111719668301899671",
-      "name": "Once Upon a Team",
-      "code": "OUAT",
-      "image": "http://static.lolesports.com/teams/1704706849093_Once_Upon_A_Teamlogo_square.webp",
-      "game_wins": "0"
-    },
     {
       "id": "107128093558481418",
       "name": "ZennIT",
       "code": "ZNT",
       "image": "http://static.lolesports.com/teams/1671442841824_ZennIT.png",
-      "game_wins": "0"
+      "game_wins": "1"
+    },
+    {
+      "id": "111719668301899671",
+      "name": "Once Upon a Team",
+      "code": "OUAT",
+      "image": "http://static.lolesports.com/teams/1704706849093_Once_Upon_A_Teamlogo_square.webp",
+      "game_wins": "2"
     }
   ],
   "games": [
     {
       "id": "116249441374234455",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "111719668301899671",
-        "team_name": "Once Upon a Team",
-        "team_code": "OUAT"
-      },
-      "red": {
         "team_id": "107128093558481418",
         "team_name": "ZennIT",
         "team_code": "ZNT"
+      },
+      "red": {
+        "team_id": "111719668301899671",
+        "team_name": "Once Upon a Team",
+        "team_code": "OUAT"
       },
       "live": {}
     },
     {
       "id": "116249441374234456",
       "number": 2,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "107128093558481418",
-        "team_name": "ZennIT",
-        "team_code": "ZNT"
-      },
-      "red": {
         "team_id": "111719668301899671",
         "team_name": "Once Upon a Team",
         "team_code": "OUAT"
+      },
+      "red": {
+        "team_id": "107128093558481418",
+        "team_name": "ZennIT",
+        "team_code": "ZNT"
       },
       "live": {}
     },
     {
       "id": "116249441374234457",
       "number": 3,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
         "team_id": "111719668301899671",
         "team_name": "Once Upon a Team",

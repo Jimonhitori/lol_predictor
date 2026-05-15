@@ -5,14 +5,14 @@
   "region": "other",
   "block_name": "",
   "best_of": "5",
-  "status": "inProgress",
+  "status": "completed",
   "teams": [
     {
       "id": "106250729133367861",
       "name": "GOAL esports",
       "code": "GOAL",
       "image": "http://static.lolesports.com/teams/1741780171372_GOAL.png",
-      "game_wins": "0"
+      "game_wins": "3"
     },
     {
       "id": "109704954158795780",
@@ -58,7 +58,7 @@
     {
       "id": "116244276931539993",
       "number": 3,
-      "state": "inProgress",
+      "state": "completed",
       "blue": {
         "team_id": "109704954158795780",
         "team_name": "Team Insidious",
@@ -74,32 +74,32 @@
     {
       "id": "116244276931539994",
       "number": 4,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "109704954158795780",
-        "team_name": "Team Insidious",
-        "team_code": "IN5"
-      },
-      "red": {
         "team_id": "106250729133367861",
         "team_name": "GOAL esports",
         "team_code": "GOAL"
+      },
+      "red": {
+        "team_id": "109704954158795780",
+        "team_name": "Team Insidious",
+        "team_code": "IN5"
       },
       "live": {}
     },
     {
       "id": "116244276931539995",
       "number": 5,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "106250729133367861",
-        "team_name": "GOAL esports",
-        "team_code": "GOAL"
-      },
-      "red": {
         "team_id": "109704954158795780",
         "team_name": "Team Insidious",
         "team_code": "IN5"
+      },
+      "red": {
+        "team_id": "106250729133367861",
+        "team_name": "GOAL esports",
+        "team_code": "GOAL"
       },
       "live": {}
     }

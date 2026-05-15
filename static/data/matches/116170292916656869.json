@@ -5,14 +5,14 @@
   "region": "other",
   "block_name": "",
   "best_of": "3",
-  "status": "unstarted",
+  "status": "completed",
   "teams": [
     {
       "id": "109783170393931575",
       "name": "Conviction",
       "code": "CNV",
       "image": "http://static.lolesports.com/teams/1675158238331_Conviction.png",
-      "game_wins": "0"
+      "game_wins": "2"
     },
     {
       "id": "114746424759893687",
@@ -26,7 +26,7 @@
     {
       "id": "116170292916656870",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
         "team_id": "109783170393931575",
         "team_name": "Conviction",
@@ -42,23 +42,23 @@
     {
       "id": "116170292916656871",
       "number": 2,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "114746424759893687",
-        "team_name": "Dorado Gaming",
-        "team_code": "DOG"
-      },
-      "red": {
         "team_id": "109783170393931575",
         "team_name": "Conviction",
         "team_code": "CNV"
+      },
+      "red": {
+        "team_id": "114746424759893687",
+        "team_name": "Dorado Gaming",
+        "team_code": "DOG"
       },
       "live": {}
     },
     {
       "id": "116170292916656872",
       "number": 3,
-      "state": "unstarted",
+      "state": "unneeded",
       "blue": {
         "team_id": "109783170393931575",
         "team_name": "Conviction",

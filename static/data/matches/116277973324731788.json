@@ -5,37 +5,37 @@
   "region": "other",
   "block_name": "",
   "best_of": "1",
-  "status": "unstarted",
+  "status": "completed",
   "teams": [
-    {
-      "id": "105593951536470384",
-      "name": "GTZ Esports",
-      "code": "GTZ",
-      "image": "http://static.lolesports.com/teams/1738418639441_GTZ_c.png",
-      "game_wins": "0"
-    },
     {
       "id": "107655534225197927",
       "name": "ZeroZone Gaming",
       "code": "ZZG",
       "image": "http://static.lolesports.com/teams/1738418860840_ZZ_c.png",
       "game_wins": "0"
+    },
+    {
+      "id": "105593951536470384",
+      "name": "GTZ Esports",
+      "code": "GTZ",
+      "image": "http://static.lolesports.com/teams/1738418639441_GTZ_c.png",
+      "game_wins": "1"
     }
   ],
   "games": [
     {
       "id": "116277973324731789",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "105593951536470384",
-        "team_name": "GTZ Esports",
-        "team_code": "GTZ"
-      },
-      "red": {
         "team_id": "107655534225197927",
         "team_name": "ZeroZone Gaming",
         "team_code": "ZZG"
+      },
+      "red": {
+        "team_id": "105593951536470384",
+        "team_name": "GTZ Esports",
+        "team_code": "GTZ"
       },
       "live": {}
     }

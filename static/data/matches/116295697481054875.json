@@ -5,7 +5,7 @@
   "region": "other",
   "block_name": "",
   "best_of": "3",
-  "status": "inProgress",
+  "status": "completed",
   "teams": [
     {
       "id": "111658361419868570",
@@ -19,14 +19,14 @@
       "name": "UCAM Esports Club",
       "code": "UCAM",
       "image": "http://static.lolesports.com/teams/1774563455909_ucam_c.png",
-      "game_wins": "0"
+      "game_wins": "2"
     }
   ],
   "games": [
     {
       "id": "116295697481054876",
       "number": 1,
-      "state": "inProgress",
+      "state": "completed",
       "blue": {
         "team_id": "111658361419868570",
         "team_name": "LUA Gaming",
@@ -42,23 +42,23 @@
     {
       "id": "116295697481054877",
       "number": 2,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "105532791598779236",
-        "team_name": "UCAM Esports Club",
-        "team_code": "UCAM"
-      },
-      "red": {
         "team_id": "111658361419868570",
         "team_name": "LUA Gaming",
         "team_code": "LUA"
+      },
+      "red": {
+        "team_id": "105532791598779236",
+        "team_name": "UCAM Esports Club",
+        "team_code": "UCAM"
       },
       "live": {}
     },
     {
       "id": "116295697481054878",
       "number": 3,
-      "state": "unstarted",
+      "state": "unneeded",
       "blue": {
         "team_id": "111658361419868570",
         "team_name": "LUA Gaming",

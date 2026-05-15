@@ -5,44 +5,44 @@
   "region": "other",
   "block_name": "",
   "best_of": "5",
-  "status": "unstarted",
+  "status": "completed",
   "teams": [
-    {
-      "id": "113821139939318065",
-      "name": "GMBLERS Esports",
-      "code": "GMB",
-      "image": "http://static.lolesports.com/teams/1737015399075_logo_interno.PNG",
-      "game_wins": "0"
-    },
     {
       "id": "111691948869032350",
       "name": "EKO Esports",
       "code": "EKO",
       "image": "http://static.lolesports.com/teams/1704283880911_EKO_Esports_Emblem_Logo_Main.png",
       "game_wins": "0"
+    },
+    {
+      "id": "113821139939318065",
+      "name": "GMBLERS Esports",
+      "code": "GMB",
+      "image": "http://static.lolesports.com/teams/1737015399075_logo_interno.PNG",
+      "game_wins": "3"
     }
   ],
   "games": [
     {
       "id": "116222161720779579",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "113821139939318065",
-        "team_name": "GMBLERS Esports",
-        "team_code": "GMB"
-      },
-      "red": {
         "team_id": "111691948869032350",
         "team_name": "EKO Esports",
         "team_code": "EKO"
+      },
+      "red": {
+        "team_id": "113821139939318065",
+        "team_name": "GMBLERS Esports",
+        "team_code": "GMB"
       },
       "live": {}
     },
     {
       "id": "116222161720779580",
       "number": 2,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
         "team_id": "111691948869032350",
         "team_name": "EKO Esports",
@@ -58,48 +58,48 @@
     {
       "id": "116222161720779581",
       "number": 3,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "113821139939318065",
-        "team_name": "GMBLERS Esports",
-        "team_code": "GMB"
-      },
-      "red": {
         "team_id": "111691948869032350",
         "team_name": "EKO Esports",
         "team_code": "EKO"
+      },
+      "red": {
+        "team_id": "113821139939318065",
+        "team_name": "GMBLERS Esports",
+        "team_code": "GMB"
       },
       "live": {}
     },
     {
       "id": "116222161720779582",
       "number": 4,
-      "state": "unstarted",
+      "state": "unneeded",
       "blue": {
-        "team_id": "111691948869032350",
-        "team_name": "EKO Esports",
-        "team_code": "EKO"
-      },
-      "red": {
         "team_id": "113821139939318065",
         "team_name": "GMBLERS Esports",
         "team_code": "GMB"
+      },
+      "red": {
+        "team_id": "111691948869032350",
+        "team_name": "EKO Esports",
+        "team_code": "EKO"
       },
       "live": {}
     },
     {
       "id": "116222161720779583",
       "number": 5,
-      "state": "unstarted",
+      "state": "unneeded",
       "blue": {
-        "team_id": "113821139939318065",
-        "team_name": "GMBLERS Esports",
-        "team_code": "GMB"
-      },
-      "red": {
         "team_id": "111691948869032350",
         "team_name": "EKO Esports",
         "team_code": "EKO"
+      },
+      "red": {
+        "team_id": "113821139939318065",
+        "team_name": "GMBLERS Esports",
+        "team_code": "GMB"
       },
       "live": {}
     }
