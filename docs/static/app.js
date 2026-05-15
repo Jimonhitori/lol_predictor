@@ -3,6 +3,8 @@ const state = { options: null, detailMatchId: null, detailTimer: null, matchesTi
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
+const REFRESH_INTERVAL_MS = 5000;
+const REFRESH_INTERVAL_LABEL = '5s';
 
 async function api(path) {
   if (STATIC_SITE) return staticApi(path);
@@ -511,7 +513,7 @@ async function loadMatchDetailPage() {
   state.detailMatchId = id;
   state.selectedLiveGameId = '';
   await refreshMatchDetail(true);
-  state.detailTimer = window.setInterval(() => refreshMatchDetail(false), 10000);
+  state.detailTimer = window.setInterval(() => refreshMatchDetail(false), REFRESH_INTERVAL_MS);
 }
 
 async function refreshMatchDetail(initial) {
@@ -527,7 +529,7 @@ async function refreshMatchDetail(initial) {
   const left = teams[0] || {};
   const right = teams[1] || {};
   $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
-  $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh 10s`;
+  $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh ${REFRESH_INTERVAL_LABEL}`;
   const seriesWinner = completedSeriesWinner(details);
   $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord', seriesWinner)}${matchInfoBlock(details)}${teamBlock(right, 'redTeamRecord', seriesWinner)}`;
   loadTeamRecords(left, right, details.league);
@@ -1462,7 +1464,7 @@ if ($('matches')) {
   loadOptions().then(() => {
     loadSummary();
     loadMatches();
-    state.matchesTimer = window.setInterval(loadMatches, 10000);
+    state.matchesTimer = window.setInterval(loadMatches, REFRESH_INTERVAL_MS);
   });
 } else {
   loadMatchDetailPage();
