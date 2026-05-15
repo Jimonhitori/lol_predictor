@@ -341,7 +341,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .row.header { color: var(--muted); font-size: 12px; }
 .standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 80px 80px; align-items: center; }
 .rankCell { color: var(--muted); font-weight: 900; }
-.championMetaRow { grid-template-columns: minmax(160px, 1fr) 70px 70px 80px; align-items: center; }
+.championMetaRow { grid-template-columns: minmax(140px, 1fr) 52px 52px 58px 58px 58px; align-items: center; }
 .championMetaCell { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 800; }
 .championMetaCell img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #222b35; border: 1px solid #344150; }
 .championMetaCell span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -572,7 +572,7 @@ function fillTeamStandingSelect() {
 
 function renderChampionTable(id, rows, patch) {
   const version = ddragonVersion(patch);
-  const header = `<div class="row header championMetaRow"><span>Champion</span><span>Picks</span><span>Wins</span><span>Winrate</span></div>`;
+  const header = `<div class="row header championMetaRow"><span>Champion</span><span>Picks</span><span>Wins</span><span>WR</span><span>Ban%</span><span>P/B%</span></div>`;
   $(id).innerHTML = header + rows.map(r => `
     <div class="row championMetaRow">
       <span class="championMetaCell">
@@ -582,6 +582,8 @@ function renderChampionTable(id, rows, patch) {
       <span>${r.games ?? r.picks}</span>
       <span>${r.wins}</span>
       <span>${r.winrate}</span>
+      <span>${r.ban_rate || '-'}</span>
+      <span>${r.presence || '-'}</span>
     </div>
   `).join('');
 }
@@ -2047,8 +2049,8 @@ def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]], context: Ap
         "patch": str(patch),
         "games": int(patch_rows["gameid"].nunique()),
         "leagues": sorted(patch_rows["league"].dropna().astype(str).unique().tolist()),
-        "champions": champion_rows(player_rows),
-        "champions_by_role": champion_rows_by_role(player_rows),
+        "champions": champion_rows(player_rows, patch_rows),
+        "champions_by_role": champion_rows_by_role(player_rows, patch_rows),
         "teams": standings["teams"],
         "standings_split": standings["split"],
         "standings_series": standings["series"],
@@ -2108,7 +2110,10 @@ def match_detail_payload(context: AppContext, match_id: str) -> dict[str, object
     return details
 
 
-def champion_rows(rows: pd.DataFrame) -> list[dict[str, object]]:
+def champion_rows(rows: pd.DataFrame, all_rows: pd.DataFrame | None = None) -> list[dict[str, object]]:
+    game_count = int(rows["gameid"].nunique()) if "gameid" in rows else 0
+    ban_counts = champion_ban_counts(all_rows if all_rows is not None else rows)
+    has_bans = bool(ban_counts)
     data = (
         rows.groupby("champion")
         .agg(picks=("champion", "size"), wins=("result", "sum"))
@@ -2118,16 +2123,65 @@ def champion_rows(rows: pd.DataFrame) -> list[dict[str, object]]:
         .reset_index()
     )
     return [
-        {"name": row.champion, "picks": int(row.picks), "wins": int(row.wins), "winrate": f"{row.winrate:.1%}"}
+        {
+            "name": row.champion,
+            "picks": int(row.picks),
+            "wins": int(row.wins),
+            "winrate": f"{row.winrate:.1%}",
+            "bans": int(ban_counts.get(champion_key(row.champion), 0)) if has_bans else None,
+            "ban_rate": rate_text(ban_counts.get(champion_key(row.champion), 0), game_count) if has_bans else "",
+            "presence": rate_text(int(row.picks) + ban_counts.get(champion_key(row.champion), 0), game_count) if has_bans else "",
+        }
         for row in data.itertuples()
     ]
 
 
-def champion_rows_by_role(rows: pd.DataFrame) -> dict[str, list[dict[str, object]]]:
+def champion_rows_by_role(rows: pd.DataFrame, all_rows: pd.DataFrame | None = None) -> dict[str, list[dict[str, object]]]:
     return {
-        role: champion_rows(rows[rows["position"].astype(str).eq(role)])
+        role: champion_rows(rows[rows["position"].astype(str).eq(role)], all_rows)
         for role in ["top", "jng", "mid", "bot", "sup"]
     }
+
+
+def champion_ban_counts(rows: pd.DataFrame | None) -> dict[str, int]:
+    if rows is None or rows.empty:
+        return {}
+    columns = [column for column in rows.columns if is_ban_column(str(column))]
+    if not columns:
+        return {}
+    source = rows
+    if "position" in source.columns and source["position"].astype(str).eq("team").any():
+        source = source[source["position"].astype(str).eq("team")]
+    if {"gameid", "side"}.issubset(source.columns):
+        source = source.drop_duplicates(subset=["gameid", "side"])
+    values = source[columns].stack().dropna().astype(str)
+    values = values[~values.str.lower().isin({"", "nan", "none", "null", "0"})]
+    if values.empty:
+        return {}
+    keys = values.map(champion_key)
+    return {str(champion): int(count) for champion, count in keys.value_counts().items()}
+
+
+def is_ban_column(column: str) -> bool:
+    key = "".join(ch for ch in column.lower() if ch.isalnum())
+    return (
+        key in {f"ban{i}" for i in range(1, 6)}
+        or key in {f"blueban{i}" for i in range(1, 6)}
+        or key in {f"redban{i}" for i in range(1, 6)}
+        or key in {f"ban{i}champion" for i in range(1, 6)}
+        or key in {f"team1ban{i}" for i in range(1, 6)}
+        or key in {f"team2ban{i}" for i in range(1, 6)}
+    )
+
+
+def rate_text(count: int | float, games: int) -> str:
+    if not games:
+        return "-"
+    return f"{float(count) / games:.1%}"
+
+
+def champion_key(value: object) -> str:
+    return "".join(ch for ch in str(value).lower() if ch.isalnum())
 
 
 def team_rows_payload(rows: pd.DataFrame) -> list[dict[str, object]]:

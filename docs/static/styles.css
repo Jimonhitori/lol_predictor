@@ -137,7 +137,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .row.header { color: var(--muted); font-size: 12px; }
 .standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 80px 80px; align-items: center; }
 .rankCell { color: var(--muted); font-weight: 900; }
-.championMetaRow { grid-template-columns: minmax(160px, 1fr) 70px 70px 80px; align-items: center; }
+.championMetaRow { grid-template-columns: minmax(140px, 1fr) 52px 52px 58px 58px 58px; align-items: center; }
 .championMetaCell { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 800; }
 .championMetaCell img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #222b35; border: 1px solid #344150; }
 .championMetaCell span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
