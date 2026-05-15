@@ -137,7 +137,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .row.header { color: var(--muted); font-size: 12px; }
 .standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 80px 80px; align-items: center; }
 .rankCell { color: var(--muted); font-weight: 900; }
-.championMetaRow { grid-template-columns: minmax(160px, 1fr) 50px 50px 54px 54px 54px; gap: 6px; align-items: center; }
+.championMetaRow { grid-template-columns: minmax(160px, 1fr) 50px 54px 54px 54px; gap: 6px; align-items: center; }
 .championMetaCell { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 800; }
 .championMetaCell img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #222b35; border: 1px solid #344150; }
 .championMetaCell span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -181,8 +181,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .matchScorePill { min-width: 0; }
   .gameList { grid-template-columns: 1fr; }
   .row { font-size: 12px; gap: 6px; }
-  .championMetaRow { grid-template-columns: minmax(118px, 1fr) 46px 52px 50px 50px; gap: 5px; }
-  .championMetaRow > span:nth-child(3) { display: none; }
+  .championMetaRow { grid-template-columns: minmax(118px, 1fr) 46px 50px 50px 50px; gap: 5px; }
   .championMetaCell { gap: 7px; }
   .championMetaCell img { width: 24px; height: 24px; }
   .standingsTable .row { grid-template-columns: minmax(126px, 1fr) 54px 54px 58px; gap: 6px; }
@@ -194,6 +193,6 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .dateTabs .dateTab strong { font-size: 11px; }
   .dateTabs .dateTab span { font-size: 10px; }
   .versus { gap: 6px; font-size: 12px; }
-  .championMetaRow { grid-template-columns: minmax(104px, 1fr) 40px 46px 44px 44px; }
+  .championMetaRow { grid-template-columns: minmax(104px, 1fr) 40px 44px 44px 44px; }
   .standingsTable .row { grid-template-columns: minmax(112px, 1fr) 48px 48px 52px; }
 }
