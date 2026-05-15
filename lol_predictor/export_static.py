@@ -200,7 +200,7 @@ def champion_presence_for_query(rows: pd.DataFrame, query: dict[str, list[str]])
         stats = fetch_gol_champion_presence(split)
         if not stats:
             continue
-        denominator += gol_presence_denominator(stats)
+        denominator += max(gol_presence_denominator(stats), max_presence_count(stats))
         for key, row in stats.items():
             target = merged.setdefault(key, {"picks": 0.0, "bans": 0.0, "presence_count": 0.0})
             target["picks"] += float(row.get("picks") or 0)
@@ -209,8 +209,8 @@ def champion_presence_for_query(rows: pd.DataFrame, query: dict[str, list[str]])
     if not merged or not denominator:
         return {}
     for row in merged.values():
-        row["ban_rate"] = row["bans"] / denominator
-        row["presence"] = row["presence_count"] / denominator
+        row["ban_rate"] = min(row["bans"] / denominator, 1.0)
+        row["presence"] = min(row["presence_count"] / denominator, 1.0)
     return merged
 
 
@@ -273,7 +273,11 @@ def gol_presence_denominator(stats: dict[str, dict[str, float]]) -> float:
         for row in stats.values()
         if float(row.get("denominator") or 0) > 0
     ]
-    return min(inferred) if inferred else 0.0
+    return max(inferred) if inferred else 0.0
+
+
+def max_presence_count(stats: dict[str, dict[str, float]]) -> float:
+    return max((float(row.get("presence_count") or 0) for row in stats.values()), default=0.0)
 
 
 def merge_champion_presence(rows: list[dict[str, object]], presence: dict[str, dict[str, float]]) -> None:
@@ -295,7 +299,7 @@ def number_value(value: object) -> float:
 
 
 def percent_text(value: float) -> str:
-    return f"{value * 100:.1f}%"
+    return f"{min(max(value, 0.0), 1.0) * 100:.1f}%"
 
 
 def champion_key(value: object) -> str:

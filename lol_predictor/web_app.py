@@ -2224,7 +2224,7 @@ def is_ban_column(column: str) -> bool:
 def rate_text(count: int | float, games: int) -> str:
     if not games:
         return "-"
-    return f"{float(count) / games:.1%}"
+    return f"{min(max(float(count) / games, 0.0), 1.0):.1%}"
 
 
 def champion_key(value: object) -> str:
