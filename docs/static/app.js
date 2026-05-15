@@ -1236,13 +1236,29 @@ function hasMeaningfulLiveData(live) {
   );
 }
 
+const TRINKET_ITEM_IDS = new Set(['3330', '3340', '3341', '3342', '3361', '3362', '3363', '3364']);
+
 function itemSlots(items) {
-  const slots = Array.from({ length: 7 }, (_, index) => items[index]).map(item => {
-    const id = String(item || '').replace(/[^0-9]/g, '');
+  const slots = orderedItemSlots(items).map(id => {
     if (!id) return '<span class="itemSlot"></span>';
     return `<span class="itemSlot"><img src="https://ddragon.leagueoflegends.com/cdn/16.9.1/img/item/${escapeHtml(id)}.png" alt=""></span>`;
   });
   return `<div class="itemSlots">${slots.join('')}</div>`;
+}
+
+function orderedItemSlots(items) {
+  const ids = (items || []).map(item => String(item || '').replace(/[^0-9]/g, '')).filter(Boolean);
+  const trinkets = ids.filter(id => TRINKET_ITEM_IDS.has(id));
+  const regularItems = ids.filter(id => !TRINKET_ITEM_IDS.has(id));
+  const slots = Array(7).fill('');
+  const trinketCount = Math.min(trinkets.length, 7);
+  regularItems.slice(0, 7 - trinketCount).forEach((id, index) => {
+    slots[index] = id;
+  });
+  trinkets.slice(-trinketCount).forEach((id, index) => {
+    slots[7 - trinketCount + index] = id;
+  });
+  return slots;
 }
 
 function emptyLivePlayers() {
