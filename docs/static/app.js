@@ -1,5 +1,5 @@
 
-const state = { options: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
+const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
@@ -213,6 +213,14 @@ function renderChampionTable(id, rows, patch) {
   `).join('');
 }
 
+function renderChampionMeta(data) {
+  const role = $('championRole')?.value || 'all';
+  const rows = role === 'all' ? (data.champions || []) : ((data.champions_by_role || {})[role] || []);
+  const label = roleLabel(role === 'all' ? 'All roles' : role);
+  if ($('championMetaSub')) $('championMetaSub').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
+  renderChampionTable('champions', rows, data.patch);
+}
+
 async function loadOptions() {
   state.options = await api('/api/options');
   fillSelect('league', state.options.leagues);
@@ -231,8 +239,9 @@ async function loadOptions() {
 
 async function loadSummary() {
   const data = await api('/api/summary?' + qs());
+  state.summary = data;
   $('meta').textContent = `Patch ${data.patch} | ${data.games} games | ${data.leagues.join(', ')}`;
-  renderChampionTable('champions', data.champions, data.patch);
+  renderChampionMeta(data);
   await loadTeamStandings();
 }
 
@@ -1484,6 +1493,7 @@ function setValue(id, value) {
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
+  if ($('championRole')) $('championRole').addEventListener('change', () => state.summary && renderChampionMeta(state.summary));
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
     renderDateTabs(state.allMatches);

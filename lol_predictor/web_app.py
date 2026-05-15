@@ -102,7 +102,20 @@ APP_HTML = """<!doctype html>
       </form>
 
       <section class="panel">
-        <h2>Latest Patch Meta</h2>
+        <div class="panelTitleRow">
+          <div>
+            <h2>Latest Patch Meta</h2>
+            <p id="championMetaSub" class="subtleText">All roles</p>
+          </div>
+          <select id="championRole" class="compactSelect" aria-label="Champion meta role">
+            <option value="all">All</option>
+            <option value="top">Top</option>
+            <option value="jng">Jungle</option>
+            <option value="mid">Mid</option>
+            <option value="bot">Bot</option>
+            <option value="sup">Support</option>
+          </select>
+        </div>
         <div id="champions" class="table"></div>
       </section>
 
@@ -359,7 +372,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 
 
 APP_JS = """
-const state = { options: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
+const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
@@ -573,6 +586,14 @@ function renderChampionTable(id, rows, patch) {
   `).join('');
 }
 
+function renderChampionMeta(data) {
+  const role = $('championRole')?.value || 'all';
+  const rows = role === 'all' ? (data.champions || []) : ((data.champions_by_role || {})[role] || []);
+  const label = roleLabel(role === 'all' ? 'All roles' : role);
+  if ($('championMetaSub')) $('championMetaSub').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
+  renderChampionTable('champions', rows, data.patch);
+}
+
 async function loadOptions() {
   state.options = await api('/api/options');
   fillSelect('league', state.options.leagues);
@@ -591,8 +612,9 @@ async function loadOptions() {
 
 async function loadSummary() {
   const data = await api('/api/summary?' + qs());
+  state.summary = data;
   $('meta').textContent = `Patch ${data.patch} | ${data.games} games | ${data.leagues.join(', ')}`;
-  renderChampionTable('champions', data.champions, data.patch);
+  renderChampionMeta(data);
   await loadTeamStandings();
 }
 
@@ -1844,6 +1866,7 @@ function setValue(id, value) {
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
+  if ($('championRole')) $('championRole').addEventListener('change', () => state.summary && renderChampionMeta(state.summary));
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
     renderDateTabs(state.allMatches);
@@ -1993,6 +2016,7 @@ def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]], context: Ap
         "games": int(patch_rows["gameid"].nunique()),
         "leagues": sorted(patch_rows["league"].dropna().astype(str).unique().tolist()),
         "champions": champion_rows(player_rows),
+        "champions_by_role": champion_rows_by_role(player_rows),
         "teams": standings["teams"],
         "standings_split": standings["split"],
         "standings_series": standings["series"],
@@ -2065,6 +2089,13 @@ def champion_rows(rows: pd.DataFrame) -> list[dict[str, object]]:
         {"name": row.champion, "picks": int(row.picks), "wins": int(row.wins), "winrate": f"{row.winrate:.1%}"}
         for row in data.itertuples()
     ]
+
+
+def champion_rows_by_role(rows: pd.DataFrame) -> dict[str, list[dict[str, object]]]:
+    return {
+        role: champion_rows(rows[rows["position"].astype(str).eq(role)])
+        for role in ["top", "jng", "mid", "bot", "sup"]
+    }
 
 
 def team_rows_payload(rows: pd.DataFrame) -> list[dict[str, object]]:
