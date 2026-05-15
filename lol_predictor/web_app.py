@@ -213,7 +213,7 @@ h1 { font-size: 28px; }
 h2 { font-size: 16px; margin-bottom: 14px; }
 p, label { color: var(--muted); font-size: 13px; }
 .filters { display: flex; gap: 8px; }
-.grid { display: grid; grid-template-columns: 420px 1fr; gap: 18px; align-items: start; }
+.grid { display: grid; grid-template-columns: minmax(560px, 1.35fr) minmax(360px, .85fr); gap: 18px; align-items: start; }
 .detailGrid { margin-top: 18px; margin-bottom: 0; }
 .panelStack { display: grid; gap: 18px; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
@@ -341,7 +341,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .row.header { color: var(--muted); font-size: 12px; }
 .standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 80px 80px; align-items: center; }
 .rankCell { color: var(--muted); font-weight: 900; }
-.championMetaRow { grid-template-columns: minmax(140px, 1fr) 52px 52px 58px 58px 58px; align-items: center; }
+.championMetaRow { grid-template-columns: minmax(170px, 1fr) 54px 54px 58px 58px 58px; gap: 7px; align-items: center; }
 .championMetaCell { display: flex; align-items: center; gap: 9px; min-width: 0; font-weight: 800; }
 .championMetaCell img { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; background: #222b35; border: 1px solid #344150; }
 .championMetaCell span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
