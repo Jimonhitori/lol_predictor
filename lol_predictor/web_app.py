@@ -1222,8 +1222,8 @@ function renderLiveDraft(details) {
       <div class="liveTop">
         ${liveTeamHeader(blueTeam)}
         <div class="liveCenter">
-          <span class="liveBadge">${escapeHtml(liveBadgeText(hasLive, meaningfulLive))}</span>
-          <span class="liveTimer">${escapeHtml(liveTimerText(live, meaningfulLive))}</span>
+          <span class="liveBadge">${escapeHtml(liveBadgeText(game, hasLive, meaningfulLive))}</span>
+          <span class="liveTimer">${escapeHtml(liveTimerText(game, live, meaningfulLive))}</span>
         </div>
         ${liveTeamHeader(redTeam)}
       </div>
@@ -1532,13 +1532,20 @@ function deltaClass(value) {
   return 'neutral';
 }
 
-function liveBadgeText(hasLive, meaningfulLive) {
+function liveBadgeText(game, hasLive, meaningfulLive) {
+  const state = String(game?.state || '').toLowerCase();
+  if (state === 'completed') return 'Ended';
+  if (state === 'unneeded') return 'Unneeded';
+  if (state === 'unstarted') return 'Unstarted';
   if (!hasLive) return 'STATS TEMPORARILY DISABLED';
   if (!meaningfulLive) return 'Unstarted';
   return 'IN GAME';
 }
 
-function liveTimerText(live, meaningfulLive) {
+function liveTimerText(game, live, meaningfulLive) {
+  const state = String(game?.state || '').toLowerCase();
+  if (state === 'completed') return 'ENDED';
+  if (state === 'unneeded') return '-';
   const official = Number(live?.game_time || 0);
   if (official > 0) return formatGameTime(official);
   return meaningfulLive ? 'LIVE' : '--:--';
