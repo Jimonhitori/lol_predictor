@@ -1214,6 +1214,8 @@ function renderLiveDraft(details) {
   const redPlayers = livePlayersForSide(details, game, 'red', redTeam);
   const hasLive = Boolean((live.blue || []).length || (live.red || []).length);
   const meaningfulLive = hasMeaningfulLiveData(live);
+  const badgeText = liveBadgeText(details, game, hasLive, meaningfulLive);
+  const timerText = liveTimerText(details, game, live, meaningfulLive);
   const board = $('liveBoard');
   if (!board) return;
   board.innerHTML = `
@@ -1222,8 +1224,8 @@ function renderLiveDraft(details) {
       <div class="liveTop">
         ${liveTeamHeader(blueTeam)}
         <div class="liveCenter">
-          <span class="liveBadge">${escapeHtml(liveBadgeText(details, game, hasLive, meaningfulLive))}</span>
-          <span class="liveTimer">${escapeHtml(liveTimerText(details, game, live, meaningfulLive))}</span>
+          <span class="liveBadge">${escapeHtml(badgeText)}</span>
+          ${timerText ? `<span class="liveTimer">${escapeHtml(timerText)}</span>` : ''}
         </div>
         ${liveTeamHeader(redTeam)}
       </div>
@@ -1535,8 +1537,11 @@ function deltaClass(value) {
 function liveBadgeText(details, game, hasLive, meaningfulLive) {
   const seriesState = String(details?.status || '').toLowerCase();
   const state = String(game?.state || '').toLowerCase();
-  if (['completed', 'complete'].includes(seriesState)) return 'Ended';
-  if (state === 'completed') return 'Ended';
+  if (['completed', 'complete'].includes(seriesState) || state === 'completed') {
+    const winner = completedSeriesWinner(details) || gameWinnerTeam(details, game);
+    const label = winner?.code || winner?.name || 'Winner';
+    return `${label} WON`;
+  }
   if (state === 'unneeded') return 'Unneeded';
   if (state === 'unstarted') return 'Unstarted';
   if (!hasLive) return 'STATS TEMPORARILY DISABLED';
@@ -1547,8 +1552,7 @@ function liveBadgeText(details, game, hasLive, meaningfulLive) {
 function liveTimerText(details, game, live, meaningfulLive) {
   const seriesState = String(details?.status || '').toLowerCase();
   const state = String(game?.state || '').toLowerCase();
-  if (['completed', 'complete'].includes(seriesState)) return 'ENDED';
-  if (state === 'completed') return 'ENDED';
+  if (['completed', 'complete'].includes(seriesState) || state === 'completed') return '';
   if (state === 'unneeded') return '-';
   const official = Number(live?.game_time || 0);
   if (official > 0) return formatGameTime(official);
