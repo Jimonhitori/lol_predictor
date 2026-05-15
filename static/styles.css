@@ -162,5 +162,38 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hEmpty { color: var(--muted); font-size: 12px; }
 @media (max-width: 1100px) { .liveTeamRows { grid-template-columns: 160px minmax(120px, 1fr) 70px 30px 30px 30px 92px; } .liveItems, .liveRowsHeader.items, .liveCell.delta, .liveRowsHeader.delta { display: none; } }
 @media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } .liveTop { grid-template-columns: 1fr; } .liveStatsLine { grid-template-columns: 1fr; } }
+@media (max-width: 720px) {
+  .shell { padding: 12px 10px 28px; }
+  h1 { font-size: 22px; line-height: 1.15; }
+  h2 { font-size: 15px; margin-bottom: 8px; }
+  .panel { padding: 12px; border-radius: 7px; }
+  .sectionHead, .panelTitleRow { align-items: stretch; flex-direction: column; gap: 8px; }
+  .compactSelect, .filters select { width: 100%; min-width: 0; }
+  .matches { grid-template-columns: 1fr; }
+  .match { padding: 10px; }
+  .matchMeta { font-size: 11px; }
+  .cardTeam img { width: 36px; height: 36px; }
+  .matchCenter { margin-bottom: 12px; }
+  .selectedMatch { gap: 10px; }
+  .selectedMatch.twoTeams { grid-template-columns: 1fr 1fr; }
+  .teamBlock img { width: 48px; height: 48px; }
+  .teamBlock strong { font-size: 13px; }
+  .matchScorePill { min-width: 0; }
+  .gameList { grid-template-columns: 1fr; }
+  .row { font-size: 12px; gap: 6px; }
+  .championMetaRow { grid-template-columns: minmax(118px, 1fr) 46px 52px 50px 50px; gap: 5px; }
+  .championMetaRow > span:nth-child(3) { display: none; }
+  .championMetaCell { gap: 7px; }
+  .championMetaCell img { width: 24px; height: 24px; }
+  .standingsTable .row { grid-template-columns: minmax(126px, 1fr) 54px 54px 58px; gap: 6px; }
+  .standingsTable .row > span:first-child { display: none; }
+}
 @media (max-width: 640px) { .h2hRow { grid-template-columns: 58px minmax(64px, 1fr) 18px 48px 18px minmax(64px, 1fr); gap: 5px; font-size: 12px; } }
-@media (max-width: 640px) { .selectedMatch { grid-template-columns: 1fr; } }
+@media (max-width: 520px) {
+  .dateTabs .dateTab { padding: 6px 4px; }
+  .dateTabs .dateTab strong { font-size: 11px; }
+  .dateTabs .dateTab span { font-size: 10px; }
+  .versus { gap: 6px; font-size: 12px; }
+  .championMetaRow { grid-template-columns: minmax(104px, 1fr) 40px 46px 44px 44px; }
+  .standingsTable .row { grid-template-columns: minmax(112px, 1fr) 48px 48px 52px; }
+}
