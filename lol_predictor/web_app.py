@@ -605,7 +605,7 @@ function fillTeamStandingSelect() {
 
 function renderChampionTable(id, rows, patch) {
   const version = ddragonVersion(patch);
-  const header = `<div class="row header championMetaRow"><span>Champion</span><span>Picks</span><span>Wins</span><span>WR</span><span>Ban%</span><span>P/B%</span></div>`;
+  const header = `<div class="row header championMetaRow"><span>Champion</span><span>Picks</span><span>Ban</span><span>Wins</span><span>WR</span><span>P/B</span></div>`;
   $(id).innerHTML = header + rows.map(r => `
     <div class="row championMetaRow">
       <span class="championMetaCell">
@@ -613,9 +613,9 @@ function renderChampionTable(id, rows, patch) {
         <span>${escapeHtml(championDisplayName(r.name))}</span>
       </span>
       <span>${r.games ?? r.picks}</span>
+      <span>${r.bans ?? '-'}</span>
       <span>${r.wins}</span>
       <span>${r.winrate}</span>
-      <span>${r.ban_rate || '-'}</span>
       <span>${r.presence || '-'}</span>
     </div>
   `).join('');
