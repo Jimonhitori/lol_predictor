@@ -5,44 +5,44 @@
   "region": "other",
   "block_name": "",
   "best_of": "3",
-  "status": "unstarted",
+  "status": "completed",
   "teams": [
-    {
-      "id": "107467803833323099",
-      "name": "Heretics Academy",
-      "code": "HRTS",
-      "image": "http://static.lolesports.com/teams/1661502137823_LOGOHERETICSPNG.png",
-      "game_wins": "0"
-    },
     {
       "id": "116011430753382397",
       "name": "UB Alma Mater",
       "code": "UB",
       "image": "http://static.lolesports.com/teams/1774563483977_alma_c.png",
       "game_wins": "0"
+    },
+    {
+      "id": "107467803833323099",
+      "name": "Heretics Academy",
+      "code": "HRTS",
+      "image": "http://static.lolesports.com/teams/1661502137823_LOGOHERETICSPNG.png",
+      "game_wins": "2"
     }
   ],
   "games": [
     {
       "id": "116295697481054888",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "107467803833323099",
-        "team_name": "Heretics Academy",
-        "team_code": "HRTS"
-      },
-      "red": {
         "team_id": "116011430753382397",
         "team_name": "UB Alma Mater",
         "team_code": "UB"
+      },
+      "red": {
+        "team_id": "107467803833323099",
+        "team_name": "Heretics Academy",
+        "team_code": "HRTS"
       },
       "live": {}
     },
     {
       "id": "116295697481054889",
       "number": 2,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
         "team_id": "116011430753382397",
         "team_name": "UB Alma Mater",
@@ -58,7 +58,7 @@
     {
       "id": "116295697481054890",
       "number": 3,
-      "state": "unstarted",
+      "state": "unneeded",
       "blue": {
         "team_id": "107467803833323099",
         "team_name": "Heretics Academy",

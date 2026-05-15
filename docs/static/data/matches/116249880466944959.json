@@ -5,60 +5,60 @@
   "region": "other",
   "block_name": "",
   "best_of": "3",
-  "status": "unstarted",
+  "status": "completed",
   "teams": [
-    {
-      "id": "105550033967461806",
-      "name": "KRX Challengers",
-      "code": "KRX",
-      "image": "http://static.lolesports.com/teams/1774247830795_horizontal_EN_Wh.png",
-      "game_wins": "0"
-    },
     {
       "id": "105550042327365041",
       "name": "Gen.G Global Academy",
       "code": "GGA",
       "image": "http://static.lolesports.com/teams/1672911977540_GGA_2023ver_LOGO_GGA_simplyA_W1.png",
       "game_wins": "0"
+    },
+    {
+      "id": "105550033967461806",
+      "name": "KRX Challengers",
+      "code": "KRX",
+      "image": "http://static.lolesports.com/teams/1774247830795_horizontal_EN_Wh.png",
+      "game_wins": "2"
     }
   ],
   "games": [
     {
       "id": "116249880466944960",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "105550033967461806",
-        "team_name": "KRX Challengers",
-        "team_code": "KRX"
-      },
-      "red": {
         "team_id": "105550042327365041",
         "team_name": "Gen.G Global Academy",
         "team_code": "GGA"
+      },
+      "red": {
+        "team_id": "105550033967461806",
+        "team_name": "KRX Challengers",
+        "team_code": "KRX"
       },
       "live": {}
     },
     {
       "id": "116249880466944961",
       "number": 2,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "105550033967461806",
-        "team_name": "KRX Challengers",
-        "team_code": "KRX"
-      },
-      "red": {
         "team_id": "105550042327365041",
         "team_name": "Gen.G Global Academy",
         "team_code": "GGA"
+      },
+      "red": {
+        "team_id": "105550033967461806",
+        "team_name": "KRX Challengers",
+        "team_code": "KRX"
       },
       "live": {}
     },
     {
       "id": "116249880466944962",
       "number": 3,
-      "state": "unstarted",
+      "state": "unneeded",
       "blue": {
         "team_id": "105550042327365041",
         "team_name": "Gen.G Global Academy",

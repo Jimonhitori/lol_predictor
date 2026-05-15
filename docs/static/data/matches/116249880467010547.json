@@ -5,69 +5,69 @@
   "region": "other",
   "block_name": "",
   "best_of": "3",
-  "status": "unstarted",
+  "status": "completed",
   "teams": [
-    {
-      "id": "105550047979361273",
-      "name": "HLE Challengers",
-      "code": "HLE",
-      "image": "http://static.lolesports.com/teams/hle-2021-color-on-dark.png",
-      "game_wins": "0"
-    },
     {
       "id": "105550054006182911",
       "name": "NS Challengers",
       "code": "NS",
       "image": "http://static.lolesports.com/teams/NSFullonDark.png",
-      "game_wins": "0"
+      "game_wins": "2"
+    },
+    {
+      "id": "105550047979361273",
+      "name": "HLE Challengers",
+      "code": "HLE",
+      "image": "http://static.lolesports.com/teams/hle-2021-color-on-dark.png",
+      "game_wins": "1"
     }
   ],
   "games": [
     {
       "id": "116249880467010548",
       "number": 1,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "105550047979361273",
-        "team_name": "HLE Challengers",
-        "team_code": "HLE"
-      },
-      "red": {
         "team_id": "105550054006182911",
         "team_name": "NS Challengers",
         "team_code": "NS"
+      },
+      "red": {
+        "team_id": "105550047979361273",
+        "team_name": "HLE Challengers",
+        "team_code": "HLE"
       },
       "live": {}
     },
     {
       "id": "116249880467010549",
       "number": 2,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "105550047979361273",
-        "team_name": "HLE Challengers",
-        "team_code": "HLE"
-      },
-      "red": {
         "team_id": "105550054006182911",
         "team_name": "NS Challengers",
         "team_code": "NS"
+      },
+      "red": {
+        "team_id": "105550047979361273",
+        "team_name": "HLE Challengers",
+        "team_code": "HLE"
       },
       "live": {}
     },
     {
       "id": "116249880467010550",
       "number": 3,
-      "state": "unstarted",
+      "state": "completed",
       "blue": {
-        "team_id": "105550054006182911",
-        "team_name": "NS Challengers",
-        "team_code": "NS"
-      },
-      "red": {
         "team_id": "105550047979361273",
         "team_name": "HLE Challengers",
         "team_code": "HLE"
+      },
+      "red": {
+        "team_id": "105550054006182911",
+        "team_name": "NS Challengers",
+        "team_code": "NS"
       },
       "live": {}
     }

@@ -10,8 +10,12 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlparse
 from urllib.request import Request, urlopen
 
-import joblib
 import pandas as pd
+
+try:
+    import joblib
+except ModuleNotFoundError:
+    joblib = None
 
 from .data import load_match_rows, load_patch_notes
 from .inference import build_prediction_row
@@ -355,9 +359,10 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 
 
 APP_JS = """
-const state = { options: null, detailMatchId: null, detailTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
+const state = { options: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
+const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 
 async function api(path) {
   if (STATIC_SITE) return staticApi(path);
@@ -388,13 +393,109 @@ async function staticApi(path) {
     target = `static/data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_a') || '')}__${staticKey(params.get('team_b') || '')}.json`;
   }
   if (!target) throw new Error(`Static data route is not available: ${path}`);
-  const response = await fetch(target);
+  const response = await fetch(target, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
-  return response.json();
+  const data = await response.json();
+  if (url.pathname === '/api/match') {
+    const fresh = await fetchLolesportsEventDetails(params.get('id') || '');
+    return mergeFreshDetails(data, fresh);
+  }
+  return data;
 }
 
 function staticKey(value) {
   return String(value || 'all').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'all';
+}
+
+async function fetchLolesportsEventDetails(matchId) {
+  if (!STATIC_SITE || !matchId) return {};
+  try {
+    const url = `https://esports-api.lolesports.com/persisted/gw/getEventDetails?hl=en-US&id=${encodeURIComponent(matchId)}`;
+    const response = await fetch(url, {
+      cache: 'no-store',
+      headers: { 'x-api-key': LOLESPORTS_API_KEY, 'accept': 'application/json' },
+    });
+    if (!response.ok) return {};
+    const payload = await response.json();
+    const event = payload?.data?.event;
+    return event && typeof event === 'object' ? normalizeLolesportsEventDetail(event) : {};
+  } catch (error) {
+    return {};
+  }
+}
+
+function normalizeLolesportsEventDetail(event) {
+  const match = event.match || {};
+  const teams = Array.isArray(match.teams) ? match.teams : [];
+  const games = Array.isArray(match.games) ? match.games : [];
+  const league = event.league || {};
+  const teamById = Object.fromEntries(teams.map(team => [String(team.id || ''), team]));
+  const bestOf = String(match.strategy?.count || '');
+  const normalizedTeams = teams.map(normalizeLolesportsTeam);
+  const normalizedGames = games.map(game => normalizeLolesportsGame(game, teamById));
+  return {
+    id: String(event.id || match.id || ''),
+    league: String(league.name || 'Unknown'),
+    best_of: bestOf,
+    status: seriesStateFromGames(normalizedGames, normalizedTeams, bestOf, String(event.state || '')),
+    start_time: String(event.startTime || ''),
+    teams: normalizedTeams,
+    games: normalizedGames,
+    source: 'lolesports_api',
+  };
+}
+
+function normalizeLolesportsTeam(team) {
+  const result = team.result || {};
+  return {
+    id: String(team.id || ''),
+    name: String(team.name || ''),
+    code: String(team.code || ''),
+    image: String(team.image || ''),
+    game_wins: String(result.gameWins ?? '0'),
+  };
+}
+
+function normalizeLolesportsGame(game, teamById) {
+  const sides = {};
+  for (const team of Array.isArray(game.teams) ? game.teams : []) {
+    const sourceTeam = teamById[String(team.id || '')] || {};
+    sides[String(team.side || '').toLowerCase()] = {
+      team_id: String(team.id || ''),
+      team_name: String(sourceTeam.name || ''),
+      team_code: String(sourceTeam.code || ''),
+    };
+  }
+  return {
+    id: String(game.id || ''),
+    number: Number(game.number || 0),
+    state: String(game.state || ''),
+    blue: sides.blue || {},
+    red: sides.red || {},
+    live: {},
+  };
+}
+
+function seriesStateFromGames(games, teams, bestOf, eventState) {
+  const event = String(eventState || '').toLowerCase();
+  const needed = Number(bestOf || 0) ? Math.floor(Number(bestOf) / 2) + 1 : 0;
+  const wins = teams.map(team => scoreNumber(team.game_wins));
+  if (needed && Math.max(...wins, 0) >= needed) return 'completed';
+  if (['completed', 'complete'].includes(event)) return 'completed';
+  if (games.some(game => String(game.state || '').toLowerCase() === 'inprogress')) return 'inProgress';
+  if (games.some(game => String(game.state || '').toLowerCase() === 'completed')) return 'inProgress';
+  return event || 'unstarted';
+}
+
+function mergeFreshDetails(base, fresh) {
+  if (!fresh?.id) return base;
+  return {
+    ...base,
+    ...fresh,
+    league_group: base.league_group || fresh.league_group || '',
+    region: base.region || fresh.region || '',
+    start_time: fresh.start_time || base.start_time || '',
+  };
 }
 
 async function postPredict(payload) {
@@ -512,8 +613,48 @@ async function loadMatches() {
   if (!state.selectedMatchDate) {
     state.selectedMatchDate = defaultMatchDate(state.allMatches);
   }
+  await refreshStaticMatchStatuses();
   renderDateTabs(state.allMatches);
   renderMatches();
+}
+
+async function refreshStaticMatchStatuses() {
+  if (!STATIC_SITE || !state.allMatches.length) return;
+  const targets = state.allMatches.filter(shouldRefreshMatchStatus).slice(0, 12);
+  if (!targets.length) return;
+  const freshDetails = await Promise.all(targets.map(match => fetchLolesportsEventDetails(match.id)));
+  const freshById = Object.fromEntries(freshDetails.filter(details => details?.id).map(details => [String(details.id), details]));
+  state.allMatches = state.allMatches.map(match => {
+    const fresh = freshById[String(match.id || '')];
+    if (!fresh) return match;
+    const teams = fresh.teams || [];
+    return {
+      ...match,
+      status: fresh.status || match.status,
+      start_time: fresh.start_time || match.start_time,
+      best_of: fresh.best_of || match.best_of,
+      blue_team: teams[0]?.name || match.blue_team,
+      red_team: teams[1]?.name || match.red_team,
+      blue_code: teams[0]?.code || match.blue_code,
+      red_code: teams[1]?.code || match.red_code,
+      blue_image: teams[0]?.image || match.blue_image,
+      red_image: teams[1]?.image || match.red_image,
+      blue_score: teams[0]?.game_wins ?? match.blue_score,
+      red_score: teams[1]?.game_wins ?? match.red_score,
+    };
+  });
+}
+
+function shouldRefreshMatchStatus(match) {
+  if (!match?.id) return false;
+  const status = String(match.status || '').toLowerCase();
+  if (['completed', 'complete'].includes(status)) return false;
+  const matchDate = localDateKey(match.start_time);
+  const today = localDateKey(new Date().toISOString());
+  return state.selectedMatchDate === 'live'
+    || matchDate === state.selectedMatchDate
+    || matchDate === today
+    || (matchDate && matchDate < today);
 }
 
 function renderMatches() {
@@ -1678,7 +1819,11 @@ if ($('matches')) {
     renderMatches();
   });
   if ($('predictForm')) $('predictForm').addEventListener('submit', predict);
-  loadOptions().then(() => { loadSummary(); loadMatches(); });
+  loadOptions().then(() => {
+    loadSummary();
+    loadMatches();
+    state.matchesTimer = window.setInterval(loadMatches, 10000);
+  });
 } else {
   loadMatchDetailPage();
 }
@@ -1712,7 +1857,7 @@ class AppContext:
         self.patch = latest_patch(self.rows)
         self.patch_notes = load_patch_notes(args.patch_notes)
         self.champion_reference = load_patch_notes(args.champion_reference)
-        self.model_bundle = joblib.load(args.model_path) if args.model_path.exists() else None
+        self.model_bundle = joblib.load(args.model_path) if joblib and args.model_path.exists() else None
         self.today_cache = args.today_cache
 
 
