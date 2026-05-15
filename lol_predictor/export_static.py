@@ -174,9 +174,6 @@ def enriched_summary(context: AppContext, query: dict[str, list[str]]) -> dict[s
         merge_champion_presence(payload.get("champions") or [], presence)
         for rows in (payload.get("champions_by_role") or {}).values():
             merge_champion_presence(rows or [], presence)
-    sort_champion_meta(payload.get("champions") or [])
-    for rows in (payload.get("champions_by_role") or {}).values():
-        sort_champion_meta(rows or [])
     return payload
 
 
@@ -293,27 +290,8 @@ def merge_champion_presence(rows: list[dict[str, object]], presence: dict[str, d
         row["presence"] = percent_text(float(stats.get("presence") or 0))
 
 
-def sort_champion_meta(rows: list[dict[str, object]]) -> None:
-    rows.sort(
-        key=lambda row: (
-            percent_number(row.get("presence")) / 100.0,
-            int(row.get("picks") or row.get("games") or 0),
-            float(str(row.get("winrate") or "0").replace("%", "") or 0),
-        ),
-        reverse=True,
-    )
-
-
 def number_value(value: object) -> float:
     text = str(value).replace("%", "").replace(",", "").strip()
-    try:
-        return float(text)
-    except ValueError:
-        return 0.0
-
-
-def percent_number(value: object) -> float:
-    text = str(value or "").replace("%", "").strip()
     try:
         return float(text)
     except ValueError:
