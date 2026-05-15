@@ -1629,7 +1629,7 @@ function championIcon(value) {
 function championImage(value, version = '16.9.1') {
   const id = championImageId(value);
   if (!id) return '';
-  return `<img src="https://ddragon.leagueoflegends.com/cdn/${escapeHtml(version)}/img/champion/${escapeHtml(id)}.png" alt="">`;
+  return `<img src="https://ddragon.leagueoflegends.com/cdn/${escapeHtml(version)}/img/champion/${escapeHtml(id)}.png" alt="" data-champion="${escapeHtml(value)}" onerror="this.replaceWith(championImageFallback(this.dataset.champion))">`;
 }
 
 function ddragonVersion(patch) {
@@ -1646,8 +1646,40 @@ function roleLabel(value) {
 
 function championImageId(value) {
   const text = String(value || '').replace(/[^A-Za-z0-9]/g, '');
-  const aliases = { Wukong: 'MonkeyKing', KaiSa: 'Kaisa', Kaisa: 'Kaisa' };
-  return aliases[text] || text;
+  const aliases = {
+    aurelionsol: 'AurelionSol',
+    belveth: 'Belveth',
+    chogath: 'Chogath',
+    drmundo: 'DrMundo',
+    fiddlesticks: 'Fiddlesticks',
+    jarvaniv: 'JarvanIV',
+    kaisa: 'Kaisa',
+    khazix: 'Khazix',
+    kogmaw: 'KogMaw',
+    ksante: 'KSante',
+    leblanc: 'LeBlanc',
+    leesin: 'LeeSin',
+    masteryi: 'MasterYi',
+    missfortune: 'MissFortune',
+    monkeyking: 'MonkeyKing',
+    nunuwillump: 'Nunu',
+    reksai: 'RekSai',
+    renataglasc: 'Renata',
+    tahmkench: 'TahmKench',
+    twistedfate: 'TwistedFate',
+    velkoz: 'Velkoz',
+    wukong: 'MonkeyKing',
+    xinzhao: 'XinZhao',
+  };
+  return aliases[text.toLowerCase()] || text;
+}
+
+function championImageFallback(value) {
+  const span = document.createElement('span');
+  span.className = 'liveChampionPlaceholder championImageMissing';
+  span.title = `Missing champion icon: ${value || '-'}`;
+  span.textContent = '?';
+  return span;
 }
 
 function championDisplayName(value) {
