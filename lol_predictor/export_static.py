@@ -7,8 +7,15 @@ import os
 import re
 import shutil
 from pathlib import Path
+from io import StringIO
 from types import SimpleNamespace
+from urllib.parse import quote
+from urllib.request import Request, urlopen
 
+import pandas as pd
+
+from .league_groups import filter_leagues
+from .patches import filter_patch, latest_patch
 from .web_app import (
     APP_CSS,
     APP_HTML,
@@ -29,6 +36,7 @@ LEAGUE_GROUPS = ["all", "major", "secondary"]
 REGIONS = ["all", "korea", "china", "emea", "americas", "pacific", "international"]
 APP_JS_VERSION = hashlib.sha1(APP_JS.encode("utf-8")).hexdigest()[:10]
 APP_CSS_VERSION = hashlib.sha1(APP_CSS.encode("utf-8")).hexdigest()[:10]
+GOL_USER_AGENT = "Mozilla/5.0 (compatible; lol-predictor-static-export/1.0)"
 
 
 def parse_args() -> argparse.Namespace:
@@ -70,14 +78,14 @@ def main() -> None:
     for league_group in LEAGUE_GROUPS:
         for region in REGIONS:
             query = {"league_group": [league_group], "region": [region]}
-            write_json(data_dir / "summaries" / f"{static_key(league_group)}__{static_key(region)}.json", safe_summary(context, query))
+            write_json(data_dir / "summaries" / f"{static_key(league_group)}__{static_key(region)}.json", enriched_summary(context, query))
             payload = matches_payload(context, query)
             write_json(data_dir / f"matches-{static_key(league_group)}__{static_key(region)}.json", payload)
             if league_group == "all" and region == "all":
                 all_matches = list(payload.get("matches") or [])
 
     for league in options.get("standings_leagues", []):
-        write_json(data_dir / "summaries" / f"league__{static_key(league)}.json", safe_summary(context, {"league": [league]}))
+        write_json(data_dir / "summaries" / f"league__{static_key(league)}.json", enriched_summary(context, {"league": [league]}))
 
     seen_teams: set[tuple[str, str]] = set()
     seen_pairs: set[tuple[str, str, str]] = set()
@@ -157,6 +165,146 @@ def safe_summary(context: AppContext, query: dict[str, list[str]]) -> dict[str, 
         return summary_payload(context.rows, query, context)
     except ValueError:
         return {"patch": str(context.patch), "games": 0, "leagues": [], "champions": [], "teams": []}
+
+
+def enriched_summary(context: AppContext, query: dict[str, list[str]]) -> dict[str, object]:
+    payload = safe_summary(context, query)
+    presence = champion_presence_for_query(context.rows, query)
+    if presence:
+        merge_champion_presence(payload.get("champions") or [], presence)
+        for rows in (payload.get("champions_by_role") or {}).values():
+            merge_champion_presence(rows or [], presence)
+    return payload
+
+
+def champion_presence_for_query(rows: pd.DataFrame, query: dict[str, list[str]]) -> dict[str, dict[str, float]]:
+    league_group = first_query(query, "league_group", "all")
+    region = first_query(query, "region", "all")
+    league = first_query(query, "league", "")
+    filtered = filter_leagues(rows, league_group=league_group, region=region)
+    if league:
+        filtered = filtered[filtered["league"].astype(str).eq(league)]
+    if filtered.empty:
+        return {}
+    patch = latest_patch(filtered)
+    patch_rows = filter_patch(filtered, patch=str(patch))
+    team_rows = patch_rows[patch_rows["position"].astype(str).eq("team")].copy()
+    if team_rows.empty:
+        return {}
+    merged: dict[str, dict[str, float]] = {}
+    denominator = 0.0
+    for _, group in team_rows.groupby("league"):
+        split = latest_split(group)
+        if not split:
+            continue
+        stats = fetch_gol_champion_presence(split)
+        if not stats:
+            continue
+        denominator += gol_presence_denominator(stats)
+        for key, row in stats.items():
+            target = merged.setdefault(key, {"picks": 0.0, "bans": 0.0, "presence_count": 0.0})
+            target["picks"] += float(row.get("picks") or 0)
+            target["bans"] += float(row.get("bans") or 0)
+            target["presence_count"] += float(row.get("presence_count") or 0)
+    if not merged or not denominator:
+        return {}
+    for row in merged.values():
+        row["ban_rate"] = row["bans"] / denominator
+        row["presence"] = row["presence_count"] / denominator
+    return merged
+
+
+def latest_split(rows: pd.DataFrame) -> str:
+    if "split" not in rows.columns or rows.empty:
+        return ""
+    sorted_rows = rows.sort_values("date")
+    return str(sorted_rows["split"].dropna().astype(str).iloc[-1]) if not sorted_rows["split"].dropna().empty else ""
+
+
+_GOL_CACHE: dict[str, dict[str, dict[str, float]]] = {}
+
+
+def fetch_gol_champion_presence(tournament: str) -> dict[str, dict[str, float]]:
+    if tournament in _GOL_CACHE:
+        return _GOL_CACHE[tournament]
+    url = f"https://gol.gg/champion/list/season-S16/split-ALL/tournament-{quote(tournament)}/"
+    try:
+        request = Request(url, headers={"User-Agent": GOL_USER_AGENT})
+        with urlopen(request, timeout=60) as response:
+            html = response.read().decode("utf-8", errors="replace")
+        tables = pd.read_html(StringIO(html))
+    except Exception as error:
+        print(f"Skipping Games of Legends presence for {tournament}: {error}")
+        _GOL_CACHE[tournament] = {}
+        return {}
+    champion_table = next((table for table in tables if {"Champion", "Picks", "Bans", "BP%"}.issubset(set(table.columns))), None)
+    if champion_table is None:
+        _GOL_CACHE[tournament] = {}
+        return {}
+    stats: dict[str, dict[str, float]] = {}
+    for row in champion_table.to_dict("records"):
+        champion = str(row.get("Champion") or "")
+        picks = number_value(row.get("Picks"))
+        bans = number_value(row.get("Bans"))
+        bp = number_value(row.get("BP%"))
+        presence_count = picks + bans
+        denominator = presence_count / (bp / 100.0) if bp else 0.0
+        stats[champion_key(champion)] = {
+            "picks": picks,
+            "bans": bans,
+            "bp": bp,
+            "presence_count": presence_count,
+            "denominator": denominator,
+        }
+    _GOL_CACHE[tournament] = stats
+    return stats
+
+
+def gol_presence_denominator(stats: dict[str, dict[str, float]]) -> float:
+    perfect_presence = [
+        float(row.get("presence_count") or 0)
+        for row in stats.values()
+        if float(row.get("bp") or 0) >= 99.0
+    ]
+    if perfect_presence:
+        return max(perfect_presence)
+    inferred = [
+        float(row.get("denominator") or 0)
+        for row in stats.values()
+        if float(row.get("denominator") or 0) > 0
+    ]
+    return min(inferred) if inferred else 0.0
+
+
+def merge_champion_presence(rows: list[dict[str, object]], presence: dict[str, dict[str, float]]) -> None:
+    for row in rows:
+        stats = presence.get(champion_key(row.get("name", "")))
+        if not stats:
+            continue
+        row["bans"] = int(stats.get("bans") or 0)
+        row["ban_rate"] = percent_text(float(stats.get("ban_rate") or 0))
+        row["presence"] = percent_text(float(stats.get("presence") or 0))
+
+
+def number_value(value: object) -> float:
+    text = str(value).replace("%", "").replace(",", "").strip()
+    try:
+        return float(text)
+    except ValueError:
+        return 0.0
+
+
+def percent_text(value: float) -> str:
+    return f"{value * 100:.1f}%"
+
+
+def champion_key(value: object) -> str:
+    return re.sub(r"[^a-z0-9]+", "", str(value).lower())
+
+
+def first_query(query: dict[str, list[str]], key: str, default: str = "") -> str:
+    values = query.get(key) or []
+    return values[0] if values else default
 
 
 def write_json(path: Path, payload: object) -> None:
