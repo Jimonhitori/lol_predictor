@@ -1554,7 +1554,7 @@ function liveBadgeText(details, game, hasLive, meaningfulLive) {
   }
   if (state === 'unneeded') return 'Unneeded';
   if (state === 'unstarted') return 'Unstarted';
-  if (!hasLive) return 'STATS TEMPORARILY DISABLED';
+  if (!hasLive) return 'Live Data Unavailable';
   if (!meaningfulLive) return 'Unstarted';
   return 'IN GAME';
 }
