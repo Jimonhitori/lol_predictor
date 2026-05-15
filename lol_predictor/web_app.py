@@ -1538,9 +1538,7 @@ function liveBadgeText(details, game, hasLive, meaningfulLive) {
   const seriesState = String(details?.status || '').toLowerCase();
   const state = String(game?.state || '').toLowerCase();
   if (['completed', 'complete'].includes(seriesState) || state === 'completed') {
-    const winner = completedSeriesWinner(details) || gameWinnerTeam(details, game);
-    const label = winner?.code || winner?.name || 'Winner';
-    return `${label} WON`;
+    return 'Ended';
   }
   if (state === 'unneeded') return 'Unneeded';
   if (state === 'unstarted') return 'Unstarted';
@@ -1552,7 +1550,11 @@ function liveBadgeText(details, game, hasLive, meaningfulLive) {
 function liveTimerText(details, game, live, meaningfulLive) {
   const seriesState = String(details?.status || '').toLowerCase();
   const state = String(game?.state || '').toLowerCase();
-  if (['completed', 'complete'].includes(seriesState) || state === 'completed') return '';
+  if (['completed', 'complete'].includes(seriesState) || state === 'completed') {
+    const winner = completedSeriesWinner(details) || gameWinnerTeam(details, game);
+    const label = winner?.code || winner?.name || 'Winner';
+    return `${label} WON`;
+  }
   if (state === 'unneeded') return '-';
   const official = Number(live?.game_time || 0);
   if (official > 0) return formatGameTime(official);
