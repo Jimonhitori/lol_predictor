@@ -906,7 +906,7 @@ async function enrichStaticLiveData(details) {
   if (!STATIC_SITE || !details?.games?.length) return;
   const targets = details.games.filter(game => {
     const status = String(game.state || '').toLowerCase();
-    return game.id && !['unstarted', 'unneeded', ''].includes(status);
+    return game.id && status !== 'unneeded' && (!['unstarted', ''].includes(status) || shouldProbeLiveStats(details));
   });
   await Promise.all(targets.map(async game => {
     const live = await fetchLolesportsLive(game.id);
@@ -916,8 +916,18 @@ async function enrichStaticLiveData(details) {
       live.frame_changed = Boolean(currentFrame && currentFrame !== previousFrame);
       if (currentFrame) state.liveFrames[String(game.id || '')] = currentFrame;
       game.live = live;
+      if (hasMeaningfulLiveData(live) && ['unstarted', ''].includes(String(game.state || '').toLowerCase())) {
+        game.state = 'inProgress';
+        details.status = 'inProgress';
+      }
     }
   }));
+}
+
+function shouldProbeLiveStats(details) {
+  const start = new Date(details?.start_time || '');
+  if (Number.isNaN(start.getTime())) return false;
+  return Date.now() >= start.getTime() - 5 * 60 * 1000;
 }
 
 async function fetchLolesportsLive(gameId) {
@@ -1243,7 +1253,9 @@ function renderLiveDraft(details) {
 }
 
 function activeGame(games) {
-  const inProgress = games.find(game => String(game.state || '').toLowerCase() === 'inprogress');
+  const inProgress = games
+    .filter(game => String(game.state || '').toLowerCase() === 'inprogress')
+    .sort((a, b) => Number(b.number || 0) - Number(a.number || 0))[0];
   if (inProgress) return inProgress;
   const completed = games.filter(game => String(game.state || '').toLowerCase() === 'completed');
   if (completed.length) return completed[completed.length - 1];
