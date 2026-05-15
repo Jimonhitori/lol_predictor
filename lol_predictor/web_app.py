@@ -365,6 +365,7 @@ const STATIC_SITE = Boolean(window.STATIC_SITE);
 const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const REFRESH_INTERVAL_MS = 5000;
 const REFRESH_INTERVAL_LABEL = '5s';
+const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 
 async function api(path) {
   if (STATIC_SITE) return staticApi(path);
@@ -398,7 +399,7 @@ async function staticApi(path) {
   const response = await fetch(target, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
-  if (url.pathname === '/api/match') {
+  if (url.pathname === '/api/match' && MATCH_DETAIL_PAGE) {
     const fresh = await fetchLolesportsEventDetails(params.get('id') || '');
     return mergeFreshDetails(data, fresh);
   }
@@ -615,7 +616,6 @@ async function loadMatches() {
   if (!state.selectedMatchDate) {
     state.selectedMatchDate = defaultMatchDate(state.allMatches);
   }
-  await refreshStaticMatchStatuses();
   renderDateTabs(state.allMatches);
   renderMatches();
 }
@@ -927,7 +927,7 @@ async function enrichStaticLiveData(details) {
 function shouldProbeLiveStats(details) {
   const start = new Date(details?.start_time || '');
   if (Number.isNaN(start.getTime())) return false;
-  return Date.now() >= start.getTime() - 5 * 60 * 1000;
+  return Date.now() >= start.getTime();
 }
 
 async function fetchLolesportsLive(gameId) {
@@ -1853,7 +1853,6 @@ if ($('matches')) {
   loadOptions().then(() => {
     loadSummary();
     loadMatches();
-    state.matchesTimer = window.setInterval(loadMatches, REFRESH_INTERVAL_MS);
   });
 } else {
   loadMatchDetailPage();
