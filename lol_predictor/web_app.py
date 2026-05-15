@@ -1222,8 +1222,8 @@ function renderLiveDraft(details) {
       <div class="liveTop">
         ${liveTeamHeader(blueTeam)}
         <div class="liveCenter">
-          <span class="liveBadge">${escapeHtml(liveBadgeText(game, hasLive, meaningfulLive))}</span>
-          <span class="liveTimer">${escapeHtml(liveTimerText(game, live, meaningfulLive))}</span>
+          <span class="liveBadge">${escapeHtml(liveBadgeText(details, game, hasLive, meaningfulLive))}</span>
+          <span class="liveTimer">${escapeHtml(liveTimerText(details, game, live, meaningfulLive))}</span>
         </div>
         ${liveTeamHeader(redTeam)}
       </div>
@@ -1532,8 +1532,10 @@ function deltaClass(value) {
   return 'neutral';
 }
 
-function liveBadgeText(game, hasLive, meaningfulLive) {
+function liveBadgeText(details, game, hasLive, meaningfulLive) {
+  const seriesState = String(details?.status || '').toLowerCase();
   const state = String(game?.state || '').toLowerCase();
+  if (['completed', 'complete'].includes(seriesState)) return 'Ended';
   if (state === 'completed') return 'Ended';
   if (state === 'unneeded') return 'Unneeded';
   if (state === 'unstarted') return 'Unstarted';
@@ -1542,8 +1544,10 @@ function liveBadgeText(game, hasLive, meaningfulLive) {
   return 'IN GAME';
 }
 
-function liveTimerText(game, live, meaningfulLive) {
+function liveTimerText(details, game, live, meaningfulLive) {
+  const seriesState = String(details?.status || '').toLowerCase();
   const state = String(game?.state || '').toLowerCase();
+  if (['completed', 'complete'].includes(seriesState)) return 'ENDED';
   if (state === 'completed') return 'ENDED';
   if (state === 'unneeded') return '-';
   const official = Number(live?.game_time || 0);
