@@ -10,7 +10,7 @@ h2 { font-size: 16px; margin-bottom: 14px; }
 p, label { color: var(--muted); font-size: 13px; }
 .filters { display: flex; gap: 8px; }
 .grid { display: grid; grid-template-columns: minmax(520px, 1.05fr) minmax(420px, .95fr); gap: 18px; align-items: start; }
-.detailGrid { margin-top: 18px; margin-bottom: 0; }
+.detailGrid { grid-template-columns: minmax(420px, .86fr) minmax(560px, 1.14fr); margin-top: 18px; margin-bottom: 0; }
 .panelStack { display: grid; gap: 18px; }
 .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
 .hidden { display: none !important; }
