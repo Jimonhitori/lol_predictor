@@ -410,6 +410,7 @@ const STATIC_SITE = Boolean(window.STATIC_SITE);
 const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const REFRESH_INTERVAL_MS = 5000;
 const REFRESH_INTERVAL_LABEL = '5s';
+const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 
 async function api(path) {
@@ -982,7 +983,7 @@ async function enrichStaticLiveData(details) {
 function shouldProbeLiveStats(details) {
   const start = new Date(details?.start_time || '');
   if (Number.isNaN(start.getTime())) return false;
-  return Date.now() >= start.getTime();
+  return Date.now() >= start.getTime() - LIVE_PRESTART_PROBE_MS;
 }
 
 async function fetchLolesportsLive(gameId) {
