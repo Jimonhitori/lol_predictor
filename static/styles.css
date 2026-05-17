@@ -155,6 +155,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hDate { color: #b2bdc9; white-space: nowrap; }
 .h2hTeam { color: #b7c0cc; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .h2hTeam.isWinner { color: #f1f5f9; }
+.h2hTeam.isLoser { color: #a4afbd; font-weight: 700; }
 .h2hTeam.isRight { text-align: left; }
 .h2hMiniLogo { width: 20px; height: 20px; display: grid; place-items: center; }
 .h2hMiniLogo img { width: 20px; height: 20px; object-fit: contain; }
