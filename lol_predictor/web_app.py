@@ -359,6 +359,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hDate { color: #b2bdc9; white-space: nowrap; }
 .h2hTeam { color: #b7c0cc; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .h2hTeam.isWinner { color: #f1f5f9; }
+.h2hTeam.isLoser { color: #a4afbd; font-weight: 700; }
 .h2hTeam.isRight { text-align: left; }
 .h2hMiniLogo { width: 20px; height: 20px; display: grid; place-items: center; }
 .h2hMiniLogo img { width: 20px; height: 20px; object-fit: contain; }
@@ -1831,16 +1832,20 @@ function renderHeadToHead(matches, leftTeam = {}, rightTeam = {}) {
 function h2hRow(match, context) {
   const leftWon = Number(match.left_score) > Number(match.right_score);
   const rightWon = Number(match.right_score) > Number(match.left_score);
-  const leftCurrent = currentTeamForHistorical(match.left_team, context);
-  const rightCurrent = currentTeamForHistorical(match.right_team, context);
+  const winnerTeam = leftWon ? match.left_team : rightWon ? match.right_team : match.left_team;
+  const loserTeam = leftWon ? match.right_team : rightWon ? match.left_team : match.right_team;
+  const winnerScore = leftWon ? match.left_score : rightWon ? match.right_score : match.left_score;
+  const loserScore = leftWon ? match.right_score : rightWon ? match.left_score : match.right_score;
+  const winnerCurrent = currentTeamForHistorical(winnerTeam, context);
+  const loserCurrent = currentTeamForHistorical(loserTeam, context);
   return `
     <div class="h2hRow" title="${escapeHtml(match.split || '')}">
       <span class="h2hDate">${escapeHtml(relativeDateJa(match.date))}</span>
-      <span class="h2hTeam ${leftWon ? 'isWinner' : ''}">${escapeHtml(leftCurrent?.code || leftCurrent?.name || match.left_team)}</span>
-      <span class="h2hMiniLogo">${teamLogoMarkup(match.left_team, context)}</span>
-      <span class="h2hScore">${escapeHtml(match.left_score)} - ${escapeHtml(match.right_score)}</span>
-      <span class="h2hMiniLogo">${teamLogoMarkup(match.right_team, context)}</span>
-      <span class="h2hTeam isRight ${rightWon ? 'isWinner' : ''}">${escapeHtml(rightCurrent?.code || rightCurrent?.name || match.right_team)}</span>
+      <span class="h2hTeam isWinner">${escapeHtml(winnerCurrent?.code || winnerCurrent?.name || winnerTeam)}</span>
+      <span class="h2hMiniLogo">${teamLogoMarkup(winnerTeam, context)}</span>
+      <span class="h2hScore">${escapeHtml(winnerScore)} - ${escapeHtml(loserScore)}</span>
+      <span class="h2hMiniLogo">${teamLogoMarkup(loserTeam, context)}</span>
+      <span class="h2hTeam isRight isLoser">${escapeHtml(loserCurrent?.code || loserCurrent?.name || loserTeam)}</span>
     </div>
   `;
 }
