@@ -127,6 +127,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .gameItem { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: #10161d; font-size: 12px; }
 .gameItem b { display: block; margin-bottom: 4px; }
 .gameWinner { display: inline-block; margin-top: 5px; color: #38d77b; font-weight: 900; }
+.loadingState { color: var(--muted); font-size: 13px; padding: 18px 0; text-align: center; width: 100%; }
 .formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 label { display: grid; gap: 6px; }
 input, select, button { width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #0f1419; color: var(--text); padding: 10px; }
@@ -173,7 +174,11 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .matches { grid-template-columns: 1fr; }
   .match { padding: 10px; }
   .matchMeta { font-size: 11px; }
-  .cardTeam img { width: 36px; height: 36px; }
+  .matches { gap: 7px; }
+  .match .backLink { display: none; }
+  .versus { gap: 5px; }
+  .cardTeam { gap: 3px; }
+  .cardTeam img { width: 30px; height: 30px; }
   .matchCenter { margin-bottom: 12px; }
   .selectedMatch { gap: 10px; }
   .selectedMatch.twoTeams { grid-template-columns: 1fr 1fr; }

@@ -48,7 +48,7 @@ async function staticApi(path) {
   }
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
-  if (url.pathname === '/api/match' && MATCH_DETAIL_PAGE) {
+  if (url.pathname === '/api/match') {
     const fresh = await fetchLolesportsEventDetails(params.get('id') || '');
     return mergeFreshDetails(data, fresh);
   }
@@ -227,8 +227,23 @@ function renderChampionMeta(data) {
   const role = $('championRole')?.value || 'all';
   const rows = role === 'all' ? (data.champions || []) : ((data.champions_by_role || {})[role] || []);
   const label = roleLabel(role === 'all' ? 'All roles' : role);
-  if ($('championMetaSub')) $('championMetaSub').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
+  if ($('championMetaSub')) $('championMetaSub').textContent = `${label} · ${patchLabel(data.patch)} · ${data.games} games`;
   renderChampionTable('champions', rows, data.patch);
+}
+
+function patchLabel(patch) {
+  const patchText = String(patch || '').trim();
+  const riot = riotPatchLabel(patchText);
+  return riot && riot !== patchText ? `Patch ${patchText} / Riot ${riot}` : `Patch ${patchText || '-'}`;
+}
+
+function riotPatchLabel(patch) {
+  const match = String(patch || '').match(/^(\d+)\.(\d+)$/);
+  if (!match) return '';
+  const major = Number(match[1]);
+  const minor = match[2].padStart(2, '0');
+  if (major === 16) return `26.${minor}`;
+  return `${major}.${minor}`;
 }
 
 async function loadOptions() {
@@ -250,7 +265,7 @@ async function loadOptions() {
 async function loadSummary() {
   const data = await api('/api/summary?' + qs());
   state.summary = data;
-  $('meta').textContent = `Patch ${data.patch} | ${data.games} games | ${data.leagues.join(', ')}`;
+  $('meta').textContent = `${patchLabel(data.patch)} | ${data.games} games | ${data.leagues.join(', ')}`;
   renderChampionMeta(data);
   await loadTeamStandings();
 }
@@ -264,7 +279,7 @@ async function loadTeamStandings() {
   const data = await api('/api/summary?' + params.toString());
   renderTeamStandings(data.teams || []);
   const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'LCK';
-  const basis = data.standings_split || `Patch ${data.patch}`;
+  const basis = data.standings_split || patchLabel(data.patch);
   $('teamStandingsMeta').textContent = `${label} · ${basis} · ${data.standings_series ?? data.games} series`;
 }
 
@@ -547,8 +562,19 @@ async function loadMatchDetailPage() {
   if (!id || !$('matchTitle')) return;
   state.detailMatchId = id;
   state.selectedLiveGameId = '';
+  showDetailLoading();
   await refreshMatchDetail(true);
   state.detailTimer = window.setInterval(() => refreshMatchDetail(false), REFRESH_INTERVAL_MS);
+}
+
+function showDetailLoading() {
+  $('matchTitle').textContent = 'Loading match...';
+  $('matchMeta').textContent = 'Fetching schedule and live data';
+  $('detailTeams').innerHTML = '<div class="loadingState">Loading match center...</div>';
+  $('detailGames').innerHTML = '';
+  const livePanel = document.querySelector('.livePanel');
+  if (livePanel) livePanel.classList.remove('hidden');
+  if ($('liveDraft')) $('liveDraft').innerHTML = '<div class="loadingState">Checking live feed...</div>';
 }
 
 async function refreshMatchDetail(initial) {
@@ -1238,7 +1264,7 @@ function liveBadgeText(details, game, hasLive, meaningfulLive) {
   if (state === 'unneeded') return 'Unneeded';
   if (state === 'unstarted') return 'Unstarted';
   if (!hasLive) return 'Starting Soon';
-  if (!meaningfulLive) return 'Unstarted';
+  if (!meaningfulLive) return 'Starting Soon';
   return 'IN GAME';
 }
 
