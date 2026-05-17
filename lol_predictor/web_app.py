@@ -104,7 +104,7 @@ APP_HTML = """<!doctype html>
       <section class="panel">
         <div class="panelTitleRow">
           <div>
-            <h2>Latest Patch Meta</h2>
+            <h2>Latest Data Patch Meta</h2>
             <p id="championMetaSub" class="subtleText">All roles</p>
           </div>
           <select id="championRole" class="compactSelect" aria-label="Champion meta role">
@@ -331,6 +331,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .gameItem { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; background: #10161d; font-size: 12px; }
 .gameItem b { display: block; margin-bottom: 4px; }
 .gameWinner { display: inline-block; margin-top: 5px; color: #38d77b; font-weight: 900; }
+.loadingState { color: var(--muted); font-size: 13px; padding: 18px 0; text-align: center; width: 100%; }
 .formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 label { display: grid; gap: 6px; }
 input, select, button { width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #0f1419; color: var(--text); padding: 10px; }
@@ -377,7 +378,11 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .matches { grid-template-columns: 1fr; }
   .match { padding: 10px; }
   .matchMeta { font-size: 11px; }
-  .cardTeam img { width: 36px; height: 36px; }
+  .matches { gap: 7px; }
+  .match .backLink { display: none; }
+  .versus { gap: 5px; }
+  .cardTeam { gap: 3px; }
+  .cardTeam img { width: 30px; height: 30px; }
   .matchCenter { margin-bottom: 12px; }
   .selectedMatch { gap: 10px; }
   .selectedMatch.twoTeams { grid-template-columns: 1fr 1fr; }
@@ -454,7 +459,7 @@ async function staticApi(path) {
   }
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
-  if (url.pathname === '/api/match' && MATCH_DETAIL_PAGE) {
+  if (url.pathname === '/api/match') {
     const fresh = await fetchLolesportsEventDetails(params.get('id') || '');
     return mergeFreshDetails(data, fresh);
   }
@@ -633,8 +638,23 @@ function renderChampionMeta(data) {
   const role = $('championRole')?.value || 'all';
   const rows = role === 'all' ? (data.champions || []) : ((data.champions_by_role || {})[role] || []);
   const label = roleLabel(role === 'all' ? 'All roles' : role);
-  if ($('championMetaSub')) $('championMetaSub').textContent = `${label} · Patch ${data.patch} · ${data.games} games`;
+  if ($('championMetaSub')) $('championMetaSub').textContent = `${label} · ${patchLabel(data.patch)} · ${data.games} games`;
   renderChampionTable('champions', rows, data.patch);
+}
+
+function patchLabel(patch) {
+  const patchText = String(patch || '').trim();
+  const riot = riotPatchLabel(patchText);
+  return riot && riot !== patchText ? `Patch ${patchText} / Riot ${riot}` : `Patch ${patchText || '-'}`;
+}
+
+function riotPatchLabel(patch) {
+  const match = String(patch || '').match(/^(\\d+)\\.(\\d+)$/);
+  if (!match) return '';
+  const major = Number(match[1]);
+  const minor = match[2].padStart(2, '0');
+  if (major === 16) return `26.${minor}`;
+  return `${major}.${minor}`;
 }
 
 async function loadOptions() {
@@ -656,7 +676,7 @@ async function loadOptions() {
 async function loadSummary() {
   const data = await api('/api/summary?' + qs());
   state.summary = data;
-  $('meta').textContent = `Patch ${data.patch} | ${data.games} games | ${data.leagues.join(', ')}`;
+  $('meta').textContent = `${patchLabel(data.patch)} | ${data.games} games | ${data.leagues.join(', ')}`;
   renderChampionMeta(data);
   await loadTeamStandings();
 }
@@ -670,7 +690,7 @@ async function loadTeamStandings() {
   const data = await api('/api/summary?' + params.toString());
   renderTeamStandings(data.teams || []);
   const label = $('teamLeague')?.selectedOptions?.[0]?.textContent || 'LCK';
-  const basis = data.standings_split || `Patch ${data.patch}`;
+  const basis = data.standings_split || patchLabel(data.patch);
   $('teamStandingsMeta').textContent = `${label} · ${basis} · ${data.standings_series ?? data.games} series`;
 }
 
@@ -953,8 +973,19 @@ async function loadMatchDetailPage() {
   if (!id || !$('matchTitle')) return;
   state.detailMatchId = id;
   state.selectedLiveGameId = '';
+  showDetailLoading();
   await refreshMatchDetail(true);
   state.detailTimer = window.setInterval(() => refreshMatchDetail(false), REFRESH_INTERVAL_MS);
+}
+
+function showDetailLoading() {
+  $('matchTitle').textContent = 'Loading match...';
+  $('matchMeta').textContent = 'Fetching schedule and live data';
+  $('detailTeams').innerHTML = '<div class="loadingState">Loading match center...</div>';
+  $('detailGames').innerHTML = '';
+  const livePanel = document.querySelector('.livePanel');
+  if (livePanel) livePanel.classList.remove('hidden');
+  if ($('liveDraft')) $('liveDraft').innerHTML = '<div class="loadingState">Checking live feed...</div>';
 }
 
 async function refreshMatchDetail(initial) {
@@ -1644,7 +1675,7 @@ function liveBadgeText(details, game, hasLive, meaningfulLive) {
   if (state === 'unneeded') return 'Unneeded';
   if (state === 'unstarted') return 'Unstarted';
   if (!hasLive) return 'Starting Soon';
-  if (!meaningfulLive) return 'Unstarted';
+  if (!meaningfulLive) return 'Starting Soon';
   return 'IN GAME';
 }
 

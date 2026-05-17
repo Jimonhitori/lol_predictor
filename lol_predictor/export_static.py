@@ -47,7 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--patch-notes", type=Path, default=Path("data/patch_notes/riot_2024_2026_patch_notes.json"))
     parser.add_argument("--champion-reference", type=Path, default=Path("data/features/champion_reference.csv"))
     parser.add_argument("--today-cache", type=Path, default=Path("data/raw/today_matches.json"))
-    parser.add_argument("--max-details", type=int, default=12)
+    parser.add_argument("--max-details", type=int, default=80)
     return parser.parse_args()
 
 
