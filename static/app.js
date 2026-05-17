@@ -5,6 +5,7 @@ const STATIC_SITE = Boolean(window.STATIC_SITE);
 const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const REFRESH_INTERVAL_MS = 5000;
 const REFRESH_INTERVAL_LABEL = '5s';
+const MATCHES_REFRESH_INTERVAL_MS = 30000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 
@@ -267,13 +268,17 @@ async function loadMatches() {
   if (!state.selectedMatchDate) {
     state.selectedMatchDate = defaultMatchDate(state.allMatches);
   }
+  await refreshStaticMatchStatuses();
   renderDateTabs(state.allMatches);
   renderMatches();
 }
 
 async function refreshStaticMatchStatuses() {
   if (!STATIC_SITE || !state.allMatches.length) return;
-  const targets = state.allMatches.filter(shouldRefreshMatchStatus).slice(0, 12);
+  const targets = state.allMatches
+    .filter(shouldRefreshMatchStatus)
+    .sort((a, b) => refreshMatchPriority(b) - refreshMatchPriority(a))
+    .slice(0, 24);
   if (!targets.length) return;
   const freshDetails = await Promise.all(targets.map(match => fetchLolesportsEventDetails(match.id)));
   const freshById = Object.fromEntries(freshDetails.filter(details => details?.id).map(details => [String(details.id), details]));
@@ -296,6 +301,16 @@ async function refreshStaticMatchStatuses() {
       red_score: teams[1]?.game_wins ?? match.red_score,
     };
   });
+}
+
+function refreshMatchPriority(match) {
+  const matchDate = localDateKey(match.start_time);
+  const today = localDateKey(new Date().toISOString());
+  if (state.selectedMatchDate === 'live' && String(match.status || '').toLowerCase() === 'inprogress') return 5;
+  if (matchDate === state.selectedMatchDate) return 4;
+  if (matchDate === today) return 3;
+  if (matchDate && matchDate < today) return 2;
+  return 1;
 }
 
 function shouldRefreshMatchStatus(match) {
@@ -365,8 +380,10 @@ function renderDateTabs(matches) {
   for (const tab of document.querySelectorAll('.dateTab')) {
     tab.addEventListener('click', () => {
       state.selectedMatchDate = tab.dataset.dateKey || '';
-      renderDateTabs(state.allMatches);
-      renderMatches();
+      refreshStaticMatchStatuses().finally(() => {
+        renderDateTabs(state.allMatches);
+        renderMatches();
+      });
     });
   }
 }
@@ -776,6 +793,7 @@ function startLine(details) {
 function matchStatusLabel(match) {
   const status = String(match.status || '');
   const normalized = status.toLowerCase();
+  if (normalized === 'unstarted' && hasStartTimePassed(match.start_time)) return 'updating';
   const hasScore = match.blue_score !== undefined && match.red_score !== undefined
     && String(match.blue_score) !== '' && String(match.red_score) !== ''
     && (Number(match.blue_score || 0) + Number(match.red_score || 0)) > 0;
@@ -784,6 +802,12 @@ function matchStatusLabel(match) {
     return `${status} · ${match.blue_score}-${match.red_score}${winner ? ` · ${winner} wins` : ''}`;
   }
   return status;
+}
+
+function hasStartTimePassed(value) {
+  const start = new Date(value || '');
+  if (Number.isNaN(start.getTime())) return false;
+  return Date.now() >= start.getTime() + 30 * 60 * 1000;
 }
 
 function gameListHtml(details) {
@@ -1554,13 +1578,16 @@ if ($('matches')) {
   if ($('championRole')) $('championRole').addEventListener('change', () => state.summary && renderChampionMeta(state.summary));
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
-    renderDateTabs(state.allMatches);
-    renderMatches();
+    refreshStaticMatchStatuses().finally(() => {
+      renderDateTabs(state.allMatches);
+      renderMatches();
+    });
   });
   if ($('predictForm')) $('predictForm').addEventListener('submit', predict);
   loadOptions().then(() => {
     loadSummary();
     loadMatches();
+    state.matchesTimer = window.setInterval(loadMatches, MATCHES_REFRESH_INTERVAL_MS);
   });
 } else {
   loadMatchDetailPage();
