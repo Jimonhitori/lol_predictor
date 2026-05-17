@@ -970,9 +970,9 @@ function previousGamePlayer(player) {
   return {
     player: player.player || '-',
     role: player.role || '',
-    champion: player.champion || '',
-    champion_id: player.champion_id || '',
-    level: player.level || 1,
+    champion: '',
+    champion_id: '',
+    level: 1,
     kills: 0,
     deaths: 0,
     assists: 0,
@@ -982,6 +982,7 @@ function previousGamePlayer(player) {
     max_health: 0,
     items: [],
     previous_game_pick: true,
+    pending_pick: true,
   };
 }
 
