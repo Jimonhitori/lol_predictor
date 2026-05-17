@@ -444,7 +444,14 @@ async function staticApi(path) {
     target = `static/data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_a') || '')}__${staticKey(params.get('team_b') || '')}.json`;
   }
   if (!target) throw new Error(`Static data route is not available: ${path}`);
-  const response = await fetch(target, { cache: 'no-store' });
+  let response = await fetch(target, { cache: 'no-store' });
+  if (!response.ok && url.pathname === '/api/head-to-head') {
+    const reverseTarget = `static/data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_b') || '')}__${staticKey(params.get('team_a') || '')}.json`;
+    if (reverseTarget !== target) {
+      response = await fetch(reverseTarget, { cache: 'no-store' });
+      if (response.ok) target = reverseTarget;
+    }
+  }
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
   if (url.pathname === '/api/match' && MATCH_DETAIL_PAGE) {
