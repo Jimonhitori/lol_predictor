@@ -1491,6 +1491,13 @@ function teamKey(value) {
     ultraprime: 'ultraprime',
     nip: 'shenzhenninjasinpyjamas',
     shenzhenninjasinpyjamas: 'shenzhenninjasinpyjamas',
+    c9: 'cloud9',
+    cloud9: 'cloud9',
+    cloud9kia: 'cloud9',
+    tl: 'teamliquid',
+    tlaw: 'teamliquid',
+    teamliquid: 'teamliquid',
+    teamliquidalienware: 'teamliquid',
   };
   return aliases[key] || key;
 }

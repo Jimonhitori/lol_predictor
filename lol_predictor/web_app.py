@@ -1896,6 +1896,13 @@ function teamKey(value) {
     ultraprime: 'ultraprime',
     nip: 'shenzhenninjasinpyjamas',
     shenzhenninjasinpyjamas: 'shenzhenninjasinpyjamas',
+    c9: 'cloud9',
+    cloud9: 'cloud9',
+    cloud9kia: 'cloud9',
+    tl: 'teamliquid',
+    tlaw: 'teamliquid',
+    teamliquid: 'teamliquid',
+    teamliquidalienware: 'teamliquid',
   };
   return aliases[key] || key;
 }
@@ -2712,6 +2719,14 @@ TEAM_ALIASES_BY_KEY = {
     "ultraprime": ["Ultra Prime", "UP"],
     "nip": ["Ninjas in Pyjamas", "Shenzhen NINJAS IN PYJAMAS", "NIP"],
     "shenzhenninjasinpyjamas": ["Ninjas in Pyjamas", "Shenzhen NINJAS IN PYJAMAS", "NIP"],
+    # LCS
+    "c9": ["Cloud9", "Cloud9 Kia", "C9"],
+    "cloud9": ["Cloud9", "Cloud9 Kia", "C9"],
+    "cloud9kia": ["Cloud9", "Cloud9 Kia", "C9"],
+    "tl": ["Team Liquid", "Team Liquid Alienware", "TL", "TLAW"],
+    "tlaw": ["Team Liquid", "Team Liquid Alienware", "TL", "TLAW"],
+    "teamliquid": ["Team Liquid", "Team Liquid Alienware", "TL", "TLAW"],
+    "teamliquidalienware": ["Team Liquid", "Team Liquid Alienware", "TL", "TLAW"],
 }
 
 
