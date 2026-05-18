@@ -1916,6 +1916,13 @@ function teamKey(value) {
     ktrolster: 'ktrolster',
     dk: 'dpluskia',
     dpluskia: 'dpluskia',
+    dkc: 'dpluskiachallengers',
+    dkchallengers: 'dpluskiachallengers',
+    dpluskiachallengers: 'dpluskiachallengers',
+    t1a: 't1esportsacademy',
+    t1ea: 't1esportsacademy',
+    t1esportsacademy: 't1esportsacademy',
+    t1challengers: 't1esportsacademy',
     bnkfearx: 'bnkfearx',
     bfx: 'bnkfearx',
     fearx: 'bnkfearx',
@@ -2000,10 +2007,15 @@ function rosterCards(players) {
   return players.map(player => `
     <div class="playerCard">
       <div class="playerCardTop"><strong>${escapeHtml(player.role)}</strong><strong>${escapeHtml(player.player)}</strong></div>
-      <div class="playerMeta">${escapeHtml(player.games)} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}</div>
+      <div class="playerMeta">${escapeHtml(rosterMetaText(player))}</div>
       <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
     </div>
   `).join('');
+}
+
+function rosterMetaText(player) {
+  if (player.roster_source === 'leaguepedia') return 'Leaguepedia current roster';
+  return `${player.games} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}`;
 }
 
 function escapeHtml(value) {
@@ -2374,6 +2386,9 @@ def roster_payload(rows: pd.DataFrame, team: str) -> dict[str, object]:
     if team_rows.empty:
         team_rows = _best_team_match(player_rows, target_key)
     if team_rows.empty:
+        fallback = _fallback_roster_payload(team)
+        if fallback:
+            return fallback
         return {"team": team, "source": "oracles_elixir_local", "players": []}
 
     role_order = {"top": 1, "jng": 2, "mid": 3, "bot": 4, "sup": 5}
@@ -2553,8 +2568,8 @@ def _h2h_sort_date(match: dict[str, object]) -> float:
 
 
 def leaguepedia_head_to_head(team_a_candidates: list[str], team_b_candidates: list[str]) -> list[dict[str, object]]:
-    left_names = [_leaguepedia_team_name(candidate) for candidate in team_a_candidates if candidate]
-    right_names = [_leaguepedia_team_name(candidate) for candidate in team_b_candidates if candidate]
+    left_names = _leaguepedia_name_candidates(team_a_candidates)
+    right_names = _leaguepedia_name_candidates(team_b_candidates)
     left_names = list(dict.fromkeys(name for name in left_names if name))
     right_names = list(dict.fromkeys(name for name in right_names if name))
     if not left_names or not right_names:
@@ -2610,6 +2625,18 @@ def leaguepedia_head_to_head(team_a_candidates: list[str], team_b_candidates: li
             }
         )
     return list(reversed(matches))
+
+
+def _leaguepedia_name_candidates(candidates: list[str]) -> list[str]:
+    names: list[str] = []
+    for candidate in candidates:
+        if not candidate:
+            continue
+        names.append(candidate)
+        mapped = _leaguepedia_team_name(candidate)
+        if mapped and mapped != candidate:
+            names.append(mapped)
+    return names
 
 
 def _team_name_candidates(name: str, code: str = "") -> list[str]:
@@ -2725,10 +2752,13 @@ def _series_record(rows: pd.DataFrame) -> tuple[int, int]:
 
 def _best_team_match(player_rows: pd.DataFrame, target_key: str) -> pd.DataFrame:
     keys = player_rows[["_team_key", "teamname"]].drop_duplicates()
+    target_is_secondary = _is_secondary_team_key(target_key)
     candidates = [
         key
         for key in keys["_team_key"].dropna().astype(str).unique()
-        if key and (key in target_key or target_key in key)
+        if key
+        and _is_secondary_team_key(key) == target_is_secondary
+        and (key in target_key or target_key in key)
     ]
     if not candidates:
         return player_rows.iloc[0:0].copy()
@@ -2736,6 +2766,14 @@ def _best_team_match(player_rows: pd.DataFrame, target_key: str) -> pd.DataFrame
 
 
 TEAM_ALIASES_BY_KEY = {
+    # LCK Challengers
+    "dkc": ["Dplus Kia Challengers", "DK Challengers", "DK.C"],
+    "dkchallengers": ["Dplus Kia Challengers", "DK Challengers", "DK.C"],
+    "dpluskiachallengers": ["Dplus Kia Challengers", "DK Challengers", "DK.C"],
+    "t1a": ["T1 Esports Academy", "T1 Challengers", "T1.EA", "T1A"],
+    "t1ea": ["T1 Esports Academy", "T1 Challengers", "T1.EA", "T1A"],
+    "t1esportsacademy": ["T1 Esports Academy", "T1 Challengers", "T1.EA", "T1A"],
+    "t1challengers": ["T1 Esports Academy", "T1 Challengers", "T1.EA", "T1A"],
     # LCK
     "t1": ["T1"],
     "geng": ["Gen.G", "Gen.G Esports", "GEN"],
@@ -2796,6 +2834,27 @@ TEAM_ALIASES_BY_KEY = {
 }
 
 
+ROSTER_FALLBACKS_BY_KEY = {
+    "dpluskiachallengers": [
+        ("TOP", "Jaehyuk"),
+        ("JNG", "Sharvel"),
+        ("MID", "Garden"),
+        ("BOT", "Wayne"),
+        ("SUP", "Loopy"),
+        ("SUB", "Nevid"),
+    ],
+    "t1esportsacademy": [
+        ("TOP", "Haetae"),
+        ("JNG", "Painter"),
+        ("MID", "Guti"),
+        ("BOT", "Cypher"),
+        ("SUP", "Cloud"),
+        ("SUB", "Guardian"),
+        ("SUB", "Jinbeom"),
+    ],
+}
+
+
 def _plain_team_key(value: object) -> str:
     return "".join(character for character in str(value or "").lower() if character.isalnum())
 
@@ -2808,6 +2867,32 @@ def _team_key(value: str) -> str:
         if values
     }
     return aliases.get(key, key)
+
+
+def _is_secondary_team_key(key: str) -> bool:
+    return any(marker in str(key or "") for marker in ("academy", "challengers", "youth", "globalacademy"))
+
+
+def _fallback_roster_payload(team: str) -> dict[str, object] | None:
+    key = _team_key(team)
+    entries = ROSTER_FALLBACKS_BY_KEY.get(key)
+    if not entries:
+        return None
+    players = [
+        {
+            "role": role,
+            "player": player,
+            "team": team,
+            "games": 0,
+            "winrate": 0.0,
+            "kda": 0.0,
+            "top_champions": [],
+            "last_seen": "leaguepedia_current_roster",
+            "roster_source": "leaguepedia",
+        }
+        for role, player in entries
+    ]
+    return {"team": team, "matched_team": team, "source": "leaguepedia_roster_fallback", "players": players}
 
 
 def predict_payload(context: AppContext, payload: dict[str, object]) -> dict[str, float]:
