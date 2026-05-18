@@ -1758,6 +1758,12 @@ function roleLabel(value) {
   return labels[text] || value || '';
 }
 
+function compactRoleLabel(value) {
+  const text = String(value || '').toLowerCase();
+  const labels = { top: 'TOP', jungle: 'JUG', jng: 'JUG', jug: 'JUG', mid: 'MID', middle: 'MID', bot: 'BOT', bottom: 'BOT', adc: 'BOT', support: 'SUP', sup: 'SUP' };
+  return labels[text] || String(value || '-').toUpperCase();
+}
+
 function championImageId(value) {
   const text = String(value || '').replace(/[^A-Za-z0-9]/g, '');
   const aliases = {
@@ -2006,7 +2012,7 @@ function rosterCards(players) {
   if (!players.length) return '<p>No local roster match yet.</p>';
   return players.map(player => `
     <div class="playerCard">
-      <div class="playerCardTop"><strong>${escapeHtml(player.role)}</strong><strong>${escapeHtml(player.player)}</strong></div>
+      <div class="playerCardTop"><strong>${escapeHtml(compactRoleLabel(player.role))}</strong><strong>${escapeHtml(player.player)}</strong></div>
       <div class="playerMeta">${escapeHtml(rosterMetaText(player))}</div>
       <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
     </div>
