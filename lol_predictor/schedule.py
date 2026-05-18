@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import os
+import hashlib
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -518,21 +519,48 @@ def _matches_from_rows(rows: pd.DataFrame) -> list[dict[str, Any]]:
         day_rows = team_rows[team_rows["match_date"].eq(latest_day)]
         source = "local_latest"
 
-    matches = []
-    for gameid, game in day_rows.groupby("gameid", sort=False):
+    matches = _series_matches_from_rows(day_rows, rows, source)
+    return matches[:40]
+
+
+def _series_matches_from_rows(day_rows: pd.DataFrame, all_rows: pd.DataFrame, source: str) -> list[dict[str, Any]]:
+    games = day_rows.drop_duplicates(subset=["gameid", "side"]).copy()
+    series_entries: list[tuple[tuple[str, str, str, str], pd.DataFrame]] = []
+    for _, game in games.groupby("gameid", sort=False):
         sides = game.set_index(game["side"].astype(str).str.lower())
         blue = _side_team(sides, "blue")
         red = _side_team(sides, "red")
         if not blue or not red:
             continue
+        teams_key = "||".join(sorted([blue, red]))
+        league = str(game["league"].dropna().iloc[0])
+        split = str(game["split"].dropna().iloc[0]) if "split" in game and not game["split"].dropna().empty else ""
+        day = str(game["match_date"].dropna().iloc[0]) if "match_date" in game and not game["match_date"].dropna().empty else ""
+        series_entries.append(((league, split, day, teams_key), game))
+
+    matches = []
+    for key in dict.fromkeys(entry[0] for entry in series_entries):
+        series_games = [game for entry_key, game in series_entries if entry_key == key]
+        if not series_games:
+            continue
+        first = series_games[0]
+        first_sides = first.set_index(first["side"].astype(str).str.lower())
+        blue = _side_team(first_sides, "blue")
+        red = _side_team(first_sides, "red")
+        if not blue or not red:
+            continue
+        scores = _series_scores(series_games, blue, red)
+        total_games = max(len(series_games), 1)
+        best_of = "5" if total_games > 3 else "3" if total_games > 1 else "1"
+        series_id = hashlib.sha1("|".join(key).encode("utf-8")).hexdigest()[:16]
         matches.append(
             {
-                "id": str(gameid),
-                "league": str(game["league"].dropna().iloc[0]),
-                "league_group": str(game["league_group"].dropna().iloc[0]),
-                "region": str(game["league_region"].dropna().iloc[0]),
-                "patch": str(game["patch"].dropna().iloc[0] if "patch" in game else latest_patch(rows)),
-                "start_time": str(game["date"].min()),
+                "id": f"oe:series:{series_id}",
+                "league": str(first["league"].dropna().iloc[0]),
+                "league_group": str(first["league_group"].dropna().iloc[0]),
+                "region": str(first["league_region"].dropna().iloc[0]),
+                "patch": str(first["patch"].dropna().iloc[0] if "patch" in first and not first["patch"].dropna().empty else latest_patch(all_rows)),
+                "start_time": str(min(game["date"].min() for game in series_games)),
                 "status": "completed" if source == "local_latest" else "scheduled",
                 "blue_team": blue,
                 "red_team": red,
@@ -540,13 +568,31 @@ def _matches_from_rows(rows: pd.DataFrame) -> list[dict[str, Any]]:
                 "red_code": red,
                 "blue_image": "",
                 "red_image": "",
-                "blue_score": "",
-                "red_score": "",
-                "best_of": "",
+                "blue_score": str(scores.get(blue, "")),
+                "red_score": str(scores.get(red, "")),
+                "best_of": best_of,
                 "source": source,
             }
         )
-    return matches[:40]
+    return matches
+
+
+def _series_scores(series_games: list[pd.DataFrame], blue: str, red: str) -> dict[str, int]:
+    scores = {blue: 0, red: 0}
+    for game in series_games:
+        team_results = game[["teamname", "result"]].dropna().drop_duplicates() if {"teamname", "result"}.issubset(game.columns) else pd.DataFrame()
+        for _, row in team_results.iterrows():
+            team = str(row["teamname"])
+            if team in scores and _int_value(row["result"]) == 1:
+                scores[team] += 1
+    return scores
+
+
+def _int_value(value: Any) -> int:
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return 0
 
 
 def _side_team(sides: pd.DataFrame, side: str) -> str:
