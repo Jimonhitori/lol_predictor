@@ -1001,7 +1001,7 @@ async function refreshMatchDetail(initial) {
   const left = teams[0] || {};
   const right = teams[1] || {};
   $('matchTitle').textContent = `${left.name || left.code || '-'} vs ${right.name || right.code || '-'}`;
-  $('matchMeta').textContent = `${details.league || ''} · BO${details.best_of || '-'} · ${details.source || ''} · auto-refresh ${REFRESH_INTERVAL_LABEL}`;
+  $('matchMeta').textContent = matchDetailMeta(details);
   const seriesWinner = completedSeriesWinner(details);
   $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord', seriesWinner)}${matchInfoBlock(details)}${teamBlock(right, 'redTeamRecord', seriesWinner)}`;
   loadTeamRecords(left, right, details.league);
@@ -1012,6 +1012,27 @@ async function refreshMatchDetail(initial) {
   renderLiveDraft(details);
   if (initial) await predictDetail(left, right, details.league);
   updateLiveRefreshMeta(details);
+}
+
+function matchDetailMeta(details) {
+  return [
+    details.league || '',
+    `BO${details.best_of || '-'}`,
+    details.source || '',
+    matchDetailStartLabel(details.start_time),
+    `auto-refresh ${REFRESH_INTERVAL_LABEL}`,
+  ].filter(Boolean).join(' · ');
+}
+
+function matchDetailStartLabel(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat('ja-JP', {
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(date);
 }
 
 async function enrichStaticLiveData(details) {
