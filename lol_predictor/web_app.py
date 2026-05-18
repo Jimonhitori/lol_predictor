@@ -1513,7 +1513,7 @@ function championLabel(pick) {
   if (pick?.pending_pick) return 'Pick pending';
   if (!pick?.champion) return 'TBD';
   const champion = String(pick.champion);
-  if (champion.match(/^\\d+$/)) return `Champion #${champion}`;
+  if (champion.match(/^\\d+$/)) return championDisplayName(championImageId(champion)) || `Champion #${champion}`;
   return championDisplayName(champion);
 }
 
@@ -1669,7 +1669,7 @@ function livePlayerRow(player, goldDelta) {
   return `
     <div class="livePlayer liveTeamRows">
       <div class="liveChampion ${player.pending_pick ? 'pending' : ''}">
-        ${championIcon(player.champion_id || player.champion)}
+        ${championIcon(player.champion || player.champion_id)}
         <span><strong>${escapeHtml(championLabel(player))}</strong><small>${escapeHtml(meta)}</small></span>
       </div>
       <div class="healthBar"><div class="healthFill" style="width:${healthPct}%"></div><span class="healthText">${escapeHtml(current)} / ${escapeHtml(max)}</span></div>
@@ -1792,6 +1792,16 @@ function compactRoleLabel(value) {
 function championImageId(value) {
   const text = String(value || '').replace(/[^A-Za-z0-9]/g, '');
   const aliases = {
+    1: 'Annie',
+    14: 'Sion',
+    22: 'Ashe',
+    51: 'Caitlyn',
+    61: 'Orianna',
+    64: 'LeeSin',
+    147: 'Seraphine',
+    254: 'Vi',
+    432: 'Bard',
+    799: 'Ambessa',
     aurelionsol: 'AurelionSol',
     belveth: 'Belveth',
     chogath: 'Chogath',
