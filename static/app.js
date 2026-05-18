@@ -1505,6 +1505,13 @@ function teamKey(value) {
     ktrolster: 'ktrolster',
     dk: 'dpluskia',
     dpluskia: 'dpluskia',
+    dkc: 'dpluskiachallengers',
+    dkchallengers: 'dpluskiachallengers',
+    dpluskiachallengers: 'dpluskiachallengers',
+    t1a: 't1esportsacademy',
+    t1ea: 't1esportsacademy',
+    t1esportsacademy: 't1esportsacademy',
+    t1challengers: 't1esportsacademy',
     bnkfearx: 'bnkfearx',
     bfx: 'bnkfearx',
     fearx: 'bnkfearx',
@@ -1589,10 +1596,15 @@ function rosterCards(players) {
   return players.map(player => `
     <div class="playerCard">
       <div class="playerCardTop"><strong>${escapeHtml(player.role)}</strong><strong>${escapeHtml(player.player)}</strong></div>
-      <div class="playerMeta">${escapeHtml(player.games)} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}</div>
+      <div class="playerMeta">${escapeHtml(rosterMetaText(player))}</div>
       <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
     </div>
   `).join('');
+}
+
+function rosterMetaText(player) {
+  if (player.roster_source === 'leaguepedia') return 'Leaguepedia current roster';
+  return `${player.games} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}`;
 }
 
 function escapeHtml(value) {
