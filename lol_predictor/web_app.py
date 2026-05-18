@@ -44,6 +44,7 @@ APP_HTML = """<!doctype html>
           <option value="all">All tiers</option>
           <option value="major">Major</option>
           <option value="secondary">Secondary</option>
+          <option value="event">Events</option>
         </select>
         <select id="region">
           <option value="all">All regions</option>

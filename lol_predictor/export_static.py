@@ -32,7 +32,7 @@ from .web_app import (
 )
 
 
-LEAGUE_GROUPS = ["all", "major", "secondary"]
+LEAGUE_GROUPS = ["all", "major", "secondary", "event"]
 REGIONS = ["all", "korea", "china", "emea", "americas", "pacific", "international"]
 APP_JS_VERSION = hashlib.sha1(APP_JS.encode("utf-8")).hexdigest()[:10]
 APP_CSS_VERSION = hashlib.sha1(APP_CSS.encode("utf-8")).hexdigest()[:10]

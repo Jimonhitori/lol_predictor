@@ -18,7 +18,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--top", type=int, default=15)
     parser.add_argument("--league", action="append", dest="leagues")
     parser.add_argument("--region", choices=["all", "americas", "china", "emea", "international", "korea", "other", "pacific"], default="all")
-    parser.add_argument("--league-group", choices=["all", "major", "secondary"], default="all")
+    parser.add_argument("--league-group", choices=["all", "major", "secondary", "event"], default="all")
     return parser.parse_args()
 
 

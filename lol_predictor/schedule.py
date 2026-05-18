@@ -11,7 +11,7 @@ from urllib.request import Request, urlopen
 
 import pandas as pd
 
-from .league_groups import LEAGUE_REGION_BY_LABEL, PRIMARY_LEAGUE_LABELS
+from .league_groups import LEAGUE_REGION_BY_LABEL, league_group_for_label
 from .patches import latest_patch
 
 
@@ -495,7 +495,7 @@ def _parse_utc_date(value: str) -> date | None:
 
 
 def _league_group(league: str) -> str:
-    return "major" if league in PRIMARY_LEAGUE_LABELS else "secondary"
+    return league_group_for_label(league)
 
 
 def _league_region(league: str) -> str:

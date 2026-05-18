@@ -15,6 +15,10 @@ PRIMARY_LEAGUE_LABELS = {
     "WLDs",
 }
 
+EVENT_LEAGUE_LABELS = {
+    "EWC",
+}
+
 LEAGUE_REGION_BY_LABEL = {
     "AC": "emea",
     "CBLOL": "americas",
@@ -37,12 +41,20 @@ LEAGUE_REGION_BY_LABEL = {
 }
 
 
+def league_group_for_label(league: str) -> str:
+    if league in PRIMARY_LEAGUE_LABELS:
+        return "major"
+    if league in EVENT_LEAGUE_LABELS:
+        return "event"
+    return "secondary"
+
+
 def add_league_group(data: pd.DataFrame) -> pd.DataFrame:
     if "league" not in data.columns:
         return data
     data = data.copy()
     data["league_group"] = data["league"].astype(str).map(
-        lambda league: "major" if league in PRIMARY_LEAGUE_LABELS else "secondary"
+        league_group_for_label
     )
     data["league_region"] = data["league"].astype(str).map(
         lambda league: LEAGUE_REGION_BY_LABEL.get(league, "other")
