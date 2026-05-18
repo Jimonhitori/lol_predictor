@@ -2495,7 +2495,37 @@ def head_to_head_payload(
     matches = _head_to_head_matches(team_rows, left_candidates, right_candidates)
     if len(matches) < 5:
         matches = _merge_h2h_matches(matches, leaguepedia_head_to_head(left_candidates, right_candidates))
-    return {"team_a": team_a, "team_b": team_b, "matches": list(reversed(matches[-5:]))}
+    final_matches = [
+        _canonicalize_h2h_match_teams(match, team_a, left_candidates, team_b, right_candidates)
+        for match in list(reversed(matches[-5:]))
+    ]
+    return {"team_a": team_a, "team_b": team_b, "matches": final_matches}
+
+
+def _canonicalize_h2h_match_teams(
+    match: dict[str, object],
+    left_display: str,
+    left_candidates: list[str],
+    right_display: str,
+    right_candidates: list[str],
+) -> dict[str, object]:
+    left_keys = {_team_key(candidate) for candidate in left_candidates if candidate}
+    right_keys = {_team_key(candidate) for candidate in right_candidates if candidate}
+    normalized = dict(match)
+    normalized["left_team"] = _canonical_h2h_team_name(str(match.get("left_team") or ""), left_display, left_keys, right_display, right_keys)
+    normalized["right_team"] = _canonical_h2h_team_name(str(match.get("right_team") or ""), left_display, left_keys, right_display, right_keys)
+    return normalized
+
+
+def _canonical_h2h_team_name(
+    team: str, left_display: str, left_keys: set[str], right_display: str, right_keys: set[str]
+) -> str:
+    key = _team_key(team)
+    if key in left_keys:
+        return left_display
+    if key in right_keys:
+        return right_display
+    return team
 
 
 def _head_to_head_matches(
