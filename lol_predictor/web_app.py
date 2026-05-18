@@ -1456,7 +1456,7 @@ function previousGamePlayer(player) {
 
 function rosterPlayersForTeam(team) {
   const roster = state.rosters[teamKey(team?.name)] || state.rosters[teamKey(team?.code)] || [];
-  return roster.map(player => ({
+  return roster.filter(player => isStartingRole(player.role)).map(player => ({
     player: player.player || '-',
     role: player.role || '',
     champion: '',
@@ -1472,6 +1472,10 @@ function rosterPlayersForTeam(team) {
     items: [],
     pending_pick: true,
   }));
+}
+
+function isStartingRole(role) {
+  return ['top', 'jng', 'jug', 'jungle', 'mid', 'bot', 'adc', 'sup', 'support'].includes(String(role || '').toLowerCase());
 }
 
 function draftSideSlots(side, picks) {
