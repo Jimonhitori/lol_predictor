@@ -951,6 +951,8 @@ function renderLiveDraft(details) {
   const redTeam = teamForSide(game.red, teams);
   const bluePlayers = livePlayersForSide(details, game, 'blue', blueTeam);
   const redPlayers = livePlayersForSide(details, game, 'red', redTeam);
+  const blueStats = displayTeamStats(live.blue_stats || {}, bluePlayers);
+  const redStats = displayTeamStats(live.red_stats || {}, redPlayers);
   const hasLive = Boolean((live.blue || []).length || (live.red || []).length);
   const meaningfulLive = hasMeaningfulLiveData(live);
   const badgeText = liveBadgeText(details, game, hasLive, meaningfulLive);
@@ -969,8 +971,8 @@ function renderLiveDraft(details) {
         ${liveTeamHeader(redTeam)}
       </div>
       <div class="liveStatsLine">
-        ${liveStatsSide(live.blue_stats || {}, 'blue')}
-        ${liveStatsSide(live.red_stats || {}, 'red')}
+        ${liveStatsSide(blueStats, 'blue')}
+        ${liveStatsSide(redStats, 'red')}
       </div>
       <div class="livePlayers">
         ${liveTeamRows(blueTeam, bluePlayers, redPlayers)}
@@ -979,6 +981,21 @@ function renderLiveDraft(details) {
     </div>
   `;
   attachLiveTabHandlers(details);
+}
+
+function displayTeamStats(teamStats, players) {
+  if (!hasRealLivePlayers(players)) return teamStats;
+  return {
+    ...teamStats,
+    kills: sumPlayerStat(players, 'kills'),
+    deaths: sumPlayerStat(players, 'deaths'),
+    assists: sumPlayerStat(players, 'assists'),
+    gold: sumPlayerStat(players, 'gold') || Number(teamStats.gold || 0),
+  };
+}
+
+function sumPlayerStat(players, key) {
+  return players.reduce((total, player) => total + Number(player?.[key] || 0), 0);
 }
 
 function activeGame(games) {
