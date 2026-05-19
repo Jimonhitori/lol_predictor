@@ -662,7 +662,7 @@ async function loadOptions() {
   state.options = await api('/api/options');
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
-  $('leagueGroup').value = 'major';
+  $('leagueGroup').value = 'all';
   fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
@@ -850,10 +850,7 @@ function liveMatches(matches) {
 }
 
 function defaultMatchDate(matches) {
-  const today = localDateKey(new Date().toISOString());
-  if (matches.some(match => localDateKey(match.start_time) === today)) return today;
-  if (liveMatches(matches).length) return 'live';
-  return matchDateOptions(matches)[0]?.key || 'live';
+  return localDateKey(new Date().toISOString());
 }
 
 function matchDateOptions(matches) {
