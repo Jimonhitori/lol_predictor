@@ -29,6 +29,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--skip-export", action="store_true")
     parser.add_argument("--skip-verify", action="store_true")
     parser.add_argument("--overwrite-backfill", action="store_true")
+    parser.add_argument("--skip-details", action="store_true", help="Skip livestats details calls during backfill.")
     return parser.parse_args()
 
 
@@ -65,6 +66,8 @@ def main() -> None:
         ]
         if args.overwrite_backfill:
             command.append("--overwrite")
+        if args.skip_details:
+            command.append("--skip-details")
         run(command)
     if not args.skip_train:
         command = [

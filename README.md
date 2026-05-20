@@ -184,14 +184,17 @@ python -m lol_predictor.live_verify_model --model-path models/live_win_probabili
 Run the full refresh pipeline in order:
 
 ```powershell
-python -m lol_predictor.live_pipeline --league LCK --data-dir data/raw --labels data/live_labels.csv --backfill-dir data/live_snapshots/backfill_lck --model-path models/live_win_probability.joblib --exported-model docs/static/data/live_model.json --overwrite-backfill
+python -m lol_predictor.live_pipeline --league LCK --data-dir data/raw --labels data/live_labels.csv --backfill-dir data/live_snapshots/backfill_lck --model-path models/live_win_probability.joblib --exported-model docs/static/data/live_model.json --overwrite-backfill --skip-details
 ```
 
 Check whether the collected frames have enough labeled completed-game data:
 
 ```powershell
-python -m lol_predictor.live_report data/live_snapshots
+python -m lol_predictor.live_report data/live_snapshots --bucket-seconds 300
 ```
+
+The report includes a game-time bucket coverage table, which helps confirm
+whether the training set has enough mid-game and late-game frames.
 
 Evaluate a trained live model overall and by game-time bucket:
 

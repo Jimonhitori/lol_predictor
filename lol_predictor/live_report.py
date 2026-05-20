@@ -12,6 +12,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Report quality and label coverage for collected live JSONL frames.")
     parser.add_argument("inputs", nargs="+", type=Path)
     parser.add_argument("--max-interval-seconds", type=int, default=30)
+    parser.add_argument("--bucket-seconds", type=int, default=300)
     return parser.parse_args()
 
 
@@ -48,6 +49,8 @@ def main() -> None:
         print(train["target"].value_counts(dropna=False).to_string())
         print("Training rows by event:")
         print(train.groupby("event_id").size().sort_values(ascending=False).head(20).to_string())
+        print("Training rows by game-time bucket:")
+        print(time_bucket_summary(train, args.bucket_seconds).to_string(index=False))
 
 
 def expand_inputs(inputs: list[Path]) -> list[Path]:
@@ -58,6 +61,27 @@ def expand_inputs(inputs: list[Path]) -> list[Path]:
         else:
             paths.append(item)
     return paths
+
+
+def time_bucket_summary(frame: pd.DataFrame, bucket_seconds: int) -> pd.DataFrame:
+    bucket_seconds = max(1, bucket_seconds)
+    data = frame.copy()
+    data["time_bucket_start"] = (
+        pd.to_numeric(data["game_time"], errors="coerce").fillna(0) // bucket_seconds * bucket_seconds
+    ).astype(int)
+    summary = (
+        data.groupby("time_bucket_start", sort=True)
+        .agg(
+            rows=("game_id", "size"),
+            events=("event_id", "nunique"),
+            games=("game_id", "nunique"),
+            blue_win_rows=("target", "sum"),
+        )
+        .reset_index()
+    )
+    summary["time_bucket_end"] = summary["time_bucket_start"] + bucket_seconds
+    summary["red_win_rows"] = summary["rows"] - summary["blue_win_rows"]
+    return summary[["time_bucket_start", "time_bucket_end", "rows", "events", "games", "blue_win_rows", "red_win_rows"]]
 
 
 if __name__ == "__main__":
