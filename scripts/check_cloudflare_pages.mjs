@@ -2,16 +2,13 @@
 
 const DEFAULT_BASE_URL = 'https://lol-predictor.pages.dev';
 const DEFAULT_EVENT_ID = 'test';
-const DEFAULT_PRE_MATCH_PREDICTIONS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json';
-const DEFAULT_LIVE_STATUS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/live_status.json';
-const DEFAULT_LIVE_MODEL_MANIFEST_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/live_model_manifest.json';
 
 const args = parseArgs(process.argv.slice(2));
 const baseUrl = String(args.baseUrl || args.base || DEFAULT_BASE_URL).replace(/\/+$/, '');
 const eventId = String(args.eventId || args.id || DEFAULT_EVENT_ID);
-const predictionFeedUrl = String(args.predictionFeedUrl || DEFAULT_PRE_MATCH_PREDICTIONS_URL);
-const liveStatusUrl = String(args.liveStatusUrl || DEFAULT_LIVE_STATUS_URL);
-const liveManifestUrl = String(args.liveManifestUrl || DEFAULT_LIVE_MODEL_MANIFEST_URL);
+const predictionFeedUrl = String(args.predictionFeedUrl || `${baseUrl}/pre_match_predictions.json`);
+const liveStatusUrl = String(args.liveStatusUrl || `${baseUrl}/live_status.json`);
+const liveManifestUrl = String(args.liveManifestUrl || `${baseUrl}/live_model_manifest.json`);
 const requireLiveWinProbability = booleanArg(args.requireLiveWinProbability);
 const expectedContractVersion = args.expectedContractVersion
   ? String(args.expectedContractVersion)

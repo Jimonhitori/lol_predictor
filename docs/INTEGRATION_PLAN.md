@@ -93,8 +93,8 @@ Scope:
 
 - Add a lightweight fetcher in `docs/static/app.js` for pre-match predictions.
 - Prefer local static fallback first if `docs/pre_match_predictions.json` exists.
-- Support remote fetch from the `lol-pros-analyzer` public site:
-  `https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json`
+- Support remote fetch from a configured analyzer public site, while defaulting to the Cloudflare-hosted local bootstrap:
+  `/pre_match_predictions.json`
 - Match predictions to dashboard matches by stable keys, in this order:
   `event_id`, `game_id`, normalized `league + start_time + blue_team + red_team`.
 - Display pre-match probability on match cards and match detail without replacing live probability.
@@ -226,13 +226,13 @@ Production evidence:
 
 - `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` currently reports `/api/diagnostics` as `text/html`, so the deployed Pages project has not picked up the diagnostics Function yet.
 - The smoke check also checks `/site-contract.json`; if that route returns HTML or an older `contract_version`, the static Pages deployment itself is stale.
-- The same smoke check currently reports the default `lol-pros-analyzer` GitHub Pages artifacts as 404 HTML, so `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json` still need a successful analyzer Pages deployment or Cloudflare-hosted replacement URLs.
+- The same smoke check now defaults to Cloudflare-hosted bootstrap artifacts for `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json`; external analyzer Pages URLs can be configured later without changing the UI contract.
 - A manual `Smoke production contracts` GitHub Actions workflow is available in `lol_predictor` for post-deploy verification. Use `require_live_win_probability=true` when probing a currently live event.
 
 ## Near-Term Execution Order
 
 1. Deploy the current `lol_predictor` branch so `/api/diagnostics` is active in Cloudflare Pages.
-2. Enable or replace `lol-pros-analyzer` public artifact hosting for `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json`.
+2. Keep the Cloudflare-hosted bootstrap artifacts live, then replace them with analyzer-generated artifacts once GitHub Pages, Cloudflare, or Worker hosting is configured.
 3. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id {realEventId}` against a real unstarted/live/completed event.
 4. Finish Cloudflare verification for live win probability on a real live event.
 5. Re-run pre-match feed display against a real published analyzer feed.
@@ -241,5 +241,5 @@ Production evidence:
 Deployment unblocker:
 
 - `lol-pros-analyzer` now has a `Publish public artifacts` workflow that can publish schema-valid empty `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json` before the full training workflow is green.
-- After that workflow runs, the smoke check should stop reporting 404 HTML for analyzer artifacts, though live model readiness can still correctly report `bootstrap_empty` until training publishes a real model.
+- Until the analyzer workflow can be dispatched, `lol_predictor` hosts schema-valid bootstrap artifacts itself. Live model readiness can still correctly report `bootstrap_empty` until training publishes a real model.
 - `lol_predictor` now has a `Verify site contracts` workflow that runs JavaScript syntax checks, starts a local Cloudflare-compatible preview, and runs `scripts/check_cloudflare_pages.mjs` against the preview before deployment.

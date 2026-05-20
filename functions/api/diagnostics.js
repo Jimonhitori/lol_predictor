@@ -1,9 +1,9 @@
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
+const LIVE_STATUS_PATH = '/live_status.json';
+const LIVE_MODEL_MANIFEST_PATH = '/live_model_manifest.json';
 const SITE_CONTRACT_PATH = '/site-contract.json';
 const DEFAULT_PRE_MATCH_PREDICTIONS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json';
-const DEFAULT_LIVE_STATUS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/live_status.json';
-const DEFAULT_LIVE_MODEL_MANIFEST_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/live_model_manifest.json';
 const EXPECTED_SITE_CONTRACT_VERSION = '2026-05-20-live-pre-match-diagnostics-v1';
 const REQUIRED_SITE_FEATURES = [
   'cloudflare_live_event_function',
@@ -26,8 +26,8 @@ export function onRequestOptions() {
 export async function onRequestGet(context) {
   const requestUrl = new URL(context.request.url);
   const remotePredictionUrl = configuredUrl(context, 'PRE_MATCH_PREDICTIONS_URL', DEFAULT_PRE_MATCH_PREDICTIONS_URL);
-  const liveStatusUrl = configuredUrl(context, 'LIVE_STATUS_URL', DEFAULT_LIVE_STATUS_URL);
-  const liveManifestUrl = configuredUrl(context, 'LIVE_MODEL_MANIFEST_URL', DEFAULT_LIVE_MODEL_MANIFEST_URL);
+  const liveStatusUrl = configuredUrl(context, 'LIVE_STATUS_URL', new URL(LIVE_STATUS_PATH, requestUrl.origin).toString());
+  const liveManifestUrl = configuredUrl(context, 'LIVE_MODEL_MANIFEST_URL', new URL(LIVE_MODEL_MANIFEST_PATH, requestUrl.origin).toString());
   const [siteContract, liveModel, localPredictions, liveStatus, liveManifest] = await Promise.all([
     readJsonAsset(context, SITE_CONTRACT_PATH),
     readJsonAsset(context, LIVE_MODEL_PATH),
