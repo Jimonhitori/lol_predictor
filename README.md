@@ -160,7 +160,10 @@ python -m lol_predictor.live_train data/live_snapshots/*.jsonl --model-path mode
 ```
 
 Training expands shell globs on Windows and evaluates with a game-level split,
-so frames from the same game do not appear in both train and test sets.
+so frames from the same game do not appear in both train and test sets. Team
+identity features are off by default to reduce small-sample overfitting; pass
+`--include-team-features` when you explicitly want team-name priors inside the
+live model.
 
 Export the trained model to the static JSON format used by the Cloudflare live
 API:

@@ -42,6 +42,7 @@ def export_bundle(bundle: dict[str, Any], name: str) -> dict[str, Any]:
         "training_rows": int(bundle.get("training_rows") or 0),
         "test_rows": int(bundle.get("test_rows") or 0),
         "split": str(bundle.get("split") or ""),
+        "include_team_features": bool(bundle.get("include_team_features", True)),
         "exported_at": datetime.now(timezone.utc).isoformat(),
         "classes": [int(value) for value in getattr(model, "classes_", [])],
         "intercept": float(model.intercept_[0]),

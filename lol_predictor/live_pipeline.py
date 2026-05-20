@@ -22,6 +22,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-frames-per-game", type=int, default=0)
     parser.add_argument("--min-rows", type=int, default=100)
     parser.add_argument("--model-name", default="live_logreg_v1")
+    parser.add_argument("--include-team-features", action="store_true")
     parser.add_argument("--skip-labels", action="store_true")
     parser.add_argument("--skip-backfill", action="store_true")
     parser.add_argument("--skip-train", action="store_true")
@@ -66,8 +67,7 @@ def main() -> None:
             command.append("--overwrite")
         run(command)
     if not args.skip_train:
-        run(
-            [
+        command = [
                 "-m",
                 "lol_predictor.live_train",
                 str(args.backfill_dir / "*.jsonl"),
@@ -77,8 +77,10 @@ def main() -> None:
                 str(args.min_rows),
                 "--max-interval-seconds",
                 str(args.interval_seconds),
-            ]
-        )
+        ]
+        if args.include_team_features:
+            command.append("--include-team-features")
+        run(command)
     if not args.skip_export:
         run(
             [

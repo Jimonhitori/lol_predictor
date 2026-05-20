@@ -15,6 +15,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--test-fraction", type=float, default=0.2)
     parser.add_argument("--max-interval-seconds", type=int, default=30)
     parser.add_argument("--min-rows", type=int, default=100)
+    parser.add_argument(
+        "--include-team-features",
+        action="store_true",
+        help="Include blue_team/red_team identity features. Off by default to reduce small-sample overfitting.",
+    )
     return parser.parse_args()
 
 
@@ -31,6 +36,8 @@ def main() -> None:
             "Collect more completed games or lower --min-rows for a smoke test."
         )
     cols = live_feature_columns(frame)
+    if not args.include_team_features:
+        cols = [col for col in cols if col not in {"blue_team", "red_team"}]
     if not cols:
         raise SystemExit("No usable live feature columns were found.")
     if frame["target"].nunique() < 2:
@@ -51,6 +58,7 @@ def main() -> None:
             "training_rows": len(train),
             "test_rows": metrics.rows,
             "split": "grouped_by_game_id",
+            "include_team_features": bool(args.include_team_features),
         },
         args.model_path,
     )
