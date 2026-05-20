@@ -159,6 +159,12 @@ frames have been collected:
 python -m lol_predictor.live_train data/live_snapshots/*.jsonl --model-path models/live_win_probability.joblib
 ```
 
+Check whether the collected frames have enough labeled completed-game data:
+
+```powershell
+python -m lol_predictor.live_report data/live_snapshots
+```
+
 Run realtime inference from the latest public live-event snapshot:
 
 ```powershell
