@@ -45,7 +45,7 @@ def main() -> None:
     deadline = time.monotonic() + args.duration_minutes * 60 if args.duration_minutes > 0 else None
     max_snapshots = args.max_snapshots if args.max_snapshots > 0 else None
     snapshots = 0
-    last_frames: dict[str, str] = {}
+    last_snapshots: dict[str, str] = {}
 
     while True:
         for event_id in event_ids:
@@ -56,14 +56,14 @@ def main() -> None:
                 "source_url": live_event_url(args.api_base, event_id),
                 "details": details,
             }
-            frame = active_frame_timestamp(details)
-            if not args.only_new_frame or not frame or frame != last_frames.get(event_id, ""):
+            snapshot_key = active_snapshot_key(details)
+            if not args.only_new_frame or snapshot_key != last_snapshots.get(event_id, ""):
                 append_jsonl(output_paths[event_id], record)
                 snapshots += 1
-                last_frames[event_id] = frame
+                last_snapshots[event_id] = snapshot_key
                 print(snapshot_summary(record))
             else:
-                print(f"Skipped unchanged frame: {event_id} {frame}")
+                print(f"Skipped unchanged snapshot: {event_id} {snapshot_key}")
             if max_snapshots is not None and snapshots >= max_snapshots:
                 break
 
@@ -142,16 +142,37 @@ def active_frame_timestamp(details: dict[str, Any]) -> str:
     return str(live.get("frame_timestamp") or "")
 
 
+def active_snapshot_key(details: dict[str, Any]) -> str:
+    active_game = active_game_details(details)
+    live = (active_game.get("live") if active_game else {}) or {}
+    frame = str(live.get("frame_timestamp") or "")
+    if frame:
+        return frame
+    return "|".join(
+        [
+            str(active_game.get("id") if active_game else ""),
+            str(active_game.get("state") if active_game else ""),
+            str(live.get("status") or ""),
+            str(live.get("warning") or ""),
+        ]
+    )
+
+
 def active_live(details: dict[str, Any]) -> dict[str, Any]:
+    active_game = active_game_details(details)
+    return (active_game.get("live") if active_game else {}) or {}
+
+
+def active_game_details(details: dict[str, Any]) -> dict[str, Any]:
     games = [game for game in details.get("games") or [] if isinstance(game, dict)]
     for game in games:
         if str(game.get("state") or "").lower() == "inprogress":
-            return game.get("live") or {}
+            return game
     for game in games:
         live = game.get("live") or {}
         if live.get("status") == "in_game":
-            return live
-    return (games[0].get("live") if games else {}) or {}
+            return game
+    return games[0] if games else {}
 
 
 def snapshot_summary(record: dict[str, Any]) -> str:

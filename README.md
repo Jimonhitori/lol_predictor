@@ -173,6 +173,13 @@ include per-game winners, provide a label CSV with `game_id,winner` or
 python -m lol_predictor.live_backfill --event-id 115548128962971895 --labels data/live_labels.csv --interval-seconds 30
 ```
 
+Generate that label CSV from Oracle's Elixir team result rows when the event
+has already landed in your local OE data:
+
+```powershell
+python -m lol_predictor.live_labels --event-id 115548128962971895 --data-dir data/raw --output data/live_labels.csv
+```
+
 Run realtime inference from the latest public live-event snapshot:
 
 ```powershell
