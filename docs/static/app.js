@@ -1047,6 +1047,7 @@ function renderLiveDraft(details) {
   const meaningfulLive = hasMeaningfulLiveData(live);
   const badgeText = liveBadgeText(details, game, hasLive, meaningfulLive);
   const timerText = liveTimerText(details, game, live, meaningfulLive);
+  const winProbText = liveWinProbabilityText(game, live);
   const board = $('liveBoard');
   if (!board) return;
   board.innerHTML = `
@@ -1057,6 +1058,7 @@ function renderLiveDraft(details) {
         <div class="liveCenter">
           <span class="liveBadge">${escapeHtml(badgeText)}</span>
           ${timerText ? `<span class="liveTimer">${escapeHtml(timerText)}</span>` : ''}
+          ${winProbText ? `<span class="liveTimer">${escapeHtml(winProbText)}</span>` : ''}
         </div>
         ${liveTeamHeader(redTeam)}
       </div>
@@ -1071,6 +1073,16 @@ function renderLiveDraft(details) {
     </div>
   `;
   attachLiveTabHandlers(details);
+}
+
+function liveWinProbabilityText(game, live) {
+  const probability = live?.win_probability;
+  if (!probability || probability.status !== 'estimated') return '';
+  const blue = Number(probability.blue);
+  if (!Number.isFinite(blue)) return '';
+  const blueName = game?.blue?.team_code || game?.blue?.team_name || 'Blue';
+  const redName = game?.red?.team_code || game?.red?.team_name || 'Red';
+  return `${blueName} ${(blue * 100).toFixed(1)}% / ${redName} ${((1 - blue) * 100).toFixed(1)}%`;
 }
 
 function displayTeamStats(teamStats, players) {

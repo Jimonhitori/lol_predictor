@@ -145,6 +145,7 @@ async function attachTargetLive(details) {
   const status = statusForGame(details, game);
   if (status === 'unstarted' || status === 'ended') {
     game.live = { ...game.live, status, game_state: game.state || status };
+    game.live.win_probability = liveWinProbability(game.live);
     return;
   }
   try {
@@ -152,6 +153,7 @@ async function attachTargetLive(details) {
     const meaningful = hasMeaningfulLiveData(live);
     if (meaningful) {
       game.live = { ...live, status: liveStatus(live, game) };
+      game.live.win_probability = liveWinProbability(game.live);
       if (['unstarted', ''].includes(String(game.state || '').toLowerCase())) {
         game.state = 'inProgress';
         details.status = 'inProgress';
@@ -165,13 +167,15 @@ async function attachTargetLive(details) {
       game_time: live.game_time || 0,
       warning: live.warning || 'live_stats_empty',
     };
+    game.live.win_probability = liveWinProbability(game.live);
   } catch (error) {
     game.live = {
       ...baseLiveForState(game.state),
       status: 'unavailable',
       game_state: game.state || 'unavailable',
-      warning: 'live_stats_fetch_failed',
+      warning: error?.message || 'live_stats_fetch_failed',
     };
+    game.live.win_probability = liveWinProbability(game.live);
   }
 }
 
@@ -199,14 +203,25 @@ async function fetchLive(gameId) {
     fetchLiveJson(`${LIVE_WINDOW_URL}${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
     fetchLiveJson(`${LIVE_DETAILS_URL}${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
   ]);
+  if (windowPayload.__error) throw new Error(windowPayload.warning || 'live_stats_fetch_failed');
   const live = normalizeLiveWindow(windowPayload);
+  if (detailsPayload.__error && !live.warning) live.warning = detailsPayload.warning;
   mergeLiveDetails(live, detailsPayload);
   return live;
 }
 
 async function fetchLiveJson(url) {
   const response = await fetch(url, { cf: { cacheEverything: true, cacheTtl: LIVE_CACHE_SECONDS } });
-  if (!response.ok || response.status === 204) return {};
+  if (response.status === 204) return {};
+  if (!response.ok) {
+    let message = `live_stats_http_${response.status}`;
+    try {
+      const payload = await response.json();
+      message = payload?.message || payload?.errorCode || message;
+    } catch (error) {
+    }
+    return { __error: true, warning: message };
+  }
   return response.json();
 }
 
@@ -316,6 +331,75 @@ function liveStatus(live, game) {
   return 'soon';
 }
 
+function liveWinProbability(live) {
+  if (!hasMeaningfulLiveData(live)) {
+    return {
+      blue: 0.5,
+      red: 0.5,
+      model: 'heuristic_live_v0',
+      status: 'waiting_for_live_stats',
+      warning: live?.warning || '',
+    };
+  }
+  const blueStats = live.blue_stats || {};
+  const redStats = live.red_stats || {};
+  const bluePlayers = playerTotals(live.blue || []);
+  const redPlayers = playerTotals(live.red || []);
+  const goldDiff = number(blueStats.gold) - number(redStats.gold);
+  const killDiff = number(blueStats.kills || bluePlayers.kills) - number(redStats.kills || redPlayers.kills);
+  const towerDiff = number(blueStats.towers) - number(redStats.towers);
+  const inhibitorDiff = number(blueStats.inhibitors) - number(redStats.inhibitors);
+  const dragonDiff = number(blueStats.dragons) - number(redStats.dragons);
+  const baronDiff = number(blueStats.barons) - number(redStats.barons);
+  const levelDiff = bluePlayers.avgLevel - redPlayers.avgLevel;
+  const timeMinutes = Math.max(1, number(live.game_time) / 60);
+  const timeScale = Math.min(1.4, Math.max(0.75, timeMinutes / 18));
+  const logit = (
+    0.00018 * goldDiff
+    + 0.16 * killDiff
+    + 0.32 * towerDiff
+    + 0.5 * inhibitorDiff
+    + 0.22 * dragonDiff
+    + 0.45 * baronDiff
+    + 0.09 * levelDiff
+  ) * timeScale;
+  const blue = clamp(1 / (1 + Math.exp(-logit)), 0.03, 0.97);
+  return {
+    blue,
+    red: 1 - blue,
+    model: 'heuristic_live_v0',
+    status: 'estimated',
+    features: {
+      gold_diff: goldDiff,
+      kill_diff: killDiff,
+      tower_diff: towerDiff,
+      inhibitor_diff: inhibitorDiff,
+      dragon_diff: dragonDiff,
+      baron_diff: baronDiff,
+      avg_level_diff: levelDiff,
+      game_time: number(live.game_time),
+    },
+  };
+}
+
+function playerTotals(players) {
+  const valid = Array.isArray(players) ? players.filter(player => player && typeof player === 'object') : [];
+  const levels = valid.map(player => number(player.level)).filter(level => level > 0);
+  return {
+    kills: valid.reduce((total, player) => total + number(player.kills), 0),
+    avgLevel: levels.length ? levels.reduce((total, level) => total + level, 0) / levels.length : 0,
+  };
+}
+
+function number(value) {
+  const parsed = Number(value || 0);
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
 function baseLiveForState(state) {
   const status = String(state || '').toLowerCase() === 'completed' ? 'ended' : 'unstarted';
   return {
@@ -327,6 +411,13 @@ function baseLiveForState(state) {
     red_stats: {},
     status,
     warning: '',
+    win_probability: {
+      blue: 0.5,
+      red: 0.5,
+      model: 'heuristic_live_v0',
+      status: 'waiting_for_live_stats',
+      warning: '',
+    },
   };
 }
 
