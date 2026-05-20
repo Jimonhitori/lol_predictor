@@ -433,26 +433,27 @@ async function staticApi(path) {
   const params = url.searchParams;
   let target = '';
   if (url.pathname === '/api/options') {
-    target = 'static/data/options.json';
+    target = 'data/options.json';
   } else if (url.pathname === '/api/summary') {
     target = params.get('league')
-      ? `static/data/summaries/league__${staticKey(params.get('league'))}.json`
-      : `static/data/summaries/${staticKey(params.get('league_group') || $('leagueGroup')?.value || 'all')}__${staticKey(params.get('region') || $('region')?.value || 'all')}.json`;
+      ? `data/summaries/league__${staticKey(params.get('league'))}.json`
+      : `data/summaries/${staticKey(params.get('league_group') || $('leagueGroup')?.value || 'all')}__${staticKey(params.get('region') || $('region')?.value || 'all')}.json`;
   } else if (url.pathname === '/api/matches/today') {
-    target = `static/data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
+    target = `data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
   } else if (url.pathname === '/api/match') {
-    target = `static/data/matches/${encodeURIComponent(params.get('id') || '')}.json`;
+    target = `data/matches/${encodeURIComponent(params.get('id') || '')}.json`;
   } else if (url.pathname === '/api/roster') {
-    target = `static/data/rosters/${staticKey(params.get('team') || '')}.json`;
+    target = `data/rosters/${staticKey(params.get('team') || '')}.json`;
   } else if (url.pathname === '/api/team-record') {
-    target = `static/data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
+    target = `data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
   } else if (url.pathname === '/api/head-to-head') {
-    target = `static/data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_a') || '')}__${staticKey(params.get('team_b') || '')}.json`;
+    target = `data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_a') || '')}__${staticKey(params.get('team_b') || '')}.json`;
   }
   if (!target) throw new Error(`Static data route is not available: ${path}`);
+  target = staticDataUrl(target);
   let response = await fetch(target, { cache: 'no-store' });
   if (!response.ok && url.pathname === '/api/head-to-head') {
-    const reverseTarget = `static/data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_b') || '')}__${staticKey(params.get('team_a') || '')}.json`;
+    const reverseTarget = staticDataUrl(`data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_b') || '')}__${staticKey(params.get('team_a') || '')}.json`);
     if (reverseTarget !== target) {
       response = await fetch(reverseTarget, { cache: 'no-store' });
       if (response.ok) target = reverseTarget;
@@ -465,6 +466,11 @@ async function staticApi(path) {
     return mergeFreshDetails(data, fresh);
   }
   return data;
+}
+
+function staticDataUrl(path) {
+  const script = document.querySelector('script[src*="app.js"]');
+  return new URL(path, script?.src || new URL('static/app.js', location.href)).toString();
 }
 
 function staticKey(value) {
@@ -788,7 +794,7 @@ function renderMatches() {
 }
 
 function detailHref(id) {
-  return `${STATIC_SITE ? 'match.html' : '/match'}?id=${encodeURIComponent(id || '')}`;
+  return `${STATIC_SITE ? 'match/' : '/match'}?id=${encodeURIComponent(id || '')}`;
 }
 
 function renderDateTabs(matches) {

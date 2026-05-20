@@ -69,6 +69,7 @@ def main() -> None:
         shutil.rmtree(data_dir)
     write_text(out_dir / "index.html", static_html(APP_HTML))
     write_text(out_dir / "match.html", static_html(MATCH_HTML))
+    write_text(out_dir / "match" / "index.html", static_html(MATCH_HTML, asset_prefix="../", back_href="../index.html"))
     write_text(out_dir / "static" / "styles.css", APP_CSS)
     write_text(out_dir / "static" / "app.js", APP_JS)
     options = options_payload(context.rows)
@@ -130,14 +131,14 @@ def main() -> None:
     print(f"Exported static snapshot to {out_dir}")
 
 
-def static_html(html: str) -> str:
+def static_html(html: str, asset_prefix: str = "", back_href: str = "index.html") -> str:
     html = strip_static_model_blocks(html)
-    return html.replace('<a class="backLink" href="/">', '<a class="backLink" href="index.html">').replace(
+    return html.replace('<a class="backLink" href="/">', f'<a class="backLink" href="{back_href}">').replace(
         '<script src="/static/app.js"></script>',
-        f'<script>window.STATIC_SITE = true;</script>\n  <script src="static/app.js?v={APP_JS_VERSION}"></script>',
+        f'<script>window.STATIC_SITE = true;</script>\n  <script src="{asset_prefix}static/app.js?v={APP_JS_VERSION}"></script>',
     ).replace(
         '<link rel="stylesheet" href="/static/styles.css">',
-        f'<link rel="stylesheet" href="static/styles.css?v={APP_CSS_VERSION}">',
+        f'<link rel="stylesheet" href="{asset_prefix}static/styles.css?v={APP_CSS_VERSION}">',
     )
 
 
