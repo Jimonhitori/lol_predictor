@@ -1,0 +1,370 @@
+{
+  "schema": "live_logistic_regression_v1",
+  "name": "live_lck_logreg_smoke_v1",
+  "feature_schema": "live_frame_v1",
+  "feature_columns": [
+    "league",
+    "patch_version",
+    "best_of",
+    "game_number",
+    "blue_team",
+    "red_team",
+    "game_time",
+    "blue_gold",
+    "red_gold",
+    "gold_diff",
+    "blue_kills",
+    "red_kills",
+    "kill_diff",
+    "blue_towers",
+    "red_towers",
+    "tower_diff",
+    "blue_inhibitors",
+    "red_inhibitors",
+    "inhibitor_diff",
+    "blue_barons",
+    "red_barons",
+    "baron_diff",
+    "blue_dragons",
+    "red_dragons",
+    "dragon_diff",
+    "blue_avg_level",
+    "red_avg_level",
+    "avg_level_diff",
+    "blue_cs",
+    "red_cs",
+    "cs_diff",
+    "blue_player_gold",
+    "red_player_gold",
+    "player_gold_diff",
+    "blue_deaths",
+    "red_deaths",
+    "death_diff"
+  ],
+  "training_rows": 819,
+  "test_rows": 205,
+  "split": "grouped_by_game_id",
+  "exported_at": "2026-05-20T09:17:13.964063+00:00",
+  "classes": [
+    0,
+    1
+  ],
+  "intercept": 0.12816188537018708,
+  "coefficients": [
+    0.050899270897423673,
+    0.26996597234173775,
+    -0.4608935122727308,
+    -1.091134690258696,
+    1.3329615010871085,
+    0.050899270897423673,
+    0.4502199556781583,
+    0.6208854168008169,
+    -1.0202061015815493,
+    -1.8038454851807169,
+    -2.169406282715314,
+    1.1443096931912977,
+    0.9797575128167044,
+    -1.0001430211048121,
+    0.6262959682111813,
+    -0.42427296282297766,
+    -0.2757965023390684,
+    0.7055398633299961,
+    2.2684604875111285,
+    -0.2417940010942204,
+    2.2812778677400427,
+    -0.6400142071428004,
+    -0.1488717755608605,
+    0.8843499684092473,
+    -2.3079471209788385,
+    1.8021329342625512,
+    0.6439570315472343,
+    -1.266888471717833,
+    -0.9553029545670955,
+    -0.3887309210096343,
+    0.318142073408113,
+    0.31505028863643475,
+    0.04625801598393184,
+    -0.05675149568223001,
+    -0.10244258352591024,
+    0.016972404861651042,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.019724488110557634,
+    -0.014182391593516527,
+    -0.042588639314078997,
+    -0.3798811433983225,
+    -0.3622100589675195,
+    -0.09303820546215266,
+    0.318142073408113,
+    0.31505028863643475,
+    0.04625801598393184,
+    -0.10244258352591024,
+    -0.05675149568223001,
+    -0.016972404861651042
+  ],
+  "categorical": [
+    {
+      "name": "league",
+      "fill_value": "unknown",
+      "categories": [
+        "LCK"
+      ]
+    },
+    {
+      "name": "patch_version",
+      "fill_value": "unknown",
+      "categories": [
+        "16.6.753.8272",
+        "16.7.760.466",
+        "16.8.765.5537",
+        "16.9.771.8052"
+      ]
+    },
+    {
+      "name": "best_of",
+      "fill_value": "unknown",
+      "categories": [
+        "3"
+      ]
+    },
+    {
+      "name": "game_number",
+      "fill_value": "unknown",
+      "categories": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "name": "blue_team",
+      "fill_value": "unknown",
+      "categories": [
+        "BNK FEARX",
+        "DN SOOPers",
+        "Dplus KIA",
+        "Gen.G Esports",
+        "HANJIN BRION",
+        "Hanwha Life Esports",
+        "KIWOOM DRX",
+        "NONGSHIM RED FORCE",
+        "T1",
+        "kt Rolster"
+      ]
+    },
+    {
+      "name": "red_team",
+      "fill_value": "unknown",
+      "categories": [
+        "BNK FEARX",
+        "DN SOOPers",
+        "Dplus KIA",
+        "Gen.G Esports",
+        "HANJIN BRION",
+        "Hanwha Life Esports",
+        "KIWOOM DRX",
+        "NONGSHIM RED FORCE",
+        "T1",
+        "kt Rolster"
+      ]
+    }
+  ],
+  "numeric": [
+    {
+      "name": "game_time",
+      "impute": 120.887,
+      "mean": 139.67546153846155,
+      "scale": 91.7488818488259
+    },
+    {
+      "name": "blue_gold",
+      "impute": 4882.0,
+      "mean": 4943.761904761905,
+      "scale": 2131.0642776605005
+    },
+    {
+      "name": "red_gold",
+      "impute": 4718.0,
+      "mean": 4898.783882783883,
+      "scale": 2098.7110314634524
+    },
+    {
+      "name": "gold_diff",
+      "impute": 0.0,
+      "mean": 44.97802197802198,
+      "scale": 362.78450938479625
+    },
+    {
+      "name": "blue_kills",
+      "impute": 0.0,
+      "mean": 0.20634920634920634,
+      "scale": 0.536946306375585
+    },
+    {
+      "name": "red_kills",
+      "impute": 0.0,
+      "mean": 0.12454212454212454,
+      "scale": 0.38165615465585656
+    },
+    {
+      "name": "kill_diff",
+      "impute": 0.0,
+      "mean": 0.08180708180708181,
+      "scale": 0.5081976646182805
+    },
+    {
+      "name": "blue_towers",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "red_towers",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "tower_diff",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "blue_inhibitors",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "red_inhibitors",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "inhibitor_diff",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "blue_barons",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "red_barons",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "baron_diff",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "blue_dragons",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "red_dragons",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "dragon_diff",
+      "impute": 0.0,
+      "mean": 0.0,
+      "scale": 1.0
+    },
+    {
+      "name": "blue_avg_level",
+      "impute": 2.6,
+      "mean": 2.6224664224664225,
+      "scale": 1.3344622591725184
+    },
+    {
+      "name": "red_avg_level",
+      "impute": 2.6,
+      "mean": 2.61001221001221,
+      "scale": 1.3317746841619738
+    },
+    {
+      "name": "avg_level_diff",
+      "impute": 0.0,
+      "mean": 0.012454212454212446,
+      "scale": 0.1745497155966058
+    },
+    {
+      "name": "blue_cs",
+      "impute": 58.0,
+      "mean": 66.35531135531136,
+      "scale": 56.28880269997171
+    },
+    {
+      "name": "red_cs",
+      "impute": 58.0,
+      "mean": 66.31379731379731,
+      "scale": 56.691702658268014
+    },
+    {
+      "name": "cs_diff",
+      "impute": 0.0,
+      "mean": 0.04151404151404151,
+      "scale": 9.122593918825961
+    },
+    {
+      "name": "blue_player_gold",
+      "impute": 4882.0,
+      "mean": 4943.761904761905,
+      "scale": 2131.0642776605005
+    },
+    {
+      "name": "red_player_gold",
+      "impute": 4718.0,
+      "mean": 4898.783882783883,
+      "scale": 2098.7110314634524
+    },
+    {
+      "name": "player_gold_diff",
+      "impute": 0.0,
+      "mean": 44.97802197802198,
+      "scale": 362.78450938479625
+    },
+    {
+      "name": "blue_deaths",
+      "impute": 0.0,
+      "mean": 0.12454212454212454,
+      "scale": 0.38165615465585656
+    },
+    {
+      "name": "red_deaths",
+      "impute": 0.0,
+      "mean": 0.20634920634920634,
+      "scale": 0.536946306375585
+    },
+    {
+      "name": "death_diff",
+      "impute": 0.0,
+      "mean": -0.08180708180708181,
+      "scale": 0.5081976646182805
+    }
+  ]
+}

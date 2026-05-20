@@ -4,6 +4,8 @@ const LIVE_DETAILS_URL = 'https://feed.lolesports.com/livestats/v1/details/';
 const DEFAULT_LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const EVENT_CACHE_SECONDS = 45;
 const LIVE_CACHE_SECONDS = 4;
+const LIVE_MODEL_PATH = '/static/data/live_model.json';
+let liveModelPromise = null;
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -36,7 +38,7 @@ export async function onRequestGet(context) {
     const event = await fetchEventDetails(eventId, context.env);
     details = normalizeEventDetails(event);
     details.warning = details.warning || '';
-    await attachTargetLive(details);
+    await attachTargetLive(details, context);
     cacheTtl = responseCacheSeconds(details);
   } catch (error) {
     details = unavailable(eventId, 'event_details_fetch_failed');
@@ -136,7 +138,7 @@ function seriesStateFromGames(games, teams, bestOf, eventState) {
   return String(eventState || 'unstarted');
 }
 
-async function attachTargetLive(details) {
+async function attachTargetLive(details, context) {
   const game = currentGame(details);
   if (!game?.id) {
     details.warning = 'target_game_missing';
@@ -145,7 +147,7 @@ async function attachTargetLive(details) {
   const status = statusForGame(details, game);
   if (status === 'unstarted' || status === 'ended') {
     game.live = { ...game.live, status, game_state: game.state || status };
-    game.live.win_probability = liveWinProbability(game.live);
+    game.live.win_probability = await liveWinProbability(game.live, game, details, context);
     return;
   }
   try {
@@ -153,7 +155,7 @@ async function attachTargetLive(details) {
     const meaningful = hasMeaningfulLiveData(live);
     if (meaningful) {
       game.live = { ...live, status: liveStatus(live, game) };
-      game.live.win_probability = liveWinProbability(game.live);
+      game.live.win_probability = await liveWinProbability(game.live, game, details, context);
       if (['unstarted', ''].includes(String(game.state || '').toLowerCase())) {
         game.state = 'inProgress';
         details.status = 'inProgress';
@@ -167,7 +169,7 @@ async function attachTargetLive(details) {
       game_time: live.game_time || 0,
       warning: live.warning || 'live_stats_empty',
     };
-    game.live.win_probability = liveWinProbability(game.live);
+    game.live.win_probability = await liveWinProbability(game.live, game, details, context);
   } catch (error) {
     game.live = {
       ...baseLiveForState(game.state),
@@ -175,7 +177,7 @@ async function attachTargetLive(details) {
       game_state: game.state || 'unavailable',
       warning: error?.message || 'live_stats_fetch_failed',
     };
-    game.live.win_probability = liveWinProbability(game.live);
+    game.live.win_probability = await liveWinProbability(game.live, game, details, context);
   }
 }
 
@@ -331,7 +333,7 @@ function liveStatus(live, game) {
   return 'soon';
 }
 
-function liveWinProbability(live) {
+async function liveWinProbability(live, game = {}, details = {}, context = null) {
   if (!hasMeaningfulLiveData(live)) {
     return {
       blue: 0.5,
@@ -341,6 +343,8 @@ function liveWinProbability(live) {
       warning: live?.warning || '',
     };
   }
+  const modelPrediction = await liveModelWinProbability(live, game, details, context);
+  if (modelPrediction) return modelPrediction;
   const blueStats = live.blue_stats || {};
   const redStats = live.red_stats || {};
   const bluePlayers = playerTotals(live.blue || []);
@@ -382,6 +386,134 @@ function liveWinProbability(live) {
   };
 }
 
+async function liveModelWinProbability(live, game, details, context) {
+  const model = await loadLiveModel(context);
+  if (!model || model.schema !== 'live_logistic_regression_v1') return null;
+  const row = liveFeatureRow(live, game, details);
+  let coefficientIndex = 0;
+  let logit = Number(model.intercept || 0);
+  for (const feature of model.categorical || []) {
+    const value = stringValue(row[feature.name] ?? feature.fill_value ?? 'unknown');
+    for (const category of feature.categories || []) {
+      if (value === stringValue(category)) logit += Number(model.coefficients?.[coefficientIndex] || 0);
+      coefficientIndex += 1;
+    }
+  }
+  for (const feature of model.numeric || []) {
+    const raw = number(row[feature.name]);
+    const imputed = Number.isFinite(raw) ? raw : Number(feature.impute || 0);
+    const scaled = (imputed - Number(feature.mean || 0)) / (Number(feature.scale || 1) || 1);
+    logit += scaled * Number(model.coefficients?.[coefficientIndex] || 0);
+    coefficientIndex += 1;
+  }
+  const blue = clamp(1 / (1 + Math.exp(-logit)), 0.01, 0.99);
+  return {
+    blue,
+    red: 1 - blue,
+    model: model.name || 'live_logreg_v1',
+    status: 'estimated',
+    feature_schema: model.feature_schema || 'live_frame_v1',
+    training_rows: model.training_rows || 0,
+    test_rows: model.test_rows || 0,
+    features: {
+      gold_diff: row.gold_diff,
+      kill_diff: row.kill_diff,
+      tower_diff: row.tower_diff,
+      inhibitor_diff: row.inhibitor_diff,
+      dragon_diff: row.dragon_diff,
+      baron_diff: row.baron_diff,
+      avg_level_diff: row.avg_level_diff,
+      game_time: row.game_time,
+    },
+  };
+}
+
+async function loadLiveModel(context) {
+  if (liveModelPromise) return liveModelPromise;
+  liveModelPromise = (async () => {
+    try {
+      let response = null;
+      if (context?.env?.ASSETS) {
+        const requestUrl = new URL(context.request.url);
+        response = await context.env.ASSETS.fetch(new Request(new URL(LIVE_MODEL_PATH, requestUrl.origin).toString()));
+      } else if (context?.request?.url) {
+        response = await fetch(new URL(LIVE_MODEL_PATH, context.request.url).toString(), {
+          cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
+        });
+      }
+      if (!response || !response.ok) return null;
+      return response.json();
+    } catch (error) {
+      return null;
+    }
+  })();
+  return liveModelPromise;
+}
+
+function liveFeatureRow(live, game, details) {
+  const blueStats = live.blue_stats || {};
+  const redStats = live.red_stats || {};
+  const bluePlayers = playerFeatureTotals(live.blue || []);
+  const redPlayers = playerFeatureTotals(live.red || []);
+  const blueTeam = game.blue || {};
+  const redTeam = game.red || {};
+  const blueGold = number(blueStats.gold);
+  const redGold = number(redStats.gold);
+  const blueKills = number(blueStats.kills || bluePlayers.kills);
+  const redKills = number(redStats.kills || redPlayers.kills);
+  return {
+    league: stringValue(details.league || ''),
+    patch_version: stringValue(live.patch_version || ''),
+    best_of: stringValue(details.best_of || ''),
+    game_number: stringValue(game.number || ''),
+    blue_team: stringValue(blueTeam.team_name || blueTeam.team_code || ''),
+    red_team: stringValue(redTeam.team_name || redTeam.team_code || ''),
+    game_time: number(live.game_time),
+    blue_gold: blueGold,
+    red_gold: redGold,
+    gold_diff: blueGold - redGold,
+    blue_kills: blueKills,
+    red_kills: redKills,
+    kill_diff: blueKills - redKills,
+    blue_towers: number(blueStats.towers),
+    red_towers: number(redStats.towers),
+    tower_diff: number(blueStats.towers) - number(redStats.towers),
+    blue_inhibitors: number(blueStats.inhibitors),
+    red_inhibitors: number(redStats.inhibitors),
+    inhibitor_diff: number(blueStats.inhibitors) - number(redStats.inhibitors),
+    blue_barons: number(blueStats.barons),
+    red_barons: number(redStats.barons),
+    baron_diff: number(blueStats.barons) - number(redStats.barons),
+    blue_dragons: number(blueStats.dragons),
+    red_dragons: number(redStats.dragons),
+    dragon_diff: number(blueStats.dragons) - number(redStats.dragons),
+    blue_avg_level: bluePlayers.avgLevel,
+    red_avg_level: redPlayers.avgLevel,
+    avg_level_diff: bluePlayers.avgLevel - redPlayers.avgLevel,
+    blue_cs: bluePlayers.creepScore,
+    red_cs: redPlayers.creepScore,
+    cs_diff: bluePlayers.creepScore - redPlayers.creepScore,
+    blue_player_gold: bluePlayers.gold,
+    red_player_gold: redPlayers.gold,
+    player_gold_diff: bluePlayers.gold - redPlayers.gold,
+    blue_deaths: bluePlayers.deaths,
+    red_deaths: redPlayers.deaths,
+    death_diff: bluePlayers.deaths - redPlayers.deaths,
+  };
+}
+
+function playerFeatureTotals(players) {
+  const valid = Array.isArray(players) ? players.filter(player => player && typeof player === 'object') : [];
+  const levels = valid.map(player => number(player.level)).filter(level => level > 0);
+  return {
+    kills: valid.reduce((total, player) => total + number(player.kills), 0),
+    deaths: valid.reduce((total, player) => total + number(player.deaths), 0),
+    creepScore: valid.reduce((total, player) => total + number(player.creep_score), 0),
+    gold: valid.reduce((total, player) => total + number(player.gold), 0),
+    avgLevel: levels.length ? levels.reduce((total, level) => total + level, 0) / levels.length : 0,
+  };
+}
+
 function playerTotals(players) {
   const valid = Array.isArray(players) ? players.filter(player => player && typeof player === 'object') : [];
   const levels = valid.map(player => number(player.level)).filter(level => level > 0);
@@ -394,6 +526,10 @@ function playerTotals(players) {
 function number(value) {
   const parsed = Number(value || 0);
   return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function stringValue(value) {
+  return value === null || value === undefined ? '' : String(value);
 }
 
 function clamp(value, min, max) {

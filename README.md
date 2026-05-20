@@ -162,6 +162,13 @@ python -m lol_predictor.live_train data/live_snapshots/*.jsonl --model-path mode
 Training expands shell globs on Windows and evaluates with a game-level split,
 so frames from the same game do not appear in both train and test sets.
 
+Export the trained model to the static JSON format used by the Cloudflare live
+API:
+
+```powershell
+python -m lol_predictor.live_export_model --model-path models/live_win_probability.joblib --output docs/static/data/live_model.json
+```
+
 Check whether the collected frames have enough labeled completed-game data:
 
 ```powershell
