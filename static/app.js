@@ -110,8 +110,13 @@ function normalizeLolesportsTeam(team) {
 
 function normalizeLolesportsGame(game, teamById) {
   const sides = {};
+  let winner = game.winner || game.winner_team || game.winnerTeam || game.winningTeam || game.winningTeamId || '';
   for (const team of Array.isArray(game.teams) ? game.teams : []) {
     const sourceTeam = teamById[String(team.id || '')] || {};
+    const result = team.result || {};
+    if (team.winner === true || result.winner === true || String(result.outcome || '').toLowerCase() === 'win') {
+      winner = sourceTeam.code || sourceTeam.name || team.id || winner;
+    }
     sides[String(team.side || '').toLowerCase()] = {
       team_id: String(team.id || ''),
       team_name: String(sourceTeam.name || ''),
@@ -124,6 +129,7 @@ function normalizeLolesportsGame(game, teamById) {
     state: String(game.state || ''),
     blue: sides.blue || {},
     red: sides.red || {},
+    winner: typeof winner === 'object' ? String(winner.code || winner.name || winner.id || '') : String(winner || ''),
     live: {},
   };
 }
@@ -897,7 +903,7 @@ function gameWinnerTeam(details, game) {
   const teams = details?.teams || [];
   const explicitWinner = game?.winner || game?.winner_team || game?.winnerTeam;
   if (explicitWinner) {
-    return teams.find(team => sameTeam(explicitWinner, team.name) || sameTeam(explicitWinner, team.code)) || null;
+    return teams.find(team => sameWinnerValue(explicitWinner, team)) || null;
   }
   const completedGames = (details?.games || []).filter(item => String(item.state || '').toLowerCase() === 'completed').length;
   const leftScore = scoreNumber(teams[0]?.game_wins);
@@ -928,6 +934,20 @@ function sameTeamIdentity(left, right) {
     || sameTeam(left?.code, right?.code)
     || sameTeam(left?.name, right?.code)
     || sameTeam(left?.code, right?.name);
+}
+
+function sameWinnerValue(value, team) {
+  if (!value || !team) return false;
+  if (typeof value === 'object') {
+    return sameTeam(value.id, team.id)
+      || sameTeam(value.name, team.name)
+      || sameTeam(value.code, team.code)
+      || sameTeam(value.name, team.code)
+      || sameTeam(value.code, team.name);
+  }
+  return sameTeam(value, team.id)
+    || sameTeam(value, team.name)
+    || sameTeam(value, team.code);
 }
 
 function localStartTime(value) {
@@ -1311,7 +1331,7 @@ function liveTimerText(details, game, live, meaningfulLive) {
   const seriesState = String(details?.status || '').toLowerCase();
   const state = String(game?.state || '').toLowerCase();
   if (['completed', 'complete'].includes(seriesState) || state === 'completed') {
-    const winner = completedSeriesWinner(details) || gameWinnerTeam(details, game);
+    const winner = gameWinnerTeam(details, game) || completedSeriesWinner(details);
     const label = winner?.code || winner?.name || 'Winner';
     return `${label} WON`;
   }
