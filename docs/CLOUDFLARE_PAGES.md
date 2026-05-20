@@ -32,6 +32,8 @@ That later step requires Python dependencies and data/model files to be availabl
 - Match links use `match.html?id=...` so the same static files work on both GitHub Pages and Cloudflare Pages.
 - Static JSON under `/static/data/` is cached for 60 seconds.
 - HTML and app assets are revalidated so UI changes roll out quickly.
+- `/api/live-event?id=...` is the Pages Function boundary for LoL Esports event/live data and live win probability.
+- `/api/diagnostics` reports the local live model, pre-match prediction feed, and `lol-pros-analyzer` public live status/manifest health.
 
 ## Prediction JSON
 
@@ -53,9 +55,102 @@ Then it will be available as:
 /pre_match_predictions.json
 ```
 
+The browser defaults to the `lol-pros-analyzer` GitHub Pages URL. To point a
+deployment at another feed without changing app code, define either:
+
+```html
+<script>
+  window.PRE_MATCH_PREDICTIONS_URL = "https://example.com/pre_match_predictions.json";
+</script>
+```
+
+or:
+
+```html
+<script>
+  window.LOL_PREDICTOR_CONFIG = {
+    preMatchPredictionsUrl: "https://example.com/pre_match_predictions.json"
+  };
+</script>
+```
+
+For `/api/diagnostics`, Cloudflare environment variables can override the
+default analyzer artifact URLs:
+
+- `PRE_MATCH_PREDICTIONS_URL`
+- `LIVE_STATUS_URL`
+- `LIVE_MODEL_MANIFEST_URL`
+
+## Cloudflare Verification Checklist
+
+1. Open `/site-contract.json` and confirm `contract_version` is `2026-05-20-live-pre-match-diagnostics-v1`.
+2. Open `/api/diagnostics` on the deployed Pages domain.
+3. Confirm `contract_ok` is true and `site_contract_version` matches `/site-contract.json`.
+4. Confirm `live_model_available` is true and `live_model_name` is populated.
+5. Confirm `prediction_feed_available` is true. A valid empty feed should show `prediction_feed_rows: 0`, not fail the check.
+6. Confirm `live_status_available` and `analyzer_live_manifest_available` reflect the `lol-pros-analyzer` GitHub Pages artifacts.
+7. Open `/api/live-event?id={eventId}` for one unstarted, one live, and one completed event.
+8. Confirm live responses keep `teams`, `games`, `source`, and `warning`, and active games include `live.win_probability` when a livestats frame is usable.
+
+You can run the same smoke check locally:
+
+```bash
+node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test
+```
+
+When probing a real live event, require the live probability contract:
+
+```bash
+node scripts/check_cloudflare_pages.mjs \
+  --base-url https://lol-predictor.pages.dev \
+  --event-id 123456789 \
+  --require-live-win-probability true
+```
+
+Before deploying, run a local Pages-compatible preview in one terminal:
+
+```bash
+node scripts/serve_cloudflare_preview.mjs
+```
+
+Then run the smoke check against that preview:
+
+```bash
+node scripts/check_cloudflare_pages.mjs \
+  --base-url http://127.0.0.1:4174 \
+  --prediction-feed-url http://127.0.0.1:4174/analyzer/pre_match_predictions.json \
+  --live-status-url http://127.0.0.1:4174/analyzer/live_status.json \
+  --live-manifest-url http://127.0.0.1:4174/analyzer/live_model_manifest.json
+```
+
+The `Verify site contracts` GitHub Actions workflow runs the same syntax checks
+and local preflight on pushes and pull requests. It also checks that the
+dashboard has an `opsMeta` target and that diagnostics `contract_ok` can be
+rendered into the compact ops line.
+
+After Cloudflare Pages and the analyzer public artifacts are deployed, run the
+`Smoke production contracts` workflow manually. It executes the same checker
+against `https://lol-predictor.pages.dev` and accepts override URLs for staging
+or alternate analyzer feeds. Set `require_live_win_probability` to true when the
+chosen event is currently live.
+
+The smoke check also verifies the default `lol-pros-analyzer` public artifacts.
+Override them when testing a staging or Cloudflare-hosted analyzer feed:
+
+```bash
+node scripts/check_cloudflare_pages.mjs \
+  --prediction-feed-url https://example.com/pre_match_predictions.json \
+  --live-status-url https://example.com/live_status.json \
+  --live-manifest-url https://example.com/live_model_manifest.json
+```
+
+If `/api/diagnostics` returns HTML instead of JSON while `/api/live-event`
+returns JSON, the deployed Pages project is still serving an older build without
+the diagnostics Function. Redeploy the `codex/github-pages-static` branch and
+check again.
+
 ## Later Cloudflare-Specific Upgrade Path
 
-1. Deploy the current `docs/` static site.
-2. Add a small Worker or Pages Function for prediction/live-data proxying.
-3. Move live data fetch/caching into Cloudflare Worker.
-4. Use D1/KV only after the static site is stable.
+1. Add caching controls per endpoint once production behavior is stable.
+2. Move heavier prediction/live-data proxying into a dedicated Worker only if Pages Functions become limiting.
+3. Use D1/KV only after the static site and function contracts are stable.

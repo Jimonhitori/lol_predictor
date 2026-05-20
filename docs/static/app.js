@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
+const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const REFRESH_INTERVAL_MS = 5000;
@@ -7,6 +7,7 @@ const REFRESH_INTERVAL_LABEL = '5s';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
+const DEFAULT_PRE_MATCH_PREDICTIONS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json';
 
 async function api(path) {
   if (STATIC_SITE && isCloudflareApiPath(path)) return fetchApiJson(path);
@@ -25,6 +26,57 @@ async function fetchApiJson(path) {
   const response = await fetch(path, { cache: 'no-store' });
   if (!response.ok) throw new Error(await response.text());
   return response.json();
+}
+
+async function loadDiagnostics() {
+  if (!$('opsMeta')) return null;
+  if (state.diagnosticsPromise) return state.diagnosticsPromise;
+  state.diagnosticsPromise = (async () => {
+    try {
+      const response = await fetch('/api/diagnostics', { cache: 'no-store' });
+      const contentType = response.headers.get('content-type') || '';
+      if (!response.ok) {
+        renderDiagnostics({ ok: false, warning: `diagnostics_http_${response.status}` });
+        return null;
+      }
+      if (!contentType.includes('application/json')) {
+        renderDiagnostics({ ok: false, warning: 'diagnostics_function_not_deployed' });
+        return null;
+      }
+      const data = await response.json();
+      state.diagnostics = data;
+      renderDiagnostics(data);
+      return data;
+    } catch (error) {
+      renderDiagnostics(null);
+      return null;
+    }
+  })();
+  return state.diagnosticsPromise;
+}
+
+function renderDiagnostics(data) {
+  const target = $('opsMeta');
+  if (!target) return;
+  if (!data?.ok) {
+    target.textContent = data?.warning ? `ops ${data.warning}` : '';
+    return;
+  }
+  const contract = data.contract_ok === false ? 'contract pending' : 'contract ok';
+  const live = data.live_model_available
+    ? `live ${data.live_model_name || 'model'}`
+    : 'live model missing';
+  const feed = data.prediction_feed_available
+    ? `pre ${data.prediction_feed_rows ?? 0} rows`
+    : 'pre remote fallback';
+  const generated = data.prediction_feed_generated_at ? `pre ${shortDateTime(data.prediction_feed_generated_at)}` : '';
+  const analyzerLive = data.live_status_available
+    ? `analyzer ${data.live_status_stage || (data.live_status_display_ready ? 'display ready' : 'not ready')}`
+    : 'analyzer status missing';
+  const worker = data.live_worker_checked
+    ? `worker ${data.live_worker_ok ? 'ok' : 'check failed'}`
+    : '';
+  target.textContent = [contract, live, feed, generated, analyzerLive, worker].filter(Boolean).join(' | ');
 }
 
 async function staticApi(path) {
@@ -295,6 +347,7 @@ async function loadTeamStandings() {
 }
 
 async function loadMatches() {
+  const predictionsReady = loadPreMatchPredictions();
   const data = await api('/api/matches/today?' + qs());
   state.allMatches = data.matches || [];
   state.matchSource = data.source || 'none';
@@ -304,6 +357,119 @@ async function loadMatches() {
   await refreshStaticMatchStatuses();
   renderDateTabs(state.allMatches);
   renderMatches();
+  predictionsReady.then(() => renderMatches()).catch(() => {});
+}
+
+async function loadPreMatchPredictions() {
+  if (state.preMatchPredictionPromise) return state.preMatchPredictionPromise;
+  state.preMatchPredictionPromise = (async () => {
+    const candidates = [
+      { source: 'local', url: preMatchPredictionLocalUrl() },
+      { source: 'remote', url: preMatchPredictionRemoteUrl() },
+    ];
+    for (const candidate of candidates) {
+      try {
+        const response = await fetch(candidate.url, { cache: 'no-store' });
+        if (!response.ok) continue;
+        const payload = await response.json();
+        const normalized = normalizePreMatchPredictionFeed(payload, candidate);
+        if (normalized.status === 'loaded' || normalized.status === 'empty') {
+          state.preMatchPredictions = normalized;
+          return normalized;
+        }
+      } catch (error) {
+      }
+    }
+    state.preMatchPredictions = { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'unavailable' };
+    return state.preMatchPredictions;
+  })();
+  return state.preMatchPredictionPromise;
+}
+
+function preMatchPredictionLocalUrl() {
+  const script = document.querySelector('script[src*="app.js"]');
+  return new URL('../pre_match_predictions.json', script?.src || new URL('static/app.js', location.href)).toString();
+}
+
+function preMatchPredictionRemoteUrl() {
+  const config = window.LOL_PREDICTOR_CONFIG || {};
+  return String(window.PRE_MATCH_PREDICTIONS_URL || config.preMatchPredictionsUrl || DEFAULT_PRE_MATCH_PREDICTIONS_URL);
+}
+
+function normalizePreMatchPredictionFeed(payload, candidate) {
+  const rows = Array.isArray(payload) ? payload : (Array.isArray(payload?.predictions) ? payload.predictions : []);
+  const result = {
+    byEventId: {},
+    byGameId: {},
+    byMatchKey: {},
+    meta: {
+      schema: payload?.schema || (Array.isArray(payload) ? 'array' : ''),
+      generated_at: payload?.generated_at || '',
+      source: candidate.source,
+      url: candidate.url,
+      models: payload?.models || {},
+      row_count: 0,
+    },
+    status: 'loaded',
+  };
+  for (const row of rows) {
+    const prediction = normalizePreMatchPrediction(row);
+    if (!prediction) continue;
+    result.meta.row_count += 1;
+    if (prediction.event_id) result.byEventId[prediction.event_id] = prediction;
+    if (prediction.game_id) result.byGameId[prediction.game_id] = prediction;
+    const key = preMatchPredictionKey(prediction);
+    if (key) result.byMatchKey[key] = prediction;
+  }
+  if (!result.meta.row_count) result.status = 'empty';
+  return result;
+}
+
+function normalizePreMatchPrediction(row) {
+  if (!row || typeof row !== 'object') return null;
+  const blue = probabilityValue(row.blue_win_probability ?? row.blue_probability ?? row.win_probability_blue ?? row.blue);
+  const red = probabilityValue(row.red_win_probability ?? row.red_probability ?? row.win_probability_red ?? row.red);
+  const blueProbability = Number.isFinite(blue) ? blue : (Number.isFinite(red) ? 1 - red : NaN);
+  const redProbability = Number.isFinite(red) ? red : (Number.isFinite(blueProbability) ? 1 - blueProbability : NaN);
+  if (!Number.isFinite(blueProbability) || !Number.isFinite(redProbability)) return null;
+  return {
+    event_id: String(row.event_id || row.eventId || row.match_id || row.matchId || row.id || ''),
+    game_id: String(row.game_id || row.gameId || ''),
+    league: String(row.league || ''),
+    start_time: String(row.start_time || row.startTime || row.date || ''),
+    blue_team: String(row.blue_team || row.blueTeam || row.blue || ''),
+    red_team: String(row.red_team || row.redTeam || row.red || ''),
+    blue_win_probability: clampProbability(blueProbability),
+    red_win_probability: clampProbability(redProbability),
+    predicted_winner: String(row.predicted_winner || row.predictedWinner || ''),
+    confidence: String(row.confidence || ''),
+    model: String(row.model || row.model_version || row.modelVersion || ''),
+    warnings: Array.isArray(row.warnings) ? row.warnings.map(String) : [],
+  };
+}
+
+function probabilityValue(value) {
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return NaN;
+  return parsed > 1 && parsed <= 100 ? parsed / 100 : parsed;
+}
+
+function clampProbability(value) {
+  return Math.max(0, Math.min(1, Number(value)));
+}
+
+function preMatchPredictionKey(value) {
+  const league = String(value.league || '').toLowerCase().trim();
+  const start = normalizedPredictionTime(value.start_time);
+  const blue = teamKey(value.blue_team || value.blue || '');
+  const red = teamKey(value.red_team || value.red || '');
+  return [league, start, blue, red].every(Boolean) ? `${league}|${start}|${blue}|${red}` : '';
+}
+
+function normalizedPredictionTime(value) {
+  const date = new Date(value || '');
+  if (Number.isNaN(date.getTime())) return String(value || '').trim();
+  return date.toISOString();
 }
 
 async function refreshStaticMatchStatuses() {
@@ -409,16 +575,17 @@ function shouldRefreshMatchStatus(match) {
 
 function renderMatches() {
   const matches = filteredMatches();
-  $('matchSource').textContent = `${matches.length} / ${state.allMatches.length} matches | ${state.matchSource || 'none'}`;
+  $('matchSource').textContent = `${matches.length} / ${state.allMatches.length} matches | ${state.matchSource || 'none'}${predictionFeedSourceLabel()}`;
   if (!matches.length) {
     $('matches').innerHTML = '<p>No matches for the selected filters.</p>';
     return;
   }
   $('matches').innerHTML = matches.map(match => `
-    <a class="match" href="${detailHref(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}">
+    <a class="match" href="${detailHref(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}" data-start="${escapeHtml(match.start_time)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(matchStatusLabel(match))}</span></div>
       <div class="matchMeta"><span>${escapeHtml(matchStartLabel(match.start_time))}</span><span>${escapeHtml(matchDateLabel(match.start_time))}</span></div>
       <div class="versus">${matchCardTeam(match.blue_code || match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_code || match.red_team, match.red_image)}</div>
+      ${matchPredictionBadge(match)}
       <span class="backLink">Details</span>
     </a>
   `).join('');
@@ -427,6 +594,45 @@ function renderMatches() {
     el.addEventListener('focus', () => selectMatch(el.dataset));
   }
   selectMatch(document.querySelector('.match').dataset);
+}
+
+function predictionFeedSourceLabel() {
+  const predictions = state.preMatchPredictions || {};
+  if (predictions.status !== 'loaded') return '';
+  const meta = predictions.meta || {};
+  const source = meta.source ? ` | pre ${meta.source}` : ' | pre loaded';
+  return `${source}${meta.row_count !== undefined ? ` ${meta.row_count}` : ''}`;
+}
+
+function matchPredictionBadge(match) {
+  const prediction = preMatchPredictionForMatch(match);
+  if (!prediction) return '';
+  const blueName = match.blue_code || match.blue_team || prediction.blue_team || 'Blue';
+  const redName = match.red_code || match.red_team || prediction.red_team || 'Red';
+  const favorite = prediction.blue_win_probability >= prediction.red_win_probability
+    ? { name: blueName, probability: prediction.blue_win_probability }
+    : { name: redName, probability: prediction.red_win_probability };
+  return `
+    <div class="preMatchBadge">
+      <span>PRE</span>
+      <strong>${escapeHtml(shortTeamName(favorite.name))} ${(favorite.probability * 100).toFixed(1)}%</strong>
+    </div>
+  `;
+}
+
+function preMatchPredictionForMatch(match) {
+  const predictions = state.preMatchPredictions || {};
+  const eventId = String(match?.id || match?.event_id || '');
+  if (eventId && predictions.byEventId?.[eventId]) return predictions.byEventId[eventId];
+  const gameId = String(match?.game_id || match?.gameId || '');
+  if (gameId && predictions.byGameId?.[gameId]) return predictions.byGameId[gameId];
+  const key = preMatchPredictionKey({
+    league: match?.league || '',
+    start_time: match?.start_time || match?.start || '',
+    blue_team: match?.blue_team || match?.blue || '',
+    red_team: match?.red_team || match?.red || '',
+  });
+  return key ? predictions.byMatchKey?.[key] || null : null;
 }
 
 function detailHref(id) {
@@ -544,7 +750,7 @@ async function selectMatch(match) {
   if ($('team')) $('team').value = match.blue || '';
   if ($('opponent')) $('opponent').value = match.red || '';
   if ($('side')) $('side').value = 'Blue';
-  renderSelectedMatch({ teams: [{ name: match.blue, code: match.blue }, { name: match.red, code: match.red }], games: [], best_of: match.bestof, league: match.league, status: match.status });
+  renderSelectedMatch({ id: match.id || '', teams: [{ name: match.blue, code: match.blue }, { name: match.red, code: match.red }], games: [], best_of: match.bestof, league: match.league, status: match.status, start_time: match.start || '' });
   if (!STATIC_SITE && $('prediction')) await predict();
   if (match.id) {
     try {
@@ -565,7 +771,7 @@ function renderSelectedMatch(details) {
   const seriesWinner = completedSeriesWinner(details);
   $('selectedMatch').innerHTML = `
     ${teamBlock(left, 'centerLeftRecord', seriesWinner)}
-    ${STATIC_SITE ? matchScorePill(details) : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
+    ${STATIC_SITE ? matchCenterPill(details) : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
     ${teamBlock(right, 'centerRightRecord', seriesWinner)}
   `;
   $('gameList').innerHTML = gameListHtml(details);
@@ -584,6 +790,31 @@ function teamBlock(team, recordId, winnerTeam, showSeriesWins = false) {
 function matchScorePill(details) {
   const score = seriesScore(details.teams || []).replace(/\s/g, '');
   return `<div class="matchScorePill"><span>Series</span><strong>${escapeHtml(score)}</strong></div>`;
+}
+
+function matchCenterPill(details) {
+  const prediction = preMatchPredictionForDetails(details);
+  const predictionHtml = prediction ? `<small>${escapeHtml(preMatchSplitText(details, prediction))}</small>` : '';
+  const score = seriesScore(details.teams || []).replace(/\s/g, '');
+  return `<div class="matchScorePill"><span>Series</span><strong>${escapeHtml(score)}</strong>${predictionHtml}</div>`;
+}
+
+function preMatchPredictionForDetails(details) {
+  const teams = details?.teams || [];
+  return preMatchPredictionForMatch({
+    id: details?.id || '',
+    league: details?.league || '',
+    start_time: details?.start_time || '',
+    blue_team: teams[0]?.name || teams[0]?.code || '',
+    red_team: teams[1]?.name || teams[1]?.code || '',
+  });
+}
+
+function preMatchSplitText(details, prediction) {
+  const teams = details?.teams || [];
+  const blue = teams[0]?.code || teams[0]?.name || prediction.blue_team || 'Blue';
+  const red = teams[1]?.code || teams[1]?.name || prediction.red_team || 'Red';
+  return `PRE ${blue} ${(prediction.blue_win_probability * 100).toFixed(1)}% / ${red} ${(prediction.red_win_probability * 100).toFixed(1)}%`;
 }
 
 function matchCardTeam(name, image) {
@@ -620,7 +851,11 @@ async function loadMatchDetailPage() {
   state.detailMatchId = id;
   state.selectedLiveGameId = '';
   showDetailLoading();
+  const predictionsReady = loadPreMatchPredictions();
   await refreshMatchDetail(true);
+  predictionsReady.then(() => {
+    if (state.currentDetails?.id) refreshMatchDetail(false);
+  }).catch(() => {});
   state.detailTimer = window.setInterval(() => refreshMatchDetail(false), REFRESH_INTERVAL_MS);
 }
 
@@ -889,11 +1124,14 @@ function draftSlots(side) {
 function matchInfoBlock(details) {
   const bestOf = details.best_of || '-';
   const score = seriesScore(details.teams || []);
+  const prediction = preMatchPredictionForDetails(details);
+  const predictionHtml = prediction ? `<span class="matchInfoPrediction">${escapeHtml(preMatchSplitText(details, prediction))}</span>` : '';
   return `
     <div class="matchInfo">
       <span class="matchInfoLeague">${escapeHtml(details.league || '-')}</span>
       <span class="matchInfoBo">BEST OF ${escapeHtml(bestOf)}</span>
       <span class="matchInfoScore">${escapeHtml(score)}</span>
+      ${predictionHtml}
       <strong class="matchInfoVs">VS</strong>
       <span class="matchInfoStart">${escapeHtml(startLine(details))}</span>
     </div>
@@ -1234,13 +1472,28 @@ function updateLiveRefreshMeta(details) {
   const liveSource = live.source ? ` · ${live.source}` : '';
   const frameTime = live.frame_timestamp ? ` · feed ${shortTime(live.frame_timestamp)}` : '';
   const frameState = live.frame_timestamp ? ` · ${live.frame_changed ? 'new frame' : 'same frame'}` : '';
-  $('liveRefreshMeta').textContent = `Last checked ${updatedAt}${liveSource}${frameTime}${frameState}`;
+  const model = live.win_probability?.model ? ` | model ${live.win_probability.model}` : '';
+  const validation = live.win_probability?.validation?.display ? ` | ${live.win_probability.validation.display}` : '';
+  const warning = live.warning || live.win_probability?.warning || details.warning || '';
+  const warningText = warning ? ` | ${warning}` : '';
+  $('liveRefreshMeta').textContent = `Last checked ${updatedAt}${liveSource}${frameTime}${frameState}${model}${validation}${warningText}`;
 }
 
 function shortTime(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
   return new Intl.DateTimeFormat('ja-JP', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(date);
+}
+
+function shortDateTime(value) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return value;
+  return new Intl.DateTimeFormat('ja-JP', {
+    month: 'numeric',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(date);
 }
 
 async function predictDetail(left, right, league) {
@@ -1792,10 +2045,12 @@ if ($('matches')) {
   });
   if ($('predictForm')) $('predictForm').addEventListener('submit', predict);
   loadOptions().then(() => {
+    loadDiagnostics();
     loadSummary();
     loadMatches();
     state.matchesTimer = window.setInterval(loadMatches, MATCHES_REFRESH_INTERVAL_MS);
   });
 } else {
+  loadDiagnostics();
   loadMatchDetailPage();
 }

@@ -1,0 +1,58 @@
+name: Verify site contracts
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - codex/github-pages-static
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check docs/static/app.js
+          node --check functions/api/diagnostics.js
+          node --check functions/api/live-event.js
+          node --check scripts/check_cloudflare_pages.mjs
+          node --check scripts/check_ops_meta.mjs
+          node --check scripts/serve_cloudflare_preview.mjs
+
+      - name: Run local Cloudflare preflight
+        run: |
+          node scripts/serve_cloudflare_preview.mjs > preview.log 2>&1 &
+          PREVIEW_PID=$!
+          trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 20); do
+            if node -e "fetch('http://127.0.0.1:4174/site-contract.json').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"; then
+              break
+            fi
+            sleep 1
+          done
+          if ! node -e "fetch('http://127.0.0.1:4174/site-contract.json').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"; then
+            cat preview.log
+            exit 1
+          fi
+          node scripts/check_cloudflare_pages.mjs \
+            --base-url http://127.0.0.1:4174 \
+            --prediction-feed-url http://127.0.0.1:4174/analyzer/pre_match_predictions.json \
+            --live-status-url http://127.0.0.1:4174/analyzer/live_status.json \
+            --live-manifest-url http://127.0.0.1:4174/analyzer/live_model_manifest.json \
+            --event-id test
+          node scripts/check_ops_meta.mjs --base-url http://127.0.0.1:4174
