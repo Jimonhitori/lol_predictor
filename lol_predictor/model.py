@@ -21,7 +21,7 @@ class Evaluation:
     roc_auc: float | None
 
 
-def make_pipeline(data: pd.DataFrame, feature_cols: list[str]) -> Pipeline:
+def make_pipeline(data: pd.DataFrame, feature_cols: list[str], *, regularization_c: float = 1.0) -> Pipeline:
     numeric = [col for col in feature_cols if is_numeric_dtype(data[col])]
     categorical = [col for col in feature_cols if col not in numeric]
 
@@ -53,7 +53,7 @@ def make_pipeline(data: pd.DataFrame, feature_cols: list[str]) -> Pipeline:
     return Pipeline(
         steps=[
             ("preprocessor", preprocessor),
-            ("model", LogisticRegression(max_iter=2000, class_weight="balanced")),
+            ("model", LogisticRegression(max_iter=2000, class_weight="balanced", C=regularization_c)),
         ]
     )
 

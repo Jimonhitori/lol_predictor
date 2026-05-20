@@ -39,6 +39,14 @@ LIVE_NUMERIC_FEATURES = [
     "blue_deaths",
     "red_deaths",
     "death_diff",
+    "gold_diff_per_min",
+    "kill_diff_per_min",
+    "tower_diff_per_min",
+    "dragon_diff_per_min",
+    "cs_diff_per_min",
+    "player_gold_diff_per_min",
+    "blue_gold_share",
+    "live_advantage_score",
 ]
 
 LIVE_CATEGORICAL_FEATURES = [
@@ -137,6 +145,14 @@ def live_feature_row(
     red_gold = _number(red_stats.get("gold"))
     blue_kills = _number(blue_stats.get("kills") or blue_player_stats["kills"])
     red_kills = _number(red_stats.get("kills") or red_player_stats["kills"])
+    minutes = max(game_time / 60.0, 1.0)
+    gold_diff = blue_gold - red_gold
+    kill_diff = blue_kills - red_kills
+    tower_diff = _number(blue_stats.get("towers")) - _number(red_stats.get("towers"))
+    dragon_diff = _number(blue_stats.get("dragons")) - _number(red_stats.get("dragons"))
+    cs_diff = blue_player_stats["creep_score"] - red_player_stats["creep_score"]
+    player_gold_diff = blue_player_stats["gold"] - red_player_stats["gold"]
+    total_gold = blue_gold + red_gold
     row = {
         "event_id": event_id,
         "game_id": str(game.get("id") or ""),
@@ -153,13 +169,13 @@ def live_feature_row(
         "red_team": str(red_team.get("team_name") or red_team.get("team_code") or ""),
         "blue_gold": blue_gold,
         "red_gold": red_gold,
-        "gold_diff": blue_gold - red_gold,
+        "gold_diff": gold_diff,
         "blue_kills": blue_kills,
         "red_kills": red_kills,
-        "kill_diff": blue_kills - red_kills,
+        "kill_diff": kill_diff,
         "blue_towers": _number(blue_stats.get("towers")),
         "red_towers": _number(red_stats.get("towers")),
-        "tower_diff": _number(blue_stats.get("towers")) - _number(red_stats.get("towers")),
+        "tower_diff": tower_diff,
         "blue_inhibitors": _number(blue_stats.get("inhibitors")),
         "red_inhibitors": _number(red_stats.get("inhibitors")),
         "inhibitor_diff": _number(blue_stats.get("inhibitors")) - _number(red_stats.get("inhibitors")),
@@ -168,19 +184,36 @@ def live_feature_row(
         "baron_diff": _number(blue_stats.get("barons")) - _number(red_stats.get("barons")),
         "blue_dragons": _number(blue_stats.get("dragons")),
         "red_dragons": _number(red_stats.get("dragons")),
-        "dragon_diff": _number(blue_stats.get("dragons")) - _number(red_stats.get("dragons")),
+        "dragon_diff": dragon_diff,
         "blue_avg_level": blue_player_stats["avg_level"],
         "red_avg_level": red_player_stats["avg_level"],
         "avg_level_diff": blue_player_stats["avg_level"] - red_player_stats["avg_level"],
         "blue_cs": blue_player_stats["creep_score"],
         "red_cs": red_player_stats["creep_score"],
-        "cs_diff": blue_player_stats["creep_score"] - red_player_stats["creep_score"],
+        "cs_diff": cs_diff,
         "blue_player_gold": blue_player_stats["gold"],
         "red_player_gold": red_player_stats["gold"],
-        "player_gold_diff": blue_player_stats["gold"] - red_player_stats["gold"],
+        "player_gold_diff": player_gold_diff,
         "blue_deaths": blue_player_stats["deaths"],
         "red_deaths": red_player_stats["deaths"],
         "death_diff": blue_player_stats["deaths"] - red_player_stats["deaths"],
+        "gold_diff_per_min": gold_diff / minutes,
+        "kill_diff_per_min": kill_diff / minutes,
+        "tower_diff_per_min": tower_diff / minutes,
+        "dragon_diff_per_min": dragon_diff / minutes,
+        "cs_diff_per_min": cs_diff / minutes,
+        "player_gold_diff_per_min": player_gold_diff / minutes,
+        "blue_gold_share": blue_gold / total_gold if total_gold > 0 else 0.5,
+        "live_advantage_score": live_advantage_score(
+            gold_diff=gold_diff,
+            kill_diff=kill_diff,
+            tower_diff=tower_diff,
+            dragon_diff=dragon_diff,
+            baron_diff=_number(blue_stats.get("barons")) - _number(red_stats.get("barons")),
+            inhibitor_diff=_number(blue_stats.get("inhibitors")) - _number(red_stats.get("inhibitors")),
+            cs_diff=cs_diff,
+            avg_level_diff=blue_player_stats["avg_level"] - red_player_stats["avg_level"],
+        ),
     }
     if target is not None:
         row["target"] = int(target)
@@ -189,6 +222,29 @@ def live_feature_row(
 
 def live_feature_columns(frame: pd.DataFrame) -> list[str]:
     return [col for col in LIVE_CATEGORICAL_FEATURES + LIVE_NUMERIC_FEATURES if col in frame.columns]
+
+
+def live_advantage_score(
+    *,
+    gold_diff: float,
+    kill_diff: float,
+    tower_diff: float,
+    dragon_diff: float,
+    baron_diff: float,
+    inhibitor_diff: float,
+    cs_diff: float,
+    avg_level_diff: float,
+) -> float:
+    return (
+        gold_diff / 1000.0
+        + kill_diff * 0.6
+        + tower_diff * 1.2
+        + dragon_diff * 0.8
+        + baron_diff * 1.5
+        + inhibitor_diff * 2.0
+        + cs_diff / 50.0
+        + avg_level_diff * 1.2
+    )
 
 
 def add_observed_game_time(frame: pd.DataFrame) -> pd.DataFrame:

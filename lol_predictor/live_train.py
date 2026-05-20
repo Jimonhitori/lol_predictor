@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import random
 from pathlib import Path
 
 import pandas as pd
@@ -13,6 +14,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("inputs", nargs="+", type=Path, help="JSONL files produced by live history/live snapshot collectors.")
     parser.add_argument("--model-path", type=Path, default=Path("models/live_win_probability.joblib"))
     parser.add_argument("--test-fraction", type=float, default=0.2)
+    parser.add_argument("--split-mode", choices=["random", "ordered"], default="random")
+    parser.add_argument("--random-state", type=int, default=7)
+    parser.add_argument("--regularization-c", type=float, default=0.001)
     parser.add_argument("--max-interval-seconds", type=int, default=30)
     parser.add_argument("--min-rows", type=int, default=100)
     parser.add_argument(
@@ -43,9 +47,9 @@ def main() -> None:
     if frame["target"].nunique() < 2:
         raise SystemExit("Need both blue-win and red-win labeled rows to train a calibrated live model.")
 
-    train, test = split_by_game(frame, args.test_fraction)
+    train, test = split_by_game(frame, args.test_fraction, split_mode=args.split_mode, random_state=args.random_state)
 
-    pipeline = make_pipeline(train, cols)
+    pipeline = make_pipeline(train, cols, regularization_c=args.regularization_c)
     pipeline.fit(train[cols], train["target"])
     metrics = evaluate(pipeline, test[cols], test["target"])
 
@@ -58,6 +62,9 @@ def main() -> None:
             "training_rows": len(train),
             "test_rows": metrics.rows,
             "split": "grouped_by_game_id",
+            "split_mode": args.split_mode,
+            "random_state": int(args.random_state),
+            "regularization_c": float(args.regularization_c),
             "include_team_features": bool(args.include_team_features),
             "metrics": metrics_payload(metrics),
         },
@@ -97,7 +104,13 @@ def expand_input_paths(inputs: list[Path]) -> list[Path]:
     return expanded
 
 
-def split_by_game(frame: pd.DataFrame, test_fraction: float) -> tuple[pd.DataFrame, pd.DataFrame]:
+def split_by_game(
+    frame: pd.DataFrame,
+    test_fraction: float,
+    *,
+    split_mode: str = "random",
+    random_state: int = 7,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
     game_order = (
         frame.groupby(["event_id", "game_id"], sort=False)["game_time"]
         .max()
@@ -108,6 +121,10 @@ def split_by_game(frame: pd.DataFrame, test_fraction: float) -> tuple[pd.DataFra
     if len(games) < 2:
         raise SystemExit("Need at least two labeled games to create a train/test split.")
     target_test_games = max(1, int(round(len(games) * test_fraction)))
+    if split_mode == "random":
+        split = random_group_split(frame, games, target_test_games, random_state)
+        if split is not None:
+            return split
     candidate_counts = list(range(target_test_games, len(games)))
     candidate_counts = sorted(set(candidate_counts), key=lambda count: (abs(count - target_test_games), count))
     best_split: tuple[pd.DataFrame, pd.DataFrame] | None = None
@@ -128,6 +145,29 @@ def split_by_game(frame: pd.DataFrame, test_fraction: float) -> tuple[pd.DataFra
     if train["target"].nunique() < 2:
         raise SystemExit("Grouped split left the training set with only one target class.")
     return train, test
+
+
+def random_group_split(
+    frame: pd.DataFrame,
+    games: list[tuple[str, str]],
+    target_test_games: int,
+    random_state: int,
+) -> tuple[pd.DataFrame, pd.DataFrame] | None:
+    if len(games) < 2:
+        return None
+    test_game_count = min(max(1, target_test_games), len(games) - 1)
+    for offset in range(100):
+        shuffled = list(games)
+        random.Random(random_state + offset).shuffle(shuffled)
+        test_games = set(shuffled[:test_game_count])
+        is_test = frame.apply(lambda row: (str(row["event_id"]), str(row["game_id"])) in test_games, axis=1)
+        train = frame.loc[~is_test].copy()
+        test = frame.loc[is_test].copy()
+        if train.empty or test.empty:
+            continue
+        if train["target"].nunique() >= 2 and test["target"].nunique() >= 2:
+            return train, test
+    return None
 
 
 if __name__ == "__main__":

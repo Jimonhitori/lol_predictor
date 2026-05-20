@@ -173,6 +173,11 @@ python -m lol_predictor.live_export_model --model-path models/live_win_probabili
 ```
 
 The exported JSON includes the game-level test metrics saved by `live_train`.
+`live_train` uses a reproducible random game-level holdout by default
+(`--split-mode random --random-state 7`) so all frames from the same game stay
+on the same side of the train/test split without depending on event-id order.
+For the current small live dataset, it also defaults to stronger logistic
+regularization (`--regularization-c 0.001`) to reduce overconfident probabilities.
 
 Verify that the exported JSON model matches the source joblib bundle on a live
 snapshot:

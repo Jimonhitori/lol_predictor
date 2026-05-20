@@ -17,6 +17,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("inputs", nargs="+", type=Path, help="JSONL files produced by live backfill/collect.")
     parser.add_argument("--model-path", type=Path, default=Path("models/live_win_probability.joblib"))
     parser.add_argument("--test-fraction", type=float, default=0.2)
+    parser.add_argument("--split-mode", choices=["random", "ordered"], default="random")
+    parser.add_argument("--random-state", type=int, default=7)
     parser.add_argument("--max-interval-seconds", type=int, default=30)
     parser.add_argument("--bucket-seconds", type=int, default=300)
     parser.add_argument("--output", type=Path, help="Optional JSON report path.")
@@ -31,7 +33,7 @@ def main() -> None:
     frame = live_training_frame(expand_input_paths(args.inputs), max_interval_seconds=args.max_interval_seconds)
     if frame.empty:
         raise SystemExit("No labeled live frames found.")
-    _, test = split_by_game(frame, args.test_fraction)
+    _, test = split_by_game(frame, args.test_fraction, split_mode=args.split_mode, random_state=args.random_state)
     columns = list(bundle["feature_columns"])
     for column in columns:
         if column not in test.columns:
@@ -43,6 +45,8 @@ def main() -> None:
         "feature_columns": columns,
         "rows": int(len(test)),
         "games": int(test[["event_id", "game_id"]].drop_duplicates().shape[0]),
+        "split_mode": args.split_mode,
+        "random_state": int(args.random_state),
         "overall": metrics_payload(evaluate(pipeline, test[columns], test["target"])),
         "by_time_bucket": bucket_metrics(pipeline, test, columns, args.bucket_seconds),
     }

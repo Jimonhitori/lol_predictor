@@ -21,6 +21,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--interval-seconds", type=int, default=30)
     parser.add_argument("--max-frames-per-game", type=int, default=0)
     parser.add_argument("--min-rows", type=int, default=100)
+    parser.add_argument("--split-mode", choices=["random", "ordered"], default="random")
+    parser.add_argument("--random-state", type=int, default=7)
+    parser.add_argument("--regularization-c", type=float, default=0.001)
     parser.add_argument("--model-name", default="live_logreg_v1")
     parser.add_argument("--include-team-features", action="store_true")
     parser.add_argument("--skip-labels", action="store_true")
@@ -80,6 +83,12 @@ def main() -> None:
                 str(args.min_rows),
                 "--max-interval-seconds",
                 str(args.interval_seconds),
+                "--split-mode",
+                args.split_mode,
+                "--random-state",
+                str(args.random_state),
+                "--regularization-c",
+                str(args.regularization_c),
         ]
         if args.include_team_features:
             command.append("--include-team-features")

@@ -462,6 +462,18 @@ function liveFeatureRow(live, game, details) {
   const redGold = number(redStats.gold);
   const blueKills = number(blueStats.kills || bluePlayers.kills);
   const redKills = number(redStats.kills || redPlayers.kills);
+  const gameTime = number(live.game_time);
+  const minutes = Math.max(gameTime / 60, 1);
+  const goldDiff = blueGold - redGold;
+  const killDiff = blueKills - redKills;
+  const towerDiff = number(blueStats.towers) - number(redStats.towers);
+  const dragonDiff = number(blueStats.dragons) - number(redStats.dragons);
+  const baronDiff = number(blueStats.barons) - number(redStats.barons);
+  const inhibitorDiff = number(blueStats.inhibitors) - number(redStats.inhibitors);
+  const csDiff = bluePlayers.creepScore - redPlayers.creepScore;
+  const playerGoldDiff = bluePlayers.gold - redPlayers.gold;
+  const avgLevelDiff = bluePlayers.avgLevel - redPlayers.avgLevel;
+  const totalGold = blueGold + redGold;
   return {
     league: stringValue(details.league || ''),
     patch_version: stringValue(live.patch_version || ''),
@@ -469,38 +481,68 @@ function liveFeatureRow(live, game, details) {
     game_number: stringValue(game.number || ''),
     blue_team: stringValue(blueTeam.team_name || blueTeam.team_code || ''),
     red_team: stringValue(redTeam.team_name || redTeam.team_code || ''),
-    game_time: number(live.game_time),
+    game_time: gameTime,
     blue_gold: blueGold,
     red_gold: redGold,
-    gold_diff: blueGold - redGold,
+    gold_diff: goldDiff,
     blue_kills: blueKills,
     red_kills: redKills,
-    kill_diff: blueKills - redKills,
+    kill_diff: killDiff,
     blue_towers: number(blueStats.towers),
     red_towers: number(redStats.towers),
-    tower_diff: number(blueStats.towers) - number(redStats.towers),
+    tower_diff: towerDiff,
     blue_inhibitors: number(blueStats.inhibitors),
     red_inhibitors: number(redStats.inhibitors),
-    inhibitor_diff: number(blueStats.inhibitors) - number(redStats.inhibitors),
+    inhibitor_diff: inhibitorDiff,
     blue_barons: number(blueStats.barons),
     red_barons: number(redStats.barons),
-    baron_diff: number(blueStats.barons) - number(redStats.barons),
+    baron_diff: baronDiff,
     blue_dragons: number(blueStats.dragons),
     red_dragons: number(redStats.dragons),
-    dragon_diff: number(blueStats.dragons) - number(redStats.dragons),
+    dragon_diff: dragonDiff,
     blue_avg_level: bluePlayers.avgLevel,
     red_avg_level: redPlayers.avgLevel,
-    avg_level_diff: bluePlayers.avgLevel - redPlayers.avgLevel,
+    avg_level_diff: avgLevelDiff,
     blue_cs: bluePlayers.creepScore,
     red_cs: redPlayers.creepScore,
-    cs_diff: bluePlayers.creepScore - redPlayers.creepScore,
+    cs_diff: csDiff,
     blue_player_gold: bluePlayers.gold,
     red_player_gold: redPlayers.gold,
-    player_gold_diff: bluePlayers.gold - redPlayers.gold,
+    player_gold_diff: playerGoldDiff,
     blue_deaths: bluePlayers.deaths,
     red_deaths: redPlayers.deaths,
     death_diff: bluePlayers.deaths - redPlayers.deaths,
+    gold_diff_per_min: goldDiff / minutes,
+    kill_diff_per_min: killDiff / minutes,
+    tower_diff_per_min: towerDiff / minutes,
+    dragon_diff_per_min: dragonDiff / minutes,
+    cs_diff_per_min: csDiff / minutes,
+    player_gold_diff_per_min: playerGoldDiff / minutes,
+    blue_gold_share: totalGold > 0 ? blueGold / totalGold : 0.5,
+    live_advantage_score: liveAdvantageScore({
+      goldDiff,
+      killDiff,
+      towerDiff,
+      dragonDiff,
+      baronDiff,
+      inhibitorDiff,
+      csDiff,
+      avgLevelDiff,
+    }),
   };
+}
+
+function liveAdvantageScore({ goldDiff, killDiff, towerDiff, dragonDiff, baronDiff, inhibitorDiff, csDiff, avgLevelDiff }) {
+  return (
+    goldDiff / 1000
+    + killDiff * 0.6
+    + towerDiff * 1.2
+    + dragonDiff * 0.8
+    + baronDiff * 1.5
+    + inhibitorDiff * 2
+    + csDiff / 50
+    + avgLevelDiff * 1.2
+  );
 }
 
 function playerFeatureTotals(players) {
