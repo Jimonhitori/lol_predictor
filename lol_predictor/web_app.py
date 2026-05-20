@@ -724,7 +724,6 @@ async function loadMatches() {
 
 async function refreshStaticMatchStatuses() {
   if (!STATIC_SITE || !state.allMatches.length) return;
-  if (!MATCH_DETAIL_PAGE) return;
   const targets = state.allMatches
     .filter(shouldRefreshMatchStatus)
     .sort((a, b) => refreshMatchPriority(b) - refreshMatchPriority(a))
