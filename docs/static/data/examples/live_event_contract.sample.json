@@ -1,0 +1,106 @@
+{
+  "id": "live-contract-sample",
+  "league": "LCK",
+  "league_group": "major",
+  "region": "korea",
+  "best_of": "3",
+  "status": "inProgress",
+  "start_time": "2026-05-20T08:00:00Z",
+  "teams": [
+    {
+      "id": "blue-team",
+      "name": "T1",
+      "code": "T1",
+      "image": "",
+      "game_wins": "0"
+    },
+    {
+      "id": "red-team",
+      "name": "KIWOOM DRX",
+      "code": "KRX",
+      "image": "",
+      "game_wins": "0"
+    }
+  ],
+  "games": [
+    {
+      "id": "live-game-sample",
+      "number": 1,
+      "state": "inProgress",
+      "blue": {
+        "team_id": "blue-team",
+        "team_name": "T1",
+        "team_code": "T1"
+      },
+      "red": {
+        "team_id": "red-team",
+        "team_name": "KIWOOM DRX",
+        "team_code": "KRX"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 1320,
+        "estimated_game_time": false,
+        "frame_timestamp": "2026-05-20T08:22:00.000Z",
+        "patch_version": "16.10",
+        "blue": [],
+        "red": [],
+        "blue_stats": {
+          "gold": 39200,
+          "kills": 10,
+          "towers": 5,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 2
+        },
+        "red_stats": {
+          "gold": 36100,
+          "kills": 7,
+          "towers": 3,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 1
+        },
+        "status": "in_game",
+        "warning": "",
+        "source": "lolesports_livestats",
+        "win_probability": {
+          "blue": 0.731,
+          "red": 0.269,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "roc_auc": 0.9022971281490753,
+            "brier": 0.16011961508709052
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation",
+            "start_seconds": 1200,
+            "end_seconds": 1500,
+            "games": 42,
+            "rows": 220,
+            "roc_auc": 0.914,
+            "brier": 0.125
+          },
+          "features": {
+            "gold_diff": 3100,
+            "kill_diff": 3,
+            "tower_diff": 2,
+            "inhibitor_diff": 0,
+            "dragon_diff": 1,
+            "baron_diff": 0,
+            "avg_level_diff": 0.6,
+            "game_time": 1320
+          }
+        }
+      }
+    }
+  ],
+  "source": "cloudflare_live_event",
+  "warning": ""
+}
