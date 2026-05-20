@@ -12,6 +12,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model-path", type=Path, default=Path("models/live_win_probability.joblib"))
     parser.add_argument("--output", type=Path, default=Path("docs/static/data/live_model.json"))
     parser.add_argument("--name", default="live_logreg_v1")
+    parser.add_argument("--cross-validation-report", type=Path)
     return parser.parse_args()
 
 
@@ -21,6 +22,8 @@ def main() -> None:
 
     bundle = joblib.load(args.model_path)
     payload = export_bundle(bundle, args.name)
+    if args.cross_validation_report:
+        payload["cross_validation"] = load_cross_validation_report(args.cross_validation_report)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote live model JSON: {args.output}")
@@ -95,6 +98,18 @@ def export_numeric(preprocessor: Any) -> list[dict[str, Any]]:
 
 def string_value(value: Any) -> str:
     return "" if value is None else str(value)
+
+
+def load_cross_validation_report(path: Path) -> dict[str, Any]:
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    return {
+        "rows": int(payload.get("rows") or 0),
+        "games": int(payload.get("games") or 0),
+        "regularization_c": payload.get("regularization_c"),
+        "test_fraction": payload.get("test_fraction"),
+        "splits": len(payload.get("splits") or []),
+        "summary": payload.get("summary") or {},
+    }
 
 
 if __name__ == "__main__":

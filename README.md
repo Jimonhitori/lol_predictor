@@ -210,6 +210,19 @@ python -m lol_predictor.live_evaluate data/live_snapshots/backfill_lck/*.jsonl -
 Bucket ROC AUC is shown as `n/a` when that time bucket contains only one target
 class.
 
+Evaluate training stability across repeated random game-level holdouts:
+
+```powershell
+python -m lol_predictor.live_cross_validate data/live_snapshots/backfill_lck/*.jsonl --splits 20 --output reports/live_cross_validation.json
+```
+
+Pass that report to `live_export_model` when publishing a model so the serving
+JSON records repeated-split stability metrics:
+
+```powershell
+python -m lol_predictor.live_export_model --model-path models/live_win_probability.joblib --output docs/static/data/live_model.json --cross-validation-report reports/live_cross_validation.json
+```
+
 Backfill completed games from LoL Esports livestats. If the event API does not
 include per-game winners, provide a label CSV with `game_id,winner` or
 `game_id,blue_win`:
