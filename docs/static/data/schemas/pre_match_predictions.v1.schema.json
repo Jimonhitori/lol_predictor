@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jimonhitori.github.io/lol-pros-analyzer/schemas/pre_match_predictions.v1.schema.json",
+  "title": "LoL public pre-match predictions",
+  "description": "Public JSON feed consumed by lol_predictor for pre-match win probability display.",
+  "type": "object",
+  "required": [
+    "schema",
+    "generated_at",
+    "source",
+    "models",
+    "predictions"
+  ],
+  "properties": {
+    "schema": {
+      "const": "lol_predictions_public_v1"
+    },
+    "generated_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "models": {
+      "type": "object",
+      "required": [
+        "pre_match"
+      ],
+      "properties": {
+        "pre_match": {
+          "type": "object",
+          "required": [
+            "name",
+            "version",
+            "metrics"
+          ],
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "metrics": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "predictions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "event_id",
+          "game_id",
+          "league",
+          "start_time",
+          "blue_team",
+          "red_team",
+          "blue_win_probability",
+          "red_win_probability",
+          "predicted_winner",
+          "confidence",
+          "model",
+          "warnings"
+        ],
+        "properties": {
+          "event_id": {
+            "type": "string"
+          },
+          "game_id": {
+            "type": "string"
+          },
+          "league": {
+            "type": "string",
+            "minLength": 1
+          },
+          "start_time": {
+            "type": "string",
+            "minLength": 1
+          },
+          "blue_team": {
+            "type": "string",
+            "minLength": 1
+          },
+          "red_team": {
+            "type": "string",
+            "minLength": 1
+          },
+          "blue_win_probability": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "red_win_probability": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "predicted_winner": {
+            "type": "string"
+          },
+          "confidence": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

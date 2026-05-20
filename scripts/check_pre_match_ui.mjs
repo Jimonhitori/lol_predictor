@@ -17,6 +17,7 @@ const [feed, matchesPayload, appSource] = await Promise.all([
   loadJson('static/data/matches-all__all.json'),
   loadText('static/app.js'),
 ]);
+const schema = await loadJson('static/data/schemas/pre_match_predictions.v1.schema.json');
 
 const errors = [];
 const warnings = [];
@@ -31,6 +32,13 @@ if (feed.ok && feed.data?.schema !== 'lol_predictions_public_v1') {
 }
 if (predictions.length < minRows) {
   errors.push(`prediction feed has ${predictions.length} rows, expected at least ${minRows}`);
+}
+if (!schema.ok) errors.push(`shared prediction schema failed: ${schema.error || schema.status}`);
+if (schema.ok && schema.data?.properties?.schema?.const !== 'lol_predictions_public_v1') {
+  errors.push('shared prediction schema does not define lol_predictions_public_v1');
+}
+if (schema.ok && !Array.isArray(schema.data?.properties?.predictions?.items?.required)) {
+  errors.push('shared prediction schema is missing predictions item required fields');
 }
 
 if (!matchesPayload.ok) errors.push(`matches index failed: ${matchesPayload.error || matchesPayload.status}`);
@@ -97,6 +105,7 @@ const report = {
   docs_dir: baseUrl ? null : docsDir,
   checked_at: new Date().toISOString(),
   feed_schema: feed.data?.schema || null,
+  shared_schema_id: schema.data?.$id || null,
   prediction_rows: predictions.length,
   match_rows: matches.length,
   overlap_rows: overlap.length,
