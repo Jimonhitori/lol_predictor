@@ -29,7 +29,7 @@ That later step requires Python dependencies and data/model files to be availabl
 
 - `index.html` is the main dashboard.
 - `match.html?id=...` is the match detail page.
-- `/match?id=...` is rewritten to `/match.html?id=...` by `_redirects`.
+- Match links use `match.html?id=...` so the same static files work on both GitHub Pages and Cloudflare Pages.
 - Static JSON under `/static/data/` is cached for 60 seconds.
 - HTML and app assets are revalidated so UI changes roll out quickly.
 
