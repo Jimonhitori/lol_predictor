@@ -728,32 +728,80 @@ async function refreshStaticMatchStatuses() {
   const targets = state.allMatches
     .filter(shouldRefreshMatchStatus)
     .sort((a, b) => refreshMatchPriority(b) - refreshMatchPriority(a))
-    .slice(0, 24);
+    .slice(0, 40);
   if (!targets.length) return;
   const freshDetails = await Promise.all(targets.map(match => fetchLolesportsEventDetails(match.id)));
   const freshById = Object.fromEntries(freshDetails.filter(details => details?.id).map(details => [String(details.id), details]));
   state.allMatches = state.allMatches.map(match => {
     const fresh = freshById[String(match.id || '')];
     if (!fresh) return match;
-    const teams = fresh.teams || [];
-    return {
+    return mergeFreshMatchDetails(match, fresh);
+  });
+}
+
+function mergeFreshMatchDetails(match, fresh) {
+  const teams = fresh.teams || [];
+  const left = teams[0] || {};
+  const right = teams[1] || {};
+  const replaceTeams = hasPlaceholderTeamInfo(match) && teams.length >= 2;
+  const merged = {
       ...match,
       status: fresh.status || match.status,
       start_time: fresh.start_time || match.start_time,
       best_of: fresh.best_of || match.best_of,
-      blue_team: teams[0]?.name || match.blue_team,
-      red_team: teams[1]?.name || match.red_team,
-      blue_code: teams[0]?.code || match.blue_code,
-      red_code: teams[1]?.code || match.red_code,
-      blue_image: teams[0]?.image || match.blue_image,
-      red_image: teams[1]?.image || match.red_image,
-      blue_score: teams[0]?.game_wins ?? match.blue_score,
-      red_score: teams[1]?.game_wins ?? match.red_score,
-    };
-  });
+      blue_score: left.game_wins ?? match.blue_score,
+      red_score: right.game_wins ?? match.red_score,
+  };
+  if (replaceTeams) {
+    merged.blue_team = left.name || left.code || match.blue_team;
+    merged.red_team = right.name || right.code || match.red_team;
+    merged.blue_code = left.code || match.blue_code;
+    merged.red_code = right.code || match.red_code;
+    merged.blue_image = normalizeTeamImage(left.image || match.blue_image);
+    merged.red_image = normalizeTeamImage(right.image || match.red_image);
+    return merged;
+  }
+  merged.blue_image = normalizeTeamImage(bestTeamImageForMatch(match, teams, 'blue'));
+  merged.red_image = normalizeTeamImage(bestTeamImageForMatch(match, teams, 'red'));
+  return merged;
+}
+
+function bestTeamImageForMatch(match, teams, side) {
+  const current = side === 'blue' ? match.blue_image : match.red_image;
+  if (!isPlaceholderImage(current)) return current;
+  const name = side === 'blue' ? match.blue_team : match.red_team;
+  const code = side === 'blue' ? match.blue_code : match.red_code;
+  const team = teams.find(item => sameTeam(item.name, name) || sameTeam(item.code, code) || sameTeam(item.name, code) || sameTeam(item.code, name));
+  return team?.image || current;
+}
+
+function hasPlaceholderTeamInfo(match) {
+  return isPlaceholderTeam(match.blue_team)
+    || isPlaceholderTeam(match.red_team)
+    || isPlaceholderTeam(match.blue_code)
+    || isPlaceholderTeam(match.red_code)
+    || isPlaceholderImage(match.blue_image)
+    || isPlaceholderImage(match.red_image);
+}
+
+function isPlaceholderTeam(value) {
+  const text = String(value || '').trim().toLowerCase();
+  return !text || text === 'tbd' || text === 'unknown';
+}
+
+function isPlaceholderImage(value) {
+  const text = String(value || '').trim().toLowerCase();
+  return !text || text.includes('team-tbd.png');
+}
+
+function normalizeTeamImage(value) {
+  const text = String(value || '').trim();
+  if (!text) return '';
+  return text.replace(new RegExp('^http://static[.]lolesports[.]com/', 'i'), 'https://static.lolesports.com/');
 }
 
 function refreshMatchPriority(match) {
+  if (hasPlaceholderTeamInfo(match)) return 6;
   const matchDate = localDateKey(match.start_time);
   const today = localDateKey(new Date().toISOString());
   if (state.selectedMatchDate === 'live' && String(match.status || '').toLowerCase() === 'inprogress') return 5;
@@ -769,6 +817,7 @@ function shouldRefreshMatchStatus(match) {
   if (['completed', 'complete'].includes(status)) return false;
   const matchDate = localDateKey(match.start_time);
   const today = localDateKey(new Date().toISOString());
+  if (hasPlaceholderTeamInfo(match) && (matchDate === state.selectedMatchDate || matchDate === today)) return true;
   return state.selectedMatchDate === 'live'
     || matchDate === state.selectedMatchDate
     || matchDate === today
