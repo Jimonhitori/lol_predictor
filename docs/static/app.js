@@ -70,13 +70,17 @@ function renderDiagnostics(data) {
     ? `pre ${data.prediction_feed_rows ?? 0} rows`
     : 'pre remote fallback';
   const generated = data.prediction_feed_generated_at ? `pre ${shortDateTime(data.prediction_feed_generated_at)}` : '';
+  const schema = data.prediction_schema_ok ? 'schema ok' : '';
+  const freshness = data.prediction_feed_freshness && data.prediction_feed_freshness !== 'unknown'
+    ? `pre ${data.prediction_feed_freshness}`
+    : '';
   const analyzerLive = data.live_status_available
     ? `analyzer ${data.live_status_stage || (data.live_status_display_ready ? 'display ready' : 'not ready')}`
     : 'analyzer status missing';
   const worker = data.live_worker_checked
     ? `worker ${data.live_worker_ok ? 'ok' : 'check failed'}`
     : '';
-  target.textContent = [contract, live, feed, generated, analyzerLive, worker].filter(Boolean).join(' | ');
+  target.textContent = [contract, live, feed, generated, schema, freshness, analyzerLive, worker].filter(Boolean).join(' | ');
 }
 
 async function staticApi(path) {

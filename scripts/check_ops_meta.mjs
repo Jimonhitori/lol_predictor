@@ -16,9 +16,17 @@ if (!app.ok) errors.push(`static app returned ${app.status}`);
 if (app.ok && !app.text.includes('data.contract_ok')) errors.push('app.js does not read diagnostics contract_ok');
 if (app.ok && !app.text.includes('contract ok')) errors.push('app.js does not render contract ok');
 if (app.ok && !app.text.includes('contract pending')) errors.push('app.js does not render contract pending');
+if (app.ok && !app.text.includes('prediction_schema_ok')) errors.push('app.js does not render prediction schema status');
+if (app.ok && !app.text.includes('prediction_feed_freshness')) errors.push('app.js does not render prediction feed freshness');
 if (!diagnostics.ok) errors.push(`diagnostics returned ${diagnostics.status}`);
 if (diagnostics.ok && typeof diagnostics.json?.contract_ok !== 'boolean') {
   errors.push('diagnostics contract_ok is not boolean');
+}
+if (diagnostics.ok && diagnostics.json?.prediction_schema_ok !== true) {
+  errors.push('diagnostics prediction_schema_ok is not true');
+}
+if (diagnostics.ok && !String(diagnostics.json?.prediction_feed_freshness || '').trim()) {
+  errors.push('diagnostics prediction_feed_freshness is missing');
 }
 
 const report = {
@@ -27,7 +35,11 @@ const report = {
   checked_at: new Date().toISOString(),
   ops_meta_present: home.text.includes('id="opsMeta"'),
   app_reads_contract_ok: app.text.includes('data.contract_ok'),
+  app_reads_prediction_schema_ok: app.text.includes('prediction_schema_ok'),
+  app_reads_prediction_feed_freshness: app.text.includes('prediction_feed_freshness'),
   diagnostics_contract_ok: diagnostics.json?.contract_ok ?? null,
+  diagnostics_prediction_schema_ok: diagnostics.json?.prediction_schema_ok ?? null,
+  diagnostics_prediction_feed_freshness: diagnostics.json?.prediction_feed_freshness || '',
   ops_text_preview: diagnostics.json ? renderOpsPreview(diagnostics.json) : '',
   errors,
 };
@@ -44,13 +56,17 @@ function renderOpsPreview(data) {
   const feed = data.prediction_feed_available
     ? `pre ${data.prediction_feed_rows ?? 0} rows`
     : 'pre remote fallback';
+  const schema = data.prediction_schema_ok ? 'schema ok' : '';
+  const freshness = data.prediction_feed_freshness && data.prediction_feed_freshness !== 'unknown'
+    ? `pre ${data.prediction_feed_freshness}`
+    : '';
   const analyzerLive = data.live_status_available
     ? `analyzer ${data.live_status_stage || (data.live_status_display_ready ? 'display ready' : 'not ready')}`
     : 'analyzer status missing';
   const worker = data.live_worker_checked
     ? `worker ${data.live_worker_ok ? 'ok' : 'check failed'}`
     : '';
-  return [contract, live, feed, analyzerLive, worker].filter(Boolean).join(' | ');
+  return [contract, live, feed, schema, freshness, analyzerLive, worker].filter(Boolean).join(' | ');
 }
 
 async function fetchText(url) {

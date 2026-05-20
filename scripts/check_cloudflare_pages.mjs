@@ -82,6 +82,14 @@ if (report.diagnostics.is_json && report.diagnostics.prediction_feed_available !
   report.ok = false;
   report.errors.push('diagnostics did not report prediction_feed_available=true');
 }
+if (report.diagnostics.is_json && report.diagnostics.prediction_schema_available !== true) {
+  report.ok = false;
+  report.errors.push('diagnostics did not report prediction_schema_available=true');
+}
+if (report.diagnostics.is_json && report.diagnostics.prediction_schema_ok !== true) {
+  report.ok = false;
+  report.errors.push('diagnostics did not report prediction_schema_ok=true');
+}
 if (report.diagnostics.is_json && report.diagnostics.live_status_available !== true) {
   report.ok = false;
   report.errors.push('diagnostics did not report live_status_available=true');
@@ -192,12 +200,23 @@ function summarizeDiagnostics(result) {
     prediction_feed_available: result.json?.prediction_feed_available ?? null,
     prediction_feed_schema: result.json?.prediction_feed_schema || '',
     prediction_feed_rows: result.json?.prediction_feed_rows ?? null,
+    prediction_feed_freshness: result.json?.prediction_feed_freshness || '',
+    prediction_feed_age_seconds: result.json?.prediction_feed_age_seconds ?? null,
+    prediction_schema_url: result.json?.prediction_schema_url || '',
+    prediction_schema_available: result.json?.prediction_schema_available ?? null,
+    prediction_schema_ok: result.json?.prediction_schema_ok ?? null,
+    prediction_schema_id: result.json?.prediction_schema_id || '',
     live_status_url: result.json?.live_status_url || '',
     live_status_available: result.json?.live_status_available ?? null,
+    live_status_freshness: result.json?.live_status_freshness || '',
+    live_status_age_seconds: result.json?.live_status_age_seconds ?? null,
     live_status_stage: result.json?.live_status_stage || '',
     analyzer_live_manifest_url: result.json?.analyzer_live_manifest_url || '',
     analyzer_live_manifest_available: result.json?.analyzer_live_manifest_available ?? null,
+    deployment_branch: result.json?.deployment_branch || '',
+    deployment_commit_sha: result.json?.deployment_commit_sha || '',
     warnings: Array.isArray(result.json?.warnings) ? result.json.warnings : [],
+    artifact_warnings: Array.isArray(result.json?.artifact_warnings) ? result.json.artifact_warnings : [],
     error: result.error || '',
     body_preview: result.json ? '' : result.text.slice(0, 120),
   };
