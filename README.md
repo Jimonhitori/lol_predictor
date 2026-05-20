@@ -176,6 +176,12 @@ snapshot:
 python -m lol_predictor.live_verify_model --model-path models/live_win_probability.joblib --exported-model docs/static/data/live_model.json --input data/live_snapshots/example.jsonl
 ```
 
+Run the full refresh pipeline in order:
+
+```powershell
+python -m lol_predictor.live_pipeline --league LCK --data-dir data/raw --labels data/live_labels.csv --backfill-dir data/live_snapshots/backfill_lck --model-path models/live_win_probability.joblib --exported-model docs/static/data/live_model.json --overwrite-backfill
+```
+
 Check whether the collected frames have enough labeled completed-game data:
 
 ```powershell
