@@ -209,6 +209,8 @@ python -m lol_predictor.live_evaluate data/live_snapshots/backfill_lck/*.jsonl -
 
 Bucket ROC AUC is shown as `n/a` when that time bucket contains only one target
 class.
+Use `--all-rows` when evaluating a saved model against a separate external
+holdout directory.
 
 Evaluate training stability across repeated random game-level holdouts:
 
@@ -222,6 +224,9 @@ JSON records repeated-split stability metrics:
 ```powershell
 python -m lol_predictor.live_export_model --model-path models/live_win_probability.joblib --output docs/static/data/live_model.json --cross-validation-report reports/live_cross_validation.json
 ```
+
+You can also attach a separate holdout evaluation report with
+`--external-validation-report`.
 
 Backfill completed games from LoL Esports livestats. If the event API does not
 include per-game winners, provide a label CSV with `game_id,winner` or
