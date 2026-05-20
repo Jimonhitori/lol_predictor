@@ -18,15 +18,15 @@ on:
       prediction_feed_url:
         description: "Public pre-match prediction JSON URL"
         required: false
-        default: "https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json"
+        default: "https://lol-predictor.pages.dev/pre_match_predictions.json"
       live_status_url:
         description: "Public live_status.json URL"
         required: false
-        default: "https://jimonhitori.github.io/lol-pros-analyzer/live_status.json"
+        default: "https://lol-predictor.pages.dev/live_status.json"
       live_manifest_url:
         description: "Public live_model_manifest.json URL"
         required: false
-        default: "https://jimonhitori.github.io/lol-pros-analyzer/live_model_manifest.json"
+        default: "https://lol-predictor.pages.dev/live_model_manifest.json"
       require_live_win_probability:
         description: "Fail if the probed event does not include live.win_probability"
         required: true
