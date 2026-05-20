@@ -1,10 +1,14 @@
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
+const PRE_MATCH_SCHEMA_PATH = '/static/data/schemas/pre_match_predictions.v1.schema.json';
 const LIVE_STATUS_PATH = '/live_status.json';
 const LIVE_MODEL_MANIFEST_PATH = '/live_model_manifest.json';
 const SITE_CONTRACT_PATH = '/site-contract.json';
 const DEFAULT_PRE_MATCH_PREDICTIONS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json';
+const DEFAULT_PRE_MATCH_SCHEMA_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/schemas/pre_match_predictions.v1.schema.json';
 const EXPECTED_SITE_CONTRACT_VERSION = '2026-05-20-live-pre-match-diagnostics-v1';
+const STALE_SECONDS = 48 * 60 * 60;
+const WARNING_SECONDS = 24 * 60 * 60;
 const REQUIRED_SITE_FEATURES = [
   'cloudflare_live_event_function',
   'cloudflare_diagnostics_function',
@@ -26,31 +30,48 @@ export function onRequestOptions() {
 export async function onRequestGet(context) {
   const requestUrl = new URL(context.request.url);
   const remotePredictionUrl = configuredUrl(context, 'PRE_MATCH_PREDICTIONS_URL', DEFAULT_PRE_MATCH_PREDICTIONS_URL);
+  const remoteSchemaUrl = configuredUrl(context, 'PRE_MATCH_SCHEMA_URL', DEFAULT_PRE_MATCH_SCHEMA_URL);
   const liveStatusUrl = configuredUrl(context, 'LIVE_STATUS_URL', new URL(LIVE_STATUS_PATH, requestUrl.origin).toString());
   const liveManifestUrl = configuredUrl(context, 'LIVE_MODEL_MANIFEST_URL', new URL(LIVE_MODEL_MANIFEST_PATH, requestUrl.origin).toString());
-  const [siteContract, liveModel, localPredictions, liveStatus, liveManifest] = await Promise.all([
+  const [siteContract, liveModel, localPredictions, localSchema, liveStatus, liveManifest] = await Promise.all([
     readJsonAsset(context, SITE_CONTRACT_PATH),
     readJsonAsset(context, LIVE_MODEL_PATH),
     readJsonAsset(context, PRE_MATCH_PREDICTIONS_PATH),
+    readJsonAsset(context, PRE_MATCH_SCHEMA_PATH),
     readJsonUrl(liveStatusUrl),
     readJsonUrl(liveManifestUrl),
   ]);
   const remotePredictions = localPredictions.ok ? null : await readJsonUrl(remotePredictionUrl);
   const predictionFeed = localPredictions.ok ? localPredictions : remotePredictions;
+  const remoteSchema = localSchema.ok ? null : await readJsonUrl(remoteSchemaUrl);
+  const predictionSchema = localSchema.ok ? localSchema : remoteSchema;
   const predictionFeedUrl = localPredictions.ok
     ? new URL(PRE_MATCH_PREDICTIONS_PATH, requestUrl.origin).toString()
     : remotePredictionUrl;
+  const predictionSchemaUrl = localSchema.ok
+    ? new URL(PRE_MATCH_SCHEMA_PATH, requestUrl.origin).toString()
+    : remoteSchemaUrl;
   const siteFeatures = Array.isArray(siteContract.json?.features) ? siteContract.json.features : [];
   const missingSiteFeatures = REQUIRED_SITE_FEATURES.filter(feature => !siteFeatures.includes(feature));
+  const predictionFeedFreshness = artifactFreshness(predictionFeed?.json?.generated_at);
+  const liveStatusFreshness = artifactFreshness(liveStatus.json?.generated_at);
+  const liveModelFreshness = artifactFreshness(liveModel.json?.exported_at);
+  const predictionSchemaOk = predictionSchema?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
+  const artifactWarnings = [
+    ...(predictionFeedFreshness.status === 'stale' ? ['prediction_feed_stale'] : []),
+    ...(liveStatusFreshness.status === 'stale' ? ['live_status_stale'] : []),
+  ];
   const contractWarnings = [
     ...(siteContract.json?.contract_version === EXPECTED_SITE_CONTRACT_VERSION ? [] : ['site_contract_version_mismatch']),
     ...(missingSiteFeatures.length ? [`site_contract_missing_features:${missingSiteFeatures.join(',')}`] : []),
     ...(liveModel.ok ? [] : [`live_model_${liveModel.status || 'missing'}`]),
     ...(siteContract.ok ? [] : [`site_contract_${siteContract.status || 'missing'}`]),
     ...(predictionFeed?.ok ? [] : [`prediction_feed_${predictionFeed?.status || 'missing'}`]),
+    ...(predictionSchema?.ok ? [] : [`prediction_schema_${predictionSchema?.status || 'missing'}`]),
     ...(liveStatus.ok ? [] : [`live_status_${liveStatus.status || 'missing'}`]),
     ...(liveManifest.ok ? [] : [`live_manifest_${liveManifest.status || 'missing'}`]),
     ...(predictionFeed?.json?.schema === 'lol_predictions_public_v1' ? [] : ['prediction_feed_schema_mismatch']),
+    ...(predictionSchemaOk ? [] : ['prediction_schema_mismatch']),
     ...(liveStatus.json?.schema_version === '1.0' ? [] : ['live_status_schema_mismatch']),
     ...(liveManifest.json?.schema_version === 1 ? [] : ['live_manifest_schema_mismatch']),
   ];
@@ -59,6 +80,9 @@ export async function onRequestGet(context) {
     contract_ok: contractWarnings.length === 0,
     expected_site_contract_version: EXPECTED_SITE_CONTRACT_VERSION,
     cloudflare_timestamp: new Date().toISOString(),
+    deployment_branch: stringEnv(context, 'CF_PAGES_BRANCH'),
+    deployment_commit_sha: stringEnv(context, 'CF_PAGES_COMMIT_SHA'),
+    deployment_url: stringEnv(context, 'CF_PAGES_URL') || requestUrl.origin,
     site_contract_available: siteContract.ok,
     site_contract_version: siteContract.json?.contract_version || '',
     site_contract_schema: siteContract.json?.schema || '',
@@ -68,6 +92,8 @@ export async function onRequestGet(context) {
     live_model_name: liveModel.json?.name || '',
     live_model_schema: liveModel.json?.schema || '',
     live_model_exported_at: liveModel.json?.exported_at || '',
+    live_model_age_seconds: liveModelFreshness.age_seconds,
+    live_model_freshness: liveModelFreshness.status,
     live_model_training_rows: liveModel.json?.training_rows ?? null,
     live_model_test_rows: liveModel.json?.test_rows ?? null,
     prediction_feed_url: predictionFeedUrl,
@@ -75,12 +101,22 @@ export async function onRequestGet(context) {
     prediction_feed_source: localPredictions.ok ? 'local_asset' : 'remote',
     prediction_feed_last_fetch_status: predictionFeed?.status ?? 0,
     prediction_feed_generated_at: predictionFeed?.json?.generated_at || '',
+    prediction_feed_age_seconds: predictionFeedFreshness.age_seconds,
+    prediction_feed_freshness: predictionFeedFreshness.status,
     prediction_feed_schema: predictionFeed?.json?.schema || '',
     prediction_feed_rows: Array.isArray(predictionFeed?.json?.predictions) ? predictionFeed.json.predictions.length : 0,
+    prediction_schema_url: predictionSchemaUrl,
+    prediction_schema_available: Boolean(predictionSchema?.ok),
+    prediction_schema_source: localSchema.ok ? 'local_asset' : 'remote',
+    prediction_schema_last_fetch_status: predictionSchema?.status ?? 0,
+    prediction_schema_id: predictionSchema?.json?.$id || '',
+    prediction_schema_ok: predictionSchemaOk,
     live_status_url: liveStatusUrl,
     live_status_available: Boolean(liveStatus.ok),
     live_status_last_fetch_status: liveStatus.status,
     live_status_generated_at: liveStatus.json?.generated_at || '',
+    live_status_age_seconds: liveStatusFreshness.age_seconds,
+    live_status_freshness: liveStatusFreshness.status,
     live_status_display_ready: liveStatus.json?.display_ready ?? null,
     live_status_production_ready: liveStatus.json?.production_ready ?? null,
     live_status_stage: liveStatus.json?.stage || '',
@@ -93,6 +129,7 @@ export async function onRequestGet(context) {
     analyzer_live_manifest_last_fetch_status: liveManifest.status,
     analyzer_live_model_available: liveManifest.json?.live_model_available ?? null,
     analyzer_oe_bootstrap_available: liveManifest.json?.oe_live_bootstrap?.available ?? null,
+    artifact_warnings: artifactWarnings,
     warnings: contractWarnings,
   };
   return jsonResponse(payload);
@@ -101,6 +138,20 @@ export async function onRequestGet(context) {
 function configuredUrl(context, key, fallback) {
   const value = context?.env?.[key];
   return typeof value === 'string' && value.trim() ? value.trim() : fallback;
+}
+
+function stringEnv(context, key) {
+  const value = context?.env?.[key];
+  return typeof value === 'string' ? value : '';
+}
+
+function artifactFreshness(value) {
+  const timestamp = Date.parse(String(value || ''));
+  if (!Number.isFinite(timestamp)) return { status: 'unknown', age_seconds: null };
+  const ageSeconds = Math.max(0, Math.round((Date.now() - timestamp) / 1000));
+  if (ageSeconds > STALE_SECONDS) return { status: 'stale', age_seconds: ageSeconds };
+  if (ageSeconds > WARNING_SECONDS) return { status: 'aging', age_seconds: ageSeconds };
+  return { status: 'fresh', age_seconds: ageSeconds };
 }
 
 async function readJsonAsset(context, path) {
