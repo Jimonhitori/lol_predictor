@@ -165,6 +165,14 @@ Check whether the collected frames have enough labeled completed-game data:
 python -m lol_predictor.live_report data/live_snapshots
 ```
 
+Backfill completed games from LoL Esports livestats. If the event API does not
+include per-game winners, provide a label CSV with `game_id,winner` or
+`game_id,blue_win`:
+
+```powershell
+python -m lol_predictor.live_backfill --event-id 115548128962971895 --labels data/live_labels.csv --interval-seconds 30
+```
+
 Run realtime inference from the latest public live-event snapshot:
 
 ```powershell

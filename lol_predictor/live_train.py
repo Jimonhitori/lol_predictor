@@ -30,6 +30,8 @@ def main() -> None:
     cols = live_feature_columns(frame)
     if not cols:
         raise SystemExit("No usable live feature columns were found.")
+    if frame["target"].nunique() < 2:
+        raise SystemExit("Need both blue-win and red-win labeled rows to train a calibrated live model.")
 
     split_at = max(1, int(len(frame) * (1 - args.test_fraction)))
     split_at = min(split_at, len(frame) - 1)
