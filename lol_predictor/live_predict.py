@@ -90,7 +90,20 @@ def active_game(details: dict[str, Any]) -> dict[str, Any]:
         live = game.get("live") or {}
         if live.get("status") == "in_game":
             return game
+    for game in games:
+        if has_live_frame(game.get("live") or {}):
+            return game
     return games[0] if games else {}
+
+
+def has_live_frame(live: dict[str, Any]) -> bool:
+    if not isinstance(live, dict):
+        return False
+    if live.get("frame_timestamp"):
+        return True
+    if live.get("blue") or live.get("red"):
+        return True
+    return bool(live.get("blue_stats") or live.get("red_stats"))
 
 
 if __name__ == "__main__":

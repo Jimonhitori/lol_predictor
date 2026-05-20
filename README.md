@@ -180,6 +180,17 @@ has already landed in your local OE data:
 python -m lol_predictor.live_labels --event-id 115548128962971895 --data-dir data/raw --output data/live_labels.csv
 ```
 
+You can also discover completed LoL Esports events from schedule history and
+backfill all labeled events:
+
+```powershell
+python -m lol_predictor.live_labels --discover-schedule --league LCK --data-dir data/raw --output data/live_labels.csv
+python -m lol_predictor.live_backfill --event-ids-from-labels --labels data/live_labels.csv --interval-seconds 30
+```
+
+When the label CSV includes `source_date`, backfill uses it as the livestats
+`startingTime` anchor so completed games can return a denser frame history.
+
 Run realtime inference from the latest public live-event snapshot:
 
 ```powershell

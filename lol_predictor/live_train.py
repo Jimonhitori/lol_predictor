@@ -21,7 +21,8 @@ def main() -> None:
     import joblib
 
     from .model import evaluate, make_pipeline
-    frame = live_training_frame(args.inputs, max_interval_seconds=args.max_interval_seconds)
+    inputs = expand_input_paths(args.inputs)
+    frame = live_training_frame(inputs, max_interval_seconds=args.max_interval_seconds)
     if len(frame) < args.min_rows:
         raise SystemExit(
             f"Not enough live frames to train: rows={len(frame)} min_rows={args.min_rows}. "
@@ -61,6 +62,20 @@ def main() -> None:
     print(f"Log loss: {metrics.log_loss:.4f}")
     if metrics.roc_auc is not None:
         print(f"ROC AUC: {metrics.roc_auc:.4f}")
+
+
+def expand_input_paths(inputs: list[Path]) -> list[Path]:
+    expanded: list[Path] = []
+    for path in inputs:
+        text = str(path)
+        if any(char in text for char in "*?[]"):
+            matches = sorted(Path().glob(text))
+            expanded.extend(match for match in matches if match.is_file())
+        else:
+            expanded.append(path)
+    if not expanded:
+        raise SystemExit("No input JSONL files matched.")
+    return expanded
 
 
 if __name__ == "__main__":

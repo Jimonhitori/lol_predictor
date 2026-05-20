@@ -4,7 +4,7 @@ import argparse
 import json
 from copy import deepcopy
 import csv
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -20,13 +20,15 @@ DEFAULT_LOLESPORTS_API_KEY = "0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z"
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Backfill completed LoL Esports livestats frames into training JSONL.")
-    parser.add_argument("--event-id", action="append", required=True, help="LoL Esports event id. Repeatable.")
+    parser.add_argument("--event-id", action="append", default=[], help="LoL Esports event id. Repeatable.")
+    parser.add_argument("--event-ids-from-labels", action="store_true", help="Backfill every event_id present in --labels.")
     parser.add_argument("--output-dir", type=Path, default=Path("data/live_snapshots/backfill"))
     parser.add_argument("--interval-seconds", type=int, default=30)
     parser.add_argument("--api-key", default=DEFAULT_LOLESPORTS_API_KEY)
     parser.add_argument("--labels", type=Path, help="Optional CSV with game_id,winner or game_id,blue_win columns.")
     parser.add_argument("--include-unlabeled", action="store_true", help="Save frames even when game winner cannot be inferred.")
     parser.add_argument("--max-frames-per-game", type=int, default=0)
+    parser.add_argument("--overwrite", action="store_true", help="Replace an existing output JSONL before writing.")
     return parser.parse_args()
 
 
@@ -34,11 +36,22 @@ def main() -> None:
     args = parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     labels = load_labels(args.labels) if args.labels else {}
-    for event_id in args.event_id:
+    label_metadata = load_label_metadata(args.labels) if args.labels else {}
+    event_ids = list(args.event_id)
+    if args.event_ids_from_labels:
+        if not args.labels:
+            raise SystemExit("--event-ids-from-labels requires --labels.")
+        event_ids.extend(load_label_event_ids(args.labels))
+    event_ids = list(dict.fromkeys(str(event_id) for event_id in event_ids if str(event_id)))
+    if not event_ids:
+        raise SystemExit("No event ids to backfill. Pass --event-id or --event-ids-from-labels with --labels.")
+    for event_id in event_ids:
         event = fetch_event(event_id, args.api_key)
         details = normalize_event(event)
         apply_labels(details, labels)
         output = args.output_dir / f"live_backfill_{details['id'] or event_id}.jsonl"
+        if args.overwrite and output.exists():
+            output.unlink()
         saved = 0
         skipped_unlabeled = 0
         for game in details["games"]:
@@ -47,17 +60,17 @@ def main() -> None:
             if not game.get("winner") and not args.include_unlabeled:
                 skipped_unlabeled += 1
                 continue
-            window = fetch_json(LIVE_WINDOW_URL.format(game_id=game["id"]))
-            frames = sampled_frames(window.get("frames") or [], args.interval_seconds)
-            if args.max_frames_per_game > 0:
-                frames = frames[: args.max_frames_per_game]
-            details_payload = fetch_json(LIVE_DETAILS_URL.format(game_id=game["id"]))
-            details_by_timestamp = details_frames_by_timestamp(details_payload)
-            for frame in frames:
+            windows = sampled_live_windows(
+                str(game["id"]),
+                args.interval_seconds,
+                args.max_frames_per_game,
+                starting_time_for_game(str(game["id"]), label_metadata),
+            )
+            for metadata, frame, details_frame in windows:
                 record_details = deepcopy(details)
                 record_game = next(item for item in record_details["games"] if item["id"] == game["id"])
-                live = normalize_live_frame(window.get("gameMetadata") or {}, frame)
-                merge_live_details(live, details_by_timestamp.get(str(frame.get("rfc460Timestamp") or ""), {}))
+                live = normalize_live_frame(metadata, frame)
+                merge_live_details(live, details_frame)
                 record_game["live"] = live
                 append_jsonl(
                     output,
@@ -130,6 +143,53 @@ def load_labels(path: Path) -> dict[str, str]:
     return labels
 
 
+def load_label_metadata(path: Path) -> dict[str, dict[str, str]]:
+    metadata: dict[str, dict[str, str]] = {}
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            game_id = str(row.get("game_id") or row.get("id") or "").strip()
+            if not game_id:
+                continue
+            metadata[game_id] = {key: str(value or "") for key, value in row.items()}
+    return metadata
+
+
+def load_label_event_ids(path: Path) -> list[str]:
+    event_ids: list[str] = []
+    with path.open("r", encoding="utf-8-sig", newline="") as handle:
+        reader = csv.DictReader(handle)
+        for row in reader:
+            event_id = str(row.get("event_id") or "").strip()
+            if event_id:
+                event_ids.append(event_id)
+    return list(dict.fromkeys(event_ids))
+
+
+def starting_time_for_game(game_id: str, label_metadata: dict[str, dict[str, str]]) -> str:
+    source_date = (label_metadata.get(game_id) or {}).get("source_date") or ""
+    parsed = parse_time(source_date)
+    if parsed is None:
+        return ""
+    return feed_starting_time(parsed)
+
+
+def feed_starting_time(value: datetime) -> str:
+    value = value.astimezone(timezone.utc)
+    timestamp = int(value.timestamp())
+    if timestamp % 10:
+        timestamp += 10 - (timestamp % 10)
+    return datetime.fromtimestamp(timestamp, tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+
+def live_feed_url(template: str, game_id: str, starting_time: str = "") -> str:
+    url = template.format(game_id=game_id)
+    if not starting_time:
+        return url
+    separator = "&" if "?" in url else "?"
+    return f"{url}{separator}{urlencode({'startingTime': starting_time})}"
+
+
 def apply_labels(details: dict[str, Any], labels: dict[str, str]) -> None:
     if not labels:
         return
@@ -191,21 +251,45 @@ def winner_value(game: dict[str, Any]) -> str:
     return str(winner or "")
 
 
-def sampled_frames(frames: list[Any], interval_seconds: int) -> list[dict[str, Any]]:
-    valid = [frame for frame in frames if isinstance(frame, dict) and frame.get("rfc460Timestamp")]
-    if interval_seconds <= 0:
-        return valid
-    selected: list[dict[str, Any]] = []
-    last_ts: datetime | None = None
-    for frame in valid:
-        current = parse_time(frame.get("rfc460Timestamp"))
-        if current is None:
+def sampled_live_windows(
+    game_id: str,
+    interval_seconds: int,
+    max_frames: int,
+    starting_time_hint: str = "",
+) -> list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]]:
+    selected: list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]] = []
+    interval_seconds = max(1, interval_seconds)
+    max_iterations = max_frames if max_frames > 0 else 180
+    starting_time = starting_time_hint
+    seen_timestamps: set[str] = set()
+    empty_windows = 0
+    for _ in range(max_iterations):
+        window = fetch_json(live_feed_url(LIVE_WINDOW_URL, game_id, starting_time))
+        frames = [frame for frame in window.get("frames") or [] if isinstance(frame, dict) and frame.get("rfc460Timestamp")]
+        if not frames and starting_time:
+            empty_windows += 1
+            if empty_windows >= 2:
+                break
+            starting_time = ""
             continue
-        if last_ts is None or (current - last_ts).total_seconds() >= interval_seconds:
-            selected.append(frame)
-            last_ts = current
-    if valid and selected and selected[-1] is not valid[-1]:
-        selected.append(valid[-1])
+        if not frames:
+            break
+        frame = frames[-1]
+        timestamp = str(frame.get("rfc460Timestamp") or "")
+        if timestamp in seen_timestamps:
+            break
+        details_payload = fetch_json(live_feed_url(LIVE_DETAILS_URL, game_id, starting_time))
+        details_by_timestamp = details_frames_by_timestamp(details_payload)
+        selected.append((window.get("gameMetadata") or {}, frame, details_by_timestamp.get(timestamp, {})))
+        seen_timestamps.add(timestamp)
+        if max_frames > 0 and len(selected) >= max_frames:
+            break
+        if str(frame.get("gameState") or "").lower() in {"finished", "completed", "complete"}:
+            break
+        parsed = parse_time(timestamp)
+        if parsed is None:
+            break
+        starting_time = feed_starting_time(parsed + timedelta(seconds=interval_seconds))
     return selected
 
 
