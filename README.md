@@ -227,6 +227,8 @@ python -m lol_predictor.live_backfill --event-ids-from-labels --labels data/live
 
 When the label CSV includes `source_date`, backfill uses it as the livestats
 `startingTime` anchor so completed games can return a denser frame history.
+Use `--skip-details` for faster deep backfills when team-level window stats are
+enough for training.
 
 Run realtime inference from the latest public live-event snapshot:
 

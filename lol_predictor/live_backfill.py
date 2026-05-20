@@ -29,6 +29,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--include-unlabeled", action="store_true", help="Save frames even when game winner cannot be inferred.")
     parser.add_argument("--max-frames-per-game", type=int, default=0)
     parser.add_argument("--overwrite", action="store_true", help="Replace an existing output JSONL before writing.")
+    parser.add_argument("--skip-details", action="store_true", help="Skip livestats details calls for faster deep backfills.")
     return parser.parse_args()
 
 
@@ -65,6 +66,7 @@ def main() -> None:
                 args.interval_seconds,
                 args.max_frames_per_game,
                 starting_time_for_game(str(game["id"]), label_metadata),
+                skip_details=args.skip_details,
             )
             game_start = label_source_time_for_game(str(game["id"]), label_metadata)
             for metadata, frame, details_frame in windows:
@@ -262,6 +264,8 @@ def sampled_live_windows(
     interval_seconds: int,
     max_frames: int,
     starting_time_hint: str = "",
+    *,
+    skip_details: bool = False,
 ) -> list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]]:
     selected: list[tuple[dict[str, Any], dict[str, Any], dict[str, Any]]] = []
     interval_seconds = max(1, interval_seconds)
@@ -285,8 +289,10 @@ def sampled_live_windows(
         timestamp = str(frame.get("rfc460Timestamp") or "")
         if timestamp in seen_timestamps:
             break
-        details_payload = fetch_json(live_feed_url(LIVE_DETAILS_URL, game_id, starting_time))
-        details_by_timestamp = details_frames_by_timestamp(details_payload)
+        details_by_timestamp = {}
+        if not skip_details:
+            details_payload = fetch_json(live_feed_url(LIVE_DETAILS_URL, game_id, starting_time))
+            details_by_timestamp = details_frames_by_timestamp(details_payload)
         selected.append((window.get("gameMetadata") or {}, frame, details_by_timestamp.get(timestamp, {})))
         seen_timestamps.add(timestamp)
         if max_frames > 0 and len(selected) >= max_frames:
