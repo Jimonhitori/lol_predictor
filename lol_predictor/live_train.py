@@ -3,10 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-import joblib
-
 from .live_features import live_feature_columns, live_training_frame
-from .model import evaluate, make_pipeline
 
 
 def parse_args() -> argparse.Namespace:
@@ -21,6 +18,9 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    import joblib
+
+    from .model import evaluate, make_pipeline
     frame = live_training_frame(args.inputs, max_interval_seconds=args.max_interval_seconds)
     if len(frame) < args.min_rows:
         raise SystemExit(

@@ -69,10 +69,12 @@ def live_training_frame(paths: Iterable[Path], max_interval_seconds: int = 30) -
             rows.extend(live_record_rows(record))
     frame = pd.DataFrame(rows)
     if frame.empty:
-      return frame
+        return frame
     frame = frame.sort_values(["event_id", "game_id", "game_time", "collected_at"]).drop_duplicates(
         ["event_id", "game_id", "game_time_bucket"], keep="last"
     )
+    if "target" not in frame.columns:
+        return frame.iloc[0:0].copy()
     frame = frame[frame["target"].isin([0, 1])].copy()
     if max_interval_seconds > 0:
         frame = frame[frame["game_time_bucket"] % max_interval_seconds == 0]

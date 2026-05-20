@@ -136,6 +136,32 @@ pip install -r requirements.txt
 python -m lol_predictor.train --data-dir data/raw --model-path models/post_draft.joblib
 ```
 
+## Live Win Probability
+
+Collect normalized live frames from the Cloudflare live-event API into JSONL.
+Use an interval of 30 seconds or less when building the dedicated live model:
+
+```powershell
+python -m lol_predictor.live_collect --event-id 115548128962971911 --output data/live_snapshots/t1_krx.jsonl --interval-seconds 20 --duration-minutes 120 --max-snapshots 0 --only-new-frame
+```
+
+Train the dedicated live win-probability model once enough completed-game
+frames have been collected:
+
+```powershell
+python -m lol_predictor.live_train data/live_snapshots/*.jsonl --model-path models/live_win_probability.joblib
+```
+
+Run realtime inference from the latest public live-event snapshot:
+
+```powershell
+python -m lol_predictor.live_predict --model-path models/live_win_probability.joblib --event-id 115548128962971911
+```
+
+The live model input schema is `live_frame_v1`, using game time, gold, kills,
+towers, inhibitors, barons, dragons, level, CS, deaths, league, patch, side
+teams, game number, and best-of context.
+
 Focus training on the latest patch found in the data, or on the latest few
 patches:
 
