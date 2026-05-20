@@ -140,10 +140,14 @@ def _normalize_team(team: dict[str, Any]) -> dict[str, str]:
 
 def _normalize_game(game: dict[str, Any], team_by_id: dict[str, dict[str, Any]]) -> dict[str, Any]:
     sides = {}
+    winner = game.get("winner") or game.get("winner_team") or game.get("winnerTeam") or game.get("winningTeam") or game.get("winningTeamId") or ""
     for team in game.get("teams") or []:
         if not isinstance(team, dict):
             continue
         source_team = team_by_id.get(str(team.get("id")), {})
+        result = team.get("result") or {}
+        if team.get("winner") is True or result.get("winner") is True or str(result.get("outcome") or "").lower() == "win":
+            winner = source_team.get("code") or source_team.get("name") or team.get("id") or winner
         sides[str(team.get("side") or "")] = {
             "team_id": str(team.get("id") or ""),
             "team_name": str(source_team.get("name") or ""),
@@ -162,8 +166,15 @@ def _normalize_game(game: dict[str, Any], team_by_id: dict[str, dict[str, Any]])
         "state": state,
         "blue": sides.get("blue", {}),
         "red": sides.get("red", {}),
+        "winner": _winner_label(winner),
         "live": live,
     }
+
+
+def _winner_label(value: Any) -> str:
+    if isinstance(value, dict):
+        return str(value.get("code") or value.get("name") or value.get("id") or "")
+    return str(value or "")
 
 
 def _normalize_live_window(payload: dict[str, Any]) -> dict[str, Any]:
