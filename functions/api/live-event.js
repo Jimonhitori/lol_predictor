@@ -416,6 +416,7 @@ async function liveModelWinProbability(live, game, details, context) {
     training_rows: model.training_rows || 0,
     test_rows: model.test_rows || 0,
     metrics: model.metrics || {},
+    validation: liveValidationBucket(model, row.game_time),
     features: {
       gold_diff: row.gold_diff,
       kill_diff: row.kill_diff,
@@ -426,6 +427,29 @@ async function liveModelWinProbability(live, game, details, context) {
       avg_level_diff: row.avg_level_diff,
       game_time: row.game_time,
     },
+  };
+}
+
+function liveValidationBucket(model, gameTime) {
+  const guidance = model.serving_guidance || {};
+  const buckets = Array.isArray(guidance.time_buckets) ? guidance.time_buckets : [];
+  const seconds = number(gameTime);
+  const bucket = buckets.find(item => seconds >= number(item.start_seconds) && seconds < number(item.end_seconds));
+  if (!bucket) {
+    return {
+      display: guidance.default_display || 'show_live_probability',
+      source: guidance.source || '',
+    };
+  }
+  return {
+    display: bucket.display || guidance.default_display || 'show_live_probability',
+    source: guidance.source || '',
+    start_seconds: number(bucket.start_seconds),
+    end_seconds: number(bucket.end_seconds),
+    games: number(bucket.games),
+    rows: number(bucket.rows),
+    roc_auc: bucket.roc_auc ?? null,
+    brier: bucket.brier ?? null,
   };
 }
 

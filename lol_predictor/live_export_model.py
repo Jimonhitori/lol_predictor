@@ -26,7 +26,9 @@ def main() -> None:
     if args.cross_validation_report:
         payload["cross_validation"] = load_cross_validation_report(args.cross_validation_report)
     if args.external_validation_report:
-        payload["external_validation"] = load_validation_report(args.external_validation_report)
+        external_validation = load_validation_report(args.external_validation_report)
+        payload["external_validation"] = external_validation
+        payload["serving_guidance"] = serving_guidance(external_validation)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote live model JSON: {args.output}")
@@ -124,6 +126,41 @@ def load_validation_report(path: Path) -> dict[str, Any]:
         "overall": payload.get("overall") or {},
         "by_time_bucket": payload.get("by_time_bucket") or [],
     }
+
+
+def serving_guidance(validation: dict[str, Any]) -> dict[str, Any]:
+    buckets = []
+    for row in validation.get("by_time_bucket") or []:
+        buckets.append(
+            {
+                "start_seconds": int(row.get("start_seconds") or 0),
+                "end_seconds": int(row.get("end_seconds") or 0),
+                "games": int(row.get("games") or 0),
+                "rows": int(row.get("rows") or 0),
+                "roc_auc": row.get("roc_auc"),
+                "brier": row.get("brier"),
+                "display": display_recommendation(row),
+            }
+        )
+    return {
+        "source": "external_validation",
+        "default_display": "show_live_probability",
+        "time_buckets": buckets,
+    }
+
+
+def display_recommendation(row: dict[str, Any]) -> str:
+    games = int(row.get("games") or 0)
+    rows = int(row.get("rows") or 0)
+    roc_auc = row.get("roc_auc")
+    brier = row.get("brier")
+    if games < 5 or rows < 50:
+        return "limited_sample"
+    if roc_auc is not None and float(roc_auc) < 0.7:
+        return "use_with_caution"
+    if brier is not None and float(brier) > 0.22:
+        return "use_with_caution"
+    return "show_live_probability"
 
 
 if __name__ == "__main__":

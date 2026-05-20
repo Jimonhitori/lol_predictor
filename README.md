@@ -226,7 +226,8 @@ python -m lol_predictor.live_export_model --model-path models/live_win_probabili
 ```
 
 You can also attach a separate holdout evaluation report with
-`--external-validation-report`.
+`--external-validation-report`. The export adds serving guidance by game-time
+bucket so the API can flag late-game buckets with weaker external validation.
 
 Backfill completed games from LoL Esports livestats. If the event API does not
 include per-game winners, provide a label CSV with `game_id,winner` or

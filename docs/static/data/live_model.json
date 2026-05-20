@@ -61,7 +61,7 @@
     "log_loss": 0.4868346825422321,
     "roc_auc": 0.9022971281490753
   },
-  "exported_at": "2026-05-20T11:03:56.554150+00:00",
+  "exported_at": "2026-05-20T11:06:49.309945+00:00",
   "classes": [
     0,
     1
@@ -508,6 +508,84 @@
         "brier": 0.24397529202431714,
         "log_loss": 0.672621723887344,
         "roc_auc": 0.6186895810955961
+      }
+    ]
+  },
+  "serving_guidance": {
+    "source": "external_validation",
+    "default_display": "show_live_probability",
+    "time_buckets": [
+      {
+        "start_seconds": 0,
+        "end_seconds": 300,
+        "games": 26,
+        "rows": 260,
+        "roc_auc": 0.7910909090909091,
+        "brier": 0.21350045980631466,
+        "display": "show_live_probability"
+      },
+      {
+        "start_seconds": 300,
+        "end_seconds": 600,
+        "games": 26,
+        "rows": 260,
+        "roc_auc": 0.8525454545454545,
+        "brier": 0.18126713045949774,
+        "display": "show_live_probability"
+      },
+      {
+        "start_seconds": 600,
+        "end_seconds": 900,
+        "games": 26,
+        "rows": 260,
+        "roc_auc": 0.9423636363636363,
+        "brier": 0.14289070440955845,
+        "display": "show_live_probability"
+      },
+      {
+        "start_seconds": 900,
+        "end_seconds": 1200,
+        "games": 26,
+        "rows": 260,
+        "roc_auc": 0.9043030303030304,
+        "brier": 0.1478283142471978,
+        "display": "show_live_probability"
+      },
+      {
+        "start_seconds": 1200,
+        "end_seconds": 1500,
+        "games": 26,
+        "rows": 258,
+        "roc_auc": 0.9587223587223587,
+        "brier": 0.1254621549810755,
+        "display": "show_live_probability"
+      },
+      {
+        "start_seconds": 1500,
+        "end_seconds": 1800,
+        "games": 25,
+        "rows": 207,
+        "roc_auc": 0.9851340847260008,
+        "brier": 0.1235469773257451,
+        "display": "show_live_probability"
+      },
+      {
+        "start_seconds": 1800,
+        "end_seconds": 2100,
+        "games": 18,
+        "rows": 146,
+        "roc_auc": 0.9170278637770899,
+        "brier": 0.1413953977864973,
+        "display": "show_live_probability"
+      },
+      {
+        "start_seconds": 2100,
+        "end_seconds": 2400,
+        "games": 11,
+        "rows": 68,
+        "roc_auc": 0.6186895810955961,
+        "brier": 0.24397529202431714,
+        "display": "use_with_caution"
       }
     ]
   }
