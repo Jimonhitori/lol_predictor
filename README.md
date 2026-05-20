@@ -199,6 +199,9 @@ Evaluate a trained live model overall and by game-time bucket:
 python -m lol_predictor.live_evaluate data/live_snapshots/backfill_lck/*.jsonl --model-path models/live_win_probability.joblib --bucket-seconds 300
 ```
 
+Bucket ROC AUC is shown as `n/a` when that time bucket contains only one target
+class.
+
 Backfill completed games from LoL Esports livestats. If the event API does not
 include per-game winners, provide a label CSV with `game_id,winner` or
 `game_id,blue_win`:

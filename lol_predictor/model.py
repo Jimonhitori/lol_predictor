@@ -68,6 +68,6 @@ def evaluate(model: Pipeline, x: pd.DataFrame, y: pd.Series) -> Evaluation:
         rows=len(x),
         accuracy=float(accuracy_score(y, predictions)),
         brier=float(brier_score_loss(y, probabilities)),
-        log_loss=float(log_loss(y, probabilities)),
+        log_loss=float(log_loss(y, probabilities, labels=[0, 1])),
         roc_auc=roc_auc,
     )
