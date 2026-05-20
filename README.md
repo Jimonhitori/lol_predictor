@@ -145,6 +145,13 @@ Use an interval of 30 seconds or less when building the dedicated live model:
 python -m lol_predictor.live_collect --event-id 115548128962971911 --output data/live_snapshots/t1_krx.jsonl --interval-seconds 20 --duration-minutes 120 --max-snapshots 0 --only-new-frame
 ```
 
+Or let the collector discover current LCK matches from the static schedule
+window:
+
+```powershell
+python -m lol_predictor.live_collect --auto-current --league LCK --region korea --interval-seconds 20 --duration-minutes 120 --max-snapshots 0 --only-new-frame
+```
+
 Train the dedicated live win-probability model once enough completed-game
 frames have been collected:
 

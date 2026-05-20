@@ -70,6 +70,7 @@ def live_training_frame(paths: Iterable[Path], max_interval_seconds: int = 30) -
     frame = pd.DataFrame(rows)
     if frame.empty:
         return frame
+    frame = add_observed_game_time(frame)
     frame = frame.sort_values(["event_id", "game_id", "game_time", "collected_at"]).drop_duplicates(
         ["event_id", "game_id", "game_time_bucket"], keep="last"
     )
@@ -188,6 +189,19 @@ def live_feature_row(
 
 def live_feature_columns(frame: pd.DataFrame) -> list[str]:
     return [col for col in LIVE_CATEGORICAL_FEATURES + LIVE_NUMERIC_FEATURES if col in frame.columns]
+
+
+def add_observed_game_time(frame: pd.DataFrame) -> pd.DataFrame:
+    if frame.empty or "frame_timestamp" not in frame.columns:
+        return frame
+    data = frame.copy()
+    timestamps = pd.to_datetime(data["frame_timestamp"], errors="coerce", utc=True)
+    first_seen = timestamps.groupby([data["event_id"], data["game_id"]]).transform("min")
+    observed = (timestamps - first_seen).dt.total_seconds().fillna(0)
+    missing_time = pd.to_numeric(data.get("game_time", 0), errors="coerce").fillna(0) <= 0
+    data.loc[missing_time, "game_time"] = observed[missing_time]
+    data["game_time_bucket"] = (pd.to_numeric(data["game_time"], errors="coerce").fillna(0) // 30 * 30).astype(int)
+    return data
 
 
 def blue_win_target(game: dict[str, Any]) -> int | None:

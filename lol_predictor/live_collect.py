@@ -12,12 +12,20 @@ from urllib.request import Request, urlopen
 
 
 DEFAULT_API_BASE = "https://lol-predictor.pages.dev/api/live-event"
+DEFAULT_MATCHES_URL = "https://lol-predictor.pages.dev/static/data/matches-all__all.json"
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Collect normalized live-event snapshots into JSONL.")
-    parser.add_argument("--event-id", required=True, help="LoL Esports event id, not game id.")
+    parser.add_argument("--event-id", action="append", default=[], help="LoL Esports event id, not game id. Repeatable.")
+    parser.add_argument("--auto-current", action="store_true", help="Collect matches whose schedule window says they are current or about to start.")
+    parser.add_argument("--matches-url", default=DEFAULT_MATCHES_URL)
+    parser.add_argument("--league", action="append", dest="leagues", help="Limit --auto-current to this league label/code. Repeatable.")
+    parser.add_argument("--region", default="", help="Limit --auto-current to this region bucket.")
+    parser.add_argument("--started-within-hours", type=float, default=8.0)
+    parser.add_argument("--starts-within-hours", type=float, default=2.0)
     parser.add_argument("--output", type=Path, default=Path("data/live_snapshots/live_events.jsonl"))
+    parser.add_argument("--output-dir", type=Path, default=Path("data/live_snapshots"))
     parser.add_argument("--api-base", default=DEFAULT_API_BASE)
     parser.add_argument("--interval-seconds", type=float, default=20.0)
     parser.add_argument("--duration-minutes", type=float, default=0.0, help="0 means one snapshot unless --max-snapshots is set.")
@@ -28,28 +36,36 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    args.output.parent.mkdir(parents=True, exist_ok=True)
+    event_ids = list(dict.fromkeys(args.event_id + (current_event_ids(args) if args.auto_current else [])))
+    if not event_ids:
+        raise SystemExit("No event ids to collect. Pass --event-id or --auto-current.")
+    output_paths = output_paths_for_events(args, event_ids)
+    for output in set(output_paths.values()):
+        output.parent.mkdir(parents=True, exist_ok=True)
     deadline = time.monotonic() + args.duration_minutes * 60 if args.duration_minutes > 0 else None
     max_snapshots = args.max_snapshots if args.max_snapshots > 0 else None
     snapshots = 0
-    last_frame = ""
+    last_frames: dict[str, str] = {}
 
     while True:
-        details = fetch_live_event(args.api_base, args.event_id)
-        record = {
-            "collected_at": datetime.now(timezone.utc).isoformat(),
-            "event_id": args.event_id,
-            "source_url": live_event_url(args.api_base, args.event_id),
-            "details": details,
-        }
-        frame = active_frame_timestamp(details)
-        if not args.only_new_frame or not frame or frame != last_frame:
-            append_jsonl(args.output, record)
-            snapshots += 1
-            last_frame = frame
-            print(snapshot_summary(record))
-        else:
-            print(f"Skipped unchanged frame: {frame}")
+        for event_id in event_ids:
+            details = fetch_live_event(args.api_base, event_id)
+            record = {
+                "collected_at": datetime.now(timezone.utc).isoformat(),
+                "event_id": event_id,
+                "source_url": live_event_url(args.api_base, event_id),
+                "details": details,
+            }
+            frame = active_frame_timestamp(details)
+            if not args.only_new_frame or not frame or frame != last_frames.get(event_id, ""):
+                append_jsonl(output_paths[event_id], record)
+                snapshots += 1
+                last_frames[event_id] = frame
+                print(snapshot_summary(record))
+            else:
+                print(f"Skipped unchanged frame: {event_id} {frame}")
+            if max_snapshots is not None and snapshots >= max_snapshots:
+                break
 
         if max_snapshots is not None and snapshots >= max_snapshots:
             break
@@ -58,8 +74,39 @@ def main() -> None:
         time.sleep(max(1.0, args.interval_seconds))
 
 
+def current_event_ids(args: argparse.Namespace) -> list[str]:
+    payload = fetch_json(args.matches_url)
+    matches = payload.get("matches") or []
+    now = datetime.now(timezone.utc)
+    lower = now.timestamp() - args.started_within_hours * 3600
+    upper = now.timestamp() + args.starts_within_hours * 3600
+    result: list[str] = []
+    for match in matches:
+        if not isinstance(match, dict):
+            continue
+        if args.leagues and not any(same_label(match.get("league"), league) for league in args.leagues):
+            continue
+        if args.region and not same_label(match.get("region"), args.region):
+            continue
+        status = str(match.get("status") or "").lower()
+        if status in {"completed", "complete"}:
+            continue
+        start_time = parse_time(match.get("start_time"))
+        if start_time is None:
+            continue
+        if lower <= start_time.timestamp() <= upper:
+            event_id = str(match.get("id") or "")
+            if event_id:
+                result.append(event_id)
+    return result
+
+
 def fetch_live_event(api_base: str, event_id: str) -> dict[str, Any]:
     url = live_event_url(api_base, event_id)
+    return fetch_json(url, event_id=event_id)
+
+
+def fetch_json(url: str, event_id: str = "") -> dict[str, Any]:
     request = Request(url, headers={"accept": "application/json", "user-agent": "lol-predictor-live-collector/1.0"})
     try:
         with urlopen(request, timeout=20) as response:
@@ -82,6 +129,12 @@ def live_event_url(api_base: str, event_id: str) -> str:
 def append_jsonl(path: Path, record: dict[str, Any]) -> None:
     with path.open("a", encoding="utf-8") as handle:
         handle.write(json.dumps(record, ensure_ascii=False, separators=(",", ":")) + "\n")
+
+
+def output_paths_for_events(args: argparse.Namespace, event_ids: list[str]) -> dict[str, Path]:
+    if len(event_ids) == 1 and args.output:
+        return {event_ids[0]: args.output}
+    return {event_id: args.output_dir / f"live_event_{event_id}.jsonl" for event_id in event_ids}
 
 
 def active_frame_timestamp(details: dict[str, Any]) -> str:
@@ -116,6 +169,26 @@ def snapshot_summary(record: dict[str, Any]) -> str:
 
 def team_label(team: dict[str, Any]) -> str:
     return str(team.get("code") or team.get("name") or "-")
+
+
+def parse_time(value: Any) -> datetime | None:
+    if not value:
+        return None
+    try:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def same_label(left: Any, right: Any) -> bool:
+    return normalize_label(left) == normalize_label(right)
+
+
+def normalize_label(value: Any) -> str:
+    return "".join(char.lower() for char in str(value or "") if char.isalnum())
 
 
 if __name__ == "__main__":
