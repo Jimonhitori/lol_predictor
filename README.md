@@ -193,6 +193,12 @@ Check whether the collected frames have enough labeled completed-game data:
 python -m lol_predictor.live_report data/live_snapshots
 ```
 
+Evaluate a trained live model overall and by game-time bucket:
+
+```powershell
+python -m lol_predictor.live_evaluate data/live_snapshots/backfill_lck/*.jsonl --model-path models/live_win_probability.joblib --bucket-seconds 300
+```
+
 Backfill completed games from LoL Esports livestats. If the event API does not
 include per-game winners, provide a label CSV with `game_id,winner` or
 `game_id,blue_win`:
