@@ -66,10 +66,12 @@ def main() -> None:
                 args.max_frames_per_game,
                 starting_time_for_game(str(game["id"]), label_metadata),
             )
+            game_start = label_source_time_for_game(str(game["id"]), label_metadata)
             for metadata, frame, details_frame in windows:
                 record_details = deepcopy(details)
                 record_game = next(item for item in record_details["games"] if item["id"] == game["id"])
                 live = normalize_live_frame(metadata, frame)
+                apply_observed_game_time(live, game_start)
                 merge_live_details(live, details_frame)
                 record_game["live"] = live
                 append_jsonl(
@@ -167,11 +169,15 @@ def load_label_event_ids(path: Path) -> list[str]:
 
 
 def starting_time_for_game(game_id: str, label_metadata: dict[str, dict[str, str]]) -> str:
-    source_date = (label_metadata.get(game_id) or {}).get("source_date") or ""
-    parsed = parse_time(source_date)
+    parsed = label_source_time_for_game(game_id, label_metadata)
     if parsed is None:
         return ""
     return feed_starting_time(parsed)
+
+
+def label_source_time_for_game(game_id: str, label_metadata: dict[str, dict[str, str]]) -> datetime | None:
+    source_date = (label_metadata.get(game_id) or {}).get("source_date") or ""
+    return parse_time(source_date)
 
 
 def feed_starting_time(value: datetime) -> str:
@@ -264,6 +270,7 @@ def sampled_live_windows(
     seen_timestamps: set[str] = set()
     empty_windows = 0
     for _ in range(max_iterations):
+        window_start = parse_time(starting_time)
         window = fetch_json(live_feed_url(LIVE_WINDOW_URL, game_id, starting_time))
         frames = [frame for frame in window.get("frames") or [] if isinstance(frame, dict) and frame.get("rfc460Timestamp")]
         if not frames and starting_time:
@@ -289,7 +296,10 @@ def sampled_live_windows(
         parsed = parse_time(timestamp)
         if parsed is None:
             break
-        starting_time = feed_starting_time(parsed + timedelta(seconds=interval_seconds))
+        next_start = (window_start or parsed) + timedelta(seconds=interval_seconds)
+        if next_start <= parsed:
+            next_start = parsed + timedelta(seconds=1)
+        starting_time = feed_starting_time(next_start)
     return selected
 
 
@@ -307,6 +317,16 @@ def normalize_live_frame(metadata: dict[str, Any], frame: dict[str, Any]) -> dic
         "red_stats": live_team_stats(red_frame),
         "source": "lolesports_livestats_backfill",
     }
+
+
+def apply_observed_game_time(live: dict[str, Any], game_start: datetime | None) -> None:
+    if int(live.get("game_time") or 0) > 0 or game_start is None:
+        return
+    frame_time = parse_time(live.get("frame_timestamp"))
+    if frame_time is None:
+        return
+    elapsed = int(max(0, (frame_time - game_start).total_seconds()))
+    live["game_time"] = elapsed
 
 
 def live_participants(team_metadata: dict[str, Any], team_frame: dict[str, Any]) -> list[dict[str, Any]]:

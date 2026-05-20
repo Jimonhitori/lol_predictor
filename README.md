@@ -159,6 +159,9 @@ frames have been collected:
 python -m lol_predictor.live_train data/live_snapshots/*.jsonl --model-path models/live_win_probability.joblib
 ```
 
+Training expands shell globs on Windows and evaluates with a game-level split,
+so frames from the same game do not appear in both train and test sets.
+
 Check whether the collected frames have enough labeled completed-game data:
 
 ```powershell

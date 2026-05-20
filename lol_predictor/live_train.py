@@ -3,6 +3,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+import pandas as pd
+
 from .live_features import live_feature_columns, live_training_frame
 
 
@@ -34,10 +36,7 @@ def main() -> None:
     if frame["target"].nunique() < 2:
         raise SystemExit("Need both blue-win and red-win labeled rows to train a calibrated live model.")
 
-    split_at = max(1, int(len(frame) * (1 - args.test_fraction)))
-    split_at = min(split_at, len(frame) - 1)
-    train = frame.iloc[:split_at].copy()
-    test = frame.iloc[split_at:].copy()
+    train, test = split_by_game(frame, args.test_fraction)
 
     pipeline = make_pipeline(train, cols)
     pipeline.fit(train[cols], train["target"])
@@ -51,6 +50,7 @@ def main() -> None:
             "feature_schema": "live_frame_v1",
             "training_rows": len(train),
             "test_rows": metrics.rows,
+            "split": "grouped_by_game_id",
         },
         args.model_path,
     )
@@ -76,6 +76,39 @@ def expand_input_paths(inputs: list[Path]) -> list[Path]:
     if not expanded:
         raise SystemExit("No input JSONL files matched.")
     return expanded
+
+
+def split_by_game(frame: pd.DataFrame, test_fraction: float) -> tuple[pd.DataFrame, pd.DataFrame]:
+    game_order = (
+        frame.groupby(["event_id", "game_id"], sort=False)["game_time"]
+        .max()
+        .reset_index()
+        .sort_values(["event_id", "game_id"])
+    )
+    games = list(zip(game_order["event_id"].astype(str), game_order["game_id"].astype(str)))
+    if len(games) < 2:
+        raise SystemExit("Need at least two labeled games to create a train/test split.")
+    target_test_games = max(1, int(round(len(games) * test_fraction)))
+    candidate_counts = list(range(target_test_games, len(games)))
+    candidate_counts = sorted(set(candidate_counts), key=lambda count: (abs(count - target_test_games), count))
+    best_split: tuple[pd.DataFrame, pd.DataFrame] | None = None
+    for test_game_count in candidate_counts:
+        test_games = set(games[-test_game_count:])
+        is_test = frame.apply(lambda row: (str(row["event_id"]), str(row["game_id"])) in test_games, axis=1)
+        train = frame.loc[~is_test].copy()
+        test = frame.loc[is_test].copy()
+        if train.empty or test.empty:
+            continue
+        if train["target"].nunique() >= 2 and test["target"].nunique() >= 2:
+            return train, test
+        if best_split is None:
+            best_split = (train, test)
+    if best_split is None:
+        raise SystemExit("Could not create a non-empty grouped train/test split.")
+    train, test = best_split
+    if train["target"].nunique() < 2:
+        raise SystemExit("Grouped split left the training set with only one target class.")
+    return train, test
 
 
 if __name__ == "__main__":
