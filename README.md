@@ -169,6 +169,13 @@ API:
 python -m lol_predictor.live_export_model --model-path models/live_win_probability.joblib --output docs/static/data/live_model.json
 ```
 
+Verify that the exported JSON model matches the source joblib bundle on a live
+snapshot:
+
+```powershell
+python -m lol_predictor.live_verify_model --model-path models/live_win_probability.joblib --exported-model docs/static/data/live_model.json --input data/live_snapshots/example.jsonl
+```
+
 Check whether the collected frames have enough labeled completed-game data:
 
 ```powershell
