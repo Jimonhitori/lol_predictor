@@ -1,0 +1,378 @@
+const EVENT_DETAILS_URL = 'https://esports-api.lolesports.com/persisted/gw/getEventDetails';
+const LIVE_WINDOW_URL = 'https://feed.lolesports.com/livestats/v1/window/';
+const LIVE_DETAILS_URL = 'https://feed.lolesports.com/livestats/v1/details/';
+const DEFAULT_LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
+const EVENT_CACHE_SECONDS = 45;
+const LIVE_CACHE_SECONDS = 4;
+
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
+export function onRequestOptions() {
+  return new Response(null, { status: 204, headers: CORS_HEADERS });
+}
+
+export async function onRequestGet(context) {
+  const requestUrl = new URL(context.request.url);
+  const eventId = String(requestUrl.searchParams.get('id') || '').trim();
+  if (!eventId) {
+    return jsonResponse(unavailable('', 'missing_event_id'), LIVE_CACHE_SECONDS);
+  }
+
+  const cache = caches.default;
+  const cached = await cache.match(context.request);
+  if (cached) {
+    const headers = new Headers(cached.headers);
+    headers.set('X-Cache', 'HIT');
+    return new Response(cached.body, { status: cached.status, headers });
+  }
+
+  let details = unavailable(eventId, '');
+  let cacheTtl = EVENT_CACHE_SECONDS;
+  try {
+    const event = await fetchEventDetails(eventId, context.env);
+    details = normalizeEventDetails(event);
+    details.warning = details.warning || '';
+    await attachTargetLive(details);
+    cacheTtl = responseCacheSeconds(details);
+  } catch (error) {
+    details = unavailable(eventId, 'event_details_fetch_failed');
+  }
+
+  const response = jsonResponse(details, cacheTtl);
+  context.waitUntil(cache.put(context.request, response.clone()));
+  return response;
+}
+
+async function fetchEventDetails(eventId, env) {
+  const url = new URL(EVENT_DETAILS_URL);
+  url.searchParams.set('hl', 'en-US');
+  url.searchParams.set('id', eventId);
+  const response = await fetch(url.toString(), {
+    headers: {
+      'x-api-key': (env && env.LOL_ESPORTS_API_KEY) || DEFAULT_LOLESPORTS_API_KEY,
+      accept: 'application/json',
+    },
+    cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
+  });
+  if (!response.ok) throw new Error(`event details ${response.status}`);
+  const payload = await response.json();
+  const event = payload?.data?.event;
+  if (!event || typeof event !== 'object') throw new Error('event details empty');
+  return event;
+}
+
+function normalizeEventDetails(event) {
+  const match = event.match || {};
+  const teams = Array.isArray(match.teams) ? match.teams : [];
+  const games = Array.isArray(match.games) ? match.games : [];
+  const teamById = Object.fromEntries(teams.map(team => [String(team.id || ''), team]));
+  const bestOf = String(match.strategy?.count || '');
+  const normalizedTeams = teams.map(normalizeTeam);
+  const normalizedGames = games.map(game => normalizeGame(game, teamById)).sort((a, b) => Number(a.number || 0) - Number(b.number || 0));
+  return {
+    id: String(event.id || match.id || ''),
+    league: String(event.league?.name || 'Unknown'),
+    league_group: '',
+    region: '',
+    best_of: bestOf,
+    status: seriesStateFromGames(normalizedGames, normalizedTeams, bestOf, String(event.state || '')),
+    start_time: String(event.startTime || ''),
+    teams: normalizedTeams,
+    games: normalizedGames,
+    source: 'cloudflare_live_event',
+  };
+}
+
+function normalizeTeam(team) {
+  const result = team.result || {};
+  return {
+    id: String(team.id || ''),
+    name: String(team.name || ''),
+    code: String(team.code || ''),
+    image: String(team.image || ''),
+    game_wins: String(result.gameWins ?? '0'),
+  };
+}
+
+function normalizeGame(game, teamById) {
+  const sides = {};
+  let winner = game.winner || game.winner_team || game.winnerTeam || game.winningTeam || game.winningTeamId || '';
+  for (const team of Array.isArray(game.teams) ? game.teams : []) {
+    const sourceTeam = teamById[String(team.id || '')] || {};
+    const result = team.result || {};
+    if (team.winner === true || result.winner === true || String(result.outcome || '').toLowerCase() === 'win') {
+      winner = sourceTeam.code || sourceTeam.name || team.id || winner;
+    }
+    sides[String(team.side || '').toLowerCase()] = {
+      team_id: String(team.id || ''),
+      team_name: String(sourceTeam.name || ''),
+      team_code: String(sourceTeam.code || ''),
+    };
+  }
+  const state = String(game.state || '');
+  return {
+    id: String(game.id || ''),
+    number: Number(game.number || 0),
+    state,
+    blue: sides.blue || {},
+    red: sides.red || {},
+    winner: typeof winner === 'object' ? String(winner.code || winner.name || winner.id || '') : String(winner || ''),
+    live: baseLiveForState(state),
+  };
+}
+
+function seriesStateFromGames(games, teams, bestOf, eventState) {
+  const states = games.map(game => String(game.state || '').toLowerCase());
+  if (states.some(state => state === 'inprogress')) return 'inProgress';
+  const needed = Number(bestOf || 0) ? Math.floor(Number(bestOf) / 2) + 1 : 0;
+  const wins = teams.map(team => Number(team.game_wins || 0));
+  if (needed && wins.some(win => win >= needed)) return 'completed';
+  if (states.some(state => state === 'completed')) return 'inProgress';
+  if (states.length && states.every(state => ['unstarted', 'unneeded'].includes(state))) return 'unstarted';
+  return String(eventState || 'unstarted');
+}
+
+async function attachTargetLive(details) {
+  const game = currentGame(details);
+  if (!game?.id) {
+    details.warning = 'target_game_missing';
+    return;
+  }
+  const status = statusForGame(details, game);
+  if (status === 'unstarted' || status === 'ended') {
+    game.live = { ...game.live, status, game_state: game.state || status };
+    return;
+  }
+  try {
+    const live = await fetchLive(game.id);
+    const meaningful = hasMeaningfulLiveData(live);
+    if (meaningful) {
+      game.live = { ...live, status: liveStatus(live, game) };
+      if (['unstarted', ''].includes(String(game.state || '').toLowerCase())) {
+        game.state = 'inProgress';
+        details.status = 'inProgress';
+      }
+      return;
+    }
+    game.live = {
+      ...baseLiveForState(game.state),
+      status: 'soon',
+      game_state: live.game_state || game.state || 'soon',
+      game_time: live.game_time || 0,
+      warning: live.warning || 'live_stats_empty',
+    };
+  } catch (error) {
+    game.live = {
+      ...baseLiveForState(game.state),
+      status: 'unavailable',
+      game_state: game.state || 'unavailable',
+      warning: 'live_stats_fetch_failed',
+    };
+  }
+}
+
+function currentGame(details) {
+  const games = details.games || [];
+  const inProgress = games.find(game => String(game.state || '').toLowerCase() === 'inprogress');
+  if (inProgress) return inProgress;
+  const playable = games.find(game => !['completed', 'unneeded'].includes(String(game.state || '').toLowerCase()));
+  if (playable) return playable;
+  return games.filter(game => String(game.state || '').toLowerCase() === 'completed').pop() || games[0] || null;
+}
+
+function statusForGame(details, game) {
+  const state = String(game.state || '').toLowerCase();
+  if (['completed', 'complete'].includes(state) || ['completed', 'complete'].includes(String(details.status || '').toLowerCase())) return 'ended';
+  const start = new Date(details.start_time || '');
+  if (state === 'unstarted' && !Number.isNaN(start.getTime()) && Date.now() < start.getTime()) return 'unstarted';
+  if (state === 'unneeded') return 'unavailable';
+  return 'soon';
+}
+
+async function fetchLive(gameId) {
+  const startingTime = liveFeedStartingTime();
+  const [windowPayload, detailsPayload] = await Promise.all([
+    fetchLiveJson(`${LIVE_WINDOW_URL}${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
+    fetchLiveJson(`${LIVE_DETAILS_URL}${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
+  ]);
+  const live = normalizeLiveWindow(windowPayload);
+  mergeLiveDetails(live, detailsPayload);
+  return live;
+}
+
+async function fetchLiveJson(url) {
+  const response = await fetch(url, { cf: { cacheEverything: true, cacheTtl: LIVE_CACHE_SECONDS } });
+  if (!response.ok || response.status === 204) return {};
+  return response.json();
+}
+
+function liveFeedStartingTime() {
+  const timestamp = Math.floor((Date.now() - 60000) / 1000);
+  const rounded = timestamp - (timestamp % 10);
+  return new Date(rounded * 1000).toISOString().replace(/\.\d{3}Z$/, '.000Z');
+}
+
+function normalizeLiveWindow(payload) {
+  if (!payload || typeof payload !== 'object') return { ...emptyLive(), warning: 'live_stats_empty' };
+  const metadata = payload.gameMetadata || {};
+  const frames = Array.isArray(payload.frames) ? payload.frames : [];
+  const frame = frames.length ? frames[frames.length - 1] || {} : {};
+  const blueFrame = frame.blueTeam || {};
+  const redFrame = frame.redTeam || {};
+  const live = {
+    game_state: String(frame.gameState || payload.gameState || ''),
+    game_time: Number(frame.gameTime || payload.gameTime || 0),
+    frame_timestamp: String(frame.rfc460Timestamp || ''),
+    patch_version: String(metadata.patchVersion || ''),
+    blue: liveParticipants(metadata.blueTeamMetadata || {}, blueFrame),
+    red: liveParticipants(metadata.redTeamMetadata || {}, redFrame),
+    blue_stats: liveTeamStats(blueFrame),
+    red_stats: liveTeamStats(redFrame),
+    status: 'soon',
+    warning: frames.length ? '' : 'live_stats_empty',
+    source: 'lolesports_livestats',
+  };
+  return live;
+}
+
+function liveParticipants(teamMetadata, teamFrame) {
+  const participants = Array.isArray(teamMetadata.participantMetadata) ? teamMetadata.participantMetadata : [];
+  const frameParticipants = Array.isArray(teamFrame.participants) ? teamFrame.participants : [];
+  const statsById = Object.fromEntries(frameParticipants.map(participant => [String(participant.participantId || ''), participant]));
+  return participants.map(participant => {
+    const stats = statsById[String(participant.participantId || '')] || {};
+    return {
+      player: String(participant.summonerName || participant.name || ''),
+      participant_id: String(participant.participantId || ''),
+      champion: String(participant.championName || participant.championId || ''),
+      champion_id: String(participant.championId || ''),
+      role: String(participant.role || ''),
+      level: Number(stats.level || 0),
+      kills: Number(stats.kills || 0),
+      deaths: Number(stats.deaths || 0),
+      assists: Number(stats.assists || 0),
+      creep_score: Number(stats.creepScore || 0),
+      gold: Number(stats.totalGold || 0),
+      current_health: Number(stats.currentHealth || 0),
+      max_health: Number(stats.maxHealth || 0),
+      items: liveItems(stats.items || []),
+    };
+  });
+}
+
+function mergeLiveDetails(live, payload) {
+  const frames = Array.isArray(payload?.frames) ? payload.frames : [];
+  if (!live || !frames.length) return;
+  const frame = frames[frames.length - 1] || {};
+  const participants = Array.isArray(frame.participants) ? frame.participants : [];
+  const detailsById = Object.fromEntries(participants.map(participant => [String(participant.participantId || ''), participant]));
+  for (const player of [...(live.blue || []), ...(live.red || [])]) {
+    const details = detailsById[String(player.participant_id || '')];
+    if (!details) continue;
+    player.level = Number(details.level || player.level || 0);
+    player.kills = Number(details.kills || player.kills || 0);
+    player.deaths = Number(details.deaths || player.deaths || 0);
+    player.assists = Number(details.assists || player.assists || 0);
+    player.creep_score = Number(details.creepScore || player.creep_score || 0);
+    player.gold = Number(details.totalGoldEarned || player.gold || 0);
+    player.items = liveItems(details.items || player.items || []);
+  }
+}
+
+function liveItems(items) {
+  if (!Array.isArray(items)) return [];
+  return items.map(item => {
+    if (item && typeof item === 'object') return String(item.itemID || item.itemId || item.id || '');
+    return String(item || '');
+  }).filter(Boolean).slice(0, 7);
+}
+
+function liveTeamStats(teamFrame) {
+  return {
+    gold: Number(teamFrame.totalGold || 0),
+    kills: Number(teamFrame.totalKills || 0),
+    towers: Number(teamFrame.towers || 0),
+    inhibitors: Number(teamFrame.inhibitors || 0),
+    barons: Number(teamFrame.barons || 0),
+    dragons: Array.isArray(teamFrame.dragons) ? teamFrame.dragons.length : 0,
+  };
+}
+
+function hasMeaningfulLiveData(live) {
+  if (!live || typeof live !== 'object') return false;
+  if ((live.blue || []).length || (live.red || []).length) return true;
+  if (Number(live.game_time || 0) > 0) return true;
+  return ['in_game', 'inprogress', 'in_progress', 'paused'].includes(String(live.game_state || '').toLowerCase());
+}
+
+function liveStatus(live, game) {
+  const gameState = String(live.game_state || game.state || '').toLowerCase();
+  if (['completed', 'complete'].includes(gameState)) return 'ended';
+  if (hasMeaningfulLiveData(live)) return 'in_game';
+  return 'soon';
+}
+
+function baseLiveForState(state) {
+  const status = String(state || '').toLowerCase() === 'completed' ? 'ended' : 'unstarted';
+  return {
+    game_state: String(state || ''),
+    game_time: 0,
+    blue: [],
+    red: [],
+    blue_stats: {},
+    red_stats: {},
+    status,
+    warning: '',
+  };
+}
+
+function emptyLive() {
+  return {
+    game_state: '',
+    game_time: 0,
+    blue: [],
+    red: [],
+    blue_stats: {},
+    red_stats: {},
+    status: 'unavailable',
+    warning: '',
+  };
+}
+
+function responseCacheSeconds(details) {
+  const game = currentGame(details);
+  const status = String(game?.live?.status || '').toLowerCase();
+  return ['in_game', 'soon'].includes(status) ? LIVE_CACHE_SECONDS : EVENT_CACHE_SECONDS;
+}
+
+function unavailable(eventId, warning) {
+  return {
+    id: eventId,
+    league: '',
+    league_group: '',
+    region: '',
+    best_of: '',
+    status: 'unavailable',
+    start_time: '',
+    teams: [],
+    games: [],
+    source: 'cloudflare_live_event',
+    warning,
+  };
+}
+
+function jsonResponse(payload, maxAge) {
+  return new Response(JSON.stringify(payload), {
+    status: 200,
+    headers: {
+      ...CORS_HEADERS,
+      'Content-Type': 'application/json; charset=utf-8',
+      'Cache-Control': `public, max-age=${maxAge}`,
+      'X-Cache': 'MISS',
+    },
+  });
+}

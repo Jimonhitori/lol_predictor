@@ -2,7 +2,6 @@
 const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK' };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
-const LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const REFRESH_INTERVAL_MS = 5000;
 const REFRESH_INTERVAL_LABEL = '5s';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
@@ -10,8 +9,20 @@ const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 
 async function api(path) {
+  if (STATIC_SITE && isCloudflareApiPath(path)) return fetchApiJson(path);
   if (STATIC_SITE) return staticApi(path);
   const response = await fetch(path);
+  if (!response.ok) throw new Error(await response.text());
+  return response.json();
+}
+
+function isCloudflareApiPath(path) {
+  const url = new URL(path, location.origin);
+  return url.pathname === '/api/live-event';
+}
+
+async function fetchApiJson(path) {
+  const response = await fetch(path, { cache: 'no-store' });
   if (!response.ok) throw new Error(await response.text());
   return response.json();
 }
@@ -49,10 +60,6 @@ async function staticApi(path) {
   }
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
-  if (url.pathname === '/api/match') {
-    const fresh = await fetchLolesportsEventDetails(params.get('id') || '');
-    return mergeFreshDetails(data, fresh);
-  }
   return data;
 }
 
@@ -68,15 +75,7 @@ function staticKey(value) {
 async function fetchLolesportsEventDetails(matchId) {
   if (!STATIC_SITE || !matchId) return {};
   try {
-    const url = `https://esports-api.lolesports.com/persisted/gw/getEventDetails?hl=en-US&id=${encodeURIComponent(matchId)}`;
-    const response = await fetch(url, {
-      cache: 'no-store',
-      headers: { 'x-api-key': LOLESPORTS_API_KEY, 'accept': 'application/json' },
-    });
-    if (!response.ok) return {};
-    const payload = await response.json();
-    const event = payload?.data?.event;
-    return event && typeof event === 'object' ? normalizeLolesportsEventDetail(event) : {};
+    return await api('/api/live-event?id=' + encodeURIComponent(matchId));
   } catch (error) {
     return {};
   }
@@ -309,6 +308,7 @@ async function loadMatches() {
 
 async function refreshStaticMatchStatuses() {
   if (!STATIC_SITE || !state.allMatches.length) return;
+  if (!MATCH_DETAIL_PAGE) return;
   const targets = state.allMatches
     .filter(shouldRefreshMatchStatus)
     .sort((a, b) => refreshMatchPriority(b) - refreshMatchPriority(a))
@@ -588,8 +588,8 @@ function showDetailLoading() {
 
 async function refreshMatchDetail(initial) {
   const id = state.detailMatchId;
-  const details = await api('/api/match?id=' + encodeURIComponent(id));
-  await enrichStaticLiveData(details);
+  const details = await fetchMatchDetail(id);
+  markLiveFrameChanges(details);
   state.currentDetails = details;
   if (!details.id) {
     $('matchTitle').textContent = 'Match not found';
@@ -610,6 +610,32 @@ async function refreshMatchDetail(initial) {
   renderLiveDraft(details);
   if (initial) await predictDetail(left, right, details.league);
   updateLiveRefreshMeta(details);
+}
+
+async function fetchMatchDetail(id) {
+  if (!STATIC_SITE) return api('/api/match?id=' + encodeURIComponent(id));
+  const fallback = () => api('/api/match?id=' + encodeURIComponent(id));
+  try {
+    const liveDetails = await api('/api/live-event?id=' + encodeURIComponent(id));
+    if (liveDetails?.id && String(liveDetails.status || '').toLowerCase() !== 'unavailable') {
+      const staticDetails = await fallback().catch(() => ({}));
+      return mergeFreshDetails(staticDetails, liveDetails);
+    }
+  } catch (error) {
+  }
+  return fallback();
+}
+
+function markLiveFrameChanges(details) {
+  for (const game of details?.games || []) {
+    const live = game?.live || {};
+    const currentFrame = String(live.frame_timestamp || '');
+    if (!currentFrame) continue;
+    const gameId = String(game.id || '');
+    const previousFrame = state.liveFrames[gameId] || '';
+    live.frame_changed = Boolean(previousFrame && currentFrame !== previousFrame);
+    state.liveFrames[gameId] = currentFrame;
+  }
 }
 
 function matchDetailMeta(details) {
@@ -662,14 +688,7 @@ function shouldProbeLiveStats(details) {
 }
 
 async function fetchLolesportsLive(gameId) {
-  const startingTime = liveFeedStartingTime();
-  const [windowPayload, detailsPayload] = await Promise.all([
-    fetchLiveJson(`https://feed.lolesports.com/livestats/v1/window/${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
-    fetchLiveJson(`https://feed.lolesports.com/livestats/v1/details/${encodeURIComponent(gameId)}?startingTime=${encodeURIComponent(startingTime)}`),
-  ]);
-  const live = normalizeLiveWindow(windowPayload);
-  mergeLiveDetails(live, detailsPayload);
-  return live;
+  return {};
 }
 
 async function fetchLiveJson(url) {
