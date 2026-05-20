@@ -253,7 +253,32 @@ function normalizeLiveWindow(payload) {
     warning: frames.length ? '' : 'live_stats_empty',
     source: 'lolesports_livestats',
   };
+  applyEstimatedGameTime(live);
   return live;
+}
+
+function applyEstimatedGameTime(live) {
+  if (number(live.game_time) > 0) return;
+  const estimated = estimateGameTime(live);
+  if (estimated <= 0) return;
+  live.game_time = estimated;
+  live.estimated_game_time = true;
+  live.warning = live.warning || 'game_time_estimated';
+}
+
+function estimateGameTime(live) {
+  const blueGold = number(live?.blue_stats?.gold) || playerTotals(live?.blue || []).gold;
+  const redGold = number(live?.red_stats?.gold) || playerTotals(live?.red || []).gold;
+  const blueCs = playerTotals(live?.blue || []).creepScore;
+  const redCs = playerTotals(live?.red || []).creepScore;
+  const estimates = [];
+  const avgGold = (blueGold + redGold) / 2;
+  if (avgGold > 2500) estimates.push(((avgGold - 2500) / 1350) * 60);
+  const avgCs = (blueCs + redCs) / 2;
+  if (avgCs > 0) estimates.push((avgCs / 32) * 60);
+  if (!estimates.length) return 0;
+  estimates.sort((a, b) => a - b);
+  return Math.round(clamp(estimates[Math.floor(estimates.length / 2)], 0, 3600));
 }
 
 function liveParticipants(teamMetadata, teamFrame) {
@@ -586,6 +611,8 @@ function playerTotals(players) {
   const levels = valid.map(player => number(player.level)).filter(level => level > 0);
   return {
     kills: valid.reduce((total, player) => total + number(player.kills), 0),
+    gold: valid.reduce((total, player) => total + number(player.gold), 0),
+    creepScore: valid.reduce((total, player) => total + number(player.creep_score), 0),
     avgLevel: levels.length ? levels.reduce((total, level) => total + level, 0) / levels.length : 0,
   };
 }
