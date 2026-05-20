@@ -172,6 +172,8 @@ API:
 python -m lol_predictor.live_export_model --model-path models/live_win_probability.joblib --output docs/static/data/live_model.json
 ```
 
+The exported JSON includes the game-level test metrics saved by `live_train`.
+
 Verify that the exported JSON model matches the source joblib bundle on a live
 snapshot:
 

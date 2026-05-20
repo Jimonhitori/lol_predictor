@@ -415,6 +415,7 @@ async function liveModelWinProbability(live, game, details, context) {
     feature_schema: model.feature_schema || 'live_frame_v1',
     training_rows: model.training_rows || 0,
     test_rows: model.test_rows || 0,
+    metrics: model.metrics || {},
     features: {
       gold_diff: row.gold_diff,
       kill_diff: row.kill_diff,

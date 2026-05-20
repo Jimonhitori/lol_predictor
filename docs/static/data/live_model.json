@@ -43,7 +43,14 @@
   "test_rows": 205,
   "split": "grouped_by_game_id",
   "include_team_features": false,
-  "exported_at": "2026-05-20T09:27:23.966641+00:00",
+  "metrics": {
+    "rows": 205,
+    "accuracy": 0.6195121951219512,
+    "brier": 0.26812073334130804,
+    "log_loss": 0.7511514168417394,
+    "roc_auc": 0.683743169398907
+  },
+  "exported_at": "2026-05-20T09:30:50.751000+00:00",
   "classes": [
     0,
     1

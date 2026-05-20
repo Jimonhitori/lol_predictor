@@ -59,6 +59,7 @@ def main() -> None:
             "test_rows": metrics.rows,
             "split": "grouped_by_game_id",
             "include_team_features": bool(args.include_team_features),
+            "metrics": metrics_payload(metrics),
         },
         args.model_path,
     )
@@ -70,6 +71,16 @@ def main() -> None:
     print(f"Log loss: {metrics.log_loss:.4f}")
     if metrics.roc_auc is not None:
         print(f"ROC AUC: {metrics.roc_auc:.4f}")
+
+
+def metrics_payload(metrics: object) -> dict[str, float | int | None]:
+    return {
+        "rows": int(metrics.rows),
+        "accuracy": float(metrics.accuracy),
+        "brier": float(metrics.brier),
+        "log_loss": float(metrics.log_loss),
+        "roc_auc": None if metrics.roc_auc is None else float(metrics.roc_auc),
+    }
 
 
 def expand_input_paths(inputs: list[Path]) -> list[Path]:
