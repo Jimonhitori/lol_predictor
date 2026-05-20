@@ -37,11 +37,13 @@ p, label { color: var(--muted); font-size: 13px; }
 .match:hover { border-color: var(--accent); }
 .match .backLink { color: var(--accent); margin: 10px 0 0; }
 .matchMeta { color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-.versus { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; font-weight: 800; }
-.versus span:last-child { text-align: right; }
-.cardTeam { display: grid; justify-items: center; gap: 6px; min-width: 0; text-align: center; }
-.cardTeam img { width: 44px; height: 44px; object-fit: contain; }
-.cardTeam span { color: var(--text); overflow-wrap: anywhere; }
+.versus { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: start; gap: 8px; font-weight: 800; }
+.versus > strong { align-self: center; padding-top: 31px; }
+.versus > .cardTeam { text-align: center; }
+.cardTeam { display: grid; grid-template-rows: 48px minmax(22px, auto); align-items: center; justify-items: center; gap: 4px; min-width: 0; text-align: center; }
+.cardLogo { width: 56px; height: 48px; display: grid; place-items: center; }
+.cardLogo img { max-width: 46px; max-height: 42px; width: auto; height: auto; object-fit: contain; }
+.cardTeamName { color: var(--text); overflow-wrap: anywhere; line-height: 1.15; min-height: 22px; display: grid; place-items: center; }
 .matchCenter { margin-bottom: 16px; }
 .selectedMatch { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-bottom: 10px; }
 .selectedMatch.twoTeams { grid-template-columns: minmax(0, 280px) minmax(0, 280px); justify-content: center; }

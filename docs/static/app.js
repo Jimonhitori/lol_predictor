@@ -539,8 +539,8 @@ function matchScorePill(details) {
 }
 
 function matchCardTeam(name, image) {
-  const logo = image ? `<img src="${escapeHtml(image)}" alt="">` : '<span></span>';
-  return `<span class="cardTeam">${logo}<span>${escapeHtml(name || '-')}</span></span>`;
+  const logo = image ? `<img src="${escapeHtml(image)}" alt="">` : '';
+  return `<span class="cardTeam"><span class="cardLogo">${logo}</span><span class="cardTeamName">${escapeHtml(name || '-')}</span></span>`;
 }
 
 async function predict(event) {
