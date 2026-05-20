@@ -1,0 +1,62 @@
+name: Smoke production contracts
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Cloudflare Pages base URL"
+        required: true
+        default: "https://lol-predictor.pages.dev"
+      event_id:
+        description: "LoL Esports event ID to probe"
+        required: true
+        default: "test"
+      expected_contract_version:
+        description: "Expected site-contract.json version"
+        required: true
+        default: "2026-05-20-live-pre-match-diagnostics-v1"
+      prediction_feed_url:
+        description: "Public pre-match prediction JSON URL"
+        required: false
+        default: "https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json"
+      live_status_url:
+        description: "Public live_status.json URL"
+        required: false
+        default: "https://jimonhitori.github.io/lol-pros-analyzer/live_status.json"
+      live_manifest_url:
+        description: "Public live_model_manifest.json URL"
+        required: false
+        default: "https://jimonhitori.github.io/lol-pros-analyzer/live_model_manifest.json"
+      require_live_win_probability:
+        description: "Fail if the probed event does not include live.win_probability"
+        required: true
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Check production contracts
+        run: |
+          node scripts/check_cloudflare_pages.mjs \
+            --base-url "${{ inputs.base_url }}" \
+            --event-id "${{ inputs.event_id }}" \
+            --expected-contract-version "${{ inputs.expected_contract_version }}" \
+            --prediction-feed-url "${{ inputs.prediction_feed_url }}" \
+            --live-status-url "${{ inputs.live_status_url }}" \
+            --live-manifest-url "${{ inputs.live_manifest_url }}" \
+            --require-live-win-probability "${{ inputs.require_live_win_probability }}"

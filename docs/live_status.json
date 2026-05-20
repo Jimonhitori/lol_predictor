@@ -1,0 +1,64 @@
+{
+  "blocker_count": 1,
+  "blockers": [
+    "Public live artifacts are bootstrapped but no live model has been trained."
+  ],
+  "bootstrap": {
+    "available": false
+  },
+  "collection": {
+    "archive": {
+      "available": false
+    },
+    "config": {
+      "available": false
+    },
+    "d1_sync": {
+      "available": false
+    },
+    "readiness": {
+      "available": false
+    }
+  },
+  "display_ready": false,
+  "generated_at": "2026-05-20T13:09:42.936909Z",
+  "live_manifest_url": "live_model_manifest.json",
+  "live_model_available": false,
+  "live_model_url": null,
+  "live_readiness_audit_url": null,
+  "live_replay_available": false,
+  "next_actions": [
+    "Run the training workflow to publish trained live artifacts."
+  ],
+  "oe_live_bootstrap": {
+    "available": false
+  },
+  "production_ready": false,
+  "replay": {
+    "available": false
+  },
+  "requirements": [
+    {
+      "evidence": {
+        "reason": "bootstrap_empty"
+      },
+      "id": "live_training",
+      "label": "Train and publish live model artifacts",
+      "status": "blocked"
+    }
+  ],
+  "schema_version": "1.0",
+  "source": "lol-pros-analyzer",
+  "stage": "bootstrap_empty",
+  "training": {
+    "available": false,
+    "pipeline": {
+      "available": false
+    }
+  },
+  "warning_count": 0,
+  "warnings": [],
+  "worker": {
+    "checked": false
+  }
+}

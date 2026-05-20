@@ -1,0 +1,46 @@
+{
+  "schema": "lol_predictions_public_v1",
+  "generated_at": "2026-05-20T00:00:00Z",
+  "source": "local_sample",
+  "models": {
+    "pre_match": {
+      "name": "sample_pre_match_contract",
+      "version": "local-ui-validation",
+      "metrics": {}
+    }
+  },
+  "predictions": [
+    {
+      "event_id": "116056873411008590",
+      "game_id": "",
+      "league": "LRN",
+      "start_time": "2026-05-18T23:00:00Z",
+      "blue_team": "SDM Tigres",
+      "red_team": "Zeu5 Esports",
+      "blue_win_probability": 0.537,
+      "red_win_probability": 0.463,
+      "predicted_winner": "SDM Tigres",
+      "confidence": "low",
+      "model": "sample_pre_match_contract",
+      "warnings": [
+        "sample_data_for_ui_validation"
+      ]
+    },
+    {
+      "event_id": "115548128962971911",
+      "game_id": "",
+      "league": "LCK",
+      "start_time": "2026-05-20T08:00:00Z",
+      "blue_team": "T1",
+      "red_team": "KIWOOM DRX",
+      "blue_win_probability": 0.641,
+      "red_win_probability": 0.359,
+      "predicted_winner": "T1",
+      "confidence": "medium",
+      "model": "sample_pre_match_contract",
+      "warnings": [
+        "sample_data_for_ui_validation"
+      ]
+    }
+  ]
+}

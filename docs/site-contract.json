@@ -1,0 +1,24 @@
+{
+  "schema": "lol_predictor_site_contract_v1",
+  "contract_version": "2026-05-20-live-pre-match-diagnostics-v1",
+  "generated_at": "2026-05-20T00:00:00Z",
+  "features": [
+    "cloudflare_live_event_function",
+    "cloudflare_diagnostics_function",
+    "live_probability_contract",
+    "pre_match_prediction_feed",
+    "analyzer_public_artifact_diagnostics"
+  ],
+  "required_functions": [
+    "/api/live-event",
+    "/api/diagnostics"
+  ],
+  "required_static_artifacts": [
+    "/static/data/live_model.json"
+  ],
+  "external_artifacts": [
+    "pre_match_predictions.json",
+    "live_status.json",
+    "live_model_manifest.json"
+  ]
+}
