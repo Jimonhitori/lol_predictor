@@ -79,6 +79,8 @@ export async function onRequestGet(context) {
   const predictionSchemaOk = predictionSchema?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
   const remotePredictionSchemaOk = remotePredictionProbe?.json?.schema === 'lol_predictions_public_v1';
   const remoteSchemaOk = remoteSchemaProbe?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
+  const predictionSchemaHasTopLevelWarnings = predictionSchema?.json?.properties?.warnings?.type === 'array';
+  const remoteSchemaHasTopLevelWarnings = remoteSchemaProbe?.json?.properties?.warnings?.type === 'array';
   const predictionFeedWarnings = arrayOfStrings(predictionFeed?.json?.warnings);
   const remotePredictionFeedWarnings = arrayOfStrings(remotePredictionProbe?.json?.warnings);
   const artifactWarnings = [
@@ -90,6 +92,7 @@ export async function onRequestGet(context) {
     ...(remotePredictionFreshness.status === 'stale' ? ['remote_prediction_feed_stale'] : []),
     ...(remoteSchemaProbe && !remoteSchemaProbe.ok ? [`remote_prediction_schema_${remoteSchemaProbe.status || 'missing'}`] : []),
     ...(remoteSchemaProbe?.ok && !remoteSchemaOk ? ['remote_prediction_schema_mismatch'] : []),
+    ...(remoteSchemaProbe?.ok && !remoteSchemaHasTopLevelWarnings ? ['remote_prediction_schema_missing_top_level_warnings'] : []),
     ...(liveStatusFreshness.status === 'stale' ? ['live_status_stale'] : []),
   ];
   const contractWarnings = [
@@ -103,6 +106,7 @@ export async function onRequestGet(context) {
     ...(liveManifest.ok ? [] : [`live_manifest_${liveManifest.status || 'missing'}`]),
     ...(predictionFeed?.json?.schema === 'lol_predictions_public_v1' ? [] : ['prediction_feed_schema_mismatch']),
     ...(predictionSchemaOk ? [] : ['prediction_schema_mismatch']),
+    ...(predictionSchemaHasTopLevelWarnings ? [] : ['prediction_schema_missing_top_level_warnings']),
     ...(liveStatus.json?.schema_version === '1.0' ? [] : ['live_status_schema_mismatch']),
     ...(liveManifest.json?.schema_version === 1 ? [] : ['live_manifest_schema_mismatch']),
   ];
@@ -157,12 +161,14 @@ export async function onRequestGet(context) {
     prediction_schema_last_fetch_status: predictionSchema?.status ?? 0,
     prediction_schema_id: predictionSchema?.json?.$id || '',
     prediction_schema_ok: predictionSchemaOk,
+    prediction_schema_has_top_level_warnings: predictionSchemaHasTopLevelWarnings,
     remote_prediction_schema_checked: Boolean(remoteSchemaProbe),
     remote_prediction_schema_url: remoteSchemaUrl,
     remote_prediction_schema_available: remoteSchemaProbe ? Boolean(remoteSchemaProbe.ok) : null,
     remote_prediction_schema_last_fetch_status: remoteSchemaProbe?.status ?? null,
     remote_prediction_schema_id: remoteSchemaProbe?.json?.$id || '',
     remote_prediction_schema_ok: remoteSchemaProbe ? remoteSchemaOk : null,
+    remote_prediction_schema_has_top_level_warnings: remoteSchemaProbe ? remoteSchemaHasTopLevelWarnings : null,
     live_status_url: liveStatusUrl,
     live_status_available: Boolean(liveStatus.ok),
     live_status_last_fetch_status: liveStatus.status,
