@@ -52,6 +52,12 @@
       },
       "additionalProperties": true
     },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
     "predictions": {
       "type": "array",
       "items": {
