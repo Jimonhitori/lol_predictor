@@ -90,6 +90,18 @@ if (report.diagnostics.is_json && report.diagnostics.prediction_schema_ok !== tr
   report.ok = false;
   report.errors.push('diagnostics did not report prediction_schema_ok=true');
 }
+if (report.diagnostics.is_json && report.diagnostics.prediction_schema_has_top_level_warnings !== true) {
+  report.ok = false;
+  report.errors.push('diagnostics did not report prediction_schema_has_top_level_warnings=true');
+}
+if (
+  report.diagnostics.is_json
+  && report.diagnostics.remote_prediction_schema_checked
+  && report.diagnostics.remote_prediction_schema_has_top_level_warnings !== true
+) {
+  report.ok = false;
+  report.errors.push('diagnostics remote prediction schema is missing top-level warnings');
+}
 if (report.diagnostics.is_json && report.diagnostics.live_status_available !== true) {
   report.ok = false;
   report.errors.push('diagnostics did not report live_status_available=true');
@@ -214,11 +226,13 @@ function summarizeDiagnostics(result) {
     configured_prediction_schema_url: result.json?.configured_prediction_schema_url || '',
     prediction_schema_available: result.json?.prediction_schema_available ?? null,
     prediction_schema_ok: result.json?.prediction_schema_ok ?? null,
+    prediction_schema_has_top_level_warnings: result.json?.prediction_schema_has_top_level_warnings ?? null,
     prediction_schema_id: result.json?.prediction_schema_id || '',
     remote_prediction_schema_checked: result.json?.remote_prediction_schema_checked ?? null,
     remote_prediction_schema_url: result.json?.remote_prediction_schema_url || '',
     remote_prediction_schema_available: result.json?.remote_prediction_schema_available ?? null,
     remote_prediction_schema_ok: result.json?.remote_prediction_schema_ok ?? null,
+    remote_prediction_schema_has_top_level_warnings: result.json?.remote_prediction_schema_has_top_level_warnings ?? null,
     live_status_url: result.json?.live_status_url || '',
     live_status_available: result.json?.live_status_available ?? null,
     live_status_freshness: result.json?.live_status_freshness || '',
