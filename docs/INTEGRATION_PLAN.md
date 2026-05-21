@@ -220,6 +220,7 @@ Phase 3 diagnostics:
 - Fetch `live_status.json` and `live_model_manifest.json` from `lol-pros-analyzer`. Implemented.
 - Expose analyzer live readiness, production/display readiness, Worker check state, blocker/warning counts, and manifest availability from `/api/diagnostics`. Implemented.
 - Expose `contract_ok` and concrete warning codes so the UI and smoke checker can distinguish endpoint reachability from a complete operational contract. Implemented.
+- Expose the active prediction feed and a separate configured remote analyzer feed/schema probe so local bootstrap fallback does not hide a broken external analyzer Pages URL. Implemented.
 - Show compact diagnostics in the low-noise `#opsMeta` line. Implemented.
 
 Acceptance criteria:
@@ -235,6 +236,7 @@ Verification evidence:
 - Production should be verified with `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` after the branch is deployed.
 - The smoke check also checks `/site-contract.json`; if that route returns HTML or an older `contract_version`, the static Pages deployment itself is stale.
 - The same smoke check defaults to Cloudflare-hosted bootstrap artifacts for `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json`; external analyzer Pages URLs can be configured later without changing the UI contract.
+- `/api/diagnostics` reports configured remote analyzer feed probe fields such as `remote_prediction_feed_available`, `remote_prediction_feed_last_fetch_status`, and `remote_prediction_schema_ok`; remote failures are surfaced through `artifact_warnings` without breaking local fallback.
 - A manual `Smoke production contracts` GitHub Actions workflow is available in `lol_predictor` for post-deploy verification. It checks both endpoint/artifact JSON contracts and the pre-match UI render contract against the configured prediction feed URL. Use `require_live_win_probability=true` when probing a currently live event, and raise `prediction_ui_min_rows` / `prediction_ui_min_overlap` when a real analyzer feed should match the site schedule.
 
 ## Near-Term Execution Order

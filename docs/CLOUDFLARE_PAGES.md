@@ -149,6 +149,11 @@ prediction feed URL. Keep `prediction_ui_min_rows` and
 then raise them when checking a published analyzer schedule feed. Override the
 artifact URLs when testing a staging or external analyzer feed:
 
+`/api/diagnostics` reports both the active feed used by the dashboard and the
+configured remote analyzer feed probe. This keeps the local bootstrap fallback
+visible while still surfacing external analyzer GitHub Pages states such as
+`remote_prediction_feed_404` in `artifact_warnings`.
+
 ```bash
 node scripts/check_cloudflare_pages.mjs \
   --prediction-feed-url https://example.com/pre_match_predictions.json \

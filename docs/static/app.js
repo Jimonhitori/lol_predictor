@@ -80,7 +80,10 @@ function renderDiagnostics(data) {
   const worker = data.live_worker_checked
     ? `worker ${data.live_worker_ok ? 'ok' : 'check failed'}`
     : '';
-  target.textContent = [contract, live, feed, generated, schema, freshness, analyzerLive, worker].filter(Boolean).join(' | ');
+  const artifactWarnings = Array.isArray(data.artifact_warnings) && data.artifact_warnings.length
+    ? `artifact warnings ${data.artifact_warnings.length}`
+    : '';
+  target.textContent = [contract, live, feed, generated, schema, freshness, analyzerLive, worker, artifactWarnings].filter(Boolean).join(' | ');
 }
 
 async function staticApi(path) {
