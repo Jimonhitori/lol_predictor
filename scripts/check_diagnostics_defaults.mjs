@@ -33,6 +33,8 @@ const report = {
   remote_prediction_schema_checked: data.remote_prediction_schema_checked,
   live_status_available: data.live_status_available,
   analyzer_live_manifest_available: data.analyzer_live_manifest_available,
+  prediction_feed_warning_count: data.prediction_feed_warning_count,
+  remote_prediction_feed_warning_count: data.remote_prediction_feed_warning_count,
   artifact_warnings: data.artifact_warnings,
   warnings: data.warnings,
   errors: [],
@@ -54,6 +56,12 @@ if (data.remote_prediction_schema_checked !== false) {
 if (data.live_status_available !== true) report.errors.push('default live_status artifact is unavailable');
 if (data.analyzer_live_manifest_available !== true) {
   report.errors.push('default live_model_manifest artifact is unavailable');
+}
+if (data.prediction_feed_warning_count !== 0) {
+  report.errors.push(`default prediction feed warning count is not 0: ${data.prediction_feed_warning_count}`);
+}
+if (data.remote_prediction_feed_warning_count !== null) {
+  report.errors.push('remote prediction feed warning count should be null without an override URL');
 }
 if (Array.isArray(data.artifact_warnings) && data.artifact_warnings.length) {
   report.errors.push(`unexpected default artifact warnings: ${data.artifact_warnings.join(',')}`);
