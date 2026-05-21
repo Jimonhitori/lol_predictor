@@ -84,10 +84,11 @@ Acceptance criteria:
 - Live match detail continues rendering if LoL Esports livestats is empty or unavailable.
 - Live probability appears only when the response status is `estimated`.
 - The response always includes a clear fallback reason through `warning` or probability `status`.
+- CI verifies the sample live probability payload, live model guidance, Pages Function hooks, and the actual `liveWinProbabilityText()` render contract for estimated, non-estimated, and caution states.
 
 ### 2. Pre-Match Prediction Feed
 
-Status: implemented in `lol_predictor` with local fallback and remote URL support.
+Status: implemented in `lol_predictor` with local fallback, remote URL support, and compact prediction panels.
 
 Scope:
 
@@ -99,11 +100,12 @@ Scope:
   `event_id`, `game_id`, normalized `league + start_time + blue_team + red_team`.
 - Display pre-match probability on match cards and match detail without replacing live probability.
 
-Planned UI placement:
+Implemented UI placement:
 
 - Match card: compact `PRE 57.2%` style indicator near status/time.
 - Match center: blue/red pre-match split beside series score.
-- Match detail: small pre-match model row above or near Live Data, separate from in-game probability.
+- Match center and match detail: compact prediction panel showing favorite, blue/red probability split, confidence, model/feed metadata, and warning count.
+- Match detail: pre-match prediction remains separate from in-game live probability.
 
 Fallback behavior:
 
@@ -116,6 +118,8 @@ Acceptance criteria:
 - The page loads normally with no prediction feed.
 - A matching prediction row appears on both list and detail views.
 - Feed freshness/model metadata is available for diagnostics.
+- The prediction panel is optional and hides itself when no matching row exists.
+- CI verifies both a populated local feed and an empty analyzer preview feed, including the actual `renderPredictionPanel()` contract in a Node VM for populated, empty, and unavailable feed states.
 
 ### 3. Shared Prediction JSON Schema
 
@@ -180,12 +184,13 @@ Schema rules:
 
 `lol_predictor` work:
 
-- Add parser/normalizer that accepts this schema and ignores unknown fields.
-- Add matching helpers and UI render helpers.
+- Parser/normalizer accepts this schema and ignores unknown fields.
+- Matching helpers and UI render helpers are implemented.
+- `scripts/check_pre_match_ui.mjs` verifies the feed, shared schema, match overlap, detail data, UI hooks, prediction panel DOM anchors, required panel CSS, and the actual prediction panel render/hide behavior.
 
 ### 4. Cloudflare Diagnostics
 
-Status: `/api/diagnostics` endpoint implemented in `lol_predictor`; current production deployment still returns HTML for this route.
+Status: `/api/diagnostics` endpoint implemented in `lol_predictor`; local Cloudflare-compatible preview checks pass. Re-run production smoke checks after each Cloudflare Pages deployment.
 
 Scope:
 
@@ -222,21 +227,24 @@ Acceptance criteria:
 - Debugging a stale or missing prediction does not require guessing whether the issue is UI, Cloudflare, model artifact, feed freshness, or upstream data.
 - Diagnostics never break the main dashboard if unavailable.
 
-Production evidence:
+Verification evidence:
 
-- `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` currently reports `/api/diagnostics` as `text/html`, so the deployed Pages project has not picked up the diagnostics Function yet.
+- `node scripts/check_cloudflare_pages.mjs --base-url http://127.0.0.1:{port} --event-id test` passes against `scripts/serve_cloudflare_preview.mjs`.
+- `node scripts/check_ops_meta.mjs --base-url http://127.0.0.1:{port}` passes against the same local preview and confirms compact ops text.
+- `node scripts/check_pre_match_ui.mjs --docs-dir docs --match-id 115548128962971911` passes with 16 prediction rows and 16 match overlaps.
+- Production should be verified with `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` after the branch is deployed.
 - The smoke check also checks `/site-contract.json`; if that route returns HTML or an older `contract_version`, the static Pages deployment itself is stale.
-- The same smoke check now defaults to Cloudflare-hosted bootstrap artifacts for `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json`; external analyzer Pages URLs can be configured later without changing the UI contract.
+- The same smoke check defaults to Cloudflare-hosted bootstrap artifacts for `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json`; external analyzer Pages URLs can be configured later without changing the UI contract.
 - A manual `Smoke production contracts` GitHub Actions workflow is available in `lol_predictor` for post-deploy verification. Use `require_live_win_probability=true` when probing a currently live event.
 
 ## Near-Term Execution Order
 
-1. Deploy the current `lol_predictor` branch so `/api/diagnostics` is active in Cloudflare Pages.
-2. Keep the Cloudflare-hosted bootstrap artifacts live, then replace them with analyzer-generated artifacts once GitHub Pages, Cloudflare, or Worker hosting is configured.
-3. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id {realEventId}` against a real unstarted/live/completed event.
-4. Finish Cloudflare verification for live win probability on a real live event.
+1. Commit and deploy the current `lol_predictor` branch with the compact prediction panel changes.
+2. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` after deployment.
+3. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id {realLiveEventId} --require-live-win-probability true` during a real live match.
+4. Keep the Cloudflare-hosted bootstrap artifacts live, then replace or override them with analyzer-generated artifacts once GitHub Pages, Cloudflare, or Worker hosting is configured.
 5. Re-run pre-match feed display against a real published analyzer feed.
-6. Tighten the dashboard layout around the live/pre-match/ops signals after the production contracts are green.
+6. Tighten the dashboard layout around live/pre-match/ops signals once production contracts and analyzer publication are both green.
 
 Deployment unblocker:
 

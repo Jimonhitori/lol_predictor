@@ -126,7 +126,14 @@ node scripts/check_cloudflare_pages.mjs \
 The `Verify site contracts` GitHub Actions workflow runs the same syntax checks
 and local preflight on pushes and pull requests. It also checks that the
 dashboard has an `opsMeta` target and that diagnostics `contract_ok` can be
-rendered into the compact ops line.
+rendered into the compact ops line. The pre-match UI check runs twice: once
+against the populated Cloudflare-hosted fallback feed and once against the empty
+analyzer preview feed. Its report includes `render_contract` fields confirming
+that a matching prediction renders the compact panel, an empty feed hides it,
+and an unavailable feed state also hides it.
+The live probability contract check also executes the dashboard render helper
+and confirms estimated probabilities display, non-estimated probabilities hide,
+and cautious validation states show a caution marker.
 
 After Cloudflare Pages and the analyzer public artifacts are deployed, run the
 `Smoke production contracts` workflow manually. It executes the same checker

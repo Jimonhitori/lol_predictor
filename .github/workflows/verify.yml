@@ -59,4 +59,9 @@ jobs:
             --event-id test
           node scripts/check_ops_meta.mjs --base-url http://127.0.0.1:4174
           node scripts/check_pre_match_ui.mjs --base-url http://127.0.0.1:4174 --min-rows 1 --min-overlap 1
+          node scripts/check_pre_match_ui.mjs \
+            --base-url http://127.0.0.1:4174 \
+            --prediction-feed-path analyzer/pre_match_predictions.json \
+            --min-rows 0 \
+            --min-overlap 0
           node scripts/check_live_probability_contract.mjs
