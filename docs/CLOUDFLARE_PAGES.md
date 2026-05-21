@@ -33,7 +33,7 @@ That later step requires Python dependencies and data/model files to be availabl
 - Static JSON under `/static/data/` is cached for 60 seconds.
 - HTML and app assets are revalidated so UI changes roll out quickly.
 - `/api/live-event?id=...` is the Pages Function boundary for LoL Esports event/live data and live win probability.
-- `/api/diagnostics` reports the local live model, pre-match prediction feed, and `lol-pros-analyzer` public live status/manifest health.
+- `/api/diagnostics` reports the local live model, pre-match prediction feed, and analyzer live status/manifest health.
 
 ## Prediction JSON
 
@@ -74,10 +74,12 @@ or:
 </script>
 ```
 
-For `/api/diagnostics`, Cloudflare environment variables can override the
-default analyzer artifact URLs:
+For `/api/diagnostics`, the default artifact URLs are the Cloudflare-hosted
+files on the same Pages origin. Cloudflare environment variables can override
+them when testing or moving to an external analyzer host:
 
 - `PRE_MATCH_PREDICTIONS_URL`
+- `PRE_MATCH_SCHEMA_URL`
 - `LIVE_STATUS_URL`
 - `LIVE_MODEL_MANIFEST_URL`
 
@@ -88,7 +90,7 @@ default analyzer artifact URLs:
 3. Confirm `contract_ok` is true and `site_contract_version` matches `/site-contract.json`.
 4. Confirm `live_model_available` is true and `live_model_name` is populated.
 5. Confirm `prediction_feed_available` is true. A valid empty feed should show `prediction_feed_rows: 0`, not fail the check.
-6. Confirm `live_status_available` and `analyzer_live_manifest_available` reflect either the local Cloudflare bootstrap artifacts or configured analyzer artifact URLs.
+6. Confirm `live_status_available` and `analyzer_live_manifest_available` reflect either the local Cloudflare bootstrap artifacts or explicitly configured analyzer artifact URLs.
 7. Open `/api/live-event?id={eventId}` for one unstarted, one live, and one completed event.
 8. Confirm live responses keep `teams`, `games`, `source`, and `warning`, and active games include `live.win_probability` when a livestats frame is usable.
 
@@ -149,10 +151,11 @@ prediction feed URL. Keep `prediction_ui_min_rows` and
 then raise them when checking a published analyzer schedule feed. Override the
 artifact URLs when testing a staging or external analyzer feed:
 
-`/api/diagnostics` reports both the active feed used by the dashboard and the
-configured remote analyzer feed probe. This keeps the local bootstrap fallback
-visible while still surfacing external analyzer GitHub Pages states such as
-`remote_prediction_feed_404` in `artifact_warnings`.
+`/api/diagnostics` reports both the active feed used by the dashboard and, when
+an override URL is configured, the remote analyzer feed/schema probe. This keeps
+the Cloudflare-hosted fallback quiet by default while still surfacing external
+analyzer states such as `remote_prediction_feed_404` in `artifact_warnings`
+when an external URL is being tested.
 
 ```bash
 node scripts/check_cloudflare_pages.mjs \
