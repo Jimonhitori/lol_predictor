@@ -143,13 +143,23 @@ chosen event is currently live.
 
 The smoke check verifies the same public artifact URLs that the app needs.
 By default it checks the Cloudflare-hosted bootstrap URLs on the target `--base-url`.
-Override them when testing a staging or external analyzer feed:
+It also runs the pre-match UI contract checker against the configured
+prediction feed URL. Keep `prediction_ui_min_rows` and
+`prediction_ui_min_overlap` at `0` for bootstrap or empty-feed verification,
+then raise them when checking a published analyzer schedule feed. Override the
+artifact URLs when testing a staging or external analyzer feed:
 
 ```bash
 node scripts/check_cloudflare_pages.mjs \
   --prediction-feed-url https://example.com/pre_match_predictions.json \
   --live-status-url https://example.com/live_status.json \
   --live-manifest-url https://example.com/live_model_manifest.json
+
+node scripts/check_pre_match_ui.mjs \
+  --base-url https://lol-predictor.pages.dev \
+  --prediction-feed-url https://example.com/pre_match_predictions.json \
+  --min-rows 1 \
+  --min-overlap 1
 ```
 
 If `/api/diagnostics` returns HTML instead of JSON while `/api/live-event`

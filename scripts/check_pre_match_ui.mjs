@@ -13,9 +13,10 @@ const minRows = Number(args.minRows || 1);
 const minOverlap = Number(args.minOverlap || 1);
 const requestedMatchId = args.matchId ? String(args.matchId) : '';
 const predictionFeedPath = String(args.predictionFeedPath || 'pre_match_predictions.json').replace(/^\/+/, '');
+const predictionFeedUrl = args.predictionFeedUrl ? String(args.predictionFeedUrl) : '';
 
 const [feed, matchesPayload, appSource] = await Promise.all([
-  loadJson(predictionFeedPath),
+  loadJson(predictionFeedUrl || predictionFeedPath),
   loadJson('static/data/matches-all__all.json'),
   loadText('static/app.js'),
 ]);
@@ -145,6 +146,8 @@ const report = {
   docs_dir: baseUrl ? null : docsDir,
   checked_at: new Date().toISOString(),
   prediction_feed_path: predictionFeedPath,
+  prediction_feed_url: predictionFeedUrl || null,
+  prediction_feed_source: feed.source || '',
   feed_schema: feed.data?.schema || null,
   shared_schema_id: schema.data?.$id || null,
   prediction_rows: predictions.length,
@@ -335,6 +338,25 @@ async function loadJson(relativePath) {
 }
 
 async function loadText(relativePath) {
+  if (/^https?:\/\//i.test(relativePath)) {
+    try {
+      const response = await fetch(relativePath);
+      return {
+        ok: response.ok,
+        status: response.status,
+        source: relativePath,
+        text: await response.text(),
+      };
+    } catch (error) {
+      return {
+        ok: false,
+        status: 0,
+        source: relativePath,
+        text: '',
+        error: error instanceof Error ? error.message : String(error),
+      };
+    }
+  }
   if (baseUrl) {
     const url = `${baseUrl}/${relativePath.replaceAll('\\', '/')}`;
     try {

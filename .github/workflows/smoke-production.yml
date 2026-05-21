@@ -19,6 +19,14 @@ on:
         description: "Public pre-match prediction JSON URL"
         required: false
         default: "https://lol-predictor.pages.dev/pre_match_predictions.json"
+      prediction_ui_min_rows:
+        description: "Minimum prediction rows required by the UI feed contract check"
+        required: true
+        default: "0"
+      prediction_ui_min_overlap:
+        description: "Minimum prediction/match overlap rows required by the UI feed contract check"
+        required: true
+        default: "0"
       live_status_url:
         description: "Public live_status.json URL"
         required: false
@@ -60,3 +68,8 @@ jobs:
             --live-status-url "${{ inputs.live_status_url }}" \
             --live-manifest-url "${{ inputs.live_manifest_url }}" \
             --require-live-win-probability "${{ inputs.require_live_win_probability }}"
+          node scripts/check_pre_match_ui.mjs \
+            --base-url "${{ inputs.base_url }}" \
+            --prediction-feed-url "${{ inputs.prediction_feed_url }}" \
+            --min-rows "${{ inputs.prediction_ui_min_rows }}" \
+            --min-overlap "${{ inputs.prediction_ui_min_overlap }}"

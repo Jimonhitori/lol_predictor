@@ -235,7 +235,7 @@ Verification evidence:
 - Production should be verified with `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` after the branch is deployed.
 - The smoke check also checks `/site-contract.json`; if that route returns HTML or an older `contract_version`, the static Pages deployment itself is stale.
 - The same smoke check defaults to Cloudflare-hosted bootstrap artifacts for `pre_match_predictions.json`, `live_status.json`, and `live_model_manifest.json`; external analyzer Pages URLs can be configured later without changing the UI contract.
-- A manual `Smoke production contracts` GitHub Actions workflow is available in `lol_predictor` for post-deploy verification. Use `require_live_win_probability=true` when probing a currently live event.
+- A manual `Smoke production contracts` GitHub Actions workflow is available in `lol_predictor` for post-deploy verification. It checks both endpoint/artifact JSON contracts and the pre-match UI render contract against the configured prediction feed URL. Use `require_live_win_probability=true` when probing a currently live event, and raise `prediction_ui_min_rows` / `prediction_ui_min_overlap` when a real analyzer feed should match the site schedule.
 
 ## Near-Term Execution Order
 
@@ -243,7 +243,7 @@ Verification evidence:
 2. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` after deployment.
 3. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id {realLiveEventId} --require-live-win-probability true` during a real live match.
 4. Keep the Cloudflare-hosted bootstrap artifacts live, then replace or override them with analyzer-generated artifacts once GitHub Pages, Cloudflare, or Worker hosting is configured.
-5. Re-run pre-match feed display against a real published analyzer feed.
+5. Re-run pre-match feed display against a real published analyzer feed using `scripts/check_pre_match_ui.mjs --prediction-feed-url {analyzerFeedUrl} --min-rows 1 --min-overlap 1`.
 6. Tighten the dashboard layout around live/pre-match/ops signals once production contracts and analyzer publication are both green.
 
 Deployment unblocker:
