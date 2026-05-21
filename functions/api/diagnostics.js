@@ -79,10 +79,14 @@ export async function onRequestGet(context) {
   const predictionSchemaOk = predictionSchema?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
   const remotePredictionSchemaOk = remotePredictionProbe?.json?.schema === 'lol_predictions_public_v1';
   const remoteSchemaOk = remoteSchemaProbe?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
+  const predictionFeedWarnings = arrayOfStrings(predictionFeed?.json?.warnings);
+  const remotePredictionFeedWarnings = arrayOfStrings(remotePredictionProbe?.json?.warnings);
   const artifactWarnings = [
     ...(predictionFeedFreshness.status === 'stale' ? ['prediction_feed_stale'] : []),
+    ...(predictionFeedWarnings.length ? ['prediction_feed_has_warnings'] : []),
     ...(remotePredictionProbe && !remotePredictionProbe.ok ? [`remote_prediction_feed_${remotePredictionProbe.status || 'missing'}`] : []),
     ...(remotePredictionProbe?.ok && !remotePredictionSchemaOk ? ['remote_prediction_feed_schema_mismatch'] : []),
+    ...(remotePredictionFeedWarnings.length ? ['remote_prediction_feed_has_warnings'] : []),
     ...(remotePredictionFreshness.status === 'stale' ? ['remote_prediction_feed_stale'] : []),
     ...(remoteSchemaProbe && !remoteSchemaProbe.ok ? [`remote_prediction_schema_${remoteSchemaProbe.status || 'missing'}`] : []),
     ...(remoteSchemaProbe?.ok && !remoteSchemaOk ? ['remote_prediction_schema_mismatch'] : []),
@@ -133,6 +137,8 @@ export async function onRequestGet(context) {
     prediction_feed_freshness: predictionFeedFreshness.status,
     prediction_feed_schema: predictionFeed?.json?.schema || '',
     prediction_feed_rows: Array.isArray(predictionFeed?.json?.predictions) ? predictionFeed.json.predictions.length : 0,
+    prediction_feed_warning_count: predictionFeedWarnings.length,
+    prediction_feed_warnings: predictionFeedWarnings,
     remote_prediction_feed_checked: Boolean(remotePredictionProbe),
     remote_prediction_feed_url: remotePredictionUrl,
     remote_prediction_feed_available: remotePredictionProbe ? Boolean(remotePredictionProbe.ok) : null,
@@ -142,6 +148,8 @@ export async function onRequestGet(context) {
     remote_prediction_feed_freshness: remotePredictionFreshness.status,
     remote_prediction_feed_schema: remotePredictionProbe?.json?.schema || '',
     remote_prediction_feed_rows: Array.isArray(remotePredictionProbe?.json?.predictions) ? remotePredictionProbe.json.predictions.length : null,
+    remote_prediction_feed_warning_count: remotePredictionProbe ? remotePredictionFeedWarnings.length : null,
+    remote_prediction_feed_warnings: remotePredictionProbe ? remotePredictionFeedWarnings : null,
     prediction_schema_url: predictionSchemaUrl,
     configured_prediction_schema_url: remoteSchemaUrl,
     prediction_schema_available: Boolean(predictionSchema?.ok),
@@ -187,6 +195,11 @@ function configuredUrl(context, key, fallback) {
 function stringEnv(context, key) {
   const value = context?.env?.[key];
   return typeof value === 'string' ? value : '';
+}
+
+function arrayOfStrings(value) {
+  if (!Array.isArray(value)) return [];
+  return value.map(item => String(item)).filter(Boolean);
 }
 
 function artifactFreshness(value) {
