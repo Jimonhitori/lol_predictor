@@ -24,7 +24,7 @@
 - Normalize teams, schedules, rosters, games, patch data, and live frames.
 - Train/evaluate pre-match, post-draft, and live model artifacts.
 - Generate `pre_match_predictions.json` or equivalent public JSON contracts.
-- Publish validated model/data artifacts through GitHub Pages, Cloudflare, or a Worker/API.
+- Prepare validated model/data artifacts for Cloudflare Pages or a Worker/API.
 
 ## Do Not Break
 
@@ -32,7 +32,7 @@
 - `window.STATIC_SITE = true` with static JSON fallback.
 - `/api/live-event?id={eventId}` returning normalized `teams`, `games`, `live`, `warning`, and `source`.
 - Existing JSON paths under `docs/static/data/`, especially `matches-*`, `matches/{id}.json`, `h2h/`, `rosters/`, `team-records/`, `summaries/`, and `options.json`.
-- Match links using `match.html?id=...`, so GitHub Pages and Cloudflare Pages both work.
+- Match links using `match.html?id=...`, so Cloudflare Pages static routing works without server rewrites.
 - Five-second live detail refresh and one-minute match list refresh.
 - Side colors limited to blue/red side differentiation inside the live panel.
 
@@ -128,7 +128,7 @@ Status: defined and mirrored into `lol-pros-analyzer` docs/scripts/CI.
 Goal:
 
 - One compact public JSON contract that `lol_predictor` can consume without knowing internal CSV or model details.
-- Stable enough for Cloudflare/GitHub Pages static hosting.
+- Stable enough for Cloudflare Pages static hosting.
 
 Proposed top-level shape:
 
@@ -179,8 +179,8 @@ Schema rules:
 - Public JSON writer for schedule predictions is implemented as `scripts/export_public_predictions.py`.
 - Empty payload writer is implemented as `scripts/write_empty_public_predictions.py` so the URL remains stable when no schedule rows exist.
 - Validator for required fields and probability bounds is implemented as `scripts/validate_public_predictions.py`.
-- The training workflow exports, validates, summarizes, and publishes `public/pre_match_predictions.json` to GitHub Pages.
-- `scripts/check_live_ops.py` now checks the public pre-match exporter, validator, empty writer, schema doc, workflow publication, and job summary wiring.
+- The training workflow exports, validates, summarizes, and uploads `public/pre_match_predictions.json` as a workflow artifact for Cloudflare/manual sync.
+- `scripts/check_live_ops.py` now checks the public pre-match exporter, validator, empty writer, schema doc, workflow artifact publication, and job summary wiring.
 
 `lol_predictor` work:
 
@@ -244,7 +244,7 @@ Verification evidence:
 1. Commit and deploy the current `lol_predictor` branch with the compact prediction panel changes.
 2. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id test` after deployment.
 3. Run `node scripts/check_cloudflare_pages.mjs --base-url https://lol-predictor.pages.dev --event-id {realLiveEventId} --require-live-win-probability true` during a real live match.
-4. Keep the Cloudflare-hosted bootstrap artifacts live, then replace or override them with analyzer-generated artifacts once GitHub Pages, Cloudflare, or Worker hosting is configured.
+4. Keep the Cloudflare-hosted bootstrap artifacts live, then replace or override them with analyzer-generated artifacts once Cloudflare or Worker hosting is configured.
 5. Re-run pre-match feed display against a real published analyzer feed using `scripts/check_pre_match_ui.mjs --prediction-feed-url {analyzerFeedUrl} --min-rows 1 --min-overlap 1`.
 6. Tighten the dashboard layout around live/pre-match/ops signals once production contracts and analyzer publication are both green.
 
