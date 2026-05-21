@@ -7,7 +7,6 @@ const REFRESH_INTERVAL_LABEL = '5s';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
-const DEFAULT_PRE_MATCH_PREDICTIONS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json';
 
 async function api(path) {
   if (STATIC_SITE && isCloudflareApiPath(path)) return fetchApiJson(path);
@@ -400,7 +399,7 @@ function preMatchPredictionLocalUrl() {
 
 function preMatchPredictionRemoteUrl() {
   const config = window.LOL_PREDICTOR_CONFIG || {};
-  return String(window.PRE_MATCH_PREDICTIONS_URL || config.preMatchPredictionsUrl || DEFAULT_PRE_MATCH_PREDICTIONS_URL);
+  return String(window.PRE_MATCH_PREDICTIONS_URL || config.preMatchPredictionsUrl || preMatchPredictionLocalUrl());
 }
 
 function normalizePreMatchPredictionFeed(payload, candidate) {

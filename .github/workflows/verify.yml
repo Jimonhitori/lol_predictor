@@ -31,6 +31,7 @@ jobs:
           node --check functions/api/diagnostics.js
           node --check functions/api/live-event.js
           node --check scripts/check_cloudflare_pages.mjs
+          node --check scripts/check_diagnostics_defaults.mjs
           node --check scripts/check_live_probability_contract.mjs
           node --check scripts/check_ops_meta.mjs
           node --check scripts/check_pre_match_ui.mjs
@@ -57,6 +58,7 @@ jobs:
             --live-status-url http://127.0.0.1:4174/analyzer/live_status.json \
             --live-manifest-url http://127.0.0.1:4174/analyzer/live_model_manifest.json \
             --event-id test
+          node scripts/check_diagnostics_defaults.mjs
           node scripts/check_ops_meta.mjs --base-url http://127.0.0.1:4174
           node scripts/check_pre_match_ui.mjs --base-url http://127.0.0.1:4174 --min-rows 1 --min-overlap 1
           node scripts/check_pre_match_ui.mjs \

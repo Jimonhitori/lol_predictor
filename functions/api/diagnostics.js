@@ -4,8 +4,6 @@ const PRE_MATCH_SCHEMA_PATH = '/static/data/schemas/pre_match_predictions.v1.sch
 const LIVE_STATUS_PATH = '/live_status.json';
 const LIVE_MODEL_MANIFEST_PATH = '/live_model_manifest.json';
 const SITE_CONTRACT_PATH = '/site-contract.json';
-const DEFAULT_PRE_MATCH_PREDICTIONS_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/pre_match_predictions.json';
-const DEFAULT_PRE_MATCH_SCHEMA_URL = 'https://jimonhitori.github.io/lol-pros-analyzer/schemas/pre_match_predictions.v1.schema.json';
 const EXPECTED_SITE_CONTRACT_VERSION = '2026-05-20-live-pre-match-diagnostics-v1';
 const STALE_SECONDS = 48 * 60 * 60;
 const WARNING_SECONDS = 24 * 60 * 60;
@@ -29,12 +27,20 @@ export function onRequestOptions() {
 
 export async function onRequestGet(context) {
   const requestUrl = new URL(context.request.url);
-  const remotePredictionUrl = configuredUrl(context, 'PRE_MATCH_PREDICTIONS_URL', DEFAULT_PRE_MATCH_PREDICTIONS_URL);
-  const remoteSchemaUrl = configuredUrl(context, 'PRE_MATCH_SCHEMA_URL', DEFAULT_PRE_MATCH_SCHEMA_URL);
-  const liveStatusUrl = configuredUrl(context, 'LIVE_STATUS_URL', new URL(LIVE_STATUS_PATH, requestUrl.origin).toString());
-  const liveManifestUrl = configuredUrl(context, 'LIVE_MODEL_MANIFEST_URL', new URL(LIVE_MODEL_MANIFEST_PATH, requestUrl.origin).toString());
-  const shouldCheckRemotePredictions = remotePredictionUrl !== new URL(PRE_MATCH_PREDICTIONS_PATH, requestUrl.origin).toString();
-  const shouldCheckRemoteSchema = remoteSchemaUrl !== new URL(PRE_MATCH_SCHEMA_PATH, requestUrl.origin).toString();
+  const localPredictionUrl = new URL(PRE_MATCH_PREDICTIONS_PATH, requestUrl.origin).toString();
+  const localSchemaUrl = new URL(PRE_MATCH_SCHEMA_PATH, requestUrl.origin).toString();
+  const localLiveStatusUrl = new URL(LIVE_STATUS_PATH, requestUrl.origin).toString();
+  const localLiveManifestUrl = new URL(LIVE_MODEL_MANIFEST_PATH, requestUrl.origin).toString();
+  const remotePredictionUrl = configuredUrl(context, 'PRE_MATCH_PREDICTIONS_URL', localPredictionUrl);
+  const remoteSchemaUrl = configuredUrl(context, 'PRE_MATCH_SCHEMA_URL', localSchemaUrl);
+  const liveStatusUrl = configuredUrl(context, 'LIVE_STATUS_URL', localLiveStatusUrl);
+  const liveManifestUrl = configuredUrl(context, 'LIVE_MODEL_MANIFEST_URL', localLiveManifestUrl);
+  const shouldCheckRemotePredictions = remotePredictionUrl !== localPredictionUrl;
+  const shouldCheckRemoteSchema = remoteSchemaUrl !== localSchemaUrl;
+  const liveStatusReader = liveStatusUrl === localLiveStatusUrl ? readJsonAsset(context, LIVE_STATUS_PATH) : readJsonUrl(liveStatusUrl);
+  const liveManifestReader = liveManifestUrl === localLiveManifestUrl
+    ? readJsonAsset(context, LIVE_MODEL_MANIFEST_PATH)
+    : readJsonUrl(liveManifestUrl);
   const [
     siteContract,
     liveModel,
@@ -49,8 +55,8 @@ export async function onRequestGet(context) {
     readJsonAsset(context, LIVE_MODEL_PATH),
     readJsonAsset(context, PRE_MATCH_PREDICTIONS_PATH),
     readJsonAsset(context, PRE_MATCH_SCHEMA_PATH),
-    readJsonUrl(liveStatusUrl),
-    readJsonUrl(liveManifestUrl),
+    liveStatusReader,
+    liveManifestReader,
     shouldCheckRemotePredictions ? readJsonUrl(remotePredictionUrl) : Promise.resolve(null),
     shouldCheckRemoteSchema ? readJsonUrl(remoteSchemaUrl) : Promise.resolve(null),
   ]);
@@ -59,10 +65,10 @@ export async function onRequestGet(context) {
   const remoteSchema = localSchema.ok ? null : remoteSchemaProbe || await readJsonUrl(remoteSchemaUrl);
   const predictionSchema = localSchema.ok ? localSchema : remoteSchema;
   const predictionFeedUrl = localPredictions.ok
-    ? new URL(PRE_MATCH_PREDICTIONS_PATH, requestUrl.origin).toString()
+    ? localPredictionUrl
     : remotePredictionUrl;
   const predictionSchemaUrl = localSchema.ok
-    ? new URL(PRE_MATCH_SCHEMA_PATH, requestUrl.origin).toString()
+    ? localSchemaUrl
     : remoteSchemaUrl;
   const siteFeatures = Array.isArray(siteContract.json?.features) ? siteContract.json.features : [];
   const missingSiteFeatures = REQUIRED_SITE_FEATURES.filter(feature => !siteFeatures.includes(feature));
