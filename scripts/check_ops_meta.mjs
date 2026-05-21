@@ -18,6 +18,7 @@ if (app.ok && !app.text.includes('contract ok')) errors.push('app.js does not re
 if (app.ok && !app.text.includes('contract pending')) errors.push('app.js does not render contract pending');
 if (app.ok && !app.text.includes('prediction_schema_ok')) errors.push('app.js does not render prediction schema status');
 if (app.ok && !app.text.includes('prediction_feed_freshness')) errors.push('app.js does not render prediction feed freshness');
+if (app.ok && !app.text.includes('artifact_warnings')) errors.push('app.js does not render artifact warnings');
 if (!diagnostics.ok) errors.push(`diagnostics returned ${diagnostics.status}`);
 if (diagnostics.ok && typeof diagnostics.json?.contract_ok !== 'boolean') {
   errors.push('diagnostics contract_ok is not boolean');
@@ -37,9 +38,11 @@ const report = {
   app_reads_contract_ok: app.text.includes('data.contract_ok'),
   app_reads_prediction_schema_ok: app.text.includes('prediction_schema_ok'),
   app_reads_prediction_feed_freshness: app.text.includes('prediction_feed_freshness'),
+  app_reads_artifact_warnings: app.text.includes('artifact_warnings'),
   diagnostics_contract_ok: diagnostics.json?.contract_ok ?? null,
   diagnostics_prediction_schema_ok: diagnostics.json?.prediction_schema_ok ?? null,
   diagnostics_prediction_feed_freshness: diagnostics.json?.prediction_feed_freshness || '',
+  diagnostics_artifact_warning_count: Array.isArray(diagnostics.json?.artifact_warnings) ? diagnostics.json.artifact_warnings.length : null,
   ops_text_preview: diagnostics.json ? renderOpsPreview(diagnostics.json) : '',
   errors,
 };
@@ -66,7 +69,10 @@ function renderOpsPreview(data) {
   const worker = data.live_worker_checked
     ? `worker ${data.live_worker_ok ? 'ok' : 'check failed'}`
     : '';
-  return [contract, live, feed, schema, freshness, analyzerLive, worker].filter(Boolean).join(' | ');
+  const artifactWarnings = Array.isArray(data.artifact_warnings) && data.artifact_warnings.length
+    ? `artifact warnings ${data.artifact_warnings.length}`
+    : '';
+  return [contract, live, feed, schema, freshness, analyzerLive, worker, artifactWarnings].filter(Boolean).join(' | ');
 }
 
 async function fetchText(url) {

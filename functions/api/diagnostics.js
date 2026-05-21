@@ -33,17 +33,30 @@ export async function onRequestGet(context) {
   const remoteSchemaUrl = configuredUrl(context, 'PRE_MATCH_SCHEMA_URL', DEFAULT_PRE_MATCH_SCHEMA_URL);
   const liveStatusUrl = configuredUrl(context, 'LIVE_STATUS_URL', new URL(LIVE_STATUS_PATH, requestUrl.origin).toString());
   const liveManifestUrl = configuredUrl(context, 'LIVE_MODEL_MANIFEST_URL', new URL(LIVE_MODEL_MANIFEST_PATH, requestUrl.origin).toString());
-  const [siteContract, liveModel, localPredictions, localSchema, liveStatus, liveManifest] = await Promise.all([
+  const shouldCheckRemotePredictions = remotePredictionUrl !== new URL(PRE_MATCH_PREDICTIONS_PATH, requestUrl.origin).toString();
+  const shouldCheckRemoteSchema = remoteSchemaUrl !== new URL(PRE_MATCH_SCHEMA_PATH, requestUrl.origin).toString();
+  const [
+    siteContract,
+    liveModel,
+    localPredictions,
+    localSchema,
+    liveStatus,
+    liveManifest,
+    remotePredictionProbe,
+    remoteSchemaProbe,
+  ] = await Promise.all([
     readJsonAsset(context, SITE_CONTRACT_PATH),
     readJsonAsset(context, LIVE_MODEL_PATH),
     readJsonAsset(context, PRE_MATCH_PREDICTIONS_PATH),
     readJsonAsset(context, PRE_MATCH_SCHEMA_PATH),
     readJsonUrl(liveStatusUrl),
     readJsonUrl(liveManifestUrl),
+    shouldCheckRemotePredictions ? readJsonUrl(remotePredictionUrl) : Promise.resolve(null),
+    shouldCheckRemoteSchema ? readJsonUrl(remoteSchemaUrl) : Promise.resolve(null),
   ]);
-  const remotePredictions = localPredictions.ok ? null : await readJsonUrl(remotePredictionUrl);
+  const remotePredictions = localPredictions.ok ? null : remotePredictionProbe || await readJsonUrl(remotePredictionUrl);
   const predictionFeed = localPredictions.ok ? localPredictions : remotePredictions;
-  const remoteSchema = localSchema.ok ? null : await readJsonUrl(remoteSchemaUrl);
+  const remoteSchema = localSchema.ok ? null : remoteSchemaProbe || await readJsonUrl(remoteSchemaUrl);
   const predictionSchema = localSchema.ok ? localSchema : remoteSchema;
   const predictionFeedUrl = localPredictions.ok
     ? new URL(PRE_MATCH_PREDICTIONS_PATH, requestUrl.origin).toString()
@@ -54,11 +67,19 @@ export async function onRequestGet(context) {
   const siteFeatures = Array.isArray(siteContract.json?.features) ? siteContract.json.features : [];
   const missingSiteFeatures = REQUIRED_SITE_FEATURES.filter(feature => !siteFeatures.includes(feature));
   const predictionFeedFreshness = artifactFreshness(predictionFeed?.json?.generated_at);
+  const remotePredictionFreshness = artifactFreshness(remotePredictionProbe?.json?.generated_at);
   const liveStatusFreshness = artifactFreshness(liveStatus.json?.generated_at);
   const liveModelFreshness = artifactFreshness(liveModel.json?.exported_at);
   const predictionSchemaOk = predictionSchema?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
+  const remotePredictionSchemaOk = remotePredictionProbe?.json?.schema === 'lol_predictions_public_v1';
+  const remoteSchemaOk = remoteSchemaProbe?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
   const artifactWarnings = [
     ...(predictionFeedFreshness.status === 'stale' ? ['prediction_feed_stale'] : []),
+    ...(remotePredictionProbe && !remotePredictionProbe.ok ? [`remote_prediction_feed_${remotePredictionProbe.status || 'missing'}`] : []),
+    ...(remotePredictionProbe?.ok && !remotePredictionSchemaOk ? ['remote_prediction_feed_schema_mismatch'] : []),
+    ...(remotePredictionFreshness.status === 'stale' ? ['remote_prediction_feed_stale'] : []),
+    ...(remoteSchemaProbe && !remoteSchemaProbe.ok ? [`remote_prediction_schema_${remoteSchemaProbe.status || 'missing'}`] : []),
+    ...(remoteSchemaProbe?.ok && !remoteSchemaOk ? ['remote_prediction_schema_mismatch'] : []),
     ...(liveStatusFreshness.status === 'stale' ? ['live_status_stale'] : []),
   ];
   const contractWarnings = [
@@ -97,6 +118,7 @@ export async function onRequestGet(context) {
     live_model_training_rows: liveModel.json?.training_rows ?? null,
     live_model_test_rows: liveModel.json?.test_rows ?? null,
     prediction_feed_url: predictionFeedUrl,
+    configured_prediction_feed_url: remotePredictionUrl,
     prediction_feed_available: Boolean(predictionFeed?.ok),
     prediction_feed_source: localPredictions.ok ? 'local_asset' : 'remote',
     prediction_feed_last_fetch_status: predictionFeed?.status ?? 0,
@@ -105,12 +127,28 @@ export async function onRequestGet(context) {
     prediction_feed_freshness: predictionFeedFreshness.status,
     prediction_feed_schema: predictionFeed?.json?.schema || '',
     prediction_feed_rows: Array.isArray(predictionFeed?.json?.predictions) ? predictionFeed.json.predictions.length : 0,
+    remote_prediction_feed_checked: Boolean(remotePredictionProbe),
+    remote_prediction_feed_url: remotePredictionUrl,
+    remote_prediction_feed_available: remotePredictionProbe ? Boolean(remotePredictionProbe.ok) : null,
+    remote_prediction_feed_last_fetch_status: remotePredictionProbe?.status ?? null,
+    remote_prediction_feed_generated_at: remotePredictionProbe?.json?.generated_at || '',
+    remote_prediction_feed_age_seconds: remotePredictionFreshness.age_seconds,
+    remote_prediction_feed_freshness: remotePredictionFreshness.status,
+    remote_prediction_feed_schema: remotePredictionProbe?.json?.schema || '',
+    remote_prediction_feed_rows: Array.isArray(remotePredictionProbe?.json?.predictions) ? remotePredictionProbe.json.predictions.length : null,
     prediction_schema_url: predictionSchemaUrl,
+    configured_prediction_schema_url: remoteSchemaUrl,
     prediction_schema_available: Boolean(predictionSchema?.ok),
     prediction_schema_source: localSchema.ok ? 'local_asset' : 'remote',
     prediction_schema_last_fetch_status: predictionSchema?.status ?? 0,
     prediction_schema_id: predictionSchema?.json?.$id || '',
     prediction_schema_ok: predictionSchemaOk,
+    remote_prediction_schema_checked: Boolean(remoteSchemaProbe),
+    remote_prediction_schema_url: remoteSchemaUrl,
+    remote_prediction_schema_available: remoteSchemaProbe ? Boolean(remoteSchemaProbe.ok) : null,
+    remote_prediction_schema_last_fetch_status: remoteSchemaProbe?.status ?? null,
+    remote_prediction_schema_id: remoteSchemaProbe?.json?.$id || '',
+    remote_prediction_schema_ok: remoteSchemaProbe ? remoteSchemaOk : null,
     live_status_url: liveStatusUrl,
     live_status_available: Boolean(liveStatus.ok),
     live_status_last_fetch_status: liveStatus.status,

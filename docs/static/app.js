@@ -80,7 +80,10 @@ function renderDiagnostics(data) {
   const worker = data.live_worker_checked
     ? `worker ${data.live_worker_ok ? 'ok' : 'check failed'}`
     : '';
-  target.textContent = [contract, live, feed, generated, schema, freshness, analyzerLive, worker].filter(Boolean).join(' | ');
+  const artifactWarnings = Array.isArray(data.artifact_warnings) && data.artifact_warnings.length
+    ? `artifact warnings ${data.artifact_warnings.length}`
+    : '';
+  target.textContent = [contract, live, feed, generated, schema, freshness, analyzerLive, worker, artifactWarnings].filter(Boolean).join(' | ');
 }
 
 async function staticApi(path) {
@@ -778,6 +781,7 @@ function renderSelectedMatch(details) {
     ${STATIC_SITE ? matchCenterPill(details) : `<div class="winPill"><span>Blue-side model</span><strong id="inlinePrediction">${$('prediction')?.textContent || '-'}</strong></div>`}
     ${teamBlock(right, 'centerRightRecord', seriesWinner)}
   `;
+  renderPredictionPanel('selectedPredictionPanel', details);
   $('gameList').innerHTML = gameListHtml(details);
   loadInlineTeamRecords(left, right, details.league);
 }
@@ -819,6 +823,68 @@ function preMatchSplitText(details, prediction) {
   const blue = teams[0]?.code || teams[0]?.name || prediction.blue_team || 'Blue';
   const red = teams[1]?.code || teams[1]?.name || prediction.red_team || 'Red';
   return `PRE ${blue} ${(prediction.blue_win_probability * 100).toFixed(1)}% / ${red} ${(prediction.red_win_probability * 100).toFixed(1)}%`;
+}
+
+function renderPredictionPanel(id, details) {
+  const target = $(id);
+  if (!target) return;
+  const prediction = preMatchPredictionForDetails(details);
+  if (!prediction) {
+    target.classList.add('hidden');
+    target.innerHTML = '';
+    return;
+  }
+  target.classList.remove('hidden');
+  target.innerHTML = predictionPanelHtml(details, prediction);
+}
+
+function predictionPanelHtml(details, prediction) {
+  const teams = details?.teams || [];
+  const blueName = teams[0]?.code || teams[0]?.name || prediction.blue_team || 'Blue';
+  const redName = teams[1]?.code || teams[1]?.name || prediction.red_team || 'Red';
+  const blue = prediction.blue_win_probability;
+  const red = prediction.red_win_probability;
+  const favorite = blue >= red
+    ? { label: blueName, probability: blue }
+    : { label: redName, probability: red };
+  const confidence = prediction.confidence ? prediction.confidence.toUpperCase() : 'UNRATED';
+  const meta = state.preMatchPredictions?.meta || {};
+  const generated = meta.generated_at ? `generated ${shortDateTime(meta.generated_at)}` : '';
+  const source = meta.source ? `feed ${meta.source}` : '';
+  const model = prediction.model || meta.models?.pre_match?.name || '';
+  const warnings = prediction.warnings?.length ? `warnings ${prediction.warnings.length}` : '';
+  const foot = [model, generated, source, warnings].filter(Boolean).join(' | ');
+  return `
+    <div class="predictionPanelTop">
+      <span>Pre-match prediction</span>
+      <strong>${escapeHtml(shortTeamName(favorite.label))} ${formatProbability(favorite.probability)}</strong>
+      <span class="predictionConfidence">${escapeHtml(confidence)}</span>
+    </div>
+    <div class="predictionSplit">
+      ${predictionSideHtml('blue', blueName, blue)}
+      ${predictionSideHtml('red', redName, red)}
+    </div>
+    ${foot ? `<div class="predictionPanelFoot">${escapeHtml(foot)}</div>` : ''}
+  `;
+}
+
+function predictionSideHtml(side, name, probability) {
+  const width = Math.round(clampProbability(probability) * 1000) / 10;
+  return `
+    <div class="predictionSide ${side}">
+      <div class="predictionSideHead">
+        <span>${escapeHtml(name)}</span>
+        <strong>${formatProbability(probability)}</strong>
+      </div>
+      <div class="predictionBar" aria-label="${escapeHtml(name)} win probability">
+        <span style="width:${width}%"></span>
+      </div>
+    </div>
+  `;
+}
+
+function formatProbability(value) {
+  return `${(clampProbability(value) * 100).toFixed(1)}%`;
 }
 
 function matchCardTeam(name, image) {
@@ -867,6 +933,7 @@ function showDetailLoading() {
   $('matchTitle').textContent = 'Loading match...';
   $('matchMeta').textContent = 'Fetching schedule and live data';
   $('detailTeams').innerHTML = '<div class="loadingState">Loading match center...</div>';
+  renderPredictionPanel('detailPredictionPanel', {});
   $('detailGames').innerHTML = '';
   const livePanel = document.querySelector('.livePanel');
   if (livePanel) livePanel.classList.remove('hidden');
@@ -889,6 +956,7 @@ async function refreshMatchDetail(initial) {
   $('matchMeta').textContent = matchDetailMeta(details);
   const seriesWinner = completedSeriesWinner(details);
   $('detailTeams').innerHTML = `${teamBlock(left, 'blueTeamRecord', seriesWinner)}${matchInfoBlock(details)}${teamBlock(right, 'redTeamRecord', seriesWinner)}`;
+  renderPredictionPanel('detailPredictionPanel', details);
   loadTeamRecords(left, right, details.league);
   updateStartedVisibility(details);
   loadHeadToHead(left, right, details.league);

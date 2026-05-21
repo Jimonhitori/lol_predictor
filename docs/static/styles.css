@@ -70,6 +70,20 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchInfoVs { font-size: 24px; line-height: 1; font-weight: 900; color: var(--text); margin: 0; }
 .matchInfoStart { color: var(--muted); font-size: 13px; font-weight: 800; margin-top: 2px; }
 #centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
+.predictionPanel { display: grid; gap: 10px; margin: 12px 0; border: 1px solid #263743; border-radius: 8px; background: #10171d; padding: 10px 12px; }
+.predictionPanelTop { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 10px; color: var(--muted); font-size: 11px; font-weight: 900; text-transform: uppercase; }
+.predictionPanelTop strong { color: var(--accent); font-size: 15px; line-height: 1; }
+.predictionConfidence { border: 1px solid #384653; border-radius: 999px; padding: 3px 7px; color: #d7e2ee; font-size: 10px; }
+.predictionSplit { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.predictionSide { display: grid; gap: 6px; min-width: 0; }
+.predictionSideHead { display: flex; justify-content: space-between; gap: 8px; color: #dbe5f4; font-size: 12px; font-weight: 900; }
+.predictionSideHead span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.predictionSideHead strong { color: #f4f8fc; }
+.predictionBar { height: 7px; border-radius: 999px; background: #202a33; overflow: hidden; }
+.predictionBar span { display: block; height: 100%; border-radius: 999px; background: var(--accent); }
+.predictionSide.blue .predictionBar span { background: #3ca7dc; }
+.predictionSide.red .predictionBar span { background: #dc4b64; }
+.predictionPanelFoot { color: var(--muted); font-size: 11px; line-height: 1.35; overflow-wrap: anywhere; }
 .modelSandboxValue { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; border: 1px solid var(--line); border-radius: 8px; padding: 10px; margin-bottom: 12px; background: #10161d; color: var(--muted); font-size: 12px; }
 .detailHero { margin-bottom: 18px; padding: 14px 16px; }
 .detailHero .sectionHead { margin-bottom: 18px; }
@@ -191,6 +205,9 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .matchCenter { margin-bottom: 12px; }
   .selectedMatch { gap: 10px; }
   .selectedMatch.twoTeams { grid-template-columns: 1fr 1fr; }
+  .predictionPanelTop { grid-template-columns: 1fr auto; }
+  .predictionConfidence { justify-self: start; }
+  .predictionSplit { grid-template-columns: 1fr; }
   .teamBlock img { width: 48px; height: 48px; }
   .teamBlock strong { font-size: 13px; }
   .matchScorePill { min-width: 0; }

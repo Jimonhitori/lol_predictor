@@ -2,6 +2,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import vm from 'node:vm';
 
 const args = parseArgs(process.argv.slice(2));
 const docsDir = path.resolve(String(args.docsDir || 'docs'));
@@ -39,6 +40,7 @@ const appSummary = validateSourceHooks('app.js', appSource, [
   'live.win_probability?.validation?.display',
   'liveRefreshMeta',
 ], errors);
+appSummary.render_contract = checkLiveProbabilityRendering(appSource, sample.data, errors);
 const functionSummary = validateSourceHooks('live-event.js', functionSource, [
   'function liveValidationBucket(model, gameTime)',
   'validation: liveValidationBucket(model, row.game_time)',
@@ -183,6 +185,88 @@ function validateSourceHooks(label, source, snippets, outputErrors) {
   }
   for (const snippet of summary.missing) {
     outputErrors.push(`${label} is missing contract hook: ${snippet}`);
+  }
+  return summary;
+}
+
+function checkLiveProbabilityRendering(source, sampleData, outputErrors) {
+  const summary = {
+    checked: false,
+    estimated_visible: null,
+    non_estimated_hidden: null,
+    caution_visible: null,
+  };
+  if (!source.ok) return summary;
+  const game = (sampleData?.games || [])[0] || {};
+  const live = game.live || {};
+  const context = {
+    window: { STATIC_SITE: true },
+    location: { href: 'http://example.test/', origin: 'http://example.test', search: '' },
+    document: {
+      getElementById: () => null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+    },
+    console: { log: () => {}, warn: () => {}, error: () => {} },
+    setTimeout: () => 0,
+    setInterval: () => 0,
+    clearInterval: () => {},
+    Intl,
+    Date,
+    URL,
+    URLSearchParams,
+  };
+  context.window.document = context.document;
+  try {
+    vm.createContext(context);
+    vm.runInContext(source.text, context, { timeout: 1000 });
+    summary.checked = true;
+    const estimatedText = vm.runInContext(
+      `liveWinProbabilityText(${JSON.stringify(game)}, ${JSON.stringify(live)})`,
+      context,
+      { timeout: 1000 },
+    );
+    summary.estimated_visible = typeof estimatedText === 'string'
+      && estimatedText.includes('%')
+      && estimatedText.includes(game?.blue?.team_code || game?.blue?.team_name || 'Blue')
+      && estimatedText.includes(game?.red?.team_code || game?.red?.team_name || 'Red');
+    if (!summary.estimated_visible) {
+      outputErrors.push('app.js live probability render contract did not show estimated probability text');
+    }
+
+    const nonEstimatedLive = {
+      ...live,
+      win_probability: { ...(live.win_probability || {}), status: 'unavailable' },
+    };
+    const nonEstimatedText = vm.runInContext(
+      `liveWinProbabilityText(${JSON.stringify(game)}, ${JSON.stringify(nonEstimatedLive)})`,
+      context,
+      { timeout: 1000 },
+    );
+    summary.non_estimated_hidden = nonEstimatedText === '';
+    if (!summary.non_estimated_hidden) {
+      outputErrors.push('app.js live probability render contract did not hide non-estimated probability');
+    }
+
+    const cautionLive = {
+      ...live,
+      win_probability: {
+        ...(live.win_probability || {}),
+        status: 'estimated',
+        validation: { ...(live.win_probability?.validation || {}), display: 'use_with_caution' },
+      },
+    };
+    const cautionText = vm.runInContext(
+      `liveWinProbabilityText(${JSON.stringify(game)}, ${JSON.stringify(cautionLive)})`,
+      context,
+      { timeout: 1000 },
+    );
+    summary.caution_visible = typeof cautionText === 'string' && cautionText.includes('caution');
+    if (!summary.caution_visible) {
+      outputErrors.push('app.js live probability render contract did not show caution marker for cautious validation');
+    }
+  } catch (error) {
+    outputErrors.push(`app.js live probability render contract failed: ${error instanceof Error ? error.message : String(error)}`);
   }
   return summary;
 }

@@ -126,7 +126,14 @@ node scripts/check_cloudflare_pages.mjs \
 The `Verify site contracts` GitHub Actions workflow runs the same syntax checks
 and local preflight on pushes and pull requests. It also checks that the
 dashboard has an `opsMeta` target and that diagnostics `contract_ok` can be
-rendered into the compact ops line.
+rendered into the compact ops line. The pre-match UI check runs twice: once
+against the populated Cloudflare-hosted fallback feed and once against the empty
+analyzer preview feed. Its report includes `render_contract` fields confirming
+that a matching prediction renders the compact panel, an empty feed hides it,
+and an unavailable feed state also hides it.
+The live probability contract check also executes the dashboard render helper
+and confirms estimated probabilities display, non-estimated probabilities hide,
+and cautious validation states show a caution marker.
 
 After Cloudflare Pages and the analyzer public artifacts are deployed, run the
 `Smoke production contracts` workflow manually. It executes the same checker
@@ -136,13 +143,28 @@ chosen event is currently live.
 
 The smoke check verifies the same public artifact URLs that the app needs.
 By default it checks the Cloudflare-hosted bootstrap URLs on the target `--base-url`.
-Override them when testing a staging or external analyzer feed:
+It also runs the pre-match UI contract checker against the configured
+prediction feed URL. Keep `prediction_ui_min_rows` and
+`prediction_ui_min_overlap` at `0` for bootstrap or empty-feed verification,
+then raise them when checking a published analyzer schedule feed. Override the
+artifact URLs when testing a staging or external analyzer feed:
+
+`/api/diagnostics` reports both the active feed used by the dashboard and the
+configured remote analyzer feed probe. This keeps the local bootstrap fallback
+visible while still surfacing external analyzer GitHub Pages states such as
+`remote_prediction_feed_404` in `artifact_warnings`.
 
 ```bash
 node scripts/check_cloudflare_pages.mjs \
   --prediction-feed-url https://example.com/pre_match_predictions.json \
   --live-status-url https://example.com/live_status.json \
   --live-manifest-url https://example.com/live_model_manifest.json
+
+node scripts/check_pre_match_ui.mjs \
+  --base-url https://lol-predictor.pages.dev \
+  --prediction-feed-url https://example.com/pre_match_predictions.json \
+  --min-rows 1 \
+  --min-overlap 1
 ```
 
 If `/api/diagnostics` returns HTML instead of JSON while `/api/live-event`
