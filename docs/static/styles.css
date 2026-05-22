@@ -75,12 +75,12 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchInfoStart { color: var(--muted); font-size: 13px; font-weight: 800; margin-top: 2px; }
 #centerPrediction, #detailPrediction { color: var(--accent); font-size: 22px; }
 .predictionPanel { display: grid; gap: 10px; margin: 12px 0; border: 1px solid #263743; border-radius: 8px; background: #10171d; padding: 10px 12px; }
-.predictionPanelTop { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 11px; font-weight: 900; text-transform: uppercase; }
-.predictionPanelTitle { min-width: 0; display: flex; align-items: baseline; gap: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.predictionPanelTop { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: #d7e2ee; font-size: 13px; font-weight: 900; text-transform: uppercase; }
+.predictionPanelTitle { min-width: 0; display: flex; align-items: baseline; gap: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .predictionPanelTop strong { color: var(--accent); font-size: 15px; line-height: 1; }
 .predictionConfidence { border: 1px solid #384653; border-radius: 999px; padding: 3px 7px; color: #d7e2ee; font-size: 10px; }
 .predictionUnified { display: grid; gap: 6px; min-width: 0; }
-.predictionUnifiedHead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; color: #f4f8fc; font-size: 12px; font-weight: 900; }
+.predictionUnifiedHead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; color: #f4f8fc; font-size: 12px; font-weight: 800; }
 .predictionUnifiedHead span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .predictionUnifiedHead span:last-child { text-align: right; }
 .predictionUnifiedHead b { color: #dbe5f4; }
