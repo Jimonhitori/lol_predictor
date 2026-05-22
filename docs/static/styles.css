@@ -154,7 +154,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .itemSlots { display: grid; grid-template-columns: repeat(7, 24px); gap: 3px; align-items: center; justify-content: start; }
 .itemSlot { width: 24px; height: 24px; border-radius: 3px; background: #242a33; border: 1px solid #343d49; }
 .itemSlot img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; display: block; }
-.liveRefreshMeta { margin-top: 16px; padding-top: 10px; border-top: 1px solid rgba(139, 161, 184, .18); font-size: 12px; line-height: 1.35; }
+.liveRefreshMeta { display: none; }
 .rosterList { display: grid; gap: 8px; }
 .playerCard { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: #10161d; }
 .playerCardTop { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; }
