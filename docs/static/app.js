@@ -370,8 +370,9 @@ async function loadMatches() {
   await refreshStaticMatchStatuses();
   renderDateTabs(state.allMatches);
   renderMatches();
-  predictionsReady.then(() => {
+  predictionsReady.then(async () => {
     state.allMatches = applyPreMatchPredictionOverlay(state.allMatches);
+    await refreshStaticMatchStatuses();
     renderDateTabs(state.allMatches);
     renderMatches();
   }).catch(() => {});
