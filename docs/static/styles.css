@@ -84,10 +84,10 @@ p, label { color: var(--muted); font-size: 13px; }
 .predictionUnifiedHead span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .predictionUnifiedHead span:last-child { text-align: right; }
 .predictionUnifiedHead b { color: #dbe5f4; }
-.predictionUnifiedBar { height: 7px; display: flex; border-radius: 999px; background: #202a33; overflow: hidden; }
-.predictionUnifiedBar span { display: block; min-width: 2px; height: 100%; }
+.predictionUnifiedBar { height: 9px; display: flex; border: 1px solid #05090d; border-radius: 999px; background: #202a33; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+.predictionUnifiedBar span { display: block; box-sizing: border-box; min-width: 2px; height: 100%; }
 .predictionUnifiedBlue { background: #3ca7dc; border-radius: 999px 0 0 999px; }
-.predictionUnifiedRed { background: #dc4b64; border-radius: 0 999px 999px 0; }
+.predictionUnifiedRed { background: #dc4b64; border-left: 2px solid #05090d; border-radius: 0 999px 999px 0; }
 .predictionSplit { display: none; grid-template-columns: 1fr 1fr; gap: 10px; }
 .predictionSide { display: grid; gap: 6px; min-width: 0; }
 .predictionSideHead { display: flex; justify-content: space-between; gap: 8px; color: #dbe5f4; font-size: 12px; font-weight: 900; }
