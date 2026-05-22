@@ -1,6 +1,8 @@
 name: Smoke production contracts
 
 on:
+  schedule:
+    - cron: "30 */6 * * *"
   workflow_dispatch:
     inputs:
       base_url:
@@ -48,6 +50,16 @@ jobs:
   smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      BASE_URL: ${{ github.event.inputs.base_url || 'https://lol-predictor.pages.dev' }}
+      EVENT_ID: ${{ github.event.inputs.event_id || 'test' }}
+      EXPECTED_CONTRACT_VERSION: ${{ github.event.inputs.expected_contract_version || '2026-05-20-live-pre-match-diagnostics-v1' }}
+      PREDICTION_FEED_URL: ${{ github.event.inputs.prediction_feed_url || 'https://lol-predictor.pages.dev/pre_match_predictions.json' }}
+      PREDICTION_UI_MIN_ROWS: ${{ github.event.inputs.prediction_ui_min_rows || '1' }}
+      PREDICTION_UI_MIN_OVERLAP: ${{ github.event.inputs.prediction_ui_min_overlap || '1' }}
+      LIVE_STATUS_URL: ${{ github.event.inputs.live_status_url || 'https://lol-predictor.pages.dev/live_status.json' }}
+      LIVE_MANIFEST_URL: ${{ github.event.inputs.live_manifest_url || 'https://lol-predictor.pages.dev/live_model_manifest.json' }}
+      REQUIRE_LIVE_WIN_PROBABILITY: ${{ github.event.inputs.require_live_win_probability || 'false' }}
 
     steps:
       - name: Checkout
@@ -61,15 +73,15 @@ jobs:
       - name: Check production contracts
         run: |
           node scripts/check_cloudflare_pages.mjs \
-            --base-url "${{ inputs.base_url }}" \
-            --event-id "${{ inputs.event_id }}" \
-            --expected-contract-version "${{ inputs.expected_contract_version }}" \
-            --prediction-feed-url "${{ inputs.prediction_feed_url }}" \
-            --live-status-url "${{ inputs.live_status_url }}" \
-            --live-manifest-url "${{ inputs.live_manifest_url }}" \
-            --require-live-win-probability "${{ inputs.require_live_win_probability }}"
+            --base-url "$BASE_URL" \
+            --event-id "$EVENT_ID" \
+            --expected-contract-version "$EXPECTED_CONTRACT_VERSION" \
+            --prediction-feed-url "$PREDICTION_FEED_URL" \
+            --live-status-url "$LIVE_STATUS_URL" \
+            --live-manifest-url "$LIVE_MANIFEST_URL" \
+            --require-live-win-probability "$REQUIRE_LIVE_WIN_PROBABILITY"
           node scripts/check_pre_match_ui.mjs \
-            --base-url "${{ inputs.base_url }}" \
-            --prediction-feed-url "${{ inputs.prediction_feed_url }}" \
-            --min-rows "${{ inputs.prediction_ui_min_rows }}" \
-            --min-overlap "${{ inputs.prediction_ui_min_overlap }}"
+            --base-url "$BASE_URL" \
+            --prediction-feed-url "$PREDICTION_FEED_URL" \
+            --min-rows "$PREDICTION_UI_MIN_ROWS" \
+            --min-overlap "$PREDICTION_UI_MIN_OVERLAP"
