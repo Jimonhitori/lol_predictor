@@ -27,6 +27,7 @@ const errors = [];
 const warnings = [];
 let renderContract = null;
 let scheduleOverlay = null;
+let detailRefresh = null;
 
 const predictions = Array.isArray(feed.data?.predictions) ? feed.data.predictions : [];
 const matches = Array.isArray(matchesPayload.data?.matches) ? matchesPayload.data.matches : [];
@@ -99,6 +100,8 @@ if (appSource.ok) {
     'function renderPredictionPanel(id, details)',
     'function applyPreMatchPredictionOverlay(matches)',
     'function parseScheduleDate(value)',
+    'function matchDetailRefreshPolicy(details)',
+    'function scheduleNextMatchDetailRefresh(details)',
     'function predictionPanelHtml(details, prediction)',
     'function predictionSideHtml(side, name, probability)',
     'function formatProbability(value)',
@@ -127,6 +130,10 @@ if (appSource.ok) {
   scheduleOverlay = overlayCheck.summary;
   if (!overlayCheck.ok) errors.push(...overlayCheck.errors);
   warnings.push(...overlayCheck.warnings);
+  const refreshCheck = checkDetailRefreshPolicy(appSource.text);
+  detailRefresh = refreshCheck.summary;
+  if (!refreshCheck.ok) errors.push(...refreshCheck.errors);
+  warnings.push(...refreshCheck.warnings);
 }
 if (!styles.ok) {
   errors.push(`styles source failed: ${styles.error || styles.status}`);
@@ -171,6 +178,7 @@ const report = {
   example,
   render_contract: renderContract,
   schedule_overlay: scheduleOverlay,
+  detail_refresh: detailRefresh,
   warnings,
   errors,
 };
@@ -408,6 +416,76 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
     }
   } catch (error) {
     output.errors.push(`schedule overlay probe failed: ${error instanceof Error ? error.message : String(error)}`);
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+function checkDetailRefreshPolicy(appSourceText) {
+  const output = {
+    ok: true,
+    errors: [],
+    warnings: [],
+    summary: {
+      checked: false,
+      completed_interval_ms: null,
+      live_interval_ms: null,
+      near_start_interval_ms: null,
+      prestart_interval_ms: null,
+      future_interval_ms: null,
+      uses_timeout: appSourceText.includes('window.setTimeout(() => refreshMatchDetail(false)'),
+      uses_fixed_interval: appSourceText.includes('window.setInterval(() => refreshMatchDetail(false)'),
+    },
+  };
+  const context = {
+    window: { STATIC_SITE: true },
+    location: { href: 'http://example.test/', origin: 'http://example.test' },
+    document: {
+      getElementById: () => null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+    },
+    console: { log: () => {}, warn: () => {}, error: () => {} },
+    setTimeout: () => 0,
+    setInterval: () => 0,
+    clearInterval: () => {},
+    Intl,
+    Date,
+    URL,
+    URLSearchParams,
+  };
+  context.window.document = context.document;
+  const realNow = Date.now;
+  try {
+    vm.createContext(context);
+    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    vm.runInContext('Date.now = () => 1769200000000', context, { timeout: 1000 });
+    output.summary.checked = true;
+    const policies = vm.runInContext(`
+      ({
+        completed: matchDetailRefreshPolicy({ status: 'completed', start_time: '2026-01-24T00:00:00Z' }),
+        live: matchDetailRefreshPolicy({ status: 'inProgress', start_time: '2026-01-24T00:00:00Z' }),
+        nearStart: matchDetailRefreshPolicy({ status: 'unstarted', start_time: new Date(Date.now() + 4 * 60 * 1000).toISOString() }),
+        prestart: matchDetailRefreshPolicy({ status: 'unstarted', start_time: new Date(Date.now() + 10 * 60 * 1000).toISOString() }),
+        future: matchDetailRefreshPolicy({ status: 'unstarted', start_time: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() })
+      })
+    `, context, { timeout: 1000 });
+    output.summary.completed_interval_ms = policies.completed.interval_ms;
+    output.summary.live_interval_ms = policies.live.interval_ms;
+    output.summary.near_start_interval_ms = policies.nearStart.interval_ms;
+    output.summary.prestart_interval_ms = policies.prestart.interval_ms;
+    output.summary.future_interval_ms = policies.future.interval_ms;
+    if (policies.completed.interval_ms !== 0) output.errors.push('completed match detail refresh should be off');
+    if (policies.live.interval_ms !== 5000) output.errors.push('live match detail refresh should be 5s');
+    if (policies.nearStart.interval_ms !== 15000) output.errors.push('near-start match detail refresh should be 15s');
+    if (policies.prestart.interval_ms !== 60000) output.errors.push('prestart match detail refresh should be 60s');
+    if (policies.future.interval_ms !== 300000) output.errors.push('future match detail refresh should be 5m');
+    if (!output.summary.uses_timeout) output.errors.push('detail refresh should schedule with setTimeout');
+    if (output.summary.uses_fixed_interval) output.errors.push('detail refresh still uses fixed setInterval');
+  } catch (error) {
+    output.errors.push(`detail refresh policy probe failed: ${error instanceof Error ? error.message : String(error)}`);
+  } finally {
+    Date.now = realNow;
   }
   output.ok = output.errors.length === 0;
   return output;
