@@ -1683,7 +1683,7 @@ function renderLiveDraft(details) {
         <div class="liveCenter">
           <span class="liveBadge">${escapeHtml(badgeText)}</span>
           ${timerText ? `<span class="liveTimer">${escapeHtml(timerText)}</span>` : ''}
-          ${winProbText ? `<span class="liveTimer">${escapeHtml(winProbText)}</span>` : ''}
+          ${winProbText ? `<span class="liveProbability">${escapeHtml(winProbText)}</span>` : ''}
         </div>
         ${liveTeamHeader(redTeam)}
       </div>
