@@ -2,10 +2,15 @@
 const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
-const REFRESH_INTERVAL_MS = 5000;
-const REFRESH_INTERVAL_LABEL = '5s';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
+const DETAIL_REFRESH_IN_PROGRESS_MS = 5000;
+const DETAIL_REFRESH_FINALIZING_MS = 60000;
+const DETAIL_REFRESH_NEAR_START_MS = 15000;
+const DETAIL_REFRESH_PRESTART_MS = 60000;
+const DETAIL_REFRESH_FUTURE_MS = 5 * 60 * 1000;
+const DETAIL_REFRESH_NEAR_START_WINDOW_MS = 5 * 60 * 1000;
+const DETAIL_REFRESH_PRESTART_WINDOW_MS = 20 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 
 async function api(path) {
@@ -1015,7 +1020,6 @@ async function loadMatchDetailPage() {
   predictionsReady.then(() => {
     if (state.currentDetails?.id) refreshMatchDetail(false);
   }).catch(() => {});
-  state.detailTimer = window.setInterval(() => refreshMatchDetail(false), REFRESH_INTERVAL_MS);
 }
 
 function showDetailLoading() {
@@ -1054,6 +1058,7 @@ async function refreshMatchDetail(initial) {
   renderLiveDraft(details);
   if (initial) await predictDetail(left, right, details.league);
   updateLiveRefreshMeta(details);
+  scheduleNextMatchDetailRefresh(details);
 }
 
 async function fetchMatchDetail(id) {
@@ -1088,8 +1093,49 @@ function matchDetailMeta(details) {
     `BO${details.best_of || '-'}`,
     details.source || '',
     matchDetailStartLabel(details.start_time),
-    `auto-refresh ${REFRESH_INTERVAL_LABEL}`,
+    `auto-refresh ${matchDetailRefreshLabel(details)}`,
   ].filter(Boolean).join(' · ');
+}
+
+function scheduleNextMatchDetailRefresh(details) {
+  if (state.detailTimer) window.clearTimeout(state.detailTimer);
+  state.detailTimer = null;
+  const policy = matchDetailRefreshPolicy(details);
+  if (!policy.interval_ms) return;
+  state.detailTimer = window.setTimeout(() => refreshMatchDetail(false), policy.interval_ms);
+}
+
+function matchDetailRefreshPolicy(details) {
+  const status = String(details?.status || '').toLowerCase();
+  if (['completed', 'complete'].includes(status)) {
+    return { interval_ms: 0, label: 'off', reason: 'completed' };
+  }
+  if (status === 'inprogress') {
+    return { interval_ms: DETAIL_REFRESH_IN_PROGRESS_MS, label: '5s', reason: 'live' };
+  }
+  if (status === 'updating') {
+    return { interval_ms: DETAIL_REFRESH_NEAR_START_MS, label: '15s', reason: 'updating' };
+  }
+  const start = new Date(details?.start_time || '');
+  if (Number.isNaN(start.getTime())) {
+    return { interval_ms: DETAIL_REFRESH_PRESTART_MS, label: '60s', reason: 'unknown_start' };
+  }
+  const untilStart = start.getTime() - Date.now();
+  if (untilStart <= 0) {
+    return { interval_ms: DETAIL_REFRESH_FINALIZING_MS, label: '60s', reason: 'past_start' };
+  }
+  if (untilStart <= DETAIL_REFRESH_NEAR_START_WINDOW_MS) {
+    return { interval_ms: DETAIL_REFRESH_NEAR_START_MS, label: '15s', reason: 'near_start' };
+  }
+  if (untilStart <= DETAIL_REFRESH_PRESTART_WINDOW_MS) {
+    return { interval_ms: DETAIL_REFRESH_PRESTART_MS, label: '60s', reason: 'prestart' };
+  }
+  return { interval_ms: DETAIL_REFRESH_FUTURE_MS, label: '5m', reason: 'future' };
+}
+
+function matchDetailRefreshLabel(details) {
+  const policy = matchDetailRefreshPolicy(details);
+  return policy.reason ? `${policy.label} ${policy.reason}` : policy.label;
 }
 
 function matchDetailStartLabel(value) {
@@ -1637,7 +1683,8 @@ function updateLiveRefreshMeta(details) {
   const validation = live.win_probability?.validation?.display ? ` | ${live.win_probability.validation.display}` : '';
   const warning = live.warning || live.win_probability?.warning || details.warning || '';
   const warningText = warning ? ` | ${warning}` : '';
-  $('liveRefreshMeta').textContent = `Last checked ${updatedAt}${liveSource}${frameTime}${frameState}${model}${validation}${warningText}`;
+  const next = ` | next ${matchDetailRefreshLabel(details)}`;
+  $('liveRefreshMeta').textContent = `Last checked ${updatedAt}${next}${liveSource}${frameTime}${frameState}${model}${validation}${warningText}`;
 }
 
 function shortTime(value) {
