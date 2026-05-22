@@ -81,7 +81,7 @@ function renderDiagnostics(data) {
     ? `pre ${data.prediction_feed_freshness}`
     : '';
   const analyzerLive = data.live_status_available
-    ? `analyzer ${data.live_status_stage || (data.live_status_display_ready ? 'display ready' : 'not ready')}`
+    ? `analyzer ${liveStatusSummary(data)}`
     : 'analyzer status missing';
   const worker = data.live_worker_checked
     ? `worker ${data.live_worker_ok ? 'ok' : 'check failed'}`
@@ -90,6 +90,16 @@ function renderDiagnostics(data) {
     ? `artifact warnings ${data.artifact_warnings.length}`
     : '';
   target.textContent = [contract, live, feed, generated, schema, freshness, analyzerLive, worker, artifactWarnings].filter(Boolean).join(' | ');
+}
+
+function liveStatusSummary(data) {
+  const stage = data.live_status_stage || (data.live_status_display_ready ? 'display ready' : 'not ready');
+  const blockers = Number(data.live_status_blocker_count || 0);
+  const warnings = Number(data.live_status_warning_count || 0);
+  const readiness = data.live_status_display_ready === false
+    ? 'display blocked'
+    : (data.live_status_production_ready === false ? 'production pending' : '');
+  return [stage, readiness, blockers ? `${blockers} blockers` : '', warnings ? `${warnings} warnings` : ''].filter(Boolean).join(' ');
 }
 
 async function staticApi(path) {

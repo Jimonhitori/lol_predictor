@@ -74,10 +74,28 @@ if (data.prediction_feed_warning_count > 0 && !data.artifact_warnings?.includes(
   report.errors.push('prediction_feed_has_warnings is missing despite feed warnings');
 }
 const unexpectedArtifactWarnings = Array.isArray(data.artifact_warnings)
-  ? data.artifact_warnings.filter(warning => warning !== 'prediction_feed_has_warnings')
+  ? data.artifact_warnings.filter(warning =>
+    warning !== 'prediction_feed_has_warnings'
+    && warning !== 'live_status_display_not_ready'
+    && warning !== 'live_status_production_not_ready'
+    && !String(warning).startsWith('live_status_blockers:')
+    && warning !== 'analyzer_live_model_missing'
+  )
   : [];
 if (unexpectedArtifactWarnings.length) {
   report.errors.push(`unexpected default artifact warnings: ${unexpectedArtifactWarnings.join(',')}`);
+}
+if (data.live_status_display_ready === false && !data.artifact_warnings?.includes('live_status_display_not_ready')) {
+  report.errors.push('live_status_display_not_ready is missing despite display_ready=false');
+}
+if (data.live_status_production_ready === false && !data.artifact_warnings?.includes('live_status_production_not_ready')) {
+  report.errors.push('live_status_production_not_ready is missing despite production_ready=false');
+}
+if (Number(data.live_status_blocker_count || 0) > 0 && !data.artifact_warnings?.some(warning => String(warning).startsWith('live_status_blockers:'))) {
+  report.errors.push('live_status_blockers warning is missing despite blocker_count>0');
+}
+if (data.analyzer_live_model_available === false && !data.artifact_warnings?.includes('analyzer_live_model_missing')) {
+  report.errors.push('analyzer_live_model_missing is missing despite manifest live_model_available=false');
 }
 
 report.ok = report.errors.length === 0;
