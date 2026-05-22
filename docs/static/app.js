@@ -1012,11 +1012,29 @@ function predictionPanelHtml(details, prediction) {
       <strong>${escapeHtml(shortTeamName(favorite.label))} ${formatProbability(favorite.probability)}</strong>
       <span class="predictionConfidence">${escapeHtml(confidence)}</span>
     </div>
+    ${predictionUnifiedHtml(blueName, redName, blue, red)}
     <div class="predictionSplit">
       ${predictionSideHtml('blue', blueName, blue)}
       ${predictionSideHtml('red', redName, red)}
     </div>
     ${foot ? `<div class="predictionPanelFoot">${escapeHtml(foot)}</div>` : ''}
+  `;
+}
+
+function predictionUnifiedHtml(blueName, redName, blue, red) {
+  const blueWidth = Math.round(clampProbability(blue) * 1000) / 10;
+  const redWidth = Math.round(clampProbability(red) * 1000) / 10;
+  return `
+    <div class="predictionUnified" aria-label="Pre-match win probability split">
+      <div class="predictionUnifiedHead">
+        <span><b>${escapeHtml(blueName)}</b> ${formatProbability(blue)}</span>
+        <span>${formatProbability(red)} <b>${escapeHtml(redName)}</b></span>
+      </div>
+      <div class="predictionUnifiedBar">
+        <span class="predictionUnifiedBlue" style="width:${blueWidth}%"></span>
+        <span class="predictionUnifiedRed" style="width:${redWidth}%"></span>
+      </div>
+    </div>
   `;
 }
 
