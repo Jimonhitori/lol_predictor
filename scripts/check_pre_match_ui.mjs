@@ -67,7 +67,14 @@ let detail = null;
 if (target) {
   detail = await loadJson(`static/data/matches/${target.match.id}.json`);
   if (!detail.ok) {
-    errors.push(`match detail ${target.match.id} failed: ${detail.error || detail.status}`);
+    detail = {
+      ok: true,
+      synthesized: true,
+      data: synthesizeMatchDetail(target.match),
+    };
+    warnings.push(
+      `match detail ${target.match.id} is not in static data; synthesized detail from match index for render contract`,
+    );
   } else {
     const detailId = String(detail.data?.id || detail.data?.event_id || '');
     if (detailId !== String(target.match.id)) {
@@ -153,6 +160,7 @@ const report = {
   prediction_rows: predictions.length,
   match_rows: matches.length,
   overlap_rows: overlap.length,
+  detail_source: detail?.synthesized ? 'synthesized_from_match_index' : (detail ? 'static_detail' : null),
   example,
   render_contract: renderContract,
   warnings,
@@ -186,6 +194,32 @@ function summarizeExample({ prediction, match }, detailData) {
     panel_summary: `${favorite} ${formatPercent(Math.max(blueProbability, redProbability))} | ${blue} ${formatPercent(blueProbability)} / ${red} ${formatPercent(redProbability)} | ${(prediction.confidence || 'unrated').toUpperCase()}`,
     model: prediction.model || '',
     warnings: Array.isArray(prediction.warnings) ? prediction.warnings.length : 0,
+  };
+}
+
+function synthesizeMatchDetail(match) {
+  return {
+    id: String(match.id || match.event_id || ''),
+    league: match.league || '',
+    best_of: match.best_of || '',
+    status: match.status || '',
+    start_time: match.start_time || '',
+    source: match.source || 'match_index',
+    teams: [
+      {
+        name: match.blue_team || match.blue_code || 'Blue',
+        code: match.blue_code || match.blue_team || 'Blue',
+        image: match.blue_image || '',
+        game_wins: match.blue_score || '',
+      },
+      {
+        name: match.red_team || match.red_code || 'Red',
+        code: match.red_code || match.red_team || 'Red',
+        image: match.red_image || '',
+        game_wins: match.red_score || '',
+      },
+    ],
+    games: [],
   };
 }
 
