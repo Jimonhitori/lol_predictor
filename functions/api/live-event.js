@@ -5,6 +5,7 @@ const DEFAULT_LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const EVENT_CACHE_SECONDS = 45;
 const LIVE_CACHE_SECONDS = 4;
 const PRE_MATCH_CACHE_SECONDS = 60;
+const LIVE_FEED_DELAY_SECONDS = 130;
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 let liveModelPromise = null;
@@ -291,7 +292,7 @@ async function fetchLiveJson(url) {
 }
 
 function liveFeedStartingTime() {
-  const timestamp = Math.floor((Date.now() - 60000) / 1000);
+  const timestamp = Math.floor((Date.now() - LIVE_FEED_DELAY_SECONDS * 1000) / 1000);
   const rounded = timestamp - (timestamp % 10);
   return new Date(rounded * 1000).toISOString().replace(/\.\d{3}Z$/, '.000Z');
 }
