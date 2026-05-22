@@ -36,7 +36,9 @@ p, label { color: var(--muted); font-size: 13px; }
 .matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 10px; align-items: stretch; }
 .match { min-width: 0; min-height: 228px; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #111820; color: var(--text); cursor: pointer; font: inherit; text-align: inherit; text-decoration: none; overflow: hidden; }
 .match:hover { border-color: var(--accent); }
-.match .backLink { color: var(--accent); margin: auto 0 0; padding-top: 10px; }
+.match .backLink { color: var(--accent); margin: 0; padding: 0; }
+.matchFooter { min-width: 0; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); align-items: center; gap: 8px; margin-top: auto; padding-top: 10px; }
+.matchResult { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #d7e2ee; font-size: 12px; font-weight: 900; text-align: right; }
 .matchMeta { min-width: 0; color: var(--muted); font-size: 12px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(96px, 45%); align-items: start; gap: 8px; margin-bottom: 8px; line-height: 1.25; }
 .matchMeta span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .matchMeta span:last-child { text-align: right; }
@@ -200,6 +202,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .matchMeta { font-size: 11px; }
   .matches { gap: 7px; }
   .match .backLink { display: none; }
+  .matchFooter { grid-template-columns: minmax(0, 1fr); padding-top: 8px; }
   .versus { gap: 5px; }
   .cardTeam { grid-template-rows: 38px 24px; gap: 3px; }
   .cardLogo { width: 42px; height: 38px; }
