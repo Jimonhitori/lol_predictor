@@ -113,7 +113,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .liveTab { width: 100%; margin: 0; border: 0; border-right: 2px solid #11161b; border-radius: 0; background: #2b3038; box-shadow: inset 0 -2px 5px rgba(0,0,0,.45); padding: 9px 10px; text-align: center; font-size: 16px; font-weight: 500; color: #c7d8fb; cursor: pointer; }
 .liveTab:hover, .liveTab:focus-visible { background: #343b46; outline: 1px solid #52627a; outline-offset: -1px; }
 .liveTab.active { background: #11181d; }
-.liveTop { display: grid; grid-template-columns: 1fr 190px 1fr; align-items: end; gap: 18px; margin-bottom: 22px; }
+.liveTop { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 260px) minmax(0, 1fr); align-items: end; gap: 18px; margin-bottom: 22px; }
 .liveTeamHead { display: grid; justify-items: center; gap: 10px; min-width: 0; }
 .liveTeamHead img { width: 64px; height: 64px; object-fit: contain; border-radius: 4px; background: #2a2f37; padding: 6px; }
 .liveTeamHead strong { color: #d7e5ff; text-align: center; overflow-wrap: anywhere; }
@@ -121,6 +121,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .liveBadge { background: #2f8a35; border-radius: 999px; padding: 5px 12px; color: #f5fff5; font-size: 16px; font-weight: 900; text-align: center; }
 .liveBadge.warning { background: #6b5a2e; color: #ffe9a8; }
 .liveTimer { font-size: 18px; font-weight: 900; color: #cdddff; }
+.liveProbability { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; font-weight: 900; line-height: 1.15; color: #cdddff; text-align: center; }
 .liveStatsLine { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 18px; position: relative; }
 .liveStatsLine::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: linear-gradient(90deg, #36a9e8 0 50%, #ff456a 50% 100%); opacity: .95; }
 .liveStatsSide { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
