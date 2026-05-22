@@ -674,7 +674,7 @@ function renderMatches() {
     return;
   }
   $('matches').innerHTML = matches.map(match => `
-    <a class="match" href="${detailHref(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}" data-start="${escapeHtml(match.start_time)}">
+    <a class="match" href="${detailHref(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-blue-code="${escapeHtml(match.blue_code || match.blue_team)}" data-red-code="${escapeHtml(match.red_code || match.red_team)}" data-blue-image="${escapeHtml(match.blue_image || '')}" data-red-image="${escapeHtml(match.red_image || '')}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}" data-start="${escapeHtml(match.start_time)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(matchStatusLabel(match))}</span></div>
       <div class="matchMeta"><span>${escapeHtml(matchStartLabel(match.start_time))}</span><span>${escapeHtml(matchDateLabel(match.start_time))}</span></div>
       <div class="versus">${matchCardTeam(match.blue_code || match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_code || match.red_team, match.red_image)}</div>
@@ -851,16 +851,52 @@ async function selectMatch(match) {
   if ($('team')) $('team').value = match.blue || '';
   if ($('opponent')) $('opponent').value = match.red || '';
   if ($('side')) $('side').value = 'Blue';
-  renderSelectedMatch({ id: match.id || '', teams: [{ name: match.blue, code: match.blue }, { name: match.red, code: match.red }], games: [], best_of: match.bestof, league: match.league, status: match.status, start_time: match.start || '' });
+  const cardDetails = matchDetailsFromCardDataset(match);
+  renderSelectedMatch(cardDetails);
   if (!STATIC_SITE && $('prediction')) await predict();
   if (match.id) {
     try {
       const details = await api('/api/match?id=' + encodeURIComponent(match.id));
-      if (details.id) renderSelectedMatch(details);
+      if (details.id) renderSelectedMatch(mergeCardTeamImages(cardDetails, details));
     } catch (error) {
       $('selectedMatchMeta').textContent = `${match.league || ''} · details unavailable`;
     }
   }
+}
+
+function matchDetailsFromCardDataset(match) {
+  return {
+    id: match.id || '',
+    teams: [
+      {
+        name: match.blue || match.blueCode || '',
+        code: match.blueCode || match.blue || '',
+        image: normalizeTeamImage(match.blueImage || ''),
+      },
+      {
+        name: match.red || match.redCode || '',
+        code: match.redCode || match.red || '',
+        image: normalizeTeamImage(match.redImage || ''),
+      },
+    ],
+    games: [],
+    best_of: match.bestof,
+    league: match.league,
+    status: match.status,
+    start_time: match.start || '',
+  };
+}
+
+function mergeCardTeamImages(cardDetails, details) {
+  const teams = Array.isArray(details.teams) ? details.teams : [];
+  const cardTeams = Array.isArray(cardDetails.teams) ? cardDetails.teams : [];
+  return {
+    ...details,
+    teams: teams.map((team, index) => ({
+      ...team,
+      image: normalizeTeamImage(team.image || cardTeams[index]?.image || ''),
+    })),
+  };
 }
 
 function renderSelectedMatch(details) {

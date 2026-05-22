@@ -28,6 +28,7 @@ const warnings = [];
 let renderContract = null;
 let scheduleOverlay = null;
 let detailRefresh = null;
+let matchCenterLogos = null;
 
 const predictions = Array.isArray(feed.data?.predictions) ? feed.data.predictions : [];
 const matches = Array.isArray(matchesPayload.data?.matches) ? matchesPayload.data.matches : [];
@@ -102,6 +103,8 @@ if (appSource.ok) {
     'function parseScheduleDate(value)',
     'function matchDetailRefreshPolicy(details)',
     'function scheduleNextMatchDetailRefresh(details)',
+    'function matchDetailsFromCardDataset(match)',
+    'function mergeCardTeamImages(cardDetails, details)',
     'function predictionPanelHtml(details, prediction)',
     'function predictionSideHtml(side, name, probability)',
     'function formatProbability(value)',
@@ -134,6 +137,10 @@ if (appSource.ok) {
   detailRefresh = refreshCheck.summary;
   if (!refreshCheck.ok) errors.push(...refreshCheck.errors);
   warnings.push(...refreshCheck.warnings);
+  const logoCheck = checkMatchCenterLogos(appSource.text);
+  matchCenterLogos = logoCheck.summary;
+  if (!logoCheck.ok) errors.push(...logoCheck.errors);
+  warnings.push(...logoCheck.warnings);
 }
 if (!styles.ok) {
   errors.push(`styles source failed: ${styles.error || styles.status}`);
@@ -179,6 +186,7 @@ const report = {
   render_contract: renderContract,
   schedule_overlay: scheduleOverlay,
   detail_refresh: detailRefresh,
+  match_center_logos: matchCenterLogos,
   warnings,
   errors,
 };
@@ -486,6 +494,86 @@ function checkDetailRefreshPolicy(appSourceText) {
     output.errors.push(`detail refresh policy probe failed: ${error instanceof Error ? error.message : String(error)}`);
   } finally {
     Date.now = realNow;
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+function checkMatchCenterLogos(appSourceText) {
+  const output = {
+    ok: true,
+    errors: [],
+    warnings: [],
+    summary: {
+      checked: false,
+      dataset_images_preserved: null,
+      detail_merge_preserves_card_image: null,
+      card_has_blue_image_data_attr: appSourceText.includes('data-blue-image='),
+      card_has_red_image_data_attr: appSourceText.includes('data-red-image='),
+    },
+  };
+  const context = {
+    window: { STATIC_SITE: true },
+    location: { href: 'http://example.test/', origin: 'http://example.test' },
+    document: {
+      getElementById: () => null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+    },
+    console: { log: () => {}, warn: () => {}, error: () => {} },
+    setTimeout: () => 0,
+    setInterval: () => 0,
+    clearInterval: () => {},
+    Intl,
+    Date,
+    URL,
+    URLSearchParams,
+  };
+  context.window.document = context.document;
+  try {
+    vm.createContext(context);
+    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    output.summary.checked = true;
+    const result = vm.runInContext(`
+      const cardDetails = matchDetailsFromCardDataset({
+        id: 'match-1',
+        blue: 'Team Blue',
+        red: 'Team Red',
+        blueCode: 'BLU',
+        redCode: 'RED',
+        blueImage: 'http://static.lolesports.com/blue.png',
+        redImage: 'https://static.lolesports.com/red.png',
+        league: 'LPL',
+        bestof: '3',
+        status: 'unstarted',
+        start: '2026-05-23T06:00:00Z'
+      });
+      const merged = mergeCardTeamImages(cardDetails, {
+        id: 'match-1',
+        teams: [{ name: 'Team Blue', code: 'BLU' }, { name: 'Team Red', code: 'RED' }]
+      });
+      ({
+        cardBlueImage: cardDetails.teams[0].image,
+        cardRedImage: cardDetails.teams[1].image,
+        mergedBlueImage: merged.teams[0].image,
+        mergedRedImage: merged.teams[1].image
+      })
+    `, context, { timeout: 1000 });
+    output.summary.dataset_images_preserved = result.cardBlueImage === 'https://static.lolesports.com/blue.png'
+      && result.cardRedImage === 'https://static.lolesports.com/red.png';
+    output.summary.detail_merge_preserves_card_image = result.mergedBlueImage === 'https://static.lolesports.com/blue.png'
+      && result.mergedRedImage === 'https://static.lolesports.com/red.png';
+    if (!output.summary.card_has_blue_image_data_attr || !output.summary.card_has_red_image_data_attr) {
+      output.errors.push('match cards must expose team image data attributes for Match Center');
+    }
+    if (!output.summary.dataset_images_preserved) {
+      output.errors.push('Match Center dataset details did not preserve normalized team image URLs');
+    }
+    if (!output.summary.detail_merge_preserves_card_image) {
+      output.errors.push('Match Center detail merge did not preserve card team image URLs');
+    }
+  } catch (error) {
+    output.errors.push(`match center logo probe failed: ${error instanceof Error ? error.message : String(error)}`);
   }
   output.ok = output.errors.length === 0;
   return output;
