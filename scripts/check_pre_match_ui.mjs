@@ -111,7 +111,6 @@ if (appSource.ok) {
     'function predictionPanelHtml(details, prediction)',
     'function predictionSideHtml(side, name, probability)',
     'function formatProbability(value)',
-    'matchInfoPrediction',
     'predictionPanel',
     'predictionConfidence',
     'predictionPanelFoot',
