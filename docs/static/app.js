@@ -2093,7 +2093,7 @@ function liveTimerText(details, game, live, meaningfulLive) {
   if (state === 'unneeded') return '-';
   const official = Number(live?.game_time || 0);
   if (official > 0 && !live?.estimated_game_time) return formatGameTime(official);
-  return meaningfulLive ? 'LIVE' : '--:--';
+  return meaningfulLive ? 'LIVE' : '';
 }
 
 function hasMeaningfulLiveData(live) {
