@@ -79,7 +79,16 @@ p, label { color: var(--muted); font-size: 13px; }
 .predictionPanelTop { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 10px; color: var(--muted); font-size: 11px; font-weight: 900; text-transform: uppercase; }
 .predictionPanelTop strong { color: var(--accent); font-size: 15px; line-height: 1; }
 .predictionConfidence { border: 1px solid #384653; border-radius: 999px; padding: 3px 7px; color: #d7e2ee; font-size: 10px; }
-.predictionSplit { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.predictionUnified { display: grid; gap: 6px; min-width: 0; }
+.predictionUnifiedHead { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; color: #f4f8fc; font-size: 12px; font-weight: 900; }
+.predictionUnifiedHead span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.predictionUnifiedHead span:last-child { text-align: right; }
+.predictionUnifiedHead b { color: #dbe5f4; }
+.predictionUnifiedBar { height: 7px; display: flex; border-radius: 999px; background: #202a33; overflow: hidden; }
+.predictionUnifiedBar span { display: block; min-width: 2px; height: 100%; }
+.predictionUnifiedBlue { background: #3ca7dc; border-radius: 999px 0 0 999px; }
+.predictionUnifiedRed { background: #dc4b64; border-radius: 0 999px 999px 0; }
+.predictionSplit { display: none; grid-template-columns: 1fr 1fr; gap: 10px; }
 .predictionSide { display: grid; gap: 6px; min-width: 0; }
 .predictionSideHead { display: flex; justify-content: space-between; gap: 8px; color: #dbe5f4; font-size: 12px; font-weight: 900; }
 .predictionSideHead span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -213,7 +222,8 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .selectedMatch.twoTeams { grid-template-columns: 1fr 1fr; }
   .predictionPanelTop { grid-template-columns: 1fr auto; }
   .predictionConfidence { justify-self: start; }
-  .predictionSplit { grid-template-columns: 1fr; }
+  .predictionUnified { display: none; }
+  .predictionSplit { display: grid; grid-template-columns: 1fr; }
   .teamBlock img { width: 48px; height: 48px; }
   .teamBlock strong { font-size: 13px; }
   .matchScorePill { min-width: 0; }
