@@ -1512,14 +1512,11 @@ function draftSlots(side) {
 function matchInfoBlock(details) {
   const bestOf = details.best_of || '-';
   const score = seriesScore(details.teams || []);
-  const prediction = preMatchPredictionForDetails(details);
-  const predictionHtml = prediction ? `<span class="matchInfoPrediction">${escapeHtml(preMatchSplitText(details, prediction))}</span>` : '';
   return `
     <div class="matchInfo">
       <span class="matchInfoLeague">${escapeHtml(details.league || '-')}</span>
       <span class="matchInfoBo">BEST OF ${escapeHtml(bestOf)}</span>
       <span class="matchInfoScore">${escapeHtml(score)}</span>
-      ${predictionHtml}
       <strong class="matchInfoVs">VS</strong>
       <span class="matchInfoStart">${escapeHtml(startLine(details))}</span>
     </div>
