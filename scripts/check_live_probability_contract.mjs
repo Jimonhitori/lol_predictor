@@ -35,8 +35,6 @@ const sampleSummary = validatePayload(sample.data, {
 const modelSummary = validateModel(model.data, errors);
 const appSummary = validateSourceHooks('app.js', appSource, [
   'function liveWinProbabilityText(game, live)',
-  'probability.validation || {}',
-  'validation.display',
   'live.win_probability?.validation?.display',
   'liveRefreshMeta',
 ], errors);
@@ -194,7 +192,7 @@ function checkLiveProbabilityRendering(source, sampleData, outputErrors) {
     checked: false,
     estimated_visible: null,
     non_estimated_hidden: null,
-    caution_visible: null,
+    caution_hidden: null,
   };
   if (!source.ok) return summary;
   const game = (sampleData?.games || [])[0] || {};
@@ -261,9 +259,9 @@ function checkLiveProbabilityRendering(source, sampleData, outputErrors) {
       context,
       { timeout: 1000 },
     );
-    summary.caution_visible = typeof cautionText === 'string' && cautionText.includes('caution');
-    if (!summary.caution_visible) {
-      outputErrors.push('app.js live probability render contract did not show caution marker for cautious validation');
+    summary.caution_hidden = typeof cautionText === 'string' && !cautionText.includes('caution');
+    if (!summary.caution_hidden) {
+      outputErrors.push('app.js live probability render contract should not show caution marker in probability text');
     }
   } catch (error) {
     outputErrors.push(`app.js live probability render contract failed: ${error instanceof Error ? error.message : String(error)}`);

@@ -1704,9 +1704,7 @@ function liveWinProbabilityText(game, live) {
   if (!Number.isFinite(blue)) return '';
   const blueName = game?.blue?.team_code || game?.blue?.team_name || 'Blue';
   const redName = game?.red?.team_code || game?.red?.team_name || 'Red';
-  const validation = probability.validation || {};
-  const caution = validation.display && validation.display !== 'show_live_probability' ? ' · caution' : '';
-  return `${blueName} ${(blue * 100).toFixed(1)}% / ${redName} ${((1 - blue) * 100).toFixed(1)}%${caution}`;
+  return `${blueName} ${(blue * 100).toFixed(1)}% / ${redName} ${((1 - blue) * 100).toFixed(1)}%`;
 }
 
 function displayTeamStats(teamStats, players) {
