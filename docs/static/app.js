@@ -363,7 +363,11 @@ async function loadMatches() {
   await refreshStaticMatchStatuses();
   renderDateTabs(state.allMatches);
   renderMatches();
-  predictionsReady.then(() => renderMatches()).catch(() => {});
+  predictionsReady.then(() => {
+    state.allMatches = applyPreMatchPredictionOverlay(state.allMatches);
+    renderDateTabs(state.allMatches);
+    renderMatches();
+  }).catch(() => {});
 }
 
 async function loadPreMatchPredictions() {
@@ -405,6 +409,7 @@ function preMatchPredictionRemoteUrl() {
 function normalizePreMatchPredictionFeed(payload, candidate) {
   const rows = Array.isArray(payload) ? payload : (Array.isArray(payload?.predictions) ? payload.predictions : []);
   const result = {
+    rows: [],
     byEventId: {},
     byGameId: {},
     byMatchKey: {},
@@ -422,6 +427,7 @@ function normalizePreMatchPredictionFeed(payload, candidate) {
     const prediction = normalizePreMatchPrediction(row);
     if (!prediction) continue;
     result.meta.row_count += 1;
+    result.rows.push(prediction);
     if (prediction.event_id) result.byEventId[prediction.event_id] = prediction;
     if (prediction.game_id) result.byGameId[prediction.game_id] = prediction;
     const key = preMatchPredictionKey(prediction);
@@ -473,9 +479,85 @@ function preMatchPredictionKey(value) {
 }
 
 function normalizedPredictionTime(value) {
-  const date = new Date(value || '');
+  const date = parseScheduleDate(value || '');
   if (Number.isNaN(date.getTime())) return String(value || '').trim();
   return date.toISOString();
+}
+
+function applyPreMatchPredictionOverlay(matches) {
+  const predictions = state.preMatchPredictions || {};
+  if (predictions.status !== 'loaded') return matches;
+  const seenIds = new Set();
+  const overlaid = (matches || []).map(match => {
+    const eventId = String(match?.id || match?.event_id || '');
+    if (eventId) seenIds.add(eventId);
+    const prediction = eventId ? predictions.byEventId?.[eventId] : null;
+    return prediction ? overlayMatchFromPrediction(match, prediction) : match;
+  });
+  for (const prediction of predictions.rows || []) {
+    const eventId = String(prediction.event_id || prediction.game_id || '');
+    if (!eventId || seenIds.has(eventId)) continue;
+    seenIds.add(eventId);
+    overlaid.push(overlayMatchFromPrediction({ id: eventId, status: 'unstarted', source: 'pre_match_prediction_feed' }, prediction));
+  }
+  return sortMatchesByStart(overlaid);
+}
+
+function overlayMatchFromPrediction(match, prediction) {
+  const startTime = predictionStartTimeIso(prediction);
+  const overlayTeams = hasPlaceholderTeamInfo(match) || matchScheduleLooksStale(match, prediction);
+  return {
+    ...match,
+    id: String(match.id || prediction.event_id || prediction.game_id || ''),
+    league: match.league || prediction.league || '',
+    start_time: startTime || match.start_time || '',
+    blue_team: overlayTeams ? displayTeamName(prediction.blue_team, match.blue_team) : match.blue_team,
+    red_team: overlayTeams ? displayTeamName(prediction.red_team, match.red_team) : match.red_team,
+    blue_code: overlayTeams ? displayTeamCode(prediction.blue_team, match.blue_code) : match.blue_code,
+    red_code: overlayTeams ? displayTeamCode(prediction.red_team, match.red_code) : match.red_code,
+    status: match.status || 'unstarted',
+  };
+}
+
+function predictionStartTimeIso(prediction) {
+  const date = parseScheduleDate(prediction?.start_time || '');
+  return Number.isNaN(date.getTime()) ? '' : date.toISOString();
+}
+
+function matchScheduleLooksStale(match, prediction) {
+  const matchStart = normalizedPredictionTime(match?.start_time || '');
+  const predictionStart = normalizedPredictionTime(prediction?.start_time || '');
+  if (!matchStart || !predictionStart) return false;
+  return matchStart !== predictionStart;
+}
+
+function displayTeamName(value, fallback) {
+  const text = String(value || '').trim();
+  if (!text) return fallback || '';
+  return text.split('_').filter(Boolean).map(word => word.length <= 3 ? word.toUpperCase() : word[0].toUpperCase() + word.slice(1)).join(' ');
+}
+
+function displayTeamCode(value, fallback) {
+  const text = String(value || '').trim();
+  if (!text) return fallback || '';
+  const words = text.toLowerCase().split('_').filter(Boolean);
+  if (!words.length) return fallback || '';
+  const knownCodes = ['lng', 'we', 'edg', 'jdg', 'blg', 'tes', 'wbg', 'ig', 'tt', 'lgd', 'nip', 'up', 'al', 'rng', 'omg', 'fpx', 'ra'];
+  const known = knownCodes.find(code => words.includes(code));
+  if (known) return known.toUpperCase();
+  if (words.length === 1) return words[0].slice(0, 3).toUpperCase();
+  return words.map(word => word[0] || '').join('').slice(0, 4).toUpperCase();
+}
+
+function sortMatchesByStart(matches) {
+  return [...(matches || [])].sort((left, right) => {
+    const leftTime = parseScheduleDate(left.start_time || '').getTime();
+    const rightTime = parseScheduleDate(right.start_time || '').getTime();
+    if (Number.isNaN(leftTime) && Number.isNaN(rightTime)) return 0;
+    if (Number.isNaN(leftTime)) return 1;
+    if (Number.isNaN(rightTime)) return -1;
+    return leftTime - rightTime;
+  });
 }
 
 async function refreshStaticMatchStatuses() {
@@ -702,7 +784,7 @@ function visibleDateOptions(options) {
 
 function filteredMatches() {
   if (state.selectedMatchDate === 'live') return liveMatches(state.allMatches);
-  return state.allMatches.filter(match => localDateKey(match.start_time) === state.selectedMatchDate);
+  return sortMatchesByStart(state.allMatches.filter(match => localDateKey(match.start_time) === state.selectedMatchDate));
 }
 
 function liveMatches(matches) {
@@ -726,7 +808,7 @@ function matchDateOptions(matches) {
 
 function localDateKey(value) {
   if (!value) return '';
-  const date = new Date(value);
+  const date = parseScheduleDate(value);
   if (Number.isNaN(date.getTime())) return '';
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -740,15 +822,23 @@ function dateFromLocalKey(key) {
 }
 
 function matchDateLabel(value) {
-  const date = new Date(value);
+  const date = parseScheduleDate(value);
   if (Number.isNaN(date.getTime())) return '';
   return new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric', weekday: 'short' }).format(date);
 }
 
 function matchStartLabel(value) {
-  const date = new Date(value);
+  const date = parseScheduleDate(value);
   if (Number.isNaN(date.getTime())) return 'start TBD';
   return new Intl.DateTimeFormat('ja-JP', { hour: '2-digit', minute: '2-digit' }).format(date);
+}
+
+function parseScheduleDate(value) {
+  const text = String(value || '').trim();
+  if (!text) return new Date(NaN);
+  const utcLike = text.match(/^(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2})(?::(\d{2}))?$/);
+  if (utcLike) return new Date(`${utcLike[1]}T${utcLike[2]}:${utcLike[3] || '00'}Z`);
+  return new Date(text);
 }
 
 async function selectMatch(match) {

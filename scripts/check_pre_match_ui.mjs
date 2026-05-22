@@ -26,6 +26,7 @@ const styles = await loadText('static/styles.css');
 const errors = [];
 const warnings = [];
 let renderContract = null;
+let scheduleOverlay = null;
 
 const predictions = Array.isArray(feed.data?.predictions) ? feed.data.predictions : [];
 const matches = Array.isArray(matchesPayload.data?.matches) ? matchesPayload.data.matches : [];
@@ -96,6 +97,8 @@ if (appSource.ok) {
     'function preMatchPredictionForDetails(details)',
     'function preMatchSplitText(details, prediction)',
     'function renderPredictionPanel(id, details)',
+    'function applyPreMatchPredictionOverlay(matches)',
+    'function parseScheduleDate(value)',
     'function predictionPanelHtml(details, prediction)',
     'function predictionSideHtml(side, name, probability)',
     'function formatProbability(value)',
@@ -120,6 +123,10 @@ if (appSource.ok) {
   renderContract = renderCheck.summary;
   if (!renderCheck.ok) errors.push(...renderCheck.errors);
   warnings.push(...renderCheck.warnings);
+  const overlayCheck = checkPredictionScheduleOverlay(appSource.text, predictions, matches, requestedMatchId);
+  scheduleOverlay = overlayCheck.summary;
+  if (!overlayCheck.ok) errors.push(...overlayCheck.errors);
+  warnings.push(...overlayCheck.warnings);
 }
 if (!styles.ok) {
   errors.push(`styles source failed: ${styles.error || styles.status}`);
@@ -163,6 +170,7 @@ const report = {
   detail_source: detail?.synthesized ? 'synthesized_from_match_index' : (detail ? 'static_detail' : null),
   example,
   render_contract: renderContract,
+  schedule_overlay: scheduleOverlay,
   warnings,
   errors,
 };
@@ -181,8 +189,8 @@ function selectTarget(overlapRows, matchId) {
 
 function summarizeExample({ prediction, match }, detailData) {
   const detailTeams = Array.isArray(detailData?.teams) ? detailData.teams : [];
-  const blue = match.blue_code || match.blue_team || detailTeams[0]?.code || prediction.blue_team || 'Blue';
-  const red = match.red_code || match.red_team || detailTeams[1]?.code || prediction.red_team || 'Red';
+  const blue = nonPlaceholder(match.blue_code) || nonPlaceholder(match.blue_team) || nonPlaceholder(detailTeams[0]?.code) || prediction.blue_team || 'Blue';
+  const red = nonPlaceholder(match.red_code) || nonPlaceholder(match.red_team) || nonPlaceholder(detailTeams[1]?.code) || prediction.red_team || 'Red';
   const blueProbability = Number(prediction.blue_win_probability || 0);
   const redProbability = Number(prediction.red_win_probability || 0);
   const favorite = favoriteLabel(blue, red, prediction);
@@ -319,6 +327,95 @@ function checkPredictionPanelRendering(appSourceText, prediction, match, detailD
   }
   output.ok = output.errors.length === 0;
   return output;
+}
+
+function nonPlaceholder(value) {
+  return isPlaceholderTeam(value) ? '' : String(value || '');
+}
+
+function checkPredictionScheduleOverlay(appSourceText, predictions, matches, matchId) {
+  const output = {
+    ok: true,
+    errors: [],
+    warnings: [],
+    summary: {
+      checked: false,
+      target_match_id: matchId || '',
+      stale_static_match_corrected: null,
+      prediction_start_time: '',
+      overlaid_start_time: '',
+      overlaid_blue_team: '',
+      overlaid_red_team: '',
+    },
+  };
+  const targetPrediction = matchId
+    ? predictions.find((prediction) => [prediction.event_id, prediction.game_id].map(String).includes(matchId))
+    : predictions.find((prediction) => matches.some((match) => String(match.id || match.event_id || '') === String(prediction.event_id || prediction.game_id || '')));
+  if (!targetPrediction) {
+    output.warnings.push('schedule overlay probe skipped because no target prediction was found');
+    return output;
+  }
+  const targetId = String(targetPrediction.event_id || targetPrediction.game_id || '');
+  output.summary.target_match_id = targetId;
+  const elements = new Map();
+  const context = {
+    window: { STATIC_SITE: true },
+    location: { href: 'http://example.test/', origin: 'http://example.test' },
+    document: {
+      getElementById: (id) => elements.get(id) || null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+    },
+    console: { log: () => {}, warn: () => {}, error: () => {} },
+    setTimeout: () => 0,
+    setInterval: () => 0,
+    clearInterval: () => {},
+    Intl,
+    Date,
+    URL,
+    URLSearchParams,
+  };
+  context.window.document = context.document;
+  try {
+    vm.createContext(context);
+    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    output.summary.checked = true;
+    const result = vm.runInContext(`
+      state.preMatchPredictions = normalizePreMatchPredictionFeed({
+        schema: 'lol_predictions_public_v1',
+        generated_at: '2026-05-20T00:00:00Z',
+        predictions: ${JSON.stringify(predictions)}
+      }, { source: 'probe', url: 'probe://predictions' });
+      applyPreMatchPredictionOverlay(${JSON.stringify(matches)}).find(match => String(match.id || match.event_id || '') === ${JSON.stringify(targetId)});
+    `, context, { timeout: 1000 });
+    const predictionStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetPrediction.start_time || '')})`, context, { timeout: 1000 });
+    output.summary.prediction_start_time = predictionStart;
+    output.summary.overlaid_start_time = String(result?.start_time || '');
+    output.summary.overlaid_blue_team = String(result?.blue_team || '');
+    output.summary.overlaid_red_team = String(result?.red_team || '');
+    if (!result) {
+      output.errors.push(`schedule overlay did not return target match ${targetId}`);
+    } else {
+      output.summary.stale_static_match_corrected = String(result.start_time || '') === String(predictionStart || '')
+        && !isPlaceholderTeam(result.blue_team)
+        && !isPlaceholderTeam(result.red_team);
+      if (String(result.start_time || '') !== String(predictionStart || '')) {
+        output.errors.push(`schedule overlay start time ${result.start_time || '(missing)'} did not match prediction ${predictionStart || '(missing)'}`);
+      }
+      if (isPlaceholderTeam(result.blue_team) || isPlaceholderTeam(result.red_team)) {
+        output.errors.push('schedule overlay left placeholder team names on a prediction-backed match');
+      }
+    }
+  } catch (error) {
+    output.errors.push(`schedule overlay probe failed: ${error instanceof Error ? error.message : String(error)}`);
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+function isPlaceholderTeam(value) {
+  const text = String(value || '').trim().toLowerCase();
+  return !text || text === 'tbd' || text === 'unknown';
 }
 
 function fakeElement() {
