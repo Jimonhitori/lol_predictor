@@ -1,11 +1,11 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-05-22T13:34:13.286351Z",
+  "generated_at": "2026-05-22T18:35:53.676569Z",
   "source": "lol-pros-analyzer",
   "models": {
     "pre_match": {
       "name": "logistic_regression_2024_2026_full",
-      "version": "2026-05-22-current",
+      "version": "2026-05-23-aliasfix",
       "metrics": {}
     }
   },
@@ -225,11 +225,11 @@
       "game_id": "115616219464541883",
       "league": "LPL",
       "start_time": "2026-05-23 06:00:00",
-      "blue_team": "xi_an_team_we",
-      "red_team": "suzhou_lng_esports",
-      "blue_win_probability": 0.609658,
-      "red_win_probability": 0.390342,
-      "predicted_winner": "xi_an_team_we",
+      "blue_team": "team_we",
+      "red_team": "lng_esports",
+      "blue_win_probability": 0.35467,
+      "red_win_probability": 0.64533,
+      "predicted_winner": "lng_esports",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
       "warnings": []
