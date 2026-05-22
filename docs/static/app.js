@@ -104,21 +104,67 @@ async function staticApi(path) {
   } else if (url.pathname === '/api/team-record') {
     target = `data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
   } else if (url.pathname === '/api/head-to-head') {
-    target = `data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_a') || '')}__${staticKey(params.get('team_b') || '')}.json`;
+    return fetchStaticHeadToHead(params);
   }
   if (!target) throw new Error(`Static data route is not available: ${path}`);
   target = staticDataUrl(target);
   let response = await fetch(target, { cache: 'no-store' });
-  if (!response.ok && url.pathname === '/api/head-to-head') {
-    const reverseTarget = staticDataUrl(`data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_b') || '')}__${staticKey(params.get('team_a') || '')}.json`);
-    if (reverseTarget !== target) {
-      response = await fetch(reverseTarget, { cache: 'no-store' });
-      if (response.ok) target = reverseTarget;
-    }
-  }
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
   return data;
+}
+
+async function fetchStaticHeadToHead(params) {
+  const league = staticKey(params.get('league') || 'all');
+  const leftKeys = staticTeamKeyCandidates(params.get('team_a') || '', params.get('team_a_code') || '');
+  const rightKeys = staticTeamKeyCandidates(params.get('team_b') || '', params.get('team_b_code') || '');
+  for (const left of leftKeys) {
+    for (const right of rightKeys) {
+      for (const [a, b] of [[left, right], [right, left]]) {
+        const target = staticDataUrl(`data/h2h/${league}__${a}__${b}.json`);
+        const response = await fetch(target, { cache: 'no-store' });
+        if (response.ok) return response.json();
+      }
+    }
+  }
+  throw new Error(`Static h2h data missing: ${league}__${leftKeys[0] || 'unknown'}__${rightKeys[0] || 'unknown'}`);
+}
+
+function staticTeamKeyCandidates(name, code = '') {
+  const rawKeys = [name, code].map(staticTeamKey).filter(Boolean);
+  const aliases = {
+    lng: ['suzhou-lng-esports', 'lng-esports'],
+    'lng-esports': ['suzhou-lng-esports', 'lng'],
+    'suzhou-lng-esports': ['lng-esports', 'lng'],
+    we: ['xi-an-team-we', 'team-we'],
+    'team-we': ['xi-an-team-we', 'we'],
+    'xi-an-team-we': ['team-we', 'we'],
+    jdg: ['beijing-jdg-esports', 'jd-gaming'],
+    'jd-gaming': ['beijing-jdg-esports', 'jdg'],
+    'beijing-jdg-esports': ['jdg', 'jd-gaming'],
+    wbg: ['weibogaming', 'weibo-gaming'],
+    'weibo-gaming': ['weibogaming', 'wbg'],
+    blg: ['bilibili-gaming'],
+    tes: ['top-esports'],
+    ig: ['invictus-gaming'],
+    edg: ['edward-gaming'],
+    tt: ['thunder-talk-gaming'],
+    lgd: ['lgd-gaming'],
+    nip: ['shenzhen-ninjas-in-pyjamas'],
+    up: ['ultra-prime'],
+    al: ['anyone-s-legend'],
+    omg: ['oh-my-god'],
+  };
+  const candidates = [];
+  for (const key of rawKeys) {
+    candidates.push(key, ...(aliases[key] || []));
+  }
+  return [...new Set(candidates.filter(Boolean))];
+}
+
+function staticTeamKey(value) {
+  const text = String(value || '').trim();
+  return text ? staticKey(text) : '';
 }
 
 function staticDataUrl(path) {
@@ -1726,8 +1772,12 @@ async function loadInlineTeamRecords(leftTeam, rightTeam, league) {
 async function loadHeadToHead(leftTeam, rightTeam, league) {
   const leftName = leftTeam.name || leftTeam.code || '';
   const rightName = rightTeam.name || rightTeam.code || '';
-  const data = await api('/api/head-to-head?team_a=' + encodeURIComponent(leftName) + '&team_b=' + encodeURIComponent(rightName) + '&team_a_code=' + encodeURIComponent(leftTeam.code || '') + '&team_b_code=' + encodeURIComponent(rightTeam.code || '') + '&league=' + encodeURIComponent(league || ''));
-  renderHeadToHead(data.matches || [], leftTeam, rightTeam);
+  try {
+    const data = await api('/api/head-to-head?team_a=' + encodeURIComponent(leftName) + '&team_b=' + encodeURIComponent(rightName) + '&team_a_code=' + encodeURIComponent(leftTeam.code || '') + '&team_b_code=' + encodeURIComponent(rightTeam.code || '') + '&league=' + encodeURIComponent(league || ''));
+    renderHeadToHead(data.matches || [], leftTeam, rightTeam);
+  } catch (error) {
+    renderHeadToHead([], leftTeam, rightTeam);
+  }
 }
 
 function liveGameTab(item, active) {
