@@ -81,8 +81,8 @@ export async function onRequestGet(context) {
   const remoteSchemaOk = remoteSchemaProbe?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
   const predictionSchemaHasTopLevelWarnings = predictionSchema?.json?.properties?.warnings?.type === 'array';
   const remoteSchemaHasTopLevelWarnings = remoteSchemaProbe?.json?.properties?.warnings?.type === 'array';
-  const predictionFeedWarnings = arrayOfStrings(predictionFeed?.json?.warnings);
-  const remotePredictionFeedWarnings = arrayOfStrings(remotePredictionProbe?.json?.warnings);
+  const predictionFeedWarnings = predictionArtifactWarnings(predictionFeed?.json);
+  const remotePredictionFeedWarnings = predictionArtifactWarnings(remotePredictionProbe?.json);
   const artifactWarnings = [
     ...(predictionFeedFreshness.status === 'stale' ? ['prediction_feed_stale'] : []),
     ...(predictionFeedWarnings.length ? ['prediction_feed_has_warnings'] : []),
@@ -205,7 +205,24 @@ function stringEnv(context, key) {
 
 function arrayOfStrings(value) {
   if (!Array.isArray(value)) return [];
-  return value.map(item => String(item)).filter(Boolean);
+  return value.flatMap(warningParts).filter(Boolean);
+}
+
+function predictionArtifactWarnings(payload) {
+  if (!payload) return [];
+  const warnings = arrayOfStrings(payload.warnings);
+  const predictions = Array.isArray(payload.predictions) ? payload.predictions : [];
+  for (const prediction of predictions) {
+    warnings.push(...arrayOfStrings(prediction?.warnings));
+  }
+  return warnings;
+}
+
+function warningParts(value) {
+  return String(value || '')
+    .split(/[|;]/)
+    .map(part => part.trim())
+    .filter(Boolean);
 }
 
 function artifactFreshness(value) {

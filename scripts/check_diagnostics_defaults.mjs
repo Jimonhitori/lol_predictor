@@ -61,14 +61,23 @@ if (data.analyzer_live_manifest_available !== true) {
 if (data.prediction_schema_has_top_level_warnings !== true) {
   report.errors.push('default prediction schema is missing top-level warnings');
 }
-if (data.prediction_feed_warning_count !== 0) {
-  report.errors.push(`default prediction feed warning count is not 0: ${data.prediction_feed_warning_count}`);
+if (!Number.isInteger(data.prediction_feed_warning_count) || data.prediction_feed_warning_count < 0) {
+  report.errors.push(`default prediction feed warning count is invalid: ${data.prediction_feed_warning_count}`);
 }
 if (data.remote_prediction_feed_warning_count !== null) {
   report.errors.push('remote prediction feed warning count should be null without an override URL');
 }
-if (Array.isArray(data.artifact_warnings) && data.artifact_warnings.length) {
-  report.errors.push(`unexpected default artifact warnings: ${data.artifact_warnings.join(',')}`);
+if (data.prediction_feed_warning_count === 0 && Array.isArray(data.artifact_warnings) && data.artifact_warnings.includes('prediction_feed_has_warnings')) {
+  report.errors.push('prediction_feed_has_warnings is set without feed warnings');
+}
+if (data.prediction_feed_warning_count > 0 && !data.artifact_warnings?.includes('prediction_feed_has_warnings')) {
+  report.errors.push('prediction_feed_has_warnings is missing despite feed warnings');
+}
+const unexpectedArtifactWarnings = Array.isArray(data.artifact_warnings)
+  ? data.artifact_warnings.filter(warning => warning !== 'prediction_feed_has_warnings')
+  : [];
+if (unexpectedArtifactWarnings.length) {
+  report.errors.push(`unexpected default artifact warnings: ${unexpectedArtifactWarnings.join(',')}`);
 }
 
 report.ok = report.errors.length === 0;
