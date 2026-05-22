@@ -38,7 +38,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .match:hover { border-color: var(--accent); }
 .match .backLink { color: var(--accent); margin: 0; padding: 0; }
 .matchFooter { min-width: 0; display: grid; grid-template-columns: minmax(0, auto) minmax(0, 1fr); align-items: center; gap: 8px; margin-top: auto; padding-top: 10px; }
-.matchResult { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #d7e2ee; font-size: 12px; font-weight: 900; text-align: right; }
+.matchResult { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: 12px; font-weight: 900; text-align: right; }
 .matchMeta { min-width: 0; color: var(--muted); font-size: 12px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(96px, 45%); align-items: start; gap: 8px; margin-bottom: 8px; line-height: 1.25; }
 .matchMeta span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .matchMeta span:last-child { text-align: right; }

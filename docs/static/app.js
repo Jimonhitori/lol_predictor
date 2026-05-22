@@ -730,8 +730,10 @@ function matchResultText(match) {
   const normalized = String(match.status || '').toLowerCase();
   if (!matchHasScore(match) || !['completed', 'complete', 'inprogress'].includes(normalized)) return '';
   const score = `${match.blue_score}-${match.red_score}`;
-  const winner = ['completed', 'complete'].includes(normalized) ? matchWinnerLabel(match) : '';
-  const label = winner ? `${winner} wins ${score}` : score;
+  const leader = matchWinnerLabel(match);
+  const label = leader
+    ? `${leader} ${['completed', 'complete'].includes(normalized) ? 'wins' : 'leads'} ${score}`
+    : score;
   return `<span class="matchResult">${escapeHtml(label)}</span>`;
 }
 
