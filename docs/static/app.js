@@ -692,7 +692,7 @@ function renderMatches() {
       <div class="matchMeta"><span>${escapeHtml(matchStartLabel(match.start_time))}</span><span>${escapeHtml(matchDateLabel(match.start_time))}</span></div>
       <div class="versus">${matchCardTeam(match.blue_code || match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_code || match.red_team, match.red_image)}</div>
       ${matchPredictionBadge(match)}
-      <span class="backLink">Details</span>
+      <div class="matchFooter"><span class="backLink">Details</span>${matchResultText(match)}</div>
     </a>
   `).join('');
   for (const el of document.querySelectorAll('.match')) {
@@ -724,6 +724,15 @@ function matchPredictionBadge(match) {
       <strong>${escapeHtml(shortTeamName(favorite.name))} ${(favorite.probability * 100).toFixed(1)}%</strong>
     </div>
   `;
+}
+
+function matchResultText(match) {
+  const normalized = String(match.status || '').toLowerCase();
+  if (!matchHasScore(match) || !['completed', 'complete', 'inprogress'].includes(normalized)) return '';
+  const score = `${match.blue_score}-${match.red_score}`;
+  const winner = ['completed', 'complete'].includes(normalized) ? matchWinnerLabel(match) : '';
+  const label = winner ? `${winner} wins ${score}` : score;
+  return `<span class="matchResult">${escapeHtml(label)}</span>`;
 }
 
 function preMatchPredictionForMatch(match) {
@@ -1521,14 +1530,13 @@ function matchStatusLabel(match) {
   const status = String(match.status || '');
   const normalized = status.toLowerCase();
   if (normalized === 'unstarted' && hasStartTimePassed(match.start_time)) return 'updating';
-  const hasScore = match.blue_score !== undefined && match.red_score !== undefined
+  return status;
+}
+
+function matchHasScore(match) {
+  return match.blue_score !== undefined && match.red_score !== undefined
     && String(match.blue_score) !== '' && String(match.red_score) !== ''
     && (Number(match.blue_score || 0) + Number(match.red_score || 0)) > 0;
-  if (hasScore && ['completed', 'complete', 'inprogress'].includes(normalized)) {
-    const winner = ['completed', 'complete'].includes(normalized) ? matchWinnerLabel(match) : '';
-    return `${status} · ${match.blue_score}-${match.red_score}${winner ? ` · ${winner} wins` : ''}`;
-  }
-  return status;
 }
 
 function hasStartTimePassed(value) {
