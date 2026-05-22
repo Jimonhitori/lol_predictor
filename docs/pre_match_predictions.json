@@ -1,11 +1,11 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-05-22T19:01:36.072228Z",
+  "generated_at": "2026-05-22T20:22:34.845920Z",
   "source": "lol-pros-analyzer",
   "models": {
     "pre_match": {
       "name": "logistic_regression_2024_2026_full",
-      "version": "2026-05-23-alias-guardrails",
+      "version": "2026-05-23-alias-cleanup",
       "metrics": {}
     }
   },
@@ -16,31 +16,27 @@
       "league": "LCK Challengers",
       "start_time": "2026-05-22 05:00:00",
       "blue_team": "bnk_fearx_youth",
-      "red_team": "kt_challengers",
-      "blue_win_probability": 0.599192,
-      "red_win_probability": 0.400808,
-      "predicted_winner": "bnk_fearx_youth",
-      "confidence": "medium",
+      "red_team": "kt_rolster_challengers",
+      "blue_win_probability": 0.48739,
+      "red_win_probability": 0.51261,
+      "predicted_winner": "kt_rolster_challengers",
+      "confidence": "low",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "red_team_fallback_slug:kt Challengers->kt_challengers"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116249880467010571",
       "game_id": "116249880467010571",
       "league": "LCK Challengers",
       "start_time": "2026-05-22 05:00:00",
-      "blue_team": "bro_challengers",
+      "blue_team": "hanjin_brion_challengers",
       "red_team": "t1_esports_academy",
-      "blue_win_probability": 0.494141,
-      "red_win_probability": 0.505859,
+      "blue_win_probability": 0.165465,
+      "red_win_probability": 0.834535,
       "predicted_winner": "t1_esports_academy",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:BRO Challengers->bro_challengers"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115548128962971963",
@@ -61,16 +57,14 @@
       "game_id": "116453476471776114",
       "league": "LJL",
       "start_time": "2026-05-22 08:00:00",
-      "blue_team": "dfm_academy",
+      "blue_team": "detonation_focusme_academy",
       "red_team": "rayn_clocks",
-      "blue_win_probability": 0.698734,
-      "red_win_probability": 0.301266,
-      "predicted_winner": "dfm_academy",
-      "confidence": "high",
+      "blue_win_probability": 0.52234,
+      "red_win_probability": 0.47766,
+      "predicted_winner": "detonation_focusme_academy",
+      "confidence": "low",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:DFM Academy->dfm_academy"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115548128963037527",
@@ -78,15 +72,13 @@
       "league": "LCK",
       "start_time": "2026-05-22 10:00:00",
       "blue_team": "kt_rolster",
-      "red_team": "gen_g_esports",
-      "blue_win_probability": 0.659862,
-      "red_win_probability": 0.340138,
-      "predicted_winner": "kt_rolster",
+      "red_team": "gen_g",
+      "blue_win_probability": 0.204353,
+      "red_win_probability": 0.795647,
+      "predicted_winner": "gen_g",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "red_team_fallback_slug:Gen.G Esports->gen_g_esports"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116520394663535872",
@@ -121,16 +113,14 @@
       "game_id": "116520394663535828",
       "league": "VCS",
       "start_time": "2026-05-22 13:00:00",
-      "blue_team": "saigon_mvke_academy",
-      "red_team": "tp_hcm_sn_cybercore_esports",
-      "blue_win_probability": 0.609658,
-      "red_win_probability": 0.390342,
-      "predicted_winner": "saigon_mvke_academy",
-      "confidence": "medium",
+      "blue_team": "mvk_esports_academy",
+      "red_team": "sn_cybercore_esports",
+      "blue_win_probability": 0.817225,
+      "red_win_probability": 0.182775,
+      "predicted_winner": "mvk_esports_academy",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:Saigon MVKE Academy->saigon_mvke_academy|red_team_fallback_slug:TP.HCM SN CyberCore Esports->tp_hcm_sn_cybercore_esports"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116356270007984079",
@@ -278,15 +268,13 @@
       "league": "LPL",
       "start_time": "2026-05-23 09:00:00",
       "blue_team": "invictus_gaming",
-      "red_team": "thunder_talk_gaming",
-      "blue_win_probability": 0.610085,
-      "red_win_probability": 0.389915,
+      "red_team": "thundertalk_gaming",
+      "blue_win_probability": 0.922267,
+      "red_win_probability": 0.077733,
       "predicted_winner": "invictus_gaming",
-      "confidence": "medium",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "red_team_fallback_slug:THUNDER TALK GAMING->thunder_talk_gaming"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116244276931539996",
@@ -294,15 +282,13 @@
       "league": "Hellenic Legends League",
       "start_time": "2026-05-23 10:00:00",
       "blue_team": "wlgaming_esports",
-      "red_team": "goal_esports",
-      "blue_win_probability": 0.709293,
-      "red_win_probability": 0.290707,
+      "red_team": "goal",
+      "blue_win_probability": 0.811935,
+      "red_win_probability": 0.188065,
       "predicted_winner": "wlgaming_esports",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "red_team_fallback_slug:GOAL esports->goal_esports"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116299619170786378",
@@ -325,16 +311,14 @@
       "game_id": "115548128962971875",
       "league": "LCK",
       "start_time": "2026-05-23 10:00:00",
-      "blue_team": "nongshim_red_force",
+      "blue_team": "nongshim_redforce",
       "red_team": "hanwha_life_esports",
-      "blue_win_probability": 0.425253,
-      "red_win_probability": 0.574747,
+      "blue_win_probability": 0.107788,
+      "red_win_probability": 0.892212,
       "predicted_winner": "hanwha_life_esports",
-      "confidence": "medium",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:NONGSHIM RED FORCE->nongshim_red_force"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115548668059589358",
@@ -369,32 +353,28 @@
       "game_id": "115564793879469288",
       "league": "LCS",
       "start_time": "2026-05-23 20:00:00",
-      "blue_team": "cloud9_kia",
+      "blue_team": "cloud9",
       "red_team": "flyquest",
-      "blue_win_probability": 0.605302,
-      "red_win_probability": 0.394698,
-      "predicted_winner": "cloud9_kia",
-      "confidence": "medium",
+      "blue_win_probability": 0.746315,
+      "red_win_probability": 0.253685,
+      "predicted_winner": "cloud9",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:Cloud9 Kia->cloud9_kia"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115616219464541895",
       "game_id": "115616219464541895",
       "league": "LPL",
       "start_time": "2026-05-24 06:00:00",
-      "blue_team": "shenzhen_ninjas_in_pyjamas",
+      "blue_team": "ninjas_in_pyjamas",
       "red_team": "edward_gaming",
-      "blue_win_probability": 0.609882,
-      "red_win_probability": 0.390118,
-      "predicted_winner": "shenzhen_ninjas_in_pyjamas",
-      "confidence": "medium",
+      "blue_win_probability": 0.795881,
+      "red_win_probability": 0.204119,
+      "predicted_winner": "ninjas_in_pyjamas",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:Shenzhen NINJAS IN PYJAMAS->shenzhen_ninjas_in_pyjamas"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115548128962971947",
@@ -402,15 +382,13 @@
       "league": "LCK",
       "start_time": "2026-05-24 08:00:00",
       "blue_team": "dn_soopers",
-      "red_team": "gen_g_esports",
-      "blue_win_probability": 0.380614,
-      "red_win_probability": 0.619386,
-      "predicted_winner": "gen_g_esports",
-      "confidence": "medium",
+      "red_team": "gen_g",
+      "blue_win_probability": 0.031646,
+      "red_win_probability": 0.968354,
+      "predicted_winner": "gen_g",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "red_team_fallback_slug:Gen.G Esports->gen_g_esports"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115570683341512193",
@@ -418,31 +396,27 @@
       "league": "LCP",
       "start_time": "2026-05-24 09:00:00",
       "blue_team": "fukuoka_softbank_hawks_gaming",
-      "red_team": "relove_deep_cross_gaming",
-      "blue_win_probability": 0.65496,
-      "red_win_probability": 0.34504,
+      "red_team": "deep_cross_gaming",
+      "blue_win_probability": 0.508628,
+      "red_win_probability": 0.491372,
       "predicted_winner": "fukuoka_softbank_hawks_gaming",
-      "confidence": "high",
+      "confidence": "low",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "red_team_fallback_slug:Relove Deep Cross Gaming->relove_deep_cross_gaming"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115616219464541901",
       "game_id": "115616219464541901",
       "league": "LPL",
       "start_time": "2026-05-24 09:00:00",
-      "blue_team": "weibogaming",
+      "blue_team": "weibo_gaming",
       "red_team": "lgd_gaming",
-      "blue_win_probability": 0.621478,
-      "red_win_probability": 0.378522,
-      "predicted_winner": "weibogaming",
-      "confidence": "medium",
+      "blue_win_probability": 0.899895,
+      "red_win_probability": 0.100105,
+      "predicted_winner": "weibo_gaming",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:WeiboGaming->weibogaming"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115548128962971891",
@@ -491,16 +465,14 @@
       "game_id": "115565670260181851",
       "league": "CBLOL",
       "start_time": "2026-05-24 16:00:00",
-      "blue_team": "red_canids_kalunga",
+      "blue_team": "red_canids",
       "red_team": "furia",
-      "blue_win_probability": 0.546245,
-      "red_win_probability": 0.453755,
-      "predicted_winner": "red_canids_kalunga",
+      "blue_win_probability": 0.514232,
+      "red_win_probability": 0.485768,
+      "predicted_winner": "red_canids",
       "confidence": "low",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:RED Canids Kalunga->red_canids_kalunga"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115564793879469294",
@@ -508,31 +480,27 @@
       "league": "LCS",
       "start_time": "2026-05-24 20:00:00",
       "blue_team": "lyon",
-      "red_team": "team_liquid_alienware",
-      "blue_win_probability": 0.658095,
-      "red_win_probability": 0.341905,
+      "red_team": "team_liquid",
+      "blue_win_probability": 0.554865,
+      "red_win_probability": 0.445135,
       "predicted_winner": "lyon",
-      "confidence": "high",
+      "confidence": "low",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "red_team_fallback_slug:Team Liquid Alienware->team_liquid_alienware"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116249880466944911",
       "game_id": "116249880466944911",
       "league": "LCK Challengers",
       "start_time": "2026-05-25 05:00:00",
-      "blue_team": "dk_challengers",
-      "red_team": "hle_challengers",
-      "blue_win_probability": 0.609658,
-      "red_win_probability": 0.390342,
-      "predicted_winner": "dk_challengers",
-      "confidence": "medium",
+      "blue_team": "dplus_kia_challengers",
+      "red_team": "hanwha_life_esports_challengers",
+      "blue_win_probability": 0.835295,
+      "red_win_probability": 0.164705,
+      "predicted_winner": "dplus_kia_challengers",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:DK Challengers->dk_challengers|red_team_fallback_slug:HLE Challengers->hle_challengers"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116249880466944895",
@@ -553,16 +521,14 @@
       "game_id": "116249880466944971",
       "league": "LCK Challengers",
       "start_time": "2026-05-25 09:00:00",
-      "blue_team": "bro_challengers",
-      "red_team": "krx_challengers",
-      "blue_win_probability": 0.609658,
-      "red_win_probability": 0.390342,
-      "predicted_winner": "bro_challengers",
-      "confidence": "medium",
+      "blue_team": "hanjin_brion_challengers",
+      "red_team": "kiwoom_drx_challengers",
+      "blue_win_probability": 0.343613,
+      "red_win_probability": 0.656387,
+      "predicted_winner": "kiwoom_drx_challengers",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": [
-        "blue_team_fallback_slug:BRO Challengers->bro_challengers|red_team_fallback_slug:KRX Challengers->krx_challengers"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116413908784071084",
