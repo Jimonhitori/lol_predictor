@@ -11,6 +11,8 @@ const DETAIL_REFRESH_PRESTART_MS = 60000;
 const DETAIL_REFRESH_FUTURE_MS = 5 * 60 * 1000;
 const DETAIL_REFRESH_NEAR_START_WINDOW_MS = 5 * 60 * 1000;
 const DETAIL_REFRESH_PRESTART_WINDOW_MS = 20 * 60 * 1000;
+const LIVE_SNAPSHOT_STORAGE_PREFIX = 'lol_predictor_live_snapshot_v1:';
+const LIVE_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 
 async function api(path) {
@@ -1071,9 +1073,11 @@ function showDetailLoading() {
 
 async function refreshMatchDetail(initial) {
   const id = state.detailMatchId;
-  const details = await fetchMatchDetail(id);
+  let details = await fetchMatchDetail(id);
+  details = restoreEndedLiveSnapshot(details);
   markLiveFrameChanges(details);
   state.currentDetails = details;
+  rememberLiveSnapshot(details);
   if (!details.id) {
     $('matchTitle').textContent = 'Match not found';
     return;
@@ -1121,6 +1125,107 @@ function markLiveFrameChanges(details) {
     live.frame_changed = Boolean(previousFrame && currentFrame !== previousFrame);
     state.liveFrames[gameId] = currentFrame;
   }
+}
+
+function rememberLiveSnapshot(details) {
+  if (!STATIC_SITE || !details?.id || !Array.isArray(details.games)) return;
+  const games = details.games
+    .filter(game => hasRetainableLiveData(game?.live))
+    .map(game => ({
+      id: String(game.id || ''),
+      number: Number(game.number || 0),
+      state: String(game.state || ''),
+      blue: game.blue || {},
+      red: game.red || {},
+      winner: game.winner || '',
+      live: game.live || {},
+    }));
+  if (!games.length) return;
+  writeLiveSnapshot(details.id, {
+    id: String(details.id || ''),
+    status: String(details.status || ''),
+    saved_at: new Date().toISOString(),
+    games,
+  });
+}
+
+function restoreEndedLiveSnapshot(details) {
+  if (!STATIC_SITE || !details?.id || !Array.isArray(details.games) || !isEndedMatchDetails(details)) return details;
+  const snapshot = readLiveSnapshot(details.id);
+  if (!snapshot?.games?.length) return details;
+  const snapshotById = new Map(snapshot.games.map(game => [String(game.id || ''), game]));
+  const snapshotByNumber = new Map(snapshot.games.map(game => [String(game.number || ''), game]));
+  let restored = false;
+  const games = details.games.map(game => {
+    if (hasRetainableLiveData(game?.live)) return game;
+    const previous = snapshotById.get(String(game.id || '')) || snapshotByNumber.get(String(game.number || ''));
+    if (!previous?.live || !hasRetainableLiveData(previous.live)) return game;
+    restored = true;
+    return {
+      ...game,
+      blue: hasTeamSideInfo(game.blue) ? game.blue : previous.blue || game.blue,
+      red: hasTeamSideInfo(game.red) ? game.red : previous.red || game.red,
+      winner: game.winner || previous.winner || '',
+      live: {
+        ...previous.live,
+        status: 'ended',
+        retained_after_end: true,
+      },
+    };
+  });
+  if (!restored) return details;
+  return {
+    ...details,
+    games,
+    warning: details.warning || 'retained_last_live_snapshot_after_end',
+  };
+}
+
+function isEndedMatchDetails(details) {
+  const status = String(details?.status || '').toLowerCase();
+  if (['completed', 'complete'].includes(status)) return true;
+  const games = details?.games || [];
+  return games.length > 0 && games.every(game => ['completed', 'complete', 'unneeded'].includes(String(game.state || '').toLowerCase()));
+}
+
+function hasTeamSideInfo(side) {
+  return Boolean(side?.team_id || side?.team_name || side?.team_code);
+}
+
+function hasRetainableLiveData(live) {
+  if (!live || typeof live !== 'object') return false;
+  if (hasMeaningfulLiveData(live)) return true;
+  if (live.frame_timestamp) return true;
+  return [...(live.blue || []), ...(live.red || [])].some(player =>
+    player?.champion || player?.champion_id || (player?.player && player.player !== 'TBD')
+  );
+}
+
+function readLiveSnapshot(matchId) {
+  try {
+    const raw = window.localStorage?.getItem(liveSnapshotStorageKey(matchId));
+    if (!raw) return null;
+    const snapshot = JSON.parse(raw);
+    const savedAt = new Date(snapshot?.saved_at || '').getTime();
+    if (!Number.isFinite(savedAt) || Date.now() - savedAt > LIVE_SNAPSHOT_MAX_AGE_MS) {
+      window.localStorage?.removeItem(liveSnapshotStorageKey(matchId));
+      return null;
+    }
+    return snapshot;
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeLiveSnapshot(matchId, snapshot) {
+  try {
+    window.localStorage?.setItem(liveSnapshotStorageKey(matchId), JSON.stringify(snapshot));
+  } catch (error) {
+  }
+}
+
+function liveSnapshotStorageKey(matchId) {
+  return `${LIVE_SNAPSHOT_STORAGE_PREFIX}${String(matchId || '')}`;
 }
 
 function matchDetailMeta(details) {

@@ -29,6 +29,7 @@ let renderContract = null;
 let scheduleOverlay = null;
 let detailRefresh = null;
 let matchCenterLogos = null;
+let liveSnapshotRetention = null;
 
 const predictions = Array.isArray(feed.data?.predictions) ? feed.data.predictions : [];
 const matches = Array.isArray(matchesPayload.data?.matches) ? matchesPayload.data.matches : [];
@@ -103,6 +104,8 @@ if (appSource.ok) {
     'function parseScheduleDate(value)',
     'function matchDetailRefreshPolicy(details)',
     'function scheduleNextMatchDetailRefresh(details)',
+    'function rememberLiveSnapshot(details)',
+    'function restoreEndedLiveSnapshot(details)',
     'function matchDetailsFromCardDataset(match)',
     'function mergeCardTeamImages(cardDetails, details)',
     'function predictionPanelHtml(details, prediction)',
@@ -141,6 +144,10 @@ if (appSource.ok) {
   matchCenterLogos = logoCheck.summary;
   if (!logoCheck.ok) errors.push(...logoCheck.errors);
   warnings.push(...logoCheck.warnings);
+  const snapshotCheck = checkLiveSnapshotRetention(appSource.text);
+  liveSnapshotRetention = snapshotCheck.summary;
+  if (!snapshotCheck.ok) errors.push(...snapshotCheck.errors);
+  warnings.push(...snapshotCheck.warnings);
 }
 if (!styles.ok) {
   errors.push(`styles source failed: ${styles.error || styles.status}`);
@@ -187,6 +194,7 @@ const report = {
   schedule_overlay: scheduleOverlay,
   detail_refresh: detailRefresh,
   match_center_logos: matchCenterLogos,
+  live_snapshot_retention: liveSnapshotRetention,
   warnings,
   errors,
 };
@@ -574,6 +582,109 @@ function checkMatchCenterLogos(appSourceText) {
     }
   } catch (error) {
     output.errors.push(`match center logo probe failed: ${error instanceof Error ? error.message : String(error)}`);
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+function checkLiveSnapshotRetention(appSourceText) {
+  const output = {
+    ok: true,
+    errors: [],
+    warnings: [],
+    summary: {
+      checked: false,
+      stores_meaningful_live_snapshot: null,
+      restores_after_completed_empty_live: null,
+      restored_champion: '',
+      restored_status: '',
+    },
+  };
+  const storage = new Map();
+  const localStorage = {
+    getItem: (key) => storage.has(key) ? storage.get(key) : null,
+    setItem: (key, value) => storage.set(key, String(value)),
+    removeItem: (key) => storage.delete(key),
+    get length() { return storage.size; },
+  };
+  const context = {
+    window: { STATIC_SITE: true, localStorage },
+    location: { href: 'http://example.test/match/?id=match-1', origin: 'http://example.test' },
+    document: {
+      getElementById: () => null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+    },
+    console: { log: () => {}, warn: () => {}, error: () => {} },
+    setTimeout: () => 0,
+    setInterval: () => 0,
+    clearInterval: () => {},
+    Intl,
+    Date,
+    URL,
+    URLSearchParams,
+  };
+  context.window.document = context.document;
+  try {
+    vm.createContext(context);
+    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    output.summary.checked = true;
+    const result = vm.runInContext(`
+      const liveDetails = {
+        id: 'match-1',
+        status: 'inProgress',
+        games: [{
+          id: 'game-1',
+          number: 1,
+          state: 'inProgress',
+          blue: { team_code: 'BLU' },
+          red: { team_code: 'RED' },
+          live: {
+            status: 'in_game',
+            frame_timestamp: '2026-05-23T06:30:00Z',
+            game_time: 1234,
+            blue: [{ player: 'Blue Top', champion: 'Gnar', kills: 2, deaths: 1, assists: 3, gold: 7200, items: ['3078'] }],
+            red: [{ player: 'Red Top', champion: 'Renekton', kills: 1, deaths: 2, assists: 2, gold: 6800, items: ['6631'] }],
+            blue_stats: { gold: 30000, kills: 8 },
+            red_stats: { gold: 28000, kills: 6 },
+          },
+        }],
+      };
+      rememberLiveSnapshot(liveDetails);
+      const completedDetails = {
+        id: 'match-1',
+        status: 'completed',
+        games: [{
+          id: 'game-1',
+          number: 1,
+          state: 'completed',
+          blue: { team_code: 'BLU' },
+          red: { team_code: 'RED' },
+          live: { status: 'ended', blue: [], red: [], blue_stats: {}, red_stats: {} },
+        }],
+      };
+      const restored = restoreEndedLiveSnapshot(completedDetails);
+      ({
+        storedKeys: window.localStorage?.length || 0,
+        restoredChampion: restored.games[0].live.blue[0]?.champion || '',
+        restoredStatus: restored.games[0].live.status || '',
+        retainedAfterEnd: restored.games[0].live.retained_after_end === true,
+      })
+    `, context, { timeout: 1000 });
+    output.summary.stores_meaningful_live_snapshot = result.storedKeys === 1;
+    output.summary.restores_after_completed_empty_live = result.restoredChampion === 'Gnar'
+      && result.restoredStatus === 'ended'
+      && result.retainedAfterEnd === true;
+    output.summary.restored_champion = result.restoredChampion;
+    output.summary.restored_status = result.restoredStatus;
+    if (!output.summary.stores_meaningful_live_snapshot) {
+      output.errors.push('live snapshot retention did not store meaningful live data');
+    }
+    if (!output.summary.restores_after_completed_empty_live) {
+      output.errors.push('completed match with empty live data did not restore the last retained live snapshot');
+    }
+  } catch (error) {
+    output.errors.push(`live snapshot retention probe failed: ${error instanceof Error ? error.message : String(error)}`);
   }
   output.ok = output.errors.length === 0;
   return output;
