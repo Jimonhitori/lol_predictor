@@ -33,20 +33,23 @@ p, label { color: var(--muted); font-size: 13px; }
 .dateTabs .dateTab.live strong { color: #ff5b66; }
 .dateTabs .dateTab.active { box-shadow: inset 0 0 0 1px #d6c56b; background: #2b3038; color: #dfe8f7; }
 .dateTabs .dateTab.active strong { color: #ffffff; }
-.matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px; }
-.match { display: block; border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #111820; color: var(--text); cursor: pointer; font: inherit; text-align: inherit; text-decoration: none; }
+.matches { display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 10px; align-items: stretch; }
+.match { min-width: 0; min-height: 228px; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 8px; padding: 12px; background: #111820; color: var(--text); cursor: pointer; font: inherit; text-align: inherit; text-decoration: none; overflow: hidden; }
 .match:hover { border-color: var(--accent); }
-.match .backLink { color: var(--accent); margin: 10px 0 0; }
-.matchMeta { color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-.preMatchBadge { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 10px; border: 1px solid #2f4046; border-radius: 6px; background: #10191d; padding: 6px 8px; color: var(--muted); font-size: 11px; font-weight: 900; }
-.preMatchBadge strong { color: var(--accent); font-size: 12px; }
+.match .backLink { color: var(--accent); margin: auto 0 0; padding-top: 10px; }
+.matchMeta { min-width: 0; color: var(--muted); font-size: 12px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(96px, 45%); align-items: start; gap: 8px; margin-bottom: 8px; line-height: 1.25; }
+.matchMeta span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.matchMeta span:last-child { text-align: right; }
+.preMatchBadge { min-height: 29px; display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 10px; border: 1px solid #2f4046; border-radius: 6px; background: #10191d; padding: 6px 8px; color: var(--muted); font-size: 11px; font-weight: 900; overflow: hidden; }
+.preMatchBadge span, .preMatchBadge strong { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.preMatchBadge strong { color: var(--accent); font-size: 12px; text-align: right; }
 .versus { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: start; gap: 8px; font-weight: 800; }
 .versus > b { align-self: center; padding-top: 31px; }
 .versus > .cardTeam { text-align: center; }
-.cardTeam { display: grid; grid-template-rows: 48px minmax(22px, auto); align-items: center; justify-items: center; gap: 4px; min-width: 0; text-align: center; }
+.cardTeam { display: grid; grid-template-rows: 48px 28px; align-items: center; justify-items: center; gap: 4px; min-width: 0; text-align: center; }
 .cardLogo { width: 56px; height: 48px; display: grid; place-items: center; }
 .cardLogo img { max-width: 46px; max-height: 42px; width: auto; height: auto; object-fit: contain; }
-.cardTeamName { color: var(--text); overflow-wrap: anywhere; line-height: 1.15; min-height: 22px; display: grid; place-items: center; }
+.cardTeamName { width: 100%; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.15; min-height: 22px; display: block; text-align: center; }
 .matchCenter { margin-bottom: 16px; }
 .selectedMatch { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; margin-bottom: 10px; }
 .selectedMatch.twoTeams { grid-template-columns: minmax(0, 280px) minmax(0, 280px); justify-content: center; }
@@ -193,12 +196,12 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .sectionHead, .panelTitleRow { align-items: stretch; flex-direction: column; gap: 8px; }
   .compactSelect, .filters select { width: 100%; min-width: 0; }
   .matches { grid-template-columns: 1fr; }
-  .match { padding: 10px; }
+  .match { min-height: 0; padding: 10px; }
   .matchMeta { font-size: 11px; }
   .matches { gap: 7px; }
   .match .backLink { display: none; }
   .versus { gap: 5px; }
-  .cardTeam { gap: 3px; }
+  .cardTeam { grid-template-rows: 38px 24px; gap: 3px; }
   .cardLogo { width: 42px; height: 38px; }
   .cardLogo img { max-width: 36px; max-height: 34px; }
   .versus > b { padding-top: 25px; }
