@@ -94,6 +94,10 @@ export async function onRequestGet(context) {
     ...(remoteSchemaProbe?.ok && !remoteSchemaOk ? ['remote_prediction_schema_mismatch'] : []),
     ...(remoteSchemaProbe?.ok && !remoteSchemaHasTopLevelWarnings ? ['remote_prediction_schema_missing_top_level_warnings'] : []),
     ...(liveStatusFreshness.status === 'stale' ? ['live_status_stale'] : []),
+    ...(liveStatus.ok && liveStatus.json?.display_ready === false ? ['live_status_display_not_ready'] : []),
+    ...(liveStatus.ok && liveStatus.json?.production_ready === false ? ['live_status_production_not_ready'] : []),
+    ...(Number(liveStatus.json?.blocker_count || 0) > 0 ? [`live_status_blockers:${Number(liveStatus.json.blocker_count)}`] : []),
+    ...(liveManifest.ok && liveManifest.json?.live_model_available === false ? ['analyzer_live_model_missing'] : []),
   ];
   const contractWarnings = [
     ...(siteContract.json?.contract_version === EXPECTED_SITE_CONTRACT_VERSION ? [] : ['site_contract_version_mismatch']),
@@ -179,7 +183,9 @@ export async function onRequestGet(context) {
     live_status_production_ready: liveStatus.json?.production_ready ?? null,
     live_status_stage: liveStatus.json?.stage || '',
     live_status_blocker_count: liveStatus.json?.blocker_count ?? null,
+    live_status_blockers: Array.isArray(liveStatus.json?.blockers) ? liveStatus.json.blockers : [],
     live_status_warning_count: liveStatus.json?.warning_count ?? null,
+    live_status_warnings: Array.isArray(liveStatus.json?.warnings) ? liveStatus.json.warnings : [],
     live_worker_ok: liveStatus.json?.worker?.ok ?? null,
     live_worker_checked: liveStatus.json?.worker?.checked ?? null,
     analyzer_live_manifest_url: liveManifestUrl,

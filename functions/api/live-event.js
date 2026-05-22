@@ -4,8 +4,11 @@ const LIVE_DETAILS_URL = 'https://feed.lolesports.com/livestats/v1/details/';
 const DEFAULT_LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const EVENT_CACHE_SECONDS = 45;
 const LIVE_CACHE_SECONDS = 4;
+const PRE_MATCH_CACHE_SECONDS = 60;
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
+const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 let liveModelPromise = null;
+let preMatchPredictionsCache = { expiresAt: 0, promise: null };
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -37,6 +40,7 @@ export async function onRequestGet(context) {
   try {
     const event = await fetchEventDetails(eventId, context.env);
     details = normalizeEventDetails(event);
+    details = await enrichDetailsFromPreMatchFeed(details, context);
     details.warning = details.warning || '';
     await attachTargetLive(details, context);
     cacheTtl = responseCacheSeconds(details);
@@ -195,8 +199,67 @@ function statusForGame(details, game) {
   if (['completed', 'complete'].includes(state) || ['completed', 'complete'].includes(String(details.status || '').toLowerCase())) return 'ended';
   const start = new Date(details.start_time || '');
   if (state === 'unstarted' && !Number.isNaN(start.getTime()) && Date.now() < start.getTime()) return 'unstarted';
+  if (state === 'unstarted' && Number.isNaN(start.getTime())) return 'unstarted';
   if (state === 'unneeded') return 'unavailable';
   return 'soon';
+}
+
+async function enrichDetailsFromPreMatchFeed(details, context) {
+  if (!details?.id || details.start_time) return details;
+  const prediction = await preMatchPredictionForEvent(details.id, context);
+  if (!prediction) return details;
+  return {
+    ...details,
+    league: details.league || String(prediction.league || ''),
+    start_time: predictionStartTimeIso(prediction) || details.start_time || '',
+  };
+}
+
+async function preMatchPredictionForEvent(eventId, context) {
+  const feed = await loadPreMatchPredictions(context);
+  const rows = Array.isArray(feed?.predictions) ? feed.predictions : [];
+  const id = String(eventId || '');
+  return rows.find(row => String(row?.event_id || row?.game_id || '') === id) || null;
+}
+
+async function loadPreMatchPredictions(context) {
+  if (preMatchPredictionsCache.promise && Date.now() < preMatchPredictionsCache.expiresAt) {
+    return preMatchPredictionsCache.promise;
+  }
+  preMatchPredictionsCache = {
+    expiresAt: Date.now() + PRE_MATCH_CACHE_SECONDS * 1000,
+    promise: (async () => {
+    try {
+      let response = null;
+      if (context?.env?.ASSETS) {
+        const requestUrl = new URL(context.request.url);
+        response = await context.env.ASSETS.fetch(new Request(new URL(PRE_MATCH_PREDICTIONS_PATH, requestUrl.origin).toString()));
+      } else if (context?.request?.url) {
+        response = await fetch(new URL(PRE_MATCH_PREDICTIONS_PATH, context.request.url).toString(), {
+          cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
+        });
+      }
+      if (!response || !response.ok) return null;
+      return response.json();
+    } catch (error) {
+      return null;
+    }
+  })(),
+  };
+  return preMatchPredictionsCache.promise;
+}
+
+function predictionStartTimeIso(prediction) {
+  const date = parseScheduleDate(prediction?.start_time || '');
+  return Number.isNaN(date.getTime()) ? '' : date.toISOString();
+}
+
+function parseScheduleDate(value) {
+  const text = String(value || '').trim();
+  if (!text) return new Date(NaN);
+  const utcLike = text.match(/^(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2})(?::(\d{2}))?$/);
+  if (utcLike) return new Date(`${utcLike[1]}T${utcLike[2]}:${utcLike[3] || '00'}Z`);
+  return new Date(text);
 }
 
 async function fetchLive(gameId) {
