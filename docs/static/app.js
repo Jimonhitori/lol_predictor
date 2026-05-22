@@ -1010,8 +1010,7 @@ function predictionPanelHtml(details, prediction) {
   const foot = [model, generated, source, warnings].filter(Boolean).join(' | ');
   return `
     <div class="predictionPanelTop">
-      <span>Pre-match prediction</span>
-      <strong>${escapeHtml(shortTeamName(favorite.label))} ${formatProbability(favorite.probability)}</strong>
+      <span class="predictionPanelTitle">Pre-match prediction <strong>${escapeHtml(shortTeamName(favorite.label))} ${formatProbability(favorite.probability)}</strong></span>
       <span class="predictionConfidence">${escapeHtml(confidence)}</span>
     </div>
     ${predictionUnifiedHtml(blueName, redName, blue, red)}
@@ -1034,6 +1033,7 @@ function predictionUnifiedHtml(blueName, redName, blue, red) {
       </div>
       <div class="predictionUnifiedBar">
         <span class="predictionUnifiedBlue" style="width:${blueWidth}%"></span>
+        <i class="predictionUnifiedSplit" style="left:${blueWidth}%"></i>
         <span class="predictionUnifiedRed" style="width:${redWidth}%"></span>
       </div>
     </div>
