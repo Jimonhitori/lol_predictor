@@ -1904,16 +1904,48 @@ async function loadRosters(blueTeam, redTeam) {
     api('/api/roster?team=' + encodeURIComponent(blueName)),
     api('/api/roster?team=' + encodeURIComponent(redName)),
   ]);
-  rememberRoster(blueName, blueTeam.code || '', blue.players || []);
-  rememberRoster(redName, redTeam.code || '', red.players || []);
-  $('blueRoster').innerHTML = rosterCards(blue.players || []);
-  $('redRoster').innerHTML = rosterCards(red.players || []);
+  const bluePlayers = rosterWithLiveFallback(blue.players || [], blueTeam);
+  const redPlayers = rosterWithLiveFallback(red.players || [], redTeam);
+  rememberRoster(blueName, blueTeam.code || '', bluePlayers);
+  rememberRoster(redName, redTeam.code || '', redPlayers);
+  $('blueRoster').innerHTML = rosterCards(bluePlayers);
+  $('redRoster').innerHTML = rosterCards(redPlayers);
   if (state.currentDetails) renderLiveDraft(state.currentDetails);
 }
 
 function rememberRoster(name, code, players) {
   const keys = [name, code].map(teamKey).filter(Boolean);
   for (const key of keys) state.rosters[key] = players;
+}
+
+function rosterWithLiveFallback(players, team) {
+  if (players.length) return players;
+  return liveRosterPlayersForTeam(team);
+}
+
+function liveRosterPlayersForTeam(team) {
+  const games = state.currentDetails?.games || [];
+  const selected = selectedLiveGame(games);
+  const candidates = [selected, ...games].filter(Boolean);
+  for (const game of candidates) {
+    const side = sideForTeam(game, team);
+    const livePlayers = side ? game.live?.[side] || [] : [];
+    if (hasRealLivePlayers(livePlayers)) return livePlayers.map(liveRosterPlayer);
+  }
+  return [];
+}
+
+function liveRosterPlayer(player) {
+  const champion = championLabel(player);
+  return {
+    player: player.player || '-',
+    role: player.role || '',
+    games: 0,
+    winrate: 0,
+    kda: 0,
+    top_champions: champion && champion !== 'TBD' ? [champion] : [],
+    roster_source: 'live_frame',
+  };
 }
 
 async function loadTeamRecords(blueTeam, redTeam, league) {
@@ -2402,6 +2434,7 @@ function rosterCards(players) {
 
 function rosterMetaText(player) {
   if (player.roster_source === 'leaguepedia') return 'Leaguepedia current roster';
+  if (player.roster_source === 'live_frame') return 'Live frame roster fallback';
   return `${player.games} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}`;
 }
 
