@@ -137,18 +137,21 @@ The live probability contract check also executes the dashboard render helper
 and confirms estimated probabilities display, non-estimated probabilities hide,
 and cautious validation states show a caution marker.
 
-After Cloudflare Pages and the analyzer public artifacts are deployed, run the
-`Smoke production contracts` workflow manually. It executes the same checker
-against `https://lol-predictor.pages.dev` and accepts override URLs for staging
-or alternate analyzer feeds. Set `require_live_win_probability` to true when the
-chosen event is currently live.
+After Cloudflare Pages and the analyzer public artifacts are deployed, the
+`Smoke production contracts` workflow runs every six hours against
+`https://lol-predictor.pages.dev`. The scheduled check uses `event_id=test`,
+requires at least one prediction row and one site-match overlap, and does not
+require a live win-probability frame. Run it manually with override URLs for
+staging or alternate analyzer feeds. Set `require_live_win_probability` to true
+when the chosen event is currently live.
 
 The smoke check verifies the same public artifact URLs that the app needs.
 By default it checks the Cloudflare-hosted bootstrap URLs on the target `--base-url`.
 It also runs the pre-match UI contract checker against the configured
 prediction feed URL. Keep `prediction_ui_min_rows` and
-`prediction_ui_min_overlap` at `0` for bootstrap or empty-feed verification,
-then raise them when checking a published analyzer schedule feed. Override the
+`prediction_ui_min_overlap` at `0` for bootstrap or empty-feed verification.
+The scheduled production check uses `1` for both values; raise them when
+checking a published analyzer schedule feed with stronger coverage expectations. Override the
 artifact URLs when testing a staging or external analyzer feed:
 
 `/api/diagnostics` reports both the active feed used by the dashboard and, when
