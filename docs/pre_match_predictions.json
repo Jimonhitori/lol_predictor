@@ -1,11 +1,11 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-05-22T18:35:53.676569Z",
+  "generated_at": "2026-05-22T19:01:36.072228Z",
   "source": "lol-pros-analyzer",
   "models": {
     "pre_match": {
       "name": "logistic_regression_2024_2026_full",
-      "version": "2026-05-23-aliasfix",
+      "version": "2026-05-23-alias-guardrails",
       "metrics": {}
     }
   },
@@ -22,7 +22,9 @@
       "predicted_winner": "bnk_fearx_youth",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:kt Challengers->kt_challengers"
+      ]
     },
     {
       "event_id": "116249880467010571",
@@ -36,7 +38,9 @@
       "predicted_winner": "t1_esports_academy",
       "confidence": "low",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:BRO Challengers->bro_challengers"
+      ]
     },
     {
       "event_id": "115548128962971963",
@@ -64,7 +68,9 @@
       "predicted_winner": "dfm_academy",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:DFM Academy->dfm_academy"
+      ]
     },
     {
       "event_id": "115548128963037527",
@@ -78,7 +84,9 @@
       "predicted_winner": "kt_rolster",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:Gen.G Esports->gen_g_esports"
+      ]
     },
     {
       "event_id": "116520394663535872",
@@ -120,7 +128,9 @@
       "predicted_winner": "saigon_mvke_academy",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:Saigon MVKE Academy->saigon_mvke_academy|red_team_fallback_slug:TP.HCM SN CyberCore Esports->tp_hcm_sn_cybercore_esports"
+      ]
     },
     {
       "event_id": "116356270007984079",
@@ -274,7 +284,9 @@
       "predicted_winner": "invictus_gaming",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:THUNDER TALK GAMING->thunder_talk_gaming"
+      ]
     },
     {
       "event_id": "116244276931539996",
@@ -288,7 +300,9 @@
       "predicted_winner": "wlgaming_esports",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:GOAL esports->goal_esports"
+      ]
     },
     {
       "event_id": "116299619170786378",
@@ -302,7 +316,9 @@
       "predicted_winner": "nightbirds",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:UP2U Meavedron->up2u_meavedron"
+      ]
     },
     {
       "event_id": "115548128962971875",
@@ -316,7 +332,9 @@
       "predicted_winner": "hanwha_life_esports",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:NONGSHIM RED FORCE->nongshim_red_force"
+      ]
     },
     {
       "event_id": "115548668059589358",
@@ -333,6 +351,20 @@
       "warnings": []
     },
     {
+      "event_id": "115565670260181845",
+      "game_id": "115565670260181845",
+      "league": "CBLOL",
+      "start_time": "2026-05-23 16:00:00",
+      "blue_team": "l_s",
+      "red_team": "vivo_keyd_stars",
+      "blue_win_probability": 0.611446,
+      "red_win_probability": 0.388554,
+      "predicted_winner": "l_s",
+      "confidence": "medium",
+      "model": "logistic_regression_2024_2026_full",
+      "warnings": []
+    },
+    {
       "event_id": "115564793879469288",
       "game_id": "115564793879469288",
       "league": "LCS",
@@ -344,7 +376,9 @@
       "predicted_winner": "cloud9_kia",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:Cloud9 Kia->cloud9_kia"
+      ]
     },
     {
       "event_id": "115616219464541895",
@@ -358,7 +392,9 @@
       "predicted_winner": "shenzhen_ninjas_in_pyjamas",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:Shenzhen NINJAS IN PYJAMAS->shenzhen_ninjas_in_pyjamas"
+      ]
     },
     {
       "event_id": "115548128962971947",
@@ -372,7 +408,9 @@
       "predicted_winner": "gen_g_esports",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:Gen.G Esports->gen_g_esports"
+      ]
     },
     {
       "event_id": "115570683341512193",
@@ -386,7 +424,9 @@
       "predicted_winner": "fukuoka_softbank_hawks_gaming",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:Relove Deep Cross Gaming->relove_deep_cross_gaming"
+      ]
     },
     {
       "event_id": "115616219464541901",
@@ -400,7 +440,9 @@
       "predicted_winner": "weibogaming",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:WeiboGaming->weibogaming"
+      ]
     },
     {
       "event_id": "115548128962971891",
@@ -456,7 +498,9 @@
       "predicted_winner": "red_canids_kalunga",
       "confidence": "low",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:RED Canids Kalunga->red_canids_kalunga"
+      ]
     },
     {
       "event_id": "115564793879469294",
@@ -470,7 +514,9 @@
       "predicted_winner": "lyon",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "red_team_fallback_slug:Team Liquid Alienware->team_liquid_alienware"
+      ]
     },
     {
       "event_id": "116249880466944911",
@@ -484,7 +530,9 @@
       "predicted_winner": "dk_challengers",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:DK Challengers->dk_challengers|red_team_fallback_slug:HLE Challengers->hle_challengers"
+      ]
     },
     {
       "event_id": "116249880466944895",
@@ -512,7 +560,9 @@
       "predicted_winner": "bro_challengers",
       "confidence": "medium",
       "model": "logistic_regression_2024_2026_full",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:BRO Challengers->bro_challengers|red_team_fallback_slug:KRX Challengers->krx_challengers"
+      ]
     },
     {
       "event_id": "116413908784071084",
