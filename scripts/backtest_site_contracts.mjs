@@ -339,11 +339,13 @@ async function backtestAliasResolution(baseDir, source) {
       { name: 'Supernova', expected: 'supernova', aliases: ['SN', 'Supernova'], roster: 'supernova.json', record: 'nacl__supernova.json' },
       { name: 'SU Esports', expected: 'suesports', aliases: ['SU', 'SU Esports'], roster: 'su-esports.json', record: 'tcl__su-esports.json' },
       { name: 'PCIFIC Esports', expected: 'pcificesports', aliases: ['PCF', 'PCIFIC Esports'], roster: 'pcific-esports.json', record: 'tcl__pcific-esports.json' },
+      { name: 'Karmine Corp', expected: 'karminecorp', aliases: ['KC', 'Karmine Corp'], roster: null, record: 'lec__karmine-corp.json' },
+      { name: 'G2 Esports', expected: 'g2esports', aliases: ['G2', 'G2 Esports'], roster: null, record: 'lec__g2-esports.json' },
     ];
     for (const group of groups) {
       const keys = vm.runInContext(`(${JSON.stringify(group.aliases)}).map(value => teamKey(value))`, context, { timeout: 1000 });
       const uniqueKeys = [...new Set(keys)];
-      const rosterExists = await fileExists(path.join(baseDir, 'static', 'data', 'rosters', group.roster));
+      const rosterExists = group.roster ? await fileExists(path.join(baseDir, 'static', 'data', 'rosters', group.roster)) : true;
       const recordExists = await fileExists(path.join(baseDir, 'static', 'data', 'team-records', group.record));
       const ok = uniqueKeys.length === 1 && uniqueKeys[0] === group.expected;
       output.alias_groups.push({
@@ -356,7 +358,7 @@ async function backtestAliasResolution(baseDir, source) {
         team_record_exists: recordExists,
       });
       if (!ok) output.errors.push(`${group.name} aliases resolve to ${uniqueKeys.join(', ')}, expected ${group.expected}`);
-      if (!rosterExists) output.warnings.push(`${group.name} roster artifact missing: ${group.roster}`);
+      if (group.roster && !rosterExists) output.warnings.push(`${group.name} roster artifact missing: ${group.roster}`);
       if (!recordExists) output.warnings.push(`${group.name} team-record artifact missing: ${group.record}`);
     }
     const [feed, matchesPayload] = await Promise.all([
