@@ -162,6 +162,7 @@ async function checkH2hStaticLookup(baseDir, source) {
     alias_lookup_match_count: null,
     html_fallback_lookup_match_count: null,
     lpl_prediction_alias_match_count: null,
+    empty_artifact_skip_match_count: null,
     missing_lookup_returns_empty: null,
   };
   try {
@@ -208,6 +209,26 @@ async function checkH2hStaticLookup(baseDir, source) {
       context,
       { timeout: 1000 },
     );
+    const emptyArtifactContext = createAppContext();
+    emptyArtifactContext.fetch = async (url) => {
+      const parsed = new URL(String(url));
+      const relative = parsed.pathname.replace(/^\/static\//, 'static/').replace(/^\/+/, '');
+      if (relative.endsWith('data/h2h/lcp__mvk-esports__ctbc-flying-oyster.json')) {
+        return { ok: true, json: async () => ({ team_a: 'MVK Esports', team_b: 'CTBC Flying Oyster', matches: [] }) };
+      }
+      if (relative.endsWith('data/h2h/lcp__ctbc-flying-oyster__mvk-esports.json')) {
+        const text = await fs.readFile(path.join(baseDir, relative), 'utf8');
+        return { ok: true, json: async () => JSON.parse(text) };
+      }
+      return { ok: false, json: async () => ({}) };
+    };
+    emptyArtifactContext.document.querySelector = () => ({ src: 'http://example.test/static/app.js' });
+    vm.runInContext(source, emptyArtifactContext, { timeout: 1000 });
+    const emptyArtifactSkipped = await vm.runInContext(
+      "staticHeadToHead(new URLSearchParams('league=LCP&team_a=MVK%20Esports&team_b=CTBC%20Flying%20Oyster&team_a_code=MVK&team_b_code=CFO'))",
+      emptyArtifactContext,
+      { timeout: 1000 },
+    );
     const missing = await vm.runInContext(
       "staticHeadToHead(new URLSearchParams('league=LCP&team_a=Imaginary%20Blue&team_b=Imaginary%20Red&team_a_code=IBL&team_b_code=IRD'))",
       context,
@@ -216,6 +237,7 @@ async function checkH2hStaticLookup(baseDir, source) {
     output.alias_lookup_match_count = Array.isArray(found.matches) ? found.matches.length : null;
     output.html_fallback_lookup_match_count = Array.isArray(htmlFallbackFound.matches) ? htmlFallbackFound.matches.length : null;
     output.lpl_prediction_alias_match_count = Array.isArray(lplPredictionAliasFound.matches) ? lplPredictionAliasFound.matches.length : null;
+    output.empty_artifact_skip_match_count = Array.isArray(emptyArtifactSkipped.matches) ? emptyArtifactSkipped.matches.length : null;
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'h2h_static_artifact_missing';
     if (!output.alias_lookup_match_count) {
@@ -226,6 +248,9 @@ async function checkH2hStaticLookup(baseDir, source) {
     }
     if (!output.lpl_prediction_alias_match_count) {
       output.errors.push('H2H static lookup did not resolve LPL prediction/live-event team aliases');
+    }
+    if (!output.empty_artifact_skip_match_count) {
+      output.errors.push('H2H static lookup stopped on an empty artifact before a non-empty candidate');
     }
     if (!output.missing_lookup_returns_empty) {
       output.errors.push('H2H static lookup did not return an empty payload for missing artifacts');
