@@ -249,6 +249,8 @@ function teamStaticKeys(...values) {
     pcf: 'pcific-esports',
     cfo: 'ctbc-flying-oyster',
     mvk: 'mvk-esports',
+    g2: 'g2-esports',
+    kc: 'karmine-corp',
   };
   const keys = [];
   for (const value of values) {
@@ -2564,6 +2566,10 @@ function teamKey(value) {
     suesports: 'suesports',
     pcf: 'pcificesports',
     pcificesports: 'pcificesports',
+    g2: 'g2esports',
+    g2esports: 'g2esports',
+    kc: 'karminecorp',
+    karminecorp: 'karminecorp',
   };
   return aliases[key] || key;
 }
