@@ -183,7 +183,7 @@ async function checkH2hStaticLookup(baseDir, source) {
       { timeout: 1000 },
     );
     const missing = await vm.runInContext(
-      "staticHeadToHead(new URLSearchParams('league=LCP&team_a=MVK%20Esports&team_b=CTBC%20Flying%20Oyster&team_a_code=MVK&team_b_code=CFO'))",
+      "staticHeadToHead(new URLSearchParams('league=LCP&team_a=Imaginary%20Blue&team_b=Imaginary%20Red&team_a_code=IBL&team_b_code=IRD'))",
       context,
       { timeout: 1000 },
     );

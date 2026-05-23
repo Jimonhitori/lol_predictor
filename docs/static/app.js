@@ -2,6 +2,7 @@
 const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0 };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
+const STATIC_DATA_VERSION = '20260523-h2h-cfo-mvk';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const DETAIL_REFRESH_IN_PROGRESS_MS = 5000;
@@ -170,7 +171,9 @@ async function staticHeadToHead(params) {
 
 function staticDataUrl(path) {
   const script = document.querySelector('script[src*="app.js"]');
-  return new URL(path, script?.src || new URL('static/app.js', location.href)).toString();
+  const url = new URL(path, script?.src || new URL('static/app.js', location.href));
+  url.searchParams.set('v', STATIC_DATA_VERSION);
+  return url.toString();
 }
 
 function staticKey(value) {
