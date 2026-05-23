@@ -161,6 +161,7 @@ async function checkH2hStaticLookup(baseDir, source) {
     warnings: [],
     alias_lookup_match_count: null,
     html_fallback_lookup_match_count: null,
+    lpl_prediction_alias_match_count: null,
     missing_lookup_returns_empty: null,
   };
   try {
@@ -202,6 +203,11 @@ async function checkH2hStaticLookup(baseDir, source) {
       htmlFallbackContext,
       { timeout: 1000 },
     );
+    const lplPredictionAliasFound = await vm.runInContext(
+      "staticHeadToHead(new URLSearchParams('league=LPL&team_a=Invictus%20Gaming&team_b=THUNDER%20TALK%20GAMING&team_a_code=IG&team_b_code=TT'))",
+      context,
+      { timeout: 1000 },
+    );
     const missing = await vm.runInContext(
       "staticHeadToHead(new URLSearchParams('league=LCP&team_a=Imaginary%20Blue&team_b=Imaginary%20Red&team_a_code=IBL&team_b_code=IRD'))",
       context,
@@ -209,6 +215,7 @@ async function checkH2hStaticLookup(baseDir, source) {
     );
     output.alias_lookup_match_count = Array.isArray(found.matches) ? found.matches.length : null;
     output.html_fallback_lookup_match_count = Array.isArray(htmlFallbackFound.matches) ? htmlFallbackFound.matches.length : null;
+    output.lpl_prediction_alias_match_count = Array.isArray(lplPredictionAliasFound.matches) ? lplPredictionAliasFound.matches.length : null;
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'h2h_static_artifact_missing';
     if (!output.alias_lookup_match_count) {
@@ -216,6 +223,9 @@ async function checkH2hStaticLookup(baseDir, source) {
     }
     if (!output.html_fallback_lookup_match_count) {
       output.errors.push('H2H static lookup stopped before a valid reverse artifact after an HTML fallback response');
+    }
+    if (!output.lpl_prediction_alias_match_count) {
+      output.errors.push('H2H static lookup did not resolve LPL prediction/live-event team aliases');
     }
     if (!output.missing_lookup_returns_empty) {
       output.errors.push('H2H static lookup did not return an empty payload for missing artifacts');
