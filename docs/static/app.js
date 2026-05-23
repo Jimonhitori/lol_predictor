@@ -121,7 +121,7 @@ async function staticApi(path) {
   } else if (url.pathname === '/api/team-record') {
     target = `data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
   } else if (url.pathname === '/api/head-to-head') {
-    target = `data/h2h/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team_a') || '')}__${staticKey(params.get('team_b') || '')}.json`;
+    return staticHeadToHead(params);
   }
   if (!target) throw new Error(`Static data route is not available: ${path}`);
   target = staticDataUrl(target);
@@ -138,6 +138,36 @@ async function staticApi(path) {
   return data;
 }
 
+async function staticHeadToHead(params) {
+  const teamA = params.get('team_a') || '';
+  const teamB = params.get('team_b') || '';
+  const teamACode = params.get('team_a_code') || '';
+  const teamBCode = params.get('team_b_code') || '';
+  const leagueKeys = uniqueValues([staticKey(params.get('league') || 'all'), 'all']);
+  const teamAKeys = teamStaticKeys(teamA, teamACode);
+  const teamBKeys = teamStaticKeys(teamB, teamBCode);
+  const candidates = [];
+  for (const league of leagueKeys) {
+    for (const a of teamAKeys) {
+      for (const b of teamBKeys) {
+        if (!a || !b || a === b) continue;
+        candidates.push(`data/h2h/${league}__${a}__${b}.json`);
+        candidates.push(`data/h2h/${league}__${b}__${a}.json`);
+      }
+    }
+  }
+  for (const candidate of uniqueValues(candidates)) {
+    const response = await fetch(staticDataUrl(candidate), { cache: 'no-store' });
+    if (response.ok) return response.json();
+  }
+  return {
+    team_a: teamA || teamACode,
+    team_b: teamB || teamBCode,
+    matches: [],
+    warning: 'h2h_static_artifact_missing',
+  };
+}
+
 function staticDataUrl(path) {
   const script = document.querySelector('script[src*="app.js"]');
   return new URL(path, script?.src || new URL('static/app.js', location.href)).toString();
@@ -145,6 +175,59 @@ function staticDataUrl(path) {
 
 function staticKey(value) {
   return String(value || 'all').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'all';
+}
+
+function teamStaticKeys(...values) {
+  const aliases = {
+    bfx: 'bnk-fearx',
+    fearx: 'bnk-fearx',
+    geng: 'gen-g-esports',
+    gen: 'gen-g-esports',
+    drx: 'kiwoom-drx',
+    krx: 'kiwoom-drx',
+    dk: 'dplus-kia',
+    dkc: 'dk-challengers',
+    t1a: 't1-esports-academy',
+    t1ea: 't1-esports-academy',
+    hle: 'hanwha-life-esports',
+    bro: 'hanjin-brion',
+    dns: 'dn-soopers',
+    ns: 'nongshim-red-force',
+    jdg: 'beijing-jdg-esports',
+    tes: 'top-esports',
+    blg: 'bilibili-gaming',
+    ig: 'invictus-gaming',
+    edg: 'edward-gaming',
+    omg: 'oh-my-god',
+    lng: 'suzhou-lng-esports',
+    'lng-esports': 'suzhou-lng-esports',
+    we: 'xi-an-team-we',
+    'team-we': 'xi-an-team-we',
+    wbg: 'weibogaming',
+    up: 'ultra-prime',
+    nip: 'shenzhen-ninjas-in-pyjamas',
+    c9: 'cloud9-kia',
+    tl: 'team-liquid-alienware',
+    tlaw: 'team-liquid-alienware',
+    cnv: 'conviction',
+    sn: 'supernova',
+    su: 'su-esports',
+    pcf: 'pcific-esports',
+    cfo: 'ctbc-flying-oyster',
+    mvk: 'mvk-esports',
+  };
+  const keys = [];
+  for (const value of values) {
+    const key = staticKey(value);
+    if (!key) continue;
+    keys.push(key);
+    if (aliases[key]) keys.push(aliases[key]);
+  }
+  return uniqueValues(keys);
+}
+
+function uniqueValues(values) {
+  return [...new Set(values.filter(Boolean))];
 }
 
 async function fetchLolesportsEventDetails(matchId) {
@@ -2020,8 +2103,12 @@ async function loadInlineTeamRecords(leftTeam, rightTeam, league) {
 async function loadHeadToHead(leftTeam, rightTeam, league) {
   const leftName = leftTeam.name || leftTeam.code || '';
   const rightName = rightTeam.name || rightTeam.code || '';
-  const data = await api('/api/head-to-head?team_a=' + encodeURIComponent(leftName) + '&team_b=' + encodeURIComponent(rightName) + '&team_a_code=' + encodeURIComponent(leftTeam.code || '') + '&team_b_code=' + encodeURIComponent(rightTeam.code || '') + '&league=' + encodeURIComponent(league || ''));
-  renderHeadToHead(data.matches || [], leftTeam, rightTeam);
+  try {
+    const data = await api('/api/head-to-head?team_a=' + encodeURIComponent(leftName) + '&team_b=' + encodeURIComponent(rightName) + '&team_a_code=' + encodeURIComponent(leftTeam.code || '') + '&team_b_code=' + encodeURIComponent(rightTeam.code || '') + '&league=' + encodeURIComponent(league || ''));
+    renderHeadToHead(data.matches || [], leftTeam, rightTeam);
+  } catch (error) {
+    renderHeadToHead([], leftTeam, rightTeam);
+  }
 }
 
 function liveGameTab(item, active) {
