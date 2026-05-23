@@ -2411,6 +2411,7 @@ function teamKey(value) {
     omg: 'ohmygod',
     ohmygod: 'ohmygod',
     lng: 'suzhoulngesports',
+    lngesports: 'suzhoulngesports',
     suzhoulngesports: 'suzhoulngesports',
     lgd: 'lgdgaming',
     lgdgaming: 'lgdgaming',
@@ -2432,6 +2433,14 @@ function teamKey(value) {
     tlaw: 'teamliquid',
     teamliquid: 'teamliquid',
     teamliquidalienware: 'teamliquid',
+    cnv: 'conviction',
+    conviction: 'conviction',
+    sn: 'supernova',
+    supernova: 'supernova',
+    su: 'suesports',
+    suesports: 'suesports',
+    pcf: 'pcificesports',
+    pcificesports: 'pcificesports',
   };
   return aliases[key] || key;
 }
