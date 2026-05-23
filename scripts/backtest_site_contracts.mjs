@@ -13,6 +13,7 @@ const report = {
   docs_dir: docsDir,
   live_snapshot_retention: checkLiveSnapshotRetention(appSource),
   completed_game_tabs: checkCompletedGameTabs(appSource),
+  h2h_static_lookup: await checkH2hStaticLookup(docsDir, appSource),
   pre_match_prediction_backtest: await backtestPreMatchPredictions(docsDir),
   alias_resolution_backtest: await backtestAliasResolution(docsDir, appSource),
 };
@@ -145,6 +146,55 @@ function checkCompletedGameTabs(source) {
     }
     if (!output.active_game_retained) {
       output.errors.push('active in-progress game was changed while restoring completed tabs');
+    }
+  } catch (error) {
+    output.errors.push(errorMessage(error));
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+async function checkH2hStaticLookup(baseDir, source) {
+  const output = {
+    ok: true,
+    errors: [],
+    warnings: [],
+    alias_lookup_match_count: null,
+    missing_lookup_returns_empty: null,
+  };
+  try {
+    const context = createAppContext();
+    context.fetch = async (url) => {
+      const parsed = new URL(String(url));
+      const relative = parsed.pathname.replace(/^\/static\//, 'static/').replace(/^\/+/, '');
+      const filePath = path.join(baseDir, relative);
+      try {
+        const text = await fs.readFile(filePath, 'utf8');
+        return { ok: true, json: async () => JSON.parse(text) };
+      } catch {
+        return { ok: false, json: async () => ({}) };
+      }
+    };
+    context.document.querySelector = () => ({ src: 'http://example.test/static/app.js' });
+    vm.runInContext(source, context, { timeout: 1000 });
+    const found = await vm.runInContext(
+      "staticHeadToHead(new URLSearchParams('league=LCP&team_a=MVK&team_b=Fukuoka%20SoftBank%20HAWKS%20gaming&team_a_code=MVK&team_b_code=SHG'))",
+      context,
+      { timeout: 1000 },
+    );
+    const missing = await vm.runInContext(
+      "staticHeadToHead(new URLSearchParams('league=LCP&team_a=MVK%20Esports&team_b=CTBC%20Flying%20Oyster&team_a_code=MVK&team_b_code=CFO'))",
+      context,
+      { timeout: 1000 },
+    );
+    output.alias_lookup_match_count = Array.isArray(found.matches) ? found.matches.length : null;
+    output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
+      && missing.warning === 'h2h_static_artifact_missing';
+    if (!output.alias_lookup_match_count) {
+      output.errors.push('H2H static lookup did not find an existing alias-backed artifact');
+    }
+    if (!output.missing_lookup_returns_empty) {
+      output.errors.push('H2H static lookup did not return an empty payload for missing artifacts');
     }
   } catch (error) {
     output.errors.push(errorMessage(error));
