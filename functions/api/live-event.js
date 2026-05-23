@@ -6,6 +6,7 @@ const EVENT_CACHE_SECONDS = 45;
 const LIVE_CACHE_SECONDS = 4;
 const PRE_MATCH_CACHE_SECONDS = 60;
 const LIVE_FEED_DELAY_SECONDS = 130;
+const LIVE_SNAPSHOT_CACHE_SECONDS = 60 * 60 * 24;
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 let liveModelPromise = null;
@@ -44,6 +45,7 @@ export async function onRequestGet(context) {
     details = await enrichDetailsFromPreMatchFeed(details, context);
     details.warning = details.warning || '';
     await attachTargetLive(details, context);
+    await restoreCompletedLiveSnapshots(details, context);
     cacheTtl = responseCacheSeconds(details);
   } catch (error) {
     details = unavailable(eventId, 'event_details_fetch_failed');
@@ -151,6 +153,17 @@ async function attachTargetLive(details, context) {
   }
   const status = statusForGame(details, game);
   if (status === 'unstarted' || status === 'ended') {
+    const snapshot = status === 'ended' ? await readLiveSnapshot(context, details.id, game.id) : null;
+    if (snapshot?.live && hasMeaningfulLiveData(snapshot.live)) {
+      game.live = {
+        ...snapshot.live,
+        status: 'ended',
+        game_state: snapshot.live.game_state || game.state || 'ended',
+        retained_after_end: true,
+      };
+      game.live.win_probability = await liveWinProbability(game.live, game, details, context);
+      return;
+    }
     game.live = { ...game.live, status, game_state: game.state || status };
     game.live.win_probability = await liveWinProbability(game.live, game, details, context);
     return;
@@ -161,10 +174,22 @@ async function attachTargetLive(details, context) {
     if (meaningful) {
       game.live = { ...live, status: liveStatus(live, game) };
       game.live.win_probability = await liveWinProbability(game.live, game, details, context);
+      await waitUntil(context, writeLiveSnapshot(context, details.id, game));
       if (['unstarted', ''].includes(String(game.state || '').toLowerCase())) {
         game.state = 'inProgress';
         details.status = 'inProgress';
       }
+      return;
+    }
+    const snapshot = await readLiveSnapshot(context, details.id, game.id);
+    if (snapshot?.live && hasMeaningfulLiveData(snapshot.live)) {
+      game.live = {
+        ...snapshot.live,
+        status: liveStatus(snapshot.live, game),
+        retained_after_empty_feed: true,
+        warning: live.warning || snapshot.live.warning || 'retained_last_live_snapshot_after_empty_feed',
+      };
+      game.live.win_probability = await liveWinProbability(game.live, game, details, context);
       return;
     }
     game.live = {
@@ -176,6 +201,17 @@ async function attachTargetLive(details, context) {
     };
     game.live.win_probability = await liveWinProbability(game.live, game, details, context);
   } catch (error) {
+    const snapshot = await readLiveSnapshot(context, details.id, game.id);
+    if (snapshot?.live && hasMeaningfulLiveData(snapshot.live)) {
+      game.live = {
+        ...snapshot.live,
+        status: liveStatus(snapshot.live, game),
+        retained_after_fetch_error: true,
+        warning: error?.message || snapshot.live.warning || 'retained_last_live_snapshot_after_fetch_error',
+      };
+      game.live.win_probability = await liveWinProbability(game.live, game, details, context);
+      return;
+    }
     game.live = {
       ...baseLiveForState(game.state),
       status: 'unavailable',
@@ -184,6 +220,73 @@ async function attachTargetLive(details, context) {
     };
     game.live.win_probability = await liveWinProbability(game.live, game, details, context);
   }
+}
+
+async function restoreCompletedLiveSnapshots(details, context) {
+  if (!details?.id || !Array.isArray(details.games)) return;
+  await Promise.all(details.games.map(async game => {
+    const state = String(game?.state || '').toLowerCase();
+    if (!['completed', 'complete'].includes(state)) return;
+    if (hasMeaningfulLiveData(game.live)) return;
+    const snapshot = await readLiveSnapshot(context, details.id, game.id);
+    if (!snapshot?.live || !hasMeaningfulLiveData(snapshot.live)) return;
+    game.live = {
+      ...snapshot.live,
+      status: 'ended',
+      game_state: snapshot.live.game_state || game.state || 'ended',
+      retained_after_end: true,
+    };
+    game.live.win_probability = await liveWinProbability(game.live, game, details, context);
+  }));
+}
+
+function waitUntil(context, promise) {
+  if (typeof context?.waitUntil === 'function') {
+    context.waitUntil(promise);
+    return;
+  }
+  return promise;
+}
+
+async function readLiveSnapshot(context, eventId, gameId) {
+  if (!context?.request?.url || !eventId || !gameId) return null;
+  try {
+    const response = await caches.default.match(liveSnapshotRequest(context, eventId, gameId));
+    if (!response?.ok) return null;
+    return response.json();
+  } catch (error) {
+    return null;
+  }
+}
+
+async function writeLiveSnapshot(context, eventId, game) {
+  if (!context?.request?.url || !eventId || !game?.id || !hasMeaningfulLiveData(game.live)) return;
+  try {
+    const payload = {
+      event_id: String(eventId || ''),
+      game_id: String(game.id || ''),
+      saved_at: new Date().toISOString(),
+      game: {
+        id: String(game.id || ''),
+        number: Number(game.number || 0),
+        state: String(game.state || ''),
+        blue: game.blue || {},
+        red: game.red || {},
+        winner: game.winner || '',
+      },
+      live: game.live,
+    };
+    const response = jsonResponse(payload, LIVE_SNAPSHOT_CACHE_SECONDS);
+    await caches.default.put(liveSnapshotRequest(context, eventId, game.id), response);
+  } catch (error) {
+  }
+}
+
+function liveSnapshotRequest(context, eventId, gameId) {
+  const url = new URL(context.request.url);
+  url.pathname = `/api/live-event-snapshot/${encodeURIComponent(String(eventId || ''))}/${encodeURIComponent(String(gameId || ''))}`;
+  url.search = '';
+  return new Request(url.toString(), { method: 'GET' });
 }
 
 function currentGame(details) {
