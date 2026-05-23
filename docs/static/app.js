@@ -2426,7 +2426,7 @@ function rosterCards(players) {
   return players.map(player => `
     <div class="playerCard">
       <div class="playerCardTop"><strong>${escapeHtml(compactRoleLabel(player.role))}</strong><strong>${escapeHtml(player.player)}</strong></div>
-      <div class="playerMeta">${escapeHtml(rosterMetaText(player))}</div>
+      ${rosterMetaText(player) ? `<div class="playerMeta">${escapeHtml(rosterMetaText(player))}</div>` : ''}
       <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
     </div>
   `).join('');
@@ -2434,7 +2434,7 @@ function rosterCards(players) {
 
 function rosterMetaText(player) {
   if (player.roster_source === 'leaguepedia') return 'Leaguepedia current roster';
-  if (player.roster_source === 'live_frame') return 'Live frame roster fallback';
+  if (player.roster_source === 'live_frame') return '';
   return `${player.games} games · ${(player.winrate * 100).toFixed(1)}% WR · KDA ${Number(player.kda).toFixed(2)}`;
 }
 
