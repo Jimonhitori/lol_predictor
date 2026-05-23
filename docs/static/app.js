@@ -2,7 +2,7 @@
 const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0 };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
-const STATIC_DATA_VERSION = '20260523-h2h-cfo-mvk';
+const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const DETAIL_REFRESH_IN_PROGRESS_MS = 5000;
@@ -189,8 +189,10 @@ function teamStaticKeys(...values) {
   const aliases = {
     bfx: 'bnk-fearx',
     fearx: 'bnk-fearx',
-    geng: 'gen-g-esports',
-    gen: 'gen-g-esports',
+    geng: ['gen-g-esports', 'gen-g'],
+    gen: ['gen-g-esports', 'gen-g'],
+    'gen-g': 'gen-g-esports',
+    'gen-g-esports': 'gen-g',
     drx: 'kiwoom-drx',
     krx: 'kiwoom-drx',
     dk: 'dplus-kia',
@@ -200,7 +202,9 @@ function teamStaticKeys(...values) {
     hle: 'hanwha-life-esports',
     bro: 'hanjin-brion',
     dns: 'dn-soopers',
-    ns: 'nongshim-red-force',
+    ns: ['nongshim-red-force', 'nongshim-redforce'],
+    'nongshim-red-force': 'nongshim-redforce',
+    'nongshim-redforce': 'nongshim-red-force',
     jdg: 'beijing-jdg-esports',
     tes: 'top-esports',
     blg: 'bilibili-gaming',
@@ -213,10 +217,25 @@ function teamStaticKeys(...values) {
     'team-we': 'xi-an-team-we',
     wbg: 'weibogaming',
     up: 'ultra-prime',
-    nip: 'shenzhen-ninjas-in-pyjamas',
-    c9: 'cloud9-kia',
-    tl: 'team-liquid-alienware',
-    tlaw: 'team-liquid-alienware',
+    nip: ['shenzhen-ninjas-in-pyjamas', 'ninjas-in-pyjamas'],
+    'shenzhen-ninjas-in-pyjamas': 'ninjas-in-pyjamas',
+    'ninjas-in-pyjamas': 'shenzhen-ninjas-in-pyjamas',
+    tt: 'thunder-talk-gaming',
+    'thundertalk-gaming': 'thunder-talk-gaming',
+    'thunder-talk-gaming': 'thundertalk-gaming',
+    c9: ['cloud9-kia', 'cloud9'],
+    'cloud9-kia': 'cloud9',
+    cloud9: 'cloud9-kia',
+    tl: ['team-liquid-alienware', 'team-liquid'],
+    tlaw: ['team-liquid-alienware', 'team-liquid'],
+    'team-liquid-alienware': 'team-liquid',
+    'team-liquid': 'team-liquid-alienware',
+    red: ['red-canids-kalunga', 'red-canids'],
+    'red-canids-kalunga': 'red-canids',
+    'red-canids': 'red-canids-kalunga',
+    dcg: ['relove-deep-cross-gaming', 'deep-cross-gaming'],
+    'relove-deep-cross-gaming': 'deep-cross-gaming',
+    'deep-cross-gaming': 'relove-deep-cross-gaming',
     cnv: 'conviction',
     sn: 'supernova',
     su: 'su-esports',
@@ -229,7 +248,9 @@ function teamStaticKeys(...values) {
     const key = staticKey(value);
     if (!key) continue;
     keys.push(key);
-    if (aliases[key]) keys.push(aliases[key]);
+    for (const alias of Array.isArray(aliases[key]) ? aliases[key] : [aliases[key]]) {
+      if (alias) keys.push(alias);
+    }
   }
   return uniqueValues(keys);
 }
