@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null };
+const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0 };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
@@ -370,9 +370,12 @@ async function loadTeamStandings() {
 }
 
 async function loadMatches() {
+  const requestId = ++state.matchesRequestId;
+  const filters = currentMatchFilters();
   const predictionsReady = loadPreMatchPredictions();
   const data = await api('/api/matches/today?' + qs());
-  state.allMatches = data.matches || [];
+  if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
+  state.allMatches = filterMatchesBySelection(data.matches || [], filters);
   state.matchSource = data.source || 'none';
   if (!state.selectedMatchDate) {
     state.selectedMatchDate = defaultMatchDate(state.allMatches);
@@ -381,11 +384,35 @@ async function loadMatches() {
   renderDateTabs(state.allMatches);
   renderMatches();
   predictionsReady.then(async () => {
+    if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
     state.allMatches = applyPreMatchPredictionOverlay(state.allMatches);
     await refreshStaticMatchStatuses();
     renderDateTabs(state.allMatches);
     renderMatches();
   }).catch(() => {});
+}
+
+function currentMatchFilters() {
+  return {
+    league_group: $('leagueGroup')?.value || 'all',
+    region: $('region')?.value || 'all',
+  };
+}
+
+function sameMatchFilters(left, right) {
+  return String(left?.league_group || 'all') === String(right?.league_group || 'all')
+    && String(left?.region || 'all') === String(right?.region || 'all');
+}
+
+function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
+  const leagueGroup = String(filters.league_group || 'all');
+  const region = String(filters.region || 'all');
+  return (matches || []).filter(match => {
+    const matchGroup = String(match?.league_group || 'all');
+    const matchRegion = String(match?.region || 'all');
+    return (leagueGroup === 'all' || matchGroup === leagueGroup)
+      && (region === 'all' || matchRegion === region);
+  });
 }
 
 async function loadPreMatchPredictions() {
@@ -812,8 +839,9 @@ function visibleDateOptions(options) {
 }
 
 function filteredMatches() {
-  if (state.selectedMatchDate === 'live') return liveMatches(state.allMatches);
-  return sortMatchesByStart(state.allMatches.filter(match => localDateKey(match.start_time) === state.selectedMatchDate));
+  const selected = filterMatchesBySelection(state.allMatches);
+  if (state.selectedMatchDate === 'live') return liveMatches(selected);
+  return sortMatchesByStart(selected.filter(match => localDateKey(match.start_time) === state.selectedMatchDate));
 }
 
 function liveMatches(matches) {
