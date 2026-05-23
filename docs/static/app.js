@@ -157,15 +157,19 @@ async function staticHeadToHead(params) {
       }
     }
   }
+  let firstEmptyPayload = null;
   for (const candidate of uniqueValues(candidates)) {
     const response = await fetch(staticDataUrl(candidate), { cache: 'no-store' });
     if (!response.ok) continue;
     try {
-      return await response.json();
+      const data = await response.json();
+      if (Array.isArray(data.matches) && data.matches.length > 0) return data;
+      if (!firstEmptyPayload && Array.isArray(data.matches)) firstEmptyPayload = data;
     } catch (error) {
       continue;
     }
   }
+  if (firstEmptyPayload) return firstEmptyPayload;
   return {
     team_a: teamA || teamACode,
     team_b: teamB || teamBCode,
@@ -233,6 +237,9 @@ function teamStaticKeys(...values) {
     red: ['red-canids-kalunga', 'red-canids'],
     'red-canids-kalunga': 'red-canids',
     'red-canids': 'red-canids-kalunga',
+    los: 'l-s',
+    'l-s': 'los',
+    vks: 'vivo-keyd-stars',
     dcg: ['relove-deep-cross-gaming', 'deep-cross-gaming'],
     'relove-deep-cross-gaming': 'deep-cross-gaming',
     'deep-cross-gaming': 'relove-deep-cross-gaming',
