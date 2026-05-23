@@ -1190,16 +1190,18 @@ function rememberLiveSnapshot(details) {
 }
 
 function restoreEndedLiveSnapshot(details) {
-  if (!STATIC_SITE || !details?.id || !Array.isArray(details.games) || !isEndedMatchDetails(details)) return details;
+  if (!STATIC_SITE || !details?.id || !Array.isArray(details.games)) return details;
   const snapshot = readLiveSnapshot(details.id);
   if (!snapshot?.games?.length) return details;
   const snapshotById = new Map(snapshot.games.map(game => [String(game.id || ''), game]));
   const snapshotByNumber = new Map(snapshot.games.map(game => [String(game.number || ''), game]));
+  const endedSeries = isEndedMatchDetails(details);
   let restored = false;
   const games = details.games.map(game => {
     if (hasRetainableLiveData(game?.live)) return game;
     const previous = snapshotById.get(String(game.id || '')) || snapshotByNumber.get(String(game.number || ''));
     if (!previous?.live || !hasRetainableLiveData(previous.live)) return game;
+    if (!shouldRestoreLiveSnapshotForGame(details, game, previous, endedSeries)) return game;
     restored = true;
     return {
       ...game,
@@ -1219,6 +1221,16 @@ function restoreEndedLiveSnapshot(details) {
     games,
     warning: details.warning || 'retained_last_live_snapshot_after_end',
   };
+}
+
+function shouldRestoreLiveSnapshotForGame(details, game, previous, endedSeries) {
+  const state = String(game?.state || '').toLowerCase();
+  const liveStatus = String(game?.live?.status || '').toLowerCase();
+  const previousStatus = String(previous?.live?.status || '').toLowerCase();
+  return endedSeries
+    || ['completed', 'complete'].includes(state)
+    || ['ended', 'complete', 'completed'].includes(liveStatus)
+    || ['ended', 'complete', 'completed'].includes(previousStatus);
 }
 
 function isEndedMatchDetails(details) {
