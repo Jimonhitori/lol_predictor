@@ -159,7 +159,12 @@ async function staticHeadToHead(params) {
   }
   for (const candidate of uniqueValues(candidates)) {
     const response = await fetch(staticDataUrl(candidate), { cache: 'no-store' });
-    if (response.ok) return response.json();
+    if (!response.ok) continue;
+    try {
+      return await response.json();
+    } catch (error) {
+      continue;
+    }
   }
   return {
     team_a: teamA || teamACode,

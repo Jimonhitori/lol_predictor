@@ -160,6 +160,7 @@ async function checkH2hStaticLookup(baseDir, source) {
     errors: [],
     warnings: [],
     alias_lookup_match_count: null,
+    html_fallback_lookup_match_count: null,
     missing_lookup_returns_empty: null,
   };
   try {
@@ -182,16 +183,39 @@ async function checkH2hStaticLookup(baseDir, source) {
       context,
       { timeout: 1000 },
     );
+    const htmlFallbackContext = createAppContext();
+    htmlFallbackContext.fetch = async (url) => {
+      const parsed = new URL(String(url));
+      const relative = parsed.pathname.replace(/^\/static\//, 'static/').replace(/^\/+/, '');
+      const filePath = path.join(baseDir, relative);
+      try {
+        const text = await fs.readFile(filePath, 'utf8');
+        return { ok: true, json: async () => JSON.parse(text) };
+      } catch {
+        return { ok: true, json: async () => { throw new SyntaxError('Unexpected token <'); } };
+      }
+    };
+    htmlFallbackContext.document.querySelector = () => ({ src: 'http://example.test/static/app.js' });
+    vm.runInContext(source, htmlFallbackContext, { timeout: 1000 });
+    const htmlFallbackFound = await vm.runInContext(
+      "staticHeadToHead(new URLSearchParams('league=LCP&team_a=MVK%20Esports&team_b=CTBC%20Flying%20Oyster&team_a_code=MVK&team_b_code=CFO'))",
+      htmlFallbackContext,
+      { timeout: 1000 },
+    );
     const missing = await vm.runInContext(
       "staticHeadToHead(new URLSearchParams('league=LCP&team_a=Imaginary%20Blue&team_b=Imaginary%20Red&team_a_code=IBL&team_b_code=IRD'))",
       context,
       { timeout: 1000 },
     );
     output.alias_lookup_match_count = Array.isArray(found.matches) ? found.matches.length : null;
+    output.html_fallback_lookup_match_count = Array.isArray(htmlFallbackFound.matches) ? htmlFallbackFound.matches.length : null;
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'h2h_static_artifact_missing';
     if (!output.alias_lookup_match_count) {
       output.errors.push('H2H static lookup did not find an existing alias-backed artifact');
+    }
+    if (!output.html_fallback_lookup_match_count) {
+      output.errors.push('H2H static lookup stopped before a valid reverse artifact after an HTML fallback response');
     }
     if (!output.missing_lookup_returns_empty) {
       output.errors.push('H2H static lookup did not return an empty payload for missing artifacts');
