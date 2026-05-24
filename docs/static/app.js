@@ -2520,14 +2520,10 @@ function renderHeadToHead(matches, leftTeam = {}, rightTeam = {}) {
   const context = { leftTeam, rightTeam };
   const stripMatches = matches.slice(0, 5);
   el.innerHTML = `
-    <div class="h2hCard">
-      <div class="h2hLogoStrip">
-        ${stripMatches.map(match => `<div class="h2hLogoCell">${teamLogoMarkup(winningTeamName(match), context)}</div>`).join('')}
-      </div>
-      <div class="h2hRows">
-        ${matches.map(match => h2hRow(match, context)).join('')}
-      </div>
+    <div class="h2hLogoStrip">
+      ${stripMatches.map(match => `<div class="h2hLogoCell">${teamLogoMarkup(winningTeamName(match), context)}</div>`).join('')}
     </div>
+    ${matches.map(match => h2hRow(match, context)).join('')}
   `;
 }
 
