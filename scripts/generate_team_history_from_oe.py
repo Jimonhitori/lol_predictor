@@ -149,7 +149,7 @@ def load_oe_series(raw_dir: Path) -> list[dict[str, Any]]:
                     continue
                 games.setdefault(game_id, []).append(row)
 
-    buckets: dict[tuple[str, str, str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    buckets: dict[tuple[str, str, str, str], list[dict[str, Any]]] = defaultdict(list)
     for rows in games.values():
         if len(rows) != 2:
             continue
@@ -158,40 +158,65 @@ def load_oe_series(raw_dir: Path) -> list[dict[str, Any]]:
         right_team = right.get("teamname") or ""
         if not left_team or not right_team:
             continue
-        date_text = left.get("date") or right.get("date") or ""
-        day = date_text[:10]
         league = left.get("league") or right.get("league") or ""
         split = left.get("split") or right.get("split") or ""
         pair = tuple(sorted([static_key(left_team), static_key(right_team)]))
-        buckets[(day, static_key(league), split, pair[0], pair[1])].append({"left": left, "right": right})
+        buckets[(static_key(league), split, pair[0], pair[1])].append({"left": left, "right": right})
 
     series = []
     for bucket_games in buckets.values():
-        ordered = sorted(bucket_games, key=lambda game: parse_date(game["left"].get("date") or ""))
-        first = ordered[0]
-        left_team = first["left"].get("teamname") or ""
-        right_team = first["right"].get("teamname") or ""
-        left_score = 0
-        right_score = 0
-        for game in ordered:
-            left_won = int_or_zero(game["left"].get("result")) > int_or_zero(game["right"].get("result"))
-            right_won = int_or_zero(game["right"].get("result")) > int_or_zero(game["left"].get("result"))
-            left_score += 1 if same_team(game["left"].get("teamname"), left_team) and left_won else 0
-            left_score += 1 if same_team(game["right"].get("teamname"), left_team) and right_won else 0
-            right_score += 1 if same_team(game["left"].get("teamname"), right_team) and left_won else 0
-            right_score += 1 if same_team(game["right"].get("teamname"), right_team) and right_won else 0
-        series.append(
-            {
-                "date": first["left"].get("date") or "",
-                "league": first["left"].get("league") or "",
-                "split": first["left"].get("split") or "",
-                "left_team": left_team,
-                "right_team": right_team,
-                "left_score": left_score,
-                "right_score": right_score,
-            }
-        )
+        for ordered in split_series_games(bucket_games):
+            first = ordered[0]
+            series.append(series_from_games(ordered, first))
     return sorted(series, key=lambda row: row["date"], reverse=True)
+
+
+def split_series_games(bucket_games: list[dict[str, dict[str, str]]]) -> list[list[dict[str, dict[str, str]]]]:
+    ordered = sorted(bucket_games, key=lambda game: parse_date(game["left"].get("date") or ""))
+    series: list[list[dict[str, dict[str, str]]]] = []
+    current: list[dict[str, dict[str, str]]] = []
+    previous_date = datetime.min
+    previous_game_number = 0
+    for game in ordered:
+        game_date = parse_date(game["left"].get("date") or "")
+        game_number = int_or_zero(game["left"].get("game"))
+        gap_hours = (game_date - previous_date).total_seconds() / 3600 if previous_date != datetime.min else 0
+        starts_new_series = bool(current) and (
+            game_number <= previous_game_number
+            or gap_hours > 8
+        )
+        if starts_new_series:
+            series.append(current)
+            current = []
+        current.append(game)
+        previous_date = game_date
+        previous_game_number = game_number
+    if current:
+        series.append(current)
+    return series
+
+
+def series_from_games(ordered: list[dict[str, dict[str, str]]], first: dict[str, dict[str, str]]) -> dict[str, Any]:
+    left_team = first["left"].get("teamname") or ""
+    right_team = first["right"].get("teamname") or ""
+    left_score = 0
+    right_score = 0
+    for game in ordered:
+        left_won = int_or_zero(game["left"].get("result")) > int_or_zero(game["right"].get("result"))
+        right_won = int_or_zero(game["right"].get("result")) > int_or_zero(game["left"].get("result"))
+        left_score += 1 if same_team(game["left"].get("teamname"), left_team) and left_won else 0
+        left_score += 1 if same_team(game["right"].get("teamname"), left_team) and right_won else 0
+        right_score += 1 if same_team(game["left"].get("teamname"), right_team) and left_won else 0
+        right_score += 1 if same_team(game["right"].get("teamname"), right_team) and right_won else 0
+    return {
+        "date": first["left"].get("date") or "",
+        "league": first["left"].get("league") or "",
+        "split": first["left"].get("split") or "",
+        "left_team": left_team,
+        "right_team": right_team,
+        "left_score": left_score,
+        "right_score": right_score,
+    }
 
 
 def side_order(value: object) -> int:

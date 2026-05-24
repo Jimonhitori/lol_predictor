@@ -281,6 +281,7 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     t1a_history_count: null,
     tlaw_history_count: null,
     lyon_history_has_logos: null,
+    tlaw_lyon_series_score: null,
     missing_lookup_returns_empty: null,
   };
   try {
@@ -329,6 +330,12 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     output.lyon_history_has_logos = Array.isArray(lyon.matches)
       && lyon.matches.length > 0
       && lyon.matches.every((match) => match.team_image && match.opponent_image);
+    const tlawLyonSeries = Array.isArray(tlaw.matches)
+      ? tlaw.matches.find((match) => match.opponent === 'LYON')
+      : null;
+    output.tlaw_lyon_series_score = tlawLyonSeries
+      ? `${tlawLyonSeries.team_score}-${tlawLyonSeries.opponent_score} ${tlawLyonSeries.result}`
+      : null;
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'team_history_static_artifact_missing';
     if (output.bfx_history_count !== 5) {
@@ -342,6 +349,9 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     }
     if (!output.lyon_history_has_logos) {
       output.errors.push('LYON recent team history is missing team/opponent logos');
+    }
+    if (output.tlaw_lyon_series_score !== '1-2 L') {
+      output.errors.push(`TLAW/LYON recent history was not merged into one BO3 series: ${output.tlaw_lyon_series_score}`);
     }
     if (!output.missing_lookup_returns_empty) {
       output.errors.push('team-history static lookup did not return an empty payload for missing artifacts');
