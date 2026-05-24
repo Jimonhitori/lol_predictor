@@ -199,10 +199,13 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hMiniLogo img { width: 20px; height: 20px; object-fit: contain; }
 .h2hScore { justify-self: center; border-radius: 5px; padding: 4px 10px; background: #252b34; color: #f3f6fb; font-weight: 900; line-height: 1; white-space: nowrap; }
 .h2hEmpty { color: var(--muted); font-size: 12px; }
-.historyPanel { background: #151b22; }
-.teamHistoryGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.historyPanel { background: #2d343d; border-color: #343d49; padding: 10px 16px 12px; margin-bottom: 18px; }
+.historyPanel h2 { color: #d5dbe4; font-size: 15px; margin-bottom: 10px; }
+.teamHistoryGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .teamHistoryColumn { min-width: 0; }
-.teamHistoryColumn h3 { margin: 0 0 8px; font-size: 13px; color: var(--text); }
+.teamHistoryTitle { display: flex; align-items: center; gap: 8px; min-width: 0; margin-bottom: 8px; }
+.teamHistoryTitle img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; }
+.teamHistoryTitle h3 { margin: 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; color: var(--text); }
 .teamHistoryRows { display: grid; gap: 6px; }
 .teamHistoryRow { display: grid; grid-template-columns: 54px minmax(0, 1fr) 24px 42px; gap: 8px; align-items: center; min-width: 0; padding: 7px 8px; border: 1px solid #303946; border-radius: 6px; background: #10161d; font-size: 12px; }
 .teamHistoryDate { color: var(--muted); white-space: nowrap; }

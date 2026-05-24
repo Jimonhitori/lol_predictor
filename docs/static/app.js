@@ -2540,17 +2540,24 @@ function renderTeamHistories(leftHistory, rightHistory, leftTeam = {}, rightTeam
 function teamHistoryColumn(history, team = {}) {
   const matches = Array.isArray(history?.matches) ? history.matches.slice(0, 5) : [];
   const title = team.code || team.name || history?.team || '-';
+  const logo = team.image ? `<img src="${escapeHtml(team.image)}" alt="">` : '';
+  const titleMarkup = `
+    <div class="teamHistoryTitle">
+      ${logo}
+      <h3>${escapeHtml(title)}</h3>
+    </div>
+  `;
   if (!matches.length) {
     return `
       <div class="teamHistoryColumn">
-        <h3>${escapeHtml(title)}</h3>
+        ${titleMarkup}
         <p class="h2hEmpty">No recent team history in local data.</p>
       </div>
     `;
   }
   return `
     <div class="teamHistoryColumn">
-      <h3>${escapeHtml(title)}</h3>
+      ${titleMarkup}
       <div class="teamHistoryRows">
         ${matches.map(match => teamHistoryRow(match)).join('')}
       </div>

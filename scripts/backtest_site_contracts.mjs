@@ -279,6 +279,7 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     errors: [],
     bfx_history_count: null,
     t1a_history_count: null,
+    tlaw_history_count: null,
     missing_lookup_returns_empty: null,
   };
   try {
@@ -306,6 +307,11 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
       context,
       { timeout: 1000 },
     );
+    const tlaw = await vm.runInContext(
+      "staticTeamHistory(new URLSearchParams('league=LCS&team=Team%20Liquid%20Alienware&team_code=TLAW'))",
+      context,
+      { timeout: 1000 },
+    );
     const missing = await vm.runInContext(
       "staticTeamHistory(new URLSearchParams('league=LCK%20Challengers&team=Imaginary%20Academy&team_code=IMA'))",
       context,
@@ -313,6 +319,7 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     );
     output.bfx_history_count = Array.isArray(bfx.matches) ? bfx.matches.length : null;
     output.t1a_history_count = Array.isArray(t1a.matches) ? t1a.matches.length : null;
+    output.tlaw_history_count = Array.isArray(tlaw.matches) ? tlaw.matches.length : null;
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'team_history_static_artifact_missing';
     if (output.bfx_history_count !== 5) {
@@ -320,6 +327,9 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     }
     if (output.t1a_history_count !== 5) {
       output.errors.push(`T1A recent team history returned ${output.t1a_history_count}`);
+    }
+    if (output.tlaw_history_count !== 5) {
+      output.errors.push(`TLAW recent team history returned ${output.tlaw_history_count}`);
     }
     if (!output.missing_lookup_returns_empty) {
       output.errors.push('team-history static lookup did not return an empty payload for missing artifacts');

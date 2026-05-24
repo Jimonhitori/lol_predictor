@@ -77,10 +77,13 @@ def load_team_targets(team_records_dir: Path) -> dict[str, dict[str, Any]]:
         if "__" not in stem:
             continue
         league_key, team_key = stem.split("__", 1)
-        # Prefer the site team identity over matched_team. Some fallback records
-        # map academy/youth teams to a parent team for standings, which would
-        # pollute recent-form history with the parent roster's matches.
+        # Prefer the site team identity, but allow matched_team for normal
+        # rebrands such as Team Liquid Alienware -> Team Liquid. Do not use it
+        # for academy/youth/challengers teams because that can pull parent-team
+        # matches into academy recent form.
         names = [payload.get("team"), team_key]
+        if not is_development_team(payload.get("team")):
+            names.append(payload.get("matched_team"))
         targets[stem] = {
             "team": payload.get("team") or payload.get("matched_team") or team_key,
             "league_key": league_key,
@@ -161,6 +164,11 @@ def side_for_target(series: dict[str, Any], keys: set[str]) -> str:
 
 def same_team(left: object, right: object) -> bool:
     return static_key(left) == static_key(right)
+
+
+def is_development_team(value: object) -> bool:
+    key = static_key(value)
+    return any(part in key.split("-") for part in ["academy", "youth", "challengers"])
 
 
 def static_key(value: object) -> str:
