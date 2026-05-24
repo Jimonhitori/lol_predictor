@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0 };
+const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0 };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
@@ -121,6 +121,8 @@ async function staticApi(path) {
     target = `data/rosters/${staticKey(params.get('team') || '')}.json`;
   } else if (url.pathname === '/api/team-record') {
     target = `data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
+  } else if (url.pathname === '/api/team-history') {
+    return staticTeamHistory(params);
   } else if (url.pathname === '/api/head-to-head') {
     return staticHeadToHead(params);
   }
@@ -137,6 +139,31 @@ async function staticApi(path) {
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
   return data;
+}
+
+async function staticTeamHistory(params) {
+  const team = params.get('team') || '';
+  const teamCode = params.get('team_code') || '';
+  const leagueKeys = uniqueValues([staticKey(params.get('league') || 'all'), 'all']);
+  const teamKeys = teamStaticKeys(team, teamCode);
+  for (const league of leagueKeys) {
+    for (const key of teamKeys) {
+      if (!key) continue;
+      const response = await fetch(staticDataUrl(`data/team-history/${league}__${key}.json`), { cache: 'no-store' });
+      if (!response.ok) continue;
+      try {
+        const data = await response.json();
+        if (Array.isArray(data.matches) && data.matches.length > 0) return data;
+      } catch (error) {
+        continue;
+      }
+    }
+  }
+  return {
+    team: team || teamCode,
+    matches: [],
+    warning: 'team_history_static_artifact_missing',
+  };
 }
 
 async function staticHeadToHead(params) {
@@ -1306,6 +1333,7 @@ async function refreshMatchDetail(initial) {
   loadTeamRecords(left, right, details.league);
   updateStartedVisibility(details);
   loadHeadToHead(left, right, details.league);
+  loadTeamHistories(left, right, details.league);
   $('detailGames').innerHTML = gameListHtml(details);
   setDetailInputs(details);
   renderLiveDraft(details);
@@ -2177,6 +2205,26 @@ async function loadHeadToHead(leftTeam, rightTeam, league) {
   }
 }
 
+async function loadTeamHistories(leftTeam, rightTeam, league) {
+  const el = $('teamHistory');
+  if (!el) return;
+  const leftName = leftTeam.name || leftTeam.code || '';
+  const rightName = rightTeam.name || rightTeam.code || '';
+  const historyKey = `${league || ''}|${leftName}|${leftTeam.code || ''}|${rightName}|${rightTeam.code || ''}`;
+  if (state.teamHistoryKey === historyKey && el.dataset.loaded === 'true') return;
+  state.teamHistoryKey = historyKey;
+  el.innerHTML = '<p class="h2hEmpty">Loading recent team history...</p>';
+  try {
+    const [left, right] = await Promise.all([
+      api('/api/team-history?team=' + encodeURIComponent(leftName) + '&team_code=' + encodeURIComponent(leftTeam.code || '') + '&league=' + encodeURIComponent(league || '')),
+      api('/api/team-history?team=' + encodeURIComponent(rightName) + '&team_code=' + encodeURIComponent(rightTeam.code || '') + '&league=' + encodeURIComponent(league || '')),
+    ]);
+    renderTeamHistories(left, right, leftTeam, rightTeam);
+  } catch (error) {
+    renderTeamHistories({ matches: [] }, { matches: [] }, leftTeam, rightTeam);
+  }
+}
+
 function liveGameTab(item, active) {
   const isActive = String(item.id || '') === String(active.id || '');
   return `<button type="button" class="liveTab ${isActive ? 'active' : ''}" data-game-id="${escapeHtml(item.id || '')}">Game ${escapeHtml(item.number || '-')} - ${escapeHtml(gameStateLabel(item.state))}</button>`;
@@ -2476,6 +2524,51 @@ function renderHeadToHead(matches, leftTeam = {}, rightTeam = {}) {
       ${stripMatches.map(match => `<div class="h2hLogoCell">${teamLogoMarkup(winningTeamName(match), context)}</div>`).join('')}
     </div>
     ${matches.map(match => h2hRow(match, context)).join('')}
+  `;
+}
+
+function renderTeamHistories(leftHistory, rightHistory, leftTeam = {}, rightTeam = {}) {
+  const el = $('teamHistory');
+  if (!el) return;
+  el.dataset.loaded = 'true';
+  el.innerHTML = `
+    ${teamHistoryColumn(leftHistory, leftTeam)}
+    ${teamHistoryColumn(rightHistory, rightTeam)}
+  `;
+}
+
+function teamHistoryColumn(history, team = {}) {
+  const matches = Array.isArray(history?.matches) ? history.matches.slice(0, 5) : [];
+  const title = team.code || team.name || history?.team || '-';
+  if (!matches.length) {
+    return `
+      <div class="teamHistoryColumn">
+        <h3>${escapeHtml(title)}</h3>
+        <p class="h2hEmpty">No recent team history in local data.</p>
+      </div>
+    `;
+  }
+  return `
+    <div class="teamHistoryColumn">
+      <h3>${escapeHtml(title)}</h3>
+      <div class="teamHistoryRows">
+        ${matches.map(match => teamHistoryRow(match)).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function teamHistoryRow(match) {
+  const result = String(match.result || '').toUpperCase();
+  const resultClass = result === 'W' ? 'win' : result === 'L' ? 'loss' : 'draw';
+  const score = `${match.team_score ?? '-'}-${match.opponent_score ?? '-'}`;
+  return `
+    <div class="teamHistoryRow">
+      <span class="teamHistoryDate">${escapeHtml(relativeDateJa(match.date))}</span>
+      <span class="teamHistoryOpponent">${escapeHtml(shortTeamName(match.opponent || '-'))}</span>
+      <span class="teamHistoryResult ${resultClass}">${escapeHtml(result || '-')}</span>
+      <span class="teamHistoryScore">${escapeHtml(score)}</span>
+    </div>
   `;
 }
 

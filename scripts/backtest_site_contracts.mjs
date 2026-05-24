@@ -14,6 +14,7 @@ const report = {
   live_snapshot_retention: checkLiveSnapshotRetention(appSource),
   completed_game_tabs: checkCompletedGameTabs(appSource),
   h2h_static_lookup: await checkH2hStaticLookup(docsDir, appSource),
+  team_history_static_lookup: await checkTeamHistoryStaticLookup(docsDir, appSource),
   pre_match_prediction_backtest: await backtestPreMatchPredictions(docsDir),
   alias_resolution_backtest: await backtestAliasResolution(docsDir, appSource),
 };
@@ -264,6 +265,64 @@ async function checkH2hStaticLookup(baseDir, source) {
     }
     if (!output.lck_cl_academy_match_count) {
       output.errors.push('H2H static lookup did not find the LCK Challengers academy artifact');
+    }
+  } catch (error) {
+    output.errors.push(errorMessage(error));
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+async function checkTeamHistoryStaticLookup(baseDir, source) {
+  const output = {
+    ok: true,
+    errors: [],
+    bfx_history_count: null,
+    t1a_history_count: null,
+    missing_lookup_returns_empty: null,
+  };
+  try {
+    const context = createAppContext();
+    context.fetch = async (url) => {
+      const parsed = new URL(String(url));
+      const relative = parsed.pathname.replace(/^\/static\//, 'static/').replace(/^\/+/, '');
+      const filePath = path.join(baseDir, relative);
+      try {
+        const text = await fs.readFile(filePath, 'utf8');
+        return { ok: true, json: async () => JSON.parse(text) };
+      } catch {
+        return { ok: false, json: async () => ({}) };
+      }
+    };
+    context.document.querySelector = () => ({ src: 'http://example.test/static/app.js' });
+    vm.runInContext(source, context, { timeout: 1000 });
+    const bfx = await vm.runInContext(
+      "staticTeamHistory(new URLSearchParams('league=LCK%20Challengers&team=BNK%20FEARX%20Youth&team_code=BFX'))",
+      context,
+      { timeout: 1000 },
+    );
+    const t1a = await vm.runInContext(
+      "staticTeamHistory(new URLSearchParams('league=LCK%20Challengers&team=T1%20Esports%20Academy&team_code=T1A'))",
+      context,
+      { timeout: 1000 },
+    );
+    const missing = await vm.runInContext(
+      "staticTeamHistory(new URLSearchParams('league=LCK%20Challengers&team=Imaginary%20Academy&team_code=IMA'))",
+      context,
+      { timeout: 1000 },
+    );
+    output.bfx_history_count = Array.isArray(bfx.matches) ? bfx.matches.length : null;
+    output.t1a_history_count = Array.isArray(t1a.matches) ? t1a.matches.length : null;
+    output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
+      && missing.warning === 'team_history_static_artifact_missing';
+    if (output.bfx_history_count !== 5) {
+      output.errors.push(`BFX recent team history returned ${output.bfx_history_count}`);
+    }
+    if (output.t1a_history_count !== 5) {
+      output.errors.push(`T1A recent team history returned ${output.t1a_history_count}`);
+    }
+    if (!output.missing_lookup_returns_empty) {
+      output.errors.push('team-history static lookup did not return an empty payload for missing artifacts');
     }
   } catch (error) {
     output.errors.push(errorMessage(error));
