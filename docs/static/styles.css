@@ -206,17 +206,17 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .teamHistoryTitle img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; }
 .teamHistoryTitle h3 { margin: 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; color: var(--text); }
 .teamHistoryRows { display: grid; gap: 0; }
-.teamHistoryRow { display: grid; grid-template-columns: 62px minmax(0, 1fr) 54px 30px; gap: 8px; align-items: center; min-width: 0; padding: 7px 0; border-top: 1px solid #3b444f; font-size: 12px; }
+.teamHistoryRow { display: grid; grid-template-columns: 62px minmax(50px, 1fr) 18px 54px 18px minmax(50px, 1fr) 26px; gap: 6px; align-items: center; min-width: 0; padding: 7px 0; border-top: 1px solid #3b444f; font-size: 12px; }
 .teamHistoryDate { color: #bcc7d5; white-space: nowrap; }
-.teamHistoryOpponent { min-width: 0; font-weight: 800; }
-.teamHistoryTeamLine { display: flex; align-items: center; gap: 5px; min-width: 0; line-height: 1; }
-.teamHistoryTeamLine img { width: 16px; height: 16px; object-fit: contain; flex: 0 0 auto; }
-.teamHistoryTeamLine strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.teamHistoryTeam { color: #b7c0cc; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.teamHistoryTeam.isSelf { color: #f1f5f9; text-align: right; }
+.teamHistoryMiniLogo { width: 18px; height: 18px; display: grid; place-items: center; }
+.teamHistoryMiniLogo img { width: 18px; height: 18px; object-fit: contain; }
 .teamHistoryLogoFallback { width: 16px; height: 16px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: #1f2730; color: #aab6c5; font-size: 7px; font-weight: 900; }
 .teamHistoryResult { justify-self: end; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 999px; font-size: 10px; font-weight: 900; background: #252b34; color: #d8e5ff; }
 .teamHistoryResult.win { color: #22f0b6; border: 1px solid rgba(34, 240, 182, .45); }
 .teamHistoryResult.loss { color: #ff5d7c; border: 1px solid rgba(255, 93, 124, .45); }
-.teamHistoryScore { justify-self: end; border-radius: 5px; padding: 4px 8px; background: #252b34; color: #f3f6fb; font-size: 12px; font-weight: 900; line-height: 1; white-space: nowrap; }
+.teamHistoryScore { justify-self: center; border-radius: 5px; padding: 4px 8px; background: #252b34; color: #f3f6fb; font-size: 12px; font-weight: 900; line-height: 1; white-space: nowrap; }
 @media (max-width: 1100px) { .liveTeamRows { grid-template-columns: 160px minmax(120px, 1fr) 70px 30px 30px 30px 92px; } .liveItems, .liveRowsHeader.items, .liveCell.delta, .liveRowsHeader.delta { display: none; } }
 @media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } .liveTop { grid-template-columns: 1fr; } .liveStatsLine { grid-template-columns: 1fr; } }
 @media (max-width: 720px) {
