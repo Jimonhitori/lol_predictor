@@ -36,6 +36,8 @@ jobs:
           node --check scripts/check_ops_meta.mjs
           node --check scripts/check_pre_match_ui.mjs
           node --check scripts/serve_cloudflare_preview.mjs
+          node --check scripts/backtest_site_contracts.mjs
+          node --check scripts/sync_lolesports_match_results.mjs
 
       - name: Run local Cloudflare preflight
         run: |
@@ -66,4 +68,5 @@ jobs:
             --prediction-feed-path analyzer/pre_match_predictions.json \
             --min-rows 0 \
             --min-overlap 0
+          node scripts/backtest_site_contracts.mjs docs
           node scripts/check_live_probability_contract.mjs
