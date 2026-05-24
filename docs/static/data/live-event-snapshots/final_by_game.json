@@ -1660,7 +1660,7 @@
   },
   "115565670260181851:115565670260181853": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-24T20:39:48.998Z",
+    "checked_at": "2026-05-24T21:37:49.653Z",
     "event_id": "115565670260181851",
     "game_id": "115565670260181853",
     "game_number": 2,
@@ -1986,6 +1986,341 @@
             "baron_diff": 1,
             "avg_level_diff": 0.1999999999999993,
             "game_time": 2632
+          }
+        },
+        "retained_after_end": true,
+        "retained_from_artifact": true
+      }
+    }
+  },
+  "115565670260181851:115565670260181852": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-05-24T21:37:49.653Z",
+    "event_id": "115565670260181851",
+    "game_id": "115565670260181852",
+    "game_number": 1,
+    "event_status": "completed",
+    "teams": [
+      {
+        "id": "100205576309502431",
+        "name": "FURIA",
+        "code": "FUR",
+        "image": "http://static.lolesports.com/teams/FURIA---black.png",
+        "game_wins": "3"
+      },
+      {
+        "id": "99566408221961358",
+        "name": "RED Canids Kalunga",
+        "code": "RED",
+        "image": "http://static.lolesports.com/teams/1631820575924_red-2021-worlds.png",
+        "game_wins": "0"
+      }
+    ],
+    "game": {
+      "id": "115565670260181852",
+      "number": 1,
+      "state": "completed",
+      "blue": {
+        "team_id": "100205576309502431",
+        "team_name": "FURIA",
+        "team_code": "FUR"
+      },
+      "red": {
+        "team_id": "99566408221961358",
+        "team_name": "RED Canids Kalunga",
+        "team_code": "RED"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 1804,
+        "frame_timestamp": "2026-05-24T16:35:49.941Z",
+        "patch_version": "16.10.776.5552",
+        "blue": [
+          {
+            "player": "FUR Guigo",
+            "participant_id": "1",
+            "champion": "Ornn",
+            "champion_id": "Ornn",
+            "role": "top",
+            "level": 15,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 3,
+            "creep_score": 228,
+            "gold": 8615,
+            "current_health": 2467,
+            "max_health": 3798,
+            "items": [
+              "1120",
+              "2504",
+              "3364",
+              "3111",
+              "2055",
+              "2502"
+            ]
+          },
+          {
+            "player": "FUR Tatu",
+            "participant_id": "2",
+            "champion": "XinZhao",
+            "champion_id": "XinZhao",
+            "role": "jungle",
+            "level": 15,
+            "kills": 7,
+            "deaths": 1,
+            "assists": 2,
+            "creep_score": 220,
+            "gold": 11593,
+            "current_health": 2891,
+            "max_health": 2891,
+            "items": [
+              "6610",
+              "3071",
+              "3047",
+              "1038"
+            ]
+          },
+          {
+            "player": "FUR Tutsz",
+            "participant_id": "3",
+            "champion": "Galio",
+            "champion_id": "Galio",
+            "role": "mid",
+            "level": 15,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 7,
+            "creep_score": 220,
+            "gold": 8495,
+            "current_health": 3139,
+            "max_health": 3176,
+            "items": [
+              "1056",
+              "1082",
+              "6664",
+              "3111",
+              "3364",
+              "3152"
+            ]
+          },
+          {
+            "player": "FUR Ayu",
+            "participant_id": "4",
+            "champion": "Ezreal",
+            "champion_id": "Ezreal",
+            "role": "bottom",
+            "level": 14,
+            "kills": 3,
+            "deaths": 0,
+            "assists": 3,
+            "creep_score": 245,
+            "gold": 11126,
+            "current_health": 1907,
+            "max_health": 2231,
+            "items": [
+              "1086",
+              "3078",
+              "3363",
+              "3008",
+              "2420"
+            ]
+          },
+          {
+            "player": "FUR JoJo",
+            "participant_id": "5",
+            "champion": "Bard",
+            "champion_id": "Bard",
+            "role": "support",
+            "level": 10,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 9,
+            "creep_score": 23,
+            "gold": 6162,
+            "current_health": 1638,
+            "max_health": 2142,
+            "items": [
+              "3364",
+              "3222",
+              "3067",
+              "1033",
+              "1029",
+              "2055"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "RED zynts",
+            "participant_id": "6",
+            "champion": "Rumble",
+            "champion_id": "Rumble",
+            "role": "top",
+            "level": 15,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 0,
+            "creep_score": 219,
+            "gold": 8387,
+            "current_health": 344,
+            "max_health": 2887,
+            "items": [
+              "1056",
+              "3009",
+              "6653",
+              "8010",
+              "2055",
+              "3363"
+            ]
+          },
+          {
+            "player": "RED STEPZ",
+            "participant_id": "7",
+            "champion": "Nocturne",
+            "champion_id": "Nocturne",
+            "role": "jungle",
+            "level": 13,
+            "kills": 0,
+            "deaths": 4,
+            "assists": 2,
+            "creep_score": 186,
+            "gold": 8159,
+            "current_health": 2778,
+            "max_health": 2778,
+            "items": [
+              "1001",
+              "3073",
+              "3363",
+              "8020",
+              "1038"
+            ]
+          },
+          {
+            "player": "RED Kaze",
+            "participant_id": "8",
+            "champion": "Orianna",
+            "champion_id": "Orianna",
+            "role": "mid",
+            "level": 13,
+            "kills": 2,
+            "deaths": 3,
+            "assists": 0,
+            "creep_score": 201,
+            "gold": 8544,
+            "current_health": 2265,
+            "max_health": 2294,
+            "items": [
+              "1056",
+              "1082",
+              "2503",
+              "3020",
+              "3363",
+              "3152"
+            ]
+          },
+          {
+            "player": "RED Morttheus",
+            "participant_id": "9",
+            "champion": "Varus",
+            "champion_id": "Varus",
+            "role": "bottom",
+            "level": 13,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 1,
+            "creep_score": 254,
+            "gold": 9759,
+            "current_health": 1894,
+            "max_health": 1894,
+            "items": [
+              "1055",
+              "3142",
+              "3363",
+              "3158",
+              "3035",
+              "1036"
+            ]
+          },
+          {
+            "player": "RED frosty",
+            "participant_id": "10",
+            "champion": "Neeko",
+            "champion_id": "Neeko",
+            "role": "support",
+            "level": 9,
+            "kills": 0,
+            "deaths": 2,
+            "assists": 1,
+            "creep_score": 36,
+            "gold": 5322,
+            "current_health": 1875,
+            "max_health": 1875,
+            "items": [
+              "2031",
+              "3364",
+              "3152",
+              "3158",
+              "1029",
+              "1029",
+              "2055"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 45991,
+          "kills": 10,
+          "towers": 3,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 3
+        },
+        "red_stats": {
+          "gold": 40171,
+          "kills": 2,
+          "towers": 0,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 0
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.9380973242735098,
+          "red": 0.06190267572649022,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation",
+            "start_seconds": 1800,
+            "end_seconds": 2100,
+            "games": 18,
+            "rows": 146,
+            "roc_auc": 0.9170278637770899,
+            "brier": 0.1413953977864973
+          },
+          "features": {
+            "gold_diff": 5820,
+            "kill_diff": 8,
+            "tower_diff": 3,
+            "inhibitor_diff": 0,
+            "dragon_diff": 3,
+            "baron_diff": 0,
+            "avg_level_diff": 1.200000000000001,
+            "game_time": 1804
           }
         },
         "retained_after_end": true
