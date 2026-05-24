@@ -164,6 +164,7 @@ async function checkH2hStaticLookup(baseDir, source) {
     lpl_prediction_alias_match_count: null,
     empty_artifact_skip_match_count: null,
     missing_lookup_returns_empty: null,
+    lck_cl_academy_match_count: null,
   };
   try {
     const context = createAppContext();
@@ -234,12 +235,18 @@ async function checkH2hStaticLookup(baseDir, source) {
       context,
       { timeout: 1000 },
     );
+    const lckClAcademyFound = await vm.runInContext(
+      "staticHeadToHead(new URLSearchParams('league=LCK%20Challengers&team_a=BNK%20FEARX%20Youth&team_b=T1%20Esports%20Academy&team_a_code=BFX&team_b_code=T1A'))",
+      context,
+      { timeout: 1000 },
+    );
     output.alias_lookup_match_count = Array.isArray(found.matches) ? found.matches.length : null;
     output.html_fallback_lookup_match_count = Array.isArray(htmlFallbackFound.matches) ? htmlFallbackFound.matches.length : null;
     output.lpl_prediction_alias_match_count = Array.isArray(lplPredictionAliasFound.matches) ? lplPredictionAliasFound.matches.length : null;
     output.empty_artifact_skip_match_count = Array.isArray(emptyArtifactSkipped.matches) ? emptyArtifactSkipped.matches.length : null;
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'h2h_static_artifact_missing';
+    output.lck_cl_academy_match_count = Array.isArray(lckClAcademyFound.matches) ? lckClAcademyFound.matches.length : null;
     if (!output.alias_lookup_match_count) {
       output.errors.push('H2H static lookup did not find an existing alias-backed artifact');
     }
@@ -254,6 +261,9 @@ async function checkH2hStaticLookup(baseDir, source) {
     }
     if (!output.missing_lookup_returns_empty) {
       output.errors.push('H2H static lookup did not return an empty payload for missing artifacts');
+    }
+    if (!output.lck_cl_academy_match_count) {
+      output.errors.push('H2H static lookup did not find the LCK Challengers academy artifact');
     }
   } catch (error) {
     output.errors.push(errorMessage(error));
