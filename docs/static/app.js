@@ -2342,8 +2342,8 @@ function liveTimerText(details, game, live, meaningfulLive) {
   const state = String(game?.state || '').toLowerCase();
   if (['completed', 'complete'].includes(seriesState) || state === 'completed') {
     const winner = gameWinnerTeam(details, game) || completedSeriesWinner(details);
-    const label = winner?.code || winner?.name || 'Winner';
-    return `${label} WON`;
+    const label = winner?.code || winner?.name || '';
+    return label ? `${label} WON` : '';
   }
   if (state === 'unneeded') return '-';
   const official = Number(live?.game_time || 0);
