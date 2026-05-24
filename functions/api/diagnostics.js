@@ -7,6 +7,8 @@ const SITE_CONTRACT_PATH = '/site-contract.json';
 const EXPECTED_SITE_CONTRACT_VERSION = '2026-05-20-live-pre-match-diagnostics-v1';
 const STALE_SECONDS = 48 * 60 * 60;
 const WARNING_SECONDS = 24 * 60 * 60;
+const LIVE_MODEL_STALE_SECONDS = 14 * 24 * 60 * 60;
+const LIVE_MODEL_WARNING_SECONDS = 7 * 24 * 60 * 60;
 const REQUIRED_SITE_FEATURES = [
   'cloudflare_live_event_function',
   'cloudflare_diagnostics_function',
@@ -75,7 +77,10 @@ export async function onRequestGet(context) {
   const predictionFeedFreshness = artifactFreshness(predictionFeed?.json?.generated_at);
   const remotePredictionFreshness = artifactFreshness(remotePredictionProbe?.json?.generated_at);
   const liveStatusFreshness = artifactFreshness(liveStatus.json?.generated_at);
-  const liveModelFreshness = artifactFreshness(liveModel.json?.exported_at);
+  const liveModelFreshness = artifactFreshness(
+    liveModel.json?.exported_at,
+    { staleSeconds: LIVE_MODEL_STALE_SECONDS, warningSeconds: LIVE_MODEL_WARNING_SECONDS },
+  );
   const predictionSchemaOk = predictionSchema?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
   const remotePredictionSchemaOk = remotePredictionProbe?.json?.schema === 'lol_predictions_public_v1';
   const remoteSchemaOk = remoteSchemaProbe?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
@@ -231,12 +236,14 @@ function warningParts(value) {
     .filter(Boolean);
 }
 
-function artifactFreshness(value) {
+function artifactFreshness(value, options = {}) {
+  const staleSeconds = Number(options.staleSeconds || STALE_SECONDS);
+  const warningSeconds = Number(options.warningSeconds || WARNING_SECONDS);
   const timestamp = Date.parse(String(value || ''));
   if (!Number.isFinite(timestamp)) return { status: 'unknown', age_seconds: null };
   const ageSeconds = Math.max(0, Math.round((Date.now() - timestamp) / 1000));
-  if (ageSeconds > STALE_SECONDS) return { status: 'stale', age_seconds: ageSeconds };
-  if (ageSeconds > WARNING_SECONDS) return { status: 'aging', age_seconds: ageSeconds };
+  if (ageSeconds > staleSeconds) return { status: 'stale', age_seconds: ageSeconds };
+  if (ageSeconds > warningSeconds) return { status: 'aging', age_seconds: ageSeconds };
   return { status: 'fresh', age_seconds: ageSeconds };
 }
 
