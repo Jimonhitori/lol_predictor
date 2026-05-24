@@ -2551,12 +2551,6 @@ function teamHistoryColumn(history, team = {}) {
     return `
       <div class="teamHistoryColumn">
         ${titleMarkup}
-        <div class="teamHistoryHead">
-          <span>&#26178;&#38291;</span>
-          <span>&#12510;&#12483;&#12481;</span>
-          <span>&#12473;&#12467;&#12450;</span>
-          <span>&#32080;&#26524;</span>
-        </div>
         <p class="h2hEmpty">No recent team history in local data.</p>
       </div>
     `;
@@ -2564,12 +2558,6 @@ function teamHistoryColumn(history, team = {}) {
   return `
     <div class="teamHistoryColumn">
       ${titleMarkup}
-      <div class="teamHistoryHead">
-        <span>&#26178;&#38291;</span>
-        <span>&#12510;&#12483;&#12481;</span>
-        <span>&#12473;&#12467;&#12450;</span>
-        <span>&#32080;&#26524;</span>
-      </div>
       <div class="teamHistoryRows">
         ${matches.map(match => teamHistoryRow(match)).join('')}
       </div>
