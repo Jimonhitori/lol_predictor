@@ -767,7 +767,7 @@
   },
   "115548128962971947": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T14:14:32.047Z",
+    "checked_at": "2026-05-24T15:34:34.141Z",
     "event_id": "115548128962971947",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -904,7 +904,7 @@
   },
   "115570683341512193": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T14:14:32.047Z",
+    "checked_at": "2026-05-24T15:34:34.141Z",
     "event_id": "115570683341512193",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1379,7 +1379,7 @@
   },
   "115548128962971891": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T14:14:32.047Z",
+    "checked_at": "2026-05-24T15:34:34.141Z",
     "event_id": "115548128962971891",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1777,7 +1777,7 @@
   },
   "116299619170851920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T14:14:32.047Z",
+    "checked_at": "2026-05-24T15:34:34.141Z",
     "event_id": "116299619170851920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1957,6 +1957,485 @@
           "winner": "",
           "live": {
             "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115548668059589352": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-24T15:34:34.141Z",
+    "event_id": "115548668059589352",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115548668059589352",
+      "league": "LEC",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "inProgress",
+      "start_time": "2026-05-24T15:00:00.000Z",
+      "teams": [
+        {
+          "id": "103461966965149786",
+          "name": "Movistar KOI",
+          "code": "MKOI",
+          "image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "99322214695067838",
+          "name": "Team Vitality",
+          "code": "VIT",
+          "image": "http://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548668059589353",
+          "number": 1,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "red": {
+            "team_id": "99322214695067838",
+            "team_name": "Team Vitality",
+            "team_code": "VIT"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 1820,
+            "frame_timestamp": "2026-05-24T15:32:29.333Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "MKOI Myrwn",
+                "participant_id": "1",
+                "champion": "Rumble",
+                "champion_id": "Rumble",
+                "role": "top",
+                "level": 15,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 2,
+                "creep_score": 194,
+                "gold": 7460,
+                "current_health": 2737,
+                "max_health": 2737,
+                "items": [
+                  "1120",
+                  "1033",
+                  "3009",
+                  "3363",
+                  "6653",
+                  "3108",
+                  "3147"
+                ]
+              },
+              {
+                "player": "MKOI Elyoya",
+                "participant_id": "2",
+                "champion": "MonkeyKing",
+                "champion_id": "MonkeyKing",
+                "role": "jungle",
+                "level": 14,
+                "kills": 3,
+                "deaths": 0,
+                "assists": 3,
+                "creep_score": 202,
+                "gold": 9835,
+                "current_health": 2011,
+                "max_health": 2604,
+                "items": [
+                  "3078",
+                  "3111",
+                  "6610"
+                ]
+              },
+              {
+                "player": "MKOI Jojopyun",
+                "participant_id": "3",
+                "champion": "Cassiopeia",
+                "champion_id": "Cassiopeia",
+                "role": "mid",
+                "level": 14,
+                "kills": 3,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 235,
+                "gold": 9785,
+                "current_health": 1769,
+                "max_health": 2729,
+                "items": [
+                  "1056",
+                  "1082",
+                  "6657",
+                  "3340",
+                  "2508"
+                ]
+              },
+              {
+                "player": "MKOI Supa",
+                "participant_id": "4",
+                "champion": "Ashe",
+                "champion_id": "Ashe",
+                "role": "bottom",
+                "level": 13,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 2,
+                "creep_score": 273,
+                "gold": 11519,
+                "current_health": 1305,
+                "max_health": 1780,
+                "items": [
+                  "1086",
+                  "3097",
+                  "3363",
+                  "3046",
+                  "1037"
+                ]
+              },
+              {
+                "player": "MKOI Alvaro",
+                "participant_id": "5",
+                "champion": "Seraphine",
+                "champion_id": "Seraphine",
+                "role": "support",
+                "level": 11,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 5,
+                "creep_score": 33,
+                "gold": 5894,
+                "current_health": 1931,
+                "max_health": 2068,
+                "items": [
+                  "3364",
+                  "6620",
+                  "3158",
+                  "1004",
+                  "3067",
+                  "2022",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "VIT Naak Nako",
+                "participant_id": "6",
+                "champion": "Anivia",
+                "champion_id": "Anivia",
+                "role": "top",
+                "level": 16,
+                "kills": 2,
+                "deaths": 2,
+                "assists": 1,
+                "creep_score": 204,
+                "gold": 8367,
+                "current_health": 0,
+                "max_health": 2673,
+                "items": [
+                  "1056",
+                  "3009",
+                  "6657",
+                  "3363",
+                  "1052"
+                ]
+              },
+              {
+                "player": "VIT Lyncas",
+                "participant_id": "7",
+                "champion": "Vi",
+                "champion_id": "Vi",
+                "role": "jungle",
+                "level": 12,
+                "kills": 1,
+                "deaths": 3,
+                "assists": 1,
+                "creep_score": 135,
+                "gold": 7465,
+                "current_health": 0,
+                "max_health": 2488,
+                "items": [
+                  "3364",
+                  "6610",
+                  "3111",
+                  "1037",
+                  "2021",
+                  "1028"
+                ]
+              },
+              {
+                "player": "VIT Humanoid",
+                "participant_id": "8",
+                "champion": "Syndra",
+                "champion_id": "Syndra",
+                "role": "mid",
+                "level": 14,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 238,
+                "gold": 9448,
+                "current_health": 1227,
+                "max_health": 1887,
+                "items": [
+                  "1082",
+                  "2503",
+                  "3158",
+                  "3137",
+                  "1058",
+                  "3363"
+                ]
+              },
+              {
+                "player": "VIT Carzzy",
+                "participant_id": "9",
+                "champion": "Ezreal",
+                "champion_id": "Ezreal",
+                "role": "bottom",
+                "level": 13,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 263,
+                "gold": 10783,
+                "current_health": 1257,
+                "max_health": 2114,
+                "items": [
+                  "1086",
+                  "3078",
+                  "3158",
+                  "3363",
+                  "1036",
+                  "1036",
+                  "1037"
+                ]
+              },
+              {
+                "player": "VIT Fleshy",
+                "participant_id": "10",
+                "champion": "Nami",
+                "champion_id": "Nami",
+                "role": "support",
+                "level": 11,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 4,
+                "creep_score": 25,
+                "gold": 6356,
+                "current_health": 1797,
+                "max_health": 1797,
+                "items": [
+                  "3364",
+                  "4005",
+                  "3158",
+                  "3114",
+                  "3067",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 44493,
+              "kills": 7,
+              "towers": 2,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 3
+            },
+            "red_stats": {
+              "gold": 42419,
+              "kills": 5,
+              "towers": 3,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "status": "in_game",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.8048065805814475,
+              "red": 0.1951934194185525,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 1800,
+                "end_seconds": 2100,
+                "games": 18,
+                "rows": 146,
+                "roc_auc": 0.9170278637770899,
+                "brier": 0.1413953977864973
+              },
+              "features": {
+                "gold_diff": 2074,
+                "kill_diff": 2,
+                "tower_diff": -1,
+                "inhibitor_diff": 0,
+                "dragon_diff": 2,
+                "baron_diff": 0,
+                "avg_level_diff": 0.20000000000000107,
+                "game_time": 1820
+              }
+            }
+          }
+        },
+        {
+          "id": "115548668059589354",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99322214695067838",
+            "team_name": "Team Vitality",
+            "team_code": "VIT"
+          },
+          "red": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589355",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "red": {
+            "team_id": "99322214695067838",
+            "team_name": "Team Vitality",
+            "team_code": "VIT"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589356",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99322214695067838",
+            "team_name": "Team Vitality",
+            "team_code": "VIT"
+          },
+          "red": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589357",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "red": {
+            "team_id": "99322214695067838",
+            "team_name": "Team Vitality",
+            "team_code": "VIT"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
             "game_time": 0,
             "blue": [],
             "red": [],
