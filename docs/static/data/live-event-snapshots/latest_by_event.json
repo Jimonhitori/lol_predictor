@@ -767,7 +767,7 @@
   },
   "115548128962971947": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T12:47:52.760Z",
+    "checked_at": "2026-05-24T14:14:32.047Z",
     "event_id": "115548128962971947",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -904,7 +904,7 @@
   },
   "115570683341512193": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T12:47:52.760Z",
+    "checked_at": "2026-05-24T14:14:32.047Z",
     "event_id": "115570683341512193",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1269,7 +1269,8 @@
                 "game_time": 822
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         },
         {
@@ -1378,7 +1379,7 @@
   },
   "115548128962971891": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T12:47:52.760Z",
+    "checked_at": "2026-05-24T14:14:32.047Z",
     "event_id": "115548128962971891",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1699,7 +1700,8 @@
                 "game_time": 299
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         },
         {
@@ -1775,9 +1777,9 @@
   },
   "116299619170851920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-24T12:47:52.760Z",
+    "checked_at": "2026-05-24T14:14:32.047Z",
     "event_id": "116299619170851920",
-    "status": "inProgress",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -1787,7 +1789,7 @@
       "league_group": "",
       "region": "",
       "best_of": "5",
-      "status": "inProgress",
+      "status": "completed",
       "start_time": "2026-05-24T10:30:00.000Z",
       "teams": [
         {
@@ -1795,7 +1797,7 @@
           "name": "CITA Kaizen",
           "code": "CKZ",
           "image": "http://static.lolesports.com/teams/1768642464138_ckz.png",
-          "game_wins": "2"
+          "game_wins": "3"
         },
         {
           "id": "102787200129022886",
@@ -1875,7 +1877,7 @@
         {
           "id": "116299619170851923",
           "number": 3,
-          "state": "inProgress",
+          "state": "completed",
           "blue": {
             "team_id": "113870878882251238",
             "team_name": "CITA Kaizen",
@@ -1888,56 +1890,27 @@
           },
           "winner": "",
           "live": {
-            "game_state": "inProgress",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unavailable",
-            "warning": "disallowed window with end time less than 250 sec old (was 123.26 sec old). requested window: [2026-05-24T12:45:40Z, 2026-05-24T12:45:50Z]) ahead of broadcast. current time: 2026-05-24T12:47:53.257524594Z",
+            "status": "ended",
+            "warning": "",
             "win_probability": {
-              "blue": 0.5034698750650312,
-              "red": 0.49653012493496884,
-              "model": "live_lck_logreg_deep20_regularized_v1",
-              "status": "estimated",
-              "feature_schema": "live_frame_v1",
-              "training_rows": 2123,
-              "test_rows": 564,
-              "metrics": {
-                "rows": 564,
-                "accuracy": 0.7890070921985816,
-                "brier": 0.16011961508709052,
-                "log_loss": 0.4868346825422321,
-                "roc_auc": 0.9022971281490753
-              },
-              "validation": {
-                "display": "show_live_probability",
-                "source": "external_validation",
-                "start_seconds": 0,
-                "end_seconds": 300,
-                "games": 26,
-                "rows": 260,
-                "roc_auc": 0.7910909090909091,
-                "brier": 0.21350045980631466
-              },
-              "features": {
-                "gold_diff": 0,
-                "kill_diff": 0,
-                "tower_diff": 0,
-                "inhibitor_diff": 0,
-                "dragon_diff": 0,
-                "baron_diff": 0,
-                "avg_level_diff": 0,
-                "game_time": 0
-              }
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
             }
           }
         },
         {
           "id": "116299619170851924",
           "number": 4,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "113870878882251238",
             "team_name": "CITA Kaizen",
@@ -1950,7 +1923,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -1970,7 +1943,7 @@
         {
           "id": "116299619170851925",
           "number": 5,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "102787200129022886",
             "team_name": "eSuba",
@@ -1983,7 +1956,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
