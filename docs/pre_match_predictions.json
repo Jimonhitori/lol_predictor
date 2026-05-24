@@ -1,11 +1,11 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-05-24T10:24:20.560792Z",
+  "generated_at": "2026-05-24T10:40:50.987504Z",
   "source": "lol-pros-analyzer",
   "models": {
     "pre_match": {
       "name": "logistic_regression_2024_2026_opponent_adjusted_clean_l2_0p03_v1",
-      "version": "2026-05-24-opponent-adjusted-clean",
+      "version": "2026-05-24-opponent-adjusted-clean-aliasfix",
       "metrics": {
         "accuracy": 0.6819,
         "brier_score": 0.2032,
@@ -495,33 +495,28 @@
       "game_id": "116249880466944951",
       "league": "LCK Challengers",
       "start_time": "2026-05-26 10:00:00",
-      "blue_team": "dns_challengers",
-      "red_team": "ns_challengers",
-      "blue_win_probability": 0.534819,
-      "red_win_probability": 0.465181,
-      "predicted_winner": "dns_challengers",
-      "confidence": "low",
+      "blue_team": "dn_soopers_challengers",
+      "red_team": "nongshim_esports_academy",
+      "blue_win_probability": 0.653783,
+      "red_win_probability": 0.346217,
+      "predicted_winner": "dn_soopers_challengers",
+      "confidence": "high",
       "model": "logistic_regression_2024_2026_opponent_adjusted_clean_l2_0p03_v1",
-      "warnings": [
-        "blue_team_fallback_slug:DNS Challengers->dns_challengers",
-        "red_team_fallback_slug:NS Challengers->ns_challengers"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116413908784071096",
       "game_id": "116413908784071096",
       "league": "PCS",
       "start_time": "2026-05-26 12:00:00",
-      "blue_team": "gz_academy",
+      "blue_team": "ground_zero_academy",
       "red_team": "viper_night_raider",
-      "blue_win_probability": 0.68175,
-      "red_win_probability": 0.31825,
-      "predicted_winner": "gz_academy",
+      "blue_win_probability": 0.340901,
+      "red_win_probability": 0.659099,
+      "predicted_winner": "viper_night_raider",
       "confidence": "high",
       "model": "logistic_regression_2024_2026_opponent_adjusted_clean_l2_0p03_v1",
-      "warnings": [
-        "blue_team_fallback_slug:GZ Academy->gz_academy"
-      ]
+      "warnings": []
     },
     {
       "event_id": "116119857896112020",
