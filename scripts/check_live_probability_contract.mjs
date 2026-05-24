@@ -45,6 +45,9 @@ const functionSummary = validateSourceHooks('live-event.js', functionSource, [
   'function applyEstimatedGameTime(live)',
   'estimated_game_time',
   'game_time_estimated',
+  'LIVE_EVENT_FINAL_BY_GAME_PATH',
+  'function readStaticFinalGameSnapshot(context, eventId, gameId)',
+  'retained_from_artifact',
 ], errors);
 
 let remoteSummary = null;

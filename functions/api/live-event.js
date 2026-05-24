@@ -8,9 +8,11 @@ const PRE_MATCH_CACHE_SECONDS = 60;
 const LIVE_FEED_DELAY_SECONDS = 130;
 const LIVE_SNAPSHOT_CACHE_SECONDS = 60 * 60 * 24;
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
+const LIVE_EVENT_FINAL_BY_GAME_PATH = '/static/data/live-event-snapshots/final_by_game.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 let liveModelPromise = null;
 let preMatchPredictionsCache = { expiresAt: 0, promise: null };
+let finalGameSnapshotsCache = { expiresAt: 0, promise: null };
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -153,13 +155,14 @@ async function attachTargetLive(details, context) {
   }
   const status = statusForGame(details, game);
   if (status === 'unstarted' || status === 'ended') {
-    const snapshot = status === 'ended' ? await readLiveSnapshot(context, details.id, game.id) : null;
+    const snapshot = status === 'ended' ? await readStoredLiveSnapshot(context, details.id, game.id) : null;
     if (snapshot?.live && hasMeaningfulLiveData(snapshot.live)) {
       game.live = {
         ...snapshot.live,
         status: 'ended',
         game_state: snapshot.live.game_state || game.state || 'ended',
         retained_after_end: true,
+        retained_from_artifact: snapshot.source === 'static_final_by_game' || undefined,
       };
       game.live.win_probability = await liveWinProbability(game.live, game, details, context);
       return;
@@ -181,12 +184,13 @@ async function attachTargetLive(details, context) {
       }
       return;
     }
-    const snapshot = await readLiveSnapshot(context, details.id, game.id);
+    const snapshot = await readStoredLiveSnapshot(context, details.id, game.id);
     if (snapshot?.live && hasMeaningfulLiveData(snapshot.live)) {
       game.live = {
         ...snapshot.live,
         status: liveStatus(snapshot.live, game),
         retained_after_empty_feed: true,
+        retained_from_artifact: snapshot.source === 'static_final_by_game' || undefined,
         warning: live.warning || snapshot.live.warning || 'retained_last_live_snapshot_after_empty_feed',
       };
       game.live.win_probability = await liveWinProbability(game.live, game, details, context);
@@ -201,12 +205,13 @@ async function attachTargetLive(details, context) {
     };
     game.live.win_probability = await liveWinProbability(game.live, game, details, context);
   } catch (error) {
-    const snapshot = await readLiveSnapshot(context, details.id, game.id);
+    const snapshot = await readStoredLiveSnapshot(context, details.id, game.id);
     if (snapshot?.live && hasMeaningfulLiveData(snapshot.live)) {
       game.live = {
         ...snapshot.live,
         status: liveStatus(snapshot.live, game),
         retained_after_fetch_error: true,
+        retained_from_artifact: snapshot.source === 'static_final_by_game' || undefined,
         warning: error?.message || snapshot.live.warning || 'retained_last_live_snapshot_after_fetch_error',
       };
       game.live.win_probability = await liveWinProbability(game.live, game, details, context);
@@ -228,13 +233,14 @@ async function restoreCompletedLiveSnapshots(details, context) {
     const state = String(game?.state || '').toLowerCase();
     if (!['completed', 'complete'].includes(state)) return;
     if (hasMeaningfulLiveData(game.live)) return;
-    const snapshot = await readLiveSnapshot(context, details.id, game.id);
+    const snapshot = await readStoredLiveSnapshot(context, details.id, game.id);
     if (!snapshot?.live || !hasMeaningfulLiveData(snapshot.live)) return;
     game.live = {
       ...snapshot.live,
       status: 'ended',
       game_state: snapshot.live.game_state || game.state || 'ended',
       retained_after_end: true,
+      retained_from_artifact: snapshot.source === 'static_final_by_game' || undefined,
     };
     game.live.win_probability = await liveWinProbability(game.live, game, details, context);
   }));
@@ -253,6 +259,59 @@ async function readLiveSnapshot(context, eventId, gameId) {
   try {
     const response = await caches.default.match(liveSnapshotRequest(context, eventId, gameId));
     if (!response?.ok) return null;
+    const payload = await response.json();
+    return { ...payload, source: 'cloudflare_cache' };
+  } catch (error) {
+    return null;
+  }
+}
+
+async function readStoredLiveSnapshot(context, eventId, gameId) {
+  const cached = await readLiveSnapshot(context, eventId, gameId);
+  if (cached?.live && hasMeaningfulLiveData(cached.live)) return cached;
+  return readStaticFinalGameSnapshot(context, eventId, gameId);
+}
+
+async function readStaticFinalGameSnapshot(context, eventId, gameId) {
+  if (!eventId || !gameId) return null;
+  const payload = await loadFinalGameSnapshots(context);
+  const key = `${String(eventId)}:${String(gameId)}`;
+  const record = payload?.[key] || payload?.[String(gameId)];
+  const live = record?.game?.live;
+  if (!live || !hasMeaningfulLiveData(live)) return null;
+  return {
+    event_id: String(record.event_id || eventId),
+    game_id: String(record.game_id || gameId),
+    saved_at: String(record.checked_at || ''),
+    source: 'static_final_by_game',
+    game: record.game || {},
+    live,
+  };
+}
+
+async function loadFinalGameSnapshots(context) {
+  if (finalGameSnapshotsCache.promise && Date.now() < finalGameSnapshotsCache.expiresAt) {
+    return finalGameSnapshotsCache.promise;
+  }
+  finalGameSnapshotsCache = {
+    expiresAt: Date.now() + PRE_MATCH_CACHE_SECONDS * 1000,
+    promise: readStaticJsonAsset(context, LIVE_EVENT_FINAL_BY_GAME_PATH),
+  };
+  return finalGameSnapshotsCache.promise;
+}
+
+async function readStaticJsonAsset(context, path) {
+  try {
+    let response = null;
+    if (context?.env?.ASSETS) {
+      const requestUrl = new URL(context.request.url);
+      response = await context.env.ASSETS.fetch(new Request(new URL(path, requestUrl.origin).toString()));
+    } else if (context?.request?.url) {
+      response = await fetch(new URL(path, context.request.url).toString(), {
+        cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
+      });
+    }
+    if (!response || !response.ok) return null;
     return response.json();
   } catch (error) {
     return null;
