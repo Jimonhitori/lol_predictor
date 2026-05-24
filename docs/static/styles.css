@@ -181,11 +181,8 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .championMetaCell span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .compactTable .row { grid-template-columns: minmax(80px, 1fr) 80px 80px 80px; padding: 6px 0; }
 .subsectionTitle { margin-top: 14px; }
-.h2hPanel { background: #151b22; border-color: #252f3a; padding: 10px; }
-.historyTabs { display: inline-grid; grid-template-columns: 1fr 1fr; gap: 2px; min-width: 220px; margin-bottom: 8px; padding: 2px; border-radius: 999px; background: #252d36; }
-.historyTab { margin: 0; border: 0; border-radius: 999px; padding: 5px 14px; background: transparent; color: #aeb9c7; font-size: 12px; font-weight: 900; cursor: pointer; }
-.historyTab.active { background: #0f151c; color: #f3f6fb; }
-.historyTabPanel { min-width: 0; }
+.h2hPanel { background: #2d343d; border-color: #343d49; padding: 10px 16px 12px; }
+.h2hPanel h2, .historyPanel h2 { color: #d5dbe4; font-size: 15px; margin-bottom: 10px; }
 .h2hList { display: grid; gap: 0; }
 .h2hLogoStrip { display: grid; grid-template-columns: repeat(5, 1fr); border-radius: 3px; overflow: hidden; margin-bottom: 10px; background: #4f4566; }
 .h2hLogoCell { min-height: 38px; display: grid; place-items: center; border-right: 1px solid #323945; }
@@ -202,6 +199,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hMiniLogo img { width: 20px; height: 20px; object-fit: contain; }
 .h2hScore { justify-self: center; border-radius: 5px; padding: 4px 10px; background: #252b34; color: #f3f6fb; font-weight: 900; line-height: 1; white-space: nowrap; }
 .h2hEmpty { color: var(--muted); font-size: 12px; }
+.historyPanel { background: #151b22; border-color: #252f3a; padding: 10px; }
 .teamHistoryGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .teamHistoryColumn { min-width: 0; border-radius: 4px; background: #2d343d; overflow: hidden; }
 .teamHistoryTitle { display: flex; align-items: center; gap: 6px; min-width: 0; padding: 7px 8px; }

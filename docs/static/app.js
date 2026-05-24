@@ -2780,26 +2780,6 @@ function setValue(id, value) {
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
-function setupHistoryTabs() {
-  const tabs = Array.from(document.querySelectorAll('[data-history-tab]'));
-  if (!tabs.length) return;
-  const panels = Array.from(document.querySelectorAll('[data-history-panel]'));
-  const activate = (key) => {
-    for (const tab of tabs) {
-      const active = tab.dataset.historyTab === key;
-      tab.classList.toggle('active', active);
-      tab.setAttribute('aria-selected', active ? 'true' : 'false');
-    }
-    for (const panel of panels) {
-      panel.classList.toggle('hidden', panel.dataset.historyPanel !== key);
-    }
-  };
-  for (const tab of tabs) {
-    tab.addEventListener('click', () => activate(tab.dataset.historyTab || 'recent'));
-  }
-  activate(tabs.find(tab => tab.classList.contains('active'))?.dataset.historyTab || 'recent');
-}
-
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
@@ -2819,7 +2799,6 @@ if ($('matches')) {
     state.matchesTimer = window.setInterval(loadMatches, MATCHES_REFRESH_INTERVAL_MS);
   });
 } else {
-  setupHistoryTabs();
   loadDiagnostics();
   loadMatchDetailPage();
 }

@@ -29,18 +29,16 @@
     </section>
 
     <section class="grid detailGrid">
-      <section class="panel h2hPanel">
-        <div class="historyTabs" role="tablist" aria-label="Match history">
-          <button type="button" class="historyTab" data-history-tab="h2h" aria-controls="historyTabH2h">H2H</button>
-          <button type="button" class="historyTab active" data-history-tab="recent" aria-controls="historyTabRecent">&#23550;&#25126;&#23653;&#27508;</button>
-        </div>
-        <div id="historyTabH2h" class="historyTabPanel hidden" data-history-panel="h2h">
+      <div class="panelStack">
+        <section class="panel h2hPanel">
+          <h2>H2H</h2>
           <div id="headToHead" class="h2hList"></div>
-        </div>
-        <div id="historyTabRecent" class="historyTabPanel" data-history-panel="recent">
+        </section>
+        <section class="panel historyPanel">
+          <h2>&#23550;&#25126;&#23653;&#27508;</h2>
           <div id="teamHistory" class="teamHistoryGrid"></div>
-        </div>
-      </section>
+        </section>
+      </div>
       <section class="panel">
         <h2>Player Rosters</h2>
         <div class="draftGrid">
@@ -57,6 +55,6 @@
     </section>
   </main>
   <script>window.STATIC_SITE = true;</script>
-  <script src="../static/app.js?v=compact-history-tabs-20260525"></script>
+  <script src="../static/app.js?v=history-under-h2h-20260525"></script>
 </body>
 </html>
