@@ -2572,11 +2572,11 @@ function teamHistoryRow(match) {
   return `
     <div class="teamHistoryRow">
       <span class="teamHistoryDate">${escapeHtml(relativeDateJa(match.date))}</span>
-      <span class="teamHistoryTeam isSelf">${escapeHtml(shortTeamName(match.team || '-'))}</span>
-      <span class="teamHistoryMiniLogo">${historyTeamLogo(match.team, match.team_image)}</span>
       <span class="teamHistoryScore">${escapeHtml(score)}</span>
-      <span class="teamHistoryMiniLogo">${historyTeamLogo(match.opponent, match.opponent_image)}</span>
-      <span class="teamHistoryTeam">${escapeHtml(shortTeamName(match.opponent || '-'))}</span>
+      <span class="teamHistoryOpponent">
+        ${historyTeamLogo(match.opponent, match.opponent_image)}
+        <strong>${escapeHtml(shortTeamName(match.opponent || '-'))}</strong>
+      </span>
       <span class="teamHistoryResult ${resultClass}">${escapeHtml(result || '-')}</span>
     </div>
   `;
