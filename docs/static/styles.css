@@ -185,12 +185,12 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hPanel h2, .historyPanel h2 { color: #d5dbe4; font-size: 15px; margin-bottom: 10px; }
 .h2hList { display: grid; gap: 0; }
 .h2hCard { min-width: 0; border-radius: 4px; background: #2d343d; overflow: hidden; }
-.h2hLogoStrip { display: grid; grid-template-columns: repeat(5, 1fr); overflow: hidden; background: #363e49; margin-bottom: 6px; }
+.h2hLogoStrip { display: grid; grid-template-columns: repeat(5, 1fr); overflow: hidden; background: #363e49; }
 .h2hLogoCell { min-height: 30px; display: grid; place-items: center; border-right: 1px solid #252c35; }
 .h2hLogoCell:last-child { border-right: 0; }
 .h2hLogoCell img { width: 18px; height: 18px; object-fit: contain; }
 .h2hLogoFallback { color: #ff3d4e; font-size: 11px; font-weight: 900; }
-.h2hRows { display: grid; gap: 0; }
+.h2hRows { display: grid; gap: 0; padding-top: 6px; background: #2d343d; }
 .h2hRow { display: grid; grid-template-columns: 54px minmax(76px, 1fr) 20px 50px 20px minmax(76px, 1fr); gap: 7px; align-items: center; border-top: 1px solid #252c35; padding: 7px 8px; font-size: 12px; min-width: 0; background: #303843; }
 .h2hRow:nth-child(even) { background: #3b4450; }
 .h2hDate { color: #b2bdc9; white-space: nowrap; }
