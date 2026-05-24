@@ -3,6 +3,11 @@ name: Collect live event snapshots
 on:
   schedule:
     - cron: "*/5 * * * *"
+  push:
+    branches:
+      - codex/lol-predictor-web
+    paths:
+      - ".github/workflows/collect-live-event-snapshots.yml"
   workflow_dispatch:
     inputs:
       event_id:
