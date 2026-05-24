@@ -2576,8 +2576,8 @@ function teamHistoryRow(match) {
       <span class="teamHistoryOpponent">
         ${historyTeamLogo(match.opponent, match.opponent_image)}
         <strong>${escapeHtml(shortTeamName(match.opponent || '-'))}</strong>
-        <span class="teamHistoryResult ${resultClass}">${escapeHtml(result || '-')}</span>
       </span>
+      <span class="teamHistoryResult ${resultClass}">${escapeHtml(result || '-')}</span>
     </div>
   `;
 }
