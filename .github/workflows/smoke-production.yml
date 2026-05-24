@@ -85,3 +85,6 @@ jobs:
             --prediction-feed-url "$PREDICTION_FEED_URL" \
             --min-rows "$PREDICTION_UI_MIN_ROWS" \
             --min-overlap "$PREDICTION_UI_MIN_OVERLAP"
+          node scripts/check_live_snapshot_artifacts.mjs \
+            --base-url "$BASE_URL" \
+            --min-final-games 0
