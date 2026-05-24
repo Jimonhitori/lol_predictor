@@ -206,15 +206,18 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .teamHistoryTitle { display: flex; align-items: center; gap: 8px; min-width: 0; margin-bottom: 10px; }
 .teamHistoryTitle img { width: 24px; height: 24px; object-fit: contain; flex: 0 0 auto; }
 .teamHistoryTitle h3 { margin: 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; color: var(--text); }
-.teamHistoryHead { display: grid; grid-template-columns: 58px minmax(0, 1fr) 50px 54px; gap: 10px; padding: 6px 8px; border-radius: 4px 4px 0 0; background: #363e49; color: #aeb9c7; font-size: 11px; font-weight: 800; }
+.teamHistoryHead { display: grid; grid-template-columns: 58px minmax(0, 1fr) 54px 34px; gap: 10px; padding: 6px 8px; border-radius: 4px 4px 0 0; background: #363e49; color: #aeb9c7; font-size: 11px; font-weight: 800; }
 .teamHistoryHead span:nth-child(3), .teamHistoryHead span:nth-child(4) { text-align: right; }
 .teamHistoryRows { display: grid; gap: 0; }
-.teamHistoryRow { display: grid; grid-template-columns: 58px minmax(0, 1fr) 50px 54px; gap: 10px; align-items: center; min-width: 0; padding: 9px 8px; border-top: 1px solid #252c35; background: #303843; font-size: 12px; }
+.teamHistoryRow { display: grid; grid-template-columns: 58px minmax(0, 1fr) 54px 34px; gap: 10px; align-items: center; min-width: 0; padding: 8px; border-top: 1px solid #252c35; background: #303843; font-size: 12px; }
 .teamHistoryRow:nth-child(even) { background: #3b4450; }
 .teamHistoryDate { color: #bcc7d5; white-space: nowrap; }
 .teamHistoryOpponent { display: grid; grid-template-columns: 1fr; gap: 2px; min-width: 0; font-weight: 800; }
-.teamHistoryOpponent strong, .teamHistoryOpponent span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.teamHistoryOpponent span { color: #b7c1ce; font-weight: 700; }
+.teamHistoryTeamLine { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.teamHistoryTeamLine img { width: 18px; height: 18px; object-fit: contain; flex: 0 0 auto; }
+.teamHistoryTeamLine strong, .teamHistoryTeamLine span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.teamHistoryTeamLine.muted span:last-child { color: #b7c1ce; font-weight: 700; }
+.teamHistoryLogoFallback { width: 18px; height: 18px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: #1f2730; color: #aab6c5; font-size: 8px; font-weight: 900; }
 .teamHistoryResult { justify-self: end; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 999px; font-size: 11px; font-weight: 900; background: #252b34; color: #d8e5ff; }
 .teamHistoryResult.win { color: #22f0b6; border: 1px solid rgba(34, 240, 182, .45); }
 .teamHistoryResult.loss { color: #ff5d7c; border: 1px solid rgba(255, 93, 124, .45); }

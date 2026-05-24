@@ -25,6 +25,7 @@ def main() -> None:
     args = parser.parse_args()
 
     team_targets = load_team_targets(args.site_docs_dir / "static" / "data" / "team-records")
+    team_images = load_team_images(args.site_docs_dir / "static" / "data")
     series = load_oe_series(args.oe_raw_dir)
     output_dir = args.site_docs_dir / "static" / "data" / "team-history"
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -45,7 +46,9 @@ def main() -> None:
                     "league": item["league"],
                     "split": item["split"],
                     "team": item[f"{team_side}_team"],
+                    "team_image": image_for_team(item[f"{team_side}_team"], team_images),
                     "opponent": item[f"{opponent_side}_team"],
+                    "opponent_image": image_for_team(item[f"{opponent_side}_team"], team_images),
                     "team_score": team_score,
                     "opponent_score": opponent_score,
                     "result": "W" if team_score > opponent_score else "L" if team_score < opponent_score else "D",
@@ -90,6 +93,47 @@ def load_team_targets(team_records_dir: Path) -> dict[str, dict[str, Any]]:
             "team_keys": {static_key(name) for name in names if name},
         }
     return targets
+
+
+def load_team_images(data_dir: Path) -> dict[str, str]:
+    images: dict[str, str] = {}
+    for path in data_dir.glob("matches*.json"):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        for match in payload.get("matches", []):
+            add_team_image(images, match.get("blue_team"), match.get("blue_image"))
+            add_team_image(images, match.get("blue_code"), match.get("blue_image"))
+            add_team_image(images, match.get("red_team"), match.get("red_image"))
+            add_team_image(images, match.get("red_code"), match.get("red_image"))
+    add_team_record_image_aliases(images, data_dir / "team-records")
+    return images
+
+
+def add_team_record_image_aliases(images: dict[str, str], team_records_dir: Path) -> None:
+    for path in team_records_dir.glob("*.json"):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        team_key = static_key(payload.get("team"))
+        matched_key = static_key(payload.get("matched_team"))
+        if team_key in images and matched_key not in images:
+            images[matched_key] = images[team_key]
+        if matched_key in images and team_key not in images:
+            images[team_key] = images[matched_key]
+
+
+def add_team_image(images: dict[str, str], team: object, image: object) -> None:
+    image_text = str(image or "")
+    if not team or not image_text or image_text.endswith("/team-tbd.png"):
+        return
+    images.setdefault(static_key(team), image_text)
+
+
+def image_for_team(team: object, images: dict[str, str]) -> str:
+    return images.get(static_key(team), "")
 
 
 def load_oe_series(raw_dir: Path) -> list[dict[str, Any]]:
