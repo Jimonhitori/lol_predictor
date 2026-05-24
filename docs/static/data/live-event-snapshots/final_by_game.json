@@ -2329,7 +2329,7 @@
   },
   "115564793879469294:115564793879469296": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-24T22:38:13.192Z",
+    "checked_at": "2026-05-24T23:40:46.415Z",
     "event_id": "115564793879469294",
     "game_id": "115564793879469296",
     "game_number": 2,
@@ -2340,14 +2340,14 @@
         "name": "Team Liquid Alienware",
         "code": "TLAW",
         "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
-        "game_wins": "1"
+        "game_wins": "2"
       },
       {
         "id": "99566405941863385",
         "name": "LYON",
         "code": "LYON",
         "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
-        "game_wins": "1"
+        "game_wins": "2"
       }
     ],
     "game": {
@@ -2659,7 +2659,8 @@
             "game_time": 2193
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }
