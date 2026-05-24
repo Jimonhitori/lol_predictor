@@ -200,18 +200,17 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hScore { justify-self: center; border-radius: 4px; padding: 3px 8px; background: #252b34; color: #f3f6fb; font-weight: 900; line-height: 1; white-space: nowrap; }
 .h2hEmpty { color: var(--muted); font-size: 12px; }
 .historyPanel { background: #2d343d; border-color: #343d49; padding: 10px 16px 12px; }
-.teamHistoryGrid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+.teamHistoryGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .teamHistoryColumn { min-width: 0; overflow: hidden; }
 .teamHistoryTitle { display: flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; min-height: 38px; margin-bottom: 10px; border-radius: 3px; background: #4f4566; }
 .teamHistoryTitle img { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; }
 .teamHistoryTitle h3 { margin: 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; color: var(--text); }
 .teamHistoryRows { display: grid; gap: 0; }
-.teamHistoryRow { display: grid; grid-template-columns: 64px minmax(86px, 1fr) 22px 54px 22px minmax(80px, 1fr) 28px; gap: 8px; align-items: center; min-width: 0; padding: 8px 0; border-top: 1px solid #3b444f; font-size: 13px; }
+.teamHistoryRow { display: grid; grid-template-columns: 58px 48px minmax(0, 1fr) 26px; gap: 8px; align-items: center; min-width: 0; padding: 8px 0; border-top: 1px solid #3b444f; font-size: 12px; }
 .teamHistoryDate { color: #bcc7d5; white-space: nowrap; }
-.teamHistoryTeam { color: #b7c0cc; font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-.teamHistoryTeam.isSelf { color: #f1f5f9; text-align: right; }
-.teamHistoryMiniLogo { width: 18px; height: 18px; display: grid; place-items: center; }
-.teamHistoryMiniLogo img { width: 18px; height: 18px; object-fit: contain; }
+.teamHistoryOpponent { display: flex; align-items: center; gap: 6px; min-width: 0; color: #f1f5f9; font-weight: 800; }
+.teamHistoryOpponent img { width: 18px; height: 18px; object-fit: contain; flex: 0 0 auto; }
+.teamHistoryOpponent strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .teamHistoryLogoFallback { width: 16px; height: 16px; display: grid; place-items: center; flex: 0 0 auto; border-radius: 50%; background: #1f2730; color: #aab6c5; font-size: 7px; font-weight: 900; }
 .teamHistoryResult { justify-self: end; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 999px; font-size: 10px; font-weight: 900; background: #252b34; color: #d8e5ff; }
 .teamHistoryResult.win { color: #22f0b6; border: 1px solid rgba(34, 240, 182, .45); }
