@@ -811,13 +811,13 @@ function checkMatchResultScoreMapping(appSourceText) {
     if (String(result.completed_blue_score) !== '0' || String(result.completed_red_score) !== '3') {
       output.errors.push(`completed reversed team scores mapped to ${result.completed_blue_score}-${result.completed_red_score}`);
     }
-    if (!String(result.completed_label || '').includes('MKOI wins 0-3')) {
+    if (!String(result.completed_label || '').includes('MKOI wins 3-0')) {
       output.errors.push(`completed reversed team label is ${result.completed_label || '(empty)'}`);
     }
     if (String(result.live_blue_score) !== '0' || String(result.live_red_score) !== '2') {
       output.errors.push(`live reversed team scores mapped to ${result.live_blue_score}-${result.live_red_score}`);
     }
-    if (!String(result.live_label || '').includes('FUR leads 0-2')) {
+    if (!String(result.live_label || '').includes('FUR leads 2-0')) {
       output.errors.push(`live reversed team label is ${result.live_label || '(empty)'}`);
     }
   } catch (error) {

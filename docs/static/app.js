@@ -886,8 +886,12 @@ function matchPredictionBadge(match) {
 function matchResultText(match) {
   const normalized = String(match.status || '').toLowerCase();
   if (!matchHasScore(match) || !['completed', 'complete', 'inprogress'].includes(normalized)) return '';
-  const score = `${match.blue_score}-${match.red_score}`;
   const leader = matchWinnerLabel(match);
+  const blueScore = scoreNumber(match.blue_score);
+  const redScore = scoreNumber(match.red_score);
+  const score = leader && blueScore !== redScore
+    ? `${Math.max(blueScore, redScore)}-${Math.min(blueScore, redScore)}`
+    : `${match.blue_score}-${match.red_score}`;
   const label = leader
     ? `${leader} ${['completed', 'complete'].includes(normalized) ? 'wins' : 'leads'} ${score}`
     : score;
