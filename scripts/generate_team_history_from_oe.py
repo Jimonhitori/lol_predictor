@@ -16,6 +16,16 @@ LEAGUE_KEY_ALIASES = {
     "lckc": "lck-challengers",
 }
 
+TEAM_KEY_ALIASES = {
+    "bro-challengers": ["hanjin-brion-challengers"],
+    "dk-challengers": ["dplus-kia-challengers"],
+    "dns-challengers": ["dn-soopers-challengers"],
+    "hle-challengers": ["hanwha-life-esports-challengers"],
+    "krx-challengers": ["kiwoom-drx-challengers"],
+    "kt-challengers": ["kt-rolster-challengers"],
+    "ns-challengers": ["nongshim-esports-academy"],
+}
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Generate team recent-history artifacts for the static site.")
@@ -90,9 +100,21 @@ def load_team_targets(team_records_dir: Path) -> dict[str, dict[str, Any]]:
         targets[stem] = {
             "team": payload.get("team") or payload.get("matched_team") or team_key,
             "league_key": league_key,
-            "team_keys": {static_key(name) for name in names if name},
+            "team_keys": expanded_team_keys(names),
         }
     return targets
+
+
+def expanded_team_keys(values: list[object]) -> set[str]:
+    keys: set[str] = set()
+    for value in values:
+        if not value:
+            continue
+        key = static_key(value)
+        keys.add(key)
+        for alias in TEAM_KEY_ALIASES.get(key, []):
+            keys.add(alias)
+    return keys
 
 
 def load_team_images(data_dir: Path) -> dict[str, str]:
@@ -108,6 +130,7 @@ def load_team_images(data_dir: Path) -> dict[str, str]:
             add_team_image(images, match.get("red_team"), match.get("red_image"))
             add_team_image(images, match.get("red_code"), match.get("red_image"))
     add_team_record_image_aliases(images, data_dir / "team-records")
+    add_static_image_aliases(images)
     return images
 
 
@@ -123,6 +146,16 @@ def add_team_record_image_aliases(images: dict[str, str], team_records_dir: Path
             images[matched_key] = images[team_key]
         if matched_key in images and team_key not in images:
             images[team_key] = images[matched_key]
+
+
+def add_static_image_aliases(images: dict[str, str]) -> None:
+    for key, aliases in TEAM_KEY_ALIASES.items():
+        alias_values = [key, *aliases]
+        image = next((images.get(value) for value in alias_values if images.get(value)), "")
+        if not image:
+            continue
+        for value in alias_values:
+            images.setdefault(value, image)
 
 
 def add_team_image(images: dict[str, str], team: object, image: object) -> None:
