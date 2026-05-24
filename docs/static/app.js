@@ -2574,12 +2574,8 @@ function teamHistoryRow(match) {
       <span class="teamHistoryDate">${escapeHtml(relativeDateJa(match.date))}</span>
       <span class="teamHistoryOpponent">
         <span class="teamHistoryTeamLine">
-          ${historyTeamLogo(match.team, match.team_image)}
-          <strong>${escapeHtml(shortTeamName(match.team || '-'))}</strong>
-        </span>
-        <span class="teamHistoryTeamLine muted">
           ${historyTeamLogo(match.opponent, match.opponent_image)}
-          <span>${escapeHtml(shortTeamName(match.opponent || '-'))}</span>
+          <strong>${escapeHtml(shortTeamName(match.opponent || '-'))}</strong>
         </span>
       </span>
       <span class="teamHistoryScore">${escapeHtml(score)}</span>
