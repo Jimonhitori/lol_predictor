@@ -2554,8 +2554,8 @@ function teamHistoryColumn(history, team = {}) {
         <div class="teamHistoryHead">
           <span>&#26178;&#38291;</span>
           <span>&#12510;&#12483;&#12481;</span>
-          <span>&#32080;&#26524;</span>
           <span>&#12473;&#12467;&#12450;</span>
+          <span>&#32080;&#26524;</span>
         </div>
         <p class="h2hEmpty">No recent team history in local data.</p>
       </div>
@@ -2567,8 +2567,8 @@ function teamHistoryColumn(history, team = {}) {
       <div class="teamHistoryHead">
         <span>&#26178;&#38291;</span>
         <span>&#12510;&#12483;&#12481;</span>
-        <span>&#32080;&#26524;</span>
         <span>&#12473;&#12467;&#12450;</span>
+        <span>&#32080;&#26524;</span>
       </div>
       <div class="teamHistoryRows">
         ${matches.map(match => teamHistoryRow(match)).join('')}
@@ -2585,13 +2585,24 @@ function teamHistoryRow(match) {
     <div class="teamHistoryRow">
       <span class="teamHistoryDate">${escapeHtml(relativeDateJa(match.date))}</span>
       <span class="teamHistoryOpponent">
-        <strong>${escapeHtml(shortTeamName(match.team || '-'))}</strong>
-        <span>${escapeHtml(shortTeamName(match.opponent || '-'))}</span>
+        <span class="teamHistoryTeamLine">
+          ${historyTeamLogo(match.team, match.team_image)}
+          <strong>${escapeHtml(shortTeamName(match.team || '-'))}</strong>
+        </span>
+        <span class="teamHistoryTeamLine muted">
+          ${historyTeamLogo(match.opponent, match.opponent_image)}
+          <span>${escapeHtml(shortTeamName(match.opponent || '-'))}</span>
+        </span>
       </span>
-      <span class="teamHistoryResult ${resultClass}">${escapeHtml(result || '-')}</span>
       <span class="teamHistoryScore">${escapeHtml(score)}</span>
+      <span class="teamHistoryResult ${resultClass}">${escapeHtml(result || '-')}</span>
     </div>
   `;
+}
+
+function historyTeamLogo(teamName, image) {
+  if (image) return `<img src="${escapeHtml(image)}" alt="">`;
+  return `<span class="teamHistoryLogoFallback">${escapeHtml(shortTeamName(teamName || '-').slice(0, 3))}</span>`;
 }
 
 function h2hRow(match, context) {

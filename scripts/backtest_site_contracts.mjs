@@ -280,6 +280,7 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     bfx_history_count: null,
     t1a_history_count: null,
     tlaw_history_count: null,
+    lyon_history_has_logos: null,
     missing_lookup_returns_empty: null,
   };
   try {
@@ -312,6 +313,11 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
       context,
       { timeout: 1000 },
     );
+    const lyon = await vm.runInContext(
+      "staticTeamHistory(new URLSearchParams('league=LCS&team=LYON&team_code=LYON'))",
+      context,
+      { timeout: 1000 },
+    );
     const missing = await vm.runInContext(
       "staticTeamHistory(new URLSearchParams('league=LCK%20Challengers&team=Imaginary%20Academy&team_code=IMA'))",
       context,
@@ -320,6 +326,9 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     output.bfx_history_count = Array.isArray(bfx.matches) ? bfx.matches.length : null;
     output.t1a_history_count = Array.isArray(t1a.matches) ? t1a.matches.length : null;
     output.tlaw_history_count = Array.isArray(tlaw.matches) ? tlaw.matches.length : null;
+    output.lyon_history_has_logos = Array.isArray(lyon.matches)
+      && lyon.matches.length > 0
+      && lyon.matches.every((match) => match.team_image && match.opponent_image);
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'team_history_static_artifact_missing';
     if (output.bfx_history_count !== 5) {
@@ -330,6 +339,9 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     }
     if (output.tlaw_history_count !== 5) {
       output.errors.push(`TLAW recent team history returned ${output.tlaw_history_count}`);
+    }
+    if (!output.lyon_history_has_logos) {
+      output.errors.push('LYON recent team history is missing team/opponent logos');
     }
     if (!output.missing_lookup_returns_empty) {
       output.errors.push('team-history static lookup did not return an empty payload for missing artifacts');
