@@ -523,6 +523,10 @@ function checkMatchCenterLogos(appSourceText) {
       detail_merge_preserves_card_image: null,
       card_has_blue_image_data_attr: appSourceText.includes('data-blue-image='),
       card_has_red_image_data_attr: appSourceText.includes('data-red-image='),
+      card_has_blue_score_data_attr: appSourceText.includes('data-blue-score='),
+      card_has_red_score_data_attr: appSourceText.includes('data-red-score='),
+      dataset_scores_preserved: null,
+      detail_merge_reorders_scores: null,
     },
   };
   const context = {
@@ -556,6 +560,8 @@ function checkMatchCenterLogos(appSourceText) {
         redCode: 'RED',
         blueImage: 'http://static.lolesports.com/blue.png',
         redImage: 'https://static.lolesports.com/red.png',
+        blueScore: '0',
+        redScore: '3',
         league: 'LPL',
         bestof: '3',
         status: 'unstarted',
@@ -563,27 +569,45 @@ function checkMatchCenterLogos(appSourceText) {
       });
       const merged = mergeCardTeamImages(cardDetails, {
         id: 'match-1',
-        teams: [{ name: 'Team Blue', code: 'BLU' }, { name: 'Team Red', code: 'RED' }]
+        teams: [
+          { name: 'Team Red', code: 'RED', game_wins: '3' },
+          { name: 'Team Blue', code: 'BLU', game_wins: '0' },
+        ]
       });
       ({
         cardBlueImage: cardDetails.teams[0].image,
         cardRedImage: cardDetails.teams[1].image,
+        cardBlueScore: cardDetails.teams[0].game_wins,
+        cardRedScore: cardDetails.teams[1].game_wins,
         mergedBlueImage: merged.teams[0].image,
-        mergedRedImage: merged.teams[1].image
+        mergedRedImage: merged.teams[1].image,
+        mergedBlueScore: merged.teams[0].game_wins,
+        mergedRedScore: merged.teams[1].game_wins,
       })
     `, context, { timeout: 1000 });
     output.summary.dataset_images_preserved = result.cardBlueImage === 'https://static.lolesports.com/blue.png'
       && result.cardRedImage === 'https://static.lolesports.com/red.png';
     output.summary.detail_merge_preserves_card_image = result.mergedBlueImage === 'https://static.lolesports.com/blue.png'
       && result.mergedRedImage === 'https://static.lolesports.com/red.png';
+    output.summary.dataset_scores_preserved = result.cardBlueScore === '0' && result.cardRedScore === '3';
+    output.summary.detail_merge_reorders_scores = result.mergedBlueScore === '0' && result.mergedRedScore === '3';
     if (!output.summary.card_has_blue_image_data_attr || !output.summary.card_has_red_image_data_attr) {
       output.errors.push('match cards must expose team image data attributes for Match Center');
+    }
+    if (!output.summary.card_has_blue_score_data_attr || !output.summary.card_has_red_score_data_attr) {
+      output.errors.push('match cards must expose series score data attributes for Match Center');
     }
     if (!output.summary.dataset_images_preserved) {
       output.errors.push('Match Center dataset details did not preserve normalized team image URLs');
     }
     if (!output.summary.detail_merge_preserves_card_image) {
       output.errors.push('Match Center detail merge did not preserve card team image URLs');
+    }
+    if (!output.summary.dataset_scores_preserved) {
+      output.errors.push('Match Center dataset details did not preserve card series scores');
+    }
+    if (!output.summary.detail_merge_reorders_scores) {
+      output.errors.push('Match Center detail merge did not align reversed detail scores to card sides');
     }
   } catch (error) {
     output.errors.push(`match center logo probe failed: ${error instanceof Error ? error.message : String(error)}`);

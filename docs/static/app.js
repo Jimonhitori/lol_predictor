@@ -844,7 +844,7 @@ function renderMatches() {
     return;
   }
   $('matches').innerHTML = matches.map(match => `
-    <a class="match" href="${detailHref(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-blue-code="${escapeHtml(match.blue_code || match.blue_team)}" data-red-code="${escapeHtml(match.red_code || match.red_team)}" data-blue-image="${escapeHtml(match.blue_image || '')}" data-red-image="${escapeHtml(match.red_image || '')}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}" data-start="${escapeHtml(match.start_time)}">
+    <a class="match" href="${detailHref(match.id)}" data-id="${escapeHtml(match.id)}" data-blue="${escapeHtml(match.blue_team)}" data-red="${escapeHtml(match.red_team)}" data-blue-code="${escapeHtml(match.blue_code || match.blue_team)}" data-red-code="${escapeHtml(match.red_code || match.red_team)}" data-blue-image="${escapeHtml(match.blue_image || '')}" data-red-image="${escapeHtml(match.red_image || '')}" data-blue-score="${escapeHtml(match.blue_score ?? '')}" data-red-score="${escapeHtml(match.red_score ?? '')}" data-league="${escapeHtml(match.league)}" data-bestof="${escapeHtml(match.best_of)}" data-status="${escapeHtml(match.status)}" data-start="${escapeHtml(match.start_time)}">
       <div class="matchMeta"><span>${escapeHtml(match.league)} · BO${escapeHtml(match.best_of || '-')}</span><span>${escapeHtml(matchStatusLabel(match))}</span></div>
       <div class="matchMeta"><span>${escapeHtml(matchStartLabel(match.start_time))}</span><span>${escapeHtml(matchDateLabel(match.start_time))}</span></div>
       <div class="versus">${matchCardTeam(match.blue_code || match.blue_team, match.blue_image)}<b>vs</b>${matchCardTeam(match.red_code || match.red_team, match.red_image)}</div>
@@ -1054,11 +1054,13 @@ function matchDetailsFromCardDataset(match) {
         name: match.blue || match.blueCode || '',
         code: match.blueCode || match.blue || '',
         image: normalizeTeamImage(match.blueImage || ''),
+        game_wins: match.blueScore ?? '',
       },
       {
         name: match.red || match.redCode || '',
         code: match.redCode || match.red || '',
         image: normalizeTeamImage(match.redImage || ''),
+        game_wins: match.redScore ?? '',
       },
     ],
     games: [],
@@ -1072,12 +1074,21 @@ function matchDetailsFromCardDataset(match) {
 function mergeCardTeamImages(cardDetails, details) {
   const teams = Array.isArray(details.teams) ? details.teams : [];
   const cardTeams = Array.isArray(cardDetails.teams) ? cardDetails.teams : [];
+  const orderedTeams = cardTeams.length >= 2
+    ? cardTeams.map((cardTeam, index) => {
+      const detailTeam = teams.find(team => sameTeamIdentity(team, cardTeam)) || teams[index] || {};
+      return {
+        ...detailTeam,
+        name: cardTeam.name || detailTeam.name || '',
+        code: cardTeam.code || detailTeam.code || '',
+        image: normalizeTeamImage(detailTeam.image || cardTeam.image || ''),
+        game_wins: detailTeam.game_wins ?? cardTeam.game_wins ?? '',
+      };
+    })
+    : teams;
   return {
     ...details,
-    teams: teams.map((team, index) => ({
-      ...team,
-      image: normalizeTeamImage(team.image || cardTeams[index]?.image || ''),
-    })),
+    teams: orderedTeams,
   };
 }
 
@@ -1794,11 +1805,15 @@ function scoreNumber(value) {
 }
 
 function sameTeamIdentity(left, right) {
-  return sameTeam(left?.id, right?.id)
-    || sameTeam(left?.name, right?.name)
-    || sameTeam(left?.code, right?.code)
-    || sameTeam(left?.name, right?.code)
-    || sameTeam(left?.code, right?.name);
+  return samePresentTeam(left?.id, right?.id)
+    || samePresentTeam(left?.name, right?.name)
+    || samePresentTeam(left?.code, right?.code)
+    || samePresentTeam(left?.name, right?.code)
+    || samePresentTeam(left?.code, right?.name);
+}
+
+function samePresentTeam(left, right) {
+  return Boolean(left && right) && sameTeam(left, right);
 }
 
 function sameWinnerValue(value, team) {
