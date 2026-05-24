@@ -185,7 +185,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .h2hPanel h2, .historyPanel h2 { color: #d5dbe4; font-size: 15px; margin-bottom: 10px; }
 .h2hList { display: grid; gap: 0; }
 .h2hCard { min-width: 0; border-radius: 4px; background: #2d343d; overflow: hidden; }
-.h2hLogoStrip { display: grid; grid-template-columns: repeat(5, 1fr); overflow: hidden; background: #363e49; }
+.h2hLogoStrip { display: grid; grid-template-columns: repeat(5, 1fr); overflow: hidden; background: #363e49; margin-bottom: 6px; }
 .h2hLogoCell { min-height: 30px; display: grid; place-items: center; border-right: 1px solid #252c35; }
 .h2hLogoCell:last-child { border-right: 0; }
 .h2hLogoCell img { width: 18px; height: 18px; object-fit: contain; }
