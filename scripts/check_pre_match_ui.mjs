@@ -30,6 +30,7 @@ let scheduleOverlay = null;
 let detailRefresh = null;
 let matchCenterLogos = null;
 let liveSnapshotRetention = null;
+let matchResultScoreMapping = null;
 
 const predictions = Array.isArray(feed.data?.predictions) ? feed.data.predictions : [];
 const matches = Array.isArray(matchesPayload.data?.matches) ? matchesPayload.data.matches : [];
@@ -147,6 +148,10 @@ if (appSource.ok) {
   liveSnapshotRetention = snapshotCheck.summary;
   if (!snapshotCheck.ok) errors.push(...snapshotCheck.errors);
   warnings.push(...snapshotCheck.warnings);
+  const resultScoreCheck = checkMatchResultScoreMapping(appSource.text);
+  matchResultScoreMapping = resultScoreCheck.summary;
+  if (!resultScoreCheck.ok) errors.push(...resultScoreCheck.errors);
+  warnings.push(...resultScoreCheck.warnings);
 }
 if (!styles.ok) {
   errors.push(`styles source failed: ${styles.error || styles.status}`);
@@ -194,6 +199,7 @@ const report = {
   detail_refresh: detailRefresh,
   match_center_logos: matchCenterLogos,
   live_snapshot_retention: liveSnapshotRetention,
+  match_result_score_mapping: matchResultScoreMapping,
   warnings,
   errors,
 };
@@ -684,6 +690,114 @@ function checkLiveSnapshotRetention(appSourceText) {
     }
   } catch (error) {
     output.errors.push(`live snapshot retention probe failed: ${error instanceof Error ? error.message : String(error)}`);
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+function checkMatchResultScoreMapping(appSourceText) {
+  const output = {
+    ok: true,
+    errors: [],
+    warnings: [],
+    summary: {
+      checked: false,
+      completed_label: '',
+      in_progress_label: '',
+    },
+  };
+  const context = {
+    window: { STATIC_SITE: true },
+    location: { href: 'http://example.test/', origin: 'http://example.test' },
+    document: {
+      getElementById: () => null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+    },
+    console: { log: () => {}, warn: () => {}, error: () => {} },
+    setTimeout: () => 0,
+    setInterval: () => 0,
+    clearInterval: () => {},
+    Intl,
+    Date,
+    URL,
+    URLSearchParams,
+  };
+  context.window.document = context.document;
+  try {
+    vm.createContext(context);
+    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    output.summary.checked = true;
+    const result = vm.runInContext(`
+      const completed = mergeFreshMatchDetails(
+        {
+          id: 'completed-reversed-order',
+          status: 'unstarted',
+          blue_team: 'Team Vitality',
+          red_team: 'Movistar KOI',
+          blue_code: 'VIT',
+          red_code: 'MKOI',
+          blue_image: 'https://static.lolesports.com/vit.png',
+          red_image: 'https://static.lolesports.com/mkoi.png',
+          blue_score: '0',
+          red_score: '0',
+          best_of: '5',
+        },
+        {
+          status: 'completed',
+          teams: [
+            { name: 'Movistar KOI', code: 'MKOI', game_wins: '3' },
+            { name: 'Team Vitality', code: 'VIT', game_wins: '0' },
+          ],
+        },
+      );
+      const live = mergeFreshMatchDetails(
+        {
+          id: 'live-reversed-order',
+          status: 'unstarted',
+          blue_team: 'RED Canids Kalunga',
+          red_team: 'FURIA',
+          blue_code: 'RED',
+          red_code: 'FUR',
+          blue_image: 'https://static.lolesports.com/red.png',
+          red_image: 'https://static.lolesports.com/fur.png',
+          blue_score: '0',
+          red_score: '0',
+          best_of: '5',
+        },
+        {
+          status: 'inProgress',
+          teams: [
+            { name: 'FURIA', code: 'FUR', game_wins: '2' },
+            { name: 'RED Canids Kalunga', code: 'RED', game_wins: '0' },
+          ],
+        },
+      );
+      ({
+        completed_label: matchResultText(completed),
+        completed_blue_score: completed.blue_score,
+        completed_red_score: completed.red_score,
+        live_label: matchResultText(live),
+        live_blue_score: live.blue_score,
+        live_red_score: live.red_score,
+      });
+    `, context, { timeout: 1000 });
+    output.summary.completed_label = String(result.completed_label || '');
+    output.summary.in_progress_label = String(result.live_label || '');
+    if (String(result.completed_blue_score) !== '0' || String(result.completed_red_score) !== '3') {
+      output.errors.push(`completed reversed team scores mapped to ${result.completed_blue_score}-${result.completed_red_score}`);
+    }
+    if (!String(result.completed_label || '').includes('MKOI wins 0-3')) {
+      output.errors.push(`completed reversed team label is ${result.completed_label || '(empty)'}`);
+    }
+    if (String(result.live_blue_score) !== '0' || String(result.live_red_score) !== '2') {
+      output.errors.push(`live reversed team scores mapped to ${result.live_blue_score}-${result.live_red_score}`);
+    }
+    if (!String(result.live_label || '').includes('FUR leads 0-2')) {
+      output.errors.push(`live reversed team label is ${result.live_label || '(empty)'}`);
+    }
+  } catch (error) {
+    output.errors.push(`match result score mapping check failed: ${error instanceof Error ? error.message : String(error)}`);
   }
   output.ok = output.errors.length === 0;
   return output;
