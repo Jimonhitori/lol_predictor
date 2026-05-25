@@ -767,7 +767,7 @@
   },
   "115548128962971947": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T06:13:12.878Z",
+    "checked_at": "2026-05-25T10:49:18.628Z",
     "event_id": "115548128962971947",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1777,7 +1777,7 @@
   },
   "116299619170851920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T06:13:12.878Z",
+    "checked_at": "2026-05-25T10:49:18.628Z",
     "event_id": "116299619170851920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -3219,7 +3219,7 @@
   },
   "115564793879469294": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T06:13:12.878Z",
+    "checked_at": "2026-05-25T10:49:18.628Z",
     "event_id": "115564793879469294",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -3976,19 +3976,19 @@
   },
   "116249880466944911": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T06:13:12.878Z",
+    "checked_at": "2026-05-25T10:49:18.628Z",
     "event_id": "116249880466944911",
-    "status": "inProgress",
+    "status": "completed",
     "source": "cloudflare_live_event",
-    "has_meaningful_live": true,
-    "is_finalizable": true,
+    "has_meaningful_live": false,
+    "is_finalizable": false,
     "payload": {
       "id": "116249880466944911",
       "league": "LCK Challengers",
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "inProgress",
+      "status": "completed",
       "start_time": "2026-05-25T05:00:00.000Z",
       "teams": [
         {
@@ -4003,7 +4003,7 @@
           "name": "DK Challengers",
           "code": "DK",
           "image": "http://static.lolesports.com/teams/1673259409468_DPlusKIALOGO1.png",
-          "game_wins": "1"
+          "game_wins": "2"
         }
       ],
       "games": [
@@ -4043,7 +4043,7 @@
         {
           "id": "116249880466944913",
           "number": 2,
-          "state": "inProgress",
+          "state": "completed",
           "blue": {
             "team_id": "105550026570060790",
             "team_name": "DK Challengers",
@@ -4056,266 +4056,154 @@
           },
           "winner": "",
           "live": {
-            "game_state": "in_game",
-            "game_time": 1364,
-            "frame_timestamp": "2026-05-25T06:11:09.829Z",
-            "patch_version": "16.10.776.5552",
-            "blue": [
-              {
-                "player": "DK Jaehyuk",
-                "participant_id": "1",
-                "champion": "Gnar",
-                "champion_id": "Gnar",
-                "role": "top",
-                "level": 13,
-                "kills": 0,
-                "deaths": 1,
-                "assists": 0,
-                "creep_score": 166,
-                "gold": 6252,
-                "current_health": 2057,
-                "max_health": 2057,
-                "items": [
-                  "1054",
-                  "3047",
-                  "3363",
-                  "3078",
-                  "1037",
-                  "2055"
-                ]
-              },
-              {
-                "player": "DK Sharvel",
-                "participant_id": "2",
-                "champion": "JarvanIV",
-                "champion_id": "JarvanIV",
-                "role": "jungle",
-                "level": 11,
-                "kills": 2,
-                "deaths": 2,
-                "assists": 4,
-                "creep_score": 137,
-                "gold": 6988,
-                "current_health": 1946,
-                "max_health": 2412,
-                "items": [
-                  "6610",
-                  "3044",
-                  "1028"
-                ]
-              },
-              {
-                "player": "DK Garden",
-                "participant_id": "3",
-                "champion": "Anivia",
-                "champion_id": "Anivia",
-                "role": "mid",
-                "level": 11,
-                "kills": 3,
-                "deaths": 3,
-                "assists": 4,
-                "creep_score": 138,
-                "gold": 6942,
-                "current_health": 2071,
-                "max_health": 2071,
-                "items": [
-                  "1056",
-                  "3070",
-                  "6657",
-                  "3363",
-                  "3009",
-                  "3802",
-                  "3108"
-                ]
-              },
-              {
-                "player": "DK Wayne",
-                "participant_id": "4",
-                "champion": "Jhin",
-                "champion_id": "Jhin",
-                "role": "bottom",
-                "level": 11,
-                "kills": 1,
-                "deaths": 1,
-                "assists": 5,
-                "creep_score": 167,
-                "gold": 7472,
-                "current_health": 1658,
-                "max_health": 1658,
-                "items": [
-                  "1086",
-                  "2523",
-                  "3363",
-                  "3094",
-                  "2055"
-                ]
-              },
-              {
-                "player": "DK Loopy",
-                "participant_id": "5",
-                "champion": "Nautilus",
-                "champion_id": "Nautilus",
-                "role": "support",
-                "level": 7,
-                "kills": 2,
-                "deaths": 3,
-                "assists": 4,
-                "creep_score": 27,
-                "gold": 4976,
-                "current_health": 1745,
-                "max_health": 1745,
-                "items": [
-                  "3364",
-                  "2031",
-                  "3190",
-                  "2055",
-                  "3047",
-                  "1028"
-                ]
-              }
-            ],
-            "red": [
-              {
-                "player": "HLE Panther",
-                "participant_id": "6",
-                "champion": "Tristana",
-                "champion_id": "Tristana",
-                "role": "top",
-                "level": 13,
-                "kills": 5,
-                "deaths": 0,
-                "assists": 2,
-                "creep_score": 166,
-                "gold": 8232,
-                "current_health": 1821,
-                "max_health": 1821,
-                "items": [
-                  "1086",
-                  "3047",
-                  "3363",
-                  "6672",
-                  "6675",
-                  "1036",
-                  "1036"
-                ]
-              },
-              {
-                "player": "HLE Jackal",
-                "participant_id": "7",
-                "champion": "Skarner",
-                "champion_id": "Skarner",
-                "role": "jungle",
-                "level": 11,
-                "kills": 2,
-                "deaths": 0,
-                "assists": 7,
-                "creep_score": 126,
-                "gold": 6866,
-                "current_health": 2317,
-                "max_health": 2640,
-                "items": [
-                  "3364",
-                  "2525",
-                  "2524",
-                  "3047",
-                  "1029",
-                  "2055"
-                ]
-              },
-              {
-                "player": "HLE Cracker",
-                "participant_id": "8",
-                "champion": "Cassiopeia",
-                "champion_id": "Cassiopeia",
-                "role": "mid",
-                "level": 11,
-                "kills": 2,
-                "deaths": 4,
-                "assists": 4,
-                "creep_score": 152,
-                "gold": 6532,
-                "current_health": 2097,
-                "max_health": 2097,
-                "items": [
-                  "1056",
-                  "3070",
-                  "2031",
-                  "6657",
-                  "3363",
-                  "3009",
-                  "3802"
-                ]
-              },
-              {
-                "player": "HLE Pyeonsik",
-                "participant_id": "9",
-                "champion": "Caitlyn",
-                "champion_id": "Caitlyn",
-                "role": "bottom",
-                "level": 11,
-                "kills": 1,
-                "deaths": 2,
-                "assists": 6,
-                "creep_score": 159,
-                "gold": 7535,
-                "current_health": 1583,
-                "max_health": 1583,
-                "items": [
-                  "1086",
-                  "1083",
-                  "2523",
-                  "3006",
-                  "3363",
-                  "1038",
-                  "1037"
-                ]
-              },
-              {
-                "player": "HLE Bluffing",
-                "participant_id": "10",
-                "champion": "Bard",
-                "champion_id": "Bard",
-                "role": "support",
-                "level": 7,
-                "kills": 0,
-                "deaths": 2,
-                "assists": 7,
-                "creep_score": 11,
-                "gold": 4570,
-                "current_health": 1794,
-                "max_health": 1794,
-                "items": [
-                  "3364",
-                  "3190",
-                  "3067",
-                  "1033",
-                  "2055"
-                ]
-              }
-            ],
-            "blue_stats": {
-              "gold": 32630,
-              "kills": 8,
-              "towers": 1,
-              "inhibitors": 0,
-              "barons": 0,
-              "dragons": 1
-            },
-            "red_stats": {
-              "gold": 33735,
-              "kills": 10,
-              "towers": 1,
-              "inhibitors": 0,
-              "barons": 0,
-              "dragons": 1
-            },
-            "status": "in_game",
-            "warning": "game_time_estimated",
-            "source": "lolesports_livestats",
-            "estimated_game_time": true,
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
             "win_probability": {
-              "blue": 0.5210853333372387,
-              "red": 0.4789146666627613,
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116249880466944914",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "105550047979361273",
+            "team_name": "HLE Challengers",
+            "team_code": "HLE"
+          },
+          "red": {
+            "team_id": "105550026570060790",
+            "team_name": "DK Challengers",
+            "team_code": "DK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116249880466944971": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-25T10:49:18.628Z",
+    "event_id": "116249880466944971",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116249880466944971",
+      "league": "LCK Challengers",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "inProgress",
+      "start_time": "2026-05-25T09:00:00.000Z",
+      "teams": [
+        {
+          "id": "105550036134585264",
+          "name": "BRO Challengers",
+          "code": "BRO",
+          "image": "http://static.lolesports.com/teams/1716454310243_Nowyprojekt.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "105550033967461806",
+          "name": "KRX Challengers",
+          "code": "KRX",
+          "image": "http://static.lolesports.com/teams/1774247830795_horizontal_EN_Wh.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116249880466944972",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "105550036134585264",
+            "team_name": "BRO Challengers",
+            "team_code": "BRO"
+          },
+          "red": {
+            "team_id": "105550033967461806",
+            "team_name": "KRX Challengers",
+            "team_code": "KRX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116249880466944973",
+          "number": 2,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "105550036134585264",
+            "team_name": "BRO Challengers",
+            "team_code": "BRO"
+          },
+          "red": {
+            "team_id": "105550033967461806",
+            "team_name": "KRX Challengers",
+            "team_code": "KRX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "inProgress",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "soon",
+            "warning": "live_stats_empty",
+            "win_probability": {
+              "blue": 0.5327254862823781,
+              "red": 0.46727451371762185,
               "model": "live_lck_logreg_deep20_regularized_v1",
               "status": "estimated",
               "feature_schema": "live_frame_v1",
@@ -4331,39 +4219,205 @@
               "validation": {
                 "display": "show_live_probability",
                 "source": "external_validation",
-                "start_seconds": 1200,
-                "end_seconds": 1500,
+                "start_seconds": 0,
+                "end_seconds": 300,
                 "games": 26,
-                "rows": 258,
-                "roc_auc": 0.9587223587223587,
-                "brier": 0.1254621549810755
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
               },
               "features": {
-                "gold_diff": -1105,
-                "kill_diff": -2,
+                "gold_diff": 0,
+                "kill_diff": 0,
                 "tower_diff": 0,
                 "inhibitor_diff": 0,
                 "dragon_diff": 0,
                 "baron_diff": 0,
                 "avg_level_diff": 0,
-                "game_time": 1364
+                "game_time": 0
               }
             }
           }
         },
         {
-          "id": "116249880466944914",
+          "id": "116249880466944974",
           "number": 3,
           "state": "unstarted",
           "blue": {
-            "team_id": "105550047979361273",
-            "team_name": "HLE Challengers",
-            "team_code": "HLE"
+            "team_id": "105550036134585264",
+            "team_name": "BRO Challengers",
+            "team_code": "BRO"
           },
           "red": {
-            "team_id": "105550026570060790",
-            "team_name": "DK Challengers",
-            "team_code": "DK"
+            "team_id": "105550033967461806",
+            "team_name": "KRX Challengers",
+            "team_code": "KRX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116413908784071088": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-25T10:49:18.628Z",
+    "event_id": "116413908784071088",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116413908784071088",
+      "league": "PCS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "inProgress",
+      "start_time": "2026-05-25T12:00:00.000Z",
+      "teams": [
+        {
+          "id": "114256489341689300",
+          "name": "WangTing",
+          "code": "WTG",
+          "image": "http://static.lolesports.com/teams/1743677704612_logotemplatka321.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "107760667929003738",
+          "name": "Frank Esports",
+          "code": "FAK",
+          "image": "http://static.lolesports.com/teams/1656308269827_220621_FRANK_Final_Logo_W.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116413908784071089",
+          "number": 1,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "114256489341689300",
+            "team_name": "WangTing",
+            "team_code": "WTG"
+          },
+          "red": {
+            "team_id": "107760667929003738",
+            "team_name": "Frank Esports",
+            "team_code": "FAK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "inProgress",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unavailable",
+            "warning": "disallowed window with end time less than 188 sec old (was 53.79 sec old). requested window: [2026-05-25T10:47:00Z, 2026-05-25T10:47:10Z]) ahead of broadcast. current time: 2026-05-25T10:48:03.792639817Z",
+            "win_probability": {
+              "blue": 0.47515355333086245,
+              "red": 0.5248464466691376,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": 0,
+                "kill_diff": 0,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 0
+              }
+            }
+          }
+        },
+        {
+          "id": "116413908784071090",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114256489341689300",
+            "team_name": "WangTing",
+            "team_code": "WTG"
+          },
+          "red": {
+            "team_id": "107760667929003738",
+            "team_name": "Frank Esports",
+            "team_code": "FAK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116413908784071091",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107760667929003738",
+            "team_name": "Frank Esports",
+            "team_code": "FAK"
+          },
+          "red": {
+            "team_id": "114256489341689300",
+            "team_name": "WangTing",
+            "team_code": "WTG"
           },
           "winner": "",
           "live": {
