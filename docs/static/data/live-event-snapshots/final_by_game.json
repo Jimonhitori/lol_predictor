@@ -2994,5 +2994,341 @@
         "retained_from_artifact": true
       }
     }
+  },
+  "116249880466944911:116249880466944913": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-05-25T13:51:55.101Z",
+    "event_id": "116249880466944911",
+    "game_id": "116249880466944913",
+    "game_number": 2,
+    "event_status": "completed",
+    "teams": [
+      {
+        "id": "105550047979361273",
+        "name": "HLE Challengers",
+        "code": "HLE",
+        "image": "http://static.lolesports.com/teams/hle-2021-color-on-dark.png",
+        "game_wins": "0"
+      },
+      {
+        "id": "105550026570060790",
+        "name": "DK Challengers",
+        "code": "DK",
+        "image": "http://static.lolesports.com/teams/1673259409468_DPlusKIALOGO1.png",
+        "game_wins": "2"
+      }
+    ],
+    "game": {
+      "id": "116249880466944913",
+      "number": 2,
+      "state": "completed",
+      "blue": {
+        "team_id": "105550026570060790",
+        "team_name": "DK Challengers",
+        "team_code": "DK"
+      },
+      "red": {
+        "team_id": "105550047979361273",
+        "team_name": "HLE Challengers",
+        "team_code": "HLE"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 1364,
+        "frame_timestamp": "2026-05-25T06:11:09.829Z",
+        "patch_version": "16.10.776.5552",
+        "blue": [
+          {
+            "player": "DK Jaehyuk",
+            "participant_id": "1",
+            "champion": "Gnar",
+            "champion_id": "Gnar",
+            "role": "top",
+            "level": 13,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 0,
+            "creep_score": 166,
+            "gold": 6252,
+            "current_health": 2057,
+            "max_health": 2057,
+            "items": [
+              "1054",
+              "3047",
+              "3363",
+              "3078",
+              "1037",
+              "2055"
+            ]
+          },
+          {
+            "player": "DK Sharvel",
+            "participant_id": "2",
+            "champion": "JarvanIV",
+            "champion_id": "JarvanIV",
+            "role": "jungle",
+            "level": 11,
+            "kills": 2,
+            "deaths": 2,
+            "assists": 4,
+            "creep_score": 137,
+            "gold": 6988,
+            "current_health": 1946,
+            "max_health": 2412,
+            "items": [
+              "6610",
+              "3044",
+              "1028"
+            ]
+          },
+          {
+            "player": "DK Garden",
+            "participant_id": "3",
+            "champion": "Anivia",
+            "champion_id": "Anivia",
+            "role": "mid",
+            "level": 11,
+            "kills": 3,
+            "deaths": 3,
+            "assists": 4,
+            "creep_score": 138,
+            "gold": 6942,
+            "current_health": 2071,
+            "max_health": 2071,
+            "items": [
+              "1056",
+              "3070",
+              "6657",
+              "3363",
+              "3009",
+              "3802",
+              "3108"
+            ]
+          },
+          {
+            "player": "DK Wayne",
+            "participant_id": "4",
+            "champion": "Jhin",
+            "champion_id": "Jhin",
+            "role": "bottom",
+            "level": 11,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 5,
+            "creep_score": 167,
+            "gold": 7472,
+            "current_health": 1658,
+            "max_health": 1658,
+            "items": [
+              "1086",
+              "2523",
+              "3363",
+              "3094",
+              "2055"
+            ]
+          },
+          {
+            "player": "DK Loopy",
+            "participant_id": "5",
+            "champion": "Nautilus",
+            "champion_id": "Nautilus",
+            "role": "support",
+            "level": 7,
+            "kills": 2,
+            "deaths": 3,
+            "assists": 4,
+            "creep_score": 27,
+            "gold": 4976,
+            "current_health": 1745,
+            "max_health": 1745,
+            "items": [
+              "3364",
+              "2031",
+              "3190",
+              "2055",
+              "3047",
+              "1028"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "HLE Panther",
+            "participant_id": "6",
+            "champion": "Tristana",
+            "champion_id": "Tristana",
+            "role": "top",
+            "level": 13,
+            "kills": 5,
+            "deaths": 0,
+            "assists": 2,
+            "creep_score": 166,
+            "gold": 8232,
+            "current_health": 1821,
+            "max_health": 1821,
+            "items": [
+              "1086",
+              "3047",
+              "3363",
+              "6672",
+              "6675",
+              "1036",
+              "1036"
+            ]
+          },
+          {
+            "player": "HLE Jackal",
+            "participant_id": "7",
+            "champion": "Skarner",
+            "champion_id": "Skarner",
+            "role": "jungle",
+            "level": 11,
+            "kills": 2,
+            "deaths": 0,
+            "assists": 7,
+            "creep_score": 126,
+            "gold": 6866,
+            "current_health": 2317,
+            "max_health": 2640,
+            "items": [
+              "3364",
+              "2525",
+              "2524",
+              "3047",
+              "1029",
+              "2055"
+            ]
+          },
+          {
+            "player": "HLE Cracker",
+            "participant_id": "8",
+            "champion": "Cassiopeia",
+            "champion_id": "Cassiopeia",
+            "role": "mid",
+            "level": 11,
+            "kills": 2,
+            "deaths": 4,
+            "assists": 4,
+            "creep_score": 152,
+            "gold": 6532,
+            "current_health": 2097,
+            "max_health": 2097,
+            "items": [
+              "1056",
+              "3070",
+              "2031",
+              "6657",
+              "3363",
+              "3009",
+              "3802"
+            ]
+          },
+          {
+            "player": "HLE Pyeonsik",
+            "participant_id": "9",
+            "champion": "Caitlyn",
+            "champion_id": "Caitlyn",
+            "role": "bottom",
+            "level": 11,
+            "kills": 1,
+            "deaths": 2,
+            "assists": 6,
+            "creep_score": 159,
+            "gold": 7535,
+            "current_health": 1583,
+            "max_health": 1583,
+            "items": [
+              "1086",
+              "1083",
+              "2523",
+              "3006",
+              "3363",
+              "1038",
+              "1037"
+            ]
+          },
+          {
+            "player": "HLE Bluffing",
+            "participant_id": "10",
+            "champion": "Bard",
+            "champion_id": "Bard",
+            "role": "support",
+            "level": 7,
+            "kills": 0,
+            "deaths": 2,
+            "assists": 7,
+            "creep_score": 11,
+            "gold": 4570,
+            "current_health": 1794,
+            "max_health": 1794,
+            "items": [
+              "3364",
+              "3190",
+              "3067",
+              "1033",
+              "2055"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 32630,
+          "kills": 8,
+          "towers": 1,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 1
+        },
+        "red_stats": {
+          "gold": 33735,
+          "kills": 10,
+          "towers": 1,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 1
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.5210853333372387,
+          "red": 0.4789146666627613,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation",
+            "start_seconds": 1200,
+            "end_seconds": 1500,
+            "games": 26,
+            "rows": 258,
+            "roc_auc": 0.9587223587223587,
+            "brier": 0.1254621549810755
+          },
+          "features": {
+            "gold_diff": -1105,
+            "kill_diff": -2,
+            "tower_diff": 0,
+            "inhibitor_diff": 0,
+            "dragon_diff": 0,
+            "baron_diff": 0,
+            "avg_level_diff": 0,
+            "game_time": 1364
+          }
+        },
+        "retained_after_end": true
+      }
+    }
   }
 }
