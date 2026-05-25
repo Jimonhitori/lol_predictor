@@ -3334,11 +3334,11 @@
   },
   "115548668059589364:115548668059589366": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-25T17:57:31.151Z",
+    "checked_at": "2026-05-25T19:38:51.727Z",
     "event_id": "115548668059589364",
     "game_id": "115548668059589366",
     "game_number": 2,
-    "event_status": "inProgress",
+    "event_status": "completed",
     "teams": [
       {
         "id": "103461966965149786",
@@ -3352,7 +3352,7 @@
         "name": "G2 Esports",
         "code": "G2",
         "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
-        "game_wins": "1"
+        "game_wins": "3"
       }
     ],
     "game": {
@@ -3658,7 +3658,8 @@
             "game_time": 726
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }

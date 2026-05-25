@@ -767,7 +767,7 @@
   },
   "115548128962971947": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T17:57:31.151Z",
+    "checked_at": "2026-05-25T19:38:51.727Z",
     "event_id": "115548128962971947",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1777,7 +1777,7 @@
   },
   "116299619170851920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T17:57:31.151Z",
+    "checked_at": "2026-05-25T19:38:51.727Z",
     "event_id": "116299619170851920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4393,7 +4393,7 @@
   },
   "116249880466944971": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T17:57:31.151Z",
+    "checked_at": "2026-05-25T19:38:51.727Z",
     "event_id": "116249880466944971",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4530,7 +4530,7 @@
   },
   "116413908784071088": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T17:57:31.151Z",
+    "checked_at": "2026-05-25T19:38:51.727Z",
     "event_id": "116413908784071088",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4667,9 +4667,9 @@
   },
   "115548668059589364": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T17:57:31.151Z",
+    "checked_at": "2026-05-25T19:38:51.727Z",
     "event_id": "115548668059589364",
-    "status": "inProgress",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": true,
     "is_finalizable": true,
@@ -4679,7 +4679,7 @@
       "league_group": "",
       "region": "",
       "best_of": "5",
-      "status": "inProgress",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
@@ -4694,7 +4694,7 @@
           "name": "G2 Esports",
           "code": "G2",
           "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
-          "game_wins": "1"
+          "game_wins": "3"
         }
       ],
       "games": [
@@ -5034,7 +5034,8 @@
                 "game_time": 726
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         },
         {
@@ -5073,7 +5074,7 @@
         {
           "id": "115548668059589368",
           "number": 4,
-          "state": "inProgress",
+          "state": "completed",
           "blue": {
             "team_id": "98767991926151025",
             "team_name": "G2 Esports",
@@ -5086,301 +5087,27 @@
           },
           "winner": "",
           "live": {
-            "game_state": "in_game",
-            "game_time": 1553,
-            "frame_timestamp": "2026-05-25T17:55:29.834Z",
-            "patch_version": "16.10.776.5552",
-            "blue": [
-              {
-                "player": "G2 BrokenBlade",
-                "participant_id": "1",
-                "champion": "TwistedFate",
-                "champion_id": "TwistedFate",
-                "role": "top",
-                "level": 14,
-                "kills": 4,
-                "deaths": 2,
-                "assists": 5,
-                "creep_score": 153,
-                "gold": 9361,
-                "current_health": 0,
-                "max_health": 1974,
-                "items": [
-                  "1086",
-                  "3006",
-                  "6672",
-                  "3032",
-                  "3144",
-                  "1042"
-                ]
-              },
-              {
-                "player": "G2 SkewMond",
-                "participant_id": "2",
-                "champion": "Naafiri",
-                "champion_id": "Naafiri",
-                "role": "jungle",
-                "level": 12,
-                "kills": 6,
-                "deaths": 2,
-                "assists": 3,
-                "creep_score": 151,
-                "gold": 8546,
-                "current_health": 1913,
-                "max_health": 1913,
-                "items": [
-                  "6699",
-                  "6695",
-                  "3111",
-                  "1028",
-                  "1036"
-                ]
-              },
-              {
-                "player": "G2 Caps",
-                "participant_id": "3",
-                "champion": "Aurora",
-                "champion_id": "Aurora",
-                "role": "mid",
-                "level": 13,
-                "kills": 6,
-                "deaths": 0,
-                "assists": 9,
-                "creep_score": 165,
-                "gold": 9369,
-                "current_health": 640,
-                "max_health": 2316,
-                "items": [
-                  "1056",
-                  "1082",
-                  "3152",
-                  "4645",
-                  "3364",
-                  "4630"
-                ]
-              },
-              {
-                "player": "G2 Hans Sama",
-                "participant_id": "4",
-                "champion": "Ashe",
-                "champion_id": "Ashe",
-                "role": "bottom",
-                "level": 12,
-                "kills": 0,
-                "deaths": 1,
-                "assists": 7,
-                "creep_score": 176,
-                "gold": 8417,
-                "current_health": 1749,
-                "max_health": 1749,
-                "items": [
-                  "1055",
-                  "6672",
-                  "3006",
-                  "3363",
-                  "3046",
-                  "2055"
-                ]
-              },
-              {
-                "player": "G2 Labrov",
-                "participant_id": "5",
-                "champion": "Bard",
-                "champion_id": "Bard",
-                "role": "support",
-                "level": 9,
-                "kills": 2,
-                "deaths": 4,
-                "assists": 7,
-                "creep_score": 19,
-                "gold": 5483,
-                "current_health": 1989,
-                "max_health": 1989,
-                "items": [
-                  "3364",
-                  "2031",
-                  "3190",
-                  "3067",
-                  "3114",
-                  "2055"
-                ]
-              }
-            ],
-            "red": [
-              {
-                "player": "MKOI Myrwn",
-                "participant_id": "6",
-                "champion": "Rumble",
-                "champion_id": "Rumble",
-                "role": "top",
-                "level": 12,
-                "kills": 1,
-                "deaths": 5,
-                "assists": 0,
-                "creep_score": 125,
-                "gold": 5887,
-                "current_health": 1769,
-                "max_health": 2128,
-                "items": [
-                  "1056",
-                  "3340",
-                  "6653",
-                  "1052",
-                  "3111"
-                ]
-              },
-              {
-                "player": "MKOI Elyoya",
-                "participant_id": "7",
-                "champion": "LeeSin",
-                "champion_id": "LeeSin",
-                "role": "jungle",
-                "level": 11,
-                "kills": 4,
-                "deaths": 3,
-                "assists": 3,
-                "creep_score": 135,
-                "gold": 7952,
-                "current_health": 2057,
-                "max_health": 2057,
-                "items": [
-                  "3340",
-                  "6692",
-                  "6610"
-                ]
-              },
-              {
-                "player": "MKOI Jojopyun",
-                "participant_id": "8",
-                "champion": "Akali",
-                "champion_id": "Akali",
-                "role": "mid",
-                "level": 12,
-                "kills": 2,
-                "deaths": 4,
-                "assists": 3,
-                "creep_score": 157,
-                "gold": 6859,
-                "current_health": 1996,
-                "max_health": 1996,
-                "items": [
-                  "1054",
-                  "1082",
-                  "2022",
-                  "3146",
-                  "3145"
-                ]
-              },
-              {
-                "player": "MKOI Supa",
-                "participant_id": "9",
-                "champion": "MissFortune",
-                "champion_id": "MissFortune",
-                "role": "bottom",
-                "level": 11,
-                "kills": 1,
-                "deaths": 3,
-                "assists": 6,
-                "creep_score": 160,
-                "gold": 8125,
-                "current_health": 1647,
-                "max_health": 1647,
-                "items": [
-                  "1055",
-                  "3072",
-                  "1018",
-                  "3363",
-                  "3009",
-                  "1037",
-                  "1036"
-                ]
-              },
-              {
-                "player": "MKOI Alvaro",
-                "participant_id": "10",
-                "champion": "Seraphine",
-                "champion_id": "Seraphine",
-                "role": "support",
-                "level": 9,
-                "kills": 1,
-                "deaths": 3,
-                "assists": 6,
-                "creep_score": 23,
-                "gold": 4895,
-                "current_health": 907,
-                "max_health": 1825,
-                "items": [
-                  "3364",
-                  "6620",
-                  "3158",
-                  "1028",
-                  "1004",
-                  "2055"
-                ]
-              }
-            ],
-            "blue_stats": {
-              "gold": 41176,
-              "kills": 18,
-              "towers": 3,
-              "inhibitors": 0,
-              "barons": 0,
-              "dragons": 1
-            },
-            "red_stats": {
-              "gold": 33718,
-              "kills": 9,
-              "towers": 0,
-              "inhibitors": 0,
-              "barons": 0,
-              "dragons": 2
-            },
-            "status": "in_game",
-            "warning": "game_time_estimated",
-            "source": "lolesports_livestats",
-            "estimated_game_time": true,
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
             "win_probability": {
-              "blue": 0.882117046190342,
-              "red": 0.11788295380965796,
-              "model": "live_lck_logreg_deep20_regularized_v1",
-              "status": "estimated",
-              "feature_schema": "live_frame_v1",
-              "training_rows": 2123,
-              "test_rows": 564,
-              "metrics": {
-                "rows": 564,
-                "accuracy": 0.7890070921985816,
-                "brier": 0.16011961508709052,
-                "log_loss": 0.4868346825422321,
-                "roc_auc": 0.9022971281490753
-              },
-              "validation": {
-                "display": "show_live_probability",
-                "source": "external_validation",
-                "start_seconds": 1500,
-                "end_seconds": 1800,
-                "games": 25,
-                "rows": 207,
-                "roc_auc": 0.9851340847260008,
-                "brier": 0.1235469773257451
-              },
-              "features": {
-                "gold_diff": 7458,
-                "kill_diff": 9,
-                "tower_diff": 3,
-                "inhibitor_diff": 0,
-                "dragon_diff": -1,
-                "baron_diff": 0,
-                "avg_level_diff": 1,
-                "game_time": 1553
-              }
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
             }
           }
         },
         {
           "id": "115548668059589369",
           "number": 5,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "98767991926151025",
             "team_name": "G2 Esports",
@@ -5393,13 +5120,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -5417,7 +5144,7 @@
   },
   "116554905051782824": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-25T17:57:31.151Z",
+    "checked_at": "2026-05-25T19:38:51.727Z",
     "event_id": "116554905051782824",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5461,6 +5188,77 @@
             "team_id": "107565448721890834",
             "team_name": "DMG Esports",
             "team_code": "DMG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116554905051782788": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-25T19:38:51.727Z",
+    "event_id": "116554905051782788",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116554905051782788",
+      "league": "NLC",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "completed",
+      "start_time": "2026-05-25T19:00:00.000Z",
+      "teams": [
+        {
+          "id": "113776188239005729",
+          "name": "Bulldog Esports",
+          "code": "BDG",
+          "image": "http://static.lolesports.com/teams/1736206647522_BDG1.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "107565477822627354",
+          "name": "Verdant",
+          "code": "VER",
+          "image": "http://static.lolesports.com/teams/1736206402275_VER1.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116554905051782789",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "113776188239005729",
+            "team_name": "Bulldog Esports",
+            "team_code": "BDG"
+          },
+          "red": {
+            "team_id": "107565477822627354",
+            "team_name": "Verdant",
+            "team_code": "VER"
           },
           "winner": "",
           "live": {

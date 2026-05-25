@@ -4050,5 +4050,482 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "115548668059589364": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-25T19:38:51.727Z",
+    "event_id": "115548668059589364",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115548668059589364",
+      "league": "LEC",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "103461966965149786",
+          "name": "Movistar KOI",
+          "code": "MKOI",
+          "image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "98767991926151025",
+          "name": "G2 Esports",
+          "code": "G2",
+          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+          "game_wins": "3"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548668059589365",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589366",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 726,
+            "frame_timestamp": "2026-05-25T16:10:19.237Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "MKOI Myrwn",
+                "participant_id": "1",
+                "champion": "Varus",
+                "champion_id": "Varus",
+                "role": "top",
+                "level": 9,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 85,
+                "gold": 3467,
+                "current_health": 1649,
+                "max_health": 1751,
+                "items": [
+                  "1120",
+                  "3340",
+                  "3047",
+                  "3044",
+                  "1042"
+                ]
+              },
+              {
+                "player": "MKOI Elyoya",
+                "participant_id": "2",
+                "champion": "Trundle",
+                "champion_id": "Trundle",
+                "role": "jungle",
+                "level": 8,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 83,
+                "gold": 3652,
+                "current_health": 959,
+                "max_health": 1600,
+                "items": [
+                  "1102",
+                  "2021",
+                  "3133",
+                  "3364"
+                ]
+              },
+              {
+                "player": "MKOI Jojopyun",
+                "participant_id": "3",
+                "champion": "Ryze",
+                "champion_id": "Ryze",
+                "role": "mid",
+                "level": 9,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 116,
+                "gold": 4179,
+                "current_health": 455,
+                "max_health": 1935,
+                "items": [
+                  "1056",
+                  "3070",
+                  "2031",
+                  "3803",
+                  "3111"
+                ]
+              },
+              {
+                "player": "MKOI Supa",
+                "participant_id": "4",
+                "champion": "Caitlyn",
+                "champion_id": "Caitlyn",
+                "role": "bottom",
+                "level": 7,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 90,
+                "gold": 3816,
+                "current_health": 1139,
+                "max_health": 1163,
+                "items": [
+                  "1086",
+                  "3340",
+                  "1083",
+                  "1037",
+                  "1036",
+                  "1036"
+                ]
+              },
+              {
+                "player": "MKOI Alvaro",
+                "participant_id": "5",
+                "champion": "Nami",
+                "champion_id": "Nami",
+                "role": "support",
+                "level": 6,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 18,
+                "gold": 2567,
+                "current_health": 1072,
+                "max_health": 1072,
+                "items": [
+                  "3364",
+                  "2055",
+                  "4642",
+                  "1052",
+                  "2022"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "G2 BrokenBlade",
+                "participant_id": "6",
+                "champion": "Yasuo",
+                "champion_id": "Yasuo",
+                "role": "top",
+                "level": 9,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 85,
+                "gold": 3835,
+                "current_health": 1528,
+                "max_health": 1543,
+                "items": [
+                  "1055",
+                  "2031",
+                  "2055",
+                  "3006",
+                  "1043",
+                  "1053"
+                ]
+              },
+              {
+                "player": "G2 SkewMond",
+                "participant_id": "7",
+                "champion": "Skarner",
+                "champion_id": "Skarner",
+                "role": "jungle",
+                "level": 8,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 79,
+                "gold": 3848,
+                "current_health": 969,
+                "max_health": 2053,
+                "items": [
+                  "1101",
+                  "2525",
+                  "1029",
+                  "3364"
+                ]
+              },
+              {
+                "player": "G2 Caps",
+                "participant_id": "8",
+                "champion": "Taliyah",
+                "champion_id": "Taliyah",
+                "role": "mid",
+                "level": 9,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 111,
+                "gold": 3803,
+                "current_health": 1033,
+                "max_health": 1455,
+                "items": [
+                  "3340",
+                  "1056",
+                  "2031",
+                  "1082",
+                  "3158",
+                  "3802",
+                  "1052"
+                ]
+              },
+              {
+                "player": "G2 Hans Sama",
+                "participant_id": "9",
+                "champion": "Yunara",
+                "champion_id": "Yunara",
+                "role": "bottom",
+                "level": 7,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 93,
+                "gold": 3896,
+                "current_health": 1139,
+                "max_health": 1187,
+                "items": [
+                  "1086",
+                  "3340",
+                  "1083",
+                  "1001",
+                  "2031",
+                  "1043",
+                  "6690"
+                ]
+              },
+              {
+                "player": "G2 Labrov",
+                "participant_id": "10",
+                "champion": "Lulu",
+                "champion_id": "Lulu",
+                "role": "support",
+                "level": 7,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 14,
+                "gold": 2539,
+                "current_health": 471,
+                "max_health": 1175,
+                "items": [
+                  "3364",
+                  "3113",
+                  "3114",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 17681,
+              "kills": 2,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "red_stats": {
+              "gold": 17921,
+              "kills": 2,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.6484283547284962,
+              "red": 0.35157164527150375,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 600,
+                "end_seconds": 900,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.9423636363636363,
+                "brier": 0.14289070440955845
+              },
+              "features": {
+                "gold_diff": -240,
+                "kill_diff": 0,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 1,
+                "baron_diff": 0,
+                "avg_level_diff": -0.20000000000000018,
+                "game_time": 726
+              }
+            },
+            "retained_after_end": true,
+            "retained_from_artifact": true
+          }
+        },
+        {
+          "id": "115548668059589367",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589368",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "red": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589369",
+          "number": 5,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "red": {
+            "team_id": "103461966965149786",
+            "team_name": "Movistar KOI",
+            "team_code": "MKOI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
