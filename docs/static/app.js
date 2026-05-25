@@ -785,8 +785,7 @@ async function refreshStaticMatchStatuses() {
 
 function mergeFreshMatchDetails(match, fresh) {
   const teams = fresh.teams || [];
-  const left = freshTeamForMatchSide(match, teams, 'blue') || teams[0] || {};
-  const right = freshTeamForMatchSide(match, teams, 'red') || teams[1] || {};
+  const { left, right } = freshTeamsForMatch(match, teams);
   const replaceTeams = hasPlaceholderTeamInfo(match) && teams.length >= 2;
   const merged = {
       ...match,
@@ -808,6 +807,27 @@ function mergeFreshMatchDetails(match, fresh) {
   merged.blue_image = normalizeTeamImage(bestTeamImageForMatch(match, teams, 'blue'));
   merged.red_image = normalizeTeamImage(bestTeamImageForMatch(match, teams, 'red'));
   return merged;
+}
+
+function freshTeamsForMatch(match, teams) {
+  const blueMatched = freshTeamForMatchSide(match, teams, 'blue');
+  const redMatched = freshTeamForMatchSide(match, teams, 'red');
+  let left = blueMatched;
+  let right = redMatched;
+  if (!left && right) left = otherFreshTeam(teams, right);
+  if (!right && left) right = otherFreshTeam(teams, left);
+  if (left && right && sameTeamIdentity(left, right)) {
+    if (redMatched && !blueMatched) left = otherFreshTeam(teams, right);
+    if (blueMatched && !redMatched) right = otherFreshTeam(teams, left);
+  }
+  return {
+    left: left || teams[0] || {},
+    right: right || teams[1] || {},
+  };
+}
+
+function otherFreshTeam(teams, selected) {
+  return (teams || []).find(team => !sameTeamIdentity(team, selected)) || null;
 }
 
 function freshTeamForMatchSide(match, teams, side) {
