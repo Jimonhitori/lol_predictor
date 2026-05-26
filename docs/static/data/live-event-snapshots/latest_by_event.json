@@ -767,7 +767,7 @@
   },
   "115548128962971947": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "115548128962971947",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1777,7 +1777,7 @@
   },
   "116299619170851920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "116299619170851920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4393,7 +4393,7 @@
   },
   "116249880466944971": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "116249880466944971",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4530,7 +4530,7 @@
   },
   "116413908784071088": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "116413908784071088",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5144,7 +5144,7 @@
   },
   "116554905051782824": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "116554905051782824",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5215,7 +5215,7 @@
   },
   "116554905051782788": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "116554905051782788",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5286,9 +5286,9 @@
   },
   "115565670260181857": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "115565670260181857",
-    "status": "inProgress",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": true,
     "is_finalizable": true,
@@ -5298,7 +5298,7 @@
       "league_group": "",
       "region": "",
       "best_of": "5",
-      "status": "inProgress",
+      "status": "completed",
       "start_time": "2026-05-25T21:00:00.000Z",
       "teams": [
         {
@@ -5306,14 +5306,14 @@
           "name": "LOS",
           "code": "LOS",
           "image": "http://static.lolesports.com/teams/1686087430642_logo_los_white_newest.png",
-          "game_wins": "2"
+          "game_wins": "3"
         },
         {
           "id": "105397404796640412",
           "name": "LOUD",
           "code": "LOUD",
           "image": "http://static.lolesports.com/teams/Logo-LOUD-Esports_Original.png",
-          "game_wins": "1"
+          "game_wins": "2"
         }
       ],
       "games": [
@@ -5667,7 +5667,7 @@
         {
           "id": "115565670260181861",
           "number": 4,
-          "state": "inProgress",
+          "state": "completed",
           "blue": {
             "team_id": "105397404796640412",
             "team_name": "LOUD",
@@ -5929,7 +5929,7 @@
               "barons": 0,
               "dragons": 3
             },
-            "status": "in_game",
+            "status": "ended",
             "warning": "game_time_estimated",
             "source": "lolesports_livestats",
             "estimated_game_time": true,
@@ -5968,32 +5968,33 @@
                 "avg_level_diff": 1.1999999999999993,
                 "game_time": 2307
               }
-            }
+            },
+            "retained_after_end": true
           }
         },
         {
           "id": "115565670260181862",
           "number": 5,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "109480204628225868",
-            "team_name": "LOS",
-            "team_code": "LOS"
-          },
-          "red": {
             "team_id": "105397404796640412",
             "team_name": "LOUD",
             "team_code": "LOUD"
           },
+          "red": {
+            "team_id": "109480204628225868",
+            "team_name": "LOS",
+            "team_code": "LOS"
+          },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -6011,9 +6012,9 @@
   },
   "116056873411008572": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T00:13:38.724Z",
+    "checked_at": "2026-05-26T04:35:18.461Z",
     "event_id": "116056873411008572",
-    "status": "inProgress",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": true,
     "is_finalizable": true,
@@ -6023,7 +6024,7 @@
       "league_group": "",
       "region": "",
       "best_of": "5",
-      "status": "inProgress",
+      "status": "completed",
       "start_time": "2026-05-25T23:00:00.000Z",
       "teams": [
         {
@@ -6031,14 +6032,14 @@
           "name": "G3V e-sports",
           "code": "G3V",
           "image": "http://static.lolesports.com/teams/1771401260130_FULL_COLOR_FOR_DARK_BG.png",
-          "game_wins": "0"
+          "game_wins": "1"
         },
         {
           "id": "107581765633427097",
           "name": "FUEGO",
           "code": "FUE",
           "image": "http://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
-          "game_wins": "1"
+          "game_wins": "3"
         }
       ],
       "games": [
@@ -6078,7 +6079,7 @@
         {
           "id": "116056873411008574",
           "number": 2,
-          "state": "inProgress",
+          "state": "completed",
           "blue": {
             "team_id": "107581765633427097",
             "team_name": "FUEGO",
@@ -6341,7 +6342,7 @@
               "barons": 0,
               "dragons": 2
             },
-            "status": "in_game",
+            "status": "ended",
             "warning": "game_time_estimated",
             "source": "lolesports_livestats",
             "estimated_game_time": true,
@@ -6380,32 +6381,33 @@
                 "avg_level_diff": 0.40000000000000036,
                 "game_time": 1293
               }
-            }
+            },
+            "retained_after_end": true
           }
         },
         {
           "id": "116056873411008575",
           "number": 3,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "107582157086477662",
-            "team_name": "G3V e-sports",
-            "team_code": "G3V"
-          },
-          "red": {
             "team_id": "107581765633427097",
             "team_name": "FUEGO",
             "team_code": "FUE"
           },
+          "red": {
+            "team_id": "107582157086477662",
+            "team_name": "G3V e-sports",
+            "team_code": "G3V"
+          },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -6419,26 +6421,26 @@
         {
           "id": "116056873411008576",
           "number": 4,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "107581765633427097",
-            "team_name": "FUEGO",
-            "team_code": "FUE"
-          },
-          "red": {
             "team_id": "107582157086477662",
             "team_name": "G3V e-sports",
             "team_code": "G3V"
           },
+          "red": {
+            "team_id": "107581765633427097",
+            "team_name": "FUEGO",
+            "team_code": "FUE"
+          },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -6452,7 +6454,7 @@
         {
           "id": "116056873411008577",
           "number": 5,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "107582157086477662",
             "team_name": "G3V e-sports",
@@ -6465,7 +6467,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
