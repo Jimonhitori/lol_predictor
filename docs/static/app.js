@@ -518,7 +518,7 @@ async function loadOptions() {
   state.options = await api('/api/options');
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
-  $('leagueGroup').value = 'all';
+  $('leagueGroup').value = 'major';
   fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
