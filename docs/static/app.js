@@ -475,8 +475,28 @@ function renderChampionMeta(data) {
   const role = $('championRole')?.value || 'all';
   const rows = role === 'all' ? (data.champions || []) : ((data.champions_by_role || {})[role] || []);
   const label = roleLabel(role === 'all' ? 'All roles' : role);
-  if ($('championMetaSub')) $('championMetaSub').textContent = `${label} · ${patchLabel(data.patch)} · ${data.games} games`;
+  const summaryFreshness = summaryFreshnessLabel(data);
+  const parts = [`${label}`, patchLabel(data.patch), `${data.games} games`, summaryFreshness].filter(Boolean);
+  if ($('championMetaSub')) $('championMetaSub').textContent = parts.join(' · ');
   renderChampionTable('champions', rows, data.patch);
+}
+
+function summaryFreshnessLabel(data) {
+  const through = shortMonthDay(data?.data_through);
+  if (through) return `through ${through}`;
+  const generated = shortMonthDay(data?.generated_at);
+  return generated ? `generated ${generated}` : '';
+}
+
+function shortMonthDay(value) {
+  if (!value) return '';
+  const text = String(value).trim();
+  const dateOnly = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  const date = dateOnly
+    ? new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]))
+    : new Date(text);
+  if (Number.isNaN(date.getTime())) return '';
+  return new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric' }).format(date);
 }
 
 function patchLabel(patch) {
