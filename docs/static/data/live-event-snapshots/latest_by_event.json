@@ -767,7 +767,7 @@
   },
   "115548128962971947": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "115548128962971947",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1777,7 +1777,7 @@
   },
   "116299619170851920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "116299619170851920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4393,7 +4393,7 @@
   },
   "116249880466944971": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "116249880466944971",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4530,7 +4530,7 @@
   },
   "116413908784071088": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "116413908784071088",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5144,7 +5144,7 @@
   },
   "116554905051782824": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "116554905051782824",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5215,7 +5215,7 @@
   },
   "116554905051782788": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "116554905051782788",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -6494,7 +6494,7 @@
   },
   "116249880466944987": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "116249880466944987",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -6631,9 +6631,9 @@
   },
   "116299619170851932": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-26T14:17:00.894Z",
+    "checked_at": "2026-05-26T17:37:14.065Z",
     "event_id": "116299619170851932",
-    "status": "inProgress",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -6643,7 +6643,7 @@
       "league_group": "",
       "region": "",
       "best_of": "5",
-      "status": "inProgress",
+      "status": "completed",
       "start_time": "2026-05-26T14:00:00.000Z",
       "teams": [
         {
@@ -6651,21 +6651,21 @@
           "name": "UP2U Meavedron",
           "code": "MVE",
           "image": "http://static.lolesports.com/teams/1704376811202_Meavedronlogo.png",
-          "game_wins": "0"
+          "game_wins": "3"
         },
         {
           "id": "109709693940605922",
           "name": "EXILE Esports",
           "code": "EXE",
           "image": "http://static.lolesports.com/teams/1739089858844_exile_color.png",
-          "game_wins": "0"
+          "game_wins": "1"
         }
       ],
       "games": [
         {
           "id": "116299619171179613",
           "number": 1,
-          "state": "inProgress",
+          "state": "completed",
           "blue": {
             "team_id": "108353618958806014",
             "team_name": "UP2U Meavedron",
@@ -6678,6 +6678,275 @@
           },
           "winner": "",
           "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116299619171179614",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "108353618958806014",
+            "team_name": "UP2U Meavedron",
+            "team_code": "MVE"
+          },
+          "red": {
+            "team_id": "109709693940605922",
+            "team_name": "EXILE Esports",
+            "team_code": "EXE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116299619171179615",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "109709693940605922",
+            "team_name": "EXILE Esports",
+            "team_code": "EXE"
+          },
+          "red": {
+            "team_id": "108353618958806014",
+            "team_name": "UP2U Meavedron",
+            "team_code": "MVE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116299619171179616",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "109709693940605922",
+            "team_name": "EXILE Esports",
+            "team_code": "EXE"
+          },
+          "red": {
+            "team_id": "108353618958806014",
+            "team_name": "UP2U Meavedron",
+            "team_code": "MVE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116299619171179617",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "109709693940605922",
+            "team_name": "EXILE Esports",
+            "team_code": "EXE"
+          },
+          "red": {
+            "team_id": "108353618958806014",
+            "team_name": "UP2U Meavedron",
+            "team_code": "MVE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116356270007984085": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-26T17:37:14.065Z",
+    "event_id": "116356270007984085",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116356270007984085",
+      "league": "TCL",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "inProgress",
+      "start_time": "2026-05-26T15:00:00.000Z",
+      "teams": [
+        {
+          "id": "111730807014578357",
+          "name": "PCIFIC Esports",
+          "code": "PCF",
+          "image": "http://static.lolesports.com/teams/1767800848871_PcificLogo2.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "116329168921192536",
+          "name": "Ozarox Esports",
+          "code": "OZO",
+          "image": "http://static.lolesports.com/teams/1775042249976_OzarOXLogo_white.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116356270007984086",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "111730807014578357",
+            "team_name": "PCIFIC Esports",
+            "team_code": "PCF"
+          },
+          "red": {
+            "team_id": "116329168921192536",
+            "team_name": "Ozarox Esports",
+            "team_code": "OZO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116356270007984087",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116329168921192536",
+            "team_name": "Ozarox Esports",
+            "team_code": "OZO"
+          },
+          "red": {
+            "team_id": "111730807014578357",
+            "team_name": "PCIFIC Esports",
+            "team_code": "PCF"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116356270007984088",
+          "number": 3,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "116329168921192536",
+            "team_name": "Ozarox Esports",
+            "team_code": "OZO"
+          },
+          "red": {
+            "team_id": "111730807014578357",
+            "team_name": "PCIFIC Esports",
+            "team_code": "PCF"
+          },
+          "winner": "",
+          "live": {
             "game_state": "inProgress",
             "game_time": 0,
             "blue": [],
@@ -6685,10 +6954,10 @@
             "blue_stats": {},
             "red_stats": {},
             "status": "unavailable",
-            "warning": "Stats are disabled for game EsportsGameId{116299619171179613}. Cannot fetch stats.",
+            "warning": "disallowed window with end time less than 590 sec old (was 124.52 sec old). requested window: [2026-05-26T17:35:00Z, 2026-05-26T17:35:10Z]) ahead of broadcast. current time: 2026-05-26T17:37:14.523871141Z",
             "win_probability": {
-              "blue": 0.4751553774616057,
-              "red": 0.5248446225383943,
+              "blue": 0.5034698750650312,
+              "red": 0.49653012493496884,
               "model": "live_lck_logreg_deep20_regularized_v1",
               "status": "estimated",
               "feature_schema": "live_frame_v1",
@@ -6725,84 +6994,18 @@
           }
         },
         {
-          "id": "116299619171179614",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "108353618958806014",
-            "team_name": "UP2U Meavedron",
-            "team_code": "MVE"
-          },
-          "red": {
-            "team_id": "109709693940605922",
-            "team_name": "EXILE Esports",
-            "team_code": "EXE"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116299619171179615",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109709693940605922",
-            "team_name": "EXILE Esports",
-            "team_code": "EXE"
-          },
-          "red": {
-            "team_id": "108353618958806014",
-            "team_name": "UP2U Meavedron",
-            "team_code": "MVE"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116299619171179616",
+          "id": "116356270007984089",
           "number": 4,
           "state": "unstarted",
           "blue": {
-            "team_id": "108353618958806014",
-            "team_name": "UP2U Meavedron",
-            "team_code": "MVE"
+            "team_id": "116329168921192536",
+            "team_name": "Ozarox Esports",
+            "team_code": "OZO"
           },
           "red": {
-            "team_id": "109709693940605922",
-            "team_name": "EXILE Esports",
-            "team_code": "EXE"
+            "team_id": "111730807014578357",
+            "team_name": "PCIFIC Esports",
+            "team_code": "PCF"
           },
           "winner": "",
           "live": {
@@ -6824,18 +7027,714 @@
           }
         },
         {
-          "id": "116299619171179617",
+          "id": "116356270007984090",
           "number": 5,
           "state": "unstarted",
           "blue": {
-            "team_id": "109709693940605922",
-            "team_name": "EXILE Esports",
-            "team_code": "EXE"
+            "team_id": "111730807014578357",
+            "team_name": "PCIFIC Esports",
+            "team_code": "PCF"
           },
           "red": {
-            "team_id": "108353618958806014",
-            "team_name": "UP2U Meavedron",
-            "team_code": "MVE"
+            "team_id": "116329168921192536",
+            "team_name": "Ozarox Esports",
+            "team_code": "OZO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116119857896112020": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-26T17:37:14.065Z",
+    "event_id": "116119857896112020",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116119857896112020",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "inProgress",
+      "start_time": "2026-05-26T15:00:00.000Z",
+      "teams": [
+        {
+          "id": "107416483509696259",
+          "name": "Eintracht Spandau",
+          "code": "EINS",
+          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "105503948999800557",
+          "name": "E Wie Einfach E-Sports",
+          "code": "EWI",
+          "image": "http://static.lolesports.com/teams/1674832938539_MicrosoftTeams-image14.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116119857896112021",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116119857896112022",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
+          },
+          "red": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116119857896112023",
+          "number": 3,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "inProgress",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unavailable",
+            "warning": "disallowed window with end time less than 200 sec old (was 124.79 sec old). requested window: [2026-05-26T17:35:00Z, 2026-05-26T17:35:10Z]) ahead of broadcast. current time: 2026-05-26T17:37:14.787517343Z",
+            "win_probability": {
+              "blue": 0.5034698750650312,
+              "red": 0.49653012493496884,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": 0,
+                "kill_diff": 0,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 0
+              }
+            }
+          }
+        },
+        {
+          "id": "116119857896112024",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116119857896112025",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
+          },
+          "red": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116237388604580030": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-26T17:37:14.065Z",
+    "event_id": "116237388604580030",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116237388604580030",
+      "league": "Rift Legends",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "inProgress",
+      "start_time": "2026-05-26T15:00:00.000Z",
+      "teams": [
+        {
+          "id": "116040458285488771",
+          "name": "BOMBA Team",
+          "code": "BOOM",
+          "image": "http://static.lolesports.com/teams/1770648772201_Bombalogoyellow.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "109800832177252614",
+          "name": "Anonymo",
+          "code": "ANO",
+          "image": "http://static.lolesports.com/teams/1774530455413_600px-Anonymo_Esports_2021_allmode.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116237388604580031",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "red": {
+            "team_id": "109800832177252614",
+            "team_name": "Anonymo",
+            "team_code": "ANO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116237388604580032",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "red": {
+            "team_id": "109800832177252614",
+            "team_name": "Anonymo",
+            "team_code": "ANO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116237388604580033",
+          "number": 3,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "red": {
+            "team_id": "109800832177252614",
+            "team_name": "Anonymo",
+            "team_code": "ANO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "inProgress",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unavailable",
+            "warning": "disallowed window with end time less than 170 sec old (was 125.07 sec old). requested window: [2026-05-26T17:35:00Z, 2026-05-26T17:35:10Z]) ahead of broadcast. current time: 2026-05-26T17:37:15.073105317Z",
+            "win_probability": {
+              "blue": 0.5034698750650312,
+              "red": 0.49653012493496884,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": 0,
+                "kill_diff": 0,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 0
+              }
+            }
+          }
+        },
+        {
+          "id": "116237388604580034",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "red": {
+            "team_id": "109800832177252614",
+            "team_name": "Anonymo",
+            "team_code": "ANO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116237388604580035",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109800832177252614",
+            "team_name": "Anonymo",
+            "team_code": "ANO"
+          },
+          "red": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116249441374496654": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-26T17:37:14.065Z",
+    "event_id": "116249441374496654",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116249441374496654",
+      "league": "Road of Legends",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "inProgress",
+      "start_time": "2026-05-26T16:00:00.000Z",
+      "teams": [
+        {
+          "id": "115405112428115390",
+          "name": "The Bandits",
+          "code": "BAN",
+          "image": "http://static.lolesports.com/teams/1760942281523_tgFWzVsV_400x400.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "115848737828828062",
+          "name": "Frites Esports Club",
+          "code": "FEC",
+          "image": "http://static.lolesports.com/teams/1767711449006_Frites_Esports_Club_Black-removebg-preview.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116249441374496655",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "115405112428115390",
+            "team_name": "The Bandits",
+            "team_code": "BAN"
+          },
+          "red": {
+            "team_id": "115848737828828062",
+            "team_name": "Frites Esports Club",
+            "team_code": "FEC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116249441374496656",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "115848737828828062",
+            "team_name": "Frites Esports Club",
+            "team_code": "FEC"
+          },
+          "red": {
+            "team_id": "115405112428115390",
+            "team_name": "The Bandits",
+            "team_code": "BAN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116249441374496657",
+          "number": 3,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "115405112428115390",
+            "team_name": "The Bandits",
+            "team_code": "BAN"
+          },
+          "red": {
+            "team_id": "115848737828828062",
+            "team_name": "Frites Esports Club",
+            "team_code": "FEC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "inProgress",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unavailable",
+            "warning": "disallowed window with end time less than 230 sec old (was -9.60 sec old). requested window: [2026-05-26T17:35:00Z, 2026-05-26T17:35:10Z]) ahead of broadcast. current time: 2026-05-26T17:35:00.404567694Z",
+            "win_probability": {
+              "blue": 0.5034698750650312,
+              "red": 0.49653012493496884,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": 0,
+                "kill_diff": 0,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 0
+              }
+            }
+          }
+        },
+        {
+          "id": "116249441374496658",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "115848737828828062",
+            "team_name": "Frites Esports Club",
+            "team_code": "FEC"
+          },
+          "red": {
+            "team_id": "115405112428115390",
+            "team_name": "The Bandits",
+            "team_code": "BAN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116249441374562195",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "115405112428115390",
+            "team_name": "The Bandits",
+            "team_code": "BAN"
+          },
+          "red": {
+            "team_id": "115848737828828062",
+            "team_name": "Frites Esports Club",
+            "team_code": "FEC"
           },
           "winner": "",
           "live": {
