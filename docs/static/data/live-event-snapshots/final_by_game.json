@@ -3662,5 +3662,310 @@
         "retained_from_artifact": true
       }
     }
+  },
+  "115565670260181857:115565670260181860": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-05-26T00:13:38.724Z",
+    "event_id": "115565670260181857",
+    "game_id": "115565670260181860",
+    "game_number": 3,
+    "event_status": "inProgress",
+    "teams": [
+      {
+        "id": "109480204628225868",
+        "name": "LOS",
+        "code": "LOS",
+        "image": "http://static.lolesports.com/teams/1686087430642_logo_los_white_newest.png",
+        "game_wins": "2"
+      },
+      {
+        "id": "105397404796640412",
+        "name": "LOUD",
+        "code": "LOUD",
+        "image": "http://static.lolesports.com/teams/Logo-LOUD-Esports_Original.png",
+        "game_wins": "1"
+      }
+    ],
+    "game": {
+      "id": "115565670260181860",
+      "number": 3,
+      "state": "completed",
+      "blue": {
+        "team_id": "109480204628225868",
+        "team_name": "LOS",
+        "team_code": "LOS"
+      },
+      "red": {
+        "team_id": "105397404796640412",
+        "team_name": "LOUD",
+        "team_code": "LOUD"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 202,
+        "frame_timestamp": "2026-05-25T22:59:49.864Z",
+        "patch_version": "16.10.776.5552",
+        "blue": [
+          {
+            "player": "LOS Zest",
+            "participant_id": "1",
+            "champion": "Jayce",
+            "champion_id": "Jayce",
+            "role": "top",
+            "level": 4,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 27,
+            "gold": 1369,
+            "current_health": 682,
+            "max_health": 1006,
+            "items": [
+              "1055"
+            ]
+          },
+          {
+            "player": "LOS Curse",
+            "participant_id": "2",
+            "champion": "Vi",
+            "champion_id": "Vi",
+            "role": "jungle",
+            "level": 4,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 27,
+            "gold": 1419,
+            "current_health": 1082,
+            "max_health": 1082,
+            "items": [
+              "1102",
+              "2003",
+              "1028",
+              "1036",
+              "2055",
+              "3364"
+            ]
+          },
+          {
+            "player": "LOS Feisty",
+            "participant_id": "3",
+            "champion": "Taliyah",
+            "champion_id": "Taliyah",
+            "role": "mid",
+            "level": 4,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 25,
+            "gold": 1259,
+            "current_health": 940,
+            "max_health": 940,
+            "items": [
+              "1056",
+              "3340",
+              "3070",
+              "2031"
+            ]
+          },
+          {
+            "player": "LOS Duduhh",
+            "participant_id": "4",
+            "champion": "Mel",
+            "champion_id": "Mel",
+            "role": "bottom",
+            "level": 3,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 26,
+            "gold": 1279,
+            "current_health": 556,
+            "max_health": 931,
+            "items": [
+              "1056"
+            ]
+          },
+          {
+            "player": "LOS Ackerman",
+            "participant_id": "5",
+            "champion": "Camille",
+            "champion_id": "Camille",
+            "role": "support",
+            "level": 3,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 5,
+            "gold": 926,
+            "current_health": 491,
+            "max_health": 891,
+            "items": [
+              "3865",
+              "3340"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "LOUD Xyno",
+            "participant_id": "6",
+            "champion": "Yorick",
+            "champion_id": "Yorick",
+            "role": "top",
+            "level": 4,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 26,
+            "gold": 1285,
+            "current_health": 1029,
+            "max_health": 1118,
+            "items": [
+              "1054",
+              "2003",
+              "1001",
+              "1029"
+            ]
+          },
+          {
+            "player": "LOUD YoungJae",
+            "participant_id": "7",
+            "champion": "Sejuani",
+            "champion_id": "Sejuani",
+            "role": "jungle",
+            "level": 4,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 23,
+            "gold": 1355,
+            "current_health": 965,
+            "max_health": 977,
+            "items": [
+              "1101",
+              "3340"
+            ]
+          },
+          {
+            "player": "LOUD Envy",
+            "participant_id": "8",
+            "champion": "Viktor",
+            "champion_id": "Viktor",
+            "role": "mid",
+            "level": 4,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 24,
+            "gold": 1203,
+            "current_health": 876,
+            "max_health": 1031,
+            "items": [
+              "1056",
+              "1082",
+              "2031"
+            ]
+          },
+          {
+            "player": "LOUD Bull",
+            "participant_id": "9",
+            "champion": "Ashe",
+            "champion_id": "Ashe",
+            "role": "bottom",
+            "level": 3,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 30,
+            "gold": 1353,
+            "current_health": 636,
+            "max_health": 903,
+            "items": [
+              "1055"
+            ]
+          },
+          {
+            "player": "LOUD uZent",
+            "participant_id": "10",
+            "champion": "Seraphine",
+            "champion_id": "Seraphine",
+            "role": "support",
+            "level": 3,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 2,
+            "gold": 991,
+            "current_health": 776,
+            "max_health": 805,
+            "items": [
+              "3865",
+              "2003",
+              "2003",
+              "3340"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 6252,
+          "kills": 0,
+          "towers": 0,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 0
+        },
+        "red_stats": {
+          "gold": 6187,
+          "kills": 0,
+          "towers": 0,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 0
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.543564453799463,
+          "red": 0.45643554620053695,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation",
+            "start_seconds": 0,
+            "end_seconds": 300,
+            "games": 26,
+            "rows": 260,
+            "roc_auc": 0.7910909090909091,
+            "brier": 0.21350045980631466
+          },
+          "features": {
+            "gold_diff": 65,
+            "kill_diff": 0,
+            "tower_diff": 0,
+            "inhibitor_diff": 0,
+            "dragon_diff": 0,
+            "baron_diff": 0,
+            "avg_level_diff": 0,
+            "game_time": 202
+          }
+        },
+        "retained_after_end": true
+      }
+    }
   }
 }
