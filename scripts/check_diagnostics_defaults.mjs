@@ -76,6 +76,7 @@ if (data.prediction_feed_warning_count > 0 && !data.artifact_warnings?.includes(
 const unexpectedArtifactWarnings = Array.isArray(data.artifact_warnings)
   ? data.artifact_warnings.filter(warning =>
     warning !== 'prediction_feed_has_warnings'
+    && warning !== 'live_status_stale'
     && warning !== 'live_status_display_not_ready'
     && warning !== 'live_status_production_not_ready'
     && !String(warning).startsWith('live_status_blockers:')
