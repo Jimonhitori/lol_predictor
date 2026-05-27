@@ -24,6 +24,7 @@ TEAM_KEY_ALIASES = {
     "krx-challengers": ["kiwoom-drx-challengers"],
     "kt-challengers": ["kt-rolster-challengers"],
     "ns-challengers": ["nongshim-esports-academy"],
+    "team-liquid-alienware": ["team-liquid"],
 }
 
 
@@ -209,13 +210,17 @@ def split_series_games(bucket_games: list[dict[str, dict[str, str]]]) -> list[li
     series: list[list[dict[str, dict[str, str]]]] = []
     current: list[dict[str, dict[str, str]]] = []
     previous_date = datetime.min
-    previous_game_number = 0
+    previous_game_number: int | None = None
     for game in ordered:
         game_date = parse_date(game["left"].get("date") or "")
-        game_number = int_or_zero(game["left"].get("game"))
+        game_number = positive_int_or_none(game["left"].get("game"))
         gap_hours = (game_date - previous_date).total_seconds() / 3600 if previous_date != datetime.min else 0
         starts_new_series = bool(current) and (
-            game_number <= previous_game_number
+            (
+                game_number is not None
+                and previous_game_number is not None
+                and game_number <= previous_game_number
+            )
             or gap_hours > 8
         )
         if starts_new_series:
@@ -292,6 +297,11 @@ def int_or_zero(value: object) -> int:
         return int(float(str(value or 0)))
     except ValueError:
         return 0
+
+
+def positive_int_or_none(value: object) -> int | None:
+    number = int_or_zero(value)
+    return number if number > 0 else None
 
 
 def write_json(path: Path, payload: dict[str, Any]) -> None:
