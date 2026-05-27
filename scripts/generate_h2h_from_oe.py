@@ -21,9 +21,12 @@ def main() -> None:
 
     matches = load_site_matches(args.site_docs_dir / "static" / "data" / "matches-all__all.json")
     allowed_leagues = {static_key(league) for league in args.league or []}
-    targets = collect_h2h_targets(matches, allowed_leagues)
-    series = load_oe_series(args.oe_raw_dir)
     output_dir = args.site_docs_dir / "static" / "data" / "h2h"
+    targets = merge_targets(
+        collect_h2h_targets(matches, allowed_leagues),
+        collect_existing_h2h_targets(output_dir, allowed_leagues),
+    )
+    series = load_oe_series(args.oe_raw_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     written = 0
@@ -84,6 +87,54 @@ def collect_h2h_targets(matches: list[dict[str, Any]], allowed_leagues: set[str]
             }
         )
     return targets
+
+
+def collect_existing_h2h_targets(h2h_dir: Path, allowed_leagues: set[str]) -> list[dict[str, Any]]:
+    targets: list[dict[str, Any]] = []
+    for path in sorted(h2h_dir.glob("*.json")):
+        parts = path.stem.split("__")
+        if len(parts) != 3:
+            continue
+        league_key, left_key, right_key = parts
+        if allowed_leagues and league_key not in allowed_leagues:
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            payload = {}
+        left = str(payload.get("team_a") or left_key)
+        right = str(payload.get("team_b") or right_key)
+        if not valid_team(left) or not valid_team(right):
+            continue
+        targets.append(
+            {
+                "league_key": league_key,
+                "left": left,
+                "right": right,
+                "left_keys": expanded_team_keys([left, left_key]),
+                "right_keys": expanded_team_keys([right, right_key]),
+            }
+        )
+    return targets
+
+
+def merge_targets(*target_groups: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    merged: list[dict[str, Any]] = []
+    seen: set[tuple[str, str, str]] = set()
+    for targets in target_groups:
+        for target in targets:
+            key = target_pair_key(target)
+            if key in seen:
+                continue
+            seen.add(key)
+            merged.append(target)
+    return merged
+
+
+def target_pair_key(target: dict[str, Any]) -> tuple[str, str, str]:
+    left_key = static_key(target["left"])
+    right_key = static_key(target["right"])
+    return tuple([target["league_key"], *sorted([left_key, right_key])])
 
 
 def is_pair_match(series: dict[str, Any], left_keys: set[str], right_keys: set[str]) -> bool:
