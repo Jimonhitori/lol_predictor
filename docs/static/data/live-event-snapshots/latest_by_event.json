@@ -767,7 +767,7 @@
   },
   "115548128962971947": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "115548128962971947",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -1777,7 +1777,7 @@
   },
   "116299619170851920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116299619170851920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4393,7 +4393,7 @@
   },
   "116249880466944971": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116249880466944971",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -4530,7 +4530,7 @@
   },
   "116413908784071088": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116413908784071088",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5144,7 +5144,7 @@
   },
   "116554905051782824": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116554905051782824",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -5215,7 +5215,7 @@
   },
   "116554905051782788": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116554905051782788",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -6914,7 +6914,7 @@
   },
   "116299619170851932": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116299619170851932",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -7117,7 +7117,7 @@
   },
   "116356270007984085": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116356270007984085",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -7320,7 +7320,7 @@
   },
   "116119857896112020": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116119857896112020",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -7523,7 +7523,7 @@
   },
   "116237388604580030": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116237388604580030",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -7726,7 +7726,7 @@
   },
   "116249441374496654": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116249441374496654",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -7929,7 +7929,7 @@
   },
   "116056974916422580": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116056974916422580",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -8132,7 +8132,7 @@
   },
   "116051060806892958": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-27T06:09:59.057Z",
+    "checked_at": "2026-05-27T10:19:11.284Z",
     "event_id": "116051060806892958",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -8312,6 +8312,747 @@
           "winner": "",
           "live": {
             "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115548128962971863": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-27T10:19:11.284Z",
+    "event_id": "115548128962971863",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115548128962971863",
+      "league": "LCK",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "inProgress",
+      "start_time": "2026-05-27T08:00:00.000Z",
+      "teams": [
+        {
+          "id": "100205573495116443",
+          "name": "Gen.G Esports",
+          "code": "GEN",
+          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "100205573496804586",
+          "name": "Hanwha Life Esports",
+          "code": "HLE",
+          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128962971864",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128962971865",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128962971866",
+          "number": 3,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 684,
+            "frame_timestamp": "2026-05-27T10:17:09.942Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "GEN Kiin",
+                "participant_id": "1",
+                "champion": "Vayne",
+                "champion_id": "Vayne",
+                "role": "top",
+                "level": 8,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 2,
+                "creep_score": 92,
+                "gold": 3613,
+                "current_health": 1646,
+                "max_health": 1649,
+                "items": [
+                  "1086",
+                  "3340",
+                  "3044",
+                  "1001",
+                  "1028",
+                  "1036"
+                ]
+              },
+              {
+                "player": "GEN Canyon",
+                "participant_id": "2",
+                "champion": "LeeSin",
+                "champion_id": "LeeSin",
+                "role": "jungle",
+                "level": 8,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 77,
+                "gold": 3944,
+                "current_health": 1230,
+                "max_health": 1333,
+                "items": [
+                  "1102",
+                  "3340",
+                  "2055",
+                  "6692",
+                  "2022"
+                ]
+              },
+              {
+                "player": "GEN Chovy",
+                "participant_id": "3",
+                "champion": "Galio",
+                "champion_id": "Galio",
+                "role": "mid",
+                "level": 9,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 102,
+                "gold": 3988,
+                "current_health": 1629,
+                "max_health": 2004,
+                "items": [
+                  "1056",
+                  "3340",
+                  "2031",
+                  "3211",
+                  "1082",
+                  "1001",
+                  "1028"
+                ]
+              },
+              {
+                "player": "GEN Ruler",
+                "participant_id": "4",
+                "champion": "Sivir",
+                "champion_id": "Sivir",
+                "role": "bottom",
+                "level": 7,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 99,
+                "gold": 4246,
+                "current_health": 988,
+                "max_health": 1168,
+                "items": [
+                  "1086",
+                  "3340",
+                  "3133",
+                  "3057",
+                  "1001"
+                ]
+              },
+              {
+                "player": "GEN Duro",
+                "participant_id": "5",
+                "champion": "Rakan",
+                "champion_id": "Rakan",
+                "role": "support",
+                "level": 6,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 2,
+                "creep_score": 7,
+                "gold": 2654,
+                "current_health": 1366,
+                "max_health": 1366,
+                "items": [
+                  "3067",
+                  "1001",
+                  "1033",
+                  "3364",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "HLE Zeus",
+                "participant_id": "6",
+                "champion": "Renekton",
+                "champion_id": "Renekton",
+                "role": "top",
+                "level": 8,
+                "kills": 2,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 68,
+                "gold": 3531,
+                "current_health": 1329,
+                "max_health": 1512,
+                "items": [
+                  "1054",
+                  "3340",
+                  "2031",
+                  "3047",
+                  "1036",
+                  "1036"
+                ]
+              },
+              {
+                "player": "HLE Kanavi",
+                "participant_id": "7",
+                "champion": "Pantheon",
+                "champion_id": "Pantheon",
+                "role": "jungle",
+                "level": 7,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 2,
+                "creep_score": 68,
+                "gold": 3355,
+                "current_health": 1354,
+                "max_health": 1493,
+                "items": [
+                  "1101",
+                  "3364",
+                  "2021",
+                  "2022",
+                  "1036"
+                ]
+              },
+              {
+                "player": "HLE Zeka",
+                "participant_id": "8",
+                "champion": "Orianna",
+                "champion_id": "Orianna",
+                "role": "mid",
+                "level": 9,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 2,
+                "creep_score": 105,
+                "gold": 3776,
+                "current_health": 1266,
+                "max_health": 1481,
+                "items": [
+                  "1056",
+                  "3340",
+                  "3802",
+                  "2031",
+                  "3020"
+                ]
+              },
+              {
+                "player": "HLE Gumayusi",
+                "participant_id": "9",
+                "champion": "Xayah",
+                "champion_id": "Xayah",
+                "role": "bottom",
+                "level": 7,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 95,
+                "gold": 3492,
+                "current_health": 715,
+                "max_health": 1213,
+                "items": [
+                  "1086",
+                  "3340",
+                  "3133",
+                  "2031",
+                  "3057"
+                ]
+              },
+              {
+                "player": "HLE Delight",
+                "participant_id": "10",
+                "champion": "Nautilus",
+                "champion_id": "Nautilus",
+                "role": "support",
+                "level": 6,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 17,
+                "gold": 2343,
+                "current_health": 1406,
+                "max_health": 1406,
+                "items": [
+                  "3364",
+                  "3067",
+                  "1001",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 18445,
+              "kills": 4,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "red_stats": {
+              "gold": 16497,
+              "kills": 2,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "status": "in_game",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.7081288416636251,
+              "red": 0.2918711583363749,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 600,
+                "end_seconds": 900,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.9423636363636363,
+                "brier": 0.14289070440955845
+              },
+              "features": {
+                "gold_diff": 1948,
+                "kill_diff": 2,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0.1999999999999993,
+                "game_time": 684
+              }
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116453476471776154": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-27T10:19:11.284Z",
+    "event_id": "116453476471776154",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116453476471776154",
+      "league": "LJL",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "inProgress",
+      "start_time": "2026-05-27T08:00:00.000Z",
+      "teams": [
+        {
+          "id": "113871708167519028",
+          "name": "DFM Academy",
+          "code": "DFMA",
+          "image": "http://static.lolesports.com/teams/1738334806335_dfm_full_color_onB.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "116046718236927391",
+          "name": "New Meta",
+          "code": "NM",
+          "image": "http://static.lolesports.com/teams/1771324815499_nm_full_color_onW.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116453476471776155",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "113871708167519028",
+            "team_name": "DFM Academy",
+            "team_code": "DFMA"
+          },
+          "red": {
+            "team_id": "116046718236927391",
+            "team_name": "New Meta",
+            "team_code": "NM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776156",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116046718236927391",
+            "team_name": "New Meta",
+            "team_code": "NM"
+          },
+          "red": {
+            "team_id": "113871708167519028",
+            "team_name": "DFM Academy",
+            "team_code": "DFMA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776157",
+          "number": 3,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "116046718236927391",
+            "team_name": "New Meta",
+            "team_code": "NM"
+          },
+          "red": {
+            "team_id": "113871708167519028",
+            "team_name": "DFM Academy",
+            "team_code": "DFMA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "inProgress",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unavailable",
+            "warning": "disallowed window with end time less than 174 sec old (was -1.96 sec old). requested window: [2026-05-27T10:17:00Z, 2026-05-27T10:17:10Z]) ahead of broadcast. current time: 2026-05-27T10:17:08.043587552Z",
+            "win_probability": {
+              "blue": 0.5034680465070122,
+              "red": 0.49653195349298784,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": 0,
+                "kill_diff": 0,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 0
+              }
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116413908784071104": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-27T10:19:11.284Z",
+    "event_id": "116413908784071104",
+    "status": "inProgress",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116413908784071104",
+      "league": "PCS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "inProgress",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "114256489341689300",
+          "name": "WangTing",
+          "code": "WTG",
+          "image": "http://static.lolesports.com/teams/1743677704612_logotemplatka321.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116432101286886414",
+          "name": "Shadow Keepers Esports",
+          "code": "SHKP",
+          "image": "http://static.lolesports.com/teams/1776612870437_PCS2026_TeamLogo_SHKP.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116413908784071105",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "114256489341689300",
+            "team_name": "WangTing",
+            "team_code": "WTG"
+          },
+          "red": {
+            "team_id": "116432101286886414",
+            "team_name": "Shadow Keepers Esports",
+            "team_code": "SHKP"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116413908784071106",
+          "number": 2,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "114256489341689300",
+            "team_name": "WangTing",
+            "team_code": "WTG"
+          },
+          "red": {
+            "team_id": "116432101286886414",
+            "team_name": "Shadow Keepers Esports",
+            "team_code": "SHKP"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "inProgress",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unavailable",
+            "warning": "disallowed window with end time less than 188 sec old (was -1.76 sec old). requested window: [2026-05-27T10:17:00Z, 2026-05-27T10:17:10Z]) ahead of broadcast. current time: 2026-05-27T10:17:08.243944739Z",
+            "win_probability": {
+              "blue": 0.5327254862823781,
+              "red": 0.46727451371762185,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": 0,
+                "kill_diff": 0,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 0
+              }
+            }
+          }
+        },
+        {
+          "id": "116413908784071107",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116432101286886414",
+            "team_name": "Shadow Keepers Esports",
+            "team_code": "SHKP"
+          },
+          "red": {
+            "team_id": "114256489341689300",
+            "team_name": "WangTing",
+            "team_code": "WTG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
             "game_time": 0,
             "blue": [],
             "red": [],
