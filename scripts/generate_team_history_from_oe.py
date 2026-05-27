@@ -20,6 +20,7 @@ TEAM_KEY_ALIASES = {
     "bro-challengers": ["hanjin-brion-challengers"],
     "dk-challengers": ["dplus-kia-challengers"],
     "dns-challengers": ["dn-soopers-challengers"],
+    "gen-g-esports": ["gen-g"],
     "hle-challengers": ["hanwha-life-esports-challengers"],
     "krx-challengers": ["kiwoom-drx-challengers"],
     "kt-challengers": ["kt-rolster-challengers"],
