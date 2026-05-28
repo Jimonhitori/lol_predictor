@@ -6573,5 +6573,480 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "116277973321192784": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-28T21:31:46.576Z",
+    "event_id": "116277973321192784",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "116277973321192784",
+      "league": "Liga Portuguesa",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "114942382383150115",
+          "name": "Otter Side",
+          "code": "OTS",
+          "image": "http://static.lolesports.com/teams/1753881580888_OtterSideLogoV2Monocromtico.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "113929077014093276",
+          "name": "Crusaders",
+          "code": "CRZ",
+          "image": "http://static.lolesports.com/teams/1738419752510_ryc_c.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116277973321192785",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "114942382383150115",
+            "team_name": "Otter Side",
+            "team_code": "OTS"
+          },
+          "red": {
+            "team_id": "113929077014093276",
+            "team_name": "Crusaders",
+            "team_code": "CRZ"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116277973321192786",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "113929077014093276",
+            "team_name": "Crusaders",
+            "team_code": "CRZ"
+          },
+          "red": {
+            "team_id": "114942382383150115",
+            "team_name": "Otter Side",
+            "team_code": "OTS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 942,
+            "frame_timestamp": "2026-05-28T19:26:09.956Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "CRZ Kaplica",
+                "participant_id": "1",
+                "champion": "Yorick",
+                "champion_id": "Yorick",
+                "role": "top",
+                "level": 9,
+                "kills": 0,
+                "deaths": 3,
+                "assists": 0,
+                "creep_score": 92,
+                "gold": 3685,
+                "current_health": 1928,
+                "max_health": 1928,
+                "items": [
+                  "1054",
+                  "3047",
+                  "3057",
+                  "1036",
+                  "2031",
+                  "1028"
+                ]
+              },
+              {
+                "player": "CRZ Kadir",
+                "participant_id": "2",
+                "champion": "Sejuani",
+                "champion_id": "Sejuani",
+                "role": "jungle",
+                "level": 9,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 103,
+                "gold": 4504,
+                "current_health": 2432,
+                "max_health": 2504,
+                "items": [
+                  "1102",
+                  "3364",
+                  "3084"
+                ]
+              },
+              {
+                "player": "CRZ Sahira",
+                "participant_id": "3",
+                "champion": "Ryze",
+                "champion_id": "Ryze",
+                "role": "mid",
+                "level": 10,
+                "kills": 1,
+                "deaths": 3,
+                "assists": 0,
+                "creep_score": 112,
+                "gold": 4674,
+                "current_health": 27,
+                "max_health": 2249,
+                "items": [
+                  "1056",
+                  "3340",
+                  "2031",
+                  "3070",
+                  "1001",
+                  "6657",
+                  "1033"
+                ]
+              },
+              {
+                "player": "CRZ GlimpseofUs",
+                "participant_id": "4",
+                "champion": "Yunara",
+                "champion_id": "Yunara",
+                "role": "bottom",
+                "level": 8,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 107,
+                "gold": 4465,
+                "current_health": 1368,
+                "max_health": 1370,
+                "items": [
+                  "1055",
+                  "3340",
+                  "1083",
+                  "2031",
+                  "6672",
+                  "1001"
+                ]
+              },
+              {
+                "player": "CRZ Lostboy",
+                "participant_id": "5",
+                "champion": "Lulu",
+                "champion_id": "Lulu",
+                "role": "support",
+                "level": 7,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 0,
+                "creep_score": 14,
+                "gold": 3273,
+                "current_health": 1245,
+                "max_health": 1245,
+                "items": [
+                  "2003",
+                  "2003",
+                  "3364",
+                  "2055",
+                  "3504",
+                  "1004",
+                  "2022"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "OTS Hanma",
+                "participant_id": "6",
+                "champion": "Renekton",
+                "champion_id": "Renekton",
+                "role": "top",
+                "level": 12,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 119,
+                "gold": 5424,
+                "current_health": 2477,
+                "max_health": 2477,
+                "items": [
+                  "1054",
+                  "1001",
+                  "2031",
+                  "3071",
+                  "1037",
+                  "1028"
+                ]
+              },
+              {
+                "player": "OTS Lulas",
+                "participant_id": "7",
+                "champion": "Nocturne",
+                "champion_id": "Nocturne",
+                "role": "jungle",
+                "level": 9,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 2,
+                "creep_score": 105,
+                "gold": 5609,
+                "current_health": 1169,
+                "max_health": 2079,
+                "items": [
+                  "3340",
+                  "1001",
+                  "3073",
+                  "1028"
+                ]
+              },
+              {
+                "player": "OTS Camana",
+                "participant_id": "8",
+                "champion": "Orianna",
+                "champion_id": "Orianna",
+                "role": "mid",
+                "level": 10,
+                "kills": 3,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 123,
+                "gold": 5595,
+                "current_health": 1583,
+                "max_health": 1641,
+                "items": [
+                  "1056",
+                  "1082",
+                  "2031",
+                  "3802",
+                  "2508",
+                  "3363"
+                ]
+              },
+              {
+                "player": "OTS Cimpo",
+                "participant_id": "9",
+                "champion": "MissFortune",
+                "champion_id": "MissFortune",
+                "role": "bottom",
+                "level": 9,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 143,
+                "gold": 6376,
+                "current_health": 1265,
+                "max_health": 1364,
+                "items": [
+                  "1086",
+                  "3072"
+                ]
+              },
+              {
+                "player": "OTS kkero",
+                "participant_id": "10",
+                "champion": "Nautilus",
+                "champion_id": "Nautilus",
+                "role": "support",
+                "level": 7,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 3,
+                "creep_score": 21,
+                "gold": 3772,
+                "current_health": 1472,
+                "max_health": 1915,
+                "items": [
+                  "3364",
+                  "3067",
+                  "2055",
+                  "1011",
+                  "1001"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 20601,
+              "kills": 2,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "red_stats": {
+              "gold": 26776,
+              "kills": 10,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 2
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.059235087669237366,
+              "red": 0.9407649123307626,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 900,
+                "end_seconds": 1200,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.9043030303030304,
+                "brier": 0.1478283142471978
+              },
+              "features": {
+                "gold_diff": -6175,
+                "kill_diff": -8,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": -2,
+                "baron_diff": 0,
+                "avg_level_diff": -0.8000000000000007,
+                "game_time": 942
+              }
+            },
+            "retained_after_end": true
+          }
+        },
+        {
+          "id": "116277973321258323",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "114942382383150115",
+            "team_name": "Otter Side",
+            "team_code": "OTS"
+          },
+          "red": {
+            "team_id": "113929077014093276",
+            "team_name": "Crusaders",
+            "team_code": "CRZ"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116277973321258324",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "114942382383150115",
+            "team_name": "Otter Side",
+            "team_code": "OTS"
+          },
+          "red": {
+            "team_id": "113929077014093276",
+            "team_name": "Crusaders",
+            "team_code": "CRZ"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116277973321258325",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "113929077014093276",
+            "team_name": "Crusaders",
+            "team_code": "CRZ"
+          },
+          "red": {
+            "team_id": "114942382383150115",
+            "team_name": "Otter Side",
+            "team_code": "OTS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
