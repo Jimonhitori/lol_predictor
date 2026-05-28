@@ -6155,5 +6155,423 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "115548128962971939": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-28T01:28:07.389Z",
+    "event_id": "115548128962971939",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115548128962971939",
+      "league": "LCK",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "completed",
+      "start_time": "2026-05-27T10:00:00.000Z",
+      "teams": [
+        {
+          "id": "100725845022060229",
+          "name": "BNK FEARX",
+          "code": "BFX",
+          "image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "99566404585387054",
+          "name": "KIWOOM DRX",
+          "code": "KRX",
+          "image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128962971940",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845022060229",
+            "team_name": "BNK FEARX",
+            "team_code": "BFX"
+          },
+          "red": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128962971941",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845022060229",
+            "team_name": "BNK FEARX",
+            "team_code": "BFX"
+          },
+          "red": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128962971942",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "red": {
+            "team_id": "100725845022060229",
+            "team_name": "BNK FEARX",
+            "team_code": "BFX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "finished",
+            "game_time": 3465,
+            "frame_timestamp": "2026-05-27T13:50:25.132Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "KRX Rich",
+                "participant_id": "1",
+                "champion": "Renekton",
+                "champion_id": "Renekton",
+                "role": "top",
+                "level": 20,
+                "kills": 0,
+                "deaths": 3,
+                "assists": 5,
+                "creep_score": 369,
+                "gold": 14600,
+                "current_health": 0,
+                "max_health": 4507,
+                "items": [
+                  "3071",
+                  "3111",
+                  "3364",
+                  "6631",
+                  "3143",
+                  "3053",
+                  "2055"
+                ]
+              },
+              {
+                "player": "KRX Willer",
+                "participant_id": "2",
+                "champion": "Jax",
+                "champion_id": "Jax",
+                "role": "jungle",
+                "level": 18,
+                "kills": 3,
+                "deaths": 5,
+                "assists": 7,
+                "creep_score": 280,
+                "gold": 14881,
+                "current_health": 0,
+                "max_health": 3399,
+                "items": [
+                  "3078",
+                  "6610",
+                  "3047",
+                  "3157",
+                  "1057",
+                  "2138",
+                  "3067"
+                ]
+              },
+              {
+                "player": "KRX Ucal",
+                "participant_id": "3",
+                "champion": "Mel",
+                "champion_id": "Mel",
+                "role": "mid",
+                "level": 18,
+                "kills": 8,
+                "deaths": 3,
+                "assists": 1,
+                "creep_score": 393,
+                "gold": 17869,
+                "current_health": 0,
+                "max_health": 2678,
+                "items": [
+                  "6655",
+                  "3020",
+                  "3152",
+                  "3363",
+                  "3089",
+                  "4645",
+                  "4630"
+                ]
+              },
+              {
+                "player": "KRX LazyFeel",
+                "participant_id": "4",
+                "champion": "Yunara",
+                "champion_id": "Yunara",
+                "role": "bottom",
+                "level": 17,
+                "kills": 1,
+                "deaths": 5,
+                "assists": 6,
+                "creep_score": 385,
+                "gold": 16955,
+                "current_health": 0,
+                "max_health": 2469,
+                "items": [
+                  "6672",
+                  "3363",
+                  "2512",
+                  "3047",
+                  "3033",
+                  "3031",
+                  "2019"
+                ]
+              },
+              {
+                "player": "KRX Andil",
+                "participant_id": "5",
+                "champion": "Lulu",
+                "champion_id": "Lulu",
+                "role": "support",
+                "level": 15,
+                "kills": 0,
+                "deaths": 4,
+                "assists": 7,
+                "creep_score": 39,
+                "gold": 9590,
+                "current_health": 2300,
+                "max_health": 2300,
+                "items": [
+                  "3364",
+                  "3504",
+                  "3158",
+                  "3222",
+                  "2065",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "BFX Clear",
+                "participant_id": "6",
+                "champion": "Shen",
+                "champion_id": "Shen",
+                "role": "top",
+                "level": 20,
+                "kills": 3,
+                "deaths": 3,
+                "assists": 12,
+                "creep_score": 378,
+                "gold": 17945,
+                "current_health": 4223,
+                "max_health": 5426,
+                "items": [
+                  "3340",
+                  "3748",
+                  "3047",
+                  "2510",
+                  "2525",
+                  "3065",
+                  "3143"
+                ]
+              },
+              {
+                "player": "BFX Raptor",
+                "participant_id": "7",
+                "champion": "XinZhao",
+                "champion_id": "XinZhao",
+                "role": "jungle",
+                "level": 18,
+                "kills": 2,
+                "deaths": 3,
+                "assists": 12,
+                "creep_score": 288,
+                "gold": 15799,
+                "current_health": 3287,
+                "max_health": 3287,
+                "items": [
+                  "6610",
+                  "3047",
+                  "3071",
+                  "6333",
+                  "3026"
+                ]
+              },
+              {
+                "player": "BFX VicLa",
+                "participant_id": "8",
+                "champion": "Ahri",
+                "champion_id": "Ahri",
+                "role": "mid",
+                "level": 18,
+                "kills": 5,
+                "deaths": 4,
+                "assists": 8,
+                "creep_score": 410,
+                "gold": 18254,
+                "current_health": 2395,
+                "max_health": 3424,
+                "items": [
+                  "3364",
+                  "3118",
+                  "3158",
+                  "3152",
+                  "8010",
+                  "4645",
+                  "2139"
+                ]
+              },
+              {
+                "player": "BFX Taeyoon",
+                "participant_id": "9",
+                "champion": "Lucian",
+                "champion_id": "Lucian",
+                "role": "bottom",
+                "level": 18,
+                "kills": 10,
+                "deaths": 2,
+                "assists": 3,
+                "creep_score": 467,
+                "gold": 23766,
+                "current_health": 2176,
+                "max_health": 2491,
+                "items": [
+                  "3508",
+                  "3047",
+                  "3363",
+                  "6675",
+                  "3031",
+                  "3036",
+                  "3026"
+                ]
+              },
+              {
+                "player": "BFX Kellin",
+                "participant_id": "10",
+                "champion": "Milio",
+                "champion_id": "Milio",
+                "role": "support",
+                "level": 17,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 19,
+                "creep_score": 28,
+                "gold": 11262,
+                "current_health": 2608,
+                "max_health": 2608,
+                "items": [
+                  "3364",
+                  "6620",
+                  "3916",
+                  "6617",
+                  "3504",
+                  "3158",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 73895,
+              "kills": 12,
+              "towers": 3,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 3
+            },
+            "red_stats": {
+              "gold": 87026,
+              "kills": 20,
+              "towers": 11,
+              "inhibitors": 3,
+              "barons": 2,
+              "dragons": 4
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.23017732322433626,
+              "red": 0.7698226767756637,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation"
+              },
+              "features": {
+                "gold_diff": -13131,
+                "kill_diff": -8,
+                "tower_diff": -8,
+                "inhibitor_diff": -3,
+                "dragon_diff": -1,
+                "baron_diff": -2,
+                "avg_level_diff": -0.5999999999999979,
+                "game_time": 3465
+              }
+            },
+            "retained_after_end": true
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
