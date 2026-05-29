@@ -7049,5 +7049,414 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "115548128963037547": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-29T14:26:54.478Z",
+    "event_id": "115548128963037547",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115548128963037547",
+      "league": "LCK",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "completed",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "100725845018863243",
+          "name": "Dplus KIA",
+          "code": "DK",
+          "image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "99566404585387054",
+          "name": "KIWOOM DRX",
+          "code": "KRX",
+          "image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128963037548",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 1278,
+            "frame_timestamp": "2026-05-29T08:25:59.531Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "DK Siwoo",
+                "participant_id": "1",
+                "champion": "Vayne",
+                "champion_id": "Vayne",
+                "role": "top",
+                "level": 12,
+                "kills": 3,
+                "deaths": 2,
+                "assists": 0,
+                "creep_score": 140,
+                "gold": 6444,
+                "current_health": 1990,
+                "max_health": 2079,
+                "items": [
+                  "1086",
+                  "3340",
+                  "2031",
+                  "3073",
+                  "3047",
+                  "1042",
+                  "1037"
+                ]
+              },
+              {
+                "player": "DK Sharvel",
+                "participant_id": "2",
+                "champion": "MonkeyKing",
+                "champion_id": "MonkeyKing",
+                "role": "jungle",
+                "level": 11,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 155,
+                "gold": 6206,
+                "current_health": 1864,
+                "max_health": 2171,
+                "items": [
+                  "3078",
+                  "2055",
+                  "2021"
+                ]
+              },
+              {
+                "player": "DK ShowMaker",
+                "participant_id": "3",
+                "champion": "Viktor",
+                "champion_id": "Viktor",
+                "role": "mid",
+                "level": 12,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 193,
+                "gold": 6233,
+                "current_health": 1468,
+                "max_health": 1889,
+                "items": [
+                  "1056",
+                  "2031",
+                  "2503",
+                  "3020",
+                  "1028",
+                  "3363"
+                ]
+              },
+              {
+                "player": "DK Smash",
+                "participant_id": "4",
+                "champion": "Lucian",
+                "champion_id": "Lucian",
+                "role": "bottom",
+                "level": 11,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 184,
+                "gold": 7815,
+                "current_health": 1663,
+                "max_health": 1663,
+                "items": [
+                  "1055",
+                  "3508",
+                  "1001",
+                  "3363",
+                  "6675",
+                  "1029",
+                  "1036"
+                ]
+              },
+              {
+                "player": "DK Career",
+                "participant_id": "5",
+                "champion": "Braum",
+                "champion_id": "Braum",
+                "role": "support",
+                "level": 8,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 25,
+                "gold": 3790,
+                "current_health": 1961,
+                "max_health": 1961,
+                "items": [
+                  "3364",
+                  "3190",
+                  "1028",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "KRX Rich",
+                "participant_id": "6",
+                "champion": "Gnar",
+                "champion_id": "Gnar",
+                "role": "top",
+                "level": 12,
+                "kills": 1,
+                "deaths": 3,
+                "assists": 1,
+                "creep_score": 150,
+                "gold": 6096,
+                "current_health": 2144,
+                "max_health": 2144,
+                "items": [
+                  "1120",
+                  "2031",
+                  "3047",
+                  "3078",
+                  "1029",
+                  "1028"
+                ]
+              },
+              {
+                "player": "KRX Willer",
+                "participant_id": "7",
+                "champion": "Vi",
+                "champion_id": "Vi",
+                "role": "jungle",
+                "level": 11,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 144,
+                "gold": 6897,
+                "current_health": 2241,
+                "max_health": 2241,
+                "items": [
+                  "3364",
+                  "6610",
+                  "3047",
+                  "3067"
+                ]
+              },
+              {
+                "player": "KRX Ucal",
+                "participant_id": "8",
+                "champion": "Orianna",
+                "champion_id": "Orianna",
+                "role": "mid",
+                "level": 12,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 188,
+                "gold": 6151,
+                "current_health": 1578,
+                "max_health": 2360,
+                "items": [
+                  "1056",
+                  "3340",
+                  "2031",
+                  "6657"
+                ]
+              },
+              {
+                "player": "KRX Jiwoo",
+                "participant_id": "9",
+                "champion": "Ezreal",
+                "champion_id": "Ezreal",
+                "role": "bottom",
+                "level": 10,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 160,
+                "gold": 6290,
+                "current_health": 1766,
+                "max_health": 1867,
+                "items": [
+                  "1055",
+                  "3070",
+                  "2031",
+                  "3078",
+                  "3363",
+                  "3133",
+                  "1036"
+                ]
+              },
+              {
+                "player": "KRX Andil",
+                "participant_id": "10",
+                "champion": "Nautilus",
+                "champion_id": "Nautilus",
+                "role": "support",
+                "level": 7,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 24,
+                "gold": 3568,
+                "current_health": 1745,
+                "max_health": 1745,
+                "items": [
+                  "3364",
+                  "3190",
+                  "2055",
+                  "1028"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 30488,
+              "kills": 4,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 2
+            },
+            "red_stats": {
+              "gold": 29002,
+              "kills": 3,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.7690108657507418,
+              "red": 0.23098913424925815,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 1200,
+                "end_seconds": 1500,
+                "games": 26,
+                "rows": 258,
+                "roc_auc": 0.9587223587223587,
+                "brier": 0.1254621549810755
+              },
+              "features": {
+                "gold_diff": 1486,
+                "kill_diff": 1,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 2,
+                "baron_diff": 0,
+                "avg_level_diff": 0.40000000000000036,
+                "game_time": 1278
+              }
+            },
+            "retained_after_end": true
+          }
+        },
+        {
+          "id": "115548128963037549",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037550",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "red": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
