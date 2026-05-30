@@ -1,43 +1,360 @@
 {
-  "schema_version": 1,
-  "live_model_available": true,
-  "live_model_url": "static/data/live_model.json",
-  "live_evaluation_available": true,
-  "live_evaluation": {
-    "rows": 564,
-    "accuracy": 0.7890070921985816,
-    "brier_score": 0.16011961508709052,
-    "log_loss": 0.4868346825422321,
-    "roc_auc": 0.9022971281490753,
-    "display_recommendation": "show_live_probability"
-  },
-  "live_readiness_audit_url": null,
-  "training_readiness": {
-    "ready": true,
-    "rows": 2687,
-    "games": null,
-    "min_rows": 50,
-    "min_games": 5,
-    "source": "site_static_live_model"
-  },
+  "live_evaluation": null,
+  "live_evaluation_available": false,
+  "live_model_available": false,
+  "live_model_url": null,
+  "live_readiness_audit_url": "live_model_readiness_audit.json",
+  "live_replay_available": false,
+  "live_replay_summary": null,
   "min_feature_rows": 50,
   "min_games": 5,
   "min_intervals": 25,
   "min_pct_intervals_lte_30s": 0.8,
-  "live_replay_available": false,
-  "live_replay_summary": null,
   "oe_live_bootstrap": {
-    "available": false,
-    "model_url": null,
+    "available": true,
     "bootstrap_only": true,
-    "source": "oracles_elixir_at_minute_snapshots",
+    "cadence_note": "OE bootstrap snapshots are coarse 10/15/20/25 minute rows, not <=30s live telemetry.",
     "cadence_seconds": 300,
-    "cadence_note": "No bootstrap model is required while the static live model is served by the site.",
+    "evaluation": {
+      "accuracy": 0.7616227420787681,
+      "actual_column": "actual_blue_result",
+      "brier_score": 0.15797774299471778,
+      "bucket_size": 0.1,
+      "calibration_buckets": [
+        {
+          "actual_win_rate": 0.05714285714285714,
+          "avg_predicted_prob": 0.04320624802361618,
+          "bucket_end": 0.1,
+          "bucket_start": 0.0,
+          "count": 385
+        },
+        {
+          "actual_win_rate": 0.17421602787456447,
+          "avg_predicted_prob": 0.15155048065769844,
+          "bucket_end": 0.2,
+          "bucket_start": 0.1,
+          "count": 287
+        },
+        {
+          "actual_win_rate": 0.2585034013605442,
+          "avg_predicted_prob": 0.2525705938939104,
+          "bucket_end": 0.3,
+          "bucket_start": 0.2,
+          "count": 294
+        },
+        {
+          "actual_win_rate": 0.36363636363636365,
+          "avg_predicted_prob": 0.3511089838946854,
+          "bucket_end": 0.4,
+          "bucket_start": 0.3,
+          "count": 297
+        },
+        {
+          "actual_win_rate": 0.4265927977839335,
+          "avg_predicted_prob": 0.44931980254379683,
+          "bucket_end": 0.5,
+          "bucket_start": 0.4,
+          "count": 361
+        },
+        {
+          "actual_win_rate": 0.5503355704697986,
+          "avg_predicted_prob": 0.549314176830964,
+          "bucket_end": 0.6,
+          "bucket_start": 0.5,
+          "count": 298
+        },
+        {
+          "actual_win_rate": 0.6254416961130742,
+          "avg_predicted_prob": 0.649809191769717,
+          "bucket_end": 0.7,
+          "bucket_start": 0.6,
+          "count": 283
+        },
+        {
+          "actual_win_rate": 0.7169811320754716,
+          "avg_predicted_prob": 0.7458953730059861,
+          "bucket_end": 0.8,
+          "bucket_start": 0.7,
+          "count": 318
+        },
+        {
+          "actual_win_rate": 0.8493589743589743,
+          "avg_predicted_prob": 0.8511186255949449,
+          "bucket_end": 0.9,
+          "bucket_start": 0.8,
+          "count": 312
+        },
+        {
+          "actual_win_rate": 0.966789667896679,
+          "avg_predicted_prob": 0.960067280042475,
+          "bucket_end": 1.0,
+          "bucket_start": 0.9,
+          "count": 542
+        }
+      ],
+      "date_max": "2026-05-16T23:16:58+00:00",
+      "date_min": "2026-04-28T19:16:47+00:00",
+      "groups": {
+        "elapsed_bucket": [
+          {
+            "accuracy": 0.710710128055879,
+            "brier_score": 0.18621248865347584,
+            "elapsed_bucket": "10-20",
+            "is_small_sample": false,
+            "log_loss": 0.5483164626216183,
+            "num_predictions": 1718
+          },
+          {
+            "accuracy": 0.8143459915611815,
+            "brier_score": 0.12873886834628717,
+            "elapsed_bucket": "20-30",
+            "is_small_sample": false,
+            "log_loss": 0.39567429088612527,
+            "num_predictions": 1659
+          }
+        ],
+        "model_version": [
+          {
+            "accuracy": 0.7616227420787681,
+            "brier_score": 0.15797774299471778,
+            "is_small_sample": false,
+            "log_loss": 0.47332879223098084,
+            "model_version": "live_logistic_oe_bootstrap",
+            "num_predictions": 3377
+          }
+        ]
+      },
+      "include_empty_calibration_buckets": false,
+      "log_loss": 0.47332879223098084,
+      "model_versions": [
+        "live_logistic_oe_bootstrap"
+      ],
+      "num_predictions": 3377,
+      "operational_summary": {
+        "bucket_metrics": [
+          {
+            "accuracy": null,
+            "brier_score": null,
+            "elapsed_bucket": "00-10",
+            "is_display_candidate": false,
+            "is_small_sample": true,
+            "log_loss": null,
+            "num_predictions": 0
+          },
+          {
+            "accuracy": 0.710710128055879,
+            "brier_score": 0.18621248865347584,
+            "elapsed_bucket": "10-20",
+            "is_display_candidate": true,
+            "is_small_sample": false,
+            "log_loss": 0.5483164626216183,
+            "num_predictions": 1718
+          },
+          {
+            "accuracy": 0.8143459915611815,
+            "brier_score": 0.12873886834628717,
+            "elapsed_bucket": "20-30",
+            "is_display_candidate": true,
+            "is_small_sample": false,
+            "log_loss": 0.39567429088612527,
+            "num_predictions": 1659
+          },
+          {
+            "accuracy": null,
+            "brier_score": null,
+            "elapsed_bucket": "30-40",
+            "is_display_candidate": false,
+            "is_small_sample": true,
+            "log_loss": null,
+            "num_predictions": 0
+          },
+          {
+            "accuracy": null,
+            "brier_score": null,
+            "elapsed_bucket": "40+",
+            "is_display_candidate": false,
+            "is_small_sample": true,
+            "log_loss": null,
+            "num_predictions": 0
+          }
+        ],
+        "display_recommendation": "show_live_probability",
+        "earliest_reliable_bucket": "10-20",
+        "max_bucket_brier_score": 0.25,
+        "max_bucket_log_loss": 0.7,
+        "min_bucket_predictions": 20,
+        "notes": [
+          "Live probability display is best supported from bucket 10-20."
+        ]
+      },
+      "probability_column": "blue_win_prob",
+      "threshold": 0.5
+    },
+    "evaluation_available": true,
+    "model_url": "live_logistic_oe_bootstrap.json",
+    "pipeline": {
+      "artifacts": {
+        "evaluation": "reports/oe_live_logistic_evaluation.json",
+        "features": "data/live/oe_live_features.csv",
+        "model": "models/live_logistic_oe_bootstrap.json",
+        "model_features": "models/live_logistic_oe_bootstrap_features.json",
+        "predictions": "data/live/oe_live_logistic_predictions.csv",
+        "readiness": "reports/oe_live_training_readiness.json"
+      },
+      "bootstrap_only": true,
+      "evaluation": {
+        "accuracy": 0.7616227420787681,
+        "brier_score": 0.15797774299471778,
+        "log_loss": 0.47332879223098084,
+        "operational_summary": {
+          "bucket_metrics": [
+            {
+              "accuracy": null,
+              "brier_score": null,
+              "elapsed_bucket": "00-10",
+              "is_display_candidate": false,
+              "is_small_sample": true,
+              "log_loss": null,
+              "num_predictions": 0
+            },
+            {
+              "accuracy": 0.710710128055879,
+              "brier_score": 0.18621248865347584,
+              "elapsed_bucket": "10-20",
+              "is_display_candidate": true,
+              "is_small_sample": false,
+              "log_loss": 0.5483164626216183,
+              "num_predictions": 1718
+            },
+            {
+              "accuracy": 0.8143459915611815,
+              "brier_score": 0.12873886834628717,
+              "elapsed_bucket": "20-30",
+              "is_display_candidate": true,
+              "is_small_sample": false,
+              "log_loss": 0.39567429088612527,
+              "num_predictions": 1659
+            },
+            {
+              "accuracy": null,
+              "brier_score": null,
+              "elapsed_bucket": "30-40",
+              "is_display_candidate": false,
+              "is_small_sample": true,
+              "log_loss": null,
+              "num_predictions": 0
+            },
+            {
+              "accuracy": null,
+              "brier_score": null,
+              "elapsed_bucket": "40+",
+              "is_display_candidate": false,
+              "is_small_sample": true,
+              "log_loss": null,
+              "num_predictions": 0
+            }
+          ],
+          "display_recommendation": "show_live_probability",
+          "earliest_reliable_bucket": "10-20",
+          "max_bucket_brier_score": 0.25,
+          "max_bucket_log_loss": 0.7,
+          "min_bucket_predictions": 20,
+          "notes": [
+            "Live probability display is best supported from bucket 10-20."
+          ]
+        }
+      },
+      "feature_rows": 16884,
+      "games": 4294,
+      "readiness": {
+        "bootstrap_only": true,
+        "cadence_note": "OE bootstrap snapshots are coarse 10/15/20/25 minute rows, not <=30s live telemetry.",
+        "empty_game_state_rate": 0.0,
+        "empty_game_state_rows": 0,
+        "features_path": "data/live/oe_live_features.csv",
+        "games": 4294,
+        "labeled_rows": 16884,
+        "max_empty_game_state_rate": 0.0,
+        "min_games": 100,
+        "min_intervals": 1,
+        "min_pct_intervals_lte_30s": 0.0,
+        "min_rows": 500,
+        "ready": true,
+        "rows": 16884,
+        "sampling": {
+          "interval_count": 12590,
+          "max_interval_seconds": 300.0,
+          "median_interval_seconds": 300.0,
+          "p90_interval_seconds": 300.0,
+          "pct_intervals_lte_30s": 0.0,
+          "pct_intervals_lte_60s": 0.0
+        },
+        "warning_count": 0,
+        "warnings": []
+      },
+      "snapshot_rows": 16884,
+      "snapshots": "data/live/oe_live_snapshots.csv",
+      "trained": true,
+      "warning_count": 0,
+      "warnings": []
+    },
+    "pipeline_available": true,
     "production_live_telemetry": false,
-    "training_readiness": null,
-    "evaluation_available": false,
-    "evaluation": null,
-    "pipeline_available": false,
-    "pipeline": null
+    "source": "oracles_elixir_at_minute_snapshots",
+    "training_readiness": {
+      "bootstrap_only": true,
+      "cadence_note": "OE bootstrap snapshots are coarse 10/15/20/25 minute rows, not <=30s live telemetry.",
+      "empty_game_state_rate": 0.0,
+      "empty_game_state_rows": 0,
+      "features_path": "data/live/oe_live_features.csv",
+      "games": 4294,
+      "labeled_rows": 16884,
+      "max_empty_game_state_rate": 0.0,
+      "min_games": 100,
+      "min_intervals": 1,
+      "min_pct_intervals_lte_30s": 0.0,
+      "min_rows": 500,
+      "ready": true,
+      "rows": 16884,
+      "sampling": {
+        "interval_count": 12590,
+        "max_interval_seconds": 300.0,
+        "median_interval_seconds": 300.0,
+        "p90_interval_seconds": 300.0,
+        "pct_intervals_lte_30s": 0.0,
+        "pct_intervals_lte_60s": 0.0
+      },
+      "warning_count": 0,
+      "warnings": []
+    }
+  },
+  "schema_version": 1,
+  "training_readiness": {
+    "empty_game_state_rate": 0.0,
+    "empty_game_state_rows": 0,
+    "features_path": "data/live/live_features.csv",
+    "games": 0,
+    "labeled_rows": 0,
+    "max_empty_game_state_rate": 0.25,
+    "min_games": 5,
+    "min_intervals": 25,
+    "min_pct_intervals_lte_30s": 0.8,
+    "min_rows": 50,
+    "ready": false,
+    "rows": 0,
+    "sampling": {
+      "interval_count": 0,
+      "max_interval_seconds": null,
+      "median_interval_seconds": null,
+      "p90_interval_seconds": null,
+      "pct_intervals_lte_30s": 0.0,
+      "pct_intervals_lte_60s": 0.0
+    },
+    "warning_count": 3,
+    "warnings": [
+      "live feature rows below threshold (0 < 50)",
+      "labeled live games below threshold (0 < 5)",
+      "live feature intervals below threshold (0 < 25)"
+    ]
   }
 }
