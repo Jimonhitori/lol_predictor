@@ -8831,7 +8831,7 @@
   },
   "116119857896112032": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-30T17:32:05.623Z",
+    "checked_at": "2026-05-30T18:42:34.859Z",
     "event_id": "116119857896112032",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -9299,6 +9299,482 @@
             "blue_stats": {},
             "red_stats": {},
             "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115548668059589370": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-30T18:42:34.859Z",
+    "event_id": "115548668059589370",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115548668059589370",
+      "league": "LEC",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-05-31T00:00:00.000Z",
+      "teams": [
+        {
+          "id": "114868016111590239",
+          "name": "Natus Vincere",
+          "code": "NAVI",
+          "image": "http://static.lolesports.com/teams/1752746833620_NAVI_FullColor.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "111692118851466302",
+          "name": "Karmine Corp",
+          "code": "KC",
+          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+          "game_wins": "3"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548668059589371",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "114868016111590239",
+            "team_name": "Natus Vincere",
+            "team_code": "NAVI"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589372",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "114868016111590239",
+            "team_name": "Natus Vincere",
+            "team_code": "NAVI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 826,
+            "frame_timestamp": "2026-05-30T16:15:09.781Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "KC Canna",
+                "participant_id": "1",
+                "champion": "Yone",
+                "champion_id": "Yone",
+                "role": "top",
+                "level": 10,
+                "kills": 2,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 122,
+                "gold": 4927,
+                "current_health": 1322,
+                "max_health": 1497,
+                "items": [
+                  "1086",
+                  "3340",
+                  "3006",
+                  "1083",
+                  "1043",
+                  "1036",
+                  "1037"
+                ]
+              },
+              {
+                "player": "KC Yike",
+                "participant_id": "2",
+                "champion": "Vi",
+                "champion_id": "Vi",
+                "role": "jungle",
+                "level": 9,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 97,
+                "gold": 4413,
+                "current_health": 1977,
+                "max_health": 1977,
+                "items": [
+                  "1102",
+                  "3364",
+                  "6610",
+                  "1028",
+                  "2055"
+                ]
+              },
+              {
+                "player": "KC kyeahoo",
+                "participant_id": "3",
+                "champion": "Anivia",
+                "champion_id": "Anivia",
+                "role": "mid",
+                "level": 10,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 118,
+                "gold": 4194,
+                "current_health": 1811,
+                "max_health": 1881,
+                "items": [
+                  "1056",
+                  "3340",
+                  "1001",
+                  "2031",
+                  "6657",
+                  "1027"
+                ]
+              },
+              {
+                "player": "KC Caliste",
+                "participant_id": "4",
+                "champion": "Caitlyn",
+                "champion_id": "Caitlyn",
+                "role": "bottom",
+                "level": 8,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 118,
+                "gold": 5185,
+                "current_health": 1236,
+                "max_health": 1262,
+                "items": [
+                  "1086",
+                  "3340",
+                  "2031",
+                  "3006",
+                  "2523",
+                  "1018"
+                ]
+              },
+              {
+                "player": "KC Busio",
+                "participant_id": "5",
+                "champion": "Neeko",
+                "champion_id": "Neeko",
+                "role": "support",
+                "level": 6,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 11,
+                "gold": 3414,
+                "current_health": 1485,
+                "max_health": 1485,
+                "items": [
+                  "3364",
+                  "2031",
+                  "2055",
+                  "3152"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "NAVI Maynter",
+                "participant_id": "6",
+                "champion": "Sion",
+                "champion_id": "Sion",
+                "role": "top",
+                "level": 9,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 106,
+                "gold": 3918,
+                "current_health": 1609,
+                "max_health": 2337,
+                "items": [
+                  "1054",
+                  "2031",
+                  "2502"
+                ]
+              },
+              {
+                "player": "NAVI Rhilech",
+                "participant_id": "7",
+                "champion": "Trundle",
+                "champion_id": "Trundle",
+                "role": "jungle",
+                "level": 8,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 2,
+                "creep_score": 80,
+                "gold": 4001,
+                "current_health": 1683,
+                "max_health": 1683,
+                "items": [
+                  "1103",
+                  "3364",
+                  "3078"
+                ]
+              },
+              {
+                "player": "NAVI Poby",
+                "participant_id": "8",
+                "champion": "Cassiopeia",
+                "champion_id": "Cassiopeia",
+                "role": "mid",
+                "level": 10,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 116,
+                "gold": 4866,
+                "current_health": 1889,
+                "max_health": 1889,
+                "items": [
+                  "1056",
+                  "3070",
+                  "3009",
+                  "2055",
+                  "3803",
+                  "1026",
+                  "3363"
+                ]
+              },
+              {
+                "player": "NAVI SamD",
+                "participant_id": "9",
+                "champion": "Lucian",
+                "champion_id": "Lucian",
+                "role": "bottom",
+                "level": 8,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 99,
+                "gold": 3754,
+                "current_health": 1208,
+                "max_health": 1283,
+                "items": [
+                  "1086",
+                  "2031",
+                  "3057",
+                  "3133",
+                  "1001",
+                  "1018"
+                ]
+              },
+              {
+                "player": "NAVI Parus",
+                "participant_id": "10",
+                "champion": "Milio",
+                "champion_id": "Milio",
+                "role": "support",
+                "level": 6,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 14,
+                "gold": 2783,
+                "current_health": 1272,
+                "max_health": 1272,
+                "items": [
+                  "2031",
+                  "4642",
+                  "3364",
+                  "2055",
+                  "3067"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 22133,
+              "kills": 4,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "red_stats": {
+              "gold": 19322,
+              "kills": 2,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.8410863729406284,
+              "red": 0.15891362705937162,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 600,
+                "end_seconds": 900,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.9423636363636363,
+                "brier": 0.14289070440955845
+              },
+              "features": {
+                "gold_diff": 2811,
+                "kill_diff": 2,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 1,
+                "baron_diff": 0,
+                "avg_level_diff": 0.40000000000000036,
+                "game_time": 826
+              }
+            },
+            "retained_after_end": true,
+            "retained_from_artifact": true
+          }
+        },
+        {
+          "id": "115548668059589373",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "114868016111590239",
+            "team_name": "Natus Vincere",
+            "team_code": "NAVI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589374",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "114868016111590239",
+            "team_name": "Natus Vincere",
+            "team_code": "NAVI"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548668059589375",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "114868016111590239",
+            "team_name": "Natus Vincere",
+            "team_code": "NAVI"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
             "warning": "",
             "win_probability": {
               "blue": 0.5,

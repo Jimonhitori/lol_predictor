@@ -6973,7 +6973,7 @@
   },
   "116119857896112032:116119857896112035": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T17:32:05.623Z",
+    "checked_at": "2026-05-30T18:42:34.859Z",
     "event_id": "116119857896112032",
     "game_id": "116119857896112035",
     "game_number": 3,
@@ -7312,25 +7312,25 @@
   },
   "115548668059589370:115548668059589372": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T17:32:05.623Z",
+    "checked_at": "2026-05-30T18:42:34.859Z",
     "event_id": "115548668059589370",
     "game_id": "115548668059589372",
     "game_number": 2,
-    "event_status": "inProgress",
+    "event_status": "completed",
     "teams": [
       {
         "id": "114868016111590239",
         "name": "Natus Vincere",
         "code": "NAVI",
         "image": "http://static.lolesports.com/teams/1752746833620_NAVI_FullColor.png",
-        "game_wins": "0"
+        "game_wins": "1"
       },
       {
         "id": "111692118851466302",
         "name": "Karmine Corp",
         "code": "KC",
         "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
-        "game_wins": "2"
+        "game_wins": "3"
       }
     ],
     "game": {
@@ -7635,13 +7635,14 @@
             "game_time": 826
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   },
   "115565670260181863:115565670260181864": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T17:32:05.623Z",
+    "checked_at": "2026-05-30T18:42:34.859Z",
     "event_id": "115565670260181863",
     "game_id": "115565670260181864",
     "game_number": 1,
@@ -7659,7 +7660,7 @@
         "name": "Fluxo",
         "code": "FX",
         "image": "http://static.lolesports.com/teams/1766161431111_LogoColorida.png",
-        "game_wins": "0"
+        "game_wins": "2"
       }
     ],
     "game": {
@@ -7935,7 +7936,8 @@
             "game_time": 165
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }
