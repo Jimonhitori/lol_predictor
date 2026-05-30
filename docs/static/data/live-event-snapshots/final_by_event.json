@@ -9316,7 +9316,7 @@
   },
   "115548668059589370": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-30T19:54:06.263Z",
+    "checked_at": "2026-05-30T20:43:45.637Z",
     "event_id": "115548668059589370",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -9783,6 +9783,722 @@
               "status": "waiting_for_live_stats",
               "warning": ""
             }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115565670260181863": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-30T20:43:45.637Z",
+    "event_id": "115565670260181863",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115565670260181863",
+      "league": "CBLOL",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-05-31T01:00:00.000Z",
+      "teams": [
+        {
+          "id": "109480204628225868",
+          "name": "LOS",
+          "code": "LOS",
+          "image": "http://static.lolesports.com/teams/1686087430642_logo_los_white_newest.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "109480056092207899",
+          "name": "Fluxo",
+          "code": "FX",
+          "image": "http://static.lolesports.com/teams/1766161431111_LogoColorida.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "115565670260181864",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "109480204628225868",
+            "team_name": "LOS",
+            "team_code": "LOS"
+          },
+          "red": {
+            "team_id": "109480056092207899",
+            "team_name": "Fluxo",
+            "team_code": "FX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 165,
+            "frame_timestamp": "2026-05-30T16:15:09.427Z",
+            "patch_version": "16.11.781.1789",
+            "blue": [
+              {
+                "player": "LOS Zest",
+                "participant_id": "1",
+                "champion": "Gnar",
+                "champion_id": "Gnar",
+                "role": "top",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 22,
+                "gold": 1132,
+                "current_health": 672,
+                "max_health": 863,
+                "items": [
+                  "1055",
+                  "2003"
+                ]
+              },
+              {
+                "player": "LOS Curse",
+                "participant_id": "2",
+                "champion": "JarvanIV",
+                "champion_id": "JarvanIV",
+                "role": "jungle",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 23,
+                "gold": 1295,
+                "current_health": 810,
+                "max_health": 915,
+                "items": [
+                  "1101",
+                  "3340"
+                ]
+              },
+              {
+                "player": "LOS Feisty",
+                "participant_id": "3",
+                "champion": "Viktor",
+                "champion_id": "Viktor",
+                "role": "mid",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 22,
+                "gold": 1150,
+                "current_health": 560,
+                "max_health": 981,
+                "items": [
+                  "1056"
+                ]
+              },
+              {
+                "player": "LOS Duduhh",
+                "participant_id": "4",
+                "champion": "Ezreal",
+                "champion_id": "Ezreal",
+                "role": "bottom",
+                "level": 2,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 15,
+                "gold": 1046,
+                "current_health": 738,
+                "max_health": 738,
+                "items": [
+                  "1086",
+                  "3340",
+                  "3070"
+                ]
+              },
+              {
+                "player": "LOS Ackerman",
+                "participant_id": "5",
+                "champion": "Bard",
+                "champion_id": "Bard",
+                "role": "support",
+                "level": 3,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 5,
+                "gold": 920,
+                "current_health": 1006,
+                "max_health": 1026,
+                "items": [
+                  "3865",
+                  "3364",
+                  "1028"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "FX curty",
+                "participant_id": "6",
+                "champion": "Sion",
+                "champion_id": "Sion",
+                "role": "top",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 15,
+                "gold": 1016,
+                "current_health": 607,
+                "max_health": 1093,
+                "items": [
+                  "1120",
+                  "2003"
+                ]
+              },
+              {
+                "player": "FX Peach",
+                "participant_id": "7",
+                "champion": "Vi",
+                "champion_id": "Vi",
+                "role": "jungle",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 27,
+                "gold": 1364,
+                "current_health": 880,
+                "max_health": 932,
+                "items": [
+                  "1102",
+                  "3340"
+                ]
+              },
+              {
+                "player": "FX cody",
+                "participant_id": "8",
+                "champion": "Cassiopeia",
+                "champion_id": "Cassiopeia",
+                "role": "mid",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 22,
+                "gold": 1126,
+                "current_health": 569,
+                "max_health": 1029,
+                "items": [
+                  "1056"
+                ]
+              },
+              {
+                "player": "FX BAO",
+                "participant_id": "9",
+                "champion": "Caitlyn",
+                "champion_id": "Caitlyn",
+                "role": "bottom",
+                "level": 3,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 24,
+                "gold": 1597,
+                "current_health": 495,
+                "max_health": 802,
+                "items": [
+                  "1086",
+                  "3340"
+                ]
+              },
+              {
+                "player": "FX Momochi",
+                "participant_id": "10",
+                "champion": "Karma",
+                "champion_id": "Karma",
+                "role": "support",
+                "level": 2,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 1,
+                "gold": 1029,
+                "current_health": 803,
+                "max_health": 803,
+                "items": [
+                  "3865",
+                  "3340",
+                  "2031",
+                  "1004",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 5543,
+              "kills": 0,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "red_stats": {
+              "gold": 6132,
+              "kills": 1,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.3342397569099864,
+              "red": 0.6657602430900136,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": -589,
+                "kill_diff": -1,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 165
+              }
+            },
+            "retained_after_end": true,
+            "retained_from_artifact": true
+          }
+        },
+        {
+          "id": "115565670260181865",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "109480204628225868",
+            "team_name": "LOS",
+            "team_code": "LOS"
+          },
+          "red": {
+            "team_id": "109480056092207899",
+            "team_name": "Fluxo",
+            "team_code": "FX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115565670260181866",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "109480056092207899",
+            "team_name": "Fluxo",
+            "team_code": "FX"
+          },
+          "red": {
+            "team_id": "109480204628225868",
+            "team_name": "LOS",
+            "team_code": "LOS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115565670260181867",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "109480056092207899",
+            "team_name": "Fluxo",
+            "team_code": "FX"
+          },
+          "red": {
+            "team_id": "109480204628225868",
+            "team_name": "LOS",
+            "team_code": "LOS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115565670260181868",
+          "number": 5,
+          "state": "completed",
+          "blue": {
+            "team_id": "109480204628225868",
+            "team_name": "LOS",
+            "team_code": "LOS"
+          },
+          "red": {
+            "team_id": "109480056092207899",
+            "team_name": "Fluxo",
+            "team_code": "FX"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 1111,
+            "frame_timestamp": "2026-05-30T19:51:59.784Z",
+            "patch_version": "16.11.781.1789",
+            "blue": [
+              {
+                "player": "LOS Zest",
+                "participant_id": "1",
+                "champion": "Yone",
+                "champion_id": "Yone",
+                "role": "top",
+                "level": 12,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 156,
+                "gold": 5771,
+                "current_health": 1718,
+                "max_health": 1718,
+                "items": [
+                  "2031",
+                  "3006",
+                  "3153"
+                ]
+              },
+              {
+                "player": "LOS Curse",
+                "participant_id": "2",
+                "champion": "Sejuani",
+                "champion_id": "Sejuani",
+                "role": "jungle",
+                "level": 10,
+                "kills": 3,
+                "deaths": 0,
+                "assists": 3,
+                "creep_score": 126,
+                "gold": 6449,
+                "current_health": 2410,
+                "max_health": 3029,
+                "items": [
+                  "3364",
+                  "3084",
+                  "3111",
+                  "1011"
+                ]
+              },
+              {
+                "player": "LOS Feisty",
+                "participant_id": "3",
+                "champion": "Galio",
+                "champion_id": "Galio",
+                "role": "mid",
+                "level": 12,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 5,
+                "creep_score": 164,
+                "gold": 6376,
+                "current_health": 2269,
+                "max_health": 2445,
+                "items": [
+                  "1056",
+                  "1082",
+                  "1001",
+                  "3364",
+                  "6664",
+                  "3108"
+                ]
+              },
+              {
+                "player": "LOS Duduhh",
+                "participant_id": "4",
+                "champion": "Corki",
+                "champion_id": "Corki",
+                "role": "bottom",
+                "level": 10,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 3,
+                "creep_score": 151,
+                "gold": 6415,
+                "current_health": 1862,
+                "max_health": 1862,
+                "items": [
+                  "1055",
+                  "3070",
+                  "2031",
+                  "3078",
+                  "1001"
+                ]
+              },
+              {
+                "player": "LOS Ackerman",
+                "participant_id": "5",
+                "champion": "Neeko",
+                "champion_id": "Neeko",
+                "role": "support",
+                "level": 8,
+                "kills": 2,
+                "deaths": 1,
+                "assists": 2,
+                "creep_score": 24,
+                "gold": 4502,
+                "current_health": 1667,
+                "max_health": 1775,
+                "items": [
+                  "3364",
+                  "3152",
+                  "2022",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "FX curty",
+                "participant_id": "6",
+                "champion": "Anivia",
+                "champion_id": "Anivia",
+                "role": "top",
+                "level": 12,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 124,
+                "gold": 4751,
+                "current_health": 2140,
+                "max_health": 2140,
+                "items": [
+                  "1056",
+                  "6657",
+                  "3363",
+                  "1028",
+                  "3009"
+                ]
+              },
+              {
+                "player": "FX Peach",
+                "participant_id": "7",
+                "champion": "Zaahen",
+                "champion_id": "Zaahen",
+                "role": "jungle",
+                "level": 10,
+                "kills": 1,
+                "deaths": 3,
+                "assists": 2,
+                "creep_score": 123,
+                "gold": 5898,
+                "current_health": 0,
+                "max_health": 2205,
+                "items": [
+                  "3078",
+                  "3364",
+                  "2021",
+                  "1036",
+                  "2055"
+                ]
+              },
+              {
+                "player": "FX cody",
+                "participant_id": "8",
+                "champion": "Sylas",
+                "champion_id": "Sylas",
+                "role": "mid",
+                "level": 11,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 132,
+                "gold": 4763,
+                "current_health": 2065,
+                "max_health": 2175,
+                "items": [
+                  "1056",
+                  "1001",
+                  "2031",
+                  "1082",
+                  "3152",
+                  "3364",
+                  "1033"
+                ]
+              },
+              {
+                "player": "FX BAO",
+                "participant_id": "9",
+                "champion": "Yunara",
+                "champion_id": "Yunara",
+                "role": "bottom",
+                "level": 9,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 2,
+                "creep_score": 153,
+                "gold": 6097,
+                "current_health": 1281,
+                "max_health": 1396,
+                "items": [
+                  "1086",
+                  "2031",
+                  "6672",
+                  "3086",
+                  "3363"
+                ]
+              },
+              {
+                "player": "FX Momochi",
+                "participant_id": "10",
+                "champion": "Lulu",
+                "champion_id": "Lulu",
+                "role": "support",
+                "level": 8,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 2,
+                "creep_score": 18,
+                "gold": 3969,
+                "current_health": 1561,
+                "max_health": 1561,
+                "items": [
+                  "3364",
+                  "3504",
+                  "3067",
+                  "1004",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 29513,
+              "kills": 6,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "red_stats": {
+              "gold": 25478,
+              "kills": 3,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.8066064166316473,
+              "red": 0.19339358336835266,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 900,
+                "end_seconds": 1200,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.9043030303030304,
+                "brier": 0.1478283142471978
+              },
+              "features": {
+                "gold_diff": 4035,
+                "kill_diff": 3,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0.40000000000000036,
+                "game_time": 1111
+              }
+            },
+            "retained_after_end": true
           }
         }
       ],
