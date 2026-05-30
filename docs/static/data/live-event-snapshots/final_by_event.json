@@ -7458,5 +7458,485 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "116170292916656895": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-30T04:29:08.348Z",
+    "event_id": "116170292916656895",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "116170292916656895",
+      "league": "NACL",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "109783170393931575",
+          "name": "Conviction",
+          "code": "CNV",
+          "image": "http://static.lolesports.com/teams/1675158238331_Conviction.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "109981647134921596",
+          "name": "CCG Esports",
+          "code": "CCG",
+          "image": "http://static.lolesports.com/teams/1743818097778__CCGIcon_Main.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116170292916656896",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "109981647134921596",
+            "team_name": "CCG Esports",
+            "team_code": "CCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116170292916656897",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "109981647134921596",
+            "team_name": "CCG Esports",
+            "team_code": "CCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 2710,
+            "frame_timestamp": "2026-05-29T21:37:16.984Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "CNV Sniper",
+                "participant_id": "1",
+                "champion": "Ambessa",
+                "champion_id": "Ambessa",
+                "role": "top",
+                "level": 19,
+                "kills": 4,
+                "deaths": 0,
+                "assists": 10,
+                "creep_score": 296,
+                "gold": 14393,
+                "current_health": 3479,
+                "max_health": 3662,
+                "items": [
+                  "6692",
+                  "3161",
+                  "3364",
+                  "6333",
+                  "3111",
+                  "3134",
+                  "1037"
+                ]
+              },
+              {
+                "player": "CNV Tomio",
+                "participant_id": "2",
+                "champion": "Olaf",
+                "champion_id": "Olaf",
+                "role": "jungle",
+                "level": 17,
+                "kills": 7,
+                "deaths": 2,
+                "assists": 7,
+                "creep_score": 252,
+                "gold": 14758,
+                "current_health": 1320,
+                "max_health": 3885,
+                "items": [
+                  "3364",
+                  "6631",
+                  "3073",
+                  "3047",
+                  "6333",
+                  "1038",
+                  "2138"
+                ]
+              },
+              {
+                "player": "CNV Insanity",
+                "participant_id": "3",
+                "champion": "Ryze",
+                "champion_id": "Ryze",
+                "role": "mid",
+                "level": 18,
+                "kills": 6,
+                "deaths": 1,
+                "assists": 9,
+                "creep_score": 309,
+                "gold": 15521,
+                "current_health": 0,
+                "max_health": 3540,
+                "items": [
+                  "6657",
+                  "3363",
+                  "2522",
+                  "3107"
+                ]
+              },
+              {
+                "player": "CNV Tactical",
+                "participant_id": "4",
+                "champion": "Sivir",
+                "champion_id": "Sivir",
+                "role": "bottom",
+                "level": 17,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 12,
+                "creep_score": 316,
+                "gold": 15274,
+                "current_health": 1059,
+                "max_health": 2384,
+                "items": [
+                  "1086",
+                  "3032",
+                  "3363",
+                  "3031",
+                  "3006",
+                  "3036",
+                  "3086"
+                ]
+              },
+              {
+                "player": "CNV Bounty",
+                "participant_id": "5",
+                "champion": "Neeko",
+                "champion_id": "Neeko",
+                "role": "support",
+                "level": 14,
+                "kills": 2,
+                "deaths": 3,
+                "assists": 12,
+                "creep_score": 51,
+                "gold": 9810,
+                "current_health": 0,
+                "max_health": 2632,
+                "items": [
+                  "3364",
+                  "3152",
+                  "3158",
+                  "3110",
+                  "3067",
+                  "2055",
+                  "1057"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "CCG Fiji",
+                "participant_id": "6",
+                "champion": "Sion",
+                "champion_id": "Sion",
+                "role": "top",
+                "level": 18,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 4,
+                "creep_score": 290,
+                "gold": 11485,
+                "current_health": 4599,
+                "max_health": 5144,
+                "items": [
+                  "3047",
+                  "2502",
+                  "3076",
+                  "3363",
+                  "6665",
+                  "3211",
+                  "1057"
+                ]
+              },
+              {
+                "player": "CCG Dardoch",
+                "participant_id": "7",
+                "champion": "LeeSin",
+                "champion_id": "LeeSin",
+                "role": "jungle",
+                "level": 15,
+                "kills": 5,
+                "deaths": 5,
+                "assists": 1,
+                "creep_score": 228,
+                "gold": 13438,
+                "current_health": 4,
+                "max_health": 3027,
+                "items": [
+                  "6692",
+                  "6610",
+                  "3071",
+                  "3111",
+                  "2019",
+                  "1038"
+                ]
+              },
+              {
+                "player": "CCG AoJune",
+                "participant_id": "8",
+                "champion": "Hwei",
+                "champion_id": "Hwei",
+                "role": "mid",
+                "level": 16,
+                "kills": 1,
+                "deaths": 6,
+                "assists": 4,
+                "creep_score": 294,
+                "gold": 11014,
+                "current_health": 0,
+                "max_health": 2222,
+                "items": [
+                  "2503",
+                  "3158",
+                  "4628",
+                  "2055",
+                  "3135"
+                ]
+              },
+              {
+                "player": "CCG Cody Sun",
+                "participant_id": "9",
+                "champion": "Varus",
+                "champion_id": "Varus",
+                "role": "bottom",
+                "level": 15,
+                "kills": 1,
+                "deaths": 5,
+                "assists": 4,
+                "creep_score": 316,
+                "gold": 13653,
+                "current_health": 0,
+                "max_health": 2142,
+                "items": [
+                  "2031",
+                  "3087",
+                  "3047",
+                  "3363",
+                  "3124",
+                  "3302",
+                  "2019"
+                ]
+              },
+              {
+                "player": "CCG Only35",
+                "participant_id": "10",
+                "champion": "Nautilus",
+                "champion_id": "Nautilus",
+                "role": "support",
+                "level": 12,
+                "kills": 0,
+                "deaths": 3,
+                "assists": 7,
+                "creep_score": 50,
+                "gold": 7621,
+                "current_health": 0,
+                "max_health": 2445,
+                "items": [
+                  "3364",
+                  "3111",
+                  "3190",
+                  "3109",
+                  "2055",
+                  "1028"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 69756,
+              "kills": 20,
+              "towers": 9,
+              "inhibitors": 1,
+              "barons": 2,
+              "dragons": 4
+            },
+            "red_stats": {
+              "gold": 57211,
+              "kills": 8,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.9739810908702339,
+              "red": 0.02601890912976612,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation"
+              },
+              "features": {
+                "gold_diff": 12545,
+                "kill_diff": 12,
+                "tower_diff": 9,
+                "inhibitor_diff": 1,
+                "dragon_diff": 3,
+                "baron_diff": 2,
+                "avg_level_diff": 1.8000000000000007,
+                "game_time": 2710
+              }
+            },
+            "retained_after_end": true
+          }
+        },
+        {
+          "id": "116170292916656898",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "109981647134921596",
+            "team_name": "CCG Esports",
+            "team_code": "CCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116170292916656899",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "109981647134921596",
+            "team_name": "CCG Esports",
+            "team_code": "CCG"
+          },
+          "red": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116170292916656900",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "109981647134921596",
+            "team_name": "CCG Esports",
+            "team_code": "CCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
