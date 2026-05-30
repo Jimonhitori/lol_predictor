@@ -10509,7 +10509,7 @@
   },
   "116237388604580036": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-30T22:39:09.593Z",
+    "checked_at": "2026-05-30T23:40:32.740Z",
     "event_id": "116237388604580036",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -10960,6 +10960,489 @@
             "team_id": "114821781274167550",
             "team_name": "Barcząca Esports",
             "team_code": "BCE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115564793879469306": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-30T23:40:32.740Z",
+    "event_id": "115564793879469306",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115564793879469306",
+      "league": "LCS",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-05-31T05:00:00.000Z",
+      "teams": [
+        {
+          "id": "98926509892121852",
+          "name": "FlyQuest",
+          "code": "FLY",
+          "image": "http://static.lolesports.com/teams/flyquest-new-on-dark.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "115688562107799886",
+          "name": "Sentinels",
+          "code": "SEN",
+          "image": "http://static.lolesports.com/teams/1767769784669_Sentinels_2020_Icon.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115564793879469307",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "98926509892121852",
+            "team_name": "FlyQuest",
+            "team_code": "FLY"
+          },
+          "red": {
+            "team_id": "115688562107799886",
+            "team_name": "Sentinels",
+            "team_code": "SEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469308",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "98926509892121852",
+            "team_name": "FlyQuest",
+            "team_code": "FLY"
+          },
+          "red": {
+            "team_id": "115688562107799886",
+            "team_name": "Sentinels",
+            "team_code": "SEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469309",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "98926509892121852",
+            "team_name": "FlyQuest",
+            "team_code": "FLY"
+          },
+          "red": {
+            "team_id": "115688562107799886",
+            "team_name": "Sentinels",
+            "team_code": "SEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "finished",
+            "game_time": 3037,
+            "frame_timestamp": "2026-05-30T22:33:29.803Z",
+            "patch_version": "16.11.781.1789",
+            "blue": [
+              {
+                "player": "FLY Gakgos",
+                "participant_id": "1",
+                "champion": "KSante",
+                "champion_id": "KSante",
+                "role": "top",
+                "level": 20,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 6,
+                "creep_score": 330,
+                "gold": 14245,
+                "current_health": 3059,
+                "max_health": 5256,
+                "items": [
+                  "3047",
+                  "3363",
+                  "6662",
+                  "3050",
+                  "6665",
+                  "3075",
+                  "2055"
+                ]
+              },
+              {
+                "player": "FLY Gryffinn",
+                "participant_id": "2",
+                "champion": "Shyvana",
+                "champion_id": "Shyvana",
+                "role": "jungle",
+                "level": 18,
+                "kills": 1,
+                "deaths": 3,
+                "assists": 8,
+                "creep_score": 332,
+                "gold": 15965,
+                "current_health": 2479,
+                "max_health": 4153,
+                "items": [
+                  "3078",
+                  "3161",
+                  "3111",
+                  "6333",
+                  "2055",
+                  "2138",
+                  "2525"
+                ]
+              },
+              {
+                "player": "FLY Quad",
+                "participant_id": "3",
+                "champion": "Aurora",
+                "champion_id": "Aurora",
+                "role": "mid",
+                "level": 18,
+                "kills": 4,
+                "deaths": 3,
+                "assists": 1,
+                "creep_score": 285,
+                "gold": 14326,
+                "current_health": 1280,
+                "max_health": 2942,
+                "items": [
+                  "3364",
+                  "3152",
+                  "3020",
+                  "4645",
+                  "4646",
+                  "3108",
+                  "3041"
+                ]
+              },
+              {
+                "player": "FLY Massu",
+                "participant_id": "4",
+                "champion": "Yunara",
+                "champion_id": "Yunara",
+                "role": "bottom",
+                "level": 18,
+                "kills": 8,
+                "deaths": 0,
+                "assists": 6,
+                "creep_score": 395,
+                "gold": 21251,
+                "current_health": 2130,
+                "max_health": 2610,
+                "items": [
+                  "6672",
+                  "3006",
+                  "3363",
+                  "2512",
+                  "3031",
+                  "3036",
+                  "6673"
+                ]
+              },
+              {
+                "player": "FLY Cryogen",
+                "participant_id": "5",
+                "champion": "Lulu",
+                "champion_id": "Lulu",
+                "role": "support",
+                "level": 16,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 13,
+                "creep_score": 38,
+                "gold": 10810,
+                "current_health": 1180,
+                "max_health": 2611,
+                "items": [
+                  "3364",
+                  "3504",
+                  "3158",
+                  "2065",
+                  "3222",
+                  "3067",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "SEN Impact",
+                "participant_id": "6",
+                "champion": "Renekton",
+                "champion_id": "Renekton",
+                "role": "top",
+                "level": 20,
+                "kills": 4,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 349,
+                "gold": 15180,
+                "current_health": 4857,
+                "max_health": 4857,
+                "items": [
+                  "3071",
+                  "3047",
+                  "3161",
+                  "6333",
+                  "3363",
+                  "3053"
+                ]
+              },
+              {
+                "player": "SEN HamBak",
+                "participant_id": "7",
+                "champion": "JarvanIV",
+                "champion_id": "JarvanIV",
+                "role": "jungle",
+                "level": 16,
+                "kills": 1,
+                "deaths": 5,
+                "assists": 6,
+                "creep_score": 237,
+                "gold": 12313,
+                "current_health": 0,
+                "max_health": 3010,
+                "items": [
+                  "3364",
+                  "6610",
+                  "3047",
+                  "2055",
+                  "2055",
+                  "3071",
+                  "3026"
+                ]
+              },
+              {
+                "player": "SEN DARKWINGS",
+                "participant_id": "8",
+                "champion": "Viktor",
+                "champion_id": "Viktor",
+                "role": "mid",
+                "level": 18,
+                "kills": 2,
+                "deaths": 3,
+                "assists": 4,
+                "creep_score": 330,
+                "gold": 13843,
+                "current_health": 0,
+                "max_health": 2665,
+                "items": [
+                  "2503",
+                  "3363",
+                  "3158",
+                  "3152",
+                  "3135",
+                  "2420",
+                  "2139"
+                ]
+              },
+              {
+                "player": "SEN Rahel",
+                "participant_id": "9",
+                "champion": "MissFortune",
+                "champion_id": "MissFortune",
+                "role": "bottom",
+                "level": 17,
+                "kills": 0,
+                "deaths": 4,
+                "assists": 5,
+                "creep_score": 358,
+                "gold": 14680,
+                "current_health": 1412,
+                "max_health": 2262,
+                "items": [
+                  "3072",
+                  "3363",
+                  "6695",
+                  "3036",
+                  "3031"
+                ]
+              },
+              {
+                "player": "SEN huhi",
+                "participant_id": "10",
+                "champion": "Bard",
+                "champion_id": "Bard",
+                "role": "support",
+                "level": 14,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 7,
+                "creep_score": 32,
+                "gold": 9073,
+                "current_health": 1921,
+                "max_health": 2690,
+                "items": [
+                  "3364",
+                  "3009",
+                  "3742",
+                  "3190",
+                  "2055",
+                  "3082"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 76597,
+              "kills": 15,
+              "towers": 10,
+              "inhibitors": 2,
+              "barons": 3,
+              "dragons": 3
+            },
+            "red_stats": {
+              "gold": 65089,
+              "kills": 7,
+              "towers": 4,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 3
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.8841262599784372,
+              "red": 0.11587374002156281,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation"
+              },
+              "features": {
+                "gold_diff": 11508,
+                "kill_diff": 8,
+                "tower_diff": 6,
+                "inhibitor_diff": 2,
+                "dragon_diff": 0,
+                "baron_diff": 3,
+                "avg_level_diff": 1,
+                "game_time": 3037
+              }
+            },
+            "retained_after_end": true
+          }
+        },
+        {
+          "id": "115564793879469310",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "115688562107799886",
+            "team_name": "Sentinels",
+            "team_code": "SEN"
+          },
+          "red": {
+            "team_id": "98926509892121852",
+            "team_name": "FlyQuest",
+            "team_code": "FLY"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469311",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "98926509892121852",
+            "team_name": "FlyQuest",
+            "team_code": "FLY"
+          },
+          "red": {
+            "team_id": "115688562107799886",
+            "team_name": "Sentinels",
+            "team_code": "SEN"
           },
           "winner": "",
           "live": {
