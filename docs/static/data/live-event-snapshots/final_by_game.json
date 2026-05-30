@@ -6644,7 +6644,7 @@
   },
   "115570683341512205:115570683341512209": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T15:16:16.937Z",
+    "checked_at": "2026-05-30T16:17:18.163Z",
     "event_id": "115570683341512205",
     "game_id": "115570683341512209",
     "game_number": 4,
@@ -6966,17 +6966,18 @@
             "game_time": 1016
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   },
   "116119857896112032:116119857896112035": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T15:16:16.937Z",
+    "checked_at": "2026-05-30T16:17:18.163Z",
     "event_id": "116119857896112032",
     "game_id": "116119857896112035",
     "game_number": 3,
-    "event_status": "inProgress",
+    "event_status": "completed",
     "teams": [
       {
         "id": "107416483509696259",
@@ -6990,7 +6991,7 @@
         "name": "G2 NORD",
         "code": "G2N",
         "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-        "game_wins": "2"
+        "game_wins": "3"
       }
     ],
     "game": {
@@ -7304,7 +7305,8 @@
             "game_time": 2580
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }
