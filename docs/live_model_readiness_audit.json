@@ -1,0 +1,149 @@
+{
+  "artifact_paths": {
+    "collection_config_validation": "reports/live_collection_config_validation.json",
+    "collection_readiness": "reports/live_collection_readiness.json",
+    "evaluation": "reports/live_logistic_evaluation.json",
+    "manifest": "public/live_model_manifest.json",
+    "ops_check": "reports/live_ops_check.json",
+    "replay": "reports/live_replay_summary.json",
+    "serving_validation": "reports/live_serving_validation.json",
+    "training_pipeline": "reports/live_training_pipeline.json",
+    "training_readiness": "reports/live_training_readiness.json"
+  },
+  "blocker_count": 11,
+  "blockers": [
+    "live training readiness is false",
+    "training readiness: live feature rows below threshold (0 < 50)",
+    "training readiness: labeled live games below threshold (0 < 5)",
+    "training readiness: live feature intervals below threshold (0 < 25)",
+    "live training pipeline is not ready",
+    "live training pipeline did not train a model",
+    "live training pipeline did not replay stored frames",
+    "training pipeline: no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080",
+    "live model evaluation report is missing",
+    "live replay summary is missing",
+    "public manifest does not expose a live model"
+  ],
+  "checks": {
+    "collection_config_valid": true,
+    "evaluation_display_ready": false,
+    "manifest_exposes_model": false,
+    "ops_wiring_valid": true,
+    "replay_ready": false,
+    "serving_artifacts_valid": true,
+    "training_pipeline_complete": false,
+    "training_ready": false
+  },
+  "display_ready": false,
+  "next_actions": [
+    "Collect or sync more completed-game live frames, then rebuild live features.",
+    "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
+    "Train/evaluate the live model until operational_summary recommends display.",
+    "Run live replay on stored frames and verify <=30s interval coverage.",
+    "Publish and validate live_logistic.json plus live_model_manifest.json."
+  ],
+  "production_ready": false,
+  "requirements": [
+    {
+      "evidence": {
+        "max_interval_seconds": null,
+        "ok": null,
+        "poll_interval_seconds": null,
+        "sample_interval_seconds": null
+      },
+      "id": "live_collection_config",
+      "label": "Live collection settings enforce <=30s cadence",
+      "status": "passed"
+    },
+    {
+      "evidence": {
+        "empty_game_state_rate": 0.0,
+        "games": 31,
+        "interval_count": 238,
+        "live_model_prediction_rows": 0,
+        "non_empty_game_state_rows": 456,
+        "oe_bootstrap_snapshot_rows": 237,
+        "pct_intervals_lte_30s": 0.5840336134453782,
+        "production_live_telemetry_rows": 219,
+        "raw_frame_collection_rows": 0,
+        "rows": 456,
+        "sub_30s_interval_count": 139
+      },
+      "id": "live_frame_collection",
+      "label": "Collected live frames at <=30s cadence",
+      "status": "blocked"
+    },
+    {
+      "evidence": {
+        "feature_rows": 0,
+        "games": 0,
+        "label_sources": {
+          "combined_rows": 4674,
+          "games_rows": 4674,
+          "live_label_rows": 0
+        },
+        "labeled_rows": 0,
+        "pipeline_feature_rows": 0,
+        "pipeline_labeled_feature_rows": 0,
+        "pipeline_ready": false,
+        "pipeline_replayed": false,
+        "pipeline_resolved_rows": 456,
+        "pipeline_trained": false,
+        "pipeline_warnings": [
+          "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"
+        ]
+      },
+      "id": "completed_game_labels",
+      "label": "Live frames joined to completed-game winners",
+      "status": "blocked"
+    },
+    {
+      "evidence": {
+        "display_recommendation": null,
+        "earliest_reliable_bucket": null
+      },
+      "id": "live_model_evaluation",
+      "label": "Live model evaluated with display-safe elapsed buckets",
+      "status": "blocked"
+    },
+    {
+      "evidence": {
+        "games": null,
+        "pct_intervals_lte_target": null,
+        "rows": null
+      },
+      "id": "live_replay",
+      "label": "Saved live frames can be replay-scored by the trained model",
+      "status": "blocked"
+    },
+    {
+      "evidence": {
+        "live_model_available": false,
+        "live_model_url": null,
+        "live_status_available": true,
+        "validation_ok": true
+      },
+      "id": "serving_artifacts",
+      "label": "Public model artifacts are internally consistent",
+      "status": "blocked"
+    },
+    {
+      "evidence": {
+        "ops_ok": true,
+        "ops_warning_count": 4
+      },
+      "id": "operations_wiring",
+      "label": "Worker, D1, workflows, and checks are wired for production operation",
+      "status": "passed"
+    }
+  ],
+  "stage": "collect_live_frames",
+  "warning_count": 5,
+  "warnings": [
+    "live collection config validation report is missing; using workflow wiring evidence",
+    "live operations wiring: CLOUDFLARE_API_TOKEN is not configured locally; scheduled D1 sync needs a GitHub secret",
+    "live operations wiring: LIVE_WORKER_BASE_URL is not configured locally; deploy can parse the first Worker URL, but daily Worker smoke checks and site prediction sync need a GitHub variable",
+    "live operations wiring: models/live_logistic.json is missing; live serving can still collect raw frames but cannot serve model predictions",
+    "live operations wiring: live_training_readiness.json exists but ready is false"
+  ]
+}
