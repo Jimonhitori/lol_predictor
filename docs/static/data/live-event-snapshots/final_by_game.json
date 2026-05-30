@@ -6310,7 +6310,7 @@
   },
   "115548128962971883:115548128962971884": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T14:00:30.143Z",
+    "checked_at": "2026-05-30T15:16:16.937Z",
     "event_id": "115548128962971883",
     "game_id": "115548128962971884",
     "game_number": 1,
@@ -6644,7 +6644,7 @@
   },
   "115570683341512205:115570683341512209": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T14:00:30.143Z",
+    "checked_at": "2026-05-30T15:16:16.937Z",
     "event_id": "115570683341512205",
     "game_id": "115570683341512209",
     "game_number": 4,
@@ -6964,6 +6964,344 @@
             "baron_diff": 0,
             "avg_level_diff": 0.1999999999999993,
             "game_time": 1016
+          }
+        },
+        "retained_after_end": true
+      }
+    }
+  },
+  "116119857896112032:116119857896112035": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-05-30T15:16:16.937Z",
+    "event_id": "116119857896112032",
+    "game_id": "116119857896112035",
+    "game_number": 3,
+    "event_status": "inProgress",
+    "teams": [
+      {
+        "id": "107416483509696259",
+        "name": "Eintracht Spandau",
+        "code": "EINS",
+        "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
+        "game_wins": "2"
+      },
+      {
+        "id": "109642680932009857",
+        "name": "G2 NORD",
+        "code": "G2N",
+        "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+        "game_wins": "2"
+      }
+    ],
+    "game": {
+      "id": "116119857896112035",
+      "number": 3,
+      "state": "completed",
+      "blue": {
+        "team_id": "109642680932009857",
+        "team_name": "G2 NORD",
+        "team_code": "G2N"
+      },
+      "red": {
+        "team_id": "107416483509696259",
+        "team_name": "Eintracht Spandau",
+        "team_code": "EINS"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 2580,
+        "frame_timestamp": "2026-05-30T13:49:09.416Z",
+        "patch_version": "16.10.776.5552",
+        "blue": [
+          {
+            "player": "G2N Shelfmade",
+            "participant_id": "1",
+            "champion": "Shyvana",
+            "champion_id": "Shyvana",
+            "role": "top",
+            "level": 20,
+            "kills": 5,
+            "deaths": 1,
+            "assists": 10,
+            "creep_score": 294,
+            "gold": 15007,
+            "current_health": 944,
+            "max_health": 3528,
+            "items": [
+              "3158",
+              "1082",
+              "3152",
+              "4629",
+              "3157",
+              "3364",
+              "3147"
+            ]
+          },
+          {
+            "player": "G2N Markoon",
+            "participant_id": "2",
+            "champion": "Trundle",
+            "champion_id": "Trundle",
+            "role": "jungle",
+            "level": 17,
+            "kills": 3,
+            "deaths": 0,
+            "assists": 16,
+            "creep_score": 220,
+            "gold": 13663,
+            "current_health": 2867,
+            "max_health": 3727,
+            "items": [
+              "3078",
+              "3065",
+              "3143",
+              "3111",
+              "3067",
+              "2055"
+            ]
+          },
+          {
+            "player": "G2N Toasty",
+            "participant_id": "3",
+            "champion": "Hwei",
+            "champion_id": "Hwei",
+            "role": "mid",
+            "level": 17,
+            "kills": 7,
+            "deaths": 1,
+            "assists": 8,
+            "creep_score": 242,
+            "gold": 13807,
+            "current_health": 2734,
+            "max_health": 3244,
+            "items": [
+              "1082",
+              "2503",
+              "3363",
+              "6653",
+              "3152",
+              "1058"
+            ]
+          },
+          {
+            "player": "G2N rin",
+            "participant_id": "4",
+            "champion": "Senna",
+            "champion_id": "Senna",
+            "role": "bottom",
+            "level": 16,
+            "kills": 7,
+            "deaths": 3,
+            "assists": 11,
+            "creep_score": 236,
+            "gold": 15466,
+            "current_health": 2021,
+            "max_health": 2363,
+            "items": [
+              "1055",
+              "3087",
+              "3363",
+              "3071",
+              "6695",
+              "6670",
+              "1037"
+            ]
+          },
+          {
+            "player": "G2N Tockimo",
+            "participant_id": "5",
+            "champion": "Nautilus",
+            "champion_id": "Nautilus",
+            "role": "support",
+            "level": 12,
+            "kills": 1,
+            "deaths": 7,
+            "assists": 7,
+            "creep_score": 42,
+            "gold": 8168,
+            "current_health": 3070,
+            "max_health": 3070,
+            "items": [
+              "3364",
+              "2525",
+              "3190",
+              "3158",
+              "3067",
+              "1033",
+              "2055"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "EINS Jenax",
+            "participant_id": "6",
+            "champion": "Cassiopeia",
+            "champion_id": "Cassiopeia",
+            "role": "top",
+            "level": 17,
+            "kills": 0,
+            "deaths": 8,
+            "assists": 5,
+            "creep_score": 237,
+            "gold": 10151,
+            "current_health": 2165,
+            "max_health": 3352,
+            "items": [
+              "6657",
+              "3363",
+              "3111",
+              "3108",
+              "3916",
+              "1056"
+            ]
+          },
+          {
+            "player": "EINS Xagog",
+            "participant_id": "7",
+            "champion": "Skarner",
+            "champion_id": "Skarner",
+            "role": "jungle",
+            "level": 14,
+            "kills": 3,
+            "deaths": 5,
+            "assists": 6,
+            "creep_score": 185,
+            "gold": 10899,
+            "current_health": 33,
+            "max_health": 3816,
+            "items": [
+              "3364",
+              "2525",
+              "2524",
+              "3111",
+              "3050",
+              "3067",
+              "1057"
+            ]
+          },
+          {
+            "player": "EINS PowerOfEvil",
+            "participant_id": "8",
+            "champion": "Leblanc",
+            "champion_id": "Leblanc",
+            "role": "mid",
+            "level": 15,
+            "kills": 3,
+            "deaths": 3,
+            "assists": 4,
+            "creep_score": 255,
+            "gold": 12366,
+            "current_health": 0,
+            "max_health": 2195,
+            "items": [
+              "3364",
+              "6655",
+              "3020",
+              "4646",
+              "3135",
+              "3041",
+              "1052"
+            ]
+          },
+          {
+            "player": "EINS Keduii",
+            "participant_id": "9",
+            "champion": "Yunara",
+            "champion_id": "Yunara",
+            "role": "bottom",
+            "level": 14,
+            "kills": 6,
+            "deaths": 6,
+            "assists": 3,
+            "creep_score": 290,
+            "gold": 13815,
+            "current_health": 0,
+            "max_health": 1984,
+            "items": [
+              "1086",
+              "6672",
+              "2512",
+              "3363",
+              "3031",
+              "6670",
+              "1036"
+            ]
+          },
+          {
+            "player": "EINS seaz",
+            "participant_id": "10",
+            "champion": "Lulu",
+            "champion_id": "Lulu",
+            "role": "support",
+            "level": 13,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 11,
+            "creep_score": 35,
+            "gold": 7774,
+            "current_health": 1837,
+            "max_health": 1837,
+            "items": [
+              "3364",
+              "3504",
+              "3158",
+              "2065",
+              "2022",
+              "3114",
+              "2055"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 66111,
+          "kills": 23,
+          "towers": 10,
+          "inhibitors": 1,
+          "barons": 2,
+          "dragons": 2
+        },
+        "red_stats": {
+          "gold": 55005,
+          "kills": 12,
+          "towers": 2,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 2
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.9202122503662387,
+          "red": 0.07978774963376134,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation"
+          },
+          "features": {
+            "gold_diff": 11106,
+            "kill_diff": 11,
+            "tower_diff": 8,
+            "inhibitor_diff": 1,
+            "dragon_diff": 0,
+            "baron_diff": 2,
+            "avg_level_diff": 1.799999999999999,
+            "game_time": 2580
           }
         },
         "retained_after_end": true
