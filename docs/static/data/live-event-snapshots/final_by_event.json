@@ -11738,5 +11738,425 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "115548128962971955": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-31T09:19:46.876Z",
+    "event_id": "115548128962971955",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115548128962971955",
+      "league": "LCK",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "completed",
+      "start_time": "2026-05-30T17:00:00.000Z",
+      "teams": [
+        {
+          "id": "99566404579461230",
+          "name": "kt Rolster",
+          "code": "KT",
+          "image": "http://static.lolesports.com/teams/kt_darkbackground.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "99566404581868574",
+          "name": "DN SOOPers",
+          "code": "DNS",
+          "image": "http://static.lolesports.com/teams/1767340467921_DN_SOOPerslogo_profile.webp",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128962971956",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "red": {
+            "team_id": "99566404581868574",
+            "team_name": "DN SOOPers",
+            "team_code": "DNS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128962971957",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "red": {
+            "team_id": "99566404581868574",
+            "team_name": "DN SOOPers",
+            "team_code": "DNS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 2180,
+            "frame_timestamp": "2026-05-30T09:27:09.989Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "KT PerfecT",
+                "participant_id": "1",
+                "champion": "Rumble",
+                "champion_id": "Rumble",
+                "role": "top",
+                "level": 17,
+                "kills": 3,
+                "deaths": 1,
+                "assists": 5,
+                "creep_score": 218,
+                "gold": 10062,
+                "current_health": 2655,
+                "max_health": 2655,
+                "items": [
+                  "3047",
+                  "6653",
+                  "3157",
+                  "3364",
+                  "3916",
+                  "1052"
+                ]
+              },
+              {
+                "player": "KT Cuzz",
+                "participant_id": "2",
+                "champion": "Trundle",
+                "champion_id": "Trundle",
+                "role": "jungle",
+                "level": 15,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 6,
+                "creep_score": 207,
+                "gold": 10870,
+                "current_health": 2802,
+                "max_health": 3324,
+                "items": [
+                  "6610",
+                  "3047",
+                  "3065",
+                  "2524",
+                  "1028",
+                  "2055",
+                  "2055"
+                ]
+              },
+              {
+                "player": "KT Bdd",
+                "participant_id": "3",
+                "champion": "Annie",
+                "champion_id": "Annie",
+                "role": "mid",
+                "level": 15,
+                "kills": 4,
+                "deaths": 1,
+                "assists": 6,
+                "creep_score": 240,
+                "gold": 11426,
+                "current_health": 2198,
+                "max_health": 2198,
+                "items": [
+                  "3118",
+                  "3020",
+                  "3152",
+                  "3364",
+                  "4645",
+                  "1052",
+                  "2055"
+                ]
+              },
+              {
+                "player": "KT Aiming",
+                "participant_id": "4",
+                "champion": "Jhin",
+                "champion_id": "Jhin",
+                "role": "bottom",
+                "level": 15,
+                "kills": 4,
+                "deaths": 0,
+                "assists": 6,
+                "creep_score": 328,
+                "gold": 15305,
+                "current_health": 2224,
+                "max_health": 2224,
+                "items": [
+                  "3142",
+                  "3363",
+                  "3097",
+                  "3094",
+                  "3031",
+                  "1018",
+                  "2055"
+                ]
+              },
+              {
+                "player": "KT Effort",
+                "participant_id": "5",
+                "champion": "Karma",
+                "champion_id": "Karma",
+                "role": "support",
+                "level": 12,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 11,
+                "creep_score": 28,
+                "gold": 7999,
+                "current_health": 2485,
+                "max_health": 2618,
+                "items": [
+                  "3364",
+                  "6620",
+                  "3222",
+                  "3158",
+                  "3067",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "DNS DuDu",
+                "participant_id": "6",
+                "champion": "Ambessa",
+                "champion_id": "Ambessa",
+                "role": "top",
+                "level": 17,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 283,
+                "gold": 10733,
+                "current_health": 2866,
+                "max_health": 3034,
+                "items": [
+                  "3155",
+                  "6692",
+                  "3111",
+                  "3364",
+                  "3161",
+                  "1036",
+                  "2055"
+                ]
+              },
+              {
+                "player": "DNS Pyosik",
+                "participant_id": "7",
+                "champion": "LeeSin",
+                "champion_id": "LeeSin",
+                "role": "jungle",
+                "level": 14,
+                "kills": 0,
+                "deaths": 5,
+                "assists": 2,
+                "creep_score": 189,
+                "gold": 8907,
+                "current_health": 2801,
+                "max_health": 2815,
+                "items": [
+                  "3340",
+                  "6610",
+                  "3111",
+                  "3071",
+                  "2055"
+                ]
+              },
+              {
+                "player": "DNS Clozer",
+                "participant_id": "8",
+                "champion": "Galio",
+                "champion_id": "Galio",
+                "role": "mid",
+                "level": 14,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 0,
+                "creep_score": 246,
+                "gold": 10142,
+                "current_health": 3248,
+                "max_health": 3252,
+                "items": [
+                  "1056",
+                  "3363",
+                  "6664",
+                  "4633",
+                  "1052",
+                  "1052"
+                ]
+              },
+              {
+                "player": "DNS deokdam",
+                "participant_id": "9",
+                "champion": "Caitlyn",
+                "champion_id": "Caitlyn",
+                "role": "bottom",
+                "level": 15,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 2,
+                "creep_score": 302,
+                "gold": 11202,
+                "current_health": 2093,
+                "max_health": 2149,
+                "items": [
+                  "1086",
+                  "6676",
+                  "3363",
+                  "3097",
+                  "3033"
+                ]
+              },
+              {
+                "player": "DNS Peter",
+                "participant_id": "10",
+                "champion": "Bard",
+                "champion_id": "Bard",
+                "role": "support",
+                "level": 11,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 2,
+                "creep_score": 20,
+                "gold": 6465,
+                "current_health": 2248,
+                "max_health": 2248,
+                "items": [
+                  "3364",
+                  "3222",
+                  "3111",
+                  "3067",
+                  "1029",
+                  "1033",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 55662,
+              "kills": 12,
+              "towers": 6,
+              "inhibitors": 1,
+              "barons": 1,
+              "dragons": 2
+            },
+            "red_stats": {
+              "gold": 47449,
+              "kills": 2,
+              "towers": 2,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 2
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.8725865851313175,
+              "red": 0.12741341486868252,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "use_with_caution",
+                "source": "external_validation",
+                "start_seconds": 2100,
+                "end_seconds": 2400,
+                "games": 11,
+                "rows": 68,
+                "roc_auc": 0.6186895810955961,
+                "brier": 0.24397529202431714
+              },
+              "features": {
+                "gold_diff": 8213,
+                "kill_diff": 10,
+                "tower_diff": 4,
+                "inhibitor_diff": 1,
+                "dragon_diff": 0,
+                "baron_diff": 1,
+                "avg_level_diff": 0.6000000000000014,
+                "game_time": 2180
+              }
+            },
+            "retained_after_end": true
+          }
+        },
+        {
+          "id": "115548128962971958",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "red": {
+            "team_id": "99566404581868574",
+            "team_name": "DN SOOPers",
+            "team_code": "DNS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
