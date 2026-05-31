@@ -12162,7 +12162,7 @@
   },
   "115548668059589376": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-31T18:54:54.712Z",
+    "checked_at": "2026-05-31T20:01:32.309Z",
     "event_id": "115548668059589376",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -12811,7 +12811,8 @@
                 "game_time": 2920
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         },
         {
@@ -12920,7 +12921,7 @@
   },
   "115565670260181869": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-05-31T18:54:54.712Z",
+    "checked_at": "2026-05-31T20:01:32.309Z",
     "event_id": "115565670260181869",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -13262,7 +13263,8 @@
                 "game_time": 2555
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         },
         {
@@ -13377,6 +13379,489 @@
             "team_id": "99566408221961358",
             "team_name": "RED Canids Kalunga",
             "team_code": "RED"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116237388604580042": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-05-31T20:01:32.309Z",
+    "event_id": "116237388604580042",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "116237388604580042",
+      "league": "Rift Legends",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107416342401528388",
+          "name": "Forsaken",
+          "code": "FSK",
+          "image": "http://static.lolesports.com/teams/1702894248711_1500_FSK_MONO.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "116040458285488771",
+          "name": "BOMBA Team",
+          "code": "BOOM",
+          "image": "http://static.lolesports.com/teams/1770648772201_Bombalogoyellow.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116237388604580043",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
+          },
+          "red": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 2243,
+            "frame_timestamp": "2026-05-31T15:39:19.130Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "FSK iBo",
+                "participant_id": "1",
+                "champion": "Rumble",
+                "champion_id": "Rumble",
+                "role": "top",
+                "level": 17,
+                "kills": 4,
+                "deaths": 3,
+                "assists": 2,
+                "creep_score": 223,
+                "gold": 10755,
+                "current_health": 252,
+                "max_health": 3367,
+                "items": [
+                  "1056",
+                  "3340",
+                  "3111",
+                  "6653",
+                  "2055",
+                  "8010"
+                ]
+              },
+              {
+                "player": "FSK Bwipo",
+                "participant_id": "2",
+                "champion": "MonkeyKing",
+                "champion_id": "MonkeyKing",
+                "role": "jungle",
+                "level": 17,
+                "kills": 5,
+                "deaths": 2,
+                "assists": 9,
+                "creep_score": 250,
+                "gold": 12605,
+                "current_health": 2363,
+                "max_health": 3069,
+                "items": [
+                  "3364",
+                  "3078",
+                  "3111",
+                  "6610",
+                  "3155",
+                  "3133"
+                ]
+              },
+              {
+                "player": "FSK Decay",
+                "participant_id": "3",
+                "champion": "Cassiopeia",
+                "champion_id": "Cassiopeia",
+                "role": "mid",
+                "level": 16,
+                "kills": 7,
+                "deaths": 5,
+                "assists": 3,
+                "creep_score": 252,
+                "gold": 12371,
+                "current_health": 1958,
+                "max_health": 3158,
+                "items": [
+                  "6657",
+                  "3111",
+                  "3363",
+                  "6653"
+                ]
+              },
+              {
+                "player": "FSK Vzz",
+                "participant_id": "4",
+                "champion": "Ashe",
+                "champion_id": "Ashe",
+                "role": "bottom",
+                "level": 15,
+                "kills": 2,
+                "deaths": 4,
+                "assists": 9,
+                "creep_score": 267,
+                "gold": 13228,
+                "current_health": 2099,
+                "max_health": 2099,
+                "items": [
+                  "1086",
+                  "2523",
+                  "3363",
+                  "3046",
+                  "3031",
+                  "1018",
+                  "2055"
+                ]
+              },
+              {
+                "player": "FSK Lucker",
+                "participant_id": "5",
+                "champion": "Seraphine",
+                "champion_id": "Seraphine",
+                "role": "support",
+                "level": 13,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 15,
+                "creep_score": 28,
+                "gold": 7860,
+                "current_health": 1138,
+                "max_health": 2275,
+                "items": [
+                  "3364",
+                  "6620",
+                  "3158",
+                  "2055",
+                  "3114"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "BOOM frajgo",
+                "participant_id": "6",
+                "champion": "Brand",
+                "champion_id": "Brand",
+                "role": "top",
+                "level": 16,
+                "kills": 5,
+                "deaths": 1,
+                "assists": 2,
+                "creep_score": 249,
+                "gold": 11170,
+                "current_health": 2118,
+                "max_health": 3304,
+                "items": [
+                  "3111",
+                  "3363",
+                  "6653",
+                  "1082",
+                  "3116",
+                  "8010",
+                  "2055"
+                ]
+              },
+              {
+                "player": "BOOM Guli",
+                "participant_id": "7",
+                "champion": "JarvanIV",
+                "champion_id": "JarvanIV",
+                "role": "jungle",
+                "level": 13,
+                "kills": 2,
+                "deaths": 6,
+                "assists": 5,
+                "creep_score": 163,
+                "gold": 9349,
+                "current_health": 11,
+                "max_health": 2708,
+                "items": [
+                  "6610",
+                  "3111",
+                  "3071",
+                  "3082",
+                  "2022",
+                  "2055"
+                ]
+              },
+              {
+                "player": "BOOM Mrozku",
+                "participant_id": "8",
+                "champion": "Aurora",
+                "champion_id": "Aurora",
+                "role": "mid",
+                "level": 15,
+                "kills": 4,
+                "deaths": 4,
+                "assists": 6,
+                "creep_score": 211,
+                "gold": 10336,
+                "current_health": 0,
+                "max_health": 2481,
+                "items": [
+                  "1082",
+                  "3152",
+                  "3364",
+                  "4645",
+                  "4630",
+                  "1026"
+                ]
+              },
+              {
+                "player": "BOOM Odi11",
+                "participant_id": "9",
+                "champion": "Ezreal",
+                "champion_id": "Ezreal",
+                "role": "bottom",
+                "level": 14,
+                "kills": 2,
+                "deaths": 2,
+                "assists": 6,
+                "creep_score": 218,
+                "gold": 10747,
+                "current_health": 0,
+                "max_health": 2311,
+                "items": [
+                  "1055",
+                  "3078",
+                  "3363",
+                  "3158",
+                  "1037",
+                  "3133",
+                  "1036"
+                ]
+              },
+              {
+                "player": "BOOM minemaciek",
+                "participant_id": "10",
+                "champion": "Rell",
+                "champion_id": "Rell",
+                "role": "support",
+                "level": 11,
+                "kills": 2,
+                "deaths": 6,
+                "assists": 11,
+                "creep_score": 25,
+                "gold": 7506,
+                "current_health": 0,
+                "max_health": 2287,
+                "items": [
+                  "3364",
+                  "3111",
+                  "3190",
+                  "3109",
+                  "2055"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 56819,
+              "kills": 19,
+              "towers": 6,
+              "inhibitors": 0,
+              "barons": 1,
+              "dragons": 3
+            },
+            "red_stats": {
+              "gold": 49108,
+              "kills": 15,
+              "towers": 3,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.9315506878162491,
+              "red": 0.06844931218375094,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "use_with_caution",
+                "source": "external_validation",
+                "start_seconds": 2100,
+                "end_seconds": 2400,
+                "games": 11,
+                "rows": 68,
+                "roc_auc": 0.6186895810955961,
+                "brier": 0.24397529202431714
+              },
+              "features": {
+                "gold_diff": 7711,
+                "kill_diff": 4,
+                "tower_diff": 3,
+                "inhibitor_diff": 0,
+                "dragon_diff": 2,
+                "baron_diff": 1,
+                "avg_level_diff": 1.799999999999999,
+                "game_time": 2243
+              }
+            },
+            "retained_after_end": true,
+            "retained_from_artifact": true
+          }
+        },
+        {
+          "id": "116237388604580044",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
+          },
+          "red": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116237388604580045",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "red": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116237388604580046",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "red": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116237388604580047",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116040458285488771",
+            "team_name": "BOMBA Team",
+            "team_code": "BOOM"
+          },
+          "red": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
           },
           "winner": "",
           "live": {
