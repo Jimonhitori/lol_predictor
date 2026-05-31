@@ -8602,7 +8602,7 @@
   },
   "115564793879469306:115564793879469309": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-30T23:40:32.740Z",
+    "checked_at": "2026-05-31T01:51:18.872Z",
     "event_id": "115564793879469306",
     "game_id": "115564793879469309",
     "game_number": 3,
@@ -8931,6 +8931,333 @@
             "baron_diff": 3,
             "avg_level_diff": 1,
             "game_time": 3037
+          }
+        },
+        "retained_after_end": true,
+        "retained_from_artifact": true
+      }
+    }
+  },
+  "115564793879469306:115564793879469308": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-05-31T01:51:18.872Z",
+    "event_id": "115564793879469306",
+    "game_id": "115564793879469308",
+    "game_number": 2,
+    "event_status": "completed",
+    "teams": [
+      {
+        "id": "98926509892121852",
+        "name": "FlyQuest",
+        "code": "FLY",
+        "image": "http://static.lolesports.com/teams/flyquest-new-on-dark.png",
+        "game_wins": "3"
+      },
+      {
+        "id": "115688562107799886",
+        "name": "Sentinels",
+        "code": "SEN",
+        "image": "http://static.lolesports.com/teams/1767769784669_Sentinels_2020_Icon.png",
+        "game_wins": "0"
+      }
+    ],
+    "game": {
+      "id": "115564793879469308",
+      "number": 2,
+      "state": "completed",
+      "blue": {
+        "team_id": "98926509892121852",
+        "team_name": "FlyQuest",
+        "team_code": "FLY"
+      },
+      "red": {
+        "team_id": "115688562107799886",
+        "team_name": "Sentinels",
+        "team_code": "SEN"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "finished",
+        "game_time": 2415,
+        "frame_timestamp": "2026-05-30T21:37:59.334Z",
+        "patch_version": "16.11.781.1789",
+        "blue": [
+          {
+            "player": "FLY Gakgos",
+            "participant_id": "1",
+            "champion": "Jayce",
+            "champion_id": "Jayce",
+            "role": "top",
+            "level": 17,
+            "kills": 1,
+            "deaths": 4,
+            "assists": 6,
+            "creep_score": 229,
+            "gold": 10972,
+            "current_health": 3203,
+            "max_health": 3203,
+            "items": [
+              "1055",
+              "3363",
+              "3071",
+              "3009",
+              "3134"
+            ]
+          },
+          {
+            "player": "FLY Gryffinn",
+            "participant_id": "2",
+            "champion": "Shen",
+            "champion_id": "Shen",
+            "role": "jungle",
+            "level": 16,
+            "kills": 3,
+            "deaths": 1,
+            "assists": 10,
+            "creep_score": 216,
+            "gold": 12090,
+            "current_health": 3698,
+            "max_health": 3698,
+            "items": [
+              "2525",
+              "3190",
+              "3109",
+              "3047",
+              "2055",
+              "3211"
+            ]
+          },
+          {
+            "player": "FLY Quad",
+            "participant_id": "3",
+            "champion": "Cassiopeia",
+            "champion_id": "Cassiopeia",
+            "role": "mid",
+            "level": 18,
+            "kills": 2,
+            "deaths": 0,
+            "assists": 10,
+            "creep_score": 292,
+            "gold": 12707,
+            "current_health": 2619,
+            "max_health": 3213,
+            "items": [
+              "6657",
+              "3363",
+              "3152",
+              "2420"
+            ]
+          },
+          {
+            "player": "FLY Massu",
+            "participant_id": "4",
+            "champion": "Lucian",
+            "champion_id": "Lucian",
+            "role": "bottom",
+            "level": 15,
+            "kills": 10,
+            "deaths": 0,
+            "assists": 5,
+            "creep_score": 319,
+            "gold": 17870,
+            "current_health": 2432,
+            "max_health": 2432,
+            "items": [
+              "1086",
+              "3508",
+              "3047",
+              "6675",
+              "3363",
+              "3071",
+              "3031"
+            ]
+          },
+          {
+            "player": "FLY Cryogen",
+            "participant_id": "5",
+            "champion": "Milio",
+            "champion_id": "Milio",
+            "role": "support",
+            "level": 13,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 15,
+            "creep_score": 37,
+            "gold": 8771,
+            "current_health": 2238,
+            "max_health": 2238,
+            "items": [
+              "3364",
+              "6620",
+              "3158",
+              "3222",
+              "3113",
+              "3114"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "SEN Impact",
+            "participant_id": "6",
+            "champion": "Sion",
+            "champion_id": "Sion",
+            "role": "top",
+            "level": 16,
+            "kills": 0,
+            "deaths": 3,
+            "assists": 3,
+            "creep_score": 241,
+            "gold": 9711,
+            "current_health": 0,
+            "max_health": 4184,
+            "items": [
+              "2502",
+              "3047",
+              "3363",
+              "3065",
+              "3082"
+            ]
+          },
+          {
+            "player": "SEN HamBak",
+            "participant_id": "7",
+            "champion": "Naafiri",
+            "champion_id": "Naafiri",
+            "role": "jungle",
+            "level": 15,
+            "kills": 1,
+            "deaths": 4,
+            "assists": 4,
+            "creep_score": 224,
+            "gold": 10889,
+            "current_health": 0,
+            "max_health": 2467,
+            "items": [
+              "3364",
+              "6699",
+              "3071",
+              "6695",
+              "3047"
+            ]
+          },
+          {
+            "player": "SEN DARKWINGS",
+            "participant_id": "8",
+            "champion": "Orianna",
+            "champion_id": "Orianna",
+            "role": "mid",
+            "level": 15,
+            "kills": 2,
+            "deaths": 2,
+            "assists": 1,
+            "creep_score": 274,
+            "gold": 11269,
+            "current_health": 277,
+            "max_health": 2409,
+            "items": [
+              "3363",
+              "2503",
+              "3152",
+              "4645"
+            ]
+          },
+          {
+            "player": "SEN Rahel",
+            "participant_id": "9",
+            "champion": "Ashe",
+            "champion_id": "Ashe",
+            "role": "bottom",
+            "level": 14,
+            "kills": 1,
+            "deaths": 5,
+            "assists": 2,
+            "creep_score": 252,
+            "gold": 11174,
+            "current_health": 15,
+            "max_health": 1896,
+            "items": [
+              "6672",
+              "3006",
+              "3363",
+              "2512",
+              "3033",
+              "2055"
+            ]
+          },
+          {
+            "player": "SEN huhi",
+            "participant_id": "10",
+            "champion": "Seraphine",
+            "champion_id": "Seraphine",
+            "role": "support",
+            "level": 12,
+            "kills": 1,
+            "deaths": 2,
+            "assists": 3,
+            "creep_score": 52,
+            "gold": 8214,
+            "current_health": 0,
+            "max_health": 2370,
+            "items": [
+              "3364",
+              "6620",
+              "3158",
+              "3916",
+              "2055",
+              "2055",
+              "3067"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 62410,
+          "kills": 16,
+          "towers": 9,
+          "inhibitors": 1,
+          "barons": 1,
+          "dragons": 4
+        },
+        "red_stats": {
+          "gold": 51257,
+          "kills": 5,
+          "towers": 3,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 0
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.9772295569589585,
+          "red": 0.022770443041041477,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation"
+          },
+          "features": {
+            "gold_diff": 11153,
+            "kill_diff": 11,
+            "tower_diff": 6,
+            "inhibitor_diff": 1,
+            "dragon_diff": 4,
+            "baron_diff": 1,
+            "avg_level_diff": 1.4000000000000004,
+            "game_time": 2415
           }
         },
         "retained_after_end": true
