@@ -9608,7 +9608,7 @@
   },
   "115548668059589376:115548668059589377": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-31T20:01:32.309Z",
+    "checked_at": "2026-05-31T21:10:56.160Z",
     "event_id": "115548668059589376",
     "game_id": "115548668059589377",
     "game_number": 1,
@@ -9941,7 +9941,7 @@
   },
   "116237388604580042:116237388604580043": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-31T20:01:32.309Z",
+    "checked_at": "2026-05-31T21:10:56.160Z",
     "event_id": "116237388604580042",
     "game_id": "116237388604580043",
     "game_number": 1,
@@ -10278,7 +10278,7 @@
   },
   "115548668059589376:115548668059589378": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-31T20:01:32.309Z",
+    "checked_at": "2026-05-31T21:10:56.160Z",
     "event_id": "115548668059589376",
     "game_id": "115548668059589378",
     "game_number": 2,
@@ -10615,7 +10615,7 @@
   },
   "115565670260181869:115565670260181870": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-05-31T20:01:32.309Z",
+    "checked_at": "2026-05-31T21:10:56.160Z",
     "event_id": "115565670260181869",
     "game_id": "115565670260181870",
     "game_number": 1,
@@ -10949,6 +10949,333 @@
         },
         "retained_after_end": true,
         "retained_from_artifact": true
+      }
+    }
+  },
+  "115570683341512211:115570683341512214": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-05-31T21:10:56.160Z",
+    "event_id": "115570683341512211",
+    "game_id": "115570683341512214",
+    "game_number": 3,
+    "event_status": "completed",
+    "teams": [
+      {
+        "id": "107700204561086446",
+        "name": "Relove Deep Cross Gaming",
+        "code": "DCG",
+        "image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
+        "game_wins": "2"
+      },
+      {
+        "id": "113661839307879869",
+        "name": "Team Secret Whales",
+        "code": "TSW",
+        "image": "http://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
+        "game_wins": "3"
+      }
+    ],
+    "game": {
+      "id": "115570683341512214",
+      "number": 3,
+      "state": "completed",
+      "blue": {
+        "team_id": "113661839307879869",
+        "team_name": "Team Secret Whales",
+        "team_code": "TSW"
+      },
+      "red": {
+        "team_id": "107700204561086446",
+        "team_name": "Relove Deep Cross Gaming",
+        "team_code": "DCG"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 1058,
+        "frame_timestamp": "2026-05-31T11:09:09.778Z",
+        "patch_version": "16.10.776.5552",
+        "blue": [
+          {
+            "player": "TSW Pun",
+            "participant_id": "1",
+            "champion": "Gnar",
+            "champion_id": "Gnar",
+            "role": "top",
+            "level": 12,
+            "kills": 2,
+            "deaths": 2,
+            "assists": 0,
+            "creep_score": 133,
+            "gold": 5327,
+            "current_health": 1855,
+            "max_health": 1855,
+            "items": [
+              "1120",
+              "2031",
+              "3047",
+              "3078"
+            ]
+          },
+          {
+            "player": "TSW Hizto",
+            "participant_id": "2",
+            "champion": "LeeSin",
+            "champion_id": "LeeSin",
+            "role": "jungle",
+            "level": 10,
+            "kills": 1,
+            "deaths": 0,
+            "assists": 1,
+            "creep_score": 119,
+            "gold": 5442,
+            "current_health": 2180,
+            "max_health": 2180,
+            "items": [
+              "1001",
+              "3340",
+              "6610",
+              "3044",
+              "2055",
+              "2055"
+            ]
+          },
+          {
+            "player": "TSW Dire",
+            "participant_id": "3",
+            "champion": "Annie",
+            "champion_id": "Annie",
+            "role": "mid",
+            "level": 10,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 1,
+            "creep_score": 136,
+            "gold": 4931,
+            "current_health": 1769,
+            "max_health": 1808,
+            "items": [
+              "1056",
+              "1082",
+              "2031",
+              "3364",
+              "3152"
+            ]
+          },
+          {
+            "player": "TSW Eddie",
+            "participant_id": "4",
+            "champion": "Senna",
+            "champion_id": "Senna",
+            "role": "bottom",
+            "level": 9,
+            "kills": 1,
+            "deaths": 2,
+            "assists": 2,
+            "creep_score": 116,
+            "gold": 5366,
+            "current_health": 1194,
+            "max_health": 1194,
+            "items": [
+              "1086",
+              "3340",
+              "2523",
+              "1018"
+            ]
+          },
+          {
+            "player": "TSW Bie",
+            "participant_id": "5",
+            "champion": "Nautilus",
+            "champion_id": "Nautilus",
+            "role": "support",
+            "level": 7,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 2,
+            "creep_score": 22,
+            "gold": 3900,
+            "current_health": 1745,
+            "max_health": 1745,
+            "items": [
+              "3364",
+              "3190",
+              "1028",
+              "2055",
+              "1029"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "DCG Flauren",
+            "participant_id": "6",
+            "champion": "Jayce",
+            "champion_id": "Jayce",
+            "role": "top",
+            "level": 11,
+            "kills": 1,
+            "deaths": 2,
+            "assists": 0,
+            "creep_score": 138,
+            "gold": 5424,
+            "current_health": 1809,
+            "max_health": 1891,
+            "items": [
+              "1055",
+              "3070",
+              "3134",
+              "1001",
+              "3044",
+              "1037"
+            ]
+          },
+          {
+            "player": "DCG Pop9",
+            "participant_id": "7",
+            "champion": "RekSai",
+            "champion_id": "RekSai",
+            "role": "jungle",
+            "level": 10,
+            "kills": 3,
+            "deaths": 0,
+            "assists": 1,
+            "creep_score": 118,
+            "gold": 6248,
+            "current_health": 2145,
+            "max_health": 2281,
+            "items": [
+              "3364",
+              "6631",
+              "2021",
+              "1028"
+            ]
+          },
+          {
+            "player": "DCG HongSuo",
+            "participant_id": "8",
+            "champion": "Orianna",
+            "champion_id": "Orianna",
+            "role": "mid",
+            "level": 11,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 3,
+            "creep_score": 137,
+            "gold": 5459,
+            "current_health": 1646,
+            "max_health": 1705,
+            "items": [
+              "1056",
+              "2031",
+              "2503",
+              "3363"
+            ]
+          },
+          {
+            "player": "DCG Feng ",
+            "participant_id": "9",
+            "champion": "MissFortune",
+            "champion_id": "MissFortune",
+            "role": "bottom",
+            "level": 9,
+            "kills": 2,
+            "deaths": 1,
+            "assists": 2,
+            "creep_score": 130,
+            "gold": 6821,
+            "current_health": 1364,
+            "max_health": 1364,
+            "items": [
+              "1086",
+              "1083",
+              "2031",
+              "3072",
+              "3134",
+              "3363"
+            ]
+          },
+          {
+            "player": "DCG ShiauC",
+            "participant_id": "10",
+            "champion": "Rell",
+            "champion_id": "Rell",
+            "role": "support",
+            "level": 7,
+            "kills": 0,
+            "deaths": 2,
+            "assists": 4,
+            "creep_score": 21,
+            "gold": 3708,
+            "current_health": 1588,
+            "max_health": 1588,
+            "items": [
+              "3364",
+              "3067",
+              "1029",
+              "3111",
+              "1033",
+              "2055"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 24966,
+          "kills": 5,
+          "towers": 0,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 0
+        },
+        "red_stats": {
+          "gold": 27660,
+          "kills": 6,
+          "towers": 0,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 2
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.2557153743716823,
+          "red": 0.7442846256283178,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation",
+            "start_seconds": 900,
+            "end_seconds": 1200,
+            "games": 26,
+            "rows": 260,
+            "roc_auc": 0.9043030303030304,
+            "brier": 0.1478283142471978
+          },
+          "features": {
+            "gold_diff": -2694,
+            "kill_diff": -1,
+            "tower_diff": 0,
+            "inhibitor_diff": 0,
+            "dragon_diff": -2,
+            "baron_diff": 0,
+            "avg_level_diff": 0,
+            "game_time": 1058
+          }
+        },
+        "retained_after_end": true
       }
     }
   }
