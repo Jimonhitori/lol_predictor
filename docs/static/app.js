@@ -3,6 +3,7 @@ const state = { options: null, summary: null, detailMatchId: null, detailTimer: 
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
+const APP_TIME_ZONE = 'Asia/Tokyo';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const DETAIL_REFRESH_IN_PROGRESS_MS = 5000;
@@ -493,10 +494,10 @@ function shortMonthDay(value) {
   const text = String(value).trim();
   const dateOnly = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   const date = dateOnly
-    ? new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]))
+    ? dateFromLocalKey(`${dateOnly[1]}-${dateOnly[2]}-${dateOnly[3]}`)
     : new Date(text);
   if (Number.isNaN(date.getTime())) return '';
-  return new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric' }).format(date);
+  return formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
 }
 
 function patchLabel(patch) {
@@ -896,7 +897,7 @@ function normalizeTeamImage(value) {
 function refreshMatchPriority(match) {
   if (hasPlaceholderTeamInfo(match)) return 6;
   const matchDate = localDateKey(match.start_time);
-  const today = localDateKey(new Date().toISOString());
+  const today = todayDateKey();
   if (state.selectedMatchDate === 'live' && String(match.status || '').toLowerCase() === 'inprogress') return 5;
   if (matchDate === state.selectedMatchDate) return 4;
   if (matchDate === today) return 3;
@@ -909,7 +910,7 @@ function shouldRefreshMatchStatus(match) {
   const status = String(match.status || '').toLowerCase();
   if (['completed', 'complete'].includes(status)) return false;
   const matchDate = localDateKey(match.start_time);
-  const today = localDateKey(new Date().toISOString());
+  const today = todayDateKey();
   if (hasPlaceholderTeamInfo(match) && (matchDate === state.selectedMatchDate || matchDate === today)) return true;
   return state.selectedMatchDate === 'live'
     || matchDate === state.selectedMatchDate
@@ -1004,8 +1005,8 @@ function renderDateTabs(matches) {
     const date = dateFromLocalKey(state.selectedMatchDate);
     dateOptions.push({
       key: state.selectedMatchDate,
-      title: new Intl.DateTimeFormat('ja-JP', { weekday: 'short' }).format(date),
-      sub: new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric' }).format(date),
+      title: formatInAppTimeZone(date, { weekday: 'short' }),
+      sub: formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' }),
     });
     dateOptions.sort((a, b) => a.key.localeCompare(b.key));
   }
@@ -1036,7 +1037,7 @@ function renderDateTabs(matches) {
 }
 
 function visibleDateOptions(options) {
-  const today = localDateKey(new Date().toISOString());
+  const today = todayDateKey();
   const futureOrToday = options.filter(option => option.key >= today);
   if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
     return futureOrToday.slice(0, 3);
@@ -1047,7 +1048,7 @@ function visibleDateOptions(options) {
   if (options.length <= 3) return options;
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
     ? options.findIndex(option => option.key === state.selectedMatchDate)
-    : options.findIndex(option => option.key === localDateKey(new Date().toISOString()));
+    : options.findIndex(option => option.key === todayDateKey());
   const center = selected >= 0 ? selected : 0;
   const start = Math.max(0, Math.min(center - 1, options.length - 3));
   return options.slice(start, start + 3);
@@ -1064,45 +1065,61 @@ function liveMatches(matches) {
 }
 
 function defaultMatchDate(matches) {
-  return localDateKey(new Date().toISOString());
+  return todayDateKey();
 }
 
 function matchDateOptions(matches) {
   const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
   return keys.map(key => {
     const date = dateFromLocalKey(key);
-    const weekday = new Intl.DateTimeFormat('ja-JP', { weekday: 'short' }).format(date);
-    const md = new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric' }).format(date);
-    const isToday = key === localDateKey(new Date().toISOString());
+    const weekday = formatInAppTimeZone(date, { weekday: 'short' });
+    const md = formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
+    const isToday = key === todayDateKey();
     return { key, title: isToday ? '今日' : weekday, sub: md };
   });
+}
+
+function todayDateKey() {
+  return zonedDateKey(new Date());
 }
 
 function localDateKey(value) {
   if (!value) return '';
   const date = parseScheduleDate(value);
   if (Number.isNaN(date.getTime())) return '';
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}-${month}-${day}`;
+  return zonedDateKey(date);
+}
+
+function zonedDateKey(date) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: APP_TIME_ZONE,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(date);
+  const part = (type) => parts.find(item => item.type === type)?.value || '';
+  return `${part('year')}-${part('month')}-${part('day')}`;
 }
 
 function dateFromLocalKey(key) {
   const [year, month, day] = String(key).split('-').map(Number);
-  return new Date(year, month - 1, day);
+  return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+}
+
+function formatInAppTimeZone(date, options) {
+  return new Intl.DateTimeFormat('ja-JP', { timeZone: APP_TIME_ZONE, ...options }).format(date);
 }
 
 function matchDateLabel(value) {
   const date = parseScheduleDate(value);
   if (Number.isNaN(date.getTime())) return '';
-  return new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric', weekday: 'short' }).format(date);
+  return formatInAppTimeZone(date, { month: 'numeric', day: 'numeric', weekday: 'short' });
 }
 
 function matchStartLabel(value) {
   const date = parseScheduleDate(value);
   if (Number.isNaN(date.getTime())) return 'start TBD';
-  return new Intl.DateTimeFormat('ja-JP', { hour: '2-digit', minute: '2-digit' }).format(date);
+  return formatInAppTimeZone(date, { hour: '2-digit', minute: '2-digit' });
 }
 
 function parseScheduleDate(value) {
@@ -1589,12 +1606,12 @@ function matchDetailRefreshLabel(details) {
 function matchDetailStartLabel(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return '';
-  return new Intl.DateTimeFormat('ja-JP', {
+  return formatInAppTimeZone(date, {
     month: 'numeric',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-  }).format(date);
+  });
 }
 
 async function enrichStaticLiveData(details) {
@@ -2136,18 +2153,18 @@ function updateLiveRefreshMeta(details) {
 function shortTime(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat('ja-JP', { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(date);
+  return formatInAppTimeZone(date, { hour: '2-digit', minute: '2-digit', second: '2-digit' });
 }
 
 function shortDateTime(value) {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
-  return new Intl.DateTimeFormat('ja-JP', {
+  return formatInAppTimeZone(date, {
     month: 'numeric',
     day: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-  }).format(date);
+  });
 }
 
 async function predictDetail(left, right, league) {
