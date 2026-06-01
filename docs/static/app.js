@@ -494,7 +494,7 @@ function shortMonthDay(value) {
   const text = String(value).trim();
   const dateOnly = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   const date = dateOnly
-    ? dateFromLocalKey(`${dateOnly[1]}-${dateOnly[2]}-${dateOnly[3]}`)
+    ? dateFromLocalKey(${dateOnly[1]}--)
     : new Date(text);
   if (Number.isNaN(date.getTime())) return '';
   return formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
@@ -519,7 +519,7 @@ async function loadOptions() {
   state.options = await api('/api/options');
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
-  $('leagueGroup').value = 'all';
+  $('leagueGroup').value = 'major';
   fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
