@@ -811,7 +811,7 @@ function mergeFreshMatchDetails(match, fresh) {
   const merged = {
       ...match,
       status: fresh.status || match.status,
-      start_time: fresh.start_time || match.start_time,
+      start_time: match.start_time || fresh.start_time,
       best_of: fresh.best_of || match.best_of,
       blue_score: left.game_wins ?? match.blue_score,
       red_score: right.game_wins ?? match.red_score,
