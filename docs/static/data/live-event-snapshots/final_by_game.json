@@ -11613,5 +11613,336 @@
         "retained_after_end": true
       }
     }
+  },
+  "116051060806958506:116051060806958507": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-06-02T00:01:45.922Z",
+    "event_id": "116051060806958506",
+    "game_id": "116051060806958507",
+    "game_number": 1,
+    "event_status": "inProgress",
+    "teams": [
+      {
+        "id": "105549995617170853",
+        "name": "KaBuM! Eports",
+        "code": "KBM",
+        "image": "http://static.lolesports.com/teams/1774199720854_kbm_c_w.png",
+        "game_wins": "2"
+      },
+      {
+        "id": "109485335453835911",
+        "name": "Vivo Keyd Stars Academy",
+        "code": "VKS",
+        "image": "http://static.lolesports.com/teams/1774200249450_vks_c.png",
+        "game_wins": "2"
+      }
+    ],
+    "game": {
+      "id": "116051060806958507",
+      "number": 1,
+      "state": "completed",
+      "blue": {
+        "team_id": "105549995617170853",
+        "team_name": "KaBuM! Eports",
+        "team_code": "KBM"
+      },
+      "red": {
+        "team_id": "109485335453835911",
+        "team_name": "Vivo Keyd Stars Academy",
+        "team_code": "VKS"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 1262,
+        "frame_timestamp": "2026-06-01T20:40:19.982Z",
+        "patch_version": "16.11.781.1789",
+        "blue": [
+          {
+            "player": "KBM Yupps",
+            "participant_id": "1",
+            "champion": "Sion",
+            "champion_id": "Sion",
+            "role": "top",
+            "level": 13,
+            "kills": 2,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 153,
+            "gold": 6113,
+            "current_health": 3035,
+            "max_health": 3035,
+            "items": [
+              "1054",
+              "3340",
+              "3076",
+              "2031",
+              "3047",
+              "2502"
+            ]
+          },
+          {
+            "player": "KBM Scary",
+            "participant_id": "2",
+            "champion": "Nocturne",
+            "champion_id": "Nocturne",
+            "role": "jungle",
+            "level": 11,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 1,
+            "creep_score": 139,
+            "gold": 6150,
+            "current_health": 2321,
+            "max_health": 2321,
+            "items": [
+              "3364",
+              "3073",
+              "3047",
+              "1028",
+              "1036"
+            ]
+          },
+          {
+            "player": "KBM Grevthar",
+            "participant_id": "3",
+            "champion": "Anivia",
+            "champion_id": "Anivia",
+            "role": "mid",
+            "level": 12,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 1,
+            "creep_score": 155,
+            "gold": 6077,
+            "current_health": 2010,
+            "max_health": 2010,
+            "items": [
+              "1056",
+              "3363",
+              "6657",
+              "1027",
+              "1052"
+            ]
+          },
+          {
+            "player": "KBM Kojima",
+            "participant_id": "4",
+            "champion": "Lucian",
+            "champion_id": "Lucian",
+            "role": "bottom",
+            "level": 10,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 199,
+            "gold": 7270,
+            "current_health": 1432,
+            "max_health": 1480,
+            "items": [
+              "1086",
+              "3508",
+              "3047",
+              "3086",
+              "1042",
+              "1042",
+              "2055"
+            ]
+          },
+          {
+            "player": "KBM Guigs",
+            "participant_id": "5",
+            "champion": "Yuumi",
+            "champion_id": "Yuumi",
+            "role": "support",
+            "level": 9,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 20,
+            "gold": 4347,
+            "current_health": 1430,
+            "max_health": 1430,
+            "items": [
+              "3364",
+              "6620",
+              "4642",
+              "2055",
+              "2055",
+              "2022"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "VKS zekas",
+            "participant_id": "6",
+            "champion": "Aatrox",
+            "champion_id": "Aatrox",
+            "role": "top",
+            "level": 13,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 1,
+            "creep_score": 171,
+            "gold": 6987,
+            "current_health": 2440,
+            "max_health": 2773,
+            "items": [
+              "1054",
+              "3161",
+              "3047",
+              "2021",
+              "1036",
+              "1036"
+            ]
+          },
+          {
+            "player": "VKS Disamis",
+            "participant_id": "7",
+            "champion": "Pantheon",
+            "champion_id": "Pantheon",
+            "role": "jungle",
+            "level": 11,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 2,
+            "creep_score": 146,
+            "gold": 6446,
+            "current_health": 1561,
+            "max_health": 2071,
+            "items": [
+              "6610",
+              "3111",
+              "1037"
+            ]
+          },
+          {
+            "player": "VKS Qats",
+            "participant_id": "8",
+            "champion": "Cassiopeia",
+            "champion_id": "Cassiopeia",
+            "role": "mid",
+            "level": 13,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 0,
+            "creep_score": 195,
+            "gold": 6748,
+            "current_health": 2323,
+            "max_health": 2323,
+            "items": [
+              "1056",
+              "3070",
+              "6657",
+              "3363",
+              "3802",
+              "2055"
+            ]
+          },
+          {
+            "player": "VKS BUERO",
+            "participant_id": "9",
+            "champion": "Tristana",
+            "champion_id": "Tristana",
+            "role": "bottom",
+            "level": 9,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 143,
+            "gold": 5701,
+            "current_health": 1392,
+            "max_health": 1392,
+            "items": [
+              "1086",
+              "6676",
+              "3006",
+              "1042",
+              "3363"
+            ]
+          },
+          {
+            "player": "VKS scamber",
+            "participant_id": "10",
+            "champion": "Milio",
+            "champion_id": "Milio",
+            "role": "support",
+            "level": 8,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 25,
+            "gold": 3976,
+            "current_health": 1683,
+            "max_health": 1683,
+            "items": [
+              "3364",
+              "6620",
+              "2055",
+              "1028",
+              "2022"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 29957,
+          "kills": 2,
+          "towers": 1,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 1
+        },
+        "red_stats": {
+          "gold": 29858,
+          "kills": 2,
+          "towers": 1,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 1
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.5188079644573453,
+          "red": 0.48119203554265466,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation",
+            "start_seconds": 1200,
+            "end_seconds": 1500,
+            "games": 26,
+            "rows": 258,
+            "roc_auc": 0.9587223587223587,
+            "brier": 0.1254621549810755
+          },
+          "features": {
+            "gold_diff": 99,
+            "kill_diff": 0,
+            "tower_diff": 0,
+            "inhibitor_diff": 0,
+            "dragon_diff": 0,
+            "baron_diff": 0,
+            "avg_level_diff": 0.1999999999999993,
+            "game_time": 1262
+          }
+        },
+        "retained_after_end": true
+      }
+    }
   }
 }
