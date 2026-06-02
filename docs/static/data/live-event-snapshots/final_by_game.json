@@ -11616,7 +11616,7 @@
   },
   "116051060806958506:116051060806958507": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-02T09:01:53.116Z",
+    "checked_at": "2026-06-02T12:48:47.206Z",
     "event_id": "116051060806958506",
     "game_id": "116051060806958507",
     "game_number": 1,
@@ -11941,13 +11941,14 @@
             "game_time": 1262
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   },
   "116051060806958506:116051060806958511": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-02T09:01:53.116Z",
+    "checked_at": "2026-06-02T12:48:47.206Z",
     "event_id": "116051060806958506",
     "game_id": "116051060806958511",
     "game_number": 5,
@@ -12250,7 +12251,8 @@
             "game_time": 0
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }

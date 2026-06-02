@@ -14640,7 +14640,7 @@
   },
   "116051060806958506": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-02T09:01:53.116Z",
+    "checked_at": "2026-06-02T12:48:47.206Z",
     "event_id": "116051060806958506",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -14975,7 +14975,8 @@
                 "game_time": 1262
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         },
         {
@@ -15359,7 +15360,8 @@
                 "game_time": 0
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         }
       ],
