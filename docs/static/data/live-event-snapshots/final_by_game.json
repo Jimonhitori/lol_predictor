@@ -11616,11 +11616,11 @@
   },
   "116051060806958506:116051060806958507": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-02T00:01:45.922Z",
+    "checked_at": "2026-06-02T04:54:42.133Z",
     "event_id": "116051060806958506",
     "game_id": "116051060806958507",
     "game_number": 1,
-    "event_status": "inProgress",
+    "event_status": "completed",
     "teams": [
       {
         "id": "105549995617170853",
@@ -11634,7 +11634,7 @@
         "name": "Vivo Keyd Stars Academy",
         "code": "VKS",
         "image": "http://static.lolesports.com/teams/1774200249450_vks_c.png",
-        "game_wins": "2"
+        "game_wins": "3"
       }
     ],
     "game": {
@@ -11941,7 +11941,8 @@
             "game_time": 1262
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }
