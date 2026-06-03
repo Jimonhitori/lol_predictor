@@ -718,7 +718,9 @@ function applyPreMatchPredictionOverlay(matches) {
     const eventId = String(match?.id || match?.event_id || '');
     if (eventId) seenIds.add(eventId);
     const prediction = eventId ? predictions.byEventId?.[eventId] : null;
-    return prediction ? overlayMatchFromPrediction(match, prediction) : match;
+    return prediction && predictionMatchesSchedule(match, prediction)
+      ? overlayMatchFromPrediction(match, prediction)
+      : match;
   });
   for (const prediction of predictions.rows || []) {
     const eventId = String(prediction.event_id || prediction.game_id || '');
@@ -736,7 +738,7 @@ function overlayMatchFromPrediction(match, prediction) {
     ...match,
     id: String(match.id || prediction.event_id || prediction.game_id || ''),
     league: match.league || prediction.league || '',
-    start_time: startTime || match.start_time || '',
+    start_time: match.start_time || startTime || '',
     blue_team: overlayTeams ? displayTeamName(prediction.blue_team, match.blue_team) : match.blue_team,
     red_team: overlayTeams ? displayTeamName(prediction.red_team, match.red_team) : match.red_team,
     blue_code: overlayTeams ? displayTeamCode(prediction.blue_team, match.blue_code) : match.blue_code,
@@ -748,6 +750,13 @@ function overlayMatchFromPrediction(match, prediction) {
 function predictionStartTimeIso(prediction) {
   const date = parseScheduleDate(prediction?.start_time || '');
   return Number.isNaN(date.getTime()) ? '' : date.toISOString();
+}
+
+function predictionMatchesSchedule(match, prediction) {
+  const matchStart = normalizedPredictionTime(match?.start_time || '');
+  const predictionStart = normalizedPredictionTime(prediction?.start_time || '');
+  if (!matchStart || !predictionStart) return true;
+  return matchStart === predictionStart;
 }
 
 function matchScheduleLooksStale(match, prediction) {
