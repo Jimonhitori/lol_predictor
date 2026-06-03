@@ -1146,8 +1146,11 @@ function matchStartLabel(value) {
 function parseScheduleDate(value) {
   const text = String(value || '').trim();
   if (!text) return new Date(NaN);
-  const utcLike = text.match(/^(\d{4}-\d{2}-\d{2})[ T](\d{2}:\d{2})(?::(\d{2}))?$/);
-  if (utcLike) return new Date(`${utcLike[1]}T${utcLike[2]}:${utcLike[3] || '00'}Z`);
+  const naiveDateTime = text.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?$/);
+  if (naiveDateTime) {
+    const [, year, month, day, hour, minute, second = '00'] = naiveDateTime;
+    return new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute), Number(second));
+  }
   return new Date(text);
 }
 
