@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0 };
+const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
@@ -560,9 +560,7 @@ async function loadMatches() {
   if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
   state.allMatches = filterMatchesBySelection(data.matches || [], filters);
   state.matchSource = data.source || 'none';
-  if (!state.selectedMatchDate) {
-    state.selectedMatchDate = defaultMatchDate(state.allMatches);
-  }
+  syncDefaultMatchDate(state.allMatches);
   await refreshStaticMatchStatuses();
   renderDateTabs(state.allMatches);
   renderMatches();
@@ -1028,6 +1026,7 @@ function renderDateTabs(matches) {
   for (const tab of document.querySelectorAll('.dateTab')) {
     tab.addEventListener('click', () => {
       state.selectedMatchDate = tab.dataset.dateKey || '';
+      state.userSelectedMatchDate = true;
       refreshStaticMatchStatuses().finally(() => {
         renderDateTabs(state.allMatches);
         renderMatches();
@@ -1066,6 +1065,19 @@ function liveMatches(matches) {
 
 function defaultMatchDate(matches) {
   return todayDateKey();
+}
+
+function syncDefaultMatchDate(matches) {
+  if (state.selectedMatchDate === 'live') return;
+  const today = defaultMatchDate(matches);
+  if (!state.selectedMatchDate) {
+    state.selectedMatchDate = today;
+    state.userSelectedMatchDate = false;
+    return;
+  }
+  if (!state.userSelectedMatchDate && state.selectedMatchDate < today) {
+    state.selectedMatchDate = today;
+  }
 }
 
 function matchDateOptions(matches) {
