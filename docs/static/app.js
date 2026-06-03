@@ -764,14 +764,19 @@ function standalonePredictionMatch(prediction, matches) {
 }
 
 function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
-  const predictionSlotTeams = new Map((matches || [])
-    .filter(match => String(match?.source || '') === 'pre_match_prediction_feed')
+  const predictionRows = (matches || []).filter(match => String(match?.source || '') === 'pre_match_prediction_feed');
+  const predictionSlotTeams = new Map(predictionRows
     .map(match => [scheduleSlotKey(match), teamPairKey(match)])
     .filter(([slot, teams]) => slot && teams));
+  const predictionEventSlots = new Map(predictionRows
+    .map(match => [String(match?.id || match?.event_id || ''), scheduleSlotKey(match)])
+    .filter(([eventId, slot]) => eventId && slot));
   if (!predictionSlotTeams.size) return matches;
   return (matches || []).filter(match => {
     if (String(match?.source || '') === 'pre_match_prediction_feed') return true;
     const slot = scheduleSlotKey(match);
+    const eventSlot = predictionEventSlots.get(String(match?.id || match?.event_id || ''));
+    if (eventSlot && eventSlot !== slot) return false;
     const predictionTeams = predictionSlotTeams.get(slot);
     if (!predictionTeams) return true;
     return teamPairKey(match) === predictionTeams;
