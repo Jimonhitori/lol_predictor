@@ -714,21 +714,79 @@ function applyPreMatchPredictionOverlay(matches) {
   const predictions = state.preMatchPredictions || {};
   if (predictions.status !== 'loaded') return matches;
   const seenIds = new Set();
+  const seenPredictionKeys = new Set((matches || []).map(match => standalonePredictionKey({
+    start_time: match?.start_time || '',
+    blue_team: match?.blue_team || match?.blue_code || '',
+    red_team: match?.red_team || match?.red_code || '',
+  })).filter(Boolean));
   const overlaid = (matches || []).map(match => {
     const eventId = String(match?.id || match?.event_id || '');
-    if (eventId) seenIds.add(eventId);
     const prediction = eventId ? predictions.byEventId?.[eventId] : null;
-    return prediction && predictionMatchesSchedule(match, prediction)
-      ? overlayMatchFromPrediction(match, prediction)
-      : match;
+    const canOverlay = prediction && predictionMatchesSchedule(match, prediction);
+    if (eventId && (!prediction || canOverlay)) seenIds.add(eventId);
+    return canOverlay ? overlayMatchFromPrediction(match, prediction) : match;
   });
   for (const prediction of predictions.rows || []) {
     const eventId = String(prediction.event_id || prediction.game_id || '');
     if (!eventId || seenIds.has(eventId)) continue;
+    const predictionKey = standalonePredictionKey(prediction);
+    if (predictionKey && seenPredictionKeys.has(predictionKey)) continue;
+    if (predictionKey) seenPredictionKeys.add(predictionKey);
     seenIds.add(eventId);
-    overlaid.push(overlayMatchFromPrediction({ id: eventId, status: 'unstarted', source: 'pre_match_prediction_feed' }, prediction));
+    overlaid.push(overlayMatchFromPrediction(standalonePredictionMatch(prediction, matches), prediction));
   }
-  return sortMatchesByStart(overlaid);
+  return sortMatchesByStart(suppressPlaceholderMatchesWithStandalonePredictions(overlaid));
+}
+
+function standalonePredictionKey(value) {
+  const start = normalizedPredictionTime(value?.start_time || '');
+  const teams = [teamKey(value?.blue_team || ''), teamKey(value?.red_team || '')].filter(Boolean).sort();
+  return start && teams.length === 2 ? `${start}|${teams[0]}|${teams[1]}` : '';
+}
+
+function standalonePredictionMatch(prediction, matches) {
+  const eventId = String(prediction.event_id || prediction.game_id || '');
+  const meta = predictionLeagueMetadata(prediction, matches);
+  return {
+    id: eventId,
+    event_id: eventId,
+    game_id: String(prediction.game_id || ''),
+    status: 'unstarted',
+    source: 'pre_match_prediction_feed',
+    league: shortPredictionLeague(prediction.league) || prediction.league || '',
+    league_group: meta.league_group || '',
+    region: meta.region || '',
+    best_of: meta.best_of || '',
+  };
+}
+
+function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
+  const predictionSlots = new Set((matches || [])
+    .filter(match => String(match?.source || '') === 'pre_match_prediction_feed')
+    .map(match => scheduleSlotKey(match))
+    .filter(Boolean));
+  if (!predictionSlots.size) return matches;
+  return (matches || []).filter(match => {
+    if (String(match?.source || '') === 'pre_match_prediction_feed') return true;
+    if (!hasPlaceholderTeamInfo(match)) return true;
+    return !predictionSlots.has(scheduleSlotKey(match));
+  });
+}
+
+function scheduleSlotKey(match) {
+  const league = shortPredictionLeague(match?.league || '').toLowerCase();
+  const start = normalizedPredictionTime(match?.start_time || '');
+  return league && start ? `${league}|${start}` : '';
+}
+
+function predictionLeagueMetadata(prediction, matches) {
+  const league = shortPredictionLeague(prediction?.league || '').toLowerCase();
+  if (!league) return {};
+  return (matches || []).find(match => String(match?.league || '').toLowerCase() === league) || {};
+}
+
+function shortPredictionLeague(value) {
+  return String(value || '').split(' - ')[0].trim();
 }
 
 function overlayMatchFromPrediction(match, prediction) {
@@ -777,6 +835,19 @@ function displayTeamCode(value, fallback) {
   if (!text) return fallback || '';
   const words = text.toLowerCase().split('_').filter(Boolean);
   if (!words.length) return fallback || '';
+  const aliases = {
+    bilibili_gaming: 'BLG',
+    edward_gaming: 'EDG',
+    thundertalk_gaming: 'TT',
+    thunder_talk_gaming: 'TT',
+    anyone_s_legend: 'AL',
+    top_esports: 'TES',
+    team_we: 'WE',
+    weibo_gaming: 'WBG',
+    lgd_gaming: 'LGD',
+  };
+  const alias = aliases[words.join('_')];
+  if (alias) return alias;
   const knownCodes = ['lng', 'we', 'edg', 'jdg', 'blg', 'tes', 'wbg', 'ig', 'tt', 'lgd', 'nip', 'up', 'al', 'rng', 'omg', 'fpx', 'ra'];
   const known = knownCodes.find(code => words.includes(code));
   if (known) return known.toUpperCase();
