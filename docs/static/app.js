@@ -724,7 +724,10 @@ function applyPreMatchPredictionOverlay(matches) {
     const prediction = eventId ? predictions.byEventId?.[eventId] : null;
     const canOverlay = prediction && predictionMatchesSchedule(match, prediction);
     if (eventId && (!prediction || canOverlay)) seenIds.add(eventId);
-    return canOverlay ? overlayMatchFromPrediction(match, prediction) : match;
+    const output = canOverlay ? overlayMatchFromPrediction(match, prediction) : match;
+    const outputKey = standalonePredictionKey(output);
+    if (outputKey) seenPredictionKeys.add(outputKey);
+    return output;
   });
   for (const prediction of predictions.rows || []) {
     const eventId = String(prediction.event_id || prediction.game_id || '');
@@ -855,6 +858,8 @@ function displayTeamCode(value, fallback) {
     team_we: 'WE',
     weibo_gaming: 'WBG',
     lgd_gaming: 'LGD',
+    gam_esports: 'GAM',
+    mvk_esports: 'MVK',
   };
   const alias = aliases[words.join('_')];
   if (alias) return alias;
