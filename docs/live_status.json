@@ -180,7 +180,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-02T22:39:52.682753+00:00",
+  "generated_at": "2026-06-03T22:42:49.884529+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -203,7 +203,7 @@
       "brier_score": 0.15797774299471778,
       "display_recommendation": null,
       "earliest_reliable_bucket": null,
-      "log_loss": 0.47332879223098084
+      "log_loss": 0.4733287922309808
     },
     "feature_rows": 16884,
     "games": 4294,
@@ -234,15 +234,15 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 32,
+        "games": 33,
         "interval_count": 238,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 466,
-        "oe_bootstrap_snapshot_rows": 247,
+        "non_empty_game_state_rows": 476,
+        "oe_bootstrap_snapshot_rows": 257,
         "pct_intervals_lte_30s": 0.5840336134453782,
         "production_live_telemetry_rows": 219,
         "raw_frame_collection_rows": 0,
-        "rows": 466,
+        "rows": 476,
         "sub_30s_interval_count": 139
       },
       "id": "live_frame_collection",
@@ -263,7 +263,7 @@
         "pipeline_labeled_feature_rows": 0,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 466,
+        "pipeline_resolved_rows": 476,
         "pipeline_trained": false,
         "pipeline_warnings": [
           "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"
@@ -342,7 +342,7 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 56
+        "pre_match_rows": 48
       },
       "ready": false,
       "replay": {
@@ -351,7 +351,7 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 466,
+      "resolved_rows": 476,
       "trained": false,
       "warning_count": 1,
       "warnings": [
