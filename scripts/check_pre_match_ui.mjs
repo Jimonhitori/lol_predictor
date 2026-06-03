@@ -371,6 +371,8 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
       checked: false,
       target_match_id: matchId || '',
       stale_static_match_corrected: null,
+      start_time_mismatch_guarded: null,
+      schedule_start_time: '',
       prediction_start_time: '',
       overlaid_start_time: '',
       overlaid_blue_team: '',
@@ -385,6 +387,7 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
     return output;
   }
   const targetId = String(targetPrediction.event_id || targetPrediction.game_id || '');
+  const targetMatch = matches.find((match) => String(match.id || match.event_id || '') === targetId);
   output.summary.target_match_id = targetId;
   const elements = new Map();
   const context = {
@@ -418,21 +421,35 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
       applyPreMatchPredictionOverlay(${JSON.stringify(matches)}).find(match => String(match.id || match.event_id || '') === ${JSON.stringify(targetId)});
     `, context, { timeout: 1000 });
     const predictionStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetPrediction.start_time || '')})`, context, { timeout: 1000 });
+    const scheduleStart = targetMatch
+      ? vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetMatch.start_time || '')})`, context, { timeout: 1000 })
+      : '';
+    const startsMatch = !scheduleStart || !predictionStart || String(scheduleStart) === String(predictionStart);
+    output.summary.schedule_start_time = scheduleStart;
     output.summary.prediction_start_time = predictionStart;
     output.summary.overlaid_start_time = String(result?.start_time || '');
     output.summary.overlaid_blue_team = String(result?.blue_team || '');
     output.summary.overlaid_red_team = String(result?.red_team || '');
     if (!result) {
       output.errors.push(`schedule overlay did not return target match ${targetId}`);
-    } else {
+    } else if (startsMatch) {
       output.summary.stale_static_match_corrected = String(result.start_time || '') === String(predictionStart || '')
         && !isPlaceholderTeam(result.blue_team)
         && !isPlaceholderTeam(result.red_team);
+      output.summary.start_time_mismatch_guarded = false;
       if (String(result.start_time || '') !== String(predictionStart || '')) {
         output.errors.push(`schedule overlay start time ${result.start_time || '(missing)'} did not match prediction ${predictionStart || '(missing)'}`);
       }
       if (isPlaceholderTeam(result.blue_team) || isPlaceholderTeam(result.red_team)) {
         output.errors.push('schedule overlay left placeholder team names on a prediction-backed match');
+      }
+    } else {
+      output.summary.stale_static_match_corrected = false;
+      output.summary.start_time_mismatch_guarded = String(result.start_time || '') === String(targetMatch?.start_time || '')
+        && String(result.blue_team || '') === String(targetMatch?.blue_team || '')
+        && String(result.red_team || '') === String(targetMatch?.red_team || '');
+      if (!output.summary.start_time_mismatch_guarded) {
+        output.errors.push('schedule overlay did not preserve schedule match when prediction start time mismatched');
       }
     }
   } catch (error) {
