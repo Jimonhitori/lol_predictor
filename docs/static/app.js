@@ -761,15 +761,17 @@ function standalonePredictionMatch(prediction, matches) {
 }
 
 function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
-  const predictionSlots = new Set((matches || [])
+  const predictionSlotTeams = new Map((matches || [])
     .filter(match => String(match?.source || '') === 'pre_match_prediction_feed')
-    .map(match => scheduleSlotKey(match))
-    .filter(Boolean));
-  if (!predictionSlots.size) return matches;
+    .map(match => [scheduleSlotKey(match), teamPairKey(match)])
+    .filter(([slot, teams]) => slot && teams));
+  if (!predictionSlotTeams.size) return matches;
   return (matches || []).filter(match => {
     if (String(match?.source || '') === 'pre_match_prediction_feed') return true;
-    if (!hasPlaceholderTeamInfo(match)) return true;
-    return !predictionSlots.has(scheduleSlotKey(match));
+    const slot = scheduleSlotKey(match);
+    const predictionTeams = predictionSlotTeams.get(slot);
+    if (!predictionTeams) return true;
+    return teamPairKey(match) === predictionTeams;
   });
 }
 
@@ -777,6 +779,14 @@ function scheduleSlotKey(match) {
   const league = shortPredictionLeague(match?.league || '').toLowerCase();
   const start = normalizedPredictionTime(match?.start_time || '');
   return league && start ? `${league}|${start}` : '';
+}
+
+function teamPairKey(match) {
+  const teams = [
+    teamKey(match?.blue_team || match?.blue_code || match?.blue || ''),
+    teamKey(match?.red_team || match?.red_code || match?.red || ''),
+  ].filter(Boolean).sort();
+  return teams.length === 2 ? `${teams[0]}|${teams[1]}` : '';
 }
 
 function predictionLeagueMetadata(prediction, matches) {
