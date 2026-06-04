@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
+const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
@@ -555,10 +555,11 @@ async function loadTeamStandings() {
 async function loadMatches() {
   const requestId = ++state.matchesRequestId;
   const filters = currentMatchFilters();
+  await loadTeamRegistry();
   const predictionsReady = loadPreMatchPredictions();
   const data = await api('/api/matches/today?' + qs());
   if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
-  state.allMatches = filterMatchesBySelection(data.matches || [], filters);
+  state.allMatches = hydrateMatchesTeamMeta(filterMatchesBySelection(data.matches || [], filters));
   state.matchSource = data.source || 'none';
   syncDefaultMatchDate(state.allMatches);
   await refreshStaticMatchStatuses();
@@ -566,7 +567,7 @@ async function loadMatches() {
   renderMatches();
   predictionsReady.then(async () => {
     if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
-    state.allMatches = applyPreMatchPredictionOverlay(state.allMatches);
+    state.allMatches = hydrateMatchesTeamMeta(applyPreMatchPredictionOverlay(state.allMatches));
     await refreshStaticMatchStatuses();
     renderDateTabs(state.allMatches);
     renderMatches();
@@ -596,7 +597,27 @@ function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
   });
 }
 
+function hydrateMatchesTeamMeta(matches) {
+  return (matches || []).map(hydrateMatchTeamMeta);
+}
+
+function hydrateMatchTeamMeta(match) {
+  if (!match) return match;
+  const blueMeta = resolveTeamMeta(match.blue_team || match.blue_code || '', match.blue_team || '', {});
+  const redMeta = resolveTeamMeta(match.red_team || match.red_code || '', match.red_team || '', {});
+  return {
+    ...match,
+    blue_team: !isPlaceholderTeam(match.blue_team) ? match.blue_team : (blueMeta.name || match.blue_team),
+    red_team: !isPlaceholderTeam(match.red_team) ? match.red_team : (redMeta.name || match.red_team),
+    blue_code: blueMeta.code || match.blue_code,
+    red_code: redMeta.code || match.red_code,
+    blue_image: normalizeTeamImage(match.blue_image || blueMeta.logo || ''),
+    red_image: normalizeTeamImage(match.red_image || redMeta.logo || ''),
+  };
+}
+
 async function loadPreMatchPredictions() {
+  await loadTeamRegistry();
   if (state.preMatchPredictionPromise) return state.preMatchPredictionPromise;
   state.preMatchPredictionPromise = (async () => {
     const candidates = [
@@ -620,6 +641,44 @@ async function loadPreMatchPredictions() {
     return state.preMatchPredictions;
   })();
   return state.preMatchPredictionPromise;
+}
+
+async function loadTeamRegistry() {
+  if (state.teamRegistryPromise) return state.teamRegistryPromise;
+  state.teamRegistryPromise = (async () => {
+    try {
+      const response = await fetch(teamRegistryUrl(), { cache: 'no-store' });
+      if (!response.ok) throw new Error(`team registry ${response.status}`);
+      const payload = await response.json();
+      state.teamRegistry = normalizeTeamRegistry(payload);
+    } catch (error) {
+      state.teamRegistry = { byKey: {}, status: 'unavailable' };
+    }
+    return state.teamRegistry;
+  })();
+  return state.teamRegistryPromise;
+}
+
+function teamRegistryUrl() {
+  const script = document.querySelector('script[src*="app.js"]');
+  return new URL('data/team_registry.json', script?.src || new URL('static/app.js', location.href)).toString();
+}
+
+function normalizeTeamRegistry(payload) {
+  const byKey = {};
+  for (const row of Array.isArray(payload?.teams) ? payload.teams : []) {
+    const entry = {
+      code: String(row.code || '').trim(),
+      name: String(row.name || '').trim(),
+      logo: normalizeTeamImage(row.logo || ''),
+      source: String(row.source || 'team_registry'),
+    };
+    const keys = [row.key, row.code, row.name, ...(Array.isArray(row.aliases) ? row.aliases : [])]
+      .map(teamKey)
+      .filter(Boolean);
+    for (const key of keys) byKey[key] = { ...entry, key };
+  }
+  return { byKey, status: 'loaded', updated_at: payload?.updated_at || '' };
 }
 
 function preMatchPredictionLocalUrl() {
@@ -752,6 +811,8 @@ function standalonePredictionKey(value) {
 function standalonePredictionMatch(prediction, matches) {
   const eventId = String(prediction.event_id || prediction.game_id || '');
   const meta = predictionLeagueMetadata(prediction, matches);
+  const blueMeta = resolveTeamMeta(prediction.blue_team, prediction.blue_team_name, { matches });
+  const redMeta = resolveTeamMeta(prediction.red_team, prediction.red_team_name, { matches });
   return {
     id: eventId,
     event_id: eventId,
@@ -762,31 +823,48 @@ function standalonePredictionMatch(prediction, matches) {
     league_group: meta.league_group || '',
     region: meta.region || '',
     best_of: meta.best_of || '',
-    blue_image: predictionTeamImage(prediction.blue_team, prediction.blue_team_name, matches),
-    red_image: predictionTeamImage(prediction.red_team, prediction.red_team_name, matches),
+    blue_team: blueMeta.name || displayTeamName(prediction.blue_team_name || prediction.blue_team, ''),
+    red_team: redMeta.name || displayTeamName(prediction.red_team_name || prediction.red_team, ''),
+    blue_code: blueMeta.code || displayTeamCode(prediction.blue_team, ''),
+    red_code: redMeta.code || displayTeamCode(prediction.red_team, ''),
+    blue_image: blueMeta.logo || '',
+    red_image: redMeta.logo || '',
   };
 }
 
 function predictionTeamImage(team, displayName, matches) {
-  const key = teamKey(team || displayName || '');
-  if (!key) return '';
-  const known = knownPredictionTeamImage(key);
-  if (known) return known;
-  for (const match of matches || []) {
-    const blueKey = teamKey(match?.blue_team || match?.blue_code || '');
-    if (blueKey === key && match?.blue_image) return normalizeTeamImage(match.blue_image);
-    const redKey = teamKey(match?.red_team || match?.red_code || '');
-    if (redKey === key && match?.red_image) return normalizeTeamImage(match.red_image);
-  }
-  return '';
+  return resolveTeamMeta(team, displayName, { matches }).logo || '';
 }
 
-function knownPredictionTeamImage(key) {
-  const images = {
-    misaesports: 'http://static.lolesports.com/teams/1737386153294_MisaEsports.png',
-    pcificesports: 'http://static.lolesports.com/teams/1767800848871_PcificLogo2.png',
+function resolveTeamMeta(team, displayName = '', options = {}) {
+  const registry = state.teamRegistry?.byKey || {};
+  const targetKey = teamKey(team || displayName || '');
+  for (const value of [team, displayName]) {
+    const key = teamKey(value || '');
+    if (key && registry[key]) return registry[key];
+  }
+  for (const match of options.matches || []) {
+    const blueKey = teamKey(match?.blue_team || match?.blue_code || '');
+    if (blueKey === targetKey) return {
+      code: String(match.blue_code || '').trim(),
+      name: String(match.blue_team || '').trim(),
+      logo: normalizeTeamImage(match.blue_image || ''),
+      source: 'match_index',
+    };
+    const redKey = teamKey(match?.red_team || match?.red_code || '');
+    if (redKey === targetKey) return {
+      code: String(match.red_code || '').trim(),
+      name: String(match.red_team || '').trim(),
+      logo: normalizeTeamImage(match.red_image || ''),
+      source: 'match_index',
+    };
+  }
+  return {
+    code: '',
+    name: displayTeamName(displayName || team, ''),
+    logo: '',
+    source: 'fallback',
   };
-  return normalizeTeamImage(images[key] || '');
 }
 
 function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
@@ -845,8 +923,8 @@ function overlayMatchFromPrediction(match, prediction) {
     red_team: overlayTeams ? displayTeamName(prediction.red_team_name || prediction.red_team, match.red_team) : match.red_team,
     blue_code: overlayTeams ? displayTeamCode(prediction.blue_team, match.blue_code) : match.blue_code,
     red_code: overlayTeams ? displayTeamCode(prediction.red_team, match.red_code) : match.red_code,
-    blue_image: normalizeTeamImage(match.blue_image || predictionTeamImage(prediction.blue_team, prediction.blue_team_name, [])),
-    red_image: normalizeTeamImage(match.red_image || predictionTeamImage(prediction.red_team, prediction.red_team_name, [])),
+    blue_image: normalizeTeamImage(!isPlaceholderImage(match.blue_image) ? match.blue_image : predictionTeamImage(prediction.blue_team, prediction.blue_team_name, [])),
+    red_image: normalizeTeamImage(!isPlaceholderImage(match.red_image) ? match.red_image : predictionTeamImage(prediction.red_team, prediction.red_team_name, [])),
     status: match.status || 'unstarted',
   };
 }

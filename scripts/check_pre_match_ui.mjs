@@ -22,6 +22,7 @@ const [feed, matchesPayload, appSource] = await Promise.all([
 ]);
 const schema = await loadJson('static/data/schemas/pre_match_predictions.v1.schema.json');
 const styles = await loadText('static/styles.css');
+const teamRegistry = await loadJson('static/data/team_registry.json');
 
 const errors = [];
 const warnings = [];
@@ -49,6 +50,12 @@ if (schema.ok && schema.data?.properties?.schema?.const !== 'lol_predictions_pub
 }
 if (schema.ok && !Array.isArray(schema.data?.properties?.predictions?.items?.required)) {
   errors.push('shared prediction schema is missing predictions item required fields');
+}
+if (!teamRegistry.ok) {
+  errors.push(`team registry failed: ${teamRegistry.error || teamRegistry.status}`);
+} else {
+  if (teamRegistry.data?.schema !== 'lol_team_registry_v1') errors.push('team registry schema is not lol_team_registry_v1');
+  if (!Array.isArray(teamRegistry.data?.teams) || !teamRegistry.data.teams.length) errors.push('team registry is missing teams[]');
 }
 
 if (!matchesPayload.ok) errors.push(`matches index failed: ${matchesPayload.error || matchesPayload.status}`);
