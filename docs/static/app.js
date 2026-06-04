@@ -677,6 +677,8 @@ function normalizePreMatchPrediction(row) {
     start_time: String(row.start_time || row.startTime || row.date || ''),
     blue_team: String(row.blue_team || row.blueTeam || row.blue || ''),
     red_team: String(row.red_team || row.redTeam || row.red || ''),
+    blue_team_name: String(row.blue_team_name || row.blueTeamName || ''),
+    red_team_name: String(row.red_team_name || row.redTeamName || ''),
     blue_win_probability: clampProbability(blueProbability),
     red_win_probability: clampProbability(redProbability),
     predicted_winner: String(row.predicted_winner || row.predictedWinner || ''),
@@ -760,7 +762,31 @@ function standalonePredictionMatch(prediction, matches) {
     league_group: meta.league_group || '',
     region: meta.region || '',
     best_of: meta.best_of || '',
+    blue_image: predictionTeamImage(prediction.blue_team, prediction.blue_team_name, matches),
+    red_image: predictionTeamImage(prediction.red_team, prediction.red_team_name, matches),
   };
+}
+
+function predictionTeamImage(team, displayName, matches) {
+  const key = teamKey(team || displayName || '');
+  if (!key) return '';
+  const known = knownPredictionTeamImage(key);
+  if (known) return known;
+  for (const match of matches || []) {
+    const blueKey = teamKey(match?.blue_team || match?.blue_code || '');
+    if (blueKey === key && match?.blue_image) return normalizeTeamImage(match.blue_image);
+    const redKey = teamKey(match?.red_team || match?.red_code || '');
+    if (redKey === key && match?.red_image) return normalizeTeamImage(match.red_image);
+  }
+  return '';
+}
+
+function knownPredictionTeamImage(key) {
+  const images = {
+    misaesports: 'http://static.lolesports.com/teams/1737386153294_MisaEsports.png',
+    pcificesports: 'http://static.lolesports.com/teams/1767800848871_PcificLogo2.png',
+  };
+  return normalizeTeamImage(images[key] || '');
 }
 
 function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
@@ -815,10 +841,12 @@ function overlayMatchFromPrediction(match, prediction) {
     id: String(match.id || prediction.event_id || prediction.game_id || ''),
     league: match.league || prediction.league || '',
     start_time: match.start_time || startTime || '',
-    blue_team: overlayTeams ? displayTeamName(prediction.blue_team, match.blue_team) : match.blue_team,
-    red_team: overlayTeams ? displayTeamName(prediction.red_team, match.red_team) : match.red_team,
+    blue_team: overlayTeams ? displayTeamName(prediction.blue_team_name || prediction.blue_team, match.blue_team) : match.blue_team,
+    red_team: overlayTeams ? displayTeamName(prediction.red_team_name || prediction.red_team, match.red_team) : match.red_team,
     blue_code: overlayTeams ? displayTeamCode(prediction.blue_team, match.blue_code) : match.blue_code,
     red_code: overlayTeams ? displayTeamCode(prediction.red_team, match.red_code) : match.red_code,
+    blue_image: normalizeTeamImage(match.blue_image || predictionTeamImage(prediction.blue_team, prediction.blue_team_name, [])),
+    red_image: normalizeTeamImage(match.red_image || predictionTeamImage(prediction.red_team, prediction.red_team_name, [])),
     status: match.status || 'unstarted',
   };
 }
@@ -863,8 +891,11 @@ function displayTeamCode(value, fallback) {
     team_we: 'WE',
     weibo_gaming: 'WBG',
     lgd_gaming: 'LGD',
+    jd_gaming: 'JDG',
     gam_esports: 'GAM',
     mvk_esports: 'MVK',
+    misa_esports: 'MISA',
+    pcific_esports: 'PCF',
   };
   const alias = aliases[words.join('_')];
   if (alias) return alias;

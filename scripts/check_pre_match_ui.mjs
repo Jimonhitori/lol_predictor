@@ -438,11 +438,12 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
     if (!resultRows.length) {
       output.errors.push(`schedule overlay did not return target match ${targetId}`);
     } else if (startsMatch && scheduleResult) {
-      output.summary.stale_static_match_corrected = String(scheduleResult.start_time || '') === String(predictionStart || '')
+      const scheduleResultStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(scheduleResult.start_time || '')})`, context, { timeout: 1000 });
+      output.summary.stale_static_match_corrected = String(scheduleResultStart || '') === String(predictionStart || '')
         && !isPlaceholderTeam(scheduleResult.blue_team)
         && !isPlaceholderTeam(scheduleResult.red_team);
       output.summary.start_time_mismatch_guarded = false;
-      if (String(scheduleResult.start_time || '') !== String(predictionStart || '')) {
+      if (String(scheduleResultStart || '') !== String(predictionStart || '')) {
         output.errors.push(`schedule overlay start time ${scheduleResult.start_time || '(missing)'} did not match prediction ${predictionStart || '(missing)'}`);
       }
       if (isPlaceholderTeam(scheduleResult.blue_team) || isPlaceholderTeam(scheduleResult.red_team)) {
