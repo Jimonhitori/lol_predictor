@@ -15847,5 +15847,462 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "115570683341512217": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-05T17:33:02.929Z",
+    "event_id": "115570683341512217",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115570683341512217",
+      "league": "LCP",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-06-05T18:00:00.000Z",
+      "teams": [
+        {
+          "id": "98767991954244555",
+          "name": "GAM Esports",
+          "code": "GAM",
+          "image": "http://static.lolesports.com/teams/1643263093448_GAMyellow.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "107251245690956393",
+          "name": "MVK Esports",
+          "code": "MVK",
+          "image": "http://static.lolesports.com/teams/1767089709161_White_Logo.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570683341512218",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991954244555",
+            "team_name": "GAM Esports",
+            "team_code": "GAM"
+          },
+          "red": {
+            "team_id": "107251245690956393",
+            "team_name": "MVK Esports",
+            "team_code": "MVK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570683341512219",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "107251245690956393",
+            "team_name": "MVK Esports",
+            "team_code": "MVK"
+          },
+          "red": {
+            "team_id": "98767991954244555",
+            "team_name": "GAM Esports",
+            "team_code": "GAM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 286,
+            "frame_timestamp": "2026-06-05T10:09:49.945Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "MVK Kratos",
+                "participant_id": "1",
+                "champion": "Tristana",
+                "champion_id": "Tristana",
+                "role": "top",
+                "level": 5,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 34,
+                "gold": 1850,
+                "current_health": 683,
+                "max_health": 1020,
+                "items": [
+                  "1086",
+                  "3340"
+                ]
+              },
+              {
+                "player": "MVK Gury",
+                "participant_id": "2",
+                "champion": "Naafiri",
+                "champion_id": "Naafiri",
+                "role": "jungle",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 27,
+                "gold": 1668,
+                "current_health": 821,
+                "max_health": 912,
+                "items": [
+                  "1101",
+                  "3340"
+                ]
+              },
+              {
+                "player": "MVK Seany",
+                "participant_id": "3",
+                "champion": "Lissandra",
+                "champion_id": "Lissandra",
+                "role": "mid",
+                "level": 5,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 41,
+                "gold": 2113,
+                "current_health": 1106,
+                "max_health": 1179,
+                "items": [
+                  "1056",
+                  "3340",
+                  "1052",
+                  "1082",
+                  "2055",
+                  "1001",
+                  "2031"
+                ]
+              },
+              {
+                "player": "MVK Harky",
+                "participant_id": "4",
+                "champion": "Caitlyn",
+                "champion_id": "Caitlyn",
+                "role": "bottom",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 1,
+                "creep_score": 49,
+                "gold": 2177,
+                "current_health": 494,
+                "max_health": 887,
+                "items": [
+                  "1086",
+                  "3340"
+                ]
+              },
+              {
+                "player": "MVK SiuLoong",
+                "participant_id": "5",
+                "champion": "Karma",
+                "champion_id": "Karma",
+                "role": "support",
+                "level": 4,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 5,
+                "gold": 1513,
+                "current_health": 882,
+                "max_health": 1171,
+                "items": [
+                  "3865",
+                  "3340",
+                  "3067",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "GAM Kiaya",
+                "participant_id": "6",
+                "champion": "Gnar",
+                "champion_id": "Gnar",
+                "role": "top",
+                "level": 5,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 38,
+                "gold": 1666,
+                "current_health": 763,
+                "max_health": 867,
+                "items": [
+                  "1029",
+                  "3340",
+                  "1001",
+                  "2031"
+                ]
+              },
+              {
+                "player": "GAM Draktharr",
+                "participant_id": "7",
+                "champion": "Vi",
+                "champion_id": "Vi",
+                "role": "jungle",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 31,
+                "gold": 1739,
+                "current_health": 940,
+                "max_health": 957,
+                "items": [
+                  "1102",
+                  "3340"
+                ]
+              },
+              {
+                "player": "GAM Gloryy",
+                "participant_id": "8",
+                "champion": "Ahri",
+                "champion_id": "Ahri",
+                "role": "mid",
+                "level": 5,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 40,
+                "gold": 1665,
+                "current_health": 985,
+                "max_health": 1066,
+                "items": [
+                  "1056",
+                  "2031",
+                  "1052",
+                  "1027",
+                  "2055"
+                ]
+              },
+              {
+                "player": "GAM Artemis",
+                "participant_id": "9",
+                "champion": "MissFortune",
+                "champion_id": "MissFortune",
+                "role": "bottom",
+                "level": 4,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 32,
+                "gold": 1635,
+                "current_health": 916,
+                "max_health": 916,
+                "items": [
+                  "1086",
+                  "3340",
+                  "1053",
+                  "2031"
+                ]
+              },
+              {
+                "player": "GAM Taki",
+                "participant_id": "10",
+                "champion": "Nautilus",
+                "champion_id": "Nautilus",
+                "role": "support",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 8,
+                "gold": 1238,
+                "current_health": 456,
+                "max_health": 967,
+                "items": [
+                  "3865",
+                  "3340"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 9321,
+              "kills": 2,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "red_stats": {
+              "gold": 7943,
+              "kills": 0,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.7520249338688721,
+              "red": 0.24797506613112785,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 0,
+                "end_seconds": 300,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.7910909090909091,
+                "brier": 0.21350045980631466
+              },
+              "features": {
+                "gold_diff": 1378,
+                "kill_diff": 2,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 286
+              }
+            },
+            "retained_after_end": true
+          }
+        },
+        {
+          "id": "115570683341512220",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "107251245690956393",
+            "team_name": "MVK Esports",
+            "team_code": "MVK"
+          },
+          "red": {
+            "team_id": "98767991954244555",
+            "team_name": "GAM Esports",
+            "team_code": "GAM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570683341512221",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "107251245690956393",
+            "team_name": "MVK Esports",
+            "team_code": "MVK"
+          },
+          "red": {
+            "team_id": "98767991954244555",
+            "team_name": "GAM Esports",
+            "team_code": "GAM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570683341512222",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "98767991954244555",
+            "team_name": "GAM Esports",
+            "team_code": "GAM"
+          },
+          "red": {
+            "team_id": "107251245690956393",
+            "team_name": "MVK Esports",
+            "team_code": "MVK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
