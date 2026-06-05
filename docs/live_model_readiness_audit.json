@@ -58,15 +58,15 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 34,
+        "games": 35,
         "interval_count": 238,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 486,
-        "oe_bootstrap_snapshot_rows": 267,
+        "non_empty_game_state_rows": 496,
+        "oe_bootstrap_snapshot_rows": 277,
         "pct_intervals_lte_30s": 0.5840336134453782,
         "production_live_telemetry_rows": 219,
         "raw_frame_collection_rows": 0,
-        "rows": 486,
+        "rows": 496,
         "sub_30s_interval_count": 139
       },
       "id": "live_frame_collection",
@@ -87,7 +87,7 @@
         "pipeline_labeled_feature_rows": 0,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 486,
+        "pipeline_resolved_rows": 496,
         "pipeline_trained": false,
         "pipeline_warnings": [
           "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"

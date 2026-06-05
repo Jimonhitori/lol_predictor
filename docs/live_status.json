@@ -180,7 +180,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-04T22:06:09.932465+00:00",
+  "generated_at": "2026-06-05T20:22:45.920215+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -234,15 +234,15 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 34,
+        "games": 35,
         "interval_count": 238,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 486,
-        "oe_bootstrap_snapshot_rows": 267,
+        "non_empty_game_state_rows": 496,
+        "oe_bootstrap_snapshot_rows": 277,
         "pct_intervals_lte_30s": 0.5840336134453782,
         "production_live_telemetry_rows": 219,
         "raw_frame_collection_rows": 0,
-        "rows": 486,
+        "rows": 496,
         "sub_30s_interval_count": 139
       },
       "id": "live_frame_collection",
@@ -263,7 +263,7 @@
         "pipeline_labeled_feature_rows": 0,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 486,
+        "pipeline_resolved_rows": 496,
         "pipeline_trained": false,
         "pipeline_warnings": [
           "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"
@@ -342,7 +342,7 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 41
+        "pre_match_rows": 35
       },
       "ready": false,
       "replay": {
@@ -351,7 +351,7 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 486,
+      "resolved_rows": 496,
       "trained": false,
       "warning_count": 1,
       "warnings": [
