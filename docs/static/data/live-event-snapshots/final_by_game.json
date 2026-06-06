@@ -14237,7 +14237,7 @@
   },
   "116170292916656919:116170292916656922": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-06T17:08:00.388Z",
+    "checked_at": "2026-06-06T18:19:34.704Z",
     "event_id": "116170292916656919",
     "game_id": "116170292916656922",
     "game_number": 3,
@@ -14562,6 +14562,347 @@
             "baron_diff": 0,
             "avg_level_diff": 0.7999999999999972,
             "game_time": 3030
+          }
+        },
+        "retained_after_end": true,
+        "retained_from_artifact": true
+      }
+    }
+  },
+  "115548668059589388:115548668059589389": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-06-06T18:19:34.704Z",
+    "event_id": "115548668059589388",
+    "game_id": "115548668059589389",
+    "game_number": 1,
+    "event_status": "completed",
+    "teams": [
+      {
+        "id": "111692118851466302",
+        "name": "Karmine Corp",
+        "code": "KC",
+        "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+        "game_wins": "3"
+      },
+      {
+        "id": "103461966965149786",
+        "name": "Movistar KOI",
+        "code": "MKOI",
+        "image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+        "game_wins": "0"
+      }
+    ],
+    "game": {
+      "id": "115548668059589389",
+      "number": 1,
+      "state": "completed",
+      "blue": {
+        "team_id": "111692118851466302",
+        "team_name": "Karmine Corp",
+        "team_code": "KC"
+      },
+      "red": {
+        "team_id": "103461966965149786",
+        "team_name": "Movistar KOI",
+        "team_code": "MKOI"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 3144,
+        "frame_timestamp": "2026-06-06T15:54:09.954Z",
+        "patch_version": "16.10.776.5552",
+        "blue": [
+          {
+            "player": "KC Canna",
+            "participant_id": "1",
+            "champion": "Rumble",
+            "champion_id": "Rumble",
+            "role": "top",
+            "level": 20,
+            "kills": 2,
+            "deaths": 1,
+            "assists": 6,
+            "creep_score": 342,
+            "gold": 16635,
+            "current_health": 3769,
+            "max_health": 3769,
+            "items": [
+              "6653",
+              "3363",
+              "8010",
+              "3009",
+              "3089",
+              "3152",
+              "2055"
+            ]
+          },
+          {
+            "player": "KC Yike",
+            "participant_id": "2",
+            "champion": "Skarner",
+            "champion_id": "Skarner",
+            "role": "jungle",
+            "level": 18,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 7,
+            "creep_score": 272,
+            "gold": 13938,
+            "current_health": 4929,
+            "max_health": 4929,
+            "items": [
+              "2525",
+              "2524",
+              "3111",
+              "2502",
+              "3143",
+              "2055",
+              "2138"
+            ]
+          },
+          {
+            "player": "KC kyeahoo",
+            "participant_id": "3",
+            "champion": "Orianna",
+            "champion_id": "Orianna",
+            "role": "mid",
+            "level": 18,
+            "kills": 5,
+            "deaths": 2,
+            "assists": 4,
+            "creep_score": 285,
+            "gold": 15293,
+            "current_health": 2970,
+            "max_health": 2970,
+            "items": [
+              "6657",
+              "3020",
+              "4645",
+              "3363",
+              "4646",
+              "3089",
+              "2055"
+            ]
+          },
+          {
+            "player": "KC Caliste",
+            "participant_id": "4",
+            "champion": "Ezreal",
+            "champion_id": "Ezreal",
+            "role": "bottom",
+            "level": 18,
+            "kills": 2,
+            "deaths": 2,
+            "assists": 5,
+            "creep_score": 449,
+            "gold": 19689,
+            "current_health": 3182,
+            "max_health": 3182,
+            "items": [
+              "3078",
+              "3363",
+              "3158",
+              "2517",
+              "6694",
+              "3161",
+              "1053"
+            ]
+          },
+          {
+            "player": "KC Busio",
+            "participant_id": "5",
+            "champion": "Neeko",
+            "champion_id": "Neeko",
+            "role": "support",
+            "level": 13,
+            "kills": 0,
+            "deaths": 3,
+            "assists": 6,
+            "creep_score": 55,
+            "gold": 9504,
+            "current_health": 2313,
+            "max_health": 2313,
+            "items": [
+              "3364",
+              "3152",
+              "3158",
+              "4632",
+              "2055",
+              "2065"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "MKOI Myrwn",
+            "participant_id": "6",
+            "champion": "Ornn",
+            "champion_id": "Ornn",
+            "role": "top",
+            "level": 18,
+            "kills": 0,
+            "deaths": 2,
+            "assists": 4,
+            "creep_score": 267,
+            "gold": 11661,
+            "current_health": 4872,
+            "max_health": 4872,
+            "items": [
+              "1120",
+              "2504",
+              "3363",
+              "4401",
+              "3047",
+              "3109",
+              "3076"
+            ]
+          },
+          {
+            "player": "MKOI Elyoya",
+            "participant_id": "7",
+            "champion": "Pantheon",
+            "champion_id": "Pantheon",
+            "role": "jungle",
+            "level": 16,
+            "kills": 4,
+            "deaths": 1,
+            "assists": 4,
+            "creep_score": 243,
+            "gold": 13918,
+            "current_health": 3217,
+            "max_health": 3217,
+            "items": [
+              "3364",
+              "6610",
+              "3071",
+              "3111",
+              "3026",
+              "3134",
+              "2140"
+            ]
+          },
+          {
+            "player": "MKOI Jojopyun",
+            "participant_id": "8",
+            "champion": "Akali",
+            "champion_id": "Akali",
+            "role": "mid",
+            "level": 18,
+            "kills": 2,
+            "deaths": 6,
+            "assists": 0,
+            "creep_score": 341,
+            "gold": 15140,
+            "current_health": 2688,
+            "max_health": 2688,
+            "items": [
+              "3020",
+              "3146",
+              "4645",
+              "3363",
+              "3157",
+              "1058",
+              "1058"
+            ]
+          },
+          {
+            "player": "MKOI Supa",
+            "participant_id": "9",
+            "champion": "Caitlyn",
+            "champion_id": "Caitlyn",
+            "role": "bottom",
+            "level": 17,
+            "kills": 2,
+            "deaths": 0,
+            "assists": 2,
+            "creep_score": 483,
+            "gold": 20748,
+            "current_health": 2412,
+            "max_health": 2412,
+            "items": [
+              "3097",
+              "3363",
+              "3031",
+              "3094",
+              "3036",
+              "3072",
+              "1038"
+            ]
+          },
+          {
+            "player": "MKOI Alvaro",
+            "participant_id": "10",
+            "champion": "Karma",
+            "champion_id": "Karma",
+            "role": "support",
+            "level": 15,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 7,
+            "creep_score": 42,
+            "gold": 9961,
+            "current_health": 2476,
+            "max_health": 3175,
+            "items": [
+              "3364",
+              "6620",
+              "3158",
+              "3222",
+              "6617",
+              "2055",
+              "3114"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 75059,
+          "kills": 10,
+          "towers": 6,
+          "inhibitors": 0,
+          "barons": 1,
+          "dragons": 4
+        },
+        "red_stats": {
+          "gold": 71428,
+          "kills": 9,
+          "towers": 5,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 2
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.7861566504855149,
+          "red": 0.21384334951448514,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation"
+          },
+          "features": {
+            "gold_diff": 3631,
+            "kill_diff": 1,
+            "tower_diff": 1,
+            "inhibitor_diff": 0,
+            "dragon_diff": 2,
+            "baron_diff": 1,
+            "avg_level_diff": 0.5999999999999979,
+            "game_time": 3144
           }
         },
         "retained_after_end": true
