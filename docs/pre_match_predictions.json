@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-06T05:13:01.846773Z",
+  "generated_at": "2026-06-06T09:34:49.690630Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -19,14 +19,12 @@
       "red_team": "hanjin_brion",
       "blue_team_name": "Dplus KIA",
       "red_team_name": "HANJIN BRION",
-      "blue_win_probability": 0.374885,
-      "red_win_probability": 0.625115,
-      "predicted_winner": "HANJIN BRION",
-      "confidence": "low",
+      "blue_win_probability": 0.856616,
+      "red_win_probability": 0.143384,
+      "predicted_winner": "Dplus KIA",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.478"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115570683341512223",
@@ -37,14 +35,12 @@
       "red_team": "deep_cross_gaming",
       "blue_team_name": "GAM Esports",
       "red_team_name": "Relove Deep Cross Gaming",
-      "blue_win_probability": 0.393156,
-      "red_win_probability": 0.606844,
-      "predicted_winner": "Relove Deep Cross Gaming",
-      "confidence": "low",
+      "blue_win_probability": 0.626504,
+      "red_win_probability": 0.373496,
+      "predicted_winner": "GAM Esports",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.436"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115616219464607503",
@@ -55,14 +51,12 @@
       "red_team": "jd_gaming",
       "blue_team_name": "BILIBILI GAMING",
       "red_team_name": "Beijing JDG Esports",
-      "blue_win_probability": 0.443165,
-      "red_win_probability": 0.556835,
-      "predicted_winner": "Beijing JDG Esports",
-      "confidence": "low",
+      "blue_win_probability": 0.831596,
+      "red_win_probability": 0.168404,
+      "predicted_winner": "BILIBILI GAMING",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.403"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1485198",
@@ -73,14 +67,12 @@
       "red_team": "project_conquerors",
       "blue_team_name": "Caldya Esport",
       "red_team_name": "Project Conquerors",
-      "blue_win_probability": 0.256074,
-      "red_win_probability": 0.743926,
+      "blue_win_probability": 0.457342,
+      "red_win_probability": 0.542658,
       "predicted_winner": "Project Conquerors",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.458"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115548668059589388",
@@ -91,14 +83,12 @@
       "red_team": "movistar_koi",
       "blue_team_name": "Karmine Corp",
       "red_team_name": "Movistar KOI",
-      "blue_win_probability": 0.286679,
-      "red_win_probability": 0.713321,
+      "blue_win_probability": 0.466754,
+      "red_win_probability": 0.533246,
       "predicted_winner": "Movistar KOI",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.359"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115565670260181875",
@@ -109,14 +99,12 @@
       "red_team": "furia",
       "blue_team_name": "LOS",
       "red_team_name": "FURIA",
-      "blue_win_probability": 0.280209,
-      "red_win_probability": 0.719791,
+      "blue_win_probability": 0.322711,
+      "red_win_probability": 0.677289,
       "predicted_winner": "FURIA",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.308"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1407115",
@@ -127,13 +115,12 @@
       "red_team": "l_s",
       "blue_team_name": "FURIA Esports",
       "red_team_name": "LOS",
-      "blue_win_probability": 0.241146,
-      "red_win_probability": 0.758854,
-      "predicted_winner": "LOS",
+      "blue_win_probability": 0.500821,
+      "red_win_probability": 0.499179,
+      "predicted_winner": "FURIA Esports",
       "confidence": "low",
       "model": "logistic_regression_actions",
       "warnings": [
-        "blue_red_side_sanity_delta:0.397",
         "blue_team_fallback_slug:FURIA Esports->furia_esports",
         "blue_team_fallback_slug:furia_esports"
       ]
@@ -147,14 +134,12 @@
       "red_team": "frites_esports_club",
       "blue_team_name": "mCon Esports",
       "red_team_name": "Frites Esports Club",
-      "blue_win_probability": 0.095409,
-      "red_win_probability": 0.904591,
+      "blue_win_probability": 0.186183,
+      "red_win_probability": 0.813817,
       "predicted_winner": "Frites Esports Club",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.206"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115564793879469318",
@@ -165,14 +150,12 @@
       "red_team": "flyquest",
       "blue_team_name": "Team Liquid Alienware",
       "red_team_name": "FlyQuest",
-      "blue_win_probability": 0.338733,
-      "red_win_probability": 0.661267,
-      "predicted_winner": "FlyQuest",
-      "confidence": "low",
+      "blue_win_probability": 0.595748,
+      "red_win_probability": 0.404252,
+      "predicted_winner": "Team Liquid Alienware",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.345"
-      ]
+      "warnings": []
     },
     {
       "event_id": "115616219464607491",
@@ -183,14 +166,12 @@
       "red_team": "top_esports",
       "blue_team_name": "Xi'an Team WE",
       "red_team_name": "TOP ESPORTS",
-      "blue_win_probability": 0.233977,
-      "red_win_probability": 0.766023,
+      "blue_win_probability": 0.420691,
+      "red_win_probability": 0.579309,
       "predicted_winner": "TOP ESPORTS",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.398"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1520676",
@@ -201,13 +182,12 @@
       "red_team": "leviatan_esports",
       "blue_team_name": "RED Canids",
       "red_team_name": "Leviatan Esports",
-      "blue_win_probability": 0.408661,
-      "red_win_probability": 0.591339,
-      "predicted_winner": "Leviatan Esports",
+      "blue_win_probability": 0.600486,
+      "red_win_probability": 0.399514,
+      "predicted_winner": "RED Canids",
       "confidence": "low",
       "model": "logistic_regression_actions",
       "warnings": [
-        "blue_red_side_sanity_delta:0.367",
         "red_team_fallback_slug:Leviatan Esports->leviatan_esports",
         "red_team_fallback_slug:leviatan_esports"
       ]
@@ -221,14 +201,12 @@
       "red_team": "pain_gaming",
       "blue_team_name": "Fluxo W7M",
       "red_team_name": "paiN Gaming",
-      "blue_win_probability": 0.393427,
-      "red_win_probability": 0.606573,
+      "blue_win_probability": 0.477757,
+      "red_win_probability": 0.522243,
       "predicted_winner": "paiN Gaming",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.318"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1520678",
@@ -239,8 +217,8 @@
       "red_team": "vivo_keyd_stars",
       "blue_team_name": "LOUD",
       "red_team_name": "Vivo Keyd Stars",
-      "blue_win_probability": 0.590855,
-      "red_win_probability": 0.409145,
+      "blue_win_probability": 0.616539,
+      "red_win_probability": 0.383461,
       "predicted_winner": "LOUD",
       "confidence": "high",
       "model": "logistic_regression_actions",
@@ -255,14 +233,12 @@
       "red_team": "lyon",
       "blue_team_name": "Cloud9 Kia",
       "red_team_name": "LYON",
-      "blue_win_probability": 0.325621,
-      "red_win_probability": 0.674379,
-      "predicted_winner": "LYON",
-      "confidence": "low",
+      "blue_win_probability": 0.646946,
+      "red_win_probability": 0.353054,
+      "predicted_winner": "Cloud9 Kia",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.323"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1384484",
@@ -273,14 +249,12 @@
       "red_team": "g3v_e_sports",
       "blue_team_name": "Fuego",
       "red_team_name": "G3V E-sports",
-      "blue_win_probability": 0.543954,
-      "red_win_probability": 0.456046,
+      "blue_win_probability": 0.77138,
+      "red_win_probability": 0.22862,
       "predicted_winner": "Fuego",
-      "confidence": "low",
+      "confidence": "medium",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.310"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1384386",
@@ -291,14 +265,12 @@
       "red_team": "volticons",
       "blue_team_name": "Golden Lions",
       "red_team_name": "Volticons",
-      "blue_win_probability": 0.357337,
-      "red_win_probability": 0.642663,
-      "predicted_winner": "Volticons",
-      "confidence": "low",
+      "blue_win_probability": 0.657844,
+      "red_win_probability": 0.342156,
+      "predicted_winner": "Golden Lions",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.386"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1493071",
@@ -309,14 +281,12 @@
       "red_team": "sn_cybercore_esports",
       "blue_team_name": "Saigon Dino",
       "red_team_name": "SN CyberCore Esports",
-      "blue_win_probability": 0.466052,
-      "red_win_probability": 0.533948,
-      "predicted_winner": "SN CyberCore Esports",
-      "confidence": "low",
+      "blue_win_probability": 0.681608,
+      "red_win_probability": 0.318392,
+      "predicted_winner": "Saigon Dino",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.361"
-      ]
+      "warnings": []
     },
     {
       "event_id": "pandascore:1505698",
@@ -327,13 +297,13 @@
       "red_team": "t1",
       "blue_team_name": "Hanwha Life Esports",
       "red_team_name": "T1",
-      "blue_win_probability": 0.244353,
-      "red_win_probability": 0.755647,
+      "blue_win_probability": 0.4917,
+      "red_win_probability": 0.5083,
       "predicted_winner": "T1",
       "confidence": "low",
       "model": "logistic_regression_actions",
       "warnings": [
-        "blue_red_side_sanity_delta:0.461"
+        "blue_red_side_sanity_delta:0.230"
       ]
     },
     {
@@ -345,39 +315,20 @@
       "red_team": "zen_esports",
       "blue_team_name": "Saigon Dino",
       "red_team_name": "ZEN Esports",
-      "blue_win_probability": 0.505854,
-      "red_win_probability": 0.494146,
+      "blue_win_probability": 0.789112,
+      "red_win_probability": 0.210888,
       "predicted_winner": "Saigon Dino",
       "confidence": "low",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.406"
-      ]
+      "warnings": []
     }
   ],
   "warnings": [
-    "blue_red_side_sanity_delta:0.206",
-    "blue_red_side_sanity_delta:0.308",
-    "blue_red_side_sanity_delta:0.310",
-    "blue_red_side_sanity_delta:0.318",
-    "blue_red_side_sanity_delta:0.323",
-    "blue_red_side_sanity_delta:0.345",
-    "blue_red_side_sanity_delta:0.359",
-    "blue_red_side_sanity_delta:0.361",
-    "blue_red_side_sanity_delta:0.367",
-    "blue_red_side_sanity_delta:0.386",
-    "blue_red_side_sanity_delta:0.397",
-    "blue_red_side_sanity_delta:0.398",
-    "blue_red_side_sanity_delta:0.403",
-    "blue_red_side_sanity_delta:0.406",
-    "blue_red_side_sanity_delta:0.436",
-    "blue_red_side_sanity_delta:0.458",
-    "blue_red_side_sanity_delta:0.461",
-    "blue_red_side_sanity_delta:0.478",
+    "blue_red_side_sanity_delta:0.230",
     "blue_team_fallback_slug:FURIA Esports->furia_esports",
     "blue_team_fallback_slug:furia_esports",
     "red_team_fallback_slug:Leviatan Esports->leviatan_esports",
     "red_team_fallback_slug:leviatan_esports"
   ],
-  "warning_count": 22
+  "warning_count": 5
 }
