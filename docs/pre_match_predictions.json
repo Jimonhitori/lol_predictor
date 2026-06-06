@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-05T22:01:31.115617Z",
+  "generated_at": "2026-06-06T05:01:11.252404Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -11,136 +11,6 @@
   },
   "predictions": [
     {
-      "event_id": "115570683341512217",
-      "game_id": "115570683341512217",
-      "league": "LCP",
-      "start_time": "2026-06-05 18:00:00",
-      "blue_team": "gam_esports",
-      "red_team": "mvk_esports",
-      "blue_team_name": "GAM Esports",
-      "red_team_name": "MVK Esports",
-      "blue_win_probability": 0.443386,
-      "red_win_probability": 0.556614,
-      "predicted_winner": "MVK Esports",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "115616219464607497",
-      "game_id": "115616219464607497",
-      "league": "LPL",
-      "start_time": "2026-06-05 18:00:00",
-      "blue_team": "lgd_gaming",
-      "red_team": "anyone_s_legend",
-      "blue_team_name": "LGD GAMING",
-      "red_team_name": "Anyone's Legend",
-      "blue_win_probability": 0.160045,
-      "red_win_probability": 0.839955,
-      "predicted_winner": "Anyone's Legend",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116566603146123751",
-      "game_id": "116566603146123751",
-      "league": "LES",
-      "start_time": "2026-06-05 22:00:00",
-      "blue_team": "movistar_koi_f_nix",
-      "red_team": "bar_a_esports",
-      "blue_team_name": "Movistar KOI Fénix",
-      "red_team_name": "Barça Esports",
-      "blue_win_probability": 0.350043,
-      "red_win_probability": 0.649957,
-      "predicted_winner": "Barça Esports",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116299619171179636",
-      "game_id": "116299619171179636",
-      "league": "Hitpoint Masters",
-      "start_time": "2026-06-05 23:00:00",
-      "blue_team": "cita_kaizen",
-      "red_team": "nightbirds",
-      "blue_team_name": "CITA Kaizen",
-      "red_team_name": "NightBirds",
-      "blue_win_probability": 0.27379,
-      "red_win_probability": 0.72621,
-      "predicted_winner": "NightBirds",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116356270007984091",
-      "game_id": "116356270007984091",
-      "league": "TCL",
-      "start_time": "2026-06-05 23:30:00",
-      "blue_team": "misa_esports",
-      "red_team": "pcific_esports",
-      "blue_team_name": "MISA Esports",
-      "red_team_name": "PCIFIC Esports",
-      "blue_win_probability": 0.483879,
-      "red_win_probability": 0.516121,
-      "predicted_winner": "PCIFIC Esports",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116295727286716935",
-      "game_id": "116295727286716935",
-      "league": "LES",
-      "start_time": "2026-06-06 01:00:00",
-      "blue_team": "team_heretics_academy",
-      "red_team": "ucam_esports_club",
-      "blue_team_name": "Heretics Academy",
-      "red_team_name": "UCAM Esports Club",
-      "blue_win_probability": 0.480851,
-      "red_win_probability": 0.519149,
-      "predicted_winner": "UCAM Esports Club",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "red_team_fallback_slug:ucam_esports_club"
-      ]
-    },
-    {
-      "event_id": "116554905051848386",
-      "game_id": "116554905051848386",
-      "league": "NLC",
-      "start_time": "2026-06-06 01:00:00",
-      "blue_team": "verdant",
-      "red_team": "ruddy_corporation",
-      "blue_team_name": "Verdant",
-      "red_team_name": "Ruddy Corporation",
-      "blue_win_probability": 0.772979,
-      "red_win_probability": 0.227021,
-      "predicted_winner": "Verdant",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116170292916656919",
-      "game_id": "116170292916656919",
-      "league": "NACL",
-      "start_time": "2026-06-06 05:00:00",
-      "blue_team": "conviction",
-      "red_team": "ccg_esports",
-      "blue_team_name": "Conviction",
-      "red_team_name": "CCG Esports",
-      "blue_win_probability": 0.356647,
-      "red_win_probability": 0.643353,
-      "predicted_winner": "CCG Esports",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
       "event_id": "115548128963037563",
       "game_id": "115548128963037563",
       "league": "LCK",
@@ -149,28 +19,14 @@
       "red_team": "hanjin_brion",
       "blue_team_name": "Dplus KIA",
       "red_team_name": "HANJIN BRION",
-      "blue_win_probability": 0.344868,
-      "red_win_probability": 0.655132,
+      "blue_win_probability": 0.374885,
+      "red_win_probability": 0.625115,
       "predicted_winner": "HANJIN BRION",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1505696",
-      "game_id": "pandascore:1505696",
-      "league": "LCK - 2026 - Road to MSI",
-      "start_time": "2026-06-06 17:00:00",
-      "blue_team": "dplus_kia",
-      "red_team": "hanjin_brion",
-      "blue_team_name": "Dplus KIA",
-      "red_team_name": "HANJIN BRION",
-      "blue_win_probability": 0.344868,
-      "red_win_probability": 0.655132,
-      "predicted_winner": "HANJIN BRION",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.478"
+      ]
     },
     {
       "event_id": "115570683341512223",
@@ -181,28 +37,14 @@
       "red_team": "deep_cross_gaming",
       "blue_team_name": "GAM Esports",
       "red_team_name": "Relove Deep Cross Gaming",
-      "blue_win_probability": 0.33818,
-      "red_win_probability": 0.66182,
+      "blue_win_probability": 0.393156,
+      "red_win_probability": 0.606844,
       "predicted_winner": "Relove Deep Cross Gaming",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1498254",
-      "game_id": "pandascore:1498254",
-      "league": "LCP - Split 2 2026 - Playoffs",
-      "start_time": "2026-06-06 18:00:00",
-      "blue_team": "deep_cross_gaming",
-      "red_team": "gam_esports",
-      "blue_team_name": "Deep Cross Gaming",
-      "red_team_name": "GAM Esports",
-      "blue_win_probability": 0.16369,
-      "red_win_probability": 0.83631,
-      "predicted_winner": "GAM Esports",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.436"
+      ]
     },
     {
       "event_id": "115616219464607503",
@@ -213,28 +55,14 @@
       "red_team": "jd_gaming",
       "blue_team_name": "BILIBILI GAMING",
       "red_team_name": "Beijing JDG Esports",
-      "blue_win_probability": 0.375045,
-      "red_win_probability": 0.624955,
+      "blue_win_probability": 0.443165,
+      "red_win_probability": 0.556835,
       "predicted_winner": "Beijing JDG Esports",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1422519",
-      "game_id": "pandascore:1422519",
-      "league": "LPL - Split 2 2026 - Playoffs",
-      "start_time": "2026-06-06 18:00:00",
-      "blue_team": "jd_gaming",
-      "red_team": "bilibili_gaming",
-      "blue_team_name": "JD Gaming",
-      "red_team_name": "Bilibili Gaming",
-      "blue_win_probability": 0.132738,
-      "red_win_probability": 0.867262,
-      "predicted_winner": "Bilibili Gaming",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.403"
+      ]
     },
     {
       "event_id": "pandascore:1485198",
@@ -245,12 +73,14 @@
       "red_team": "project_conquerors",
       "blue_team_name": "Caldya Esport",
       "red_team_name": "Project Conquerors",
-      "blue_win_probability": 0.258766,
-      "red_win_probability": 0.741234,
+      "blue_win_probability": 0.256074,
+      "red_win_probability": 0.743926,
       "predicted_winner": "Project Conquerors",
       "confidence": "medium",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.458"
+      ]
     },
     {
       "event_id": "115548668059589388",
@@ -261,28 +91,14 @@
       "red_team": "movistar_koi",
       "blue_team_name": "Karmine Corp",
       "red_team_name": "Movistar KOI",
-      "blue_win_probability": 0.250906,
-      "red_win_probability": 0.749094,
+      "blue_win_probability": 0.286679,
+      "red_win_probability": 0.713321,
       "predicted_winner": "Movistar KOI",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1486136",
-      "game_id": "pandascore:1486136",
-      "league": "LEC - Spring 2026 - Playoffs",
-      "start_time": "2026-06-07 00:00:00",
-      "blue_team": "movistar_koi",
-      "red_team": "karmine_corp",
-      "blue_team_name": "Movistar KOI",
-      "red_team_name": "Karmine Corp",
-      "blue_win_probability": 0.298023,
-      "red_win_probability": 0.701977,
-      "predicted_winner": "Karmine Corp",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.359"
+      ]
     },
     {
       "event_id": "115565670260181875",
@@ -293,12 +109,14 @@
       "red_team": "furia",
       "blue_team_name": "LOS",
       "red_team_name": "FURIA",
-      "blue_win_probability": 0.256055,
-      "red_win_probability": 0.743945,
+      "blue_win_probability": 0.280209,
+      "red_win_probability": 0.719791,
       "predicted_winner": "FURIA",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.308"
+      ]
     },
     {
       "event_id": "pandascore:1407115",
@@ -309,30 +127,16 @@
       "red_team": "l_s",
       "blue_team_name": "FURIA Esports",
       "red_team_name": "LOS",
-      "blue_win_probability": 0.365248,
-      "red_win_probability": 0.634752,
+      "blue_win_probability": 0.241146,
+      "red_win_probability": 0.758854,
       "predicted_winner": "LOS",
       "confidence": "low",
       "model": "logistic_regression_actions",
       "warnings": [
+        "blue_red_side_sanity_delta:0.397",
+        "blue_team_fallback_slug:FURIA Esports->furia_esports",
         "blue_team_fallback_slug:furia_esports"
       ]
-    },
-    {
-      "event_id": "pandascore:1490326",
-      "game_id": "pandascore:1490326",
-      "league": "Road Of Legends - Spring 2026 - Playoffs",
-      "start_time": "2026-06-07 01:00:00",
-      "blue_team": "frites_esports_club",
-      "red_team": "mcon_esports",
-      "blue_team_name": "Frites Esports Club",
-      "red_team_name": "mCon esports",
-      "blue_win_probability": 0.594661,
-      "red_win_probability": 0.405339,
-      "predicted_winner": "Frites Esports Club",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
     },
     {
       "event_id": "116249441374562216",
@@ -343,12 +147,14 @@
       "red_team": "frites_esports_club",
       "blue_team_name": "mCon Esports",
       "red_team_name": "Frites Esports Club",
-      "blue_win_probability": 0.12993,
-      "red_win_probability": 0.87007,
+      "blue_win_probability": 0.095409,
+      "red_win_probability": 0.904591,
       "predicted_winner": "Frites Esports Club",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.206"
+      ]
     },
     {
       "event_id": "115564793879469318",
@@ -359,28 +165,14 @@
       "red_team": "flyquest",
       "blue_team_name": "Team Liquid Alienware",
       "red_team_name": "FlyQuest",
-      "blue_win_probability": 0.3026,
-      "red_win_probability": 0.6974,
+      "blue_win_probability": 0.338733,
+      "red_win_probability": 0.661267,
       "predicted_winner": "FlyQuest",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1496378",
-      "game_id": "pandascore:1496378",
-      "league": "LCS - Spring 2026 - Playoffs",
-      "start_time": "2026-06-07 05:00:00",
-      "blue_team": "flyquest",
-      "red_team": "team_liquid",
-      "blue_team_name": "FlyQuest",
-      "red_team_name": "Team Liquid",
-      "blue_win_probability": 0.276266,
-      "red_win_probability": 0.723734,
-      "predicted_winner": "Team Liquid",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.345"
+      ]
     },
     {
       "event_id": "115616219464607491",
@@ -391,28 +183,14 @@
       "red_team": "top_esports",
       "blue_team_name": "Xi'an Team WE",
       "red_team_name": "TOP ESPORTS",
-      "blue_win_probability": 0.205418,
-      "red_win_probability": 0.794582,
+      "blue_win_probability": 0.233977,
+      "red_win_probability": 0.766023,
       "predicted_winner": "TOP ESPORTS",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1422521",
-      "game_id": "pandascore:1422521",
-      "league": "LPL - Split 2 2026 - Playoffs",
-      "start_time": "2026-06-07 18:00:00",
-      "blue_team": "top_esports",
-      "red_team": "team_we",
-      "blue_team_name": "Top Esports",
-      "red_team_name": "Team WE",
-      "blue_win_probability": 0.353683,
-      "red_win_probability": 0.646317,
-      "predicted_winner": "Team WE",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.398"
+      ]
     },
     {
       "event_id": "pandascore:1520676",
@@ -423,12 +201,14 @@
       "red_team": "leviatan_esports",
       "blue_team_name": "RED Canids",
       "red_team_name": "Leviatan Esports",
-      "blue_win_probability": 0.386306,
-      "red_win_probability": 0.613694,
+      "blue_win_probability": 0.408661,
+      "red_win_probability": 0.591339,
       "predicted_winner": "Leviatan Esports",
       "confidence": "low",
       "model": "logistic_regression_actions",
       "warnings": [
+        "blue_red_side_sanity_delta:0.367",
+        "red_team_fallback_slug:Leviatan Esports->leviatan_esports",
         "red_team_fallback_slug:leviatan_esports"
       ]
     },
@@ -441,12 +221,14 @@
       "red_team": "pain_gaming",
       "blue_team_name": "Fluxo W7M",
       "red_team_name": "paiN Gaming",
-      "blue_win_probability": 0.360341,
-      "red_win_probability": 0.639659,
+      "blue_win_probability": 0.393427,
+      "red_win_probability": 0.606573,
       "predicted_winner": "paiN Gaming",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.318"
+      ]
     },
     {
       "event_id": "pandascore:1520678",
@@ -457,8 +239,8 @@
       "red_team": "vivo_keyd_stars",
       "blue_team_name": "LOUD",
       "red_team_name": "Vivo Keyd Stars",
-      "blue_win_probability": 0.543647,
-      "red_win_probability": 0.456353,
+      "blue_win_probability": 0.590855,
+      "red_win_probability": 0.409145,
       "predicted_winner": "LOUD",
       "confidence": "high",
       "model": "logistic_regression_actions",
@@ -473,28 +255,14 @@
       "red_team": "lyon",
       "blue_team_name": "Cloud9 Kia",
       "red_team_name": "LYON",
-      "blue_win_probability": 0.293595,
-      "red_win_probability": 0.706405,
+      "blue_win_probability": 0.325621,
+      "red_win_probability": 0.674379,
       "predicted_winner": "LYON",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1496373",
-      "game_id": "pandascore:1496373",
-      "league": "LCS - Spring 2026 - Playoffs",
-      "start_time": "2026-06-08 05:00:00",
-      "blue_team": "cloud9",
-      "red_team": "lyon",
-      "blue_team_name": "Cloud9",
-      "red_team_name": "LYON",
-      "blue_win_probability": 0.293595,
-      "red_win_probability": 0.706405,
-      "predicted_winner": "LYON",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.323"
+      ]
     },
     {
       "event_id": "pandascore:1384484",
@@ -505,12 +273,14 @@
       "red_team": "g3v_e_sports",
       "blue_team_name": "Fuego",
       "red_team_name": "G3V E-sports",
-      "blue_win_probability": 0.505096,
-      "red_win_probability": 0.494904,
+      "blue_win_probability": 0.543954,
+      "red_win_probability": 0.456046,
       "predicted_winner": "Fuego",
       "confidence": "medium",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.310"
+      ]
     },
     {
       "event_id": "pandascore:1384386",
@@ -521,12 +291,14 @@
       "red_team": "volticons",
       "blue_team_name": "Golden Lions",
       "red_team_name": "Volticons",
-      "blue_win_probability": 0.336638,
-      "red_win_probability": 0.663362,
+      "blue_win_probability": 0.357337,
+      "red_win_probability": 0.642663,
       "predicted_winner": "Volticons",
       "confidence": "medium",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.386"
+      ]
     },
     {
       "event_id": "pandascore:1493071",
@@ -537,12 +309,14 @@
       "red_team": "sn_cybercore_esports",
       "blue_team_name": "Saigon Dino",
       "red_team_name": "SN CyberCore Esports",
-      "blue_win_probability": 0.474277,
-      "red_win_probability": 0.525723,
+      "blue_win_probability": 0.466052,
+      "red_win_probability": 0.533948,
       "predicted_winner": "SN CyberCore Esports",
       "confidence": "medium",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.361"
+      ]
     },
     {
       "event_id": "pandascore:1505698",
@@ -553,12 +327,14 @@
       "red_team": "t1",
       "blue_team_name": "Hanwha Life Esports",
       "red_team_name": "T1",
-      "blue_win_probability": 0.214385,
-      "red_win_probability": 0.785615,
+      "blue_win_probability": 0.244353,
+      "red_win_probability": 0.755647,
       "predicted_winner": "T1",
       "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.461"
+      ]
     },
     {
       "event_id": "pandascore:1493072",
@@ -569,18 +345,39 @@
       "red_team": "zen_esports",
       "blue_team_name": "Saigon Dino",
       "red_team_name": "ZEN Esports",
-      "blue_win_probability": 0.526829,
-      "red_win_probability": 0.473171,
+      "blue_win_probability": 0.505854,
+      "red_win_probability": 0.494146,
       "predicted_winner": "Saigon Dino",
       "confidence": "low",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.406"
+      ]
     }
   ],
   "warnings": [
+    "blue_red_side_sanity_delta:0.206",
+    "blue_red_side_sanity_delta:0.308",
+    "blue_red_side_sanity_delta:0.310",
+    "blue_red_side_sanity_delta:0.318",
+    "blue_red_side_sanity_delta:0.323",
+    "blue_red_side_sanity_delta:0.345",
+    "blue_red_side_sanity_delta:0.359",
+    "blue_red_side_sanity_delta:0.361",
+    "blue_red_side_sanity_delta:0.367",
+    "blue_red_side_sanity_delta:0.386",
+    "blue_red_side_sanity_delta:0.397",
+    "blue_red_side_sanity_delta:0.398",
+    "blue_red_side_sanity_delta:0.403",
+    "blue_red_side_sanity_delta:0.406",
+    "blue_red_side_sanity_delta:0.436",
+    "blue_red_side_sanity_delta:0.458",
+    "blue_red_side_sanity_delta:0.461",
+    "blue_red_side_sanity_delta:0.478",
+    "blue_team_fallback_slug:FURIA Esports->furia_esports",
     "blue_team_fallback_slug:furia_esports",
-    "red_team_fallback_slug:leviatan_esports",
-    "red_team_fallback_slug:ucam_esports_club"
+    "red_team_fallback_slug:Leviatan Esports->leviatan_esports",
+    "red_team_fallback_slug:leviatan_esports"
   ],
-  "warning_count": 3
+  "warning_count": 22
 }
