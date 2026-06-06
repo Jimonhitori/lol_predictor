@@ -16305,5 +16305,481 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "115548128963037563": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-06T11:48:48.120Z",
+    "event_id": "115548128963037563",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115548128963037563",
+      "league": "LCK",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-06-06T17:00:00.000Z",
+      "teams": [
+        {
+          "id": "100725845018863243",
+          "name": "Dplus KIA",
+          "code": "DK",
+          "image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "105505619546859895",
+          "name": "HANJIN BRION",
+          "code": "BRO",
+          "image": "http://static.lolesports.com/teams/1716454325887_Nowyprojekt.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128963037564",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "105505619546859895",
+            "team_name": "HANJIN BRION",
+            "team_code": "BRO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037565",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "105505619546859895",
+            "team_name": "HANJIN BRION",
+            "team_code": "BRO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037566",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "105505619546859895",
+            "team_name": "HANJIN BRION",
+            "team_code": "BRO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 1533,
+            "frame_timestamp": "2026-06-06T10:17:00Z",
+            "patch_version": "16.11.781.1789",
+            "blue": [
+              {
+                "player": "DK Siwoo",
+                "participant_id": "1",
+                "champion": "Sion",
+                "champion_id": "Sion",
+                "role": "top",
+                "level": 14,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 195,
+                "gold": 7359,
+                "current_health": 3485,
+                "max_health": 3521,
+                "items": [
+                  "1054",
+                  "3047",
+                  "2502",
+                  "3211",
+                  "3364"
+                ]
+              },
+              {
+                "player": "DK Lucid",
+                "participant_id": "2",
+                "champion": "MonkeyKing",
+                "champion_id": "MonkeyKing",
+                "role": "jungle",
+                "level": 13,
+                "kills": 2,
+                "deaths": 2,
+                "assists": 5,
+                "creep_score": 163,
+                "gold": 8650,
+                "current_health": 2492,
+                "max_health": 2492,
+                "items": [
+                  "3078",
+                  "6610",
+                  "1033",
+                  "2055"
+                ]
+              },
+              {
+                "player": "DK ShowMaker",
+                "participant_id": "3",
+                "champion": "Annie",
+                "champion_id": "Annie",
+                "role": "mid",
+                "level": 13,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 3,
+                "creep_score": 210,
+                "gold": 7925,
+                "current_health": 2116,
+                "max_health": 2116,
+                "items": [
+                  "1056",
+                  "1082",
+                  "3364",
+                  "3118",
+                  "3152",
+                  "2055",
+                  "2055"
+                ]
+              },
+              {
+                "player": "DK Smash",
+                "participant_id": "4",
+                "champion": "Mel",
+                "champion_id": "Mel",
+                "role": "bottom",
+                "level": 13,
+                "kills": 5,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 218,
+                "gold": 11172,
+                "current_health": 2139,
+                "max_health": 2219,
+                "items": [
+                  "1056",
+                  "6655",
+                  "3363",
+                  "3152",
+                  "1082",
+                  "1058",
+                  "3145"
+                ]
+              },
+              {
+                "player": "DK Career",
+                "participant_id": "5",
+                "champion": "Shen",
+                "champion_id": "Shen",
+                "role": "support",
+                "level": 8,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 8,
+                "creep_score": 30,
+                "gold": 5699,
+                "current_health": 1598,
+                "max_health": 2196,
+                "items": [
+                  "3364",
+                  "3190",
+                  "3067",
+                  "1011",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "BRO Casting",
+                "participant_id": "6",
+                "champion": "Jayce",
+                "champion_id": "Jayce",
+                "role": "top",
+                "level": 13,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 199,
+                "gold": 8031,
+                "current_health": 2453,
+                "max_health": 2496,
+                "items": [
+                  "3134",
+                  "3070",
+                  "3071",
+                  "3133",
+                  "3009",
+                  "1036",
+                  "3363"
+                ]
+              },
+              {
+                "player": "BRO GIDEON",
+                "participant_id": "7",
+                "champion": "XinZhao",
+                "champion_id": "XinZhao",
+                "role": "jungle",
+                "level": 11,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 1,
+                "creep_score": 132,
+                "gold": 6636,
+                "current_health": 2410,
+                "max_health": 2410,
+                "items": [
+                  "3364",
+                  "3748",
+                  "3111",
+                  "1028",
+                  "1036"
+                ]
+              },
+              {
+                "player": "BRO Loki ",
+                "participant_id": "8",
+                "champion": "Taliyah",
+                "champion_id": "Taliyah",
+                "role": "mid",
+                "level": 12,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 2,
+                "creep_score": 171,
+                "gold": 6224,
+                "current_health": 0,
+                "max_health": 1728,
+                "items": [
+                  "1056",
+                  "3363",
+                  "1052",
+                  "1052",
+                  "2055"
+                ]
+              },
+              {
+                "player": "BRO Teddy",
+                "participant_id": "9",
+                "champion": "Ezreal",
+                "champion_id": "Ezreal",
+                "role": "bottom",
+                "level": 12,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 2,
+                "creep_score": 191,
+                "gold": 7540,
+                "current_health": 2002,
+                "max_health": 2002,
+                "items": [
+                  "1086",
+                  "3078",
+                  "3363",
+                  "1001",
+                  "3004"
+                ]
+              },
+              {
+                "player": "BRO Namgung",
+                "participant_id": "10",
+                "champion": "Neeko",
+                "champion_id": "Neeko",
+                "role": "support",
+                "level": 8,
+                "kills": 0,
+                "deaths": 2,
+                "assists": 3,
+                "creep_score": 20,
+                "gold": 4755,
+                "current_health": 1775,
+                "max_health": 1775,
+                "items": [
+                  "3364",
+                  "3158",
+                  "3152"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 40805,
+              "kills": 9,
+              "towers": 4,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 3
+            },
+            "red_stats": {
+              "gold": 33186,
+              "kills": 3,
+              "towers": 1,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.960983562850248,
+              "red": 0.039016437149752003,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 1500,
+                "end_seconds": 1800,
+                "games": 25,
+                "rows": 207,
+                "roc_auc": 0.9851340847260008,
+                "brier": 0.1235469773257451
+              },
+              "features": {
+                "gold_diff": 7619,
+                "kill_diff": 6,
+                "tower_diff": 3,
+                "inhibitor_diff": 0,
+                "dragon_diff": 3,
+                "baron_diff": 0,
+                "avg_level_diff": 1,
+                "game_time": 1533
+              }
+            },
+            "retained_after_end": true
+          }
+        },
+        {
+          "id": "115548128963037567",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "105505619546859895",
+            "team_name": "HANJIN BRION",
+            "team_code": "BRO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037568",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "105505619546859895",
+            "team_name": "HANJIN BRION",
+            "team_code": "BRO"
+          },
+          "red": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
