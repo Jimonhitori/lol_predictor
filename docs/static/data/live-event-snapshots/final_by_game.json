@@ -12903,7 +12903,7 @@
   },
   "115570683341512223:115570683341512225": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-06T11:48:48.120Z",
+    "checked_at": "2026-06-06T12:57:47.285Z",
     "event_id": "115570683341512223",
     "game_id": "115570683341512225",
     "game_number": 2,
@@ -12914,7 +12914,7 @@
         "name": "GAM Esports",
         "code": "GAM",
         "image": "http://static.lolesports.com/teams/1643263093448_GAMyellow.png",
-        "game_wins": "1"
+        "game_wins": "2"
       },
       {
         "id": "107700204561086446",
@@ -13232,13 +13232,14 @@
             "game_time": 701
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   },
   "115548128963037563:115548128963037566": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-06T11:48:48.120Z",
+    "checked_at": "2026-06-06T12:57:47.285Z",
     "event_id": "115548128963037563",
     "game_id": "115548128963037566",
     "game_number": 3,
@@ -13562,7 +13563,8 @@
             "game_time": 1533
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }
