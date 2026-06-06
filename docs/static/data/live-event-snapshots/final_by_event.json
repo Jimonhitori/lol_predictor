@@ -16785,7 +16785,7 @@
   },
   "115570683341512223": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-06T14:41:19.155Z",
+    "checked_at": "2026-06-06T15:56:18.282Z",
     "event_id": "115570683341512223",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -17157,8 +17157,7 @@
                 "game_time": 701
               }
             },
-            "retained_after_end": true,
-            "retained_from_artifact": true
+            "retained_after_end": true
           }
         },
         {
@@ -17210,21 +17209,288 @@
           },
           "winner": "",
           "live": {
-            "game_state": "completed",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
+            "game_state": "in_game",
+            "game_time": 323,
+            "frame_timestamp": "2026-06-06T11:46:39.383Z",
+            "patch_version": "16.10.776.5552",
+            "blue": [
+              {
+                "player": "DCG Flauren",
+                "participant_id": "1",
+                "champion": "Ambessa",
+                "champion_id": "Ambessa",
+                "role": "top",
+                "level": 6,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 49,
+                "gold": 1898,
+                "current_health": 981,
+                "max_health": 1279,
+                "items": [
+                  "1054",
+                  "2003",
+                  "2003",
+                  "1036",
+                  "1036"
+                ]
+              },
+              {
+                "player": "DCG Pop9",
+                "participant_id": "2",
+                "champion": "Nocturne",
+                "champion_id": "Nocturne",
+                "role": "jungle",
+                "level": 5,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 31,
+                "gold": 1748,
+                "current_health": 1206,
+                "max_health": 1206,
+                "items": [
+                  "1101",
+                  "3340",
+                  "1036",
+                  "1036",
+                  "1028"
+                ]
+              },
+              {
+                "player": "DCG HongSuo",
+                "participant_id": "3",
+                "champion": "Sylas",
+                "champion_id": "Sylas",
+                "role": "mid",
+                "level": 5,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 31,
+                "gold": 1580,
+                "current_health": 769,
+                "max_health": 1199,
+                "items": [
+                  "1056",
+                  "3340",
+                  "1082",
+                  "2031",
+                  "1052"
+                ]
+              },
+              {
+                "player": "DCG Feng ",
+                "participant_id": "4",
+                "champion": "Corki",
+                "champion_id": "Corki",
+                "role": "bottom",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 47,
+                "gold": 1918,
+                "current_health": 926,
+                "max_health": 981,
+                "items": [
+                  "1055",
+                  "3340",
+                  "3070",
+                  "1036"
+                ]
+              },
+              {
+                "player": "DCG ShiauC",
+                "participant_id": "5",
+                "champion": "Nautilus",
+                "champion_id": "Nautilus",
+                "role": "support",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 11,
+                "gold": 1270,
+                "current_health": 967,
+                "max_health": 967,
+                "items": [
+                  "3865",
+                  "1001",
+                  "2055",
+                  "3364",
+                  "2003"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "GAM Kiaya",
+                "participant_id": "6",
+                "champion": "Gwen",
+                "champion_id": "Gwen",
+                "role": "top",
+                "level": 5,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 41,
+                "gold": 1756,
+                "current_health": 660,
+                "max_health": 1298,
+                "items": [
+                  "1056",
+                  "3340",
+                  "1052",
+                  "1028"
+                ]
+              },
+              {
+                "player": "GAM Draktharr",
+                "participant_id": "7",
+                "champion": "JarvanIV",
+                "champion_id": "JarvanIV",
+                "role": "jungle",
+                "level": 5,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 2,
+                "creep_score": 40,
+                "gold": 2207,
+                "current_health": 1244,
+                "max_health": 1276,
+                "items": [
+                  "1101",
+                  "2021",
+                  "1036",
+                  "3364"
+                ]
+              },
+              {
+                "player": "GAM Aress",
+                "participant_id": "8",
+                "champion": "Aurora",
+                "champion_id": "Aurora",
+                "role": "mid",
+                "level": 6,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 41,
+                "gold": 2422,
+                "current_health": 1042,
+                "max_health": 1196,
+                "items": [
+                  "1056",
+                  "3145",
+                  "1001",
+                  "2031"
+                ]
+              },
+              {
+                "player": "GAM Artemis",
+                "participant_id": "9",
+                "champion": "Sivir",
+                "champion_id": "Sivir",
+                "role": "bottom",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 48,
+                "gold": 1917,
+                "current_health": 779,
+                "max_health": 900,
+                "items": [
+                  "1086",
+                  "2003",
+                  "2003",
+                  "3340",
+                  "1083",
+                  "3144"
+                ]
+              },
+              {
+                "player": "GAM Taki",
+                "participant_id": "10",
+                "champion": "Rakan",
+                "champion_id": "Rakan",
+                "role": "support",
+                "level": 4,
+                "kills": 0,
+                "deaths": 0,
+                "assists": 0,
+                "creep_score": 5,
+                "gold": 1246,
+                "current_health": 1079,
+                "max_health": 1079,
+                "items": [
+                  "3865",
+                  "2003",
+                  "1028",
+                  "2055",
+                  "3364"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 8414,
+              "kills": 0,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
+            "red_stats": {
+              "gold": 9548,
+              "kills": 2,
+              "towers": 0,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 0
+            },
             "status": "ended",
-            "warning": "",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
             "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
+              "blue": 0.33177912739228216,
+              "red": 0.6682208726077179,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 300,
+                "end_seconds": 600,
+                "games": 26,
+                "rows": 260,
+                "roc_auc": 0.8525454545454545,
+                "brier": 0.18126713045949774
+              },
+              "features": {
+                "gold_diff": -1134,
+                "kill_diff": -2,
+                "tower_diff": 0,
+                "inhibitor_diff": 0,
+                "dragon_diff": 0,
+                "baron_diff": 0,
+                "avg_level_diff": 0,
+                "game_time": 323
+              }
+            },
+            "retained_after_end": true
           }
         },
         {
@@ -17541,7 +17807,8 @@
                 "game_time": 1641
               }
             },
-            "retained_after_end": true
+            "retained_after_end": true,
+            "retained_from_artifact": true
           }
         }
       ],
