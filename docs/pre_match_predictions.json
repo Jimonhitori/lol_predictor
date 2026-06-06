@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-06T12:35:15.654094Z",
+  "generated_at": "2026-06-06T12:45:09.332482Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -169,6 +169,22 @@
       "blue_win_probability": 0.420892,
       "red_win_probability": 0.579108,
       "predicted_winner": "TOP ESPORTS",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
+      "event_id": "pandascore:1485199",
+      "game_id": "pandascore:1485199",
+      "league": "Nexus League - Spring 2026 - Playoffs",
+      "start_time": "2026-06-07 19:00:00",
+      "blue_team": "karmine_corp_blue_stars",
+      "red_team": "project_conquerors",
+      "blue_team_name": "Karmine Corp Blue Stars",
+      "red_team_name": "Project Conquerors",
+      "blue_win_probability": 0.638555,
+      "red_win_probability": 0.361445,
+      "predicted_winner": "Karmine Corp Blue Stars",
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
