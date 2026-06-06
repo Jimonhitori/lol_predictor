@@ -12903,11 +12903,11 @@
   },
   "115570683341512223:115570683341512225": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-06T12:57:47.285Z",
+    "checked_at": "2026-06-06T14:41:19.155Z",
     "event_id": "115570683341512223",
     "game_id": "115570683341512225",
     "game_number": 2,
-    "event_status": "inProgress",
+    "event_status": "completed",
     "teams": [
       {
         "id": "98767991954244555",
@@ -12921,7 +12921,7 @@
         "name": "Relove Deep Cross Gaming",
         "code": "DCG",
         "image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
-        "game_wins": "2"
+        "game_wins": "3"
       }
     ],
     "game": {
@@ -13239,7 +13239,7 @@
   },
   "115548128963037563:115548128963037566": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-06T12:57:47.285Z",
+    "checked_at": "2026-06-06T14:41:19.155Z",
     "event_id": "115548128963037563",
     "game_id": "115548128963037566",
     "game_number": 3,
@@ -13565,6 +13565,347 @@
         },
         "retained_after_end": true,
         "retained_from_artifact": true
+      }
+    }
+  },
+  "115570683341512223:115570683341512228": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-06-06T14:41:19.155Z",
+    "event_id": "115570683341512223",
+    "game_id": "115570683341512228",
+    "game_number": 5,
+    "event_status": "completed",
+    "teams": [
+      {
+        "id": "98767991954244555",
+        "name": "GAM Esports",
+        "code": "GAM",
+        "image": "http://static.lolesports.com/teams/1643263093448_GAMyellow.png",
+        "game_wins": "2"
+      },
+      {
+        "id": "107700204561086446",
+        "name": "Relove Deep Cross Gaming",
+        "code": "DCG",
+        "image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
+        "game_wins": "3"
+      }
+    ],
+    "game": {
+      "id": "115570683341512228",
+      "number": 5,
+      "state": "completed",
+      "blue": {
+        "team_id": "107700204561086446",
+        "team_name": "Relove Deep Cross Gaming",
+        "team_code": "DCG"
+      },
+      "red": {
+        "team_id": "98767991954244555",
+        "team_name": "GAM Esports",
+        "team_code": "GAM"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 1641,
+        "frame_timestamp": "2026-06-06T12:55:39.934Z",
+        "patch_version": "16.10.776.5552",
+        "blue": [
+          {
+            "player": "DCG Flauren",
+            "participant_id": "1",
+            "champion": "Jax",
+            "champion_id": "Jax",
+            "role": "top",
+            "level": 15,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 3,
+            "creep_score": 198,
+            "gold": 8198,
+            "current_health": 3044,
+            "max_health": 3044,
+            "items": [
+              "1120",
+              "3078",
+              "3123",
+              "1028",
+              "2021",
+              "3111"
+            ]
+          },
+          {
+            "player": "DCG Pop9",
+            "participant_id": "2",
+            "champion": "Sejuani",
+            "champion_id": "Sejuani",
+            "role": "jungle",
+            "level": 13,
+            "kills": 2,
+            "deaths": 0,
+            "assists": 2,
+            "creep_score": 170,
+            "gold": 8593,
+            "current_health": 3061,
+            "max_health": 3111,
+            "items": [
+              "2525",
+              "3111",
+              "2524",
+              "3067",
+              "1033",
+              "2055"
+            ]
+          },
+          {
+            "player": "DCG HongSuo",
+            "participant_id": "3",
+            "champion": "Azir",
+            "champion_id": "Azir",
+            "role": "mid",
+            "level": 13,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 2,
+            "creep_score": 218,
+            "gold": 7894,
+            "current_health": 2310,
+            "max_health": 2389,
+            "items": [
+              "1056",
+              "2031",
+              "3115",
+              "3363",
+              "3020",
+              "3152",
+              "2055"
+            ]
+          },
+          {
+            "player": "DCG Feng ",
+            "participant_id": "4",
+            "champion": "Varus",
+            "champion_id": "Varus",
+            "role": "bottom",
+            "level": 13,
+            "kills": 3,
+            "deaths": 0,
+            "assists": 1,
+            "creep_score": 231,
+            "gold": 11393,
+            "current_health": 1814,
+            "max_health": 1814,
+            "items": [
+              "1086",
+              "3087",
+              "3008",
+              "3363",
+              "3124",
+              "3302",
+              "2055"
+            ]
+          },
+          {
+            "player": "DCG ShiauC",
+            "participant_id": "5",
+            "champion": "Braum",
+            "champion_id": "Braum",
+            "role": "support",
+            "level": 9,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 4,
+            "creep_score": 27,
+            "gold": 5800,
+            "current_health": 2129,
+            "max_health": 2129,
+            "items": [
+              "3364",
+              "1004",
+              "3111",
+              "3050",
+              "3067",
+              "2055"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "GAM Kiaya",
+            "participant_id": "6",
+            "champion": "Aatrox",
+            "champion_id": "Aatrox",
+            "role": "top",
+            "level": 14,
+            "kills": 1,
+            "deaths": 3,
+            "assists": 1,
+            "creep_score": 204,
+            "gold": 8039,
+            "current_health": 2958,
+            "max_health": 2958,
+            "items": [
+              "1120",
+              "3340",
+              "6610",
+              "3111",
+              "1037",
+              "2021",
+              "2055"
+            ]
+          },
+          {
+            "player": "GAM Draktharr",
+            "participant_id": "7",
+            "champion": "Maokai",
+            "champion_id": "Maokai",
+            "role": "jungle",
+            "level": 12,
+            "kills": 0,
+            "deaths": 1,
+            "assists": 2,
+            "creep_score": 155,
+            "gold": 7079,
+            "current_health": 2303,
+            "max_health": 2303,
+            "items": [
+              "3364",
+              "6653",
+              "3111",
+              "1029",
+              "3067",
+              "1033"
+            ]
+          },
+          {
+            "player": "GAM Aress",
+            "participant_id": "8",
+            "champion": "Tristana",
+            "champion_id": "Tristana",
+            "role": "mid",
+            "level": 13,
+            "kills": 1,
+            "deaths": 0,
+            "assists": 0,
+            "creep_score": 221,
+            "gold": 8184,
+            "current_health": 1981,
+            "max_health": 1981,
+            "items": [
+              "1086",
+              "2523",
+              "3363",
+              "3035",
+              "3086",
+              "1042"
+            ]
+          },
+          {
+            "player": "GAM Artemis",
+            "participant_id": "9",
+            "champion": "Ziggs",
+            "champion_id": "Ziggs",
+            "role": "bottom",
+            "level": 12,
+            "kills": 0,
+            "deaths": 0,
+            "assists": 2,
+            "creep_score": 218,
+            "gold": 8519,
+            "current_health": 1804,
+            "max_health": 1804,
+            "items": [
+              "1056",
+              "3070",
+              "6655",
+              "3363",
+              "4628",
+              "3020",
+              "2055"
+            ]
+          },
+          {
+            "player": "GAM Taki",
+            "participant_id": "10",
+            "champion": "Shen",
+            "champion_id": "Shen",
+            "role": "support",
+            "level": 9,
+            "kills": 0,
+            "deaths": 2,
+            "assists": 2,
+            "creep_score": 34,
+            "gold": 5165,
+            "current_health": 1942,
+            "max_health": 1942,
+            "items": [
+              "3364",
+              "2031",
+              "3222",
+              "3111",
+              "1028",
+              "2055"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 41878,
+          "kills": 6,
+          "towers": 3,
+          "inhibitors": 0,
+          "barons": 1,
+          "dragons": 3
+        },
+        "red_stats": {
+          "gold": 36986,
+          "kills": 2,
+          "towers": 3,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 0
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.8852428886016016,
+          "red": 0.11475711139839839,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation",
+            "start_seconds": 1500,
+            "end_seconds": 1800,
+            "games": 25,
+            "rows": 207,
+            "roc_auc": 0.9851340847260008,
+            "brier": 0.1235469773257451
+          },
+          "features": {
+            "gold_diff": 4892,
+            "kill_diff": 4,
+            "tower_diff": 0,
+            "inhibitor_diff": 0,
+            "dragon_diff": 3,
+            "baron_diff": 1,
+            "avg_level_diff": 0.5999999999999996,
+            "game_time": 1641
+          }
+        },
+        "retained_after_end": true
       }
     }
   }
