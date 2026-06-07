@@ -16933,18 +16933,18 @@
   },
   "115564793879469300:115564793879469302": {
     "schema": "lol_live_game_final_snapshot_v1",
-    "checked_at": "2026-06-07T22:40:49.481Z",
+    "checked_at": "2026-06-07T23:43:45.876Z",
     "event_id": "115564793879469300",
     "game_id": "115564793879469302",
     "game_number": 2,
-    "event_status": "inProgress",
+    "event_status": "completed",
     "teams": [
       {
         "id": "99566405941863385",
         "name": "LYON",
         "code": "LYON",
         "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
-        "game_wins": "2"
+        "game_wins": "3"
       },
       {
         "id": "98767991877340524",
@@ -17263,7 +17263,8 @@
             "game_time": 1406
           }
         },
-        "retained_after_end": true
+        "retained_after_end": true,
+        "retained_from_artifact": true
       }
     }
   }

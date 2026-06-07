@@ -21478,5 +21478,488 @@
       "source": "cloudflare_live_event",
       "warning": ""
     }
+  },
+  "115564793879469300": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-07T23:43:45.876Z",
+    "event_id": "115564793879469300",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": true,
+    "is_finalizable": true,
+    "payload": {
+      "id": "115564793879469300",
+      "league": "LCS",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-06-08T05:00:00.000Z",
+      "teams": [
+        {
+          "id": "99566405941863385",
+          "name": "LYON",
+          "code": "LYON",
+          "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "98767991877340524",
+          "name": "Cloud9 Kia",
+          "code": "C9",
+          "image": "http://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115564793879469301",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469302",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "in_game",
+            "game_time": 1406,
+            "frame_timestamp": "2026-06-07T21:31:59.744Z",
+            "patch_version": "16.11.781.1789",
+            "blue": [
+              {
+                "player": "LYON Dhokla",
+                "participant_id": "1",
+                "champion": "Rumble",
+                "champion_id": "Rumble",
+                "role": "top",
+                "level": 13,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 3,
+                "creep_score": 151,
+                "gold": 6349,
+                "current_health": 1129,
+                "max_health": 2244,
+                "items": [
+                  "1056",
+                  "3340",
+                  "2031",
+                  "3111",
+                  "6653",
+                  "1052"
+                ]
+              },
+              {
+                "player": "LYON Inspired",
+                "participant_id": "2",
+                "champion": "Naafiri",
+                "champion_id": "Naafiri",
+                "role": "jungle",
+                "level": 11,
+                "kills": 3,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 148,
+                "gold": 8196,
+                "current_health": 2091,
+                "max_health": 2091,
+                "items": [
+                  "6699",
+                  "3161",
+                  "3111",
+                  "2055"
+                ]
+              },
+              {
+                "player": "LYON Saint",
+                "participant_id": "3",
+                "champion": "Viktor",
+                "champion_id": "Viktor",
+                "role": "mid",
+                "level": 13,
+                "kills": 1,
+                "deaths": 0,
+                "assists": 4,
+                "creep_score": 199,
+                "gold": 7780,
+                "current_health": 1690,
+                "max_health": 1900,
+                "items": [
+                  "1056",
+                  "1082",
+                  "3363",
+                  "2503",
+                  "3145",
+                  "3108"
+                ]
+              },
+              {
+                "player": "LYON Berserker",
+                "participant_id": "4",
+                "champion": "Varus",
+                "champion_id": "Varus",
+                "role": "bottom",
+                "level": 12,
+                "kills": 2,
+                "deaths": 0,
+                "assists": 3,
+                "creep_score": 177,
+                "gold": 8277,
+                "current_health": 1394,
+                "max_health": 1698,
+                "items": [
+                  "1086",
+                  "3142",
+                  "3363",
+                  "3004",
+                  "2055"
+                ]
+              },
+              {
+                "player": "LYON Isles",
+                "participant_id": "5",
+                "champion": "Bard",
+                "champion_id": "Bard",
+                "role": "support",
+                "level": 8,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 7,
+                "creep_score": 19,
+                "gold": 5024,
+                "current_health": 1889,
+                "max_health": 1889,
+                "items": [
+                  "3364",
+                  "2031",
+                  "3222",
+                  "3158",
+                  "1028",
+                  "1029",
+                  "2055"
+                ]
+              }
+            ],
+            "red": [
+              {
+                "player": "C9 Thanatos",
+                "participant_id": "6",
+                "champion": "Aurora",
+                "champion_id": "Aurora",
+                "role": "top",
+                "level": 13,
+                "kills": 2,
+                "deaths": 2,
+                "assists": 0,
+                "creep_score": 173,
+                "gold": 6979,
+                "current_health": 2266,
+                "max_health": 2266,
+                "items": [
+                  "1056",
+                  "3020",
+                  "3152",
+                  "3363",
+                  "1058",
+                  "3145",
+                  "2055"
+                ]
+              },
+              {
+                "player": "C9 Blaber",
+                "participant_id": "7",
+                "champion": "JarvanIV",
+                "champion_id": "JarvanIV",
+                "role": "jungle",
+                "level": 11,
+                "kills": 1,
+                "deaths": 2,
+                "assists": 1,
+                "creep_score": 147,
+                "gold": 6741,
+                "current_health": 2462,
+                "max_health": 2462,
+                "items": [
+                  "3364",
+                  "6610",
+                  "3044",
+                  "3067",
+                  "1037"
+                ]
+              },
+              {
+                "player": "C9 APA",
+                "participant_id": "8",
+                "champion": "Annie",
+                "champion_id": "Annie",
+                "role": "mid",
+                "level": 12,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 3,
+                "creep_score": 165,
+                "gold": 6325,
+                "current_health": 1506,
+                "max_health": 1660,
+                "items": [
+                  "1056",
+                  "3340",
+                  "2031",
+                  "3118",
+                  "3145",
+                  "1052"
+                ]
+              },
+              {
+                "player": "C9 Zven",
+                "participant_id": "9",
+                "champion": "Jhin",
+                "champion_id": "Jhin",
+                "role": "bottom",
+                "level": 11,
+                "kills": 1,
+                "deaths": 1,
+                "assists": 0,
+                "creep_score": 200,
+                "gold": 7959,
+                "current_health": 1679,
+                "max_health": 1738,
+                "items": [
+                  "1055",
+                  "2031",
+                  "3142",
+                  "3009",
+                  "3363",
+                  "6676",
+                  "2055"
+                ]
+              },
+              {
+                "player": "C9 Vulcan",
+                "participant_id": "10",
+                "champion": "Karma",
+                "champion_id": "Karma",
+                "role": "support",
+                "level": 8,
+                "kills": 0,
+                "deaths": 1,
+                "assists": 1,
+                "creep_score": 33,
+                "gold": 4661,
+                "current_health": 1697,
+                "max_health": 1774,
+                "items": [
+                  "2031",
+                  "3364",
+                  "3222",
+                  "2055",
+                  "3158",
+                  "1052"
+                ]
+              }
+            ],
+            "blue_stats": {
+              "gold": 35626,
+              "kills": 7,
+              "towers": 2,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 1
+            },
+            "red_stats": {
+              "gold": 32665,
+              "kills": 4,
+              "towers": 1,
+              "inhibitors": 0,
+              "barons": 0,
+              "dragons": 2
+            },
+            "status": "ended",
+            "warning": "game_time_estimated",
+            "source": "lolesports_livestats",
+            "estimated_game_time": true,
+            "win_probability": {
+              "blue": 0.6499421719832011,
+              "red": 0.35005782801679886,
+              "model": "live_lck_logreg_deep20_regularized_v1",
+              "status": "estimated",
+              "feature_schema": "live_frame_v1",
+              "training_rows": 2123,
+              "test_rows": 564,
+              "metrics": {
+                "rows": 564,
+                "accuracy": 0.7890070921985816,
+                "brier": 0.16011961508709052,
+                "log_loss": 0.4868346825422321,
+                "roc_auc": 0.9022971281490753
+              },
+              "validation": {
+                "display": "show_live_probability",
+                "source": "external_validation",
+                "start_seconds": 1200,
+                "end_seconds": 1500,
+                "games": 26,
+                "rows": 258,
+                "roc_auc": 0.9587223587223587,
+                "brier": 0.1254621549810755
+              },
+              "features": {
+                "gold_diff": 2961,
+                "kill_diff": 3,
+                "tower_diff": 1,
+                "inhibitor_diff": 0,
+                "dragon_diff": -1,
+                "baron_diff": 0,
+                "avg_level_diff": 0.40000000000000036,
+                "game_time": 1406
+              }
+            },
+            "retained_after_end": true,
+            "retained_from_artifact": true
+          }
+        },
+        {
+          "id": "115564793879469303",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469304",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469305",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
   }
 }
