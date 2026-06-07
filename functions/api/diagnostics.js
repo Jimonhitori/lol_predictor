@@ -88,12 +88,14 @@ export async function onRequestGet(context) {
   const remoteSchemaHasTopLevelWarnings = remoteSchemaProbe?.json?.properties?.warnings?.type === 'array';
   const predictionFeedWarnings = predictionArtifactWarnings(predictionFeed?.json);
   const remotePredictionFeedWarnings = predictionArtifactWarnings(remotePredictionProbe?.json);
+  const blockingPredictionFeedWarnings = predictionFeedWarnings.filter(isBlockingPredictionArtifactWarning);
+  const blockingRemotePredictionFeedWarnings = remotePredictionFeedWarnings.filter(isBlockingPredictionArtifactWarning);
   const artifactWarnings = [
     ...(predictionFeedFreshness.status === 'stale' ? ['prediction_feed_stale'] : []),
-    ...(predictionFeedWarnings.length ? ['prediction_feed_has_warnings'] : []),
+    ...(blockingPredictionFeedWarnings.length ? ['prediction_feed_has_warnings'] : []),
     ...(remotePredictionProbe && !remotePredictionProbe.ok ? [`remote_prediction_feed_${remotePredictionProbe.status || 'missing'}`] : []),
     ...(remotePredictionProbe?.ok && !remotePredictionSchemaOk ? ['remote_prediction_feed_schema_mismatch'] : []),
-    ...(remotePredictionFeedWarnings.length ? ['remote_prediction_feed_has_warnings'] : []),
+    ...(blockingRemotePredictionFeedWarnings.length ? ['remote_prediction_feed_has_warnings'] : []),
     ...(remotePredictionFreshness.status === 'stale' ? ['remote_prediction_feed_stale'] : []),
     ...(remoteSchemaProbe && !remoteSchemaProbe.ok ? [`remote_prediction_schema_${remoteSchemaProbe.status || 'missing'}`] : []),
     ...(remoteSchemaProbe?.ok && !remoteSchemaOk ? ['remote_prediction_schema_mismatch'] : []),
@@ -217,6 +219,11 @@ function stringEnv(context, key) {
 function arrayOfStrings(value) {
   if (!Array.isArray(value)) return [];
   return value.flatMap(warningParts).filter(Boolean);
+}
+
+function isBlockingPredictionArtifactWarning(warning) {
+  const value = String(warning || '');
+  return !value.startsWith('blue_red_side_sanity_delta:');
 }
 
 function predictionArtifactWarnings(payload) {
