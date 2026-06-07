@@ -15238,5 +15238,342 @@
         "retained_from_artifact": true
       }
     }
+  },
+  "115564793879469318:115564793879469319": {
+    "schema": "lol_live_game_final_snapshot_v1",
+    "checked_at": "2026-06-07T01:58:34.610Z",
+    "event_id": "115564793879469318",
+    "game_id": "115564793879469319",
+    "game_number": 1,
+    "event_status": "completed",
+    "teams": [
+      {
+        "id": "98926509892121852",
+        "name": "FlyQuest",
+        "code": "FLY",
+        "image": "http://static.lolesports.com/teams/flyquest-new-on-dark.png",
+        "game_wins": "1"
+      },
+      {
+        "id": "98926509885559666",
+        "name": "Team Liquid Alienware",
+        "code": "TLAW",
+        "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
+        "game_wins": "3"
+      }
+    ],
+    "game": {
+      "id": "115564793879469319",
+      "number": 1,
+      "state": "completed",
+      "blue": {
+        "team_id": "98926509892121852",
+        "team_name": "FlyQuest",
+        "team_code": "FLY"
+      },
+      "red": {
+        "team_id": "98926509885559666",
+        "team_name": "Team Liquid Alienware",
+        "team_code": "TLAW"
+      },
+      "winner": "",
+      "live": {
+        "game_state": "in_game",
+        "game_time": 3058,
+        "frame_timestamp": "2026-06-06T20:47:09.806Z",
+        "patch_version": "16.11.781.1789",
+        "blue": [
+          {
+            "player": "FLY Gakgos",
+            "participant_id": "1",
+            "champion": "Jayce",
+            "champion_id": "Jayce",
+            "role": "top",
+            "level": 19,
+            "kills": 1,
+            "deaths": 5,
+            "assists": 5,
+            "creep_score": 311,
+            "gold": 14996,
+            "current_health": 0,
+            "max_health": 2952,
+            "items": [
+              "3363",
+              "6695",
+              "3142",
+              "3158",
+              "6694",
+              "2021"
+            ]
+          },
+          {
+            "player": "FLY Gryffinn",
+            "participant_id": "2",
+            "champion": "Nocturne",
+            "champion_id": "Nocturne",
+            "role": "jungle",
+            "level": 17,
+            "kills": 5,
+            "deaths": 3,
+            "assists": 3,
+            "creep_score": 289,
+            "gold": 15131,
+            "current_health": 3438,
+            "max_health": 3438,
+            "items": [
+              "3073",
+              "6631",
+              "3026",
+              "3047",
+              "2055",
+              "2055",
+              "3155"
+            ]
+          },
+          {
+            "player": "FLY Quad",
+            "participant_id": "3",
+            "champion": "Cassiopeia",
+            "champion_id": "Cassiopeia",
+            "role": "mid",
+            "level": 18,
+            "kills": 1,
+            "deaths": 2,
+            "assists": 8,
+            "creep_score": 329,
+            "gold": 13580,
+            "current_health": 2069,
+            "max_health": 3313,
+            "items": [
+              "3363",
+              "6657",
+              "3116",
+              "3135"
+            ]
+          },
+          {
+            "player": "FLY Massu",
+            "participant_id": "4",
+            "champion": "Ezreal",
+            "champion_id": "Ezreal",
+            "role": "bottom",
+            "level": 17,
+            "kills": 3,
+            "deaths": 2,
+            "assists": 4,
+            "creep_score": 355,
+            "gold": 16274,
+            "current_health": 3051,
+            "max_health": 3051,
+            "items": [
+              "1086",
+              "3078",
+              "3008",
+              "3363",
+              "3161",
+              "3036",
+              "1036"
+            ]
+          },
+          {
+            "player": "FLY Cryogen",
+            "participant_id": "5",
+            "champion": "Neeko",
+            "champion_id": "Neeko",
+            "role": "support",
+            "level": 14,
+            "kills": 1,
+            "deaths": 4,
+            "assists": 9,
+            "creep_score": 45,
+            "gold": 9821,
+            "current_health": 2432,
+            "max_health": 2432,
+            "items": [
+              "3364",
+              "3152",
+              "3158",
+              "4005",
+              "2055",
+              "2055",
+              "3916"
+            ]
+          }
+        ],
+        "red": [
+          {
+            "player": "TLAW Morgan",
+            "participant_id": "6",
+            "champion": "Sion",
+            "champion_id": "Sion",
+            "role": "top",
+            "level": 20,
+            "kills": 0,
+            "deaths": 2,
+            "assists": 10,
+            "creep_score": 279,
+            "gold": 12652,
+            "current_health": 463,
+            "max_health": 5535,
+            "items": [
+              "3047",
+              "2502",
+              "3065",
+              "3364",
+              "2055",
+              "2055",
+              "2138"
+            ]
+          },
+          {
+            "player": "TLAW Josedeodo",
+            "participant_id": "7",
+            "champion": "JarvanIV",
+            "champion_id": "JarvanIV",
+            "role": "jungle",
+            "level": 18,
+            "kills": 6,
+            "deaths": 0,
+            "assists": 10,
+            "creep_score": 283,
+            "gold": 16412,
+            "current_health": 3788,
+            "max_health": 3788,
+            "items": [
+              "3364",
+              "6610",
+              "3071",
+              "3111",
+              "3026",
+              "3065",
+              "3155"
+            ]
+          },
+          {
+            "player": "TLAW Quid",
+            "participant_id": "8",
+            "champion": "Orianna",
+            "champion_id": "Orianna",
+            "role": "mid",
+            "level": 18,
+            "kills": 4,
+            "deaths": 5,
+            "assists": 11,
+            "creep_score": 327,
+            "gold": 15245,
+            "current_health": 0,
+            "max_health": 3089,
+            "items": [
+              "3363",
+              "3020",
+              "3152",
+              "4645",
+              "4646",
+              "2139",
+              "1058"
+            ]
+          },
+          {
+            "player": "TLAW Yeon",
+            "participant_id": "9",
+            "champion": "Xayah",
+            "champion_id": "Xayah",
+            "role": "bottom",
+            "level": 17,
+            "kills": 5,
+            "deaths": 3,
+            "assists": 6,
+            "creep_score": 382,
+            "gold": 18422,
+            "current_health": 2462,
+            "max_health": 2462,
+            "items": [
+              "3097",
+              "3363",
+              "3006",
+              "6675",
+              "3036",
+              "3031",
+              "3140"
+            ]
+          },
+          {
+            "player": "TLAW CoreJJ",
+            "participant_id": "10",
+            "champion": "Rakan",
+            "champion_id": "Rakan",
+            "role": "support",
+            "level": 14,
+            "kills": 1,
+            "deaths": 1,
+            "assists": 14,
+            "creep_score": 33,
+            "gold": 10062,
+            "current_health": 2571,
+            "max_health": 2571,
+            "items": [
+              "3364",
+              "3190",
+              "3111",
+              "3916",
+              "3109",
+              "2055",
+              "2055"
+            ]
+          }
+        ],
+        "blue_stats": {
+          "gold": 69802,
+          "kills": 11,
+          "towers": 5,
+          "inhibitors": 0,
+          "barons": 0,
+          "dragons": 2
+        },
+        "red_stats": {
+          "gold": 72793,
+          "kills": 16,
+          "towers": 8,
+          "inhibitors": 2,
+          "barons": 2,
+          "dragons": 3
+        },
+        "status": "ended",
+        "warning": "game_time_estimated",
+        "source": "lolesports_livestats",
+        "estimated_game_time": true,
+        "win_probability": {
+          "blue": 0.4455712642623261,
+          "red": 0.5544287357376738,
+          "model": "live_lck_logreg_deep20_regularized_v1",
+          "status": "estimated",
+          "feature_schema": "live_frame_v1",
+          "training_rows": 2123,
+          "test_rows": 564,
+          "metrics": {
+            "rows": 564,
+            "accuracy": 0.7890070921985816,
+            "brier": 0.16011961508709052,
+            "log_loss": 0.4868346825422321,
+            "roc_auc": 0.9022971281490753
+          },
+          "validation": {
+            "display": "show_live_probability",
+            "source": "external_validation"
+          },
+          "features": {
+            "gold_diff": -2991,
+            "kill_diff": -5,
+            "tower_diff": -3,
+            "inhibitor_diff": -2,
+            "dragon_diff": -1,
+            "baron_diff": -2,
+            "avg_level_diff": -0.3999999999999986,
+            "game_time": 3058
+          }
+        },
+        "retained_after_end": true
+      }
+    }
   }
 }
