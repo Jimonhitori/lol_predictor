@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-07T17:29:43.361783Z",
+  "generated_at": "2026-06-07T21:51:38.868787Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -75,22 +75,6 @@
       "warnings": []
     },
     {
-      "event_id": "pandascore:1520676",
-      "game_id": "pandascore:1520676",
-      "league": "Esports World Cup - South America & LATAM Qualifier 2026 - Playoffs",
-      "start_time": "2026-06-08 04:15:00",
-      "blue_team": "red_canids",
-      "red_team": "leviatan",
-      "blue_team_name": "RED Canids",
-      "red_team_name": "Leviatan Esports",
-      "blue_win_probability": 0.774707,
-      "red_win_probability": 0.225293,
-      "predicted_winner": "RED Canids",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
       "event_id": "115564793879469300",
       "game_id": "115564793879469300",
       "league": "LCS",
@@ -102,22 +86,6 @@
       "blue_win_probability": 0.376298,
       "red_win_probability": 0.623702,
       "predicted_winner": "Cloud9 Kia",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "pandascore:1520677",
-      "game_id": "pandascore:1520677",
-      "league": "Esports World Cup - South America & LATAM Qualifier 2026 - Playoffs",
-      "start_time": "2026-06-08 06:30:00",
-      "blue_team": "fluxo_w7m",
-      "red_team": "pain_gaming",
-      "blue_team_name": "Fluxo W7M",
-      "red_team_name": "paiN Gaming",
-      "blue_win_probability": 0.463019,
-      "red_win_probability": 0.536981,
-      "predicted_winner": "paiN Gaming",
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
@@ -267,6 +235,22 @@
       "warnings": []
     },
     {
+      "event_id": "pandascore:1520681",
+      "game_id": "pandascore:1520681",
+      "league": "Esports World Cup - South America & LATAM Qualifier 2026 - Playoffs",
+      "start_time": "2026-06-09 04:15:00",
+      "blue_team": "l_s",
+      "red_team": "vivo_keyd_stars",
+      "blue_team_name": "LOS",
+      "red_team_name": "Vivo Keyd Stars",
+      "blue_win_probability": 0.663537,
+      "red_win_probability": 0.336463,
+      "predicted_winner": "LOS",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
       "event_id": "116056873411008602",
       "game_id": "116056873411008602",
       "league": "LRN",
@@ -283,16 +267,16 @@
       "warnings": []
     },
     {
-      "event_id": "pandascore:1384386",
-      "game_id": "pandascore:1384386",
-      "league": "LRS - Split 1 2026 - Playoffs",
+      "event_id": "116056974916422610",
+      "game_id": "116056974916422610",
+      "league": "LRS",
       "start_time": "2026-06-10 05:00:00",
-      "blue_team": "golden_lions",
-      "red_team": "volticons",
-      "blue_team_name": "Golden Lions",
-      "red_team_name": "Volticons",
-      "blue_win_probability": 0.584172,
-      "red_win_probability": 0.415828,
+      "blue_team": "volticons",
+      "red_team": "golden_lions",
+      "blue_team_name": "Volticons",
+      "red_team_name": "Golden Lions",
+      "blue_win_probability": 0.470868,
+      "red_win_probability": 0.529132,
       "predicted_winner": "Golden Lions",
       "confidence": "high",
       "model": "logistic_regression_actions",
