@@ -10,16 +10,13 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 11,
+  "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature rows below threshold (0 < 50)",
-    "training readiness: labeled live games below threshold (0 < 5)",
-    "training readiness: live feature intervals below threshold (0 < 25)",
+    "training readiness: live feature <=30s interval coverage below threshold (58.0% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
-    "training pipeline: no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080",
     "live model evaluation report is missing",
     "live replay summary is missing",
     "public manifest does not expose a live model"
@@ -75,23 +72,21 @@
     },
     {
       "evidence": {
-        "feature_rows": 0,
-        "games": 0,
+        "feature_rows": 438,
+        "games": 32,
         "label_sources": {
-          "combined_rows": 24905,
-          "games_rows": 24905,
+          "combined_rows": 25827,
+          "games_rows": 25827,
           "live_label_rows": 0
         },
-        "labeled_rows": 0,
-        "pipeline_feature_rows": 0,
-        "pipeline_labeled_feature_rows": 0,
+        "labeled_rows": 438,
+        "pipeline_feature_rows": 438,
+        "pipeline_labeled_feature_rows": 438,
         "pipeline_ready": false,
         "pipeline_replayed": false,
         "pipeline_resolved_rows": 499,
         "pipeline_trained": false,
-        "pipeline_warnings": [
-          "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"
-        ]
+        "pipeline_warnings": []
       },
       "id": "completed_game_labels",
       "label": "Live frames joined to completed-game winners",

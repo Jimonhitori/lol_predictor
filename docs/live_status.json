@@ -1,14 +1,11 @@
 {
-  "blocker_count": 11,
+  "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature rows below threshold (0 < 50)",
-    "training readiness: labeled live games below threshold (0 < 5)",
-    "training readiness: live feature intervals below threshold (0 < 25)",
+    "training readiness: live feature <=30s interval coverage below threshold (58.0% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
-    "training pipeline: no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080",
     "live model evaluation report is missing",
     "live replay summary is missing",
     "public manifest does not expose a live model"
@@ -180,7 +177,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-07T11:22:13.714296+00:00",
+  "generated_at": "2026-06-07T17:11:39.308241+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -199,19 +196,19 @@
     "cadence_note": "OE bootstrap snapshots are coarse 10/15/20/25 minute rows, not <=30s live telemetry.",
     "cadence_seconds": 300,
     "evaluation": {
-      "accuracy": 0.763017526035052,
-      "brier_score": 0.15999606173184552,
+      "accuracy": 0.7553353658536586,
+      "brier_score": 0.1615808189491062,
       "display_recommendation": null,
       "earliest_reliable_bucket": null,
-      "log_loss": 0.48090411915898
+      "log_loss": 0.4832092338392302
     },
-    "feature_rows": 19679,
+    "feature_rows": 19663,
     "games": 5000,
     "model_url": "live_logistic_oe_bootstrap.json",
     "pct_intervals_lte_30s": 0.0,
     "production_live_telemetry": false,
     "ready": true,
-    "rows": 19679,
+    "rows": 19663,
     "source": "oracles_elixir_at_minute_snapshots",
     "trained": true
   },
@@ -251,23 +248,21 @@
     },
     {
       "evidence": {
-        "feature_rows": 0,
-        "games": 0,
+        "feature_rows": 438,
+        "games": 32,
         "label_sources": {
-          "combined_rows": 24905,
-          "games_rows": 24905,
+          "combined_rows": 25827,
+          "games_rows": 25827,
           "live_label_rows": 0
         },
-        "labeled_rows": 0,
-        "pipeline_feature_rows": 0,
-        "pipeline_labeled_feature_rows": 0,
+        "labeled_rows": 438,
+        "pipeline_feature_rows": 438,
+        "pipeline_labeled_feature_rows": 438,
         "pipeline_ready": false,
         "pipeline_replayed": false,
         "pipeline_resolved_rows": 499,
         "pipeline_trained": false,
-        "pipeline_warnings": [
-          "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"
-        ]
+        "pipeline_warnings": []
       },
       "id": "completed_game_labels",
       "label": "Live frames joined to completed-game winners",
@@ -318,7 +313,7 @@
   "stage": "collect_live_frames",
   "training": {
     "available": true,
-    "games": 0,
+    "games": 32,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
@@ -328,13 +323,13 @@
         "brier_score": null,
         "log_loss": null
       },
-      "feature_rows": 0,
-      "labeled_feature_rows": 0,
+      "feature_rows": 438,
+      "labeled_feature_rows": 438,
       "mapping": {
-        "accepted_rows": 0,
-        "candidate_rows": 50,
+        "accepted_rows": 32,
+        "candidate_rows": 175,
         "direct_id_overlap_games": 0,
-        "map_rows": 39
+        "map_rows": 65
       },
       "priors": {
         "post_draft_non_default_rows": 0,
@@ -342,7 +337,7 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 14
+        "pre_match_rows": 22
       },
       "ready": false,
       "replay": {
@@ -353,13 +348,11 @@
       "replayed": false,
       "resolved_rows": 499,
       "trained": false,
-      "warning_count": 1,
-      "warnings": [
-        "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"
-      ]
+      "warning_count": 0,
+      "warnings": []
     },
     "ready": false,
-    "rows": 0
+    "rows": 438
   },
   "warning_count": 5,
   "warnings": [
