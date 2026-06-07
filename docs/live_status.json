@@ -174,13 +174,13 @@
       "ready": false,
       "warning_count": 2,
       "warnings": [
-        "live frame <=30s interval coverage below threshold (58.4% < 80.0%)",
+        "live frame <=30s interval coverage below threshold (58.3% < 80.0%)",
         "OE bootstrap snapshot rows are present in collection history; they are coarse offline rows, not production live telemetry"
       ]
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-06T13:21:36.932580+00:00",
+  "generated_at": "2026-06-07T11:22:13.714296+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -235,15 +235,15 @@
       "evidence": {
         "empty_game_state_rate": 0.0,
         "games": 35,
-        "interval_count": 238,
+        "interval_count": 240,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 496,
+        "non_empty_game_state_rows": 499,
         "oe_bootstrap_snapshot_rows": 277,
-        "pct_intervals_lte_30s": 0.5840336134453782,
-        "production_live_telemetry_rows": 219,
+        "pct_intervals_lte_30s": 0.5833333333333334,
+        "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 496,
-        "sub_30s_interval_count": 139
+        "rows": 499,
+        "sub_30s_interval_count": 140
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -263,7 +263,7 @@
         "pipeline_labeled_feature_rows": 0,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 496,
+        "pipeline_resolved_rows": 499,
         "pipeline_trained": false,
         "pipeline_warnings": [
           "no live game mappings accepted; top confidence 0.710 is below threshold 0.820 or margin threshold 0.080"
@@ -342,7 +342,7 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 22
+        "pre_match_rows": 14
       },
       "ready": false,
       "replay": {
@@ -351,7 +351,7 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 496,
+      "resolved_rows": 499,
       "trained": false,
       "warning_count": 1,
       "warnings": [
