@@ -283,6 +283,7 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     lyon_history_has_logos: null,
     tlaw_lyon_series_score: null,
     tlaw_lyon_series_is_merged: null,
+    tlaw_lyon_series_count: null,
     missing_lookup_returns_empty: null,
   };
   try {
@@ -335,13 +336,20 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
       ? tlaw.matches.filter((match) => match.opponent === 'LYON')
       : [];
     const tlawLyonSeries = tlawLyonMatches[0] || null;
+    const tlawLyonSeriesKeys = new Set(
+      tlawLyonMatches.map((match) => `${match.date || ''}__${match.opponent || ''}`),
+    );
     output.tlaw_lyon_series_score = tlawLyonSeries
       ? `${tlawLyonSeries.team_score}-${tlawLyonSeries.opponent_score} ${tlawLyonSeries.result}`
       : null;
-    output.tlaw_lyon_series_is_merged = tlawLyonMatches.length === 1
-      && Number.isFinite(Number(tlawLyonSeries?.team_score))
-      && Number.isFinite(Number(tlawLyonSeries?.opponent_score))
-      && ['W', 'L', 'D'].includes(String(tlawLyonSeries?.result || ''));
+    output.tlaw_lyon_series_count = tlawLyonMatches.length;
+    output.tlaw_lyon_series_is_merged = tlawLyonMatches.length >= 1
+      && tlawLyonSeriesKeys.size === tlawLyonMatches.length
+      && tlawLyonMatches.every((match) => (
+        Number.isFinite(Number(match.team_score))
+        && Number.isFinite(Number(match.opponent_score))
+        && ['W', 'L', 'D'].includes(String(match.result || ''))
+      ));
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'team_history_static_artifact_missing';
     if (output.bfx_history_count !== 5) {
