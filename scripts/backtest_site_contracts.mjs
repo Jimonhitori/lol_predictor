@@ -282,6 +282,7 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
     tlaw_history_count: null,
     lyon_history_has_logos: null,
     tlaw_lyon_series_score: null,
+    tlaw_lyon_series_is_merged: null,
     missing_lookup_returns_empty: null,
   };
   try {
