@@ -32,6 +32,7 @@ let detailRefresh = null;
 let matchCenterLogos = null;
 let liveSnapshotRetention = null;
 let matchResultScoreMapping = null;
+let predictionOnlyDetailFallback = null;
 
 const predictions = Array.isArray(feed.data?.predictions) ? feed.data.predictions : [];
 const matches = Array.isArray(matchesPayload.data?.matches) ? matchesPayload.data.matches : [];
@@ -109,6 +110,9 @@ if (appSource.ok) {
     'function preMatchSplitText(details, prediction)',
     'function renderPredictionPanel(id, details)',
     'function applyPreMatchPredictionOverlay(matches)',
+    'function staticMatchDetail(params)',
+    'function matchDetailFromPrediction(prediction)',
+    'function safeMatchFileId(value)',
     'function parseScheduleDate(value)',
     'function matchDetailRefreshPolicy(details)',
     'function scheduleNextMatchDetailRefresh(details)',
@@ -143,6 +147,10 @@ if (appSource.ok) {
   scheduleOverlay = overlayCheck.summary;
   if (!overlayCheck.ok) errors.push(...overlayCheck.errors);
   warnings.push(...overlayCheck.warnings);
+  const predictionOnlyDetailCheck = checkPredictionOnlyDetailFallback(appSource.text, predictions, matchesById);
+  predictionOnlyDetailFallback = predictionOnlyDetailCheck.summary;
+  if (!predictionOnlyDetailCheck.ok) errors.push(...predictionOnlyDetailCheck.errors);
+  warnings.push(...predictionOnlyDetailCheck.warnings);
   const refreshCheck = checkDetailRefreshPolicy(appSource.text);
   detailRefresh = refreshCheck.summary;
   if (!refreshCheck.ok) errors.push(...refreshCheck.errors);
@@ -207,6 +215,7 @@ const report = {
   match_center_logos: matchCenterLogos,
   live_snapshot_retention: liveSnapshotRetention,
   match_result_score_mapping: matchResultScoreMapping,
+  prediction_only_detail_fallback: predictionOnlyDetailFallback,
   warnings,
   errors,
 };
@@ -476,6 +485,90 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
     }
   } catch (error) {
     output.errors.push(`schedule overlay probe failed: ${error instanceof Error ? error.message : String(error)}`);
+  }
+  output.ok = output.errors.length === 0;
+  return output;
+}
+
+function checkPredictionOnlyDetailFallback(appSourceText, predictions, matchesById) {
+  const output = {
+    ok: true,
+    errors: [],
+    warnings: [],
+    summary: {
+      checked: false,
+      event_id: '',
+      detail_id: '',
+      team_count: null,
+      source: '',
+      safe_filename: '',
+    },
+  };
+  const predictionOnlyRows = predictions.filter((row) => {
+    const eventId = String(row.event_id || '');
+    const gameId = String(row.game_id || '');
+    return eventId && !matchesById.has(eventId) && !matchesById.has(gameId);
+  });
+  const prediction = predictionOnlyRows.find((row) => String(row.event_id || '').includes(':'))
+    || predictionOnlyRows[0];
+  if (!prediction) {
+    output.warnings.push('prediction-only detail fallback probe skipped because no prediction-only row was found');
+    return output;
+  }
+  const context = {
+    window: { STATIC_SITE: true },
+    location: { href: 'http://example.test/', origin: 'http://example.test' },
+    document: {
+      getElementById: () => null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+    },
+    console: { log: () => {}, warn: () => {}, error: () => {} },
+    setTimeout: () => 0,
+    setInterval: () => 0,
+    clearInterval: () => {},
+    Intl,
+    Date,
+    URL,
+    URLSearchParams,
+  };
+  context.window.document = context.document;
+  try {
+    vm.createContext(context);
+    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    output.summary.checked = true;
+    const result = vm.runInContext(`
+      const feed = normalizePreMatchPredictionFeed({
+        schema: 'lol_predictions_public_v1',
+        generated_at: '2026-06-12T00:00:00Z',
+        source: 'prediction_only_probe',
+        predictions: [${JSON.stringify(prediction)}]
+      }, { source: 'probe', url: 'probe://predictions' });
+      const row = feed.rows[0];
+      const detail = matchDetailFromPrediction(row);
+      ({
+        event_id: row.event_id,
+        detail_id: detail.id,
+        team_count: Array.isArray(detail.teams) ? detail.teams.length : 0,
+        source: detail.source || '',
+        safe_filename: safeMatchFileId(row.event_id || '')
+      })
+    `, context, { timeout: 1000 });
+    output.summary = { ...output.summary, ...result };
+    if (result.detail_id !== result.event_id) {
+      output.errors.push(`prediction-only detail id ${result.detail_id || '(missing)'} does not match ${result.event_id}`);
+    }
+    if (result.team_count < 2) {
+      output.errors.push('prediction-only detail fallback did not create two teams');
+    }
+    if (result.source !== 'pre_match_prediction_feed') {
+      output.errors.push(`prediction-only detail source is ${result.source || '(missing)'}`);
+    }
+    if (String(result.event_id || '').includes(':') && String(result.safe_filename || '').includes(':')) {
+      output.errors.push(`safe match filename still contains colon: ${result.safe_filename}`);
+    }
+  } catch (error) {
+    output.errors.push(`prediction-only detail fallback probe failed: ${error instanceof Error ? error.message : String(error)}`);
   }
   output.ok = output.errors.length === 0;
   return output;
