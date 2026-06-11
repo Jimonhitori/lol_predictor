@@ -1,6 +1,7 @@
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 const PRE_MATCH_SCHEMA_PATH = '/static/data/schemas/pre_match_predictions.v1.schema.json';
+const MATCHES_INDEX_PATH = '/static/data/matches-all__all.json';
 const LIVE_STATUS_PATH = '/live_status.json';
 const LIVE_MODEL_MANIFEST_PATH = '/live_model_manifest.json';
 const SITE_CONTRACT_PATH = '/site-contract.json';
@@ -48,6 +49,7 @@ export async function onRequestGet(context) {
     liveModel,
     localPredictions,
     localSchema,
+    matchIndex,
     liveStatus,
     liveManifest,
     remotePredictionProbe,
@@ -57,6 +59,7 @@ export async function onRequestGet(context) {
     readJsonAsset(context, LIVE_MODEL_PATH),
     readJsonAsset(context, PRE_MATCH_PREDICTIONS_PATH),
     readJsonAsset(context, PRE_MATCH_SCHEMA_PATH),
+    readJsonAsset(context, MATCHES_INDEX_PATH),
     liveStatusReader,
     liveManifestReader,
     shouldCheckRemotePredictions ? readJsonUrl(remotePredictionUrl) : Promise.resolve(null),
@@ -90,9 +93,15 @@ export async function onRequestGet(context) {
   const remotePredictionFeedWarnings = predictionArtifactWarnings(remotePredictionProbe?.json);
   const blockingPredictionFeedWarnings = predictionFeedWarnings.filter(isBlockingPredictionArtifactWarning);
   const blockingRemotePredictionFeedWarnings = remotePredictionFeedWarnings.filter(isBlockingPredictionArtifactWarning);
+  const predictionRows = Array.isArray(predictionFeed?.json?.predictions) ? predictionFeed.json.predictions : [];
+  const matchRows = extractMatchRows(matchIndex?.json);
+  const predictionMatchOverlap = predictionRows.length && matchRows.length
+    ? predictionMatchOverlapStats(predictionRows, matchRows)
+    : { overlap: 0, missing: predictionRows.length };
   const artifactWarnings = [
     ...(predictionFeedFreshness.status === 'stale' ? ['prediction_feed_stale'] : []),
     ...(blockingPredictionFeedWarnings.length ? ['prediction_feed_has_warnings'] : []),
+    ...(matchIndex.ok && predictionRows.length > 0 && predictionMatchOverlap.overlap === 0 ? ['prediction_match_overlap_zero'] : []),
     ...(remotePredictionProbe && !remotePredictionProbe.ok ? [`remote_prediction_feed_${remotePredictionProbe.status || 'missing'}`] : []),
     ...(remotePredictionProbe?.ok && !remotePredictionSchemaOk ? ['remote_prediction_feed_schema_mismatch'] : []),
     ...(blockingRemotePredictionFeedWarnings.length ? ['remote_prediction_feed_has_warnings'] : []),
@@ -121,6 +130,9 @@ export async function onRequestGet(context) {
     ...(liveStatus.json?.schema_version === '1.0' ? [] : ['live_status_schema_mismatch']),
     ...(liveManifest.json?.schema_version === 1 ? [] : ['live_manifest_schema_mismatch']),
   ];
+  const siteDataStatus = contractWarnings.length
+    ? 'blocking'
+    : (artifactWarnings.includes('prediction_match_overlap_zero') ? 'stale_index' : (artifactWarnings.length ? 'degraded' : 'ok'));
   const payload = {
     ok: true,
     contract_ok: contractWarnings.length === 0,
@@ -151,9 +163,15 @@ export async function onRequestGet(context) {
     prediction_feed_age_seconds: predictionFeedFreshness.age_seconds,
     prediction_feed_freshness: predictionFeedFreshness.status,
     prediction_feed_schema: predictionFeed?.json?.schema || '',
-    prediction_feed_rows: Array.isArray(predictionFeed?.json?.predictions) ? predictionFeed.json.predictions.length : 0,
+    prediction_feed_rows: predictionRows.length,
     prediction_feed_warning_count: predictionFeedWarnings.length,
     prediction_feed_warnings: predictionFeedWarnings,
+    match_index_available: Boolean(matchIndex.ok),
+    match_index_last_fetch_status: matchIndex.status,
+    match_index_source: matchIndex.json?.source || (Array.isArray(matchIndex.json) ? 'array' : ''),
+    match_index_rows: matchRows.length,
+    prediction_match_overlap_rows: predictionMatchOverlap.overlap,
+    prediction_match_missing_rows: predictionMatchOverlap.missing,
     remote_prediction_feed_checked: Boolean(remotePredictionProbe),
     remote_prediction_feed_url: remotePredictionUrl,
     remote_prediction_feed_available: remotePredictionProbe ? Boolean(remotePredictionProbe.ok) : null,
@@ -200,6 +218,7 @@ export async function onRequestGet(context) {
     analyzer_live_manifest_last_fetch_status: liveManifest.status,
     analyzer_live_model_available: liveManifest.json?.live_model_available ?? null,
     analyzer_oe_bootstrap_available: liveManifest.json?.oe_live_bootstrap?.available ?? null,
+    site_data_status: siteDataStatus,
     artifact_warnings: artifactWarnings,
     warnings: contractWarnings,
   };
@@ -234,6 +253,39 @@ function predictionArtifactWarnings(payload) {
     warnings.push(...arrayOfStrings(prediction?.warnings));
   }
   return warnings;
+}
+
+function extractMatchRows(payload) {
+  if (Array.isArray(payload?.matches)) return payload.matches;
+  if (Array.isArray(payload)) return payload;
+  return [];
+}
+
+function predictionMatchOverlapStats(predictions, matches) {
+  const matchIds = new Set(matches.flatMap(matchIdentityValues));
+  let overlap = 0;
+  let missing = 0;
+  for (const prediction of predictions) {
+    const ids = matchIdentityValues(prediction);
+    if (ids.some(id => matchIds.has(id))) overlap += 1;
+    else missing += 1;
+  }
+  return { overlap, missing };
+}
+
+function matchIdentityValues(value) {
+  const candidates = [
+    value?.event_id,
+    value?.eventId,
+    value?.match_id,
+    value?.matchId,
+    value?.id,
+    value?.game_id,
+    value?.gameId,
+  ];
+  return candidates
+    .map(id => String(id || '').trim())
+    .filter(Boolean);
 }
 
 function warningParts(value) {

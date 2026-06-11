@@ -77,6 +77,12 @@ function renderDiagnostics(data) {
   const feed = data.prediction_feed_available
     ? `pre ${data.prediction_feed_rows ?? 0} rows`
     : 'pre remote fallback';
+  const overlap = Number.isFinite(Number(data.prediction_match_overlap_rows))
+    ? `overlap ${data.prediction_match_overlap_rows}/${data.prediction_feed_rows ?? 0}`
+    : '';
+  const siteData = data.site_data_status && data.site_data_status !== 'ok'
+    ? `site ${data.site_data_status}`
+    : '';
   const generated = data.prediction_feed_generated_at ? `pre ${shortDateTime(data.prediction_feed_generated_at)}` : '';
   const schema = data.prediction_schema_ok ? 'schema ok' : '';
   const freshness = data.prediction_feed_freshness && data.prediction_feed_freshness !== 'unknown'
@@ -91,7 +97,7 @@ function renderDiagnostics(data) {
   const artifactWarnings = Array.isArray(data.artifact_warnings) && data.artifact_warnings.length
     ? `artifact warnings ${data.artifact_warnings.length}`
     : '';
-  target.textContent = [contract, live, feed, generated, schema, freshness, analyzerLive, worker, artifactWarnings].filter(Boolean).join(' | ');
+  target.textContent = [contract, live, feed, overlap, siteData, generated, schema, freshness, analyzerLive, worker, artifactWarnings].filter(Boolean).join(' | ');
 }
 
 function liveStatusSummary(data) {
@@ -171,6 +177,7 @@ async function staticTeamHistory(params) {
   const teamCode = params.get('team_code') || '';
   const leagueKeys = uniqueValues([staticKey(params.get('league') || 'all'), 'all']);
   const teamKeys = teamStaticKeys(team, teamCode);
+  await loadTeamRegistry();
   for (const league of leagueKeys) {
     for (const key of teamKeys) {
       if (!key) continue;
@@ -178,7 +185,7 @@ async function staticTeamHistory(params) {
       if (!response.ok) continue;
       try {
         const data = await response.json();
-        if (Array.isArray(data.matches) && data.matches.length > 0) return data;
+        if (Array.isArray(data.matches) && data.matches.length > 0) return enrichTeamHistoryPayload(data);
       } catch (error) {
         continue;
       }
@@ -188,6 +195,22 @@ async function staticTeamHistory(params) {
     team: team || teamCode,
     matches: [],
     warning: 'team_history_static_artifact_missing',
+  };
+}
+
+function enrichTeamHistoryPayload(payload) {
+  if (!Array.isArray(payload?.matches)) return payload;
+  return {
+    ...payload,
+    matches: payload.matches.map(match => {
+      const teamMeta = resolveTeamMeta(match.team || payload.team || '', match.team || payload.team || '');
+      const opponentMeta = resolveTeamMeta(match.opponent || '', match.opponent || '');
+      return {
+        ...match,
+        team_image: normalizeTeamImage(match.team_image || teamMeta.logo || ''),
+        opponent_image: normalizeTeamImage(match.opponent_image || opponentMeta.logo || ''),
+      };
+    }),
   };
 }
 
