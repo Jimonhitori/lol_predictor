@@ -35,6 +35,10 @@ const report = {
   analyzer_live_manifest_available: data.analyzer_live_manifest_available,
   prediction_schema_has_top_level_warnings: data.prediction_schema_has_top_level_warnings,
   prediction_feed_warning_count: data.prediction_feed_warning_count,
+  match_index_rows: data.match_index_rows,
+  prediction_match_overlap_rows: data.prediction_match_overlap_rows,
+  prediction_match_missing_rows: data.prediction_match_missing_rows,
+  site_data_status: data.site_data_status,
   remote_prediction_feed_warning_count: data.remote_prediction_feed_warning_count,
   artifact_warnings: data.artifact_warnings,
   warnings: data.warnings,
@@ -64,6 +68,21 @@ if (data.prediction_schema_has_top_level_warnings !== true) {
 if (!Number.isInteger(data.prediction_feed_warning_count) || data.prediction_feed_warning_count < 0) {
   report.errors.push(`default prediction feed warning count is invalid: ${data.prediction_feed_warning_count}`);
 }
+if (!Number.isInteger(data.match_index_rows) || data.match_index_rows < 0) {
+  report.errors.push(`default match index row count is invalid: ${data.match_index_rows}`);
+}
+if (!Number.isInteger(data.prediction_match_overlap_rows) || data.prediction_match_overlap_rows < 0) {
+  report.errors.push(`default prediction match overlap row count is invalid: ${data.prediction_match_overlap_rows}`);
+}
+if (!Number.isInteger(data.prediction_match_missing_rows) || data.prediction_match_missing_rows < 0) {
+  report.errors.push(`default prediction match missing row count is invalid: ${data.prediction_match_missing_rows}`);
+}
+if (!['ok', 'degraded', 'stale_index', 'blocking'].includes(data.site_data_status)) {
+  report.errors.push(`default site_data_status is invalid: ${data.site_data_status}`);
+}
+if (data.prediction_feed_rows > 0 && data.match_index_available && data.prediction_match_overlap_rows === 0 && !data.artifact_warnings?.includes('prediction_match_overlap_zero')) {
+  report.errors.push('prediction_match_overlap_zero is missing despite zero prediction/match overlap');
+}
 if (data.remote_prediction_feed_warning_count !== null) {
   report.errors.push('remote prediction feed warning count should be null without an override URL');
 }
@@ -76,6 +95,7 @@ if (data.prediction_feed_warning_count > 0 && !data.artifact_warnings?.includes(
 const unexpectedArtifactWarnings = Array.isArray(data.artifact_warnings)
   ? data.artifact_warnings.filter(warning =>
     warning !== 'prediction_feed_has_warnings'
+    && warning !== 'prediction_match_overlap_zero'
     && warning !== 'live_status_stale'
     && warning !== 'live_status_display_not_ready'
     && warning !== 'live_status_production_not_ready'
