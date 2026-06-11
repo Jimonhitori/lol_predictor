@@ -1,11 +1,13 @@
 {
   "patch": "16.11",
-  "games": 105,
+  "games": 199,
   "leagues": [
     "AL",
     "Asia Master",
     "CBLOL",
     "CD",
+    "EM",
+    "EWC",
     "HM",
     "LCK",
     "LCS",
@@ -18,276 +20,321 @@
   "champions": [
     {
       "name": "Ezreal",
-      "picks": 27,
-      "wins": 15,
-      "winrate": "55.6%",
-      "bans": 19,
-      "ban_rate": "18.1%",
-      "presence": "43.8%"
-    },
-    {
-      "name": "K'Sante",
-      "picks": 25,
-      "wins": 15,
-      "winrate": "60.0%",
-      "bans": 7,
-      "ban_rate": "6.7%",
-      "presence": "30.5%"
-    },
-    {
-      "name": "Sion",
-      "picks": 25,
-      "wins": 12,
-      "winrate": "48.0%",
-      "bans": 16,
-      "ban_rate": "15.2%",
-      "presence": "39.0%"
-    },
-    {
-      "name": "Nautilus",
-      "picks": 24,
-      "wins": 11,
-      "winrate": "45.8%",
-      "bans": 30,
-      "ban_rate": "28.6%",
-      "presence": "51.4%"
-    },
-    {
-      "name": "Bard",
-      "picks": 23,
-      "wins": 13,
-      "winrate": "56.5%",
-      "bans": 24,
-      "ban_rate": "22.9%",
-      "presence": "44.8%"
-    },
-    {
-      "name": "Wukong",
-      "picks": 22,
-      "wins": 15,
-      "winrate": "68.2%",
-      "bans": 7,
-      "ban_rate": "6.7%",
-      "presence": "27.6%"
-    },
-    {
-      "name": "Milio",
-      "picks": 22,
-      "wins": 9,
-      "winrate": "40.9%",
-      "bans": 5,
-      "ban_rate": "4.8%",
-      "presence": "25.7%"
-    },
-    {
-      "name": "Jarvan IV",
-      "picks": 21,
-      "wins": 13,
-      "winrate": "61.9%",
-      "bans": 37,
-      "ban_rate": "35.2%",
-      "presence": "55.2%"
-    },
-    {
-      "name": "Lucian",
-      "picks": 21,
-      "wins": 10,
-      "winrate": "47.6%",
-      "bans": 17,
-      "ban_rate": "16.2%",
-      "presence": "36.2%"
-    },
-    {
-      "name": "Ahri",
-      "picks": 21,
-      "wins": 9,
-      "winrate": "42.9%",
-      "bans": 8,
-      "ban_rate": "7.6%",
-      "presence": "27.6%"
-    },
-    {
-      "name": "Ashe",
-      "picks": 21,
-      "wins": 8,
-      "winrate": "38.1%",
-      "bans": 10,
-      "ban_rate": "9.5%",
-      "presence": "29.5%"
-    },
-    {
-      "name": "Xin Zhao",
-      "picks": 21,
-      "wins": 7,
-      "winrate": "33.3%",
-      "bans": 17,
-      "ban_rate": "16.2%",
-      "presence": "36.2%"
-    },
-    {
-      "name": "Ryze",
-      "picks": 20,
-      "wins": 12,
-      "winrate": "60.0%",
-      "bans": 20,
-      "ban_rate": "19.0%",
-      "presence": "38.1%"
+      "picks": 61,
+      "wins": 31,
+      "winrate": "50.8%",
+      "bans": 34,
+      "ban_rate": "17.1%",
+      "presence": "47.7%"
     },
     {
       "name": "Rumble",
-      "picks": 20,
-      "wins": 11,
-      "winrate": "55.0%",
-      "bans": 25,
-      "ban_rate": "23.8%",
-      "presence": "42.9%"
+      "picks": 54,
+      "wins": 27,
+      "winrate": "50.0%",
+      "bans": 36,
+      "ban_rate": "18.1%",
+      "presence": "45.2%"
     },
     {
-      "name": "Aurora",
-      "picks": 19,
-      "wins": 11,
-      "winrate": "57.9%",
-      "bans": 18,
-      "ban_rate": "17.1%",
-      "presence": "35.2%"
+      "name": "K'Sante",
+      "picks": 53,
+      "wins": 30,
+      "winrate": "56.6%",
+      "bans": 16,
+      "ban_rate": "8.0%",
+      "presence": "34.7%"
     },
     {
-      "name": "Viktor",
-      "picks": 19,
-      "wins": 10,
-      "winrate": "52.6%",
-      "bans": 11,
-      "ban_rate": "10.5%",
+      "name": "Nautilus",
+      "picks": 50,
+      "wins": 22,
+      "winrate": "44.0%",
+      "bans": 64,
+      "ban_rate": "32.2%",
+      "presence": "57.3%"
+    },
+    {
+      "name": "Sion",
+      "picks": 49,
+      "wins": 24,
+      "winrate": "49.0%",
+      "bans": 38,
+      "ban_rate": "19.1%",
+      "presence": "43.7%"
+    },
+    {
+      "name": "Ryze",
+      "picks": 47,
+      "wins": 26,
+      "winrate": "55.3%",
+      "bans": 31,
+      "ban_rate": "15.6%",
+      "presence": "39.2%"
+    },
+    {
+      "name": "Milio",
+      "picks": 46,
+      "wins": 23,
+      "winrate": "50.0%",
+      "bans": 13,
+      "ban_rate": "6.5%",
+      "presence": "29.6%"
+    },
+    {
+      "name": "Lucian",
+      "picks": 45,
+      "wins": 25,
+      "winrate": "55.6%",
+      "bans": 31,
+      "ban_rate": "15.6%",
+      "presence": "38.2%"
+    },
+    {
+      "name": "Wukong",
+      "picks": 43,
+      "wins": 25,
+      "winrate": "58.1%",
+      "bans": 14,
+      "ban_rate": "7.0%",
       "presence": "28.6%"
     },
     {
-      "name": "Naafiri",
-      "picks": 18,
-      "wins": 10,
-      "winrate": "55.6%",
-      "bans": 23,
-      "ban_rate": "21.9%",
-      "presence": "39.0%"
+      "name": "Cassiopeia",
+      "picks": 41,
+      "wins": 27,
+      "winrate": "65.9%",
+      "bans": 70,
+      "ban_rate": "35.2%",
+      "presence": "55.8%"
+    },
+    {
+      "name": "Bard",
+      "picks": 41,
+      "wins": 21,
+      "winrate": "51.2%",
+      "bans": 64,
+      "ban_rate": "32.2%",
+      "presence": "52.8%"
+    },
+    {
+      "name": "Xin Zhao",
+      "picks": 40,
+      "wins": 15,
+      "winrate": "37.5%",
+      "bans": 41,
+      "ban_rate": "20.6%",
+      "presence": "40.7%"
+    },
+    {
+      "name": "Jarvan IV",
+      "picks": 39,
+      "wins": 23,
+      "winrate": "59.0%",
+      "bans": 87,
+      "ban_rate": "43.7%",
+      "presence": "63.3%"
     },
     {
       "name": "Vi",
-      "picks": 18,
-      "wins": 5,
-      "winrate": "27.8%",
-      "bans": 14,
-      "ban_rate": "13.3%",
-      "presence": "30.5%"
+      "picks": 39,
+      "wins": 16,
+      "winrate": "41.0%",
+      "bans": 30,
+      "ban_rate": "15.1%",
+      "presence": "34.7%"
     },
     {
-      "name": "Cassiopeia",
-      "picks": 17,
-      "wins": 12,
-      "winrate": "70.6%",
-      "bans": 25,
-      "ban_rate": "23.8%",
-      "presence": "40.0%"
+      "name": "Ashe",
+      "picks": 38,
+      "wins": 21,
+      "winrate": "55.3%",
+      "bans": 24,
+      "ban_rate": "12.1%",
+      "presence": "31.2%"
     },
     {
-      "name": "Rakan",
-      "picks": 17,
-      "wins": 11,
-      "winrate": "64.7%",
-      "bans": 4,
-      "ban_rate": "3.8%",
-      "presence": "20.0%"
+      "name": "Aurora",
+      "picks": 36,
+      "wins": 16,
+      "winrate": "44.4%",
+      "bans": 26,
+      "ban_rate": "13.1%",
+      "presence": "31.2%"
+    },
+    {
+      "name": "Seraphine",
+      "picks": 35,
+      "wins": 21,
+      "winrate": "60.0%",
+      "bans": 34,
+      "ban_rate": "17.1%",
+      "presence": "34.7%"
+    },
+    {
+      "name": "Viktor",
+      "picks": 35,
+      "wins": 16,
+      "winrate": "45.7%",
+      "bans": 18,
+      "ban_rate": "9.0%",
+      "presence": "26.6%"
+    },
+    {
+      "name": "Karma",
+      "picks": 34,
+      "wins": 16,
+      "winrate": "47.1%",
+      "bans": 89,
+      "ban_rate": "44.7%",
+      "presence": "61.8%"
+    },
+    {
+      "name": "Ahri",
+      "picks": 34,
+      "wins": 15,
+      "winrate": "44.1%",
+      "bans": 23,
+      "ban_rate": "11.6%",
+      "presence": "28.6%"
     }
   ],
   "champions_by_role": {
     "top": [
       {
         "name": "K'Sante",
-        "picks": 25,
-        "wins": 15,
-        "winrate": "60.0%",
-        "bans": 7,
-        "ban_rate": "6.7%",
-        "presence": "30.5%"
-      },
-      {
-        "name": "Sion",
-        "picks": 25,
-        "wins": 12,
-        "winrate": "48.0%",
+        "picks": 53,
+        "wins": 30,
+        "winrate": "56.6%",
         "bans": 16,
-        "ban_rate": "15.2%",
-        "presence": "39.0%"
+        "ban_rate": "8.0%",
+        "presence": "34.7%"
       },
       {
         "name": "Rumble",
-        "picks": 19,
-        "wins": 11,
-        "winrate": "57.9%",
-        "bans": 25,
-        "ban_rate": "23.8%",
-        "presence": "41.9%"
+        "picks": 53,
+        "wins": 27,
+        "winrate": "50.9%",
+        "bans": 36,
+        "ban_rate": "18.1%",
+        "presence": "44.7%"
       },
       {
-        "name": "Renekton",
-        "picks": 16,
-        "wins": 11,
-        "winrate": "68.8%",
-        "bans": 4,
-        "ban_rate": "3.8%",
-        "presence": "19.0%"
+        "name": "Sion",
+        "picks": 48,
+        "wins": 24,
+        "winrate": "50.0%",
+        "bans": 38,
+        "ban_rate": "19.1%",
+        "presence": "43.2%"
       },
       {
         "name": "Gnar",
-        "picks": 15,
-        "wins": 5,
-        "winrate": "33.3%",
-        "bans": 12,
-        "ban_rate": "11.4%",
-        "presence": "25.7%"
-      },
-      {
-        "name": "Ambessa",
-        "picks": 12,
-        "wins": 3,
-        "winrate": "25.0%",
-        "bans": 13,
-        "ban_rate": "12.4%",
-        "presence": "23.8%"
-      },
-      {
-        "name": "Ornn",
-        "picks": 10,
-        "wins": 6,
-        "winrate": "60.0%",
-        "bans": 5,
-        "ban_rate": "4.8%",
-        "presence": "14.3%"
-      },
-      {
-        "name": "Yorick",
-        "picks": 8,
-        "wins": 1,
-        "winrate": "12.5%",
-        "bans": 5,
-        "ban_rate": "4.8%",
-        "presence": "12.4%"
+        "picks": 32,
+        "wins": 13,
+        "winrate": "40.6%",
+        "bans": 20,
+        "ban_rate": "10.1%",
+        "presence": "26.1%"
       },
       {
         "name": "Jayce",
-        "picks": 7,
-        "wins": 3,
-        "winrate": "42.9%",
-        "bans": 23,
-        "ban_rate": "21.9%",
+        "picks": 27,
+        "wins": 11,
+        "winrate": "40.7%",
+        "bans": 30,
+        "ban_rate": "15.1%",
         "presence": "28.6%"
       },
       {
+        "name": "Renekton",
+        "picks": 24,
+        "wins": 14,
+        "winrate": "58.3%",
+        "bans": 6,
+        "ban_rate": "3.0%",
+        "presence": "15.1%"
+      },
+      {
+        "name": "Yorick",
+        "picks": 16,
+        "wins": 8,
+        "winrate": "50.0%",
+        "bans": 12,
+        "ban_rate": "6.0%",
+        "presence": "14.1%"
+      },
+      {
+        "name": "Ornn",
+        "picks": 15,
+        "wins": 9,
+        "winrate": "60.0%",
+        "bans": 8,
+        "ban_rate": "4.0%",
+        "presence": "11.6%"
+      },
+      {
+        "name": "Ambessa",
+        "picks": 15,
+        "wins": 4,
+        "winrate": "26.7%",
+        "bans": 19,
+        "ban_rate": "9.5%",
+        "presence": "17.1%"
+      },
+      {
         "name": "Aatrox",
+        "picks": 11,
+        "wins": 7,
+        "winrate": "63.6%",
+        "bans": 14,
+        "ban_rate": "7.0%",
+        "presence": "12.6%"
+      },
+      {
+        "name": "Vayne",
+        "picks": 9,
+        "wins": 5,
+        "winrate": "55.6%",
+        "bans": 34,
+        "ban_rate": "17.1%",
+        "presence": "21.6%"
+      },
+      {
+        "name": "Varus",
+        "picks": 9,
+        "wins": 3,
+        "winrate": "33.3%",
+        "bans": 117,
+        "ban_rate": "58.8%",
+        "presence": "63.3%"
+      },
+      {
+        "name": "Zaahen",
+        "picks": 7,
+        "wins": 4,
+        "winrate": "57.1%",
+        "bans": 4,
+        "ban_rate": "2.0%",
+        "presence": "5.5%"
+      },
+      {
+        "name": "Jax",
+        "picks": 7,
+        "wins": 4,
+        "winrate": "57.1%",
+        "bans": 1,
+        "ban_rate": "0.5%",
+        "presence": "4.0%"
+      },
+      {
+        "name": "Gwen",
         "picks": 6,
         "wins": 4,
         "winrate": "66.7%",
-        "bans": 10,
-        "ban_rate": "9.5%",
-        "presence": "15.2%"
+        "bans": 13,
+        "ban_rate": "6.5%",
+        "presence": "9.5%"
       },
       {
         "name": "Kennen",
@@ -295,26 +342,26 @@
         "wins": 3,
         "winrate": "50.0%",
         "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "6.7%"
+        "ban_rate": "0.5%",
+        "presence": "3.5%"
       },
       {
-        "name": "Zaahen",
-        "picks": 5,
-        "wins": 3,
-        "winrate": "60.0%",
+        "name": "Shen",
+        "picks": 4,
+        "wins": 1,
+        "winrate": "25.0%",
+        "bans": 5,
+        "ban_rate": "2.5%",
+        "presence": "4.5%"
+      },
+      {
+        "name": "Malphite",
+        "picks": 4,
+        "wins": 1,
+        "winrate": "25.0%",
         "bans": 4,
-        "ban_rate": "3.8%",
-        "presence": "8.6%"
-      },
-      {
-        "name": "Varus",
-        "picks": 5,
-        "wins": 2,
-        "winrate": "40.0%",
-        "bans": 61,
-        "ban_rate": "58.1%",
-        "presence": "62.9%"
+        "ban_rate": "2.0%",
+        "presence": "4.0%"
       },
       {
         "name": "Gragas",
@@ -323,553 +370,526 @@
         "winrate": "100.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "2.9%"
+        "presence": "1.5%"
       },
       {
-        "name": "Yone",
+        "name": "Twisted Fate",
         "picks": 3,
         "wins": 2,
         "winrate": "66.7%",
-        "bans": 6,
-        "ban_rate": "5.7%",
-        "presence": "8.6%"
-      },
-      {
-        "name": "Gangplank",
-        "picks": 3,
-        "wins": 2,
-        "winrate": "66.7%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "2.9%"
-      },
-      {
-        "name": "Jax",
-        "picks": 3,
-        "wins": 2,
-        "winrate": "66.7%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "2.9%"
-      },
-      {
-        "name": "Yasuo",
-        "picks": 3,
-        "wins": 2,
-        "winrate": "66.7%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "2.9%"
-      },
-      {
-        "name": "Vayne",
-        "picks": 3,
-        "wins": 1,
-        "winrate": "33.3%",
-        "bans": 22,
-        "ban_rate": "21.0%",
-        "presence": "23.8%"
-      },
-      {
-        "name": "Gwen",
-        "picks": 3,
-        "wins": 1,
-        "winrate": "33.3%",
-        "bans": 8,
-        "ban_rate": "7.6%",
-        "presence": "10.5%"
+        "bans": 13,
+        "ban_rate": "6.5%",
+        "presence": "8.0%"
       }
     ],
     "jng": [
       {
         "name": "Wukong",
-        "picks": 22,
-        "wins": 15,
-        "winrate": "68.2%",
-        "bans": 7,
-        "ban_rate": "6.7%",
-        "presence": "27.6%"
-      },
-      {
-        "name": "Jarvan IV",
-        "picks": 21,
-        "wins": 13,
-        "winrate": "61.9%",
-        "bans": 37,
-        "ban_rate": "35.2%",
-        "presence": "55.2%"
-      },
-      {
-        "name": "Xin Zhao",
-        "picks": 20,
-        "wins": 7,
-        "winrate": "35.0%",
-        "bans": 17,
-        "ban_rate": "16.2%",
-        "presence": "35.2%"
-      },
-      {
-        "name": "Naafiri",
-        "picks": 18,
-        "wins": 10,
-        "winrate": "55.6%",
-        "bans": 23,
-        "ban_rate": "21.9%",
-        "presence": "39.0%"
-      },
-      {
-        "name": "Vi",
-        "picks": 18,
-        "wins": 5,
-        "winrate": "27.8%",
+        "picks": 43,
+        "wins": 25,
+        "winrate": "58.1%",
         "bans": 14,
-        "ban_rate": "13.3%",
-        "presence": "30.5%"
-      },
-      {
-        "name": "Lee Sin",
-        "picks": 17,
-        "wins": 10,
-        "winrate": "58.8%",
-        "bans": 15,
-        "ban_rate": "14.3%",
-        "presence": "30.5%"
-      },
-      {
-        "name": "Pantheon",
-        "picks": 17,
-        "wins": 7,
-        "winrate": "41.2%",
-        "bans": 20,
-        "ban_rate": "19.0%",
-        "presence": "35.2%"
-      },
-      {
-        "name": "Nocturne",
-        "picks": 14,
-        "wins": 8,
-        "winrate": "57.1%",
-        "bans": 52,
-        "ban_rate": "49.5%",
-        "presence": "62.9%"
-      },
-      {
-        "name": "Skarner",
-        "picks": 11,
-        "wins": 5,
-        "winrate": "45.5%",
-        "bans": 5,
-        "ban_rate": "4.8%",
-        "presence": "15.2%"
-      },
-      {
-        "name": "Trundle",
-        "picks": 11,
-        "wins": 4,
-        "winrate": "36.4%",
-        "bans": 7,
-        "ban_rate": "6.7%",
-        "presence": "17.1%"
-      },
-      {
-        "name": "Sejuani",
-        "picks": 6,
-        "wins": 3,
-        "winrate": "50.0%",
-        "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "7.6%"
-      },
-      {
-        "name": "Aatrox",
-        "picks": 6,
-        "wins": 2,
-        "winrate": "33.3%",
-        "bans": 10,
-        "ban_rate": "9.5%",
-        "presence": "15.2%"
-      },
-      {
-        "name": "Nasus",
-        "picks": 3,
-        "wins": 3,
-        "winrate": "100.0%",
-        "bans": 4,
-        "ban_rate": "3.8%",
-        "presence": "6.7%"
-      },
-      {
-        "name": "Rek'Sai",
-        "picks": 3,
-        "wins": 2,
-        "winrate": "66.7%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "2.9%"
-      },
-      {
-        "name": "Qiyana",
-        "picks": 2,
-        "wins": 2,
-        "winrate": "100.0%",
-        "bans": 3,
-        "ban_rate": "2.9%",
-        "presence": "4.8%"
-      },
-      {
-        "name": "Shyvana",
-        "picks": 2,
-        "wins": 2,
-        "winrate": "100.0%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "2.9%"
-      },
-      {
-        "name": "Shen",
-        "picks": 2,
-        "wins": 1,
-        "winrate": "50.0%",
-        "bans": 3,
-        "ban_rate": "2.9%",
-        "presence": "4.8%"
-      },
-      {
-        "name": "Kha'Zix",
-        "picks": 2,
-        "wins": 1,
-        "winrate": "50.0%",
-        "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "3.8%"
-      },
-      {
-        "name": "Ivern",
-        "picks": 2,
-        "wins": 1,
-        "winrate": "50.0%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "1.9%"
-      },
-      {
-        "name": "Zyra",
-        "picks": 2,
-        "wins": 1,
-        "winrate": "50.0%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "1.9%"
-      }
-    ],
-    "mid": [
-      {
-        "name": "Ahri",
-        "picks": 21,
-        "wins": 9,
-        "winrate": "42.9%",
-        "bans": 8,
-        "ban_rate": "7.6%",
-        "presence": "27.6%"
-      },
-      {
-        "name": "Ryze",
-        "picks": 20,
-        "wins": 12,
-        "winrate": "60.0%",
-        "bans": 20,
-        "ban_rate": "19.0%",
-        "presence": "38.1%"
-      },
-      {
-        "name": "Viktor",
-        "picks": 19,
-        "wins": 10,
-        "winrate": "52.6%",
-        "bans": 11,
-        "ban_rate": "10.5%",
+        "ban_rate": "7.0%",
         "presence": "28.6%"
       },
       {
-        "name": "Aurora",
-        "picks": 17,
-        "wins": 11,
-        "winrate": "64.7%",
-        "bans": 18,
+        "name": "Jarvan IV",
+        "picks": 39,
+        "wins": 23,
+        "winrate": "59.0%",
+        "bans": 87,
+        "ban_rate": "43.7%",
+        "presence": "63.3%"
+      },
+      {
+        "name": "Vi",
+        "picks": 39,
+        "wins": 16,
+        "winrate": "41.0%",
+        "bans": 30,
+        "ban_rate": "15.1%",
+        "presence": "34.7%"
+      },
+      {
+        "name": "Xin Zhao",
+        "picks": 39,
+        "wins": 15,
+        "winrate": "38.5%",
+        "bans": 41,
+        "ban_rate": "20.6%",
+        "presence": "40.2%"
+      },
+      {
+        "name": "Pantheon",
+        "picks": 34,
+        "wins": 14,
+        "winrate": "41.2%",
+        "bans": 45,
+        "ban_rate": "22.6%",
+        "presence": "39.7%"
+      },
+      {
+        "name": "Naafiri",
+        "picks": 32,
+        "wins": 18,
+        "winrate": "56.2%",
+        "bans": 41,
+        "ban_rate": "20.6%",
+        "presence": "36.7%"
+      },
+      {
+        "name": "Lee Sin",
+        "picks": 30,
+        "wins": 19,
+        "winrate": "63.3%",
+        "bans": 34,
         "ban_rate": "17.1%",
-        "presence": "33.3%"
+        "presence": "32.2%"
       },
       {
-        "name": "Cassiopeia",
-        "picks": 16,
+        "name": "Nocturne",
+        "picks": 28,
+        "wins": 15,
+        "winrate": "53.6%",
+        "bans": 109,
+        "ban_rate": "54.8%",
+        "presence": "68.8%"
+      },
+      {
+        "name": "Skarner",
+        "picks": 21,
         "wins": 11,
-        "winrate": "68.8%",
-        "bans": 25,
-        "ban_rate": "23.8%",
-        "presence": "39.0%"
+        "winrate": "52.4%",
+        "bans": 17,
+        "ban_rate": "8.5%",
+        "presence": "19.1%"
       },
       {
-        "name": "Annie",
-        "picks": 15,
-        "wins": 7,
-        "winrate": "46.7%",
-        "bans": 7,
-        "ban_rate": "6.7%",
-        "presence": "21.0%"
-      },
-      {
-        "name": "Orianna",
-        "picks": 13,
-        "wins": 3,
-        "winrate": "23.1%",
-        "bans": 68,
-        "ban_rate": "64.8%",
-        "presence": "77.1%"
-      },
-      {
-        "name": "Akali",
-        "picks": 11,
-        "wins": 10,
-        "winrate": "90.9%",
-        "bans": 22,
-        "ban_rate": "21.0%",
-        "presence": "31.4%"
-      },
-      {
-        "name": "Taliyah",
-        "picks": 11,
-        "wins": 4,
-        "winrate": "36.4%",
-        "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "12.4%"
-      },
-      {
-        "name": "Anivia",
-        "picks": 9,
-        "wins": 5,
-        "winrate": "55.6%",
-        "bans": 20,
-        "ban_rate": "19.0%",
-        "presence": "27.6%"
-      },
-      {
-        "name": "LeBlanc",
-        "picks": 6,
-        "wins": 3,
-        "winrate": "50.0%",
+        "name": "Trundle",
+        "picks": 19,
+        "wins": 9,
+        "winrate": "47.4%",
         "bans": 16,
-        "ban_rate": "15.2%",
-        "presence": "21.0%"
+        "ban_rate": "8.0%",
+        "presence": "17.6%"
       },
       {
-        "name": "Twisted Fate",
-        "picks": 6,
-        "wins": 2,
-        "winrate": "33.3%",
-        "bans": 6,
-        "ban_rate": "5.7%",
-        "presence": "11.4%"
-      },
-      {
-        "name": "Mel",
-        "picks": 5,
-        "wins": 2,
-        "winrate": "40.0%",
-        "bans": 18,
-        "ban_rate": "17.1%",
-        "presence": "21.9%"
-      },
-      {
-        "name": "Syndra",
-        "picks": 5,
-        "wins": 2,
-        "winrate": "40.0%",
+        "name": "Aatrox",
+        "picks": 11,
+        "wins": 5,
+        "winrate": "45.5%",
         "bans": 14,
-        "ban_rate": "13.3%",
-        "presence": "18.1%"
+        "ban_rate": "7.0%",
+        "presence": "12.6%"
       },
       {
-        "name": "Sylas",
+        "name": "Sejuani",
+        "picks": 7,
+        "wins": 4,
+        "winrate": "57.1%",
+        "bans": 2,
+        "ban_rate": "1.0%",
+        "presence": "4.5%"
+      },
+      {
+        "name": "Nasus",
+        "picks": 5,
+        "wins": 4,
+        "winrate": "80.0%",
+        "bans": 8,
+        "ban_rate": "4.0%",
+        "presence": "6.5%"
+      },
+      {
+        "name": "Dr. Mundo",
         "picks": 5,
         "wins": 2,
         "winrate": "40.0%",
         "bans": 4,
-        "ban_rate": "3.8%",
-        "presence": "8.6%"
+        "ban_rate": "2.0%",
+        "presence": "4.5%"
       },
       {
-        "name": "Galio",
+        "name": "Rek'Sai",
+        "picks": 5,
+        "wins": 2,
+        "winrate": "40.0%",
+        "bans": 1,
+        "ban_rate": "0.5%",
+        "presence": "3.0%"
+      },
+      {
+        "name": "Zaahen",
         "picks": 4,
         "wins": 1,
         "winrate": "25.0%",
         "bans": 4,
-        "ban_rate": "3.8%",
-        "presence": "7.6%"
+        "ban_rate": "2.0%",
+        "presence": "4.0%"
       },
       {
-        "name": "Hwei",
+        "name": "Viego",
+        "picks": 4,
+        "wins": 1,
+        "winrate": "25.0%",
+        "bans": 1,
+        "ban_rate": "0.5%",
+        "presence": "2.5%"
+      },
+      {
+        "name": "Shen",
         "picks": 3,
-        "wins": 2,
-        "winrate": "66.7%",
-        "bans": 4,
-        "ban_rate": "3.8%",
-        "presence": "6.7%"
+        "wins": 1,
+        "winrate": "33.3%",
+        "bans": 5,
+        "ban_rate": "2.5%",
+        "presence": "4.0%"
       },
       {
-        "name": "Azir",
+        "name": "Kha'Zix",
         "picks": 3,
         "wins": 1,
         "winrate": "33.3%",
         "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "4.8%"
+        "ban_rate": "1.0%",
+        "presence": "2.5%"
       },
       {
-        "name": "Irelia",
+        "name": "Zyra",
         "picks": 3,
         "wins": 1,
         "winrate": "33.3%",
         "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "3.8%"
+        "ban_rate": "0.5%",
+        "presence": "2.0%"
+      }
+    ],
+    "mid": [
+      {
+        "name": "Ryze",
+        "picks": 47,
+        "wins": 26,
+        "winrate": "55.3%",
+        "bans": 31,
+        "ban_rate": "15.6%",
+        "presence": "39.2%"
       },
       {
-        "name": "Xerath",
-        "picks": 3,
-        "wins": 0,
-        "winrate": "0.0%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "2.9%"
+        "name": "Cassiopeia",
+        "picks": 39,
+        "wins": 25,
+        "winrate": "64.1%",
+        "bans": 70,
+        "ban_rate": "35.2%",
+        "presence": "54.8%"
+      },
+      {
+        "name": "Viktor",
+        "picks": 35,
+        "wins": 16,
+        "winrate": "45.7%",
+        "bans": 18,
+        "ban_rate": "9.0%",
+        "presence": "26.6%"
+      },
+      {
+        "name": "Ahri",
+        "picks": 34,
+        "wins": 15,
+        "winrate": "44.1%",
+        "bans": 23,
+        "ban_rate": "11.6%",
+        "presence": "28.6%"
+      },
+      {
+        "name": "Aurora",
+        "picks": 33,
+        "wins": 16,
+        "winrate": "48.5%",
+        "bans": 26,
+        "ban_rate": "13.1%",
+        "presence": "29.6%"
+      },
+      {
+        "name": "Orianna",
+        "picks": 30,
+        "wins": 15,
+        "winrate": "50.0%",
+        "bans": 128,
+        "ban_rate": "64.3%",
+        "presence": "79.4%"
+      },
+      {
+        "name": "Anivia",
+        "picks": 22,
+        "wins": 11,
+        "winrate": "50.0%",
+        "bans": 40,
+        "ban_rate": "20.1%",
+        "presence": "31.2%"
+      },
+      {
+        "name": "Annie",
+        "picks": 20,
+        "wins": 7,
+        "winrate": "35.0%",
+        "bans": 18,
+        "ban_rate": "9.0%",
+        "presence": "19.1%"
+      },
+      {
+        "name": "Akali",
+        "picks": 19,
+        "wins": 13,
+        "winrate": "68.4%",
+        "bans": 54,
+        "ban_rate": "27.1%",
+        "presence": "36.7%"
+      },
+      {
+        "name": "Taliyah",
+        "picks": 19,
+        "wins": 9,
+        "winrate": "47.4%",
+        "bans": 9,
+        "ban_rate": "4.5%",
+        "presence": "14.1%"
+      },
+      {
+        "name": "LeBlanc",
+        "picks": 14,
+        "wins": 7,
+        "winrate": "50.0%",
+        "bans": 22,
+        "ban_rate": "11.1%",
+        "presence": "18.1%"
+      },
+      {
+        "name": "Twisted Fate",
+        "picks": 10,
+        "wins": 6,
+        "winrate": "60.0%",
+        "bans": 13,
+        "ban_rate": "6.5%",
+        "presence": "11.6%"
+      },
+      {
+        "name": "Galio",
+        "picks": 9,
+        "wins": 5,
+        "winrate": "55.6%",
+        "bans": 10,
+        "ban_rate": "5.0%",
+        "presence": "9.5%"
+      },
+      {
+        "name": "Sylas",
+        "picks": 9,
+        "wins": 5,
+        "winrate": "55.6%",
+        "bans": 6,
+        "ban_rate": "3.0%",
+        "presence": "7.5%"
+      },
+      {
+        "name": "Syndra",
+        "picks": 7,
+        "wins": 4,
+        "winrate": "57.1%",
+        "bans": 19,
+        "ban_rate": "9.5%",
+        "presence": "13.1%"
+      },
+      {
+        "name": "Hwei",
+        "picks": 7,
+        "wins": 3,
+        "winrate": "42.9%",
+        "bans": 5,
+        "ban_rate": "2.5%",
+        "presence": "6.0%"
+      },
+      {
+        "name": "Mel",
+        "picks": 6,
+        "wins": 3,
+        "winrate": "50.0%",
+        "bans": 20,
+        "ban_rate": "10.1%",
+        "presence": "13.1%"
+      },
+      {
+        "name": "Azir",
+        "picks": 6,
+        "wins": 3,
+        "winrate": "50.0%",
+        "bans": 6,
+        "ban_rate": "3.0%",
+        "presence": "6.0%"
+      },
+      {
+        "name": "Zoe",
+        "picks": 4,
+        "wins": 3,
+        "winrate": "75.0%",
+        "bans": 16,
+        "ban_rate": "8.0%",
+        "presence": "10.1%"
+      },
+      {
+        "name": "Yone",
+        "picks": 4,
+        "wins": 1,
+        "winrate": "25.0%",
+        "bans": 7,
+        "ban_rate": "3.5%",
+        "presence": "5.5%"
       }
     ],
     "bot": [
       {
         "name": "Ezreal",
-        "picks": 26,
-        "wins": 14,
-        "winrate": "53.8%",
-        "bans": 19,
-        "ban_rate": "18.1%",
-        "presence": "42.9%"
+        "picks": 60,
+        "wins": 30,
+        "winrate": "50.0%",
+        "bans": 34,
+        "ban_rate": "17.1%",
+        "presence": "47.2%"
       },
       {
         "name": "Lucian",
-        "picks": 21,
-        "wins": 10,
-        "winrate": "47.6%",
-        "bans": 17,
-        "ban_rate": "16.2%",
-        "presence": "36.2%"
+        "picks": 45,
+        "wins": 25,
+        "winrate": "55.6%",
+        "bans": 31,
+        "ban_rate": "15.6%",
+        "presence": "38.2%"
       },
       {
         "name": "Ashe",
-        "picks": 21,
-        "wins": 8,
-        "winrate": "38.1%",
-        "bans": 10,
-        "ban_rate": "9.5%",
-        "presence": "29.5%"
+        "picks": 38,
+        "wins": 21,
+        "winrate": "55.3%",
+        "bans": 24,
+        "ban_rate": "12.1%",
+        "presence": "31.2%"
       },
       {
         "name": "Jhin",
-        "picks": 17,
-        "wins": 5,
-        "winrate": "29.4%",
-        "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "18.1%"
-      },
-      {
-        "name": "Yunara",
-        "picks": 15,
-        "wins": 11,
-        "winrate": "73.3%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "15.2%"
-      },
-      {
-        "name": "Sivir",
-        "picks": 15,
-        "wins": 6,
-        "winrate": "40.0%",
-        "bans": 6,
-        "ban_rate": "5.7%",
-        "presence": "20.0%"
-      },
-      {
-        "name": "Xayah",
-        "picks": 11,
-        "wins": 7,
-        "winrate": "63.6%",
-        "bans": 3,
-        "ban_rate": "2.9%",
-        "presence": "13.3%"
+        "picks": 32,
+        "wins": 9,
+        "winrate": "28.1%",
+        "bans": 7,
+        "ban_rate": "3.5%",
+        "presence": "19.6%"
       },
       {
         "name": "Caitlyn",
-        "picks": 11,
-        "wins": 5,
-        "winrate": "45.5%",
-        "bans": 25,
-        "ban_rate": "23.8%",
-        "presence": "34.3%"
+        "picks": 30,
+        "wins": 12,
+        "winrate": "40.0%",
+        "bans": 45,
+        "ban_rate": "22.6%",
+        "presence": "37.7%"
       },
       {
-        "name": "Kai'Sa",
-        "picks": 9,
-        "wins": 4,
-        "winrate": "44.4%",
-        "bans": 5,
-        "ban_rate": "4.8%",
-        "presence": "13.3%"
+        "name": "Sivir",
+        "picks": 26,
+        "wins": 12,
+        "winrate": "46.2%",
+        "bans": 8,
+        "ban_rate": "4.0%",
+        "presence": "17.1%"
       },
       {
-        "name": "Miss Fortune",
-        "picks": 8,
-        "wins": 6,
-        "winrate": "75.0%",
-        "bans": 3,
-        "ban_rate": "2.9%",
-        "presence": "10.5%"
-      },
-      {
-        "name": "Corki",
-        "picks": 8,
-        "wins": 4,
-        "winrate": "50.0%",
-        "bans": 1,
+        "name": "Yunara",
+        "picks": 22,
+        "wins": 16,
+        "winrate": "72.7%",
+        "bans": 2,
         "ban_rate": "1.0%",
-        "presence": "8.6%"
-      },
-      {
-        "name": "Senna",
-        "picks": 8,
-        "wins": 4,
-        "winrate": "50.0%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "8.6%"
+        "presence": "12.1%"
       },
       {
         "name": "Varus",
-        "picks": 6,
-        "wins": 3,
+        "picks": 20,
+        "wins": 11,
+        "winrate": "55.0%",
+        "bans": 117,
+        "ban_rate": "58.8%",
+        "presence": "68.8%"
+      },
+      {
+        "name": "Senna",
+        "picks": 20,
+        "wins": 7,
+        "winrate": "35.0%",
+        "bans": 1,
+        "ban_rate": "0.5%",
+        "presence": "10.6%"
+      },
+      {
+        "name": "Xayah",
+        "picks": 18,
+        "wins": 11,
+        "winrate": "61.1%",
+        "bans": 7,
+        "ban_rate": "3.5%",
+        "presence": "12.6%"
+      },
+      {
+        "name": "Miss Fortune",
+        "picks": 16,
+        "wins": 9,
+        "winrate": "56.2%",
+        "bans": 5,
+        "ban_rate": "2.5%",
+        "presence": "10.6%"
+      },
+      {
+        "name": "Corki",
+        "picks": 12,
+        "wins": 7,
+        "winrate": "58.3%",
+        "bans": 1,
+        "ban_rate": "0.5%",
+        "presence": "6.5%"
+      },
+      {
+        "name": "Kai'Sa",
+        "picks": 11,
+        "wins": 5,
+        "winrate": "45.5%",
+        "bans": 7,
+        "ban_rate": "3.5%",
+        "presence": "9.0%"
+      },
+      {
+        "name": "Mel",
+        "picks": 10,
+        "wins": 5,
         "winrate": "50.0%",
-        "bans": 61,
-        "ban_rate": "58.1%",
-        "presence": "63.8%"
+        "bans": 20,
+        "ban_rate": "10.1%",
+        "presence": "15.1%"
       },
       {
         "name": "Ziggs",
         "picks": 5,
         "wins": 4,
         "winrate": "80.0%",
+        "bans": 4,
+        "ban_rate": "2.0%",
+        "presence": "4.5%"
+      },
+      {
+        "name": "Tristana",
+        "picks": 5,
+        "wins": 2,
+        "winrate": "40.0%",
         "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "5.7%"
+        "ban_rate": "0.5%",
+        "presence": "3.0%"
       },
       {
         "name": "Jinx",
@@ -878,43 +898,25 @@
         "winrate": "40.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "4.8%"
-      },
-      {
-        "name": "Mel",
-        "picks": 4,
-        "wins": 2,
-        "winrate": "50.0%",
-        "bans": 18,
-        "ban_rate": "17.1%",
-        "presence": "21.0%"
-      },
-      {
-        "name": "Aphelios",
-        "picks": 3,
-        "wins": 2,
-        "winrate": "66.7%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "3.8%"
-      },
-      {
-        "name": "Tristana",
-        "picks": 3,
-        "wins": 1,
-        "winrate": "33.3%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "3.8%"
+        "presence": "2.5%"
       },
       {
         "name": "Zeri",
-        "picks": 3,
+        "picks": 5,
         "wins": 1,
-        "winrate": "33.3%",
+        "winrate": "20.0%",
         "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "3.8%"
+        "ban_rate": "0.5%",
+        "presence": "3.0%"
+      },
+      {
+        "name": "Aphelios",
+        "picks": 4,
+        "wins": 2,
+        "winrate": "50.0%",
+        "bans": 1,
+        "ban_rate": "0.5%",
+        "presence": "2.5%"
       },
       {
         "name": "Kog'Maw",
@@ -923,144 +925,171 @@
         "winrate": "33.3%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "2.9%"
+        "presence": "1.5%"
       }
     ],
     "sup": [
       {
         "name": "Nautilus",
-        "picks": 24,
-        "wins": 11,
-        "winrate": "45.8%",
-        "bans": 30,
-        "ban_rate": "28.6%",
-        "presence": "51.4%"
-      },
-      {
-        "name": "Bard",
-        "picks": 23,
-        "wins": 13,
-        "winrate": "56.5%",
-        "bans": 24,
-        "ban_rate": "22.9%",
-        "presence": "44.8%"
+        "picks": 50,
+        "wins": 22,
+        "winrate": "44.0%",
+        "bans": 64,
+        "ban_rate": "32.2%",
+        "presence": "57.3%"
       },
       {
         "name": "Milio",
-        "picks": 22,
-        "wins": 9,
-        "winrate": "40.9%",
-        "bans": 5,
-        "ban_rate": "4.8%",
-        "presence": "25.7%"
+        "picks": 46,
+        "wins": 23,
+        "winrate": "50.0%",
+        "bans": 13,
+        "ban_rate": "6.5%",
+        "presence": "29.6%"
       },
       {
-        "name": "Rakan",
-        "picks": 17,
-        "wins": 11,
-        "winrate": "64.7%",
-        "bans": 4,
-        "ban_rate": "3.8%",
-        "presence": "20.0%"
-      },
-      {
-        "name": "Neeko",
-        "picks": 17,
-        "wins": 8,
-        "winrate": "47.1%",
-        "bans": 7,
-        "ban_rate": "6.7%",
-        "presence": "22.9%"
-      },
-      {
-        "name": "Seraphine",
-        "picks": 15,
-        "wins": 7,
-        "winrate": "46.7%",
-        "bans": 21,
-        "ban_rate": "20.0%",
-        "presence": "34.3%"
+        "name": "Bard",
+        "picks": 41,
+        "wins": 21,
+        "winrate": "51.2%",
+        "bans": 64,
+        "ban_rate": "32.2%",
+        "presence": "52.8%"
       },
       {
         "name": "Karma",
-        "picks": 14,
-        "wins": 5,
-        "winrate": "35.7%",
-        "bans": 48,
-        "ban_rate": "45.7%",
-        "presence": "59.0%"
+        "picks": 34,
+        "wins": 16,
+        "winrate": "47.1%",
+        "bans": 89,
+        "ban_rate": "44.7%",
+        "presence": "61.8%"
+      },
+      {
+        "name": "Rakan",
+        "picks": 33,
+        "wins": 21,
+        "winrate": "63.6%",
+        "bans": 8,
+        "ban_rate": "4.0%",
+        "presence": "20.6%"
+      },
+      {
+        "name": "Seraphine",
+        "picks": 32,
+        "wins": 18,
+        "winrate": "56.2%",
+        "bans": 34,
+        "ban_rate": "17.1%",
+        "presence": "33.2%"
+      },
+      {
+        "name": "Neeko",
+        "picks": 29,
+        "wins": 12,
+        "winrate": "41.4%",
+        "bans": 16,
+        "ban_rate": "8.0%",
+        "presence": "22.6%"
       },
       {
         "name": "Alistar",
-        "picks": 13,
-        "wins": 9,
-        "winrate": "69.2%",
-        "bans": 3,
-        "ban_rate": "2.9%",
-        "presence": "15.2%"
+        "picks": 25,
+        "wins": 14,
+        "winrate": "56.0%",
+        "bans": 7,
+        "ban_rate": "3.5%",
+        "presence": "16.1%"
       },
       {
         "name": "Rell",
-        "picks": 13,
-        "wins": 3,
-        "winrate": "23.1%",
-        "bans": 5,
-        "ban_rate": "4.8%",
-        "presence": "17.1%"
+        "picks": 25,
+        "wins": 9,
+        "winrate": "36.0%",
+        "bans": 6,
+        "ban_rate": "3.0%",
+        "presence": "15.6%"
       },
       {
         "name": "Leona",
-        "picks": 12,
-        "wins": 4,
-        "winrate": "33.3%",
+        "picks": 22,
+        "wins": 6,
+        "winrate": "27.3%",
         "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "13.3%"
+        "ban_rate": "1.0%",
+        "presence": "12.1%"
       },
       {
         "name": "Lulu",
-        "picks": 11,
-        "wins": 6,
-        "winrate": "54.5%",
-        "bans": 13,
-        "ban_rate": "12.4%",
-        "presence": "22.9%"
-      },
-      {
-        "name": "Braum",
-        "picks": 5,
-        "wins": 2,
-        "winrate": "40.0%",
-        "bans": 9,
-        "ban_rate": "8.6%",
-        "presence": "13.3%"
+        "picks": 18,
+        "wins": 10,
+        "winrate": "55.6%",
+        "bans": 20,
+        "ban_rate": "10.1%",
+        "presence": "19.1%"
       },
       {
         "name": "Pyke",
-        "picks": 4,
-        "wins": 1,
-        "winrate": "25.0%",
-        "bans": 6,
-        "ban_rate": "5.7%",
-        "presence": "9.5%"
+        "picks": 9,
+        "wins": 4,
+        "winrate": "44.4%",
+        "bans": 14,
+        "ban_rate": "7.0%",
+        "presence": "11.6%"
+      },
+      {
+        "name": "Braum",
+        "picks": 7,
+        "wins": 3,
+        "winrate": "42.9%",
+        "bans": 11,
+        "ban_rate": "5.5%",
+        "presence": "9.0%"
       },
       {
         "name": "Blitzcrank",
-        "picks": 3,
-        "wins": 3,
+        "picks": 4,
+        "wins": 4,
         "winrate": "100.0%",
         "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "4.8%"
+        "ban_rate": "1.0%",
+        "presence": "3.0%"
       },
       {
         "name": "Nami",
-        "picks": 3,
-        "wins": 3,
+        "picks": 4,
+        "wins": 4,
         "winrate": "100.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "2.9%"
+        "presence": "2.0%"
+      },
+      {
+        "name": "Renata Glasc",
+        "picks": 3,
+        "wins": 2,
+        "winrate": "66.7%",
+        "bans": 1,
+        "ban_rate": "0.5%",
+        "presence": "2.0%"
+      },
+      {
+        "name": "Tahm Kench",
+        "picks": 3,
+        "wins": 1,
+        "winrate": "33.3%",
+        "bans": 0,
+        "ban_rate": "0.0%",
+        "presence": "1.5%"
+      },
+      {
+        "name": "Shen",
+        "picks": 2,
+        "wins": 2,
+        "winrate": "100.0%",
+        "bans": 5,
+        "ban_rate": "2.5%",
+        "presence": "3.5%"
       },
       {
         "name": "Camille",
@@ -1068,55 +1097,892 @@
         "wins": 2,
         "winrate": "100.0%",
         "bans": 2,
-        "ban_rate": "1.9%",
-        "presence": "3.8%"
+        "ban_rate": "1.0%",
+        "presence": "2.0%"
       },
       {
-        "name": "Renata Glasc",
+        "name": "Lux",
         "picks": 2,
         "wins": 2,
         "winrate": "100.0%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "2.9%"
-      },
-      {
-        "name": "Senna",
-        "picks": 2,
-        "wins": 1,
-        "winrate": "50.0%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "2.9%"
-      },
-      {
-        "name": "Shen",
-        "picks": 1,
-        "wins": 1,
-        "winrate": "100.0%",
-        "bans": 3,
-        "ban_rate": "2.9%",
-        "presence": "3.8%"
-      },
-      {
-        "name": "Yuumi",
-        "picks": 1,
-        "wins": 1,
-        "winrate": "100.0%",
-        "bans": 1,
-        "ban_rate": "1.0%",
-        "presence": "1.9%"
+        "bans": 0,
+        "ban_rate": "0.0%",
+        "presence": "1.0%"
       }
     ]
   },
   "teams": [
     {
+      "name": "Bilibili Gaming",
+      "games": 101,
+      "wins": 73,
+      "losses": 28,
+      "winrate": "72.3%",
+      "game_record": "73-28"
+    },
+    {
+      "name": "T1",
+      "games": 89,
+      "wins": 63,
+      "losses": 26,
+      "winrate": "70.8%",
+      "game_record": "63-26"
+    },
+    {
+      "name": "Dplus Kia",
+      "games": 114,
+      "wins": 62,
+      "losses": 52,
+      "winrate": "54.4%",
+      "game_record": "62-52"
+    },
+    {
+      "name": "Hanwha Life Esports",
+      "games": 86,
+      "wins": 58,
+      "losses": 28,
+      "winrate": "67.4%",
+      "game_record": "58-28"
+    },
+    {
+      "name": "G2 Esports",
+      "games": 81,
+      "wins": 57,
+      "losses": 24,
+      "winrate": "70.4%",
+      "game_record": "57-24"
+    },
+    {
+      "name": "JD Gaming",
+      "games": 108,
+      "wins": 56,
+      "losses": 52,
+      "winrate": "51.9%",
+      "game_record": "56-52"
+    },
+    {
+      "name": "Deep Cross Gaming",
+      "games": 95,
+      "wins": 56,
+      "losses": 39,
+      "winrate": "58.9%",
+      "game_record": "56-39"
+    },
+    {
+      "name": "Gen.G",
+      "games": 76,
+      "wins": 56,
+      "losses": 20,
+      "winrate": "73.7%",
+      "game_record": "56-20"
+    },
+    {
+      "name": "Berlin International Gaming",
+      "games": 81,
+      "wins": 55,
+      "losses": 26,
+      "winrate": "67.9%",
+      "game_record": "55-26"
+    },
+    {
       "name": "Karmine Corp",
-      "games": 37,
-      "wins": 25,
-      "losses": 12,
+      "games": 84,
+      "wins": 54,
+      "losses": 30,
+      "winrate": "64.3%",
+      "game_record": "54-30"
+    },
+    {
+      "name": "T1 Esports Academy",
+      "games": 82,
+      "wins": 54,
+      "losses": 28,
+      "winrate": "65.9%",
+      "game_record": "54-28"
+    },
+    {
+      "name": "Galions",
+      "games": 82,
+      "wins": 52,
+      "losses": 30,
+      "winrate": "63.4%",
+      "game_record": "52-30"
+    },
+    {
+      "name": "G2 NORD",
+      "games": 76,
+      "wins": 51,
+      "losses": 25,
+      "winrate": "67.1%",
+      "game_record": "51-25"
+    },
+    {
+      "name": "Team Secret Whales",
+      "games": 70,
+      "wins": 51,
+      "losses": 19,
+      "winrate": "72.9%",
+      "game_record": "51-19"
+    },
+    {
+      "name": "Solary",
+      "games": 67,
+      "wins": 51,
+      "losses": 16,
+      "winrate": "76.1%",
+      "game_record": "51-16"
+    },
+    {
+      "name": "Anyone's Legend",
+      "games": 86,
+      "wins": 50,
+      "losses": 36,
+      "winrate": "58.1%",
+      "game_record": "50-36"
+    },
+    {
+      "name": "Nongshim Esports Academy",
+      "games": 80,
+      "wins": 50,
+      "losses": 30,
+      "winrate": "62.5%",
+      "game_record": "50-30"
+    },
+    {
+      "name": "T1 Esports Academy Rookies",
+      "games": 64,
+      "wins": 50,
+      "losses": 14,
+      "winrate": "78.1%",
+      "game_record": "50-14"
+    },
+    {
+      "name": "Top Esports",
+      "games": 83,
+      "wins": 48,
+      "losses": 35,
+      "winrate": "57.8%",
+      "game_record": "48-35"
+    },
+    {
+      "name": "Misa Esports",
+      "games": 56,
+      "wins": 48,
+      "losses": 8,
+      "winrate": "85.7%",
+      "game_record": "48-8"
+    },
+    {
+      "name": "FN Esports",
+      "games": 68,
+      "wins": 46,
+      "losses": 22,
       "winrate": "67.6%",
-      "game_record": "25-12"
+      "game_record": "46-22"
+    },
+    {
+      "name": "Dplus Kia Academy",
+      "games": 65,
+      "wins": 45,
+      "losses": 20,
+      "winrate": "69.2%",
+      "game_record": "45-20"
+    },
+    {
+      "name": "KT Rolster Challengers",
+      "games": 73,
+      "wins": 44,
+      "losses": 29,
+      "winrate": "60.3%",
+      "game_record": "44-29"
+    },
+    {
+      "name": "Cloud9",
+      "games": 72,
+      "wins": 44,
+      "losses": 28,
+      "winrate": "61.1%",
+      "game_record": "44-28"
+    },
+    {
+      "name": "Eintracht Spandau",
+      "games": 65,
+      "wins": 43,
+      "losses": 22,
+      "winrate": "66.2%",
+      "game_record": "43-22"
+    },
+    {
+      "name": "BNK FEARX",
+      "games": 94,
+      "wins": 42,
+      "losses": 52,
+      "winrate": "44.7%",
+      "game_record": "42-52"
+    },
+    {
+      "name": "FURIA",
+      "games": 58,
+      "wins": 42,
+      "losses": 16,
+      "winrate": "72.4%",
+      "game_record": "42-16"
+    },
+    {
+      "name": "Kiwoom DRX Challengers",
+      "games": 79,
+      "wins": 41,
+      "losses": 38,
+      "winrate": "51.9%",
+      "game_record": "41-38"
+    },
+    {
+      "name": "LYON",
+      "games": 68,
+      "wins": 41,
+      "losses": 27,
+      "winrate": "60.3%",
+      "game_record": "41-27"
+    },
+    {
+      "name": "Nightbirds",
+      "games": 54,
+      "wins": 41,
+      "losses": 13,
+      "winrate": "75.9%",
+      "game_record": "41-13"
+    },
+    {
+      "name": "Partizan Sangal",
+      "games": 47,
+      "wins": 41,
+      "losses": 6,
+      "winrate": "87.2%",
+      "game_record": "41-6"
+    },
+    {
+      "name": "Weibo Gaming",
+      "games": 84,
+      "wins": 40,
+      "losses": 44,
+      "winrate": "47.6%",
+      "game_record": "40-44"
+    },
+    {
+      "name": "WLGaming Esports",
+      "games": 57,
+      "wins": 40,
+      "losses": 17,
+      "winrate": "70.2%",
+      "game_record": "40-17"
+    },
+    {
+      "name": "Frites Esports Club",
+      "games": 48,
+      "wins": 40,
+      "losses": 8,
+      "winrate": "83.3%",
+      "game_record": "40-8"
+    },
+    {
+      "name": "Movistar KOI",
+      "games": 70,
+      "wins": 39,
+      "losses": 31,
+      "winrate": "55.7%",
+      "game_record": "39-31"
+    },
+    {
+      "name": "DN SOOPers Challengers",
+      "games": 67,
+      "wins": 39,
+      "losses": 28,
+      "winrate": "58.2%",
+      "game_record": "39-28"
+    },
+    {
+      "name": "Dragons Esports",
+      "games": 59,
+      "wins": 39,
+      "losses": 20,
+      "winrate": "66.1%",
+      "game_record": "39-20"
+    },
+    {
+      "name": "CITA Kaizen",
+      "games": 59,
+      "wins": 38,
+      "losses": 21,
+      "winrate": "64.4%",
+      "game_record": "38-21"
+    },
+    {
+      "name": "Hanwha Life Esports Academy",
+      "games": 55,
+      "wins": 38,
+      "losses": 17,
+      "winrate": "69.1%",
+      "game_record": "38-17"
+    },
+    {
+      "name": "GAM Esports",
+      "games": 66,
+      "wins": 37,
+      "losses": 29,
+      "winrate": "56.1%",
+      "game_record": "37-29"
+    },
+    {
+      "name": "Dplus Kia Challengers",
+      "games": 61,
+      "wins": 37,
+      "losses": 24,
+      "winrate": "60.7%",
+      "game_record": "37-24"
+    },
+    {
+      "name": "KT Rolster",
+      "games": 71,
+      "wins": 36,
+      "losses": 35,
+      "winrate": "50.7%",
+      "game_record": "36-35"
+    },
+    {
+      "name": "Team Liquid",
+      "games": 60,
+      "wins": 36,
+      "losses": 24,
+      "winrate": "60.0%",
+      "game_record": "36-24"
+    },
+    {
+      "name": "BAAM Esports",
+      "games": 71,
+      "wins": 35,
+      "losses": 36,
+      "winrate": "49.3%",
+      "game_record": "35-36"
+    },
+    {
+      "name": "Unicorns of Love Sexy Edition",
+      "games": 64,
+      "wins": 35,
+      "losses": 29,
+      "winrate": "54.7%",
+      "game_record": "35-29"
+    },
+    {
+      "name": "LØS",
+      "games": 62,
+      "wins": 35,
+      "losses": 27,
+      "winrate": "56.5%",
+      "game_record": "35-27"
+    },
+    {
+      "name": "Anubis Gaming",
+      "games": 57,
+      "wins": 35,
+      "losses": 22,
+      "winrate": "61.4%",
+      "game_record": "35-22"
+    },
+    {
+      "name": "HMBLE",
+      "games": 44,
+      "wins": 35,
+      "losses": 9,
+      "winrate": "79.5%",
+      "game_record": "35-9"
+    },
+    {
+      "name": "Kiwoom DRX",
+      "games": 84,
+      "wins": 34,
+      "losses": 50,
+      "winrate": "40.5%",
+      "game_record": "34-50"
+    },
+    {
+      "name": "Ninjas in Pyjamas",
+      "games": 67,
+      "wins": 34,
+      "losses": 33,
+      "winrate": "50.7%",
+      "game_record": "34-33"
+    },
+    {
+      "name": "New Meta",
+      "games": 57,
+      "wins": 34,
+      "losses": 23,
+      "winrate": "59.6%",
+      "game_record": "34-23"
+    },
+    {
+      "name": "Bomba Team",
+      "games": 52,
+      "wins": 34,
+      "losses": 18,
+      "winrate": "65.4%",
+      "game_record": "34-18"
+    },
+    {
+      "name": "RED Canids",
+      "games": 57,
+      "wins": 33,
+      "losses": 24,
+      "winrate": "57.9%",
+      "game_record": "33-24"
+    },
+    {
+      "name": "Rising Gaming",
+      "games": 49,
+      "wins": 33,
+      "losses": 16,
+      "winrate": "67.3%",
+      "game_record": "33-16"
+    },
+    {
+      "name": "Nongshim RedForce",
+      "games": 84,
+      "wins": 32,
+      "losses": 52,
+      "winrate": "38.1%",
+      "game_record": "32-52"
+    },
+    {
+      "name": "LOUD",
+      "games": 61,
+      "wins": 32,
+      "losses": 29,
+      "winrate": "52.5%",
+      "game_record": "32-29"
+    },
+    {
+      "name": "Barcząca Esports",
+      "games": 56,
+      "wins": 32,
+      "losses": 24,
+      "winrate": "57.1%",
+      "game_record": "32-24"
+    },
+    {
+      "name": "The Bandits",
+      "games": 56,
+      "wins": 31,
+      "losses": 25,
+      "winrate": "55.4%",
+      "game_record": "31-25"
+    },
+    {
+      "name": "Team Heretics Academy",
+      "games": 40,
+      "wins": 31,
+      "losses": 9,
+      "winrate": "77.5%",
+      "game_record": "31-9"
+    },
+    {
+      "name": "Invictus Gaming",
+      "games": 81,
+      "wins": 30,
+      "losses": 51,
+      "winrate": "37.0%",
+      "game_record": "30-51"
+    },
+    {
+      "name": "Fukuoka SoftBank HAWKS gaming",
+      "games": 62,
+      "wins": 30,
+      "losses": 32,
+      "winrate": "48.4%",
+      "game_record": "30-32"
+    },
+    {
+      "name": "Sentinels",
+      "games": 61,
+      "wins": 30,
+      "losses": 31,
+      "winrate": "49.2%",
+      "game_record": "30-31"
+    },
+    {
+      "name": "FlyQuest",
+      "games": 60,
+      "wins": 30,
+      "losses": 30,
+      "winrate": "50.0%",
+      "game_record": "30-30"
+    },
+    {
+      "name": "Team Vitality",
+      "games": 56,
+      "wins": 30,
+      "losses": 26,
+      "winrate": "53.6%",
+      "game_record": "30-26"
+    },
+    {
+      "name": "Arneb",
+      "games": 49,
+      "wins": 30,
+      "losses": 19,
+      "winrate": "61.2%",
+      "game_record": "30-19"
+    },
+    {
+      "name": "Verdant",
+      "games": 40,
+      "wins": 30,
+      "losses": 10,
+      "winrate": "75.0%",
+      "game_record": "30-10"
+    },
+    {
+      "name": "Team WE",
+      "games": 79,
+      "wins": 29,
+      "losses": 50,
+      "winrate": "36.7%",
+      "game_record": "29-50"
+    },
+    {
+      "name": "Natus Vincere",
+      "games": 56,
+      "wins": 29,
+      "losses": 27,
+      "winrate": "51.8%",
+      "game_record": "29-27"
+    },
+    {
+      "name": "Uwinks",
+      "games": 50,
+      "wins": 29,
+      "losses": 21,
+      "winrate": "58.0%",
+      "game_record": "29-21"
+    },
+    {
+      "name": "Team Phantasma",
+      "games": 49,
+      "wins": 29,
+      "losses": 20,
+      "winrate": "59.2%",
+      "game_record": "29-20"
+    },
+    {
+      "name": "Forsaken",
+      "games": 46,
+      "wins": 29,
+      "losses": 17,
+      "winrate": "63.0%",
+      "game_record": "29-17"
+    },
+    {
+      "name": "3BL Esports",
+      "games": 68,
+      "wins": 28,
+      "losses": 40,
+      "winrate": "41.2%",
+      "game_record": "28-40"
+    },
+    {
+      "name": "Gen.G Scholars",
+      "games": 67,
+      "wins": 28,
+      "losses": 39,
+      "winrate": "41.8%",
+      "game_record": "28-39"
+    },
+    {
+      "name": "GiantX",
+      "games": 58,
+      "wins": 28,
+      "losses": 30,
+      "winrate": "48.3%",
+      "game_record": "28-30"
+    },
+    {
+      "name": "GMBLERS Esports",
+      "games": 55,
+      "wins": 28,
+      "losses": 27,
+      "winrate": "50.9%",
+      "game_record": "28-27"
+    },
+    {
+      "name": "E WIE EINFACH E-SPORTS",
+      "games": 54,
+      "wins": 28,
+      "losses": 26,
+      "winrate": "51.9%",
+      "game_record": "28-26"
+    },
+    {
+      "name": "eSuba",
+      "games": 46,
+      "wins": 28,
+      "losses": 18,
+      "winrate": "60.9%",
+      "game_record": "28-18"
+    },
+    {
+      "name": "French Flair",
+      "games": 40,
+      "wins": 28,
+      "losses": 12,
+      "winrate": "70.0%",
+      "game_record": "28-12"
+    },
+    {
+      "name": "Inferno Drive Tokyo",
+      "games": 40,
+      "wins": 28,
+      "losses": 12,
+      "winrate": "70.0%",
+      "game_record": "28-12"
+    },
+    {
+      "name": "FENNEL",
+      "games": 34,
+      "wins": 28,
+      "losses": 6,
+      "winrate": "82.4%",
+      "game_record": "28-6"
+    },
+    {
+      "name": "Hanwha Life Esports Challengers",
+      "games": 68,
+      "wins": 27,
+      "losses": 41,
+      "winrate": "39.7%",
+      "game_record": "27-41"
+    },
+    {
+      "name": "GnG Amazigh",
+      "games": 65,
+      "wins": 27,
+      "losses": 38,
+      "winrate": "41.5%",
+      "game_record": "27-38"
+    },
+    {
+      "name": "BNK FEARX Youth",
+      "games": 64,
+      "wins": 27,
+      "losses": 37,
+      "winrate": "42.2%",
+      "game_record": "27-37"
+    },
+    {
+      "name": "DN SOOPers Academy",
+      "games": 55,
+      "wins": 27,
+      "losses": 28,
+      "winrate": "49.1%",
+      "game_record": "27-28"
+    },
+    {
+      "name": "Priority",
+      "games": 47,
+      "wins": 27,
+      "losses": 20,
+      "winrate": "57.4%",
+      "game_record": "27-20"
+    },
+    {
+      "name": "LNG Esports",
+      "games": 39,
+      "wins": 27,
+      "losses": 12,
+      "winrate": "69.2%",
+      "game_record": "27-12"
+    },
+    {
+      "name": "UCAM Esports",
+      "games": 45,
+      "wins": 26,
+      "losses": 19,
+      "winrate": "57.8%",
+      "game_record": "26-19"
+    },
+    {
+      "name": "Movistar KOI Fénix",
+      "games": 41,
+      "wins": 26,
+      "losses": 15,
+      "winrate": "63.4%",
+      "game_record": "26-15"
+    },
+    {
+      "name": "HANJIN BRION",
+      "games": 72,
+      "wins": 25,
+      "losses": 47,
+      "winrate": "34.7%",
+      "game_record": "25-47"
+    },
+    {
+      "name": "GOAL",
+      "games": 45,
+      "wins": 25,
+      "losses": 20,
+      "winrate": "55.6%",
+      "game_record": "25-20"
+    },
+    {
+      "name": "Estral Esports",
+      "games": 41,
+      "wins": 25,
+      "losses": 16,
+      "winrate": "61.0%",
+      "game_record": "25-16"
+    },
+    {
+      "name": "MVK Esports",
+      "games": 53,
+      "wins": 24,
+      "losses": 29,
+      "winrate": "45.3%",
+      "game_record": "24-29"
+    },
+    {
+      "name": "Karmine Corp Blue",
+      "games": 50,
+      "wins": 24,
+      "losses": 26,
+      "winrate": "48.0%",
+      "game_record": "24-26"
+    },
+    {
+      "name": "Bushido Wildcats",
+      "games": 48,
+      "wins": 24,
+      "losses": 24,
+      "winrate": "50.0%",
+      "game_record": "24-24"
+    },
+    {
+      "name": "PCIFIC Esports",
+      "games": 48,
+      "wins": 24,
+      "losses": 24,
+      "winrate": "50.0%",
+      "game_record": "24-24"
+    },
+    {
+      "name": "TLN Pirates",
+      "games": 41,
+      "wins": 24,
+      "losses": 17,
+      "winrate": "58.5%",
+      "game_record": "24-17"
+    },
+    {
+      "name": "CCG Esports",
+      "games": 40,
+      "wins": 24,
+      "losses": 16,
+      "winrate": "60.0%",
+      "game_record": "24-16"
+    },
+    {
+      "name": "Saigon Warriors",
+      "games": 39,
+      "wins": 24,
+      "losses": 15,
+      "winrate": "61.5%",
+      "game_record": "24-15"
+    },
+    {
+      "name": "Otter Side",
+      "games": 31,
+      "wins": 24,
+      "losses": 7,
+      "winrate": "77.4%",
+      "game_record": "24-7"
+    },
+    {
+      "name": "RAYN Clocks",
+      "games": 46,
+      "wins": 23,
+      "losses": 23,
+      "winrate": "50.0%",
+      "game_record": "23-23"
+    },
+    {
+      "name": "SU Esports",
+      "games": 45,
+      "wins": 23,
+      "losses": 22,
+      "winrate": "51.1%",
+      "game_record": "23-22"
+    },
+    {
+      "name": "Colossal Gaming",
+      "games": 43,
+      "wins": 23,
+      "losses": 20,
+      "winrate": "53.5%",
+      "game_record": "23-20"
+    },
+    {
+      "name": "Conviction",
+      "games": 37,
+      "wins": 23,
+      "losses": 14,
+      "winrate": "62.2%",
+      "game_record": "23-14"
+    },
+    {
+      "name": "Ethereal Enigmas",
+      "games": 31,
+      "wins": 23,
+      "losses": 8,
+      "winrate": "74.2%",
+      "game_record": "23-8"
+    },
+    {
+      "name": "DN SOOPers",
+      "games": 85,
+      "wins": 22,
+      "losses": 63,
+      "winrate": "25.9%",
+      "game_record": "22-63"
+    },
+    {
+      "name": "Disguised",
+      "games": 49,
+      "wins": 22,
+      "losses": 27,
+      "winrate": "44.9%",
+      "game_record": "22-27"
+    },
+    {
+      "name": "The Secret Club",
+      "games": 46,
+      "wins": 22,
+      "losses": 24,
+      "winrate": "47.8%",
+      "game_record": "22-24"
+    },
+    {
+      "name": "Barça eSports",
+      "games": 43,
+      "wins": 22,
+      "losses": 21,
+      "winrate": "51.2%",
+      "game_record": "22-21"
+    },
+    {
+      "name": "L Guide Gaming",
+      "games": 42,
+      "wins": 22,
+      "losses": 20,
+      "winrate": "52.4%",
+      "game_record": "22-20"
     },
     {
       "name": "Winthrop University",
@@ -1127,116 +1993,172 @@
       "game_record": "22-18"
     },
     {
-      "name": "Nightbirds",
-      "games": 29,
+      "name": "SDM Tigres",
+      "games": 36,
       "wins": 22,
-      "losses": 7,
-      "winrate": "75.9%",
-      "game_record": "22-7"
-    },
-    {
-      "name": "CITA Kaizen",
-      "games": 26,
-      "wins": 22,
-      "losses": 4,
-      "winrate": "84.6%",
-      "game_record": "22-4"
-    },
-    {
-      "name": "Conviction",
-      "games": 32,
-      "wins": 21,
-      "losses": 11,
-      "winrate": "65.6%",
-      "game_record": "21-11"
-    },
-    {
-      "name": "G2 Esports",
-      "games": 30,
-      "wins": 21,
-      "losses": 9,
-      "winrate": "70.0%",
-      "game_record": "21-9"
-    },
-    {
-      "name": "G2 NORD",
-      "games": 30,
-      "wins": 21,
-      "losses": 9,
-      "winrate": "70.0%",
-      "game_record": "21-9"
-    },
-    {
-      "name": "Anubis Gaming",
-      "games": 26,
-      "wins": 21,
-      "losses": 5,
-      "winrate": "80.8%",
-      "game_record": "21-5"
-    },
-    {
-      "name": "Frites Esports Club",
-      "games": 21,
-      "wins": 21,
-      "losses": 0,
-      "winrate": "100.0%",
-      "game_record": "21-0"
-    },
-    {
-      "name": "Movistar KOI",
-      "games": 34,
-      "wins": 20,
       "losses": 14,
-      "winrate": "58.8%",
-      "game_record": "20-14"
+      "winrate": "61.1%",
+      "game_record": "22-14"
     },
     {
-      "name": "Eintracht Spandau",
-      "games": 25,
-      "wins": 20,
-      "losses": 5,
-      "winrate": "80.0%",
-      "game_record": "20-5"
+      "name": "Volticons",
+      "games": 33,
+      "wins": 22,
+      "losses": 11,
+      "winrate": "66.7%",
+      "game_record": "22-11"
     },
     {
-      "name": "Ethereal Enigmas",
-      "games": 23,
-      "wins": 20,
+      "name": "MVK Esports Academy",
+      "games": 32,
+      "wins": 22,
+      "losses": 10,
+      "winrate": "68.8%",
+      "game_record": "22-10"
+    },
+    {
+      "name": "mCon esports",
+      "games": 53,
+      "wins": 21,
+      "losses": 32,
+      "winrate": "39.6%",
+      "game_record": "21-32"
+    },
+    {
+      "name": "CTBC Flying Oyster",
+      "games": 52,
+      "wins": 21,
+      "losses": 31,
+      "winrate": "40.4%",
+      "game_record": "21-31"
+    },
+    {
+      "name": "NOVEX",
+      "games": 37,
+      "wins": 21,
+      "losses": 16,
+      "winrate": "56.8%",
+      "game_record": "21-16"
+    },
+    {
+      "name": "Team Insidious",
+      "games": 36,
+      "wins": 21,
+      "losses": 15,
+      "winrate": "58.3%",
+      "game_record": "21-15"
+    },
+    {
+      "name": "Arctic Pandas",
+      "games": 35,
+      "wins": 21,
+      "losses": 14,
+      "winrate": "60.0%",
+      "game_record": "21-14"
+    },
+    {
+      "name": "Fuego",
+      "games": 24,
+      "wins": 21,
       "losses": 3,
-      "winrate": "87.0%",
-      "game_record": "20-3"
+      "winrate": "87.5%",
+      "game_record": "21-3"
     },
     {
-      "name": "Misa Esports",
-      "games": 21,
+      "name": "HANJIN BRION Challengers",
+      "games": 60,
       "wins": 20,
-      "losses": 1,
-      "winrate": "95.2%",
-      "game_record": "20-1"
+      "losses": 40,
+      "winrate": "33.3%",
+      "game_record": "20-40"
     },
     {
-      "name": "CCG Esports",
+      "name": "Ground Zero Gaming",
+      "games": 53,
+      "wins": 20,
+      "losses": 33,
+      "winrate": "37.7%",
+      "game_record": "20-33"
+    },
+    {
+      "name": "LGD Gaming",
+      "games": 45,
+      "wins": 20,
+      "losses": 25,
+      "winrate": "44.4%",
+      "game_record": "20-25"
+    },
+    {
+      "name": "Vivo Keyd Stars",
+      "games": 45,
+      "wins": 20,
+      "losses": 25,
+      "winrate": "44.4%",
+      "game_record": "20-25"
+    },
+    {
+      "name": "EDward Gaming",
+      "games": 44,
+      "wins": 20,
+      "losses": 24,
+      "winrate": "45.5%",
+      "game_record": "20-24"
+    },
+    {
+      "name": "Saigon Dino",
+      "games": 42,
+      "wins": 20,
+      "losses": 22,
+      "winrate": "47.6%",
+      "game_record": "20-22"
+    },
+    {
+      "name": "Karmine Corp Blue Stars",
+      "games": 26,
+      "wins": 20,
+      "losses": 6,
+      "winrate": "76.9%",
+      "game_record": "20-6"
+    },
+    {
+      "name": "One More Esports",
+      "games": 56,
+      "wins": 19,
+      "losses": 37,
+      "winrate": "33.9%",
+      "game_record": "19-37"
+    },
+    {
+      "name": "Fluxo W7M",
+      "games": 46,
+      "wins": 19,
+      "losses": 27,
+      "winrate": "41.3%",
+      "game_record": "19-27"
+    },
+    {
+      "name": "Lupus Esports",
+      "games": 41,
+      "wins": 19,
+      "losses": 22,
+      "winrate": "46.3%",
+      "game_record": "19-22"
+    },
+    {
+      "name": "Meavedron",
+      "games": 41,
+      "wins": 19,
+      "losses": 22,
+      "winrate": "46.3%",
+      "game_record": "19-22"
+    },
+    {
+      "name": "TeamOrangeGaming",
       "games": 35,
       "wins": 19,
       "losses": 16,
       "winrate": "54.3%",
       "game_record": "19-16"
-    },
-    {
-      "name": "FN Esports",
-      "games": 31,
-      "wins": 19,
-      "losses": 12,
-      "winrate": "61.3%",
-      "game_record": "19-12"
-    },
-    {
-      "name": "Team Liquid",
-      "games": 30,
-      "wins": 19,
-      "losses": 11,
-      "winrate": "63.3%",
-      "game_record": "19-11"
     },
     {
       "name": "Maryville University",
@@ -1247,7 +2169,7 @@
       "game_record": "19-10"
     },
     {
-      "name": "Bomba Team",
+      "name": "Golden Lions",
       "games": 26,
       "wins": 19,
       "losses": 7,
@@ -1255,28 +2177,28 @@
       "game_record": "19-7"
     },
     {
-      "name": "Team Heretics Academy",
-      "games": 22,
-      "wins": 19,
-      "losses": 3,
-      "winrate": "86.4%",
-      "game_record": "19-3"
-    },
-    {
-      "name": "MVK Esports Academy",
-      "games": 21,
-      "wins": 19,
-      "losses": 2,
-      "winrate": "90.5%",
-      "game_record": "19-2"
-    },
-    {
-      "name": "PCIFIC Esports",
-      "games": 31,
+      "name": "BRUTE",
+      "games": 44,
       "wins": 18,
-      "losses": 13,
-      "winrate": "58.1%",
-      "game_record": "18-13"
+      "losses": 26,
+      "winrate": "40.9%",
+      "game_record": "18-26"
+    },
+    {
+      "name": "Senshi eSports",
+      "games": 37,
+      "wins": 18,
+      "losses": 19,
+      "winrate": "48.6%",
+      "game_record": "18-19"
+    },
+    {
+      "name": "P11 Esports",
+      "games": 34,
+      "wins": 18,
+      "losses": 16,
+      "winrate": "52.9%",
+      "game_record": "18-16"
     },
     {
       "name": "NRG",
@@ -1287,15 +2209,7 @@
       "game_record": "18-11"
     },
     {
-      "name": "Berlin International Gaming",
-      "games": 27,
-      "wins": 18,
-      "losses": 9,
-      "winrate": "66.7%",
-      "game_record": "18-9"
-    },
-    {
-      "name": "Forsaken",
+      "name": "KaBuM! Ilha das Lendas",
       "games": 26,
       "wins": 18,
       "losses": 8,
@@ -1303,7 +2217,47 @@
       "game_record": "18-8"
     },
     {
-      "name": "FlyQuest",
+      "name": "KT Rolster Academy",
+      "games": 53,
+      "wins": 17,
+      "losses": 36,
+      "winrate": "32.1%",
+      "game_record": "17-36"
+    },
+    {
+      "name": "Fnatic",
+      "games": 45,
+      "wins": 17,
+      "losses": 28,
+      "winrate": "37.8%",
+      "game_record": "17-28"
+    },
+    {
+      "name": "JSK Esports",
+      "games": 40,
+      "wins": 17,
+      "losses": 23,
+      "winrate": "42.5%",
+      "game_record": "17-23"
+    },
+    {
+      "name": "Once Upon A Team",
+      "games": 38,
+      "wins": 17,
+      "losses": 21,
+      "winrate": "44.7%",
+      "game_record": "17-21"
+    },
+    {
+      "name": "Anonymo Esports",
+      "games": 34,
+      "wins": 17,
+      "losses": 17,
+      "winrate": "50.0%",
+      "game_record": "17-17"
+    },
+    {
+      "name": "Project Conquerors",
       "games": 31,
       "wins": 17,
       "losses": 14,
@@ -1311,7 +2265,7 @@
       "game_record": "17-14"
     },
     {
-      "name": "E WIE EINFACH E-SPORTS",
+      "name": "paiN Gaming Academy",
       "games": 30,
       "wins": 17,
       "losses": 13,
@@ -1327,84 +2281,60 @@
       "game_record": "17-13"
     },
     {
-      "name": "Team Vitality",
-      "games": 30,
+      "name": "S2G Esports",
+      "games": 29,
       "wins": 17,
-      "losses": 13,
-      "winrate": "56.7%",
-      "game_record": "17-13"
+      "losses": 12,
+      "winrate": "58.6%",
+      "game_record": "17-12"
     },
     {
-      "name": "Cloud9",
-      "games": 23,
+      "name": "Malvinas Gaming",
+      "games": 27,
       "wins": 17,
-      "losses": 6,
-      "winrate": "73.9%",
-      "game_record": "17-6"
-    },
-    {
-      "name": "WLGaming Esports",
-      "games": 22,
-      "wins": 17,
-      "losses": 5,
-      "winrate": "77.3%",
-      "game_record": "17-5"
-    },
-    {
-      "name": "Partizan Sangal",
-      "games": 17,
-      "wins": 17,
-      "losses": 0,
-      "winrate": "100.0%",
-      "game_record": "17-0"
-    },
-    {
-      "name": "eSuba",
-      "games": 26,
-      "wins": 16,
       "losses": 10,
-      "winrate": "61.5%",
-      "game_record": "16-10"
+      "winrate": "63.0%",
+      "game_record": "17-10"
     },
     {
-      "name": "Priority",
-      "games": 25,
+      "name": "Nongshim RedForce Academy",
+      "games": 51,
       "wins": 16,
-      "losses": 9,
-      "winrate": "64.0%",
-      "game_record": "16-9"
+      "losses": 35,
+      "winrate": "31.4%",
+      "game_record": "16-35"
     },
     {
-      "name": "Movistar KOI Fénix",
-      "games": 24,
+      "name": "EXILE esports",
+      "games": 37,
       "wins": 16,
-      "losses": 8,
-      "winrate": "66.7%",
-      "game_record": "16-8"
+      "losses": 21,
+      "winrate": "43.2%",
+      "game_record": "16-21"
     },
     {
-      "name": "HMBLE",
-      "games": 16,
-      "wins": 16,
-      "losses": 0,
-      "winrate": "100.0%",
-      "game_record": "16-0"
-    },
-    {
-      "name": "mCon esports",
-      "games": 34,
+      "name": "ThunderTalk Gaming",
+      "games": 42,
       "wins": 15,
-      "losses": 19,
-      "winrate": "44.1%",
-      "game_record": "15-19"
+      "losses": 27,
+      "winrate": "35.7%",
+      "game_record": "15-27"
     },
     {
-      "name": "UCAM Esports",
-      "games": 26,
+      "name": "Andromeda Gaming",
+      "games": 35,
       "wins": 15,
-      "losses": 11,
-      "winrate": "57.7%",
-      "game_record": "15-11"
+      "losses": 20,
+      "winrate": "42.9%",
+      "game_record": "15-20"
+    },
+    {
+      "name": "G3V E-sports",
+      "games": 31,
+      "wins": 15,
+      "losses": 16,
+      "winrate": "48.4%",
+      "game_record": "15-16"
     },
     {
       "name": "EXILE esports Academy",
@@ -1415,23 +2345,39 @@
       "game_record": "15-10"
     },
     {
-      "name": "The Bandits",
-      "games": 25,
-      "wins": 15,
-      "losses": 10,
-      "winrate": "60.0%",
-      "game_record": "15-10"
+      "name": "Shifters",
+      "games": 40,
+      "wins": 14,
+      "losses": 26,
+      "winrate": "35.0%",
+      "game_record": "14-26"
     },
     {
-      "name": "LYON",
-      "games": 23,
-      "wins": 15,
-      "losses": 8,
-      "winrate": "65.2%",
-      "game_record": "15-8"
+      "name": "Dynasty",
+      "games": 35,
+      "wins": 14,
+      "losses": 21,
+      "winrate": "40.0%",
+      "game_record": "14-21"
     },
     {
-      "name": "3BL Esports",
+      "name": "DMG Esports",
+      "games": 33,
+      "wins": 14,
+      "losses": 19,
+      "winrate": "42.4%",
+      "game_record": "14-19"
+    },
+    {
+      "name": "Skillcamp",
+      "games": 33,
+      "wins": 14,
+      "losses": 19,
+      "winrate": "42.4%",
+      "game_record": "14-19"
+    },
+    {
+      "name": "Fast8",
       "games": 31,
       "wins": 14,
       "losses": 17,
@@ -1439,44 +2385,12 @@
       "game_record": "14-17"
     },
     {
-      "name": "BAAM Esports",
-      "games": 29,
+      "name": "9z Globant",
+      "games": 26,
       "wins": 14,
-      "losses": 15,
-      "winrate": "48.3%",
-      "game_record": "14-15"
-    },
-    {
-      "name": "GiantX",
-      "games": 28,
-      "wins": 14,
-      "losses": 14,
-      "winrate": "50.0%",
-      "game_record": "14-14"
-    },
-    {
-      "name": "Saigon Warriors",
-      "games": 27,
-      "wins": 14,
-      "losses": 13,
-      "winrate": "51.9%",
-      "game_record": "14-13"
-    },
-    {
-      "name": "Barcząca Esports",
-      "games": 25,
-      "wins": 14,
-      "losses": 11,
-      "winrate": "56.0%",
-      "game_record": "14-11"
-    },
-    {
-      "name": "SU Esports",
-      "games": 25,
-      "wins": 14,
-      "losses": 11,
-      "winrate": "56.0%",
-      "game_record": "14-11"
+      "losses": 12,
+      "winrate": "53.8%",
+      "game_record": "14-12"
     },
     {
       "name": "Frank Esports",
@@ -1487,7 +2401,7 @@
       "game_record": "14-9"
     },
     {
-      "name": "TeamOrangeGaming",
+      "name": "Vivo Keyd Stars Academy",
       "games": 23,
       "wins": 14,
       "losses": 9,
@@ -1495,15 +2409,47 @@
       "game_record": "14-9"
     },
     {
-      "name": "Natus Vincere",
-      "games": 27,
+      "name": "NextGeneration Esports",
+      "games": 44,
       "wins": 13,
-      "losses": 14,
-      "winrate": "48.1%",
-      "game_record": "13-14"
+      "losses": 31,
+      "winrate": "29.5%",
+      "game_record": "13-31"
     },
     {
-      "name": "GMBLERS Esports",
+      "name": "ZennIT",
+      "games": 39,
+      "wins": 13,
+      "losses": 26,
+      "winrate": "33.3%",
+      "game_record": "13-26"
+    },
+    {
+      "name": "ALMO Players",
+      "games": 35,
+      "wins": 13,
+      "losses": 22,
+      "winrate": "37.1%",
+      "game_record": "13-22"
+    },
+    {
+      "name": "Lille Esport",
+      "games": 29,
+      "wins": 13,
+      "losses": 16,
+      "winrate": "44.8%",
+      "game_record": "13-16"
+    },
+    {
+      "name": "Lenovo Legion Honvéd",
+      "games": 28,
+      "wins": 13,
+      "losses": 15,
+      "winrate": "46.4%",
+      "game_record": "13-15"
+    },
+    {
+      "name": "Deer Gaming",
       "games": 26,
       "wins": 13,
       "losses": 13,
@@ -1511,39 +2457,23 @@
       "game_record": "13-13"
     },
     {
-      "name": "Barça eSports",
-      "games": 24,
-      "wins": 13,
-      "losses": 11,
-      "winrate": "54.2%",
-      "game_record": "13-11"
-    },
-    {
       "name": "Magaza Esports",
-      "games": 24,
+      "games": 26,
       "wins": 13,
-      "losses": 11,
-      "winrate": "54.2%",
-      "game_record": "13-11"
+      "losses": 13,
+      "winrate": "50.0%",
+      "game_record": "13-13"
     },
     {
-      "name": "The Secret Club",
-      "games": 23,
+      "name": "VARREL YOUTH",
+      "games": 25,
       "wins": 13,
-      "losses": 10,
-      "winrate": "56.5%",
-      "game_record": "13-10"
+      "losses": 12,
+      "winrate": "52.0%",
+      "game_record": "13-12"
     },
     {
-      "name": "GOAL",
-      "games": 22,
-      "wins": 13,
-      "losses": 9,
-      "winrate": "59.1%",
-      "game_record": "13-9"
-    },
-    {
-      "name": "Dragons Esports",
+      "name": "SillySilly Gaming",
       "games": 21,
       "wins": 13,
       "losses": 8,
@@ -1551,23 +2481,23 @@
       "game_record": "13-8"
     },
     {
-      "name": "Rising Gaming",
-      "games": 19,
-      "wins": 13,
-      "losses": 6,
-      "winrate": "68.4%",
-      "game_record": "13-6"
+      "name": "Leviatan",
+      "games": 41,
+      "wins": 12,
+      "losses": 29,
+      "winrate": "29.3%",
+      "game_record": "12-29"
     },
     {
-      "name": "Otter Side",
-      "games": 13,
-      "wins": 13,
-      "losses": 0,
-      "winrate": "100.0%",
-      "game_record": "13-0"
+      "name": "SK Gaming",
+      "games": 38,
+      "wins": 12,
+      "losses": 26,
+      "winrate": "31.6%",
+      "game_record": "12-26"
     },
     {
-      "name": "JSK Esports",
+      "name": "Oh My God",
       "games": 34,
       "wins": 12,
       "losses": 22,
@@ -1575,12 +2505,44 @@
       "game_record": "12-22"
     },
     {
-      "name": "One More Esports",
-      "games": 30,
+      "name": "Gamespace Mediterranean College Esports",
+      "games": 32,
       "wins": 12,
-      "losses": 18,
-      "winrate": "40.0%",
-      "game_record": "12-18"
+      "losses": 20,
+      "winrate": "37.5%",
+      "game_record": "12-20"
+    },
+    {
+      "name": "Ruddy Corporation",
+      "games": 31,
+      "wins": 12,
+      "losses": 19,
+      "winrate": "38.7%",
+      "game_record": "12-19"
+    },
+    {
+      "name": "Vitality.Bee",
+      "games": 29,
+      "wins": 12,
+      "losses": 17,
+      "winrate": "41.4%",
+      "game_record": "12-17"
+    },
+    {
+      "name": "Joblife",
+      "games": 28,
+      "wins": 12,
+      "losses": 16,
+      "winrate": "42.9%",
+      "game_record": "12-16"
+    },
+    {
+      "name": "Esprit Shōnen",
+      "games": 27,
+      "wins": 12,
+      "losses": 15,
+      "winrate": "44.4%",
+      "game_record": "12-15"
     },
     {
       "name": "CITA Kaizen Academy",
@@ -1591,7 +2553,7 @@
       "game_record": "12-13"
     },
     {
-      "name": "Once Upon A Team",
+      "name": "7REX",
       "games": 24,
       "wins": 12,
       "losses": 12,
@@ -1599,39 +2561,55 @@
       "game_record": "12-12"
     },
     {
-      "name": "Team Insidious",
-      "games": 19,
-      "wins": 12,
-      "losses": 7,
-      "winrate": "63.2%",
-      "game_record": "12-7"
+      "name": "paiN Gaming",
+      "games": 37,
+      "wins": 11,
+      "losses": 26,
+      "winrate": "29.7%",
+      "game_record": "11-26"
     },
     {
-      "name": "Arneb",
-      "games": 18,
-      "wins": 12,
-      "losses": 6,
-      "winrate": "66.7%",
-      "game_record": "12-6"
+      "name": "Eintracht Frankfurt",
+      "games": 35,
+      "wins": 11,
+      "losses": 24,
+      "winrate": "31.4%",
+      "game_record": "11-24"
     },
     {
-      "name": "P11 Esports",
-      "games": 17,
-      "wins": 12,
-      "losses": 5,
-      "winrate": "70.6%",
-      "game_record": "12-5"
+      "name": "9Gaming Esports",
+      "games": 30,
+      "wins": 11,
+      "losses": 19,
+      "winrate": "36.7%",
+      "game_record": "11-19"
     },
     {
-      "name": "FENNEL",
-      "games": 15,
-      "wins": 12,
-      "losses": 3,
-      "winrate": "80.0%",
-      "game_record": "12-3"
+      "name": "SPIKE Syndicate",
+      "games": 29,
+      "wins": 11,
+      "losses": 18,
+      "winrate": "37.9%",
+      "game_record": "11-18"
     },
     {
-      "name": "Meavedron",
+      "name": "DOCISK",
+      "games": 28,
+      "wins": 11,
+      "losses": 17,
+      "winrate": "39.3%",
+      "game_record": "11-17"
+    },
+    {
+      "name": "Zeu5 Esports",
+      "games": 28,
+      "wins": 11,
+      "losses": 17,
+      "winrate": "39.3%",
+      "game_record": "11-17"
+    },
+    {
+      "name": "Zena Esports",
       "games": 25,
       "wins": 11,
       "losses": 14,
@@ -1639,15 +2617,31 @@
       "game_record": "11-14"
     },
     {
-      "name": "Unicorns of Love Sexy Edition",
-      "games": 22,
+      "name": "Bulldog Esports",
+      "games": 23,
       "wins": 11,
-      "losses": 11,
-      "winrate": "50.0%",
-      "game_record": "11-11"
+      "losses": 12,
+      "winrate": "47.8%",
+      "game_record": "11-12"
     },
     {
-      "name": "Team Phantasma",
+      "name": "Caldya Esport",
+      "games": 23,
+      "wins": 11,
+      "losses": 12,
+      "winrate": "47.8%",
+      "game_record": "11-12"
+    },
+    {
+      "name": "Epitomy Esports",
+      "games": 20,
+      "wins": 11,
+      "losses": 9,
+      "winrate": "55.0%",
+      "game_record": "11-9"
+    },
+    {
+      "name": "Invokers",
       "games": 19,
       "wins": 11,
       "losses": 8,
@@ -1655,44 +2649,84 @@
       "game_record": "11-8"
     },
     {
-      "name": "SillySilly Gaming",
-      "games": 17,
+      "name": "CTBC Flying Oyster Academy",
+      "games": 16,
       "wins": 11,
-      "losses": 6,
-      "winrate": "64.7%",
-      "game_record": "11-6"
+      "losses": 5,
+      "winrate": "68.8%",
+      "game_record": "11-5"
     },
     {
-      "name": "Verdant",
-      "games": 12,
-      "wins": 11,
-      "losses": 1,
-      "winrate": "91.7%",
-      "game_record": "11-1"
-    },
-    {
-      "name": "Bushido Wildcats",
-      "games": 23,
+      "name": "Gen.G Global Academy",
+      "games": 54,
       "wins": 10,
-      "losses": 13,
-      "winrate": "43.5%",
-      "game_record": "10-13"
+      "losses": 44,
+      "winrate": "18.5%",
+      "game_record": "10-44"
     },
     {
-      "name": "Fnatic",
-      "games": 23,
+      "name": "Team Heretics",
+      "games": 40,
       "wins": 10,
-      "losses": 13,
-      "winrate": "43.5%",
-      "game_record": "10-13"
+      "losses": 30,
+      "winrate": "25.0%",
+      "game_record": "10-30"
     },
     {
-      "name": "Andromeda Gaming",
-      "games": 22,
+      "name": "Apex Mission Impossible",
+      "games": 30,
       "wins": 10,
-      "losses": 12,
-      "winrate": "45.5%",
-      "game_record": "10-12"
+      "losses": 20,
+      "winrate": "33.3%",
+      "game_record": "10-20"
+    },
+    {
+      "name": "EKO Esports",
+      "games": 27,
+      "wins": 10,
+      "losses": 17,
+      "winrate": "37.0%",
+      "game_record": "10-17"
+    },
+    {
+      "name": "LODIS",
+      "games": 24,
+      "wins": 10,
+      "losses": 14,
+      "winrate": "41.7%",
+      "game_record": "10-14"
+    },
+    {
+      "name": "Crusaders",
+      "games": 21,
+      "wins": 10,
+      "losses": 11,
+      "winrate": "47.6%",
+      "game_record": "10-11"
+    },
+    {
+      "name": "GIANTX iTero",
+      "games": 21,
+      "wins": 10,
+      "losses": 11,
+      "winrate": "47.6%",
+      "game_record": "10-11"
+    },
+    {
+      "name": "Bubliki",
+      "games": 20,
+      "wins": 10,
+      "losses": 10,
+      "winrate": "50.0%",
+      "game_record": "10-10"
+    },
+    {
+      "name": "INTZ",
+      "games": 20,
+      "wins": 10,
+      "losses": 10,
+      "winrate": "50.0%",
+      "game_record": "10-10"
     },
     {
       "name": "Ozarox Esports",
@@ -1703,23 +2737,7 @@
       "game_record": "10-10"
     },
     {
-      "name": "Ruddy Corporation",
-      "games": 20,
-      "wins": 10,
-      "losses": 10,
-      "winrate": "50.0%",
-      "game_record": "10-10"
-    },
-    {
-      "name": "Senshi eSports",
-      "games": 20,
-      "wins": 10,
-      "losses": 10,
-      "winrate": "50.0%",
-      "game_record": "10-10"
-    },
-    {
-      "name": "9Gaming Esports",
+      "name": "Barulhinhos",
       "games": 19,
       "wins": 10,
       "losses": 9,
@@ -1727,7 +2745,15 @@
       "game_record": "10-9"
     },
     {
-      "name": "Bubliki",
+      "name": "BeFive",
+      "games": 19,
+      "wins": 10,
+      "losses": 9,
+      "winrate": "52.6%",
+      "game_record": "10-9"
+    },
+    {
+      "name": "Flamengo MDL",
       "games": 18,
       "wins": 10,
       "losses": 8,
@@ -1735,23 +2761,31 @@
       "game_record": "10-8"
     },
     {
-      "name": "Colossal Gaming",
-      "games": 18,
+      "name": "Cusprills",
+      "games": 15,
       "wins": 10,
-      "losses": 8,
-      "winrate": "55.6%",
-      "game_record": "10-8"
+      "losses": 5,
+      "winrate": "66.7%",
+      "game_record": "10-5"
     },
     {
-      "name": "Uwinks",
-      "games": 18,
-      "wins": 10,
-      "losses": 8,
-      "winrate": "55.6%",
-      "game_record": "10-8"
+      "name": "Kaufland Hangry Knights",
+      "games": 30,
+      "wins": 9,
+      "losses": 21,
+      "winrate": "30.0%",
+      "game_record": "9-21"
     },
     {
-      "name": "GnG Amazigh",
+      "name": "Myth Esports",
+      "games": 30,
+      "wins": 9,
+      "losses": 21,
+      "winrate": "30.0%",
+      "game_record": "9-21"
+    },
+    {
+      "name": "Bamboo Juice",
       "games": 26,
       "wins": 9,
       "losses": 17,
@@ -1759,15 +2793,31 @@
       "game_record": "9-17"
     },
     {
-      "name": "Dynasty",
-      "games": 22,
+      "name": "VelbeliKaizokudan",
+      "games": 26,
       "wins": 9,
-      "losses": 13,
-      "winrate": "40.9%",
-      "game_record": "9-13"
+      "losses": 17,
+      "winrate": "34.6%",
+      "game_record": "9-17"
     },
     {
-      "name": "Sentinels",
+      "name": "ZYB Esport",
+      "games": 26,
+      "wins": 9,
+      "losses": 17,
+      "winrate": "34.6%",
+      "game_record": "9-17"
+    },
+    {
+      "name": "Ultra Prime",
+      "games": 25,
+      "wins": 9,
+      "losses": 16,
+      "winrate": "36.0%",
+      "game_record": "9-16"
+    },
+    {
+      "name": "Croatian Flair",
       "games": 21,
       "wins": 9,
       "losses": 12,
@@ -1775,28 +2825,76 @@
       "game_record": "9-12"
     },
     {
-      "name": "New Meta",
-      "games": 19,
+      "name": "Team Solid",
+      "games": 21,
       "wins": 9,
-      "losses": 10,
-      "winrate": "47.4%",
-      "game_record": "9-10"
+      "losses": 12,
+      "winrate": "42.9%",
+      "game_record": "9-12"
     },
     {
-      "name": "CTBC Flying Oyster Academy",
-      "games": 13,
+      "name": "4 Employed e 1 Budino",
+      "games": 12,
       "wins": 9,
-      "losses": 4,
-      "winrate": "69.2%",
-      "game_record": "9-4"
+      "losses": 3,
+      "winrate": "75.0%",
+      "game_record": "9-3"
+    },
+    {
+      "name": "Isurus",
+      "games": 11,
+      "wins": 9,
+      "losses": 2,
+      "winrate": "81.8%",
+      "game_record": "9-2"
+    },
+    {
+      "name": "HANJIN BRION Academy",
+      "games": 48,
+      "wins": 8,
+      "losses": 40,
+      "winrate": "16.7%",
+      "game_record": "8-40"
+    },
+    {
+      "name": "The ParadOx",
+      "games": 33,
+      "wins": 8,
+      "losses": 25,
+      "winrate": "24.2%",
+      "game_record": "8-25"
     },
     {
       "name": "BoostGate Esports",
-      "games": 21,
+      "games": 27,
       "wins": 8,
-      "losses": 13,
-      "winrate": "38.1%",
-      "game_record": "8-13"
+      "losses": 19,
+      "winrate": "29.6%",
+      "game_record": "8-19"
+    },
+    {
+      "name": "CAG OSAKA",
+      "games": 26,
+      "wins": 8,
+      "losses": 18,
+      "winrate": "30.8%",
+      "game_record": "8-18"
+    },
+    {
+      "name": "Diversion Gaming",
+      "games": 26,
+      "wins": 8,
+      "losses": 18,
+      "winrate": "30.8%",
+      "game_record": "8-18"
+    },
+    {
+      "name": "SN CyberCore Esports",
+      "games": 24,
+      "wins": 8,
+      "losses": 16,
+      "winrate": "33.3%",
+      "game_record": "8-16"
     },
     {
       "name": "Citadel Gaming",
@@ -1807,44 +2905,52 @@
       "game_record": "8-12"
     },
     {
-      "name": "ALMO Players",
-      "games": 18,
+      "name": "Vantex Esports",
+      "games": 16,
       "wins": 8,
-      "losses": 10,
-      "winrate": "44.4%",
-      "game_record": "8-10"
+      "losses": 8,
+      "winrate": "50.0%",
+      "game_record": "8-8"
     },
     {
-      "name": "Anonymo Esports",
-      "games": 18,
-      "wins": 8,
-      "losses": 10,
-      "winrate": "44.4%",
-      "game_record": "8-10"
-    },
-    {
-      "name": "Deer Gaming",
-      "games": 17,
-      "wins": 8,
-      "losses": 9,
-      "winrate": "47.1%",
-      "game_record": "8-9"
-    },
-    {
-      "name": "LODIS",
-      "games": 17,
-      "wins": 8,
-      "losses": 9,
-      "winrate": "47.1%",
-      "game_record": "8-9"
-    },
-    {
-      "name": "Zena Esports",
+      "name": "Huskies Esports",
       "games": 15,
       "wins": 8,
       "losses": 7,
       "winrate": "53.3%",
       "game_record": "8-7"
+    },
+    {
+      "name": "Vasco E-Sports",
+      "games": 12,
+      "wins": 8,
+      "losses": 4,
+      "winrate": "66.7%",
+      "game_record": "8-4"
+    },
+    {
+      "name": "Marere Invokers",
+      "games": 9,
+      "wins": 8,
+      "losses": 1,
+      "winrate": "88.9%",
+      "game_record": "8-1"
+    },
+    {
+      "name": "Onion Team",
+      "games": 28,
+      "wins": 7,
+      "losses": 21,
+      "winrate": "25.0%",
+      "game_record": "7-21"
+    },
+    {
+      "name": "devils.one inStreamly",
+      "games": 23,
+      "wins": 7,
+      "losses": 16,
+      "winrate": "30.4%",
+      "game_record": "7-16"
     },
     {
       "name": "Dorado Gaming",
@@ -1855,7 +2961,7 @@
       "game_record": "7-15"
     },
     {
-      "name": "Saigon Dino",
+      "name": "Axolotl",
       "games": 21,
       "wins": 7,
       "losses": 14,
@@ -1863,7 +2969,7 @@
       "game_record": "7-14"
     },
     {
-      "name": "SK Gaming",
+      "name": "Seven Dark",
       "games": 21,
       "wins": 7,
       "losses": 14,
@@ -1871,7 +2977,15 @@
       "game_record": "7-14"
     },
     {
-      "name": "devils.one inStreamly",
+      "name": "The New Kings",
+      "games": 21,
+      "wins": 7,
+      "losses": 14,
+      "winrate": "33.3%",
+      "game_record": "7-14"
+    },
+    {
+      "name": "Polar Squad Esports",
       "games": 19,
       "wins": 7,
       "losses": 12,
@@ -1879,15 +2993,15 @@
       "game_record": "7-12"
     },
     {
-      "name": "EXILE esports",
-      "games": 19,
+      "name": "Howl Esports",
+      "games": 18,
       "wins": 7,
-      "losses": 12,
-      "winrate": "36.8%",
-      "game_record": "7-12"
+      "losses": 11,
+      "winrate": "38.9%",
+      "game_record": "7-11"
     },
     {
-      "name": "DOCISK",
+      "name": "A One Man Army Prime",
       "games": 17,
       "wins": 7,
       "losses": 10,
@@ -1903,7 +3017,7 @@
       "game_record": "7-9"
     },
     {
-      "name": "GIANTX iTero",
+      "name": "Kaeru Gyuangu",
       "games": 15,
       "wins": 7,
       "losses": 8,
@@ -1911,7 +3025,23 @@
       "game_record": "7-8"
     },
     {
-      "name": "Epitomy Esports",
+      "name": "Lund Esports Organization",
+      "games": 15,
+      "wins": 7,
+      "losses": 8,
+      "winrate": "46.7%",
+      "game_record": "7-8"
+    },
+    {
+      "name": "Luminosity Gaming",
+      "games": 13,
+      "wins": 7,
+      "losses": 6,
+      "winrate": "53.8%",
+      "game_record": "7-6"
+    },
+    {
+      "name": "Nerd's Gangster's Carecas",
       "games": 12,
       "wins": 7,
       "losses": 5,
@@ -1935,39 +3065,23 @@
       "game_record": "7-3"
     },
     {
-      "name": "Shifters",
-      "games": 22,
+      "name": "Dark Passage",
+      "games": 28,
       "wins": 6,
-      "losses": 16,
-      "winrate": "27.3%",
-      "game_record": "6-16"
+      "losses": 22,
+      "winrate": "21.4%",
+      "game_record": "6-22"
     },
     {
-      "name": "Diversion Gaming",
-      "games": 20,
+      "name": "KIA.eSuba Academy",
+      "games": 21,
       "wins": 6,
-      "losses": 14,
-      "winrate": "30.0%",
-      "game_record": "6-14"
+      "losses": 15,
+      "winrate": "28.6%",
+      "game_record": "6-15"
     },
     {
-      "name": "Kaufland Hangry Knights",
-      "games": 19,
-      "wins": 6,
-      "losses": 13,
-      "winrate": "31.6%",
-      "game_record": "6-13"
-    },
-    {
-      "name": "The ParadOx",
-      "games": 19,
-      "wins": 6,
-      "losses": 13,
-      "winrate": "31.6%",
-      "game_record": "6-13"
-    },
-    {
-      "name": "Gamespace Mediterranean College Esports",
+      "name": "NCG Esports",
       "games": 18,
       "wins": 6,
       "losses": 12,
@@ -1975,7 +3089,7 @@
       "game_record": "6-12"
     },
     {
-      "name": "RAYN Clocks",
+      "name": "Lausanne-Sport Esports",
       "games": 17,
       "wins": 6,
       "losses": 11,
@@ -1983,7 +3097,7 @@
       "game_record": "6-11"
     },
     {
-      "name": "SPIKE Syndicate",
+      "name": "Yang Yang Gaming",
       "games": 17,
       "wins": 6,
       "losses": 11,
@@ -1991,7 +3105,31 @@
       "game_record": "6-11"
     },
     {
-      "name": "Crusaders",
+      "name": "Galions Sharks",
+      "games": 16,
+      "wins": 6,
+      "losses": 10,
+      "winrate": "37.5%",
+      "game_record": "6-10"
+    },
+    {
+      "name": "Alpha7 Esports",
+      "games": 15,
+      "wins": 6,
+      "losses": 9,
+      "winrate": "40.0%",
+      "game_record": "6-9"
+    },
+    {
+      "name": "Deacoy",
+      "games": 15,
+      "wins": 6,
+      "losses": 9,
+      "winrate": "40.0%",
+      "game_record": "6-9"
+    },
+    {
+      "name": "RED Academy",
       "games": 14,
       "wins": 6,
       "losses": 8,
@@ -1999,7 +3137,31 @@
       "game_record": "6-8"
     },
     {
-      "name": "Arctic Pandas",
+      "name": "Cupid Esports",
+      "games": 13,
+      "wins": 6,
+      "losses": 7,
+      "winrate": "46.2%",
+      "game_record": "6-7"
+    },
+    {
+      "name": "Francesinhas",
+      "games": 13,
+      "wins": 6,
+      "losses": 7,
+      "winrate": "46.2%",
+      "game_record": "6-7"
+    },
+    {
+      "name": "BK ROG Esports",
+      "games": 12,
+      "wins": 6,
+      "losses": 6,
+      "winrate": "50.0%",
+      "game_record": "6-6"
+    },
+    {
+      "name": "Team BDS Academy",
       "games": 12,
       "wins": 6,
       "losses": 6,
@@ -2015,6 +3177,62 @@
       "game_record": "6-5"
     },
     {
+      "name": "ZEN Esports",
+      "games": 11,
+      "wins": 6,
+      "losses": 5,
+      "winrate": "54.5%",
+      "game_record": "6-5"
+    },
+    {
+      "name": "Witchcraft",
+      "games": 10,
+      "wins": 6,
+      "losses": 4,
+      "winrate": "60.0%",
+      "game_record": "6-4"
+    },
+    {
+      "name": "Guasones",
+      "games": 7,
+      "wins": 6,
+      "losses": 1,
+      "winrate": "85.7%",
+      "game_record": "6-1"
+    },
+    {
+      "name": "DetonatioN FocusMe",
+      "games": 37,
+      "wins": 5,
+      "losses": 32,
+      "winrate": "13.5%",
+      "game_record": "5-32"
+    },
+    {
+      "name": "Dignitas",
+      "games": 28,
+      "wins": 5,
+      "losses": 23,
+      "winrate": "17.9%",
+      "game_record": "5-23"
+    },
+    {
+      "name": "Shopify Rebellion",
+      "games": 28,
+      "wins": 5,
+      "losses": 23,
+      "winrate": "17.9%",
+      "game_record": "5-23"
+    },
+    {
+      "name": "Team Phoenix",
+      "games": 23,
+      "wins": 5,
+      "losses": 18,
+      "winrate": "21.7%",
+      "game_record": "5-18"
+    },
+    {
       "name": "Blue Otter",
       "games": 22,
       "wins": 5,
@@ -2023,20 +3241,52 @@
       "game_record": "5-17"
     },
     {
-      "name": "Shopify Rebellion",
-      "games": 18,
+      "name": "DetonatioN FocusMe Academy",
+      "games": 22,
       "wins": 5,
-      "losses": 13,
-      "winrate": "27.8%",
-      "game_record": "5-13"
+      "losses": 17,
+      "winrate": "22.7%",
+      "game_record": "5-17"
     },
     {
       "name": "LUA Gaming",
+      "games": 19,
+      "wins": 5,
+      "losses": 14,
+      "winrate": "26.3%",
+      "game_record": "5-14"
+    },
+    {
+      "name": "Ici Japon Corp. Esport",
       "games": 16,
       "wins": 5,
       "losses": 11,
       "winrate": "31.2%",
       "game_record": "5-11"
+    },
+    {
+      "name": "LYON Academy",
+      "games": 16,
+      "wins": 5,
+      "losses": 11,
+      "winrate": "31.2%",
+      "game_record": "5-11"
+    },
+    {
+      "name": "Lundqvist Lightside",
+      "games": 15,
+      "wins": 5,
+      "losses": 10,
+      "winrate": "33.3%",
+      "game_record": "5-10"
+    },
+    {
+      "name": "Ei Nerd Esports",
+      "games": 14,
+      "wins": 5,
+      "losses": 9,
+      "winrate": "35.7%",
+      "game_record": "5-9"
     },
     {
       "name": "Spartans EU",
@@ -2047,15 +3297,23 @@
       "game_record": "5-9"
     },
     {
-      "name": "EKO Esports",
-      "games": 13,
+      "name": "SPAXFAMILY",
+      "games": 14,
       "wins": 5,
-      "losses": 8,
-      "winrate": "38.5%",
-      "game_record": "5-8"
+      "losses": 9,
+      "winrate": "35.7%",
+      "game_record": "5-9"
     },
     {
-      "name": "Bulldog Esports",
+      "name": "DKB XPERION NXT",
+      "games": 12,
+      "wins": 5,
+      "losses": 7,
+      "winrate": "41.7%",
+      "game_record": "5-7"
+    },
+    {
+      "name": "Los Ratones",
       "games": 11,
       "wins": 5,
       "losses": 6,
@@ -2071,7 +3329,15 @@
       "game_record": "5-6"
     },
     {
-      "name": "Lenovo Legion Honvéd",
+      "name": "Zenshi Gaming",
+      "games": 11,
+      "wins": 5,
+      "losses": 6,
+      "winrate": "45.5%",
+      "game_record": "5-6"
+    },
+    {
+      "name": "Epitomy Masters",
       "games": 10,
       "wins": 5,
       "losses": 5,
@@ -2087,39 +3353,7 @@
       "game_record": "4-14"
     },
     {
-      "name": "Eintracht Frankfurt",
-      "games": 17,
-      "wins": 4,
-      "losses": 13,
-      "winrate": "23.5%",
-      "game_record": "4-13"
-    },
-    {
-      "name": "Myth Esports",
-      "games": 17,
-      "wins": 4,
-      "losses": 13,
-      "winrate": "23.5%",
-      "game_record": "4-13"
-    },
-    {
-      "name": "Onion Team",
-      "games": 17,
-      "wins": 4,
-      "losses": 13,
-      "winrate": "23.5%",
-      "game_record": "4-13"
-    },
-    {
-      "name": "ZennIT",
-      "games": 17,
-      "wins": 4,
-      "losses": 13,
-      "winrate": "23.5%",
-      "game_record": "4-13"
-    },
-    {
-      "name": "Team Phoenix",
+      "name": "Zephyr Esport",
       "games": 16,
       "wins": 4,
       "losses": 12,
@@ -2127,7 +3361,7 @@
       "game_record": "4-12"
     },
     {
-      "name": "Disguised",
+      "name": "Maze Gaming",
       "games": 15,
       "wins": 4,
       "losses": 11,
@@ -2135,7 +3369,7 @@
       "game_record": "4-11"
     },
     {
-      "name": "KIA.eSuba Academy",
+      "name": "RMD Gaming",
       "games": 15,
       "wins": 4,
       "losses": 11,
@@ -2143,20 +3377,28 @@
       "game_record": "4-11"
     },
     {
-      "name": "L Guide Gaming",
-      "games": 15,
+      "name": "ZeroZone Gaming",
+      "games": 14,
       "wins": 4,
-      "losses": 11,
-      "winrate": "26.7%",
-      "game_record": "4-11"
+      "losses": 10,
+      "winrate": "28.6%",
+      "game_record": "4-10"
     },
     {
-      "name": "Lupus Esports",
-      "games": 11,
+      "name": "Nocturne Gale",
+      "games": 10,
       "wins": 4,
-      "losses": 7,
-      "winrate": "36.4%",
-      "game_record": "4-7"
+      "losses": 6,
+      "winrate": "40.0%",
+      "game_record": "4-6"
+    },
+    {
+      "name": "Pyramid IV Esports",
+      "games": 10,
+      "wins": 4,
+      "losses": 6,
+      "winrate": "40.0%",
+      "game_record": "4-6"
     },
     {
       "name": "wangting",
@@ -2167,23 +3409,23 @@
       "game_record": "4-4"
     },
     {
-      "name": "Team Heretics",
-      "games": 20,
+      "name": "V3 Esports",
+      "games": 26,
       "wins": 3,
-      "losses": 17,
-      "winrate": "15.0%",
-      "game_record": "3-17"
-    },
-    {
-      "name": "Apex Mission Impossible",
-      "games": 19,
-      "wins": 3,
-      "losses": 16,
-      "winrate": "15.8%",
-      "game_record": "3-16"
+      "losses": 23,
+      "winrate": "11.5%",
+      "game_record": "3-23"
     },
     {
       "name": "Bohemian Guardians",
+      "games": 18,
+      "wins": 3,
+      "losses": 15,
+      "winrate": "16.7%",
+      "game_record": "3-15"
+    },
+    {
+      "name": "Falke Esports",
       "games": 18,
       "wins": 3,
       "losses": 15,
@@ -2199,22 +3441,6 @@
       "game_record": "3-15"
     },
     {
-      "name": "DetonatioN FocusMe Academy",
-      "games": 17,
-      "wins": 3,
-      "losses": 14,
-      "winrate": "17.6%",
-      "game_record": "3-14"
-    },
-    {
-      "name": "Dignitas",
-      "games": 17,
-      "wins": 3,
-      "losses": 14,
-      "winrate": "17.6%",
-      "game_record": "3-14"
-    },
-    {
       "name": "Rugby Club Havířov",
       "games": 17,
       "wins": 3,
@@ -2223,28 +3449,20 @@
       "game_record": "3-14"
     },
     {
-      "name": "BRUTE",
-      "games": 16,
+      "name": "Kuma e-Sports",
+      "games": 14,
       "wins": 3,
-      "losses": 13,
-      "winrate": "18.8%",
-      "game_record": "3-13"
+      "losses": 11,
+      "winrate": "21.4%",
+      "game_record": "3-11"
     },
     {
-      "name": "Falke Esports",
-      "games": 15,
+      "name": "Zerolag Esports",
+      "games": 12,
       "wins": 3,
-      "losses": 12,
-      "winrate": "20.0%",
-      "game_record": "3-12"
-    },
-    {
-      "name": "Croatian Flair",
-      "games": 11,
-      "wins": 3,
-      "losses": 8,
-      "winrate": "27.3%",
-      "game_record": "3-8"
+      "losses": 9,
+      "winrate": "25.0%",
+      "game_record": "3-9"
     },
     {
       "name": "Ngựa Hí Esports",
@@ -2255,7 +3473,31 @@
       "game_record": "3-8"
     },
     {
-      "name": "DMG Esports",
+      "name": "Zer0 Trein0",
+      "games": 10,
+      "wins": 3,
+      "losses": 7,
+      "winrate": "30.0%",
+      "game_record": "3-7"
+    },
+    {
+      "name": "Farenvehn",
+      "games": 9,
+      "wins": 3,
+      "losses": 6,
+      "winrate": "33.3%",
+      "game_record": "3-6"
+    },
+    {
+      "name": "Divernex",
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "winrate": "37.5%",
+      "game_record": "3-5"
+    },
+    {
+      "name": "RAMPAGE",
       "games": 8,
       "wins": 3,
       "losses": 5,
@@ -2271,7 +3513,7 @@
       "game_record": "3-4"
     },
     {
-      "name": "Francesinhas",
+      "name": "Inferno Esports",
       "games": 7,
       "wins": 3,
       "losses": 4,
@@ -2279,15 +3521,63 @@
       "game_record": "3-4"
     },
     {
-      "name": "Dark Passage",
-      "games": 15,
-      "wins": 2,
-      "losses": 13,
-      "winrate": "13.3%",
-      "game_record": "2-13"
+      "name": "Cães de Água",
+      "games": 6,
+      "wins": 3,
+      "losses": 3,
+      "winrate": "50.0%",
+      "game_record": "3-3"
     },
     {
-      "name": "SN CyberCore Esports",
+      "name": "emBRAZA! Esports",
+      "games": 5,
+      "wins": 3,
+      "losses": 2,
+      "winrate": "60.0%",
+      "game_record": "3-2"
+    },
+    {
+      "name": "BERZLOY",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "winrate": "75.0%",
+      "game_record": "3-1"
+    },
+    {
+      "name": "MGN Vikings Esports",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "winrate": "75.0%",
+      "game_record": "3-1"
+    },
+    {
+      "name": "Team Secret",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "winrate": "75.0%",
+      "game_record": "3-1"
+    },
+    {
+      "name": "UB Alma Mater",
+      "games": 19,
+      "wins": 2,
+      "losses": 17,
+      "winrate": "10.5%",
+      "game_record": "2-17"
+    },
+    {
+      "name": "Icon Esports",
+      "games": 12,
+      "wins": 2,
+      "losses": 10,
+      "winrate": "16.7%",
+      "game_record": "2-10"
+    },
+    {
+      "name": "TQ DURPA KASHLQ",
       "games": 11,
       "wins": 2,
       "losses": 9,
@@ -2304,6 +3594,22 @@
     },
     {
       "name": "GTZ Esports",
+      "games": 9,
+      "wins": 2,
+      "losses": 7,
+      "winrate": "22.2%",
+      "game_record": "2-7"
+    },
+    {
+      "name": "La BOMBAS",
+      "games": 9,
+      "wins": 2,
+      "losses": 7,
+      "winrate": "22.2%",
+      "game_record": "2-7"
+    },
+    {
+      "name": "Inside Games",
       "games": 7,
       "wins": 2,
       "losses": 5,
@@ -2311,15 +3617,7 @@
       "game_record": "2-5"
     },
     {
-      "name": "Lund Esports Organization",
-      "games": 7,
-      "wins": 2,
-      "losses": 5,
-      "winrate": "28.6%",
-      "game_record": "2-5"
-    },
-    {
-      "name": "Lundqvist Lightside",
+      "name": "Rise Gaming",
       "games": 7,
       "wins": 2,
       "losses": 5,
@@ -2328,14 +3626,6 @@
     },
     {
       "name": "Team Spawn Peek",
-      "games": 7,
-      "wins": 2,
-      "losses": 5,
-      "winrate": "28.6%",
-      "game_record": "2-5"
-    },
-    {
-      "name": "TQ DURPA KASHLQ",
       "games": 7,
       "wins": 2,
       "losses": 5,
@@ -2367,7 +3657,7 @@
       "game_record": "2-4"
     },
     {
-      "name": "Zerolag Esports",
+      "name": "Elegance",
       "games": 5,
       "wins": 2,
       "losses": 3,
@@ -2375,7 +3665,95 @@
       "game_record": "2-3"
     },
     {
-      "name": "NextGeneration Esports",
+      "name": "NEO ZEPHYR",
+      "games": 5,
+      "wins": 2,
+      "losses": 3,
+      "winrate": "40.0%",
+      "game_record": "2-3"
+    },
+    {
+      "name": "Periquitos Zangados Gaming",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "winrate": "50.0%",
+      "game_record": "2-2"
+    },
+    {
+      "name": "Trupe dos Falange",
+      "games": 4,
+      "wins": 2,
+      "losses": 2,
+      "winrate": "50.0%",
+      "game_record": "2-2"
+    },
+    {
+      "name": "ROSSMANN Centaurs",
+      "games": 25,
+      "wins": 1,
+      "losses": 24,
+      "winrate": "4.0%",
+      "game_record": "1-24"
+    },
+    {
+      "name": "Crystal Rose",
+      "games": 14,
+      "wins": 1,
+      "losses": 13,
+      "winrate": "7.1%",
+      "game_record": "1-13"
+    },
+    {
+      "name": "UEC eSports PlusPlus",
+      "games": 14,
+      "wins": 1,
+      "losses": 13,
+      "winrate": "7.1%",
+      "game_record": "1-13"
+    },
+    {
+      "name": "Revolution Victory X",
+      "games": 13,
+      "wins": 1,
+      "losses": 12,
+      "winrate": "7.7%",
+      "game_record": "1-12"
+    },
+    {
+      "name": "Tu Papá Esports",
+      "games": 13,
+      "wins": 1,
+      "losses": 12,
+      "winrate": "7.7%",
+      "game_record": "1-12"
+    },
+    {
+      "name": "UTeSports",
+      "games": 12,
+      "wins": 1,
+      "losses": 11,
+      "winrate": "8.3%",
+      "game_record": "1-11"
+    },
+    {
+      "name": "Crvena zvezda Esports",
+      "games": 9,
+      "wins": 1,
+      "losses": 8,
+      "winrate": "11.1%",
+      "game_record": "1-8"
+    },
+    {
+      "name": "4 Swines & A Bum",
+      "games": 7,
+      "wins": 1,
+      "losses": 6,
+      "winrate": "14.3%",
+      "game_record": "1-6"
+    },
+    {
+      "name": "STAINED",
       "games": 6,
       "wins": 1,
       "losses": 5,
@@ -2383,7 +3761,39 @@
       "game_record": "1-5"
     },
     {
-      "name": "Huskies Esports",
+      "name": "Gity Meavedronu",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "winrate": "20.0%",
+      "game_record": "1-4"
+    },
+    {
+      "name": "Lotus",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "winrate": "20.0%",
+      "game_record": "1-4"
+    },
+    {
+      "name": "Macko Academy",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "winrate": "20.0%",
+      "game_record": "1-4"
+    },
+    {
+      "name": "PREDIQT",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "winrate": "20.0%",
+      "game_record": "1-4"
+    },
+    {
+      "name": "Vancouver Impact",
       "games": 5,
       "wins": 1,
       "losses": 4,
@@ -2397,6 +3807,22 @@
       "losses": 4,
       "winrate": "20.0%",
       "game_record": "1-4"
+    },
+    {
+      "name": "Actions Per Minute",
+      "games": 4,
+      "wins": 1,
+      "losses": 3,
+      "winrate": "25.0%",
+      "game_record": "1-3"
+    },
+    {
+      "name": "Chiefs Esports Club",
+      "games": 4,
+      "wins": 1,
+      "losses": 3,
+      "winrate": "25.0%",
+      "game_record": "1-3"
     },
     {
       "name": "EKSI EPTA",
@@ -2415,12 +3841,76 @@
       "game_record": "1-3"
     },
     {
-      "name": "ROSSMANN Centaurs",
-      "games": 17,
-      "wins": 0,
-      "losses": 17,
-      "winrate": "0.0%",
-      "game_record": "0-17"
+      "name": "Saving OCE",
+      "games": 4,
+      "wins": 1,
+      "losses": 3,
+      "winrate": "25.0%",
+      "game_record": "1-3"
+    },
+    {
+      "name": "Vietnam (National Team)",
+      "games": 4,
+      "wins": 1,
+      "losses": 3,
+      "winrate": "25.0%",
+      "game_record": "1-3"
+    },
+    {
+      "name": "Bilibili Gaming Junior",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "winrate": "33.3%",
+      "game_record": "1-2"
+    },
+    {
+      "name": "Cuban Raft Raiders",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "winrate": "33.3%",
+      "game_record": "1-2"
+    },
+    {
+      "name": "GD Esports",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "winrate": "33.3%",
+      "game_record": "1-2"
+    },
+    {
+      "name": "Rage Bait e-Sports",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "winrate": "33.3%",
+      "game_record": "1-2"
+    },
+    {
+      "name": "Top Esports Challenger",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "winrate": "33.3%",
+      "game_record": "1-2"
+    },
+    {
+      "name": "Weibo Gaming Youth Team",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "winrate": "33.3%",
+      "game_record": "1-2"
+    },
+    {
+      "name": "A One Man Army",
+      "games": 2,
+      "wins": 1,
+      "losses": 1,
+      "winrate": "50.0%",
+      "game_record": "1-1"
     },
     {
       "name": "GLORE",
@@ -2429,22 +3919,6 @@
       "losses": 14,
       "winrate": "0.0%",
       "game_record": "0-14"
-    },
-    {
-      "name": "UB Alma Mater",
-      "games": 14,
-      "wins": 0,
-      "losses": 14,
-      "winrate": "0.0%",
-      "game_record": "0-14"
-    },
-    {
-      "name": "ZeroZone Gaming",
-      "games": 7,
-      "wins": 0,
-      "losses": 7,
-      "winrate": "0.0%",
-      "game_record": "0-7"
     },
     {
       "name": "Equinox Core",
@@ -2463,7 +3937,31 @@
       "game_record": "0-4"
     },
     {
+      "name": "Observant Force",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "REDPack Esports",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
       "name": "StoneHenge Esports Academy",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "The AstroDucks",
       "games": 4,
       "wins": 0,
       "losses": 4,
@@ -2479,7 +3977,159 @@
       "game_record": "0-4"
     },
     {
+      "name": "EDG Youth Team",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "winrate": "0.0%",
+      "game_record": "0-3"
+    },
+    {
+      "name": "Japan (National Team)",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "winrate": "0.0%",
+      "game_record": "0-3"
+    },
+    {
+      "name": "Karam El Sham",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "winrate": "0.0%",
+      "game_record": "0-3"
+    },
+    {
+      "name": "Oxygen Gaming",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "winrate": "0.0%",
+      "game_record": "0-3"
+    },
+    {
+      "name": "QT DIG∞",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "winrate": "0.0%",
+      "game_record": "0-3"
+    },
+    {
+      "name": "Sicar Esports",
+      "games": 3,
+      "wins": 0,
+      "losses": 3,
+      "winrate": "0.0%",
+      "game_record": "0-3"
+    },
+    {
+      "name": "Epitomy Crash",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
       "name": "Epitomy Warriors",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Instituto Politécnico de Santarém",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Keypulse Esports",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Kleyton Rhasta",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Nugget enterprises",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Ovos Moles eSports",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Pandinhas",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Prodigy Invokers",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Rumble Victory eSports",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "SabOOr T1",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Vitality Rising Bees",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Way Gaming Esports",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    },
+    {
+      "name": "Yumeea",
       "games": 2,
       "wins": 0,
       "losses": 2,
@@ -2488,19 +4138,17 @@
     }
   ],
   "standings_split": "Spring",
-  "standings_series": 1612,
-  "generated_at": "2026-06-11T11:51:16.876061Z",
+  "standings_series": 5963,
+  "generated_at": "2026-06-11T12:02:10.262004Z",
   "data_from": "2026-05-30T16:11:23",
-  "data_through": "2026-06-06T22:42:06",
+  "data_through": "2026-06-10T22:20:53",
   "latest_patch_data_from": "2026-05-30T16:11:23",
-  "latest_patch_data_through": "2026-06-06T22:42:06",
+  "latest_patch_data_through": "2026-06-10T22:20:53",
   "all_data_from": "2024-01-01T05:13:15",
-  "all_data_through": "2026-06-06T22:42:06",
-  "data_status": "aging",
-  "data_staleness_days": 4.548,
-  "warnings": [
-    "summary_data_aging:4.5d"
-  ],
+  "all_data_through": "2026-06-10T22:20:53",
+  "data_status": "fresh",
+  "data_staleness_days": 0.57,
+  "warnings": [],
   "source": "lol-pros-analyzer",
-  "source_rows": 105
+  "source_rows": 199
 }
