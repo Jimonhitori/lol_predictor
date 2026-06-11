@@ -117,7 +117,7 @@ async function staticApi(path) {
   } else if (url.pathname === '/api/matches/today') {
     target = `data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
   } else if (url.pathname === '/api/match') {
-    target = `data/matches/${encodeURIComponent(params.get('id') || '')}.json`;
+    return staticMatchDetail(params);
   } else if (url.pathname === '/api/roster') {
     target = `data/rosters/${staticKey(params.get('team') || '')}.json`;
   } else if (url.pathname === '/api/team-record') {
@@ -140,6 +140,30 @@ async function staticApi(path) {
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
   return data;
+}
+
+async function staticMatchDetail(params) {
+  const id = String(params.get('id') || '');
+  const candidates = uniqueValues([
+    `data/matches/${encodeURIComponent(id)}.json`,
+    `data/matches/${safeMatchFileId(id)}.json`,
+  ]);
+  for (const candidate of candidates) {
+    const response = await fetch(staticDataUrl(candidate), { cache: 'no-store' });
+    if (!response.ok) continue;
+    try {
+      return await response.json();
+    } catch (error) {
+    }
+  }
+  const predictions = await loadPreMatchPredictions();
+  const prediction = predictions.byEventId?.[id] || predictions.byGameId?.[id] || null;
+  if (prediction) return matchDetailFromPrediction(prediction);
+  return { id: '', warning: 'match_detail_static_artifact_missing' };
+}
+
+function safeMatchFileId(value) {
+  return String(value || '').replace(/[^A-Za-z0-9_.-]+/g, '_');
 }
 
 async function staticTeamHistory(params) {
@@ -736,8 +760,8 @@ function normalizePreMatchPrediction(row) {
     start_time: String(row.start_time || row.startTime || row.date || ''),
     blue_team: String(row.blue_team || row.blueTeam || row.blue || ''),
     red_team: String(row.red_team || row.redTeam || row.red || ''),
-    blue_team_name: String(row.blue_team_name || row.blueTeamName || ''),
-    red_team_name: String(row.red_team_name || row.redTeamName || ''),
+    blue_team_name: String(row.blue_team_name || row.blueTeamName || row.blue_name || ''),
+    red_team_name: String(row.red_team_name || row.redTeamName || row.red_name || ''),
     blue_win_probability: clampProbability(blueProbability),
     red_win_probability: clampProbability(redProbability),
     predicted_winner: String(row.predicted_winner || row.predictedWinner || ''),
@@ -939,6 +963,30 @@ function predictionMatchesSchedule(match, prediction) {
   const predictionStart = normalizedPredictionTime(prediction?.start_time || '');
   if (!matchStart || !predictionStart) return true;
   return matchStart === predictionStart;
+}
+
+function matchDetailFromPrediction(prediction) {
+  const id = String(prediction.event_id || prediction.game_id || '');
+  const blueName = prediction.blue_team_name || displayTeamName(prediction.blue_team, '');
+  const redName = prediction.red_team_name || displayTeamName(prediction.red_team, '');
+  const blueCode = displayTeamCode(prediction.blue_team_name || prediction.blue_team, '');
+  const redCode = displayTeamCode(prediction.red_team_name || prediction.red_team, '');
+  return {
+    id,
+    league: prediction.league || '',
+    league_group: '',
+    region: '',
+    start_time: predictionStartTimeIso(prediction) || prediction.start_time || '',
+    status: 'unstarted',
+    best_of: '',
+    source: 'pre_match_prediction_feed',
+    teams: [
+      { side: 'blue', name: blueName, code: blueCode, image: '', game_wins: '0' },
+      { side: 'red', name: redName, code: redCode, image: '', game_wins: '0' },
+    ],
+    games: [],
+    warning: 'match_detail_from_pre_match_prediction',
+  };
 }
 
 function matchScheduleLooksStale(match, prediction) {
@@ -1608,13 +1656,20 @@ function showDetailLoading() {
 
 async function refreshMatchDetail(initial) {
   const id = state.detailMatchId;
-  let details = await fetchMatchDetail(id);
+  let details = {};
+  try {
+    details = await fetchMatchDetail(id);
+  } catch (error) {
+    details = { id: '', warning: 'match_detail_fetch_failed' };
+  }
   details = restoreEndedLiveSnapshot(details);
   markLiveFrameChanges(details);
   state.currentDetails = details;
   rememberLiveSnapshot(details);
   if (!details.id) {
     $('matchTitle').textContent = 'Match not found';
+    $('matchMeta').textContent = details.warning || 'match detail unavailable';
+    $('detailTeams').innerHTML = '<div class="loadingState">Match detail artifact is unavailable.</div>';
     return;
   }
   const teams = details.teams || [];
