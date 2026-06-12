@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-12T17:25:45.506961Z",
+  "generated_at": "2026-06-12T17:34:00.589261Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -172,24 +172,6 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:saigon_zen_esport"
-      ]
-    },
-    {
-      "event_id": "pandascore:1493073",
-      "game_id": "pandascore:1493073",
-      "league": "VCS - Summer 2026 - Playoffs",
-      "start_time": "2026-06-13 19:00:00",
-      "blue_team": "saigon_warriors",
-      "red_team": "saigon_zen_esport",
-      "blue_team_name": "Saigon Warriors",
-      "red_team_name": "ZEN Esports",
-      "blue_win_probability": 0.622371,
-      "red_win_probability": 0.377629,
-      "predicted_winner": "Saigon Warriors",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "red_team_fallback_slug:saigon_zen_esport"
       ]
     },
     {
