@@ -35346,7 +35346,7 @@
   },
   "115548128963037575": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T12:13:50.830Z",
+    "checked_at": "2026-06-12T15:40:09.076Z",
     "event_id": "115548128963037575",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35359,7 +35359,7 @@
       "region": "",
       "best_of": "5",
       "status": "completed",
-      "start_time": "2026-06-12T17:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "100205573496804586",
@@ -35549,29 +35549,210 @@
   },
   "116520394663535894": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T12:13:50.830Z",
+    "checked_at": "2026-06-12T15:40:09.076Z",
     "event_id": "116520394663535894",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520394663535894",
-      "league": "",
+      "league": "VCS",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "113843163628949793",
+          "name": "Saigon Dino",
+          "code": "DINO",
+          "image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "116520427289188052",
+          "name": "Saigon Zen Esport",
+          "code": "ZEN",
+          "image": "http://static.lolesports.com/teams/1777960619021_saigon_zen_logo_export-removebg-preview.png",
+          "game_wins": "3"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520394663535895",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535896",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535897",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535898",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535899",
+          "number": 5,
+          "state": "completed",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116634529527091479": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T12:13:50.830Z",
+    "checked_at": "2026-06-12T15:40:09.076Z",
     "event_id": "116634529527091479",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -35584,7 +35765,7 @@
       "region": "",
       "best_of": "3",
       "status": "unstarted",
-      "start_time": "2026-06-13T00:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "105503948999800557",
@@ -35708,7 +35889,7 @@
   },
   "116634566270405047": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T12:13:50.830Z",
+    "checked_at": "2026-06-12T15:40:09.076Z",
     "event_id": "116634566270405047",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -35721,7 +35902,7 @@
       "region": "",
       "best_of": "3",
       "status": "unstarted",
-      "start_time": "2026-06-13T00:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "105515219038427019",
@@ -35845,7 +36026,7 @@
   },
   "116634566270405071": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T12:13:50.830Z",
+    "checked_at": "2026-06-12T15:40:09.076Z",
     "event_id": "116634566270405071",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -35858,7 +36039,7 @@
       "region": "",
       "best_of": "3",
       "status": "unstarted",
-      "start_time": "2026-06-13T03:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "102787200149928963",
@@ -35982,7 +36163,7 @@
   },
   "116634566270405095": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T12:13:50.830Z",
+    "checked_at": "2026-06-12T15:40:09.076Z",
     "event_id": "116634566270405095",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -35995,7 +36176,7 @@
       "region": "",
       "best_of": "3",
       "status": "unstarted",
-      "start_time": "2026-06-13T03:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "109696073114910519",
