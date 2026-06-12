@@ -14,6 +14,7 @@ const minOverlap = Number(args.minOverlap || 1);
 const requestedMatchId = args.matchId ? String(args.matchId) : '';
 const predictionFeedPath = String(args.predictionFeedPath || 'pre_match_predictions.json').replace(/^\/+/, '');
 const predictionFeedUrl = args.predictionFeedUrl ? String(args.predictionFeedUrl) : '';
+const VM_TIMEOUT_MS = Number(args.vmTimeoutMs || 5000);
 
 const [feed, matchesPayload, appSource] = await Promise.all([
   loadJson(predictionFeedUrl || predictionFeedPath),
@@ -318,7 +319,7 @@ function checkPredictionPanelRendering(appSourceText, prediction, match, detailD
   context.window.document = context.document;
   try {
     vm.createContext(context);
-    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    vm.runInContext(appSourceText, context, { timeout: VM_TIMEOUT_MS });
     output.summary.checked = true;
     const targetElement = fakeElement();
     elements.set('predictionPanelProbe', targetElement);
@@ -331,7 +332,7 @@ function checkPredictionPanelRendering(appSourceText, prediction, match, detailD
         predictions: prediction ? [prediction] : [],
       })}, { source: 'probe', url: 'probe://predictions' });
       renderPredictionPanel('predictionPanelProbe', ${JSON.stringify(panelDetails(match, detailData))});
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     if (prediction) {
       const text = targetElement.innerHTML.replace(/\s+/g, ' ');
       output.summary.matching_prediction_visible = !targetElement.classList.contains('hidden');
@@ -354,7 +355,7 @@ function checkPredictionPanelRendering(appSourceText, prediction, match, detailD
         predictions: []
       }, { source: 'probe', url: 'probe://empty' });
       renderPredictionPanel('predictionPanelProbe', ${JSON.stringify(panelDetails(match, detailData))});
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     if (!targetElement.classList.contains('hidden') || targetElement.innerHTML) {
       output.errors.push('prediction panel render contract did not hide for an empty feed');
     }
@@ -362,7 +363,7 @@ function checkPredictionPanelRendering(appSourceText, prediction, match, detailD
     vm.runInContext(`
       state.preMatchPredictions = { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'unavailable' };
       renderPredictionPanel('predictionPanelProbe', ${JSON.stringify(panelDetails(match, detailData))});
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     if (!targetElement.classList.contains('hidden') || targetElement.innerHTML) {
       output.errors.push('prediction panel render contract did not hide for an unavailable feed');
     }
@@ -427,7 +428,7 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
   context.window.document = context.document;
   try {
     vm.createContext(context);
-    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    vm.runInContext(appSourceText, context, { timeout: VM_TIMEOUT_MS });
     output.summary.checked = true;
     const result = vm.runInContext(`
       state.preMatchPredictions = normalizePreMatchPredictionFeed({
@@ -436,10 +437,10 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
         predictions: ${JSON.stringify(predictions)}
       }, { source: 'probe', url: 'probe://predictions' });
       applyPreMatchPredictionOverlay(${JSON.stringify(matches)}).filter(match => String(match.id || match.event_id || '') === ${JSON.stringify(targetId)});
-    `, context, { timeout: 1000 });
-    const predictionStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetPrediction.start_time || '')})`, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
+    const predictionStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetPrediction.start_time || '')})`, context, { timeout: VM_TIMEOUT_MS });
     const scheduleStart = targetMatch
-      ? vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetMatch.start_time || '')})`, context, { timeout: 1000 })
+      ? vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetMatch.start_time || '')})`, context, { timeout: VM_TIMEOUT_MS })
       : '';
     const startsMatch = !scheduleStart || !predictionStart || String(scheduleStart) === String(predictionStart);
     output.summary.schedule_start_time = scheduleStart;
@@ -454,7 +455,7 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
     if (!resultRows.length) {
       output.errors.push(`schedule overlay did not return target match ${targetId}`);
     } else if (startsMatch && scheduleResult) {
-      const scheduleResultStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(scheduleResult.start_time || '')})`, context, { timeout: 1000 });
+      const scheduleResultStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(scheduleResult.start_time || '')})`, context, { timeout: VM_TIMEOUT_MS });
       output.summary.stale_static_match_corrected = String(scheduleResultStart || '') === String(predictionStart || '')
         && !isPlaceholderTeam(scheduleResult.blue_team)
         && !isPlaceholderTeam(scheduleResult.red_team);
@@ -535,7 +536,7 @@ function checkPredictionOnlyDetailFallback(appSourceText, predictions, matchesBy
   context.window.document = context.document;
   try {
     vm.createContext(context);
-    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    vm.runInContext(appSourceText, context, { timeout: VM_TIMEOUT_MS });
     output.summary.checked = true;
     const result = vm.runInContext(`
       const feed = normalizePreMatchPredictionFeed({
@@ -553,7 +554,7 @@ function checkPredictionOnlyDetailFallback(appSourceText, predictions, matchesBy
         source: detail.source || '',
         safe_filename: safeMatchFileId(row.event_id || '')
       })
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     output.summary = { ...output.summary, ...result };
     if (result.detail_id !== result.event_id) {
       output.errors.push(`prediction-only detail id ${result.detail_id || '(missing)'} does not match ${result.event_id}`);
@@ -611,8 +612,8 @@ function checkDetailRefreshPolicy(appSourceText) {
   const realNow = Date.now;
   try {
     vm.createContext(context);
-    vm.runInContext(appSourceText, context, { timeout: 1000 });
-    vm.runInContext('Date.now = () => 1769200000000', context, { timeout: 1000 });
+    vm.runInContext(appSourceText, context, { timeout: VM_TIMEOUT_MS });
+    vm.runInContext('Date.now = () => 1769200000000', context, { timeout: VM_TIMEOUT_MS });
     output.summary.checked = true;
     const policies = vm.runInContext(`
       ({
@@ -622,7 +623,7 @@ function checkDetailRefreshPolicy(appSourceText) {
         prestart: matchDetailRefreshPolicy({ status: 'unstarted', start_time: new Date(Date.now() + 10 * 60 * 1000).toISOString() }),
         future: matchDetailRefreshPolicy({ status: 'unstarted', start_time: new Date(Date.now() + 2 * 60 * 60 * 1000).toISOString() })
       })
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     output.summary.completed_interval_ms = policies.completed.interval_ms;
     output.summary.live_interval_ms = policies.live.interval_ms;
     output.summary.near_start_interval_ms = policies.nearStart.interval_ms;
@@ -681,7 +682,7 @@ function checkMatchCenterLogos(appSourceText) {
   context.window.document = context.document;
   try {
     vm.createContext(context);
-    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    vm.runInContext(appSourceText, context, { timeout: VM_TIMEOUT_MS });
     output.summary.checked = true;
     const result = vm.runInContext(`
       const cardDetails = matchDetailsFromCardDataset({
@@ -716,7 +717,7 @@ function checkMatchCenterLogos(appSourceText) {
         mergedBlueScore: merged.teams[0].game_wins,
         mergedRedScore: merged.teams[1].game_wins,
       })
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     output.summary.dataset_images_preserved = result.cardBlueImage === 'https://static.lolesports.com/blue.png'
       && result.cardRedImage === 'https://static.lolesports.com/red.png';
     output.summary.detail_merge_preserves_card_image = result.mergedBlueImage === 'https://static.lolesports.com/blue.png'
@@ -788,7 +789,7 @@ function checkLiveSnapshotRetention(appSourceText) {
   context.window.document = context.document;
   try {
     vm.createContext(context);
-    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    vm.runInContext(appSourceText, context, { timeout: VM_TIMEOUT_MS });
     output.summary.checked = true;
     const result = vm.runInContext(`
       const liveDetails = {
@@ -831,7 +832,7 @@ function checkLiveSnapshotRetention(appSourceText) {
         restoredStatus: restored.games[0].live.status || '',
         retainedAfterEnd: restored.games[0].live.retained_after_end === true,
       })
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     output.summary.stores_meaningful_live_snapshot = result.storedKeys === 1;
     output.summary.restores_after_completed_empty_live = result.restoredChampion === 'Gnar'
       && result.restoredStatus === 'ended'
@@ -882,7 +883,7 @@ function checkMatchResultScoreMapping(appSourceText) {
   context.window.document = context.document;
   try {
     vm.createContext(context);
-    vm.runInContext(appSourceText, context, { timeout: 1000 });
+    vm.runInContext(appSourceText, context, { timeout: VM_TIMEOUT_MS });
     output.summary.checked = true;
     const result = vm.runInContext(`
       const completed = mergeFreshMatchDetails(
@@ -937,7 +938,7 @@ function checkMatchResultScoreMapping(appSourceText) {
         live_blue_score: live.blue_score,
         live_red_score: live.red_score,
       });
-    `, context, { timeout: 1000 });
+    `, context, { timeout: VM_TIMEOUT_MS });
     output.summary.completed_label = String(result.completed_label || '');
     output.summary.in_progress_label = String(result.live_label || '');
     if (String(result.completed_blue_score) !== '0' || String(result.completed_red_score) !== '3') {

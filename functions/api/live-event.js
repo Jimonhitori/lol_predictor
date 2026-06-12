@@ -8,6 +8,8 @@ const PRE_MATCH_CACHE_SECONDS = 60;
 const LIVE_FEED_DELAY_SECONDS = 130;
 const LIVE_SNAPSHOT_CACHE_SECONDS = 60 * 60 * 24;
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
+const LIVE_LOGISTIC_MODEL_PATH = '/live_logistic.json';
+const LIVE_BOOTSTRAP_MODEL_PATH = '/live_logistic_oe_bootstrap.json';
 const LIVE_EVENT_FINAL_BY_GAME_PATH = '/static/data/live-event-snapshots/final_by_game.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 let liveModelPromise = null;
@@ -639,7 +641,9 @@ async function liveWinProbability(live, game = {}, details = {}, context = null)
 
 async function liveModelWinProbability(live, game, details, context) {
   const model = await loadLiveModel(context);
-  if (!model || model.schema !== 'live_logistic_regression_v1') return null;
+  if (!model) return null;
+  if (isWorkersLiveLogisticModel(model)) return workersLiveLogisticWinProbability(model, live, game, details);
+  if (model.schema !== 'live_logistic_regression_v1') return null;
   const row = liveFeatureRow(live, game, details);
   let coefficientIndex = 0;
   let logit = Number(model.intercept || 0);
@@ -681,6 +685,71 @@ async function liveModelWinProbability(live, game, details, context) {
   };
 }
 
+function workersLiveLogisticWinProbability(model, live, game, details) {
+  const row = workersLiveFeatureRow(live, game, details);
+  const columns = Array.isArray(model.feature_columns) ? model.feature_columns.map(String) : [];
+  if (!columns.length) return null;
+  const scaler = model.scaler || {};
+  const means = scaler.means || {};
+  const stds = scaler.stds || {};
+  const coefficients = model.coefficients || {};
+  let logit = Number(model.intercept || 0);
+  for (const column of columns) {
+    const raw = number(row[column]);
+    const mean = Number(means[column] ?? 0);
+    const std = Number(stds[column] ?? 1) || 1;
+    const scaled = (raw - mean) / std;
+    logit += scaled * Number(coefficients[column] ?? 0);
+  }
+  let blue = clamp(1 / (1 + Math.exp(-logit)), 0.01, 0.99);
+  const calibration = model.calibration || {};
+  if (calibration.method === 'logit_platt') {
+    const clipped = clamp(blue, 1e-15, 1 - 1e-15);
+    const calibratedLogit = Number(calibration.intercept || 0) + Number(calibration.slope || 1) * Math.log(clipped / (1 - clipped));
+    blue = clamp(1 / (1 + Math.exp(-calibratedLogit)), 0.01, 0.99);
+  }
+  return {
+    blue,
+    red: 1 - blue,
+    model: model.model_version || 'live_logistic',
+    status: 'estimated',
+    feature_schema: 'live_frame_v1',
+    bootstrap_only: Boolean(model.bootstrap_only),
+    cadence_note: model.cadence_note || '',
+    training_rows: model.training_rows || model.calibration?.num_rows || 0,
+    test_rows: model.evaluation?.num_predictions || 0,
+    metrics: model.evaluation || {},
+    validation: workersLiveValidation(model, row.elapsed_seconds),
+    features: {
+      gold_diff: row.gold_diff,
+      kill_diff: row.kill_diff,
+      tower_diff: row.tower_diff,
+      inhibitor_diff: row.inhibitor_diff,
+      dragon_diff: row.dragon_diff,
+      baron_diff: row.baron_diff,
+      avg_level_diff: row.level_diff,
+      game_time: row.elapsed_seconds,
+    },
+  };
+}
+
+function isWorkersLiveLogisticModel(model) {
+  return model?.workers_compatible === true && model?.model_type === 'numpy_logistic_regression';
+}
+
+function workersLiveValidation(model, elapsedSeconds) {
+  const evaluation = model.evaluation || {};
+  const earliest = String(evaluation.earliest_reliable_bucket || '');
+  const display = evaluation.display_recommendation || (model.bootstrap_only ? 'show_live_probability' : 'show_live_probability');
+  return {
+    display,
+    source: model.bootstrap_source || model.model_version || '',
+    earliest_reliable_bucket: earliest,
+    elapsed_seconds: number(elapsedSeconds),
+    bootstrap_only: Boolean(model.bootstrap_only),
+  };
+}
+
 function liveValidationBucket(model, gameTime) {
   const guidance = model.serving_guidance || {};
   const buckets = Array.isArray(guidance.time_buckets) ? guidance.time_buckets : [];
@@ -707,23 +776,67 @@ function liveValidationBucket(model, gameTime) {
 async function loadLiveModel(context) {
   if (liveModelPromise) return liveModelPromise;
   liveModelPromise = (async () => {
-    try {
-      let response = null;
-      if (context?.env?.ASSETS) {
-        const requestUrl = new URL(context.request.url);
-        response = await context.env.ASSETS.fetch(new Request(new URL(LIVE_MODEL_PATH, requestUrl.origin).toString()));
-      } else if (context?.request?.url) {
-        response = await fetch(new URL(LIVE_MODEL_PATH, context.request.url).toString(), {
-          cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
-        });
-      }
-      if (!response || !response.ok) return null;
-      return response.json();
-    } catch (error) {
-      return null;
+    for (const path of [LIVE_LOGISTIC_MODEL_PATH, LIVE_BOOTSTRAP_MODEL_PATH, LIVE_MODEL_PATH]) {
+      const model = await readLiveModelAsset(context, path);
+      if (model) return model;
     }
+    return null;
   })();
   return liveModelPromise;
+}
+
+async function readLiveModelAsset(context, path) {
+  try {
+    let response = null;
+    if (context?.env?.ASSETS) {
+      const requestUrl = new URL(context.request.url);
+      response = await context.env.ASSETS.fetch(new Request(new URL(path, requestUrl.origin).toString()));
+    } else if (context?.request?.url) {
+      response = await fetch(new URL(path, context.request.url).toString(), {
+        cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
+      });
+    }
+    if (!response || !response.ok) return null;
+    return response.json();
+  } catch (error) {
+    return null;
+  }
+}
+
+function workersLiveFeatureRow(live, game, details) {
+  const row = liveFeatureRow(live, game, details);
+  const blueStats = live.blue_stats || {};
+  const redStats = live.red_stats || {};
+  const bluePlayers = playerFeatureTotals(live.blue || []);
+  const redPlayers = playerFeatureTotals(live.red || []);
+  const elapsedSeconds = number(row.game_time);
+  const elapsedMinutes = elapsedSeconds / 60;
+  const goldDiff = number(row.gold_diff);
+  return {
+    ...row,
+    elapsed_seconds: elapsedSeconds,
+    elapsed_minutes: elapsedMinutes,
+    gold_diff_per_minute: goldDiff / Math.max(1, elapsedMinutes),
+    level_diff: row.avg_level_diff,
+    blue_gold: number(blueStats.gold),
+    red_gold: number(redStats.gold),
+    blue_kills: number(blueStats.kills || bluePlayers.kills),
+    red_kills: number(redStats.kills || redPlayers.kills),
+    blue_towers: number(blueStats.towers),
+    red_towers: number(redStats.towers),
+    blue_dragons: number(blueStats.dragons),
+    red_dragons: number(redStats.dragons),
+    blue_barons: number(blueStats.barons),
+    red_barons: number(redStats.barons),
+    blue_inhibitors: number(blueStats.inhibitors),
+    red_inhibitors: number(redStats.inhibitors),
+    blue_levels: bluePlayers.avgLevel,
+    red_levels: redPlayers.avgLevel,
+    blue_cs: bluePlayers.creepScore,
+    red_cs: redPlayers.creepScore,
+    pre_match_blue_win_prob: 0.5,
+    post_draft_blue_win_prob: 0.5,
+  };
 }
 
 function liveFeatureRow(live, game, details) {
