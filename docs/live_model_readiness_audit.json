@@ -10,9 +10,8 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 6,
+  "blocker_count": 5,
   "blockers": [
-    "live collection config validation report is missing",
     "live training readiness report is missing",
     "live model evaluation report is missing",
     "live replay summary is missing",
@@ -20,7 +19,7 @@
     "public manifest does not expose a live model"
   ],
   "checks": {
-    "collection_config_valid": false,
+    "collection_config_valid": true,
     "evaluation_display_ready": false,
     "manifest_exposes_model": false,
     "ops_wiring_valid": false,
@@ -32,7 +31,6 @@
   "display_ready": false,
   "next_actions": [
     "Collect or sync more completed-game live frames, then rebuild live features.",
-    "Validate live collection settings so poll/sample intervals stay at <=30s.",
     "Train/evaluate the live model until operational_summary recommends display.",
     "Run live replay on stored frames and verify <=30s interval coverage.",
     "Publish and validate live_logistic.json plus live_model_manifest.json.",
@@ -42,27 +40,27 @@
   "requirements": [
     {
       "evidence": {
-        "max_interval_seconds": null,
-        "ok": null,
-        "poll_interval_seconds": null,
-        "sample_interval_seconds": null
+        "max_interval_seconds": 30.0,
+        "ok": true,
+        "poll_interval_seconds": 15.0,
+        "sample_interval_seconds": 15.0
       },
       "id": "live_collection_config",
       "label": "Live collection settings enforce <=30s cadence",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 36,
+        "games": 38,
         "interval_count": 248,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 508,
-        "oe_bootstrap_snapshot_rows": 286,
+        "non_empty_game_state_rows": 528,
+        "oe_bootstrap_snapshot_rows": 306,
         "pct_intervals_lte_30s": 0.5967741935483871,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 508,
+        "rows": 528,
         "sub_30s_interval_count": 148
       },
       "id": "live_frame_collection",

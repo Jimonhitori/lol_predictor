@@ -1,7 +1,6 @@
 {
-  "blocker_count": 6,
+  "blocker_count": 5,
   "blockers": [
-    "live collection config validation report is missing",
     "live training readiness report is missing",
     "live model evaluation report is missing",
     "live replay summary is missing",
@@ -9,25 +8,153 @@
     "public manifest does not expose a live model"
   ],
   "bootstrap": {
-    "available": false
+    "available": true,
+    "completed": 2,
+    "file_evidence": {
+      "completion_overrides": {
+        "d1_sync_completed": true,
+        "daily_training_published": false,
+        "worker_deploy_completed": false
+      },
+      "d1_database_id_file_exists": false,
+      "d1_sync_completed": true,
+      "daily_training_published_status": false,
+      "oe_bootstrap_model_available": false,
+      "root": "/home/runner/work/lol-pros-analyzer/lol-pros-analyzer",
+      "worker_base_url_file_exists": false,
+      "worker_check_ran": false,
+      "worker_has_d1_binding": false
+    },
+    "items": [
+      {
+        "detail": "Required for Worker deploy and D1 export workflows.",
+        "done": false,
+        "id": "cloudflare_api_token",
+        "label": "Add GitHub secret CLOUDFLARE_API_TOKEN"
+      },
+      {
+        "detail": "Required by Wrangler deploy in GitHub Actions.",
+        "done": false,
+        "id": "cloudflare_account_id",
+        "label": "Add GitHub secret CLOUDFLARE_ACCOUNT_ID"
+      },
+      {
+        "detail": "The daily D1 sync workflow defaults to lol-live-frames; set GitHub variable LIVE_D1_DATABASE only if you use a different database name.",
+        "done": true,
+        "id": "live_d1_database",
+        "label": "Confirm D1 sync database name"
+      },
+      {
+        "detail": "Deploy live Worker can save LIVE_WORKER_BASE_URL automatically; set the repository variable manually only if automatic saving is disabled or fails.",
+        "done": false,
+        "id": "live_worker_base_url",
+        "label": "Confirm Worker base URL for daily checks"
+      },
+      {
+        "detail": "The Deploy live Worker workflow can find or create this database when create_d1_database=true; verify reports/live_d1_database_id.txt or workers/wrangler.toml has a LIVE_FRAMES_DB binding afterward.",
+        "done": false,
+        "id": "d1_database_created",
+        "label": "Resolve or create Cloudflare D1 database lol-live-frames"
+      },
+      {
+        "detail": "Use the Pages live_logistic_oe_bootstrap.json URL as bootstrap_model_url when live_logistic.json is not published yet; this enables explicit bootstrap inference while D1 collects real <=30s live frames.",
+        "done": false,
+        "id": "oe_bootstrap_model_url",
+        "label": "Prepare optional OE bootstrap model URL"
+      },
+      {
+        "detail": "Use create_d1_database=true for first setup; add the Pages live_logistic.json URL when available or bootstrap_model_url for live_logistic_oe_bootstrap.json while the primary model is not ready, persist_window_frames=true, enable_cron=true, then keep reports/live_worker_check.json.",
+        "done": false,
+        "id": "worker_deploy_workflow",
+        "label": "Run GitHub Actions workflow Deploy live Worker"
+      },
+      {
+        "detail": "This converts Worker-persisted frames into data/history/live_frames_history.csv and writes reports/live_d1_sync_status.json.",
+        "done": true,
+        "id": "d1_sync_workflow",
+        "label": "Run or wait for GitHub Actions workflow Sync live D1 frames"
+      },
+      {
+        "detail": "This labels collected frames, trains/evaluates live_logistic.json, and publishes public/live_status.json.",
+        "done": false,
+        "id": "daily_training",
+        "label": "Run or wait for daily Train model workflow"
+      }
+    ],
+    "missing_items": [
+      {
+        "detail": "Required for Worker deploy and D1 export workflows.",
+        "done": false,
+        "id": "cloudflare_api_token",
+        "label": "Add GitHub secret CLOUDFLARE_API_TOKEN"
+      },
+      {
+        "detail": "Required by Wrangler deploy in GitHub Actions.",
+        "done": false,
+        "id": "cloudflare_account_id",
+        "label": "Add GitHub secret CLOUDFLARE_ACCOUNT_ID"
+      },
+      {
+        "detail": "Deploy live Worker can save LIVE_WORKER_BASE_URL automatically; set the repository variable manually only if automatic saving is disabled or fails.",
+        "done": false,
+        "id": "live_worker_base_url",
+        "label": "Confirm Worker base URL for daily checks"
+      },
+      {
+        "detail": "The Deploy live Worker workflow can find or create this database when create_d1_database=true; verify reports/live_d1_database_id.txt or workers/wrangler.toml has a LIVE_FRAMES_DB binding afterward.",
+        "done": false,
+        "id": "d1_database_created",
+        "label": "Resolve or create Cloudflare D1 database lol-live-frames"
+      },
+      {
+        "detail": "Use the Pages live_logistic_oe_bootstrap.json URL as bootstrap_model_url when live_logistic.json is not published yet; this enables explicit bootstrap inference while D1 collects real <=30s live frames.",
+        "done": false,
+        "id": "oe_bootstrap_model_url",
+        "label": "Prepare optional OE bootstrap model URL"
+      },
+      {
+        "detail": "Use create_d1_database=true for first setup; add the Pages live_logistic.json URL when available or bootstrap_model_url for live_logistic_oe_bootstrap.json while the primary model is not ready, persist_window_frames=true, enable_cron=true, then keep reports/live_worker_check.json.",
+        "done": false,
+        "id": "worker_deploy_workflow",
+        "label": "Run GitHub Actions workflow Deploy live Worker"
+      },
+      {
+        "detail": "This labels collected frames, trains/evaluates live_logistic.json, and publishes public/live_status.json.",
+        "done": false,
+        "id": "daily_training",
+        "label": "Run or wait for daily Train model workflow"
+      }
+    ],
+    "next_setup_actions": [
+      "Add GitHub secret CLOUDFLARE_API_TOKEN",
+      "Add GitHub secret CLOUDFLARE_ACCOUNT_ID",
+      "Confirm Worker base URL for daily checks",
+      "Resolve or create Cloudflare D1 database lol-live-frames",
+      "Prepare optional OE bootstrap model URL",
+      "Run GitHub Actions workflow Deploy live Worker",
+      "Run or wait for daily Train model workflow"
+    ],
+    "ready_for_d1_sync": false,
+    "ready_for_worker_deploy": false,
+    "total": 9
   },
   "collection": {
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 508,
-      "latest_timestamp": "2026-06-12T15:00:50.293000Z",
+      "history_rows": 528,
+      "latest_timestamp": "2026-06-12T17:46:06.374000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {
-        "live_logistic_oe_bootstrap": 286
+        "live_logistic_oe_bootstrap": 306
       },
-      "new_rows": 286,
-      "non_empty_game_state_rows": 508,
-      "oe_bootstrap_snapshot_rows": 286,
+      "new_rows": 306,
+      "non_empty_game_state_rows": 528,
+      "oe_bootstrap_snapshot_rows": 306,
       "production_live_telemetry_rows": 222,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 36,
+        "games_with_interval_samples": 38,
         "games_with_single_frame": 0,
         "interval_count": 248,
         "max_interval_seconds": 256.008,
@@ -38,17 +165,17 @@
         "sub_30s_interval_count": 148,
         "sub_60s_interval_count": 245
       },
-      "unique_games": 36,
+      "unique_games": 38,
       "unknown_model_version_rows": 222
     },
     "config": {
-      "available": false,
-      "duration_seconds": null,
-      "max_interval_seconds": null,
-      "ok": null,
-      "poll_interval_seconds": null,
-      "sample_interval_seconds": null,
-      "warning_count": null,
+      "available": true,
+      "duration_seconds": 600.0,
+      "max_interval_seconds": 30.0,
+      "ok": true,
+      "poll_interval_seconds": 15.0,
+      "sample_interval_seconds": 15.0,
+      "warning_count": 0,
       "warnings": []
     },
     "d1_sync": {
@@ -67,7 +194,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-12T15:46:51.030940+00:00",
+  "generated_at": "2026-06-12T18:23:07.511515+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -75,7 +202,6 @@
   "live_replay_available": false,
   "next_actions": [
     "Collect or sync more completed-game live frames, then rebuild live features.",
-    "Validate live collection settings so poll/sample intervals stay at <=30s.",
     "Train/evaluate the live model until operational_summary recommends display.",
     "Run live replay on stored frames and verify <=30s interval coverage.",
     "Publish and validate live_logistic.json plus live_model_manifest.json.",
@@ -110,27 +236,27 @@
   "requirements": [
     {
       "evidence": {
-        "max_interval_seconds": null,
-        "ok": null,
-        "poll_interval_seconds": null,
-        "sample_interval_seconds": null
+        "max_interval_seconds": 30.0,
+        "ok": true,
+        "poll_interval_seconds": 15.0,
+        "sample_interval_seconds": 15.0
       },
       "id": "live_collection_config",
       "label": "Live collection settings enforce <=30s cadence",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 36,
+        "games": 38,
         "interval_count": 248,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 508,
-        "oe_bootstrap_snapshot_rows": 286,
+        "non_empty_game_state_rows": 528,
+        "oe_bootstrap_snapshot_rows": 306,
         "pct_intervals_lte_30s": 0.5967741935483871,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 508,
+        "rows": 528,
         "sub_30s_interval_count": 148
       },
       "id": "live_frame_collection",
