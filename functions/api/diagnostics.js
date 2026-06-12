@@ -1,4 +1,6 @@
 const LIVE_MODEL_PATH = '/static/data/live_model.json';
+const LIVE_LOGISTIC_MODEL_PATH = '/live_logistic.json';
+const LIVE_BOOTSTRAP_MODEL_PATH = '/live_logistic_oe_bootstrap.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 const PRE_MATCH_SCHEMA_PATH = '/static/data/schemas/pre_match_predictions.v1.schema.json';
 const MATCHES_INDEX_PATH = '/static/data/matches-all__all.json';
@@ -47,6 +49,8 @@ export async function onRequestGet(context) {
   const [
     siteContract,
     liveModel,
+    liveLogisticModel,
+    liveBootstrapModel,
     localPredictions,
     localSchema,
     matchIndex,
@@ -57,6 +61,8 @@ export async function onRequestGet(context) {
   ] = await Promise.all([
     readJsonAsset(context, SITE_CONTRACT_PATH),
     readJsonAsset(context, LIVE_MODEL_PATH),
+    readJsonAsset(context, LIVE_LOGISTIC_MODEL_PATH),
+    readJsonAsset(context, LIVE_BOOTSTRAP_MODEL_PATH),
     readJsonAsset(context, PRE_MATCH_PREDICTIONS_PATH),
     readJsonAsset(context, PRE_MATCH_SCHEMA_PATH),
     readJsonAsset(context, MATCHES_INDEX_PATH),
@@ -80,8 +86,9 @@ export async function onRequestGet(context) {
   const predictionFeedFreshness = artifactFreshness(predictionFeed?.json?.generated_at);
   const remotePredictionFreshness = artifactFreshness(remotePredictionProbe?.json?.generated_at);
   const liveStatusFreshness = artifactFreshness(liveStatus.json?.generated_at);
+  const activeLiveModel = selectActiveLiveModel(liveLogisticModel, liveBootstrapModel, liveModel);
   const liveModelFreshness = artifactFreshness(
-    liveModel.json?.exported_at,
+    activeLiveModel.exportedAt,
     { staleSeconds: LIVE_MODEL_STALE_SECONDS, warningSeconds: LIVE_MODEL_WARNING_SECONDS },
   );
   const predictionSchemaOk = predictionSchema?.json?.properties?.schema?.const === 'lol_predictions_public_v1';
@@ -118,7 +125,7 @@ export async function onRequestGet(context) {
   const contractWarnings = [
     ...(siteContract.json?.contract_version === EXPECTED_SITE_CONTRACT_VERSION ? [] : ['site_contract_version_mismatch']),
     ...(missingSiteFeatures.length ? [`site_contract_missing_features:${missingSiteFeatures.join(',')}`] : []),
-    ...(liveModel.ok ? [] : [`live_model_${liveModel.status || 'missing'}`]),
+    ...(activeLiveModel.available ? [] : [`live_model_${activeLiveModel.status || 'missing'}`]),
     ...(siteContract.ok ? [] : [`site_contract_${siteContract.status || 'missing'}`]),
     ...(predictionFeed?.ok ? [] : [`prediction_feed_${predictionFeed?.status || 'missing'}`]),
     ...(predictionSchema?.ok ? [] : [`prediction_schema_${predictionSchema?.status || 'missing'}`]),
@@ -146,14 +153,19 @@ export async function onRequestGet(context) {
     site_contract_schema: siteContract.json?.schema || '',
     site_contract_features: siteFeatures,
     site_contract_missing_features: missingSiteFeatures,
-    live_model_available: liveModel.ok,
-    live_model_name: liveModel.json?.name || '',
-    live_model_schema: liveModel.json?.schema || '',
-    live_model_exported_at: liveModel.json?.exported_at || '',
+    live_model_available: activeLiveModel.available,
+    live_model_source: activeLiveModel.source,
+    live_model_name: activeLiveModel.name,
+    live_model_schema: activeLiveModel.schema,
+    live_model_exported_at: activeLiveModel.exportedAt,
     live_model_age_seconds: liveModelFreshness.age_seconds,
     live_model_freshness: liveModelFreshness.status,
-    live_model_training_rows: liveModel.json?.training_rows ?? null,
-    live_model_test_rows: liveModel.json?.test_rows ?? null,
+    live_model_training_rows: activeLiveModel.trainingRows,
+    live_model_test_rows: activeLiveModel.testRows,
+    legacy_live_model_available: Boolean(liveModel.ok),
+    legacy_live_model_exported_at: liveModel.json?.exported_at || '',
+    live_logistic_model_available: Boolean(liveLogisticModel.ok),
+    live_bootstrap_model_available: Boolean(liveBootstrapModel.ok),
     prediction_feed_url: predictionFeedUrl,
     configured_prediction_feed_url: remotePredictionUrl,
     prediction_feed_available: Boolean(predictionFeed?.ok),
@@ -253,6 +265,32 @@ function predictionArtifactWarnings(payload) {
     warnings.push(...arrayOfStrings(prediction?.warnings));
   }
   return warnings;
+}
+
+function selectActiveLiveModel(liveLogisticModel, liveBootstrapModel, legacyLiveModel) {
+  if (liveLogisticModel.ok) {
+    return liveModelInfo(liveLogisticModel, 'live_logistic');
+  }
+  if (liveBootstrapModel.ok) {
+    return liveModelInfo(liveBootstrapModel, 'oe_bootstrap');
+  }
+  return liveModelInfo(legacyLiveModel, 'legacy_static');
+}
+
+function liveModelInfo(probe, source) {
+  const model = probe?.json || {};
+  const evaluation = model.evaluation || model.metrics || {};
+  const exportedAt = model.exported_at || model.generated_at || model.trained_at || '';
+  return {
+    available: Boolean(probe?.ok),
+    status: probe?.status || 0,
+    source,
+    name: model.name || model.model_version || '',
+    schema: model.schema || model.model_type || '',
+    exportedAt,
+    trainingRows: model.training_rows ?? model.calibration?.num_rows ?? null,
+    testRows: model.test_rows ?? evaluation.num_predictions ?? evaluation.rows ?? null,
+  };
 }
 
 function extractMatchRows(payload) {
