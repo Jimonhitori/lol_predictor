@@ -1,7 +1,11 @@
 {
-  "blocker_count": 4,
+  "blocker_count": 8,
   "blockers": [
-    "live training readiness report is missing",
+    "live training readiness is false",
+    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
+    "live training pipeline is not ready",
+    "live training pipeline did not train a model",
+    "live training pipeline did not replay stored frames",
     "live model evaluation report is missing",
     "live replay summary is missing",
     "live operations wiring report is missing"
@@ -186,7 +190,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-12T18:47:54.697474+00:00",
+  "generated_at": "2026-06-12T18:53:56.799383+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -194,6 +198,7 @@
   "live_replay_available": false,
   "next_actions": [
     "Collect or sync more completed-game live frames, then rebuild live features.",
+    "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
     "Train/evaluate the live model until operational_summary recommends display.",
     "Run live replay on stored frames and verify <=30s interval coverage.",
     "Configure D1, Cloudflare secrets, and Worker smoke checks."
@@ -256,16 +261,20 @@
     },
     {
       "evidence": {
-        "feature_rows": null,
-        "games": null,
-        "label_sources": null,
-        "labeled_rows": null,
-        "pipeline_feature_rows": null,
-        "pipeline_labeled_feature_rows": null,
-        "pipeline_ready": null,
-        "pipeline_replayed": null,
-        "pipeline_resolved_rows": null,
-        "pipeline_trained": null,
+        "feature_rows": 467,
+        "games": 35,
+        "label_sources": {
+          "combined_rows": 25980,
+          "games_rows": 25980,
+          "live_label_rows": 0
+        },
+        "labeled_rows": 467,
+        "pipeline_feature_rows": 467,
+        "pipeline_labeled_feature_rows": 467,
+        "pipeline_ready": false,
+        "pipeline_replayed": false,
+        "pipeline_resolved_rows": 528,
+        "pipeline_trained": false,
         "pipeline_warnings": []
       },
       "id": "completed_game_labels",
@@ -316,14 +325,50 @@
   "source": "lol-pros-analyzer",
   "stage": "collect_live_frames",
   "training": {
-    "available": false,
+    "available": true,
+    "games": 35,
+    "min_games": 5,
+    "min_rows": 50,
     "pipeline": {
-      "available": false
-    }
+      "available": true,
+      "evaluation": {
+        "accuracy": null,
+        "brier_score": null,
+        "log_loss": null
+      },
+      "feature_rows": 467,
+      "labeled_feature_rows": 467,
+      "mapping": {
+        "accepted_rows": 35,
+        "candidate_rows": 190,
+        "direct_id_overlap_games": 0,
+        "map_rows": 68
+      },
+      "priors": {
+        "post_draft_non_default_rows": 0,
+        "post_draft_path": "data/processed/post_draft_predictions.csv",
+        "post_draft_rows": 0,
+        "pre_match_non_default_rows": 0,
+        "pre_match_path": "data/processed/schedule_predictions.csv",
+        "pre_match_rows": 0
+      },
+      "ready": false,
+      "replay": {
+        "games": null,
+        "ok": null,
+        "rows": null
+      },
+      "replayed": false,
+      "resolved_rows": 528,
+      "trained": false,
+      "warning_count": 0,
+      "warnings": []
+    },
+    "ready": false,
+    "rows": 467
   },
-  "warning_count": 2,
+  "warning_count": 1,
   "warnings": [
-    "live training pipeline summary is missing",
     "public manifest uses OE bootstrap fallback while production live model is missing"
   ],
   "worker": {

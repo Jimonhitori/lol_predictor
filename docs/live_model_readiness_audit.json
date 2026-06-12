@@ -10,9 +10,13 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 4,
+  "blocker_count": 8,
   "blockers": [
-    "live training readiness report is missing",
+    "live training readiness is false",
+    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
+    "live training pipeline is not ready",
+    "live training pipeline did not train a model",
+    "live training pipeline did not replay stored frames",
     "live model evaluation report is missing",
     "live replay summary is missing",
     "live operations wiring report is missing"
@@ -24,12 +28,13 @@
     "ops_wiring_valid": false,
     "replay_ready": false,
     "serving_artifacts_valid": true,
-    "training_pipeline_complete": true,
+    "training_pipeline_complete": false,
     "training_ready": false
   },
   "display_ready": false,
   "next_actions": [
     "Collect or sync more completed-game live frames, then rebuild live features.",
+    "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
     "Train/evaluate the live model until operational_summary recommends display.",
     "Run live replay on stored frames and verify <=30s interval coverage.",
     "Configure D1, Cloudflare secrets, and Worker smoke checks."
@@ -67,16 +72,20 @@
     },
     {
       "evidence": {
-        "feature_rows": null,
-        "games": null,
-        "label_sources": null,
-        "labeled_rows": null,
-        "pipeline_feature_rows": null,
-        "pipeline_labeled_feature_rows": null,
-        "pipeline_ready": null,
-        "pipeline_replayed": null,
-        "pipeline_resolved_rows": null,
-        "pipeline_trained": null,
+        "feature_rows": 467,
+        "games": 35,
+        "label_sources": {
+          "combined_rows": 25980,
+          "games_rows": 25980,
+          "live_label_rows": 0
+        },
+        "labeled_rows": 467,
+        "pipeline_feature_rows": 467,
+        "pipeline_labeled_feature_rows": 467,
+        "pipeline_ready": false,
+        "pipeline_replayed": false,
+        "pipeline_resolved_rows": 528,
+        "pipeline_trained": false,
         "pipeline_warnings": []
       },
       "id": "completed_game_labels",
@@ -124,9 +133,8 @@
     }
   ],
   "stage": "collect_live_frames",
-  "warning_count": 2,
+  "warning_count": 1,
   "warnings": [
-    "live training pipeline summary is missing",
     "public manifest uses OE bootstrap fallback while production live model is missing"
   ]
 }
