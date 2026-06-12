@@ -79,7 +79,7 @@ for (const eventId of eventIds) {
   if (status === 'inprogress' || status === 'updating' || hasInProgressGame(payload)) {
     activeEventIds.push(eventId);
     state.tracked_events[eventId] = { completed_polls: 0, last_status: status };
-  } else if (eventHasFinalizableLive(payload)) {
+  } else if (eventHasFinalizableLive(payload) || status === 'completed') {
     const tracked = state.tracked_events[eventId] || {};
     state.tracked_events[eventId] = {
       completed_polls: Number(tracked.completed_polls || 0) + 1,
