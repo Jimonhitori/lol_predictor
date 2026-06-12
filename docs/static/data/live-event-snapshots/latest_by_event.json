@@ -35346,7 +35346,7 @@
   },
   "115548128963037575": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "115548128963037575",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35549,7 +35549,7 @@
   },
   "116520394663535894": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "116520394663535894",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35752,7 +35752,7 @@
   },
   "116634529527091479": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "116634529527091479",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35889,7 +35889,7 @@
   },
   "116634566270405047": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "116634566270405047",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36026,7 +36026,7 @@
   },
   "116634566270405071": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "116634566270405071",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36163,7 +36163,7 @@
   },
   "116634566270405095": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "116634566270405095",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36300,7 +36300,7 @@
   },
   "115548128963037581": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "115548128963037581",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -36503,7 +36503,7 @@
   },
   "116453476471776166": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "116453476471776166",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -36640,7 +36640,7 @@
   },
   "115616219464607515": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T21:20:55.020Z",
+    "checked_at": "2026-06-12T22:51:11.483Z",
     "event_id": "115616219464607515",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -36816,6 +36816,209 @@
             "team_id": "98767991887166787",
             "team_name": "Xi'an Team WE",
             "team_code": "WE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520394663535900": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-12T22:51:11.483Z",
+    "event_id": "116520394663535900",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520394663535900",
+      "league": "VCS",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "116520427289188052",
+          "name": "Saigon Zen Esport",
+          "code": "ZEN",
+          "image": "http://static.lolesports.com/teams/1777960619021_saigon_zen_logo_export-removebg-preview.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116079385545526730",
+          "name": "Saigon Warrior",
+          "code": "SGW",
+          "image": "http://static.lolesports.com/teams/1771230875226_logo_SW-removebg-preview.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520394663535901",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535902",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "red": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535903",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535904",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "red": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535905",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
           },
           "winner": "",
           "live": {
