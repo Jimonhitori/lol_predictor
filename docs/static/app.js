@@ -2260,6 +2260,7 @@ function renderLiveDraft(details) {
   const badgeText = liveBadgeText(details, game, hasLive, meaningfulLive);
   const timerText = liveTimerText(details, game, live, meaningfulLive);
   const winProbText = liveWinProbabilityText(game, live);
+  const showLiveTable = meaningfulLive;
   const board = $('liveBoard');
   if (!board) return;
   board.innerHTML = `
@@ -2274,14 +2275,16 @@ function renderLiveDraft(details) {
         </div>
         ${liveTeamHeader(redTeam)}
       </div>
-      <div class="liveStatsLine">
-        ${liveStatsSide(blueStats, 'blue')}
-        ${liveStatsSide(redStats, 'red')}
-      </div>
-      <div class="livePlayers">
-        ${liveTeamRows(blueTeam, bluePlayers, redPlayers)}
-        ${liveTeamRows(redTeam, redPlayers, bluePlayers)}
-      </div>
+      ${showLiveTable ? `
+        <div class="liveStatsLine">
+          ${liveStatsSide(blueStats, 'blue')}
+          ${liveStatsSide(redStats, 'red')}
+        </div>
+        <div class="livePlayers">
+          ${liveTeamRows(blueTeam, bluePlayers, redPlayers)}
+          ${liveTeamRows(redTeam, redPlayers, bluePlayers)}
+        </div>
+      ` : `<div class="liveUnavailable">Live data unavailable</div>`}
     </div>
   `;
   attachLiveTabHandlers(details);
