@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-12T18:25:56.455900Z",
+  "generated_at": "2026-06-12T22:17:28.142433Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -10,233 +10,6 @@
     }
   },
   "predictions": [
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_1",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_1",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 14:00:00",
-      "blue_team": "malaysia_national_team",
-      "red_team": "hong_kong_national_team",
-      "blue_team_name": "Malaysia (National Team)",
-      "red_team_name": "Hong Kong (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Malaysia (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Malaysia (National Team)->malaysia_national_team",
-        "blue_team_no_history:malaysia_national_team",
-        "red_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
-        "red_team_no_history:hong_kong_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_2",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_2",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 14:00:00",
-      "blue_team": "vietnam_national_team",
-      "red_team": "laos_national_team",
-      "blue_team_name": "Vietnam (National Team)",
-      "red_team_name": "Laos (National Team)",
-      "blue_win_probability": 0.475735,
-      "red_win_probability": 0.524265,
-      "predicted_winner": "Laos (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "red_team_fallback_slug:Laos (National Team)->laos_national_team",
-        "red_team_no_history:laos_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_3",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_3",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 15:30:00",
-      "blue_team": "saudi_arabia_national_team",
-      "red_team": "pakistan_national_team",
-      "blue_team_name": "Saudi Arabia (National Team)",
-      "red_team_name": "Pakistan (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Saudi Arabia (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
-        "blue_team_no_history:saudi_arabia_national_team",
-        "red_team_fallback_slug:Pakistan (National Team)->pakistan_national_team",
-        "red_team_no_history:pakistan_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_4",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_4",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 15:30:00",
-      "blue_team": "united_arab_emirates_national_team",
-      "red_team": "oman_national_team",
-      "blue_team_name": "United Arab Emirates (National Team)",
-      "red_team_name": "Oman (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "United Arab Emirates (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:United Arab Emirates (National Team)->united_arab_emirates_national_team",
-        "blue_team_no_history:united_arab_emirates_national_team",
-        "red_team_fallback_slug:Oman (National Team)->oman_national_team",
-        "red_team_no_history:oman_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_5",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_5",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 17:00:00",
-      "blue_team": "india_national_team",
-      "red_team": "sri_lanka_national_team",
-      "blue_team_name": "India (National Team)",
-      "red_team_name": "Sri Lanka (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "India (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:India (National Team)->india_national_team",
-        "blue_team_no_history:india_national_team",
-        "red_team_fallback_slug:Sri Lanka (National Team)->sri_lanka_national_team",
-        "red_team_no_history:sri_lanka_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_6",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_6",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 17:00:00",
-      "blue_team": "kazakhstan_national_team",
-      "red_team": "jordan_national_team",
-      "blue_team_name": "Kazakhstan (National Team)",
-      "red_team_name": "Jordan (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Kazakhstan (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Kazakhstan (National Team)->kazakhstan_national_team",
-        "blue_team_no_history:kazakhstan_national_team",
-        "red_team_fallback_slug:Jordan (National Team)->jordan_national_team",
-        "red_team_no_history:jordan_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_7",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_7",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 18:30:00",
-      "blue_team": "hong_kong_national_team",
-      "red_team": "kyrgyzstan_national_team",
-      "blue_team_name": "Hong Kong (National Team)",
-      "red_team_name": "Kyrgyzstan (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Hong Kong (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
-        "blue_team_no_history:hong_kong_national_team",
-        "red_team_fallback_slug:Kyrgyzstan (National Team)->kyrgyzstan_national_team",
-        "red_team_no_history:kyrgyzstan_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_8",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_8",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 18:30:00",
-      "blue_team": "laos_national_team",
-      "red_team": "mongolia_national_team",
-      "blue_team_name": "Laos (National Team)",
-      "red_team_name": "Mongolia (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Laos (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Laos (National Team)->laos_national_team",
-        "blue_team_no_history:laos_national_team",
-        "red_team_fallback_slug:Mongolia (National Team)->mongolia_national_team",
-        "red_team_no_history:mongolia_national_team"
-      ]
-    },
-    {
-      "event_id": "2026 Asian Games/Qualifier_Day 1_9",
-      "game_id": "2026 Asian Games/Qualifier_Day 1_9",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-12 20:00:00",
-      "blue_team": "saudi_arabia_national_team",
-      "red_team": "oman_national_team",
-      "blue_team_name": "Saudi Arabia (National Team)",
-      "red_team_name": "Oman (National Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Saudi Arabia (National Team)",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
-        "blue_team_no_history:saudi_arabia_national_team",
-        "red_team_fallback_slug:Oman (National Team)->oman_national_team",
-        "red_team_no_history:oman_national_team"
-      ]
-    },
-    {
-      "event_id": "Prime League 2nd Division/2026 Season/Spring Relegation_Relegation Round_1",
-      "game_id": "Prime League 2nd Division/2026 Season/Spring Relegation_Relegation Round_1",
-      "league": "PRM 2nd Division 25-26 Spring Relegation Round",
-      "start_time": "2026-06-13 01:00:00",
-      "blue_team": "spongecord_prime",
-      "red_team": "team_rift",
-      "blue_team_name": "Spongecord prime",
-      "red_team_name": "Team Rift",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Spongecord prime",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Spongecord prime->spongecord_prime",
-        "blue_team_no_history:spongecord_prime",
-        "red_team_fallback_slug:Team Rift->team_rift",
-        "red_team_no_history:team_rift"
-      ]
-    },
-    {
-      "event_id": "Prime League 2nd Division/2026 Season/Spring Relegation_Relegation Round_2",
-      "game_id": "Prime League 2nd Division/2026 Season/Spring Relegation_Relegation Round_2",
-      "league": "PRM 2nd Division 25-26 Spring Relegation Round",
-      "start_time": "2026-06-13 01:00:00",
-      "blue_team": "teamorangegaming_academy",
-      "red_team": "looksmaxxer",
-      "blue_team_name": "TeamOrangeGaming Academy",
-      "red_team_name": "LOOKSMAXXER",
-      "blue_win_probability": 0.457916,
-      "red_win_probability": 0.542084,
-      "predicted_winner": "LOOKSMAXXER",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "red_team_fallback_slug:LOOKSMAXXER->looksmaxxer",
-        "red_team_no_history:looksmaxxer"
-      ]
-    },
     {
       "event_id": "Benelux Ascend Series/2026 Season/Summer Promotion_Round 1_3",
       "game_id": "Benelux Ascend Series/2026 Season/Summer Promotion_Round 1_3",
@@ -1802,7 +1575,7 @@
     }
   ],
   "warnings": [
-    "blue_team_fallback_slug:count=58",
+    "blue_team_fallback_slug:count=54",
     "blue_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "blue_team_fallback_slug:Atruvia Münster Esports->atruvia_m_nster_esports",
     "blue_team_fallback_slug:BS Effortless->bs_effortless",
@@ -1811,8 +1584,8 @@
     "blue_team_fallback_slug:Cloud eSport->cloud_esport",
     "blue_team_fallback_slug:Clã NKZ Raccoons->cl_nkz_raccoons",
     "blue_team_fallback_slug:Clã NKZ->cl_nkz",
-    "blue_team_fallback_slug:omitted=50",
-    "blue_team_no_history:count=58",
+    "blue_team_fallback_slug:omitted=46",
+    "blue_team_no_history:count=54",
     "blue_team_no_history:404_multigaming_e_v",
     "blue_team_no_history:atruvia_m_nster_esports",
     "blue_team_no_history:berlin_5",
@@ -1821,8 +1594,8 @@
     "blue_team_no_history:cl_nkz",
     "blue_team_no_history:cl_nkz_raccoons",
     "blue_team_no_history:cloud_esport",
-    "blue_team_no_history:omitted=50",
-    "red_team_fallback_slug:count=61",
+    "blue_team_no_history:omitted=46",
+    "red_team_fallback_slug:count=58",
     "red_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
     "red_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "red_team_fallback_slug:AMD Team->amd_team",
@@ -1831,8 +1604,8 @@
     "red_team_fallback_slug:AceGaming FullHouse->acegaming_fullhouse",
     "red_team_fallback_slug:AceGaming Wildcard->acegaming_wildcard",
     "red_team_fallback_slug:Arrakis E-Sport->arrakis_e_sport",
-    "red_team_fallback_slug:omitted=53",
-    "red_team_no_history:count=61",
+    "red_team_fallback_slug:omitted=50",
+    "red_team_no_history:count=58",
     "red_team_no_history:1_esport_club_frankfurt_e_v",
     "red_team_no_history:404_multigaming_e_v",
     "red_team_no_history:absolved",
@@ -1841,7 +1614,7 @@
     "red_team_no_history:acegaming_wildcard",
     "red_team_no_history:amd_team",
     "red_team_no_history:arrakis_e_sport",
-    "red_team_no_history:omitted=53"
+    "red_team_no_history:omitted=50"
   ],
   "warning_count": 40
 }
