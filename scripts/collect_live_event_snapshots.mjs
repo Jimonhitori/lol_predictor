@@ -4,10 +4,13 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const LOLESPORTS_GET_LIVE_URL = 'https://esports-api.lolesports.com/persisted/gw/getLive';
+const LOLESPORTS_GET_SCHEDULE_URL = 'https://esports-api.lolesports.com/persisted/gw/getSchedule';
 const LOLESPORTS_PUBLIC_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
 const DEFAULT_SITE_BASE_URL = 'https://lol-predictor.pages.dev';
 const SNAPSHOT_SCHEMA = 'lol_live_event_snapshot_v1';
 const FINAL_GAME_SCHEMA = 'lol_live_game_final_snapshot_v1';
+const DEFAULT_SCHEDULE_LOOKBACK_MINUTES = 12 * 60;
+const DEFAULT_SCHEDULE_LOOKAHEAD_MINUTES = 12 * 60;
 
 const args = parseArgs(process.argv.slice(2));
 const siteBaseUrl = String(args.siteBaseUrl || process.env.SITE_BASE_URL || DEFAULT_SITE_BASE_URL).replace(/\/+$/, '');
@@ -15,6 +18,8 @@ const outputDir = path.resolve(String(args.outputDir || 'docs/static/data/live-e
 const statePath = path.resolve(String(args.statePath || '.github/live-event-snapshot-state.json'));
 const explicitEventIds = arrayArg(args.eventId || args.eventIds);
 const completedGracePolls = numberArg(args.completedGracePolls, 3);
+const scheduleLookbackMinutes = numberArg(args.scheduleLookbackMinutes, DEFAULT_SCHEDULE_LOOKBACK_MINUTES);
+const scheduleLookaheadMinutes = numberArg(args.scheduleLookaheadMinutes, DEFAULT_SCHEDULE_LOOKAHEAD_MINUTES);
 const hl = String(args.hl || 'en-US');
 
 await fs.mkdir(outputDir, { recursive: true });
@@ -26,7 +31,11 @@ const state = await readJsonObject(statePath, { tracked_events: {} });
 const errors = [];
 let discoveredEventIds = [];
 try {
-  discoveredEventIds = await discoverLiveEventIds({ hl });
+  discoveredEventIds = await discoverLiveEventIds({
+    hl,
+    scheduleLookbackMinutes,
+    scheduleLookaheadMinutes,
+  });
 } catch (error) {
   errors.push({ stage: 'discover', message: errorMessage(error) });
 }
@@ -93,6 +102,8 @@ const summary = {
   checked_at: checkedAt,
   site_base_url: siteBaseUrl,
   discovered_events: discoveredEventIds.length,
+  schedule_lookback_minutes: scheduleLookbackMinutes,
+  schedule_lookahead_minutes: scheduleLookaheadMinutes,
   events_checked: eventIds.length,
   snapshots_written: snapshotsWritten,
   finalized_events: finalizedEvents,
@@ -105,7 +116,19 @@ const summary = {
 console.log(JSON.stringify(summary, null, 2));
 if (!summary.ok && snapshotsWritten === 0) process.exitCode = 1;
 
-async function discoverLiveEventIds({ hl }) {
+async function discoverLiveEventIds({ hl, scheduleLookbackMinutes, scheduleLookaheadMinutes }) {
+  const [liveIds, scheduleIds] = await Promise.all([
+    discoverGetLiveEventIds({ hl }),
+    discoverScheduleEventIds({
+      hl,
+      lookbackMinutes: scheduleLookbackMinutes,
+      lookaheadMinutes: scheduleLookaheadMinutes,
+    }),
+  ]);
+  return normalizeIds([...liveIds, ...scheduleIds]);
+}
+
+async function discoverGetLiveEventIds({ hl }) {
   const url = new URL(LOLESPORTS_GET_LIVE_URL);
   url.searchParams.set('hl', hl);
   const payload = await fetchJson(url.toString(), {
@@ -125,6 +148,60 @@ async function discoverLiveEventIds({ hl }) {
     ids.push(String(match.id || event.id || ''));
   }
   return normalizeIds(ids);
+}
+
+async function discoverScheduleEventIds({ hl, lookbackMinutes, lookaheadMinutes }) {
+  const payloads = await fetchSchedulePages({ hl });
+  const now = Date.now();
+  const lookbackMs = Math.max(0, Number(lookbackMinutes || 0)) * 60 * 1000;
+  const lookaheadMs = Math.max(0, Number(lookaheadMinutes || 0)) * 60 * 1000;
+  const ids = [];
+  for (const payload of payloads) {
+    const events = payload?.data?.schedule?.events;
+    if (!Array.isArray(events)) continue;
+    for (const event of events) {
+      if (!event || event.type !== 'match') continue;
+      if (!eventWithinCollectionWindow(event, { now, lookbackMs, lookaheadMs })) continue;
+      ids.push(String(event.match?.id || event.id || ''));
+    }
+  }
+  return normalizeIds(ids);
+}
+
+async function fetchSchedulePages({ hl }) {
+  const first = await fetchSchedulePage({ hl });
+  const pages = [first];
+  const pageInfo = first?.data?.schedule?.pages || {};
+  for (const direction of ['older', 'newer']) {
+    const token = pageInfo?.[direction];
+    if (!token) continue;
+    try {
+      pages.push(await fetchSchedulePage({ hl, pageToken: token }));
+    } catch (error) {
+      errors.push({ stage: `discover_schedule_${direction}`, message: errorMessage(error) });
+    }
+  }
+  return pages;
+}
+
+async function fetchSchedulePage({ hl, pageToken = '' }) {
+  const url = new URL(LOLESPORTS_GET_SCHEDULE_URL);
+  url.searchParams.set('hl', hl);
+  if (pageToken) url.searchParams.set('pageToken', pageToken);
+  return fetchJson(url.toString(), {
+    headers: {
+      'x-api-key': LOLESPORTS_PUBLIC_API_KEY,
+      accept: 'application/json',
+    },
+  });
+}
+
+function eventWithinCollectionWindow(event, { now, lookbackMs, lookaheadMs }) {
+  const state = String(event?.state || '').toLowerCase();
+  if (state === 'inprogress') return true;
+  const startMs = Date.parse(String(event?.startTime || ''));
+  if (!Number.isFinite(startMs)) return false;
+  return startMs >= now - lookbackMs && startMs <= now + lookaheadMs;
 }
 
 async function fetchJson(url, options = {}) {

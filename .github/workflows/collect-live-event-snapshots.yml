@@ -15,7 +15,7 @@ permissions:
 
 concurrency:
   group: collect-live-event-snapshots
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   collect:
