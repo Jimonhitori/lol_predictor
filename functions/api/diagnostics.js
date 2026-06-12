@@ -256,7 +256,14 @@ function arrayOfStrings(value) {
 
 function isBlockingPredictionArtifactWarning(warning) {
   const value = String(warning || '');
-  return !value.startsWith('blue_red_side_sanity_delta:');
+  const nonBlockingPrefixes = [
+    'blue_red_side_sanity_delta',
+    'blue_team_fallback_slug',
+    'red_team_fallback_slug',
+    'blue_team_no_history',
+    'red_team_no_history',
+  ];
+  return !nonBlockingPrefixes.some(prefix => value === prefix || value.startsWith(`${prefix}:`) || value.startsWith(`${prefix}=`));
 }
 
 function predictionArtifactWarnings(payload) {
