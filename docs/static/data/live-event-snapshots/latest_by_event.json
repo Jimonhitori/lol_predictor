@@ -35346,7 +35346,7 @@
   },
   "115548128963037575": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T15:40:09.076Z",
+    "checked_at": "2026-06-12T17:52:18.033Z",
     "event_id": "115548128963037575",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35359,7 +35359,7 @@
       "region": "",
       "best_of": "5",
       "status": "completed",
-      "start_time": "",
+      "start_time": "2026-06-12T17:00:00.000Z",
       "teams": [
         {
           "id": "100205573496804586",
@@ -35549,7 +35549,7 @@
   },
   "116520394663535894": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T15:40:09.076Z",
+    "checked_at": "2026-06-12T17:52:18.033Z",
     "event_id": "116520394663535894",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35562,7 +35562,7 @@
       "region": "",
       "best_of": "5",
       "status": "completed",
-      "start_time": "",
+      "start_time": "2026-06-12T19:00:00.000Z",
       "teams": [
         {
           "id": "113843163628949793",
@@ -35752,9 +35752,9 @@
   },
   "116634529527091479": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T15:40:09.076Z",
+    "checked_at": "2026-06-12T17:52:18.033Z",
     "event_id": "116634529527091479",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -35764,8 +35764,8 @@
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "unstarted",
-      "start_time": "",
+      "status": "completed",
+      "start_time": "2026-06-13T00:00:00.000Z",
       "teams": [
         {
           "id": "105503948999800557",
@@ -35779,14 +35779,14 @@
           "name": "MISA Esports",
           "code": "MISA",
           "image": "http://static.lolesports.com/teams/1737386153294_MisaEsports.png",
-          "game_wins": "0"
+          "game_wins": "2"
         }
       ],
       "games": [
         {
           "id": "116634529527091480",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "105503948999800557",
             "team_name": "E Wie Einfach E-Sports",
@@ -35799,13 +35799,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -35819,7 +35819,7 @@
         {
           "id": "116634529527091481",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "111624100955490493",
             "team_name": "MISA Esports",
@@ -35832,13 +35832,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -35852,7 +35852,7 @@
         {
           "id": "116634529527091482",
           "number": 3,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "105503948999800557",
             "team_name": "E Wie Einfach E-Sports",
@@ -35865,7 +35865,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -35889,7 +35889,7 @@
   },
   "116634566270405047": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T15:40:09.076Z",
+    "checked_at": "2026-06-12T17:52:18.033Z",
     "event_id": "116634566270405047",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -35902,7 +35902,7 @@
       "region": "",
       "best_of": "3",
       "status": "unstarted",
-      "start_time": "",
+      "start_time": "2026-06-13T03:00:00.000Z",
       "teams": [
         {
           "id": "105515219038427019",
@@ -36026,276 +36026,46 @@
   },
   "116634566270405071": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T15:40:09.076Z",
+    "checked_at": "2026-06-12T17:52:18.033Z",
     "event_id": "116634566270405071",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566270405071",
-      "league": "EMEA Masters",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "3",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "102787200149928963",
-          "name": "WLGaming",
-          "code": "WLG",
-          "image": "http://static.lolesports.com/teams/WLGlogo.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "109642680932009857",
-          "name": "G2 NORD",
-          "code": "G2N",
-          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116634566270405072",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "102787200149928963",
-            "team_name": "WLGaming",
-            "team_code": "WLG"
-          },
-          "red": {
-            "team_id": "109642680932009857",
-            "team_name": "G2 NORD",
-            "team_code": "G2N"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116634566270405073",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109642680932009857",
-            "team_name": "G2 NORD",
-            "team_code": "G2N"
-          },
-          "red": {
-            "team_id": "102787200149928963",
-            "team_name": "WLGaming",
-            "team_code": "WLG"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116634566270405074",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "102787200149928963",
-            "team_name": "WLGaming",
-            "team_code": "WLG"
-          },
-          "red": {
-            "team_id": "109642680932009857",
-            "team_name": "G2 NORD",
-            "team_code": "G2N"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116634566270405095": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T15:40:09.076Z",
+    "checked_at": "2026-06-12T17:52:18.033Z",
     "event_id": "116634566270405095",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566270405095",
-      "league": "EMEA Masters",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "3",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "109696073114910519",
-          "name": "Anubis Gaming",
-          "code": "ANB",
-          "image": "http://static.lolesports.com/teams/1738571697908_logo.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "107416483509696259",
-          "name": "Eintracht Spandau",
-          "code": "EINS",
-          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116634566270405096",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109696073114910519",
-            "team_name": "Anubis Gaming",
-            "team_code": "ANB"
-          },
-          "red": {
-            "team_id": "107416483509696259",
-            "team_name": "Eintracht Spandau",
-            "team_code": "EINS"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116634566270405097",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107416483509696259",
-            "team_name": "Eintracht Spandau",
-            "team_code": "EINS"
-          },
-          "red": {
-            "team_id": "109696073114910519",
-            "team_name": "Anubis Gaming",
-            "team_code": "ANB"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116634566270405098",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109696073114910519",
-            "team_name": "Anubis Gaming",
-            "team_code": "ANB"
-          },
-          "red": {
-            "team_id": "107416483509696259",
-            "team_name": "Eintracht Spandau",
-            "team_code": "EINS"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   }
 }
