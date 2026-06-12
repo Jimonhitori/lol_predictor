@@ -35346,7 +35346,7 @@
   },
   "115548128963037575": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T19:47:01.844Z",
+    "checked_at": "2026-06-12T21:20:55.020Z",
     "event_id": "115548128963037575",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35549,7 +35549,7 @@
   },
   "116520394663535894": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T19:47:01.844Z",
+    "checked_at": "2026-06-12T21:20:55.020Z",
     "event_id": "116520394663535894",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35752,7 +35752,7 @@
   },
   "116634529527091479": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T19:47:01.844Z",
+    "checked_at": "2026-06-12T21:20:55.020Z",
     "event_id": "116634529527091479",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35889,29 +35889,144 @@
   },
   "116634566270405047": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T19:47:01.844Z",
+    "checked_at": "2026-06-12T21:20:55.020Z",
     "event_id": "116634566270405047",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566270405047",
-      "league": "",
+      "league": "EMEA Masters",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "3",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "107416342401528388",
+          "name": "Forsaken",
+          "code": "FSK",
+          "image": "http://static.lolesports.com/teams/1702894248711_1500_FSK_MONO.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "105515219038427019",
+          "name": "Karmine Corp Blue",
+          "code": "KCB",
+          "image": "http://static.lolesports.com/teams/1765897112519_WHITE.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116634566270405048",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
+          },
+          "red": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566270405049",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
+          },
+          "red": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566270405050",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "red": {
+            "team_id": "107416342401528388",
+            "team_name": "Forsaken",
+            "team_code": "FSK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116634566270405071": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T19:47:01.844Z",
+    "checked_at": "2026-06-12T21:20:55.020Z",
     "event_id": "116634566270405071",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36048,7 +36163,7 @@
   },
   "116634566270405095": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T19:47:01.844Z",
+    "checked_at": "2026-06-12T21:20:55.020Z",
     "event_id": "116634566270405095",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36185,7 +36300,7 @@
   },
   "115548128963037581": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T19:47:01.844Z",
+    "checked_at": "2026-06-12T21:20:55.020Z",
     "event_id": "115548128963037581",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -36361,6 +36476,346 @@
             "team_id": "100205573495116443",
             "team_name": "Gen.G Esports",
             "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116453476471776166": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-12T21:20:55.020Z",
+    "event_id": "116453476471776166",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116453476471776166",
+      "league": "LJL",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "116046732670043900",
+          "name": "Rising Gaming",
+          "code": "RGA",
+          "image": "http://static.lolesports.com/teams/1771324524126_rsg_full_color_onW.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116435864316749917",
+          "name": "Arneb",
+          "code": "ARB",
+          "image": "http://static.lolesports.com/teams/1776670285509_Arneblogoblack-arthur.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116453476471776167",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776168",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776169",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115616219464607515": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-12T21:20:55.020Z",
+    "event_id": "115616219464607515",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115616219464607515",
+      "league": "LPL",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "99566404853854212",
+          "name": "BILIBILI GAMING",
+          "code": "BLG",
+          "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "98767991887166787",
+          "name": "Xi'an Team WE",
+          "code": "WE",
+          "image": "http://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115616219464607516",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "red": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607517",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
+          },
+          "red": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607518",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "red": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607519",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
+          },
+          "red": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607520",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "red": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
           },
           "winner": "",
           "live": {
