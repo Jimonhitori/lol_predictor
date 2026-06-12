@@ -10,18 +10,17 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 5,
+  "blocker_count": 4,
   "blockers": [
     "live training readiness report is missing",
     "live model evaluation report is missing",
     "live replay summary is missing",
-    "live operations wiring report is missing",
-    "public manifest does not expose a live model"
+    "live operations wiring report is missing"
   ],
   "checks": {
     "collection_config_valid": true,
     "evaluation_display_ready": false,
-    "manifest_exposes_model": false,
+    "manifest_exposes_model": true,
     "ops_wiring_valid": false,
     "replay_ready": false,
     "serving_artifacts_valid": true,
@@ -33,7 +32,6 @@
     "Collect or sync more completed-game live frames, then rebuild live features.",
     "Train/evaluate the live model until operational_summary recommends display.",
     "Run live replay on stored frames and verify <=30s interval coverage.",
-    "Publish and validate live_logistic.json plus live_model_manifest.json.",
     "Configure D1, Cloudflare secrets, and Worker smoke checks."
   ],
   "production_ready": false,
@@ -113,7 +111,7 @@
       },
       "id": "serving_artifacts",
       "label": "Public model artifacts are internally consistent",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
@@ -126,8 +124,9 @@
     }
   ],
   "stage": "collect_live_frames",
-  "warning_count": 1,
+  "warning_count": 2,
   "warnings": [
-    "live training pipeline summary is missing"
+    "live training pipeline summary is missing",
+    "public manifest uses OE bootstrap fallback while production live model is missing"
   ]
 }
