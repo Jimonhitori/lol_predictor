@@ -1,59 +1,159 @@
 {
-  "source": "lolesports_api",
+  "source": "analyzer_schedule",
   "matches": [
     {
-      "id": "116056873411008590",
-      "league": "LRN",
+      "id": "116170292916591253",
+      "league": "NACL",
       "league_group": "secondary",
       "region": "americas",
-      "start_time": "2026-05-18T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "SDM Tigres",
-      "red_team": "Zeu5 Esports",
-      "blue_code": "SDM",
-      "red_code": "Z5",
-      "blue_image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
-      "red_image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "5",
-      "source": "lolesports_api"
+      "block_name": "",
+      "best_of": "3",
+      "status": "completed",
+      "teams": [
+        {
+          "id": "102141671183409133",
+          "name": "Maryville University",
+          "code": "MU",
+          "image": "http://static.lolesports.com/teams/1773762488904_maryvilleesportslogo.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "106857761435870473",
+          "name": "Supernova",
+          "code": "SN",
+          "image": "http://static.lolesports.com/teams/1641603984263_SN.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116170292916591254",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "102141671183409133",
+            "team_name": "Maryville University",
+            "team_code": "MU"
+          },
+          "red": {
+            "team_id": "106857761435870473",
+            "team_name": "Supernova",
+            "team_code": "SN"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916591255",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "102141671183409133",
+            "team_name": "Maryville University",
+            "team_code": "MU"
+          },
+          "red": {
+            "team_id": "106857761435870473",
+            "team_name": "Supernova",
+            "team_code": "SN"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916591256",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "102141671183409133",
+            "team_name": "Maryville University",
+            "team_code": "MU"
+          },
+          "red": {
+            "team_id": "106857761435870473",
+            "team_name": "Supernova",
+            "team_code": "SN"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T20:00:00Z"
     },
     {
-      "id": "116056873411008572",
-      "league": "LRN",
+      "id": "116170292916656869",
+      "league": "NACL",
       "league_group": "secondary",
       "region": "americas",
-      "start_time": "2026-05-25T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "G3V e-sports",
-      "red_team": "FUEGO",
-      "blue_code": "G3V",
-      "red_code": "FUE",
-      "blue_image": "https://static.lolesports.com/teams/1771401260130_FULL_COLOR_FOR_DARK_BG.png",
-      "red_image": "https://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "5",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116056873411008596",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-06-01T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "TBD",
-      "red_team": "TBD",
-      "blue_code": "TBD",
-      "red_code": "TBD",
-      "blue_image": "https://static.lolesports.com/teams/team-tbd.png",
-      "red_image": "https://static.lolesports.com/teams/team-tbd.png",
-      "blue_score": "",
-      "red_score": "",
-      "best_of": "5",
-      "source": "lolesports_api"
+      "block_name": "",
+      "best_of": "3",
+      "status": "completed",
+      "teams": [
+        {
+          "id": "109783170393931575",
+          "name": "Conviction",
+          "code": "CNV",
+          "image": "http://static.lolesports.com/teams/1675158238331_Conviction.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "114746424759893687",
+          "name": "Dorado Gaming",
+          "code": "DOG",
+          "image": "http://static.lolesports.com/teams/1750891473240_Dorado_Gaminglogo_square1.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116170292916656870",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "114746424759893687",
+            "team_name": "Dorado Gaming",
+            "team_code": "DOG"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916656871",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "114746424759893687",
+            "team_name": "Dorado Gaming",
+            "team_code": "DOG"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916656872",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "114746424759893687",
+            "team_name": "Dorado Gaming",
+            "team_code": "DOG"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T23:00:00Z"
     }
   ]
 }
