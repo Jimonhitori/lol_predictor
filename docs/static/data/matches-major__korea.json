@@ -1,6 +1,237 @@
 {
-  "source": "lolesports_api",
+  "source": "analyzer_schedule",
   "matches": [
+    {
+      "id": "115548128962971923",
+      "league": "LCK",
+      "league_group": "major",
+      "region": "korea",
+      "block_name": "",
+      "best_of": "3",
+      "status": "completed",
+      "teams": [
+        {
+          "id": "100725845022060229",
+          "name": "BNK FEARX",
+          "code": "BFX",
+          "image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "100205573495116443",
+          "name": "Gen.G Esports",
+          "code": "GEN",
+          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128962971924",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845022060229",
+            "team_name": "BNK FEARX",
+            "team_code": "BFX"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "live": {}
+        },
+        {
+          "id": "115548128962971925",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845022060229",
+            "team_name": "BNK FEARX",
+            "team_code": "BFX"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "live": {}
+        },
+        {
+          "id": "115548128962971926",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "100725845022060229",
+            "team_name": "BNK FEARX",
+            "team_code": "BFX"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T08:00:00Z"
+    },
+    {
+      "id": "115548128963037555",
+      "league": "LCK",
+      "league_group": "major",
+      "region": "korea",
+      "block_name": "",
+      "best_of": "3",
+      "status": "completed",
+      "teams": [
+        {
+          "id": "99566404585387054",
+          "name": "KIWOOM DRX",
+          "code": "KRX",
+          "image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "99566404579461230",
+          "name": "kt Rolster",
+          "code": "KT",
+          "image": "http://static.lolesports.com/teams/kt_darkbackground.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128963037556",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "red": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "live": {}
+        },
+        {
+          "id": "115548128963037557",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "red": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "live": {}
+        },
+        {
+          "id": "115548128963037558",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404585387054",
+            "team_name": "KIWOOM DRX",
+            "team_code": "KRX"
+          },
+          "red": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T10:00:00Z"
+    },
+    {
+      "id": "115548128962971867",
+      "league": "LCK",
+      "league_group": "major",
+      "region": "korea",
+      "block_name": "",
+      "best_of": "3",
+      "status": "inProgress",
+      "teams": [
+        {
+          "id": "100205573496804586",
+          "name": "Hanwha Life Esports",
+          "code": "HLE",
+          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "100725845018863243",
+          "name": "Dplus KIA",
+          "code": "DK",
+          "image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128962971868",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "red": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "live": {}
+        },
+        {
+          "id": "115548128962971869",
+          "number": 2,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "red": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "live": {}
+        },
+        {
+          "id": "115548128962971870",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-15T08:00:00Z"
+    },
     {
       "id": "115548128962971895",
       "league": "LCK",
@@ -56,168 +287,6 @@
       "source": "lolesports_api"
     },
     {
-      "id": "115548128963037519",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-17T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "KIWOOM DRX",
-      "red_team": "HANJIN BRION",
-      "blue_code": "KRX",
-      "red_code": "BRO",
-      "blue_image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
-      "red_image": "http://static.lolesports.com/teams/1716454325887_Nowyprojekt.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971911",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-20T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "T1",
-      "red_team": "KIWOOM DRX",
-      "blue_code": "T1",
-      "red_code": "KRX",
-      "blue_image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
-      "red_image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128963037551",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-20T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "NONGSHIM RED FORCE",
-      "red_team": "kt Rolster",
-      "blue_code": "NS",
-      "red_code": "KT",
-      "blue_image": "http://static.lolesports.com/teams/NSFullonDark.png",
-      "red_image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962906315",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-21T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "BNK FEARX",
-      "red_team": "Hanwha Life Esports",
-      "blue_code": "BFX",
-      "red_code": "HLE",
-      "blue_image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
-      "red_image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128963037507",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-21T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Dplus KIA",
-      "red_team": "HANJIN BRION",
-      "blue_code": "DK",
-      "red_code": "BRO",
-      "blue_image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
-      "red_image": "http://static.lolesports.com/teams/1716454325887_Nowyprojekt.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971963",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-22T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "DN SOOPers",
-      "red_team": "KIWOOM DRX",
-      "blue_code": "DNS",
-      "red_code": "KRX",
-      "blue_image": "http://static.lolesports.com/teams/1767340467921_DN_SOOPerslogo_profile.webp",
-      "red_image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128963037527",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-22T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "kt Rolster",
-      "red_team": "Gen.G Esports",
-      "blue_code": "KT",
-      "red_code": "GEN",
-      "blue_image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-      "red_image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971927",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-23T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Dplus KIA",
-      "red_team": "BNK FEARX",
-      "blue_code": "DK",
-      "red_code": "BFX",
-      "blue_image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
-      "red_image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971875",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-23T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "NONGSHIM RED FORCE",
-      "red_team": "Hanwha Life Esports",
-      "blue_code": "NS",
-      "red_code": "HLE",
-      "blue_image": "http://static.lolesports.com/teams/NSFullonDark.png",
-      "red_image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
       "id": "115548128962971947",
       "league": "LCK",
       "league_group": "major",
@@ -254,184 +323,74 @@
       "source": "lolesports_api"
     },
     {
-      "id": "115548128962971863",
-      "league": "LCK",
+      "id": "LCK/2026 Season/Road to MSI_Round 3_1",
+      "league": "LCK 2026 Road to MSI",
       "league_group": "major",
       "region": "korea",
-      "start_time": "2026-05-27T08:00:00Z",
+      "start_time": "2026-06-12T08:00:00Z",
       "status": "unstarted",
-      "blue_team": "Gen.G Esports",
-      "red_team": "Hanwha Life Esports",
-      "blue_code": "GEN",
-      "red_code": "HLE",
-      "blue_image": "https://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-      "red_image": "https://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971939",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-27T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "BNK FEARX",
-      "red_team": "KIWOOM DRX",
-      "blue_code": "BFX",
-      "red_code": "KRX",
-      "blue_image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
-      "red_image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971959",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-28T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "DN SOOPers",
-      "red_team": "NONGSHIM RED FORCE",
-      "blue_code": "DNS",
-      "red_code": "NS",
-      "blue_image": "http://static.lolesports.com/teams/1767340467921_DN_SOOPerslogo_profile.webp",
-      "red_image": "http://static.lolesports.com/teams/NSFullonDark.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971903",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-28T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "kt Rolster",
+      "blue_team": "Hanwha Life Esports",
       "red_team": "T1",
-      "blue_code": "KT",
+      "blue_code": "HLE",
       "red_code": "T1",
-      "blue_image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-      "red_image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
+      "blue_image": "",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Hanwha Life Esports",
+          "code": "HLE",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "T1",
+          "code": "T1",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     },
     {
-      "id": "115548128963037547",
-      "league": "LCK",
+      "id": "LCK/2026 Season/Road to MSI_Round 3_2",
+      "league": "LCK 2026 Road to MSI",
       "league_group": "major",
       "region": "korea",
-      "start_time": "2026-05-29T08:00:00Z",
+      "start_time": "2026-06-13T06:00:00Z",
       "status": "unstarted",
-      "blue_team": "Dplus KIA",
-      "red_team": "KIWOOM DRX",
-      "blue_code": "DK",
-      "red_code": "KRX",
-      "blue_image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
-      "red_image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128963037503",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-29T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Gen.G Esports",
-      "red_team": "HANJIN BRION",
-      "blue_code": "GEN",
-      "red_code": "BRO",
-      "blue_image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-      "red_image": "http://static.lolesports.com/teams/1716454325887_Nowyprojekt.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971955",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-30T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "kt Rolster",
-      "red_team": "DN SOOPers",
-      "blue_code": "KT",
-      "red_code": "DNS",
-      "blue_image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-      "red_image": "http://static.lolesports.com/teams/1767340467921_DN_SOOPerslogo_profile.webp",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971883",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-30T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "BNK FEARX",
-      "red_team": "T1",
-      "blue_code": "BFX",
-      "red_code": "T1",
-      "blue_image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
-      "red_image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971859",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-31T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "HANJIN BRION",
-      "red_team": "Hanwha Life Esports",
-      "blue_code": "BRO",
-      "red_code": "HLE",
-      "blue_image": "http://static.lolesports.com/teams/1716454325887_Nowyprojekt.png",
-      "red_image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128963037543",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-31T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "NONGSHIM RED FORCE",
-      "red_team": "Dplus KIA",
-      "blue_code": "NS",
-      "red_code": "DK",
-      "blue_image": "http://static.lolesports.com/teams/NSFullonDark.png",
-      "red_image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
+      "blue_team": "Gen.G",
+      "red_team": "KT Rolster",
+      "blue_code": "GG",
+      "red_code": "KR",
+      "blue_image": "",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Gen.G",
+          "code": "GG",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "KT Rolster",
+          "code": "KR",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     }
   ]
 }

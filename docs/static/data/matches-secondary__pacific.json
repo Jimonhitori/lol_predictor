@@ -1,167 +1,425 @@
 {
-  "source": "lolesports_api",
+  "source": "analyzer_schedule",
   "matches": [
     {
-      "id": "116520394663535840",
-      "league": "VCS",
+      "id": "116453476471776150",
+      "league": "LJL",
       "league_group": "secondary",
       "region": "pacific",
-      "start_time": "2026-05-20T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Saigon Zen Esport",
-      "red_team": "Saigon MVKE Academy",
-      "blue_code": "ZEN",
-      "red_code": "MVKA",
-      "blue_image": "http://static.lolesports.com/teams/1777960619021_saigon_zen_logo_export-removebg-preview.png",
-      "red_image": "http://static.lolesports.com/teams/1771230115237_Orange_Black_Logo.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "block_name": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "status": "completed",
+      "teams": [
+        {
+          "id": "116046738539653197",
+          "name": "UWinks",
+          "code": "UWS",
+          "image": "http://static.lolesports.com/teams/1771324707957_uw_full_color_onW.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "116046715496396520",
+          "name": "L Guide Gaming",
+          "code": "LGG",
+          "image": "http://static.lolesports.com/teams/1771324562336_lgg_full_color_onW.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116453476471776151",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116046738539653197",
+            "team_name": "UWinks",
+            "team_code": "UWS"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "live": {}
+        },
+        {
+          "id": "116453476471776152",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "red": {
+            "team_id": "116046738539653197",
+            "team_name": "UWinks",
+            "team_code": "UWS"
+          },
+          "live": {}
+        },
+        {
+          "id": "116453476471776153",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116046738539653197",
+            "team_name": "UWinks",
+            "team_code": "UWS"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T08:00:00Z"
     },
     {
-      "id": "116520394663535880",
+      "id": "116520394663535852",
       "league": "VCS",
       "league_group": "secondary",
       "region": "pacific",
-      "start_time": "2026-05-20T13:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Saigon Warrior",
-      "red_team": "Saigon 9Gaming",
-      "blue_code": "SGW",
-      "red_code": "9G",
-      "blue_image": "http://static.lolesports.com/teams/1771230875226_logo_SW-removebg-preview.png",
-      "red_image": "http://static.lolesports.com/teams/1771230747972_9Gaming_Ngang_Vng_en.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "block_name": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "status": "completed",
+      "teams": [
+        {
+          "id": "114029502022567838",
+          "name": "TP.HCM SN CyberCore Esports",
+          "code": "SCBC",
+          "image": "http://static.lolesports.com/teams/1739952109504_image11.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "116079377418978691",
+          "name": "Saigon 9Gaming",
+          "code": "9G",
+          "image": "http://static.lolesports.com/teams/1771230747972_9Gaming_Ngang_Vng_en.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520394663535853",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
+          },
+          "red": {
+            "team_id": "116079377418978691",
+            "team_name": "Saigon 9Gaming",
+            "team_code": "9G"
+          },
+          "live": {}
+        },
+        {
+          "id": "116520394663535854",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
+          },
+          "red": {
+            "team_id": "116079377418978691",
+            "team_name": "Saigon 9Gaming",
+            "team_code": "9G"
+          },
+          "live": {}
+        },
+        {
+          "id": "116520394663535855",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116079377418978691",
+            "team_name": "Saigon 9Gaming",
+            "team_code": "9G"
+          },
+          "red": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T10:00:00Z"
     },
     {
-      "id": "116520394663535848",
+      "id": "116453476471579446",
+      "league": "LJL",
+      "league_group": "secondary",
+      "region": "pacific",
+      "block_name": "",
+      "best_of": "3",
+      "status": "completed",
+      "teams": [
+        {
+          "id": "116435864316749917",
+          "name": "Arneb",
+          "code": "ARB",
+          "image": "http://static.lolesports.com/teams/1776670285509_Arneblogoblack-arthur.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "109668849651338559",
+          "name": "FENNEL",
+          "code": "FL",
+          "image": "http://static.lolesports.com/teams/1673413831349_fl.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116453476471644983",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "live": {}
+        },
+        {
+          "id": "116453476471776056",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "live": {}
+        },
+        {
+          "id": "116453476471776057",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T11:00:00Z"
+    },
+    {
+      "id": "116520394663535868",
       "league": "VCS",
       "league_group": "secondary",
       "region": "pacific",
-      "start_time": "2026-05-21T10:00:00Z",
+      "block_name": "",
+      "best_of": "3",
+      "status": "completed",
+      "teams": [
+        {
+          "id": "113843163628949793",
+          "name": "Saigon Dino",
+          "code": "DINO",
+          "image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "116520427289188052",
+          "name": "Saigon Zen Esport",
+          "code": "ZEN",
+          "image": "http://static.lolesports.com/teams/1777960619021_saigon_zen_logo_export-removebg-preview.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520394663535869",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "live": {}
+        },
+        {
+          "id": "116520394663535870",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "live": {}
+        },
+        {
+          "id": "116520394663535871",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T13:00:00Z"
+    },
+    {
+      "id": "116453476471776130",
+      "league": "LJL",
+      "league_group": "secondary",
+      "region": "pacific",
+      "block_name": "",
+      "best_of": "3",
+      "status": "inProgress",
+      "teams": [
+        {
+          "id": "116046732670043900",
+          "name": "Rising Gaming",
+          "code": "RGA",
+          "image": "http://static.lolesports.com/teams/1771324524126_rsg_full_color_onW.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "113871708167519028",
+          "name": "DFM Academy",
+          "code": "DFMA",
+          "image": "http://static.lolesports.com/teams/1738334806335_dfm_full_color_onB.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116453476471776131",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "113871708167519028",
+            "team_name": "DFM Academy",
+            "team_code": "DFMA"
+          },
+          "live": {}
+        },
+        {
+          "id": "116453476471776132",
+          "number": 2,
+          "state": "inProgress",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "113871708167519028",
+            "team_name": "DFM Academy",
+            "team_code": "DFMA"
+          },
+          "live": {}
+        },
+        {
+          "id": "116453476471776133",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "113871708167519028",
+            "team_name": "DFM Academy",
+            "team_code": "DFMA"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-15T08:00:00Z"
+    },
+    {
+      "id": "VCS/2026 Season/Summer Playoffs_Round 1_2",
+      "league": "VCS 2026 Summer Playoffs",
+      "league_group": "secondary",
+      "region": "pacific",
+      "start_time": "2026-06-12T10:00:00Z",
       "status": "unstarted",
       "blue_team": "Saigon Dino",
-      "red_team": "TP.HCM SN CyberCore Esports",
-      "blue_code": "DINO",
-      "red_code": "SCBC",
-      "blue_image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
-      "red_image": "http://static.lolesports.com/teams/1739952109504_image11.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520394663535876",
-      "league": "VCS",
-      "league_group": "secondary",
-      "region": "pacific",
-      "start_time": "2026-05-21T13:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Saigon Zen Esport",
-      "red_team": "Saigon 9Gaming",
-      "blue_code": "ZEN",
-      "red_code": "9G",
-      "blue_image": "http://static.lolesports.com/teams/1777960619021_saigon_zen_logo_export-removebg-preview.png",
-      "red_image": "http://static.lolesports.com/teams/1771230747972_9Gaming_Ngang_Vng_en.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520394663535872",
-      "league": "VCS",
-      "league_group": "secondary",
-      "region": "pacific",
-      "start_time": "2026-05-22T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Saigon Warrior",
-      "red_team": "Saigon Dino",
-      "blue_code": "SGW",
-      "red_code": "DINO",
-      "blue_image": "http://static.lolesports.com/teams/1771230875226_logo_SW-removebg-preview.png",
-      "red_image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520394663535828",
-      "league": "VCS",
-      "league_group": "secondary",
-      "region": "pacific",
-      "start_time": "2026-05-22T13:00:00Z",
-      "status": "unstarted",
-      "blue_team": "TP.HCM SN CyberCore Esports",
-      "red_team": "Saigon MVKE Academy",
-      "blue_code": "SCBC",
-      "red_code": "MVKA",
-      "blue_image": "http://static.lolesports.com/teams/1739952109504_image11.png",
-      "red_image": "http://static.lolesports.com/teams/1771230115237_Orange_Black_Logo.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520394663535856",
-      "league": "VCS",
-      "league_group": "secondary",
-      "region": "pacific",
-      "start_time": "2026-05-27T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Saigon Zen Esport",
-      "red_team": "TP.HCM SN CyberCore Esports",
-      "blue_code": "ZEN",
-      "red_code": "SCBC",
-      "blue_image": "http://static.lolesports.com/teams/1777960619021_saigon_zen_logo_export-removebg-preview.png",
-      "red_image": "http://static.lolesports.com/teams/1739952109504_image11.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520394663535864",
-      "league": "VCS",
-      "league_group": "secondary",
-      "region": "pacific",
-      "start_time": "2026-05-27T13:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Saigon 9Gaming",
-      "red_team": "Saigon Dino",
-      "blue_code": "9G",
-      "red_code": "DINO",
-      "blue_image": "http://static.lolesports.com/teams/1771230747972_9Gaming_Ngang_Vng_en.png",
-      "red_image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520394663535844",
-      "league": "VCS",
-      "league_group": "secondary",
-      "region": "pacific",
-      "start_time": "2026-05-28T10:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Saigon Warrior",
-      "red_team": "Saigon MVKE Academy",
-      "blue_code": "SGW",
-      "red_code": "MVKA",
-      "blue_image": "http://static.lolesports.com/teams/1771230875226_logo_SW-removebg-preview.png",
-      "red_image": "http://static.lolesports.com/teams/1771230115237_Orange_Black_Logo.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
+      "red_team": "ZEN Esports (Vietnamese Team)",
+      "blue_code": "SD",
+      "red_code": "ZEVT",
+      "blue_image": "",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Saigon Dino",
+          "code": "SD",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "ZEN Esports (Vietnamese Team)",
+          "code": "ZEVT",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     }
   ]
 }

@@ -3,75 +3,16 @@
   "league": "LPL",
   "league_group": "major",
   "region": "china",
-  "block_name": "",
+  "start_time": "2026-05-17T09:00:00Z",
+  "status": "inProgress",
+  "blue_team": "Beijing JDG Esports",
+  "red_team": "Invictus Gaming",
+  "blue_code": "JDG",
+  "red_code": "IG",
+  "blue_image": "http://static.lolesports.com/teams/1627457924722_29.png",
+  "red_image": "http://static.lolesports.com/teams/1634762917340_300px-Invictus_Gaming_logo.png",
+  "blue_score": "0",
+  "red_score": "1",
   "best_of": "3",
-  "status": "unstarted",
-  "teams": [
-    {
-      "id": "99566404852189289",
-      "name": "Beijing JDG Esports",
-      "code": "JDG",
-      "image": "http://static.lolesports.com/teams/1627457924722_29.png",
-      "game_wins": "0"
-    },
-    {
-      "id": "99566404848691211",
-      "name": "Invictus Gaming",
-      "code": "IG",
-      "image": "http://static.lolesports.com/teams/1634762917340_300px-Invictus_Gaming_logo.png",
-      "game_wins": "0"
-    }
-  ],
-  "games": [
-    {
-      "id": "115615926677896648",
-      "number": 1,
-      "state": "unstarted",
-      "blue": {
-        "team_id": "99566404852189289",
-        "team_name": "Beijing JDG Esports",
-        "team_code": "JDG"
-      },
-      "red": {
-        "team_id": "99566404848691211",
-        "team_name": "Invictus Gaming",
-        "team_code": "IG"
-      },
-      "live": {}
-    },
-    {
-      "id": "115615926677896649",
-      "number": 2,
-      "state": "unstarted",
-      "blue": {
-        "team_id": "99566404848691211",
-        "team_name": "Invictus Gaming",
-        "team_code": "IG"
-      },
-      "red": {
-        "team_id": "99566404852189289",
-        "team_name": "Beijing JDG Esports",
-        "team_code": "JDG"
-      },
-      "live": {}
-    },
-    {
-      "id": "115615926677896650",
-      "number": 3,
-      "state": "unstarted",
-      "blue": {
-        "team_id": "99566404852189289",
-        "team_name": "Beijing JDG Esports",
-        "team_code": "JDG"
-      },
-      "red": {
-        "team_id": "99566404848691211",
-        "team_name": "Invictus Gaming",
-        "team_code": "IG"
-      },
-      "live": {}
-    }
-  ],
-  "source": "lolesports_api",
-  "start_time": "2026-05-17T09:00:00Z"
+  "source": "lolesports_api"
 }

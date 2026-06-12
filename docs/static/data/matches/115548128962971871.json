@@ -3,75 +3,16 @@
   "league": "LCK",
   "league_group": "major",
   "region": "korea",
-  "block_name": "",
+  "start_time": "2026-05-17T08:00:00Z",
+  "status": "inProgress",
+  "blue_team": "kt Rolster",
+  "red_team": "Hanwha Life Esports",
+  "blue_code": "KT",
+  "red_code": "HLE",
+  "blue_image": "http://static.lolesports.com/teams/kt_darkbackground.png",
+  "red_image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+  "blue_score": "1",
+  "red_score": "1",
   "best_of": "3",
-  "status": "unstarted",
-  "teams": [
-    {
-      "id": "100205573496804586",
-      "name": "Hanwha Life Esports",
-      "code": "HLE",
-      "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-      "game_wins": "0"
-    },
-    {
-      "id": "99566404579461230",
-      "name": "kt Rolster",
-      "code": "KT",
-      "image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-      "game_wins": "0"
-    }
-  ],
-  "games": [
-    {
-      "id": "115548128962971872",
-      "number": 1,
-      "state": "unstarted",
-      "blue": {
-        "team_id": "100205573496804586",
-        "team_name": "Hanwha Life Esports",
-        "team_code": "HLE"
-      },
-      "red": {
-        "team_id": "99566404579461230",
-        "team_name": "kt Rolster",
-        "team_code": "KT"
-      },
-      "live": {}
-    },
-    {
-      "id": "115548128962971873",
-      "number": 2,
-      "state": "unstarted",
-      "blue": {
-        "team_id": "100205573496804586",
-        "team_name": "Hanwha Life Esports",
-        "team_code": "HLE"
-      },
-      "red": {
-        "team_id": "99566404579461230",
-        "team_name": "kt Rolster",
-        "team_code": "KT"
-      },
-      "live": {}
-    },
-    {
-      "id": "115548128962971874",
-      "number": 3,
-      "state": "unstarted",
-      "blue": {
-        "team_id": "99566404579461230",
-        "team_name": "kt Rolster",
-        "team_code": "KT"
-      },
-      "red": {
-        "team_id": "100205573496804586",
-        "team_name": "Hanwha Life Esports",
-        "team_code": "HLE"
-      },
-      "live": {}
-    }
-  ],
-  "source": "lolesports_api",
-  "start_time": "2026-05-17T08:00:00Z"
+  "source": "lolesports_api"
 }
