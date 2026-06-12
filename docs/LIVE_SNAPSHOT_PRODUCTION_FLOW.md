@@ -183,13 +183,17 @@ Current deployed snapshot artifact check:
 - No Cloudflare D1/KV/R2 storage is required for this path.
 - If no live matches are active, artifacts remain unchanged and no deploy is
   created.
+- The collector discovers events from both LoL Esports `getLive` and nearby
+  `getSchedule` matches. The schedule fallback covers matches that are omitted
+  from the live listing but still have event details available.
 
 ## Known Limitations
 
 - GitHub scheduled workflows can be delayed by GitHub load. The nominal interval
   is 5 minutes, not a hard real-time SLA.
-- If LoL Esports `getLive` omits a match, it will only be collected if manually
-  forced with `event_id` or already tracked from a previous poll.
+- If both LoL Esports `getLive` and nearby `getSchedule` omit a match, it will
+  only be collected if manually forced with `event_id` or already tracked from a
+  previous poll.
 - The artifact records normalized site payloads, not every raw livestats frame.
   This is intentional to keep the site artifact small.
 - If the site `/api/live-event` itself fails for an event, that event cannot be
