@@ -120,7 +120,9 @@ export async function onRequestGet(context) {
     ...(liveStatus.ok && liveStatus.json?.display_ready === false ? ['live_status_display_not_ready'] : []),
     ...(liveStatus.ok && liveStatus.json?.production_ready === false ? ['live_status_production_not_ready'] : []),
     ...(Number(liveStatus.json?.blocker_count || 0) > 0 ? [`live_status_blockers:${Number(liveStatus.json.blocker_count)}`] : []),
-    ...(liveManifest.ok && liveManifest.json?.live_model_available === false ? ['analyzer_live_model_missing'] : []),
+    ...(liveManifest.ok && liveManifest.json?.live_model_available === false
+      ? [liveManifest.json?.oe_live_bootstrap?.available === true ? 'analyzer_live_model_bootstrap_only' : 'analyzer_live_model_missing']
+      : []),
   ];
   const contractWarnings = [
     ...(siteContract.json?.contract_version === EXPECTED_SITE_CONTRACT_VERSION ? [] : ['site_contract_version_mismatch']),
