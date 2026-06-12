@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-12T18:10:02.434082Z",
+  "generated_at": "2026-06-12T18:25:56.455900Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -26,9 +26,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Malaysia (National Team)->malaysia_national_team",
-        "blue_team_fallback_slug:malaysia_national_team",
+        "blue_team_no_history:malaysia_national_team",
         "red_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
-        "red_team_fallback_slug:hong_kong_national_team"
+        "red_team_no_history:hong_kong_national_team"
       ]
     },
     {
@@ -47,7 +47,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:Laos (National Team)->laos_national_team",
-        "red_team_fallback_slug:laos_national_team"
+        "red_team_no_history:laos_national_team"
       ]
     },
     {
@@ -66,9 +66,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
-        "blue_team_fallback_slug:saudi_arabia_national_team",
+        "blue_team_no_history:saudi_arabia_national_team",
         "red_team_fallback_slug:Pakistan (National Team)->pakistan_national_team",
-        "red_team_fallback_slug:pakistan_national_team"
+        "red_team_no_history:pakistan_national_team"
       ]
     },
     {
@@ -87,9 +87,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:United Arab Emirates (National Team)->united_arab_emirates_national_team",
-        "blue_team_fallback_slug:united_arab_emirates_national_team",
+        "blue_team_no_history:united_arab_emirates_national_team",
         "red_team_fallback_slug:Oman (National Team)->oman_national_team",
-        "red_team_fallback_slug:oman_national_team"
+        "red_team_no_history:oman_national_team"
       ]
     },
     {
@@ -108,9 +108,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:India (National Team)->india_national_team",
-        "blue_team_fallback_slug:india_national_team",
+        "blue_team_no_history:india_national_team",
         "red_team_fallback_slug:Sri Lanka (National Team)->sri_lanka_national_team",
-        "red_team_fallback_slug:sri_lanka_national_team"
+        "red_team_no_history:sri_lanka_national_team"
       ]
     },
     {
@@ -129,9 +129,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Kazakhstan (National Team)->kazakhstan_national_team",
-        "blue_team_fallback_slug:kazakhstan_national_team",
+        "blue_team_no_history:kazakhstan_national_team",
         "red_team_fallback_slug:Jordan (National Team)->jordan_national_team",
-        "red_team_fallback_slug:jordan_national_team"
+        "red_team_no_history:jordan_national_team"
       ]
     },
     {
@@ -150,9 +150,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
-        "blue_team_fallback_slug:hong_kong_national_team",
+        "blue_team_no_history:hong_kong_national_team",
         "red_team_fallback_slug:Kyrgyzstan (National Team)->kyrgyzstan_national_team",
-        "red_team_fallback_slug:kyrgyzstan_national_team"
+        "red_team_no_history:kyrgyzstan_national_team"
       ]
     },
     {
@@ -171,9 +171,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Laos (National Team)->laos_national_team",
-        "blue_team_fallback_slug:laos_national_team",
+        "blue_team_no_history:laos_national_team",
         "red_team_fallback_slug:Mongolia (National Team)->mongolia_national_team",
-        "red_team_fallback_slug:mongolia_national_team"
+        "red_team_no_history:mongolia_national_team"
       ]
     },
     {
@@ -192,9 +192,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
-        "blue_team_fallback_slug:saudi_arabia_national_team",
+        "blue_team_no_history:saudi_arabia_national_team",
         "red_team_fallback_slug:Oman (National Team)->oman_national_team",
-        "red_team_fallback_slug:oman_national_team"
+        "red_team_no_history:oman_national_team"
       ]
     },
     {
@@ -213,9 +213,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Spongecord prime->spongecord_prime",
-        "blue_team_fallback_slug:spongecord_prime",
+        "blue_team_no_history:spongecord_prime",
         "red_team_fallback_slug:Team Rift->team_rift",
-        "red_team_fallback_slug:team_rift"
+        "red_team_no_history:team_rift"
       ]
     },
     {
@@ -234,7 +234,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:LOOKSMAXXER->looksmaxxer",
-        "red_team_fallback_slug:looksmaxxer"
+        "red_team_no_history:looksmaxxer"
       ]
     },
     {
@@ -253,9 +253,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:TAKA ASCEND->taka_ascend",
-        "blue_team_fallback_slug:taka_ascend",
+        "blue_team_no_history:taka_ascend",
         "red_team_fallback_slug:Arrakis E-Sport->arrakis_e_sport",
-        "red_team_fallback_slug:arrakis_e_sport"
+        "red_team_no_history:arrakis_e_sport"
       ]
     },
     {
@@ -274,9 +274,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Kanji Esports AKA->kanji_esports_aka",
-        "blue_team_fallback_slug:kanji_esports_aka",
+        "blue_team_no_history:kanji_esports_aka",
         "red_team_fallback_slug:VfB x Engines Stuttgart->vfb_x_engines_stuttgart",
-        "red_team_fallback_slug:vfb_x_engines_stuttgart"
+        "red_team_no_history:vfb_x_engines_stuttgart"
       ]
     },
     {
@@ -295,9 +295,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:ZennIT Academy->zennit_academy",
-        "blue_team_fallback_slug:zennit_academy",
+        "blue_team_no_history:zennit_academy",
         "red_team_fallback_slug:BiPOLAR->bipolar",
-        "red_team_fallback_slug:bipolar"
+        "red_team_no_history:bipolar"
       ]
     },
     {
@@ -316,9 +316,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Circus Kittens->circus_kittens",
-        "blue_team_fallback_slug:circus_kittens",
+        "blue_team_no_history:circus_kittens",
         "red_team_fallback_slug:Locked In (Dutch Team)->locked_in_dutch_team",
-        "red_team_fallback_slug:locked_in_dutch_team"
+        "red_team_no_history:locked_in_dutch_team"
       ]
     },
     {
@@ -337,9 +337,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Neko Elite Kittens->neko_elite_kittens",
-        "blue_team_fallback_slug:neko_elite_kittens",
+        "blue_team_no_history:neko_elite_kittens",
         "red_team_fallback_slug:Team 300 Black->team_300_black",
-        "red_team_fallback_slug:team_300_black"
+        "red_team_no_history:team_300_black"
       ]
     },
     {
@@ -358,9 +358,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Pakistan (National Team)->pakistan_national_team",
-        "blue_team_fallback_slug:pakistan_national_team",
+        "blue_team_no_history:pakistan_national_team",
         "red_team_fallback_slug:United Arab Emirates (National Team)->united_arab_emirates_national_team",
-        "red_team_fallback_slug:united_arab_emirates_national_team"
+        "red_team_no_history:united_arab_emirates_national_team"
       ]
     },
     {
@@ -379,9 +379,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Sri Lanka (National Team)->sri_lanka_national_team",
-        "blue_team_fallback_slug:sri_lanka_national_team",
+        "blue_team_no_history:sri_lanka_national_team",
         "red_team_fallback_slug:Kazakhstan (National Team)->kazakhstan_national_team",
-        "red_team_fallback_slug:kazakhstan_national_team"
+        "red_team_no_history:kazakhstan_national_team"
       ]
     },
     {
@@ -400,9 +400,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:India (National Team)->india_national_team",
-        "blue_team_fallback_slug:india_national_team",
+        "blue_team_no_history:india_national_team",
         "red_team_fallback_slug:Jordan (National Team)->jordan_national_team",
-        "red_team_fallback_slug:jordan_national_team"
+        "red_team_no_history:jordan_national_team"
       ]
     },
     {
@@ -421,7 +421,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:Mongolia (National Team)->mongolia_national_team",
-        "red_team_fallback_slug:mongolia_national_team"
+        "red_team_no_history:mongolia_national_team"
       ]
     },
     {
@@ -440,9 +440,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Malaysia (National Team)->malaysia_national_team",
-        "blue_team_fallback_slug:malaysia_national_team",
+        "blue_team_no_history:malaysia_national_team",
         "red_team_fallback_slug:Kyrgyzstan (National Team)->kyrgyzstan_national_team",
-        "red_team_fallback_slug:kyrgyzstan_national_team"
+        "red_team_no_history:kyrgyzstan_national_team"
       ]
     },
     {
@@ -461,9 +461,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Oman (National Team)->oman_national_team",
-        "blue_team_fallback_slug:oman_national_team",
+        "blue_team_no_history:oman_national_team",
         "red_team_fallback_slug:Pakistan (National Team)->pakistan_national_team",
-        "red_team_fallback_slug:pakistan_national_team"
+        "red_team_no_history:pakistan_national_team"
       ]
     },
     {
@@ -498,9 +498,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
-        "blue_team_fallback_slug:saudi_arabia_national_team",
+        "blue_team_no_history:saudi_arabia_national_team",
         "red_team_fallback_slug:United Arab Emirates (National Team)->united_arab_emirates_national_team",
-        "red_team_fallback_slug:united_arab_emirates_national_team"
+        "red_team_no_history:united_arab_emirates_national_team"
       ]
     },
     {
@@ -519,9 +519,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Jordan (National Team)->jordan_national_team",
-        "blue_team_fallback_slug:jordan_national_team",
+        "blue_team_no_history:jordan_national_team",
         "red_team_fallback_slug:Sri Lanka (National Team)->sri_lanka_national_team",
-        "red_team_fallback_slug:sri_lanka_national_team"
+        "red_team_no_history:sri_lanka_national_team"
       ]
     },
     {
@@ -556,9 +556,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:India (National Team)->india_national_team",
-        "blue_team_fallback_slug:india_national_team",
+        "blue_team_no_history:india_national_team",
         "red_team_fallback_slug:Kazakhstan (National Team)->kazakhstan_national_team",
-        "red_team_fallback_slug:kazakhstan_national_team"
+        "red_team_no_history:kazakhstan_national_team"
       ]
     },
     {
@@ -593,7 +593,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:MT1 Vision->mt1_vision",
-        "red_team_fallback_slug:mt1_vision"
+        "red_team_no_history:mt1_vision"
       ]
     },
     {
@@ -612,9 +612,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:VES Japan->ves_japan",
-        "blue_team_fallback_slug:ves_japan",
+        "blue_team_no_history:ves_japan",
         "red_team_fallback_slug:Bitfix RG->bitfix_rg",
-        "red_team_fallback_slug:bitfix_rg"
+        "red_team_no_history:bitfix_rg"
       ]
     },
     {
@@ -633,9 +633,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Clã NKZ->cl_nkz",
-        "blue_team_fallback_slug:cl_nkz",
+        "blue_team_no_history:cl_nkz",
         "red_team_fallback_slug:SharkBite Furious Gaming White->sharkbite_furious_gaming_white",
-        "red_team_fallback_slug:sharkbite_furious_gaming_white"
+        "red_team_no_history:sharkbite_furious_gaming_white"
       ]
     },
     {
@@ -654,9 +654,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Gangnarok->gangnarok",
-        "blue_team_fallback_slug:gangnarok",
+        "blue_team_no_history:gangnarok",
         "red_team_fallback_slug:Neon eSports (Brazilian Team)->neon_esports_brazilian_team",
-        "red_team_fallback_slug:neon_esports_brazilian_team"
+        "red_team_no_history:neon_esports_brazilian_team"
       ]
     },
     {
@@ -675,9 +675,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:RMD Gaming Trainee->rmd_gaming_trainee",
-        "blue_team_fallback_slug:rmd_gaming_trainee",
+        "blue_team_no_history:rmd_gaming_trainee",
         "red_team_fallback_slug:Clã NKZ Vórtex->cl_nkz_v_rtex",
-        "red_team_fallback_slug:cl_nkz_v_rtex"
+        "red_team_no_history:cl_nkz_v_rtex"
       ]
     },
     {
@@ -696,9 +696,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Mountain Bears Gaming->mountain_bears_gaming",
-        "blue_team_fallback_slug:mountain_bears_gaming",
+        "blue_team_no_history:mountain_bears_gaming",
         "red_team_fallback_slug:Juventus Gaming Red->juventus_gaming_red",
-        "red_team_fallback_slug:juventus_gaming_red"
+        "red_team_no_history:juventus_gaming_red"
       ]
     },
     {
@@ -717,9 +717,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:SharkBite Furious Gaming Black->sharkbite_furious_gaming_black",
-        "blue_team_fallback_slug:sharkbite_furious_gaming_black",
+        "blue_team_no_history:sharkbite_furious_gaming_black",
         "red_team_fallback_slug:Team Legati->team_legati",
-        "red_team_fallback_slug:team_legati"
+        "red_team_no_history:team_legati"
       ]
     },
     {
@@ -738,9 +738,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:SharkBite Furious Gaming Red->sharkbite_furious_gaming_red",
-        "blue_team_fallback_slug:sharkbite_furious_gaming_red",
+        "blue_team_no_history:sharkbite_furious_gaming_red",
         "red_team_fallback_slug:LOADING Gaming->loading_gaming",
-        "red_team_fallback_slug:loading_gaming"
+        "red_team_no_history:loading_gaming"
       ]
     },
     {
@@ -759,9 +759,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:SharkBite Furious Gaming Yellow->sharkbite_furious_gaming_yellow",
-        "blue_team_fallback_slug:sharkbite_furious_gaming_yellow",
+        "blue_team_no_history:sharkbite_furious_gaming_yellow",
         "red_team_fallback_slug:Docta Esports Club->docta_esports_club",
-        "red_team_fallback_slug:docta_esports_club"
+        "red_team_no_history:docta_esports_club"
       ]
     },
     {
@@ -780,9 +780,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:ROGUE CREW->rogue_crew",
-        "blue_team_fallback_slug:rogue_crew",
+        "blue_team_no_history:rogue_crew",
         "red_team_fallback_slug:Lufeng->lufeng",
-        "red_team_fallback_slug:lufeng"
+        "red_team_no_history:lufeng"
       ]
     },
     {
@@ -801,7 +801,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:Smurfando Peak->smurfando_peak",
-        "red_team_fallback_slug:smurfando_peak"
+        "red_team_no_history:smurfando_peak"
       ]
     },
     {
@@ -820,9 +820,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Marines E-Sports->marines_e_sports",
-        "blue_team_fallback_slug:marines_e_sports",
+        "blue_team_no_history:marines_e_sports",
         "red_team_fallback_slug:Smoke Tram Academy->smoke_tram_academy",
-        "red_team_fallback_slug:smoke_tram_academy"
+        "red_team_no_history:smoke_tram_academy"
       ]
     },
     {
@@ -841,9 +841,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:São Salvador->s_o_salvador",
-        "blue_team_fallback_slug:s_o_salvador",
+        "blue_team_no_history:s_o_salvador",
         "red_team_fallback_slug:NeverMind->nevermind",
-        "red_team_fallback_slug:nevermind"
+        "red_team_no_history:nevermind"
       ]
     },
     {
@@ -862,9 +862,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Filhos do Moita->filhos_do_moita",
-        "blue_team_fallback_slug:filhos_do_moita",
+        "blue_team_no_history:filhos_do_moita",
         "red_team_fallback_slug:Final Level eSports->final_level_esports",
-        "red_team_fallback_slug:final_level_esports"
+        "red_team_no_history:final_level_esports"
       ]
     },
     {
@@ -883,7 +883,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:AMD Team->amd_team",
-        "red_team_fallback_slug:amd_team"
+        "red_team_no_history:amd_team"
       ]
     },
     {
@@ -902,9 +902,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Dark Falcon->dark_falcon",
-        "blue_team_fallback_slug:dark_falcon",
+        "blue_team_no_history:dark_falcon",
         "red_team_fallback_slug:Marere e-Sports->marere_e_sports",
-        "red_team_fallback_slug:marere_e_sports"
+        "red_team_no_history:marere_e_sports"
       ]
     },
     {
@@ -923,7 +923,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:Smoke Tram->smoke_tram",
-        "red_team_fallback_slug:smoke_tram"
+        "red_team_no_history:smoke_tram"
       ]
     },
     {
@@ -942,9 +942,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Japão FC->jap_o_fc",
-        "blue_team_fallback_slug:jap_o_fc",
+        "blue_team_no_history:jap_o_fc",
         "red_team_fallback_slug:GaloZeus Center->galozeus_center",
-        "red_team_fallback_slug:galozeus_center"
+        "red_team_no_history:galozeus_center"
       ]
     },
     {
@@ -963,9 +963,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Clã NKZ Raccoons->cl_nkz_raccoons",
-        "blue_team_fallback_slug:cl_nkz_raccoons",
+        "blue_team_no_history:cl_nkz_raccoons",
         "red_team_fallback_slug:Ownage Gaming->ownage_gaming",
-        "red_team_fallback_slug:ownage_gaming"
+        "red_team_no_history:ownage_gaming"
       ]
     },
     {
@@ -984,9 +984,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Invictus Team->invictus_team",
-        "blue_team_fallback_slug:invictus_team",
+        "blue_team_no_history:invictus_team",
         "red_team_fallback_slug:Maze GG->maze_gg",
-        "red_team_fallback_slug:maze_gg"
+        "red_team_no_history:maze_gg"
       ]
     },
     {
@@ -1005,9 +1005,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Ownage Gaming Black->ownage_gaming_black",
-        "blue_team_fallback_slug:ownage_gaming_black",
+        "blue_team_no_history:ownage_gaming_black",
         "red_team_fallback_slug:Sphere Esports->sphere_esports",
-        "red_team_fallback_slug:sphere_esports"
+        "red_team_no_history:sphere_esports"
       ]
     },
     {
@@ -1042,9 +1042,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Locked Int->locked_int",
-        "blue_team_fallback_slug:locked_int",
+        "blue_team_no_history:locked_int",
         "red_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
-        "red_team_fallback_slug:1_esport_club_frankfurt_e_v"
+        "red_team_no_history:1_esport_club_frankfurt_e_v"
       ]
     },
     {
@@ -1079,9 +1079,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Reveal Multigaming->reveal_multigaming",
-        "blue_team_fallback_slug:reveal_multigaming",
+        "blue_team_no_history:reveal_multigaming",
         "red_team_fallback_slug:Babos Gaming->babos_gaming",
-        "red_team_fallback_slug:babos_gaming"
+        "red_team_no_history:babos_gaming"
       ]
     },
     {
@@ -1100,7 +1100,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:MT1 Esports->mt1_esports",
-        "blue_team_fallback_slug:mt1_esports"
+        "blue_team_no_history:mt1_esports"
       ]
     },
     {
@@ -1119,9 +1119,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Whalepower Humpbacks->whalepower_humpbacks",
-        "blue_team_fallback_slug:whalepower_humpbacks",
+        "blue_team_no_history:whalepower_humpbacks",
         "red_team_fallback_slug:Esport Factory x Mental Rush->esport_factory_x_mental_rush",
-        "red_team_fallback_slug:esport_factory_x_mental_rush"
+        "red_team_no_history:esport_factory_x_mental_rush"
       ]
     },
     {
@@ -1140,9 +1140,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Atruvia Münster Esports->atruvia_m_nster_esports",
-        "blue_team_fallback_slug:atruvia_m_nster_esports",
+        "blue_team_no_history:atruvia_m_nster_esports",
         "red_team_fallback_slug:AceGaming FullHouse->acegaming_fullhouse",
-        "red_team_fallback_slug:acegaming_fullhouse"
+        "red_team_no_history:acegaming_fullhouse"
       ]
     },
     {
@@ -1161,9 +1161,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Sissi State Punks->sissi_state_punks",
-        "blue_team_fallback_slug:sissi_state_punks",
+        "blue_team_no_history:sissi_state_punks",
         "red_team_fallback_slug:Second Time Alive->second_time_alive",
-        "red_team_fallback_slug:second_time_alive"
+        "red_team_no_history:second_time_alive"
       ]
     },
     {
@@ -1182,7 +1182,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:MT1 Vision->mt1_vision",
-        "red_team_fallback_slug:mt1_vision"
+        "red_team_no_history:mt1_vision"
       ]
     },
     {
@@ -1201,9 +1201,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Eintracht Spandau Zwei->eintracht_spandau_zwei",
-        "blue_team_fallback_slug:eintracht_spandau_zwei",
+        "blue_team_no_history:eintracht_spandau_zwei",
         "red_team_fallback_slug:Neko Elite Kittens->neko_elite_kittens",
-        "red_team_fallback_slug:neko_elite_kittens"
+        "red_team_no_history:neko_elite_kittens"
       ]
     },
     {
@@ -1222,9 +1222,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Glacial Guardians->glacial_guardians",
-        "blue_team_fallback_slug:glacial_guardians",
+        "blue_team_no_history:glacial_guardians",
         "red_team_fallback_slug:AceGaming Wildcard->acegaming_wildcard",
-        "red_team_fallback_slug:acegaming_wildcard"
+        "red_team_no_history:acegaming_wildcard"
       ]
     },
     {
@@ -1243,9 +1243,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:VfB x Engines Stuttgart->vfb_x_engines_stuttgart",
-        "blue_team_fallback_slug:vfb_x_engines_stuttgart",
+        "blue_team_no_history:vfb_x_engines_stuttgart",
         "red_team_fallback_slug:BS Effortless->bs_effortless",
-        "red_team_fallback_slug:bs_effortless"
+        "red_team_no_history:bs_effortless"
       ]
     },
     {
@@ -1264,9 +1264,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Locked Int->locked_int",
-        "blue_team_fallback_slug:locked_int",
+        "blue_team_no_history:locked_int",
         "red_team_fallback_slug:Kanji Esports AKA->kanji_esports_aka",
-        "red_team_fallback_slug:kanji_esports_aka"
+        "red_team_no_history:kanji_esports_aka"
       ]
     },
     {
@@ -1285,9 +1285,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Locked Int->locked_int",
-        "blue_team_fallback_slug:locked_int",
+        "blue_team_no_history:locked_int",
         "red_team_fallback_slug:Glacial Guardians->glacial_guardians",
-        "red_team_fallback_slug:glacial_guardians"
+        "red_team_no_history:glacial_guardians"
       ]
     },
     {
@@ -1370,7 +1370,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Synergize Red Carpet->synergize_red_carpet",
-        "blue_team_fallback_slug:synergize_red_carpet"
+        "blue_team_no_history:synergize_red_carpet"
       ]
     },
     {
@@ -1389,9 +1389,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Rich Gang Denmark->rich_gang_denmark",
-        "blue_team_fallback_slug:rich_gang_denmark",
+        "blue_team_no_history:rich_gang_denmark",
         "red_team_fallback_slug:Havenisserne->havenisserne",
-        "red_team_fallback_slug:havenisserne"
+        "red_team_no_history:havenisserne"
       ]
     },
     {
@@ -1410,7 +1410,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:ESport Shadow Samurai->esport_shadow_samurai",
-        "red_team_fallback_slug:esport_shadow_samurai"
+        "red_team_no_history:esport_shadow_samurai"
       ]
     },
     {
@@ -1429,7 +1429,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:Abyssal Denmark->abyssal_denmark",
-        "red_team_fallback_slug:abyssal_denmark"
+        "red_team_no_history:abyssal_denmark"
       ]
     },
     {
@@ -1448,9 +1448,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Rich Gang UK->rich_gang_uk",
-        "blue_team_fallback_slug:rich_gang_uk",
+        "blue_team_no_history:rich_gang_uk",
         "red_team_fallback_slug:The Bandits UK->the_bandits_uk",
-        "red_team_fallback_slug:the_bandits_uk"
+        "red_team_no_history:the_bandits_uk"
       ]
     },
     {
@@ -1469,9 +1469,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:RIZE Gaming->rize_gaming",
-        "blue_team_fallback_slug:rize_gaming",
+        "blue_team_no_history:rize_gaming",
         "red_team_fallback_slug:Inari Esports (British Team)->inari_esports_british_team",
-        "red_team_fallback_slug:inari_esports_british_team"
+        "red_team_no_history:inari_esports_british_team"
       ]
     },
     {
@@ -1490,7 +1490,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:HL Tauri Esports->hl_tauri_esports",
-        "red_team_fallback_slug:hl_tauri_esports"
+        "red_team_no_history:hl_tauri_esports"
       ]
     },
     {
@@ -1509,9 +1509,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:No Need Orga->no_need_orga",
-        "blue_team_fallback_slug:no_need_orga",
+        "blue_team_no_history:no_need_orga",
         "red_team_fallback_slug:Defiance eSports->defiance_esports",
-        "red_team_fallback_slug:defiance_esports"
+        "red_team_no_history:defiance_esports"
       ]
     },
     {
@@ -1530,9 +1530,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:LOOKSMAXXER->looksmaxxer",
-        "blue_team_fallback_slug:looksmaxxer",
+        "blue_team_no_history:looksmaxxer",
         "red_team_fallback_slug:Circus Kittens->circus_kittens",
-        "red_team_fallback_slug:circus_kittens"
+        "red_team_no_history:circus_kittens"
       ]
     },
     {
@@ -1551,9 +1551,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Locked In (Dutch Team)->locked_in_dutch_team",
-        "blue_team_fallback_slug:locked_in_dutch_team",
+        "blue_team_no_history:locked_in_dutch_team",
         "red_team_fallback_slug:Team Rift->team_rift",
-        "red_team_fallback_slug:team_rift"
+        "red_team_no_history:team_rift"
       ]
     },
     {
@@ -1572,9 +1572,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:BS Effortless->bs_effortless",
-        "blue_team_fallback_slug:bs_effortless",
+        "blue_team_no_history:bs_effortless",
         "red_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
-        "red_team_fallback_slug:404_multigaming_e_v"
+        "red_team_no_history:404_multigaming_e_v"
       ]
     },
     {
@@ -1593,9 +1593,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:TeamBasH Gaming->teambash_gaming",
-        "blue_team_fallback_slug:teambash_gaming",
+        "blue_team_no_history:teambash_gaming",
         "red_team_fallback_slug:Babos Gaming Academy->babos_gaming_academy",
-        "red_team_fallback_slug:babos_gaming_academy"
+        "red_team_no_history:babos_gaming_academy"
       ]
     },
     {
@@ -1614,7 +1614,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Spongecord prime->spongecord_prime",
-        "blue_team_fallback_slug:spongecord_prime"
+        "blue_team_no_history:spongecord_prime"
       ]
     },
     {
@@ -1633,9 +1633,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
-        "blue_team_fallback_slug:404_multigaming_e_v",
+        "blue_team_no_history:404_multigaming_e_v",
         "red_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
-        "red_team_fallback_slug:1_esport_club_frankfurt_e_v"
+        "red_team_no_history:1_esport_club_frankfurt_e_v"
       ]
     },
     {
@@ -1654,9 +1654,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Berlin 5->berlin_5",
-        "blue_team_fallback_slug:berlin_5",
+        "blue_team_no_history:berlin_5",
         "red_team_fallback_slug:Neko Elite->neko_elite",
-        "red_team_fallback_slug:neko_elite"
+        "red_team_no_history:neko_elite"
       ]
     },
     {
@@ -1675,9 +1675,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Seacow United->seacow_united",
-        "blue_team_fallback_slug:seacow_united",
+        "blue_team_no_history:seacow_united",
         "red_team_fallback_slug:Absolved->absolved",
-        "red_team_fallback_slug:absolved"
+        "red_team_no_history:absolved"
       ]
     },
     {
@@ -1696,7 +1696,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:The Bandits UK->the_bandits_uk",
-        "red_team_fallback_slug:the_bandits_uk"
+        "red_team_no_history:the_bandits_uk"
       ]
     },
     {
@@ -1715,9 +1715,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Good Chi->good_chi",
-        "blue_team_fallback_slug:good_chi",
+        "blue_team_no_history:good_chi",
         "red_team_fallback_slug:Inari Esports (British Team)->inari_esports_british_team",
-        "red_team_fallback_slug:inari_esports_british_team"
+        "red_team_no_history:inari_esports_british_team"
       ]
     },
     {
@@ -1736,9 +1736,9 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Circus Kittens->circus_kittens",
-        "blue_team_fallback_slug:circus_kittens",
+        "blue_team_no_history:circus_kittens",
         "red_team_fallback_slug:Spongecord prime->spongecord_prime",
-        "red_team_fallback_slug:spongecord_prime"
+        "red_team_no_history:spongecord_prime"
       ]
     },
     {
@@ -1757,7 +1757,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "red_team_fallback_slug:Locked In (Dutch Team)->locked_in_dutch_team",
-        "red_team_fallback_slug:locked_in_dutch_team"
+        "red_team_no_history:locked_in_dutch_team"
       ]
     },
     {
@@ -1776,7 +1776,7 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Cloud eSport->cloud_esport",
-        "blue_team_fallback_slug:cloud_esport"
+        "blue_team_no_history:cloud_esport"
       ]
     },
     {
@@ -1795,15 +1795,15 @@
       "model": "logistic_regression_actions",
       "warnings": [
         "blue_team_fallback_slug:Team Rift->team_rift",
-        "blue_team_fallback_slug:team_rift",
+        "blue_team_no_history:team_rift",
         "red_team_fallback_slug:LOOKSMAXXER->looksmaxxer",
-        "red_team_fallback_slug:looksmaxxer"
+        "red_team_no_history:looksmaxxer"
       ]
     }
   ],
   "warnings": [
+    "blue_team_fallback_slug:count=58",
     "blue_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
-    "blue_team_fallback_slug:404_multigaming_e_v",
     "blue_team_fallback_slug:Atruvia Münster Esports->atruvia_m_nster_esports",
     "blue_team_fallback_slug:BS Effortless->bs_effortless",
     "blue_team_fallback_slug:Berlin 5->berlin_5",
@@ -1811,235 +1811,37 @@
     "blue_team_fallback_slug:Cloud eSport->cloud_esport",
     "blue_team_fallback_slug:Clã NKZ Raccoons->cl_nkz_raccoons",
     "blue_team_fallback_slug:Clã NKZ->cl_nkz",
-    "blue_team_fallback_slug:Dark Falcon->dark_falcon",
-    "blue_team_fallback_slug:Eintracht Spandau Zwei->eintracht_spandau_zwei",
-    "blue_team_fallback_slug:Filhos do Moita->filhos_do_moita",
-    "blue_team_fallback_slug:Gangnarok->gangnarok",
-    "blue_team_fallback_slug:Glacial Guardians->glacial_guardians",
-    "blue_team_fallback_slug:Good Chi->good_chi",
-    "blue_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
-    "blue_team_fallback_slug:India (National Team)->india_national_team",
-    "blue_team_fallback_slug:Invictus Team->invictus_team",
-    "blue_team_fallback_slug:Japão FC->jap_o_fc",
-    "blue_team_fallback_slug:Jordan (National Team)->jordan_national_team",
-    "blue_team_fallback_slug:Kanji Esports AKA->kanji_esports_aka",
-    "blue_team_fallback_slug:Kazakhstan (National Team)->kazakhstan_national_team",
-    "blue_team_fallback_slug:LOOKSMAXXER->looksmaxxer",
-    "blue_team_fallback_slug:Laos (National Team)->laos_national_team",
-    "blue_team_fallback_slug:Locked In (Dutch Team)->locked_in_dutch_team",
-    "blue_team_fallback_slug:Locked Int->locked_int",
-    "blue_team_fallback_slug:MT1 Esports->mt1_esports",
-    "blue_team_fallback_slug:Malaysia (National Team)->malaysia_national_team",
-    "blue_team_fallback_slug:Marines E-Sports->marines_e_sports",
-    "blue_team_fallback_slug:Mountain Bears Gaming->mountain_bears_gaming",
-    "blue_team_fallback_slug:Neko Elite Kittens->neko_elite_kittens",
-    "blue_team_fallback_slug:No Need Orga->no_need_orga",
-    "blue_team_fallback_slug:Oman (National Team)->oman_national_team",
-    "blue_team_fallback_slug:Ownage Gaming Black->ownage_gaming_black",
-    "blue_team_fallback_slug:Pakistan (National Team)->pakistan_national_team",
-    "blue_team_fallback_slug:RIZE Gaming->rize_gaming",
-    "blue_team_fallback_slug:RMD Gaming Trainee->rmd_gaming_trainee",
-    "blue_team_fallback_slug:ROGUE CREW->rogue_crew",
-    "blue_team_fallback_slug:Reveal Multigaming->reveal_multigaming",
-    "blue_team_fallback_slug:Rich Gang Denmark->rich_gang_denmark",
-    "blue_team_fallback_slug:Rich Gang UK->rich_gang_uk",
-    "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
-    "blue_team_fallback_slug:Seacow United->seacow_united",
-    "blue_team_fallback_slug:SharkBite Furious Gaming Black->sharkbite_furious_gaming_black",
-    "blue_team_fallback_slug:SharkBite Furious Gaming Red->sharkbite_furious_gaming_red",
-    "blue_team_fallback_slug:SharkBite Furious Gaming Yellow->sharkbite_furious_gaming_yellow",
-    "blue_team_fallback_slug:Sissi State Punks->sissi_state_punks",
-    "blue_team_fallback_slug:Spongecord prime->spongecord_prime",
-    "blue_team_fallback_slug:Sri Lanka (National Team)->sri_lanka_national_team",
-    "blue_team_fallback_slug:Synergize Red Carpet->synergize_red_carpet",
-    "blue_team_fallback_slug:São Salvador->s_o_salvador",
-    "blue_team_fallback_slug:TAKA ASCEND->taka_ascend",
-    "blue_team_fallback_slug:Team Rift->team_rift",
-    "blue_team_fallback_slug:TeamBasH Gaming->teambash_gaming",
-    "blue_team_fallback_slug:United Arab Emirates (National Team)->united_arab_emirates_national_team",
-    "blue_team_fallback_slug:VES Japan->ves_japan",
-    "blue_team_fallback_slug:VfB x Engines Stuttgart->vfb_x_engines_stuttgart",
-    "blue_team_fallback_slug:Whalepower Humpbacks->whalepower_humpbacks",
-    "blue_team_fallback_slug:ZennIT Academy->zennit_academy",
-    "blue_team_fallback_slug:atruvia_m_nster_esports",
-    "blue_team_fallback_slug:berlin_5",
-    "blue_team_fallback_slug:bs_effortless",
-    "blue_team_fallback_slug:circus_kittens",
-    "blue_team_fallback_slug:cl_nkz",
-    "blue_team_fallback_slug:cl_nkz_raccoons",
-    "blue_team_fallback_slug:cloud_esport",
-    "blue_team_fallback_slug:dark_falcon",
-    "blue_team_fallback_slug:eintracht_spandau_zwei",
-    "blue_team_fallback_slug:filhos_do_moita",
-    "blue_team_fallback_slug:gangnarok",
-    "blue_team_fallback_slug:glacial_guardians",
-    "blue_team_fallback_slug:good_chi",
-    "blue_team_fallback_slug:hong_kong_national_team",
-    "blue_team_fallback_slug:india_national_team",
-    "blue_team_fallback_slug:invictus_team",
-    "blue_team_fallback_slug:jap_o_fc",
-    "blue_team_fallback_slug:jordan_national_team",
-    "blue_team_fallback_slug:kanji_esports_aka",
-    "blue_team_fallback_slug:kazakhstan_national_team",
-    "blue_team_fallback_slug:laos_national_team",
-    "blue_team_fallback_slug:locked_in_dutch_team",
-    "blue_team_fallback_slug:locked_int",
-    "blue_team_fallback_slug:looksmaxxer",
-    "blue_team_fallback_slug:malaysia_national_team",
-    "blue_team_fallback_slug:marines_e_sports",
-    "blue_team_fallback_slug:mountain_bears_gaming",
-    "blue_team_fallback_slug:mt1_esports",
-    "blue_team_fallback_slug:neko_elite_kittens",
-    "blue_team_fallback_slug:no_need_orga",
-    "blue_team_fallback_slug:oman_national_team",
-    "blue_team_fallback_slug:ownage_gaming_black",
-    "blue_team_fallback_slug:pakistan_national_team",
-    "blue_team_fallback_slug:reveal_multigaming",
-    "blue_team_fallback_slug:rich_gang_denmark",
-    "blue_team_fallback_slug:rich_gang_uk",
-    "blue_team_fallback_slug:rize_gaming",
-    "blue_team_fallback_slug:rmd_gaming_trainee",
-    "blue_team_fallback_slug:rogue_crew",
-    "blue_team_fallback_slug:s_o_salvador",
-    "blue_team_fallback_slug:saudi_arabia_national_team",
-    "blue_team_fallback_slug:seacow_united",
-    "blue_team_fallback_slug:sharkbite_furious_gaming_black",
-    "blue_team_fallback_slug:sharkbite_furious_gaming_red",
-    "blue_team_fallback_slug:sharkbite_furious_gaming_yellow",
-    "blue_team_fallback_slug:sissi_state_punks",
-    "blue_team_fallback_slug:spongecord_prime",
-    "blue_team_fallback_slug:sri_lanka_national_team",
-    "blue_team_fallback_slug:synergize_red_carpet",
-    "blue_team_fallback_slug:taka_ascend",
-    "blue_team_fallback_slug:team_rift",
-    "blue_team_fallback_slug:teambash_gaming",
-    "blue_team_fallback_slug:united_arab_emirates_national_team",
-    "blue_team_fallback_slug:ves_japan",
-    "blue_team_fallback_slug:vfb_x_engines_stuttgart",
-    "blue_team_fallback_slug:whalepower_humpbacks",
-    "blue_team_fallback_slug:zennit_academy",
+    "blue_team_fallback_slug:omitted=50",
+    "blue_team_no_history:count=58",
+    "blue_team_no_history:404_multigaming_e_v",
+    "blue_team_no_history:atruvia_m_nster_esports",
+    "blue_team_no_history:berlin_5",
+    "blue_team_no_history:bs_effortless",
+    "blue_team_no_history:circus_kittens",
+    "blue_team_no_history:cl_nkz",
+    "blue_team_no_history:cl_nkz_raccoons",
+    "blue_team_no_history:cloud_esport",
+    "blue_team_no_history:omitted=50",
+    "red_team_fallback_slug:count=61",
     "red_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
-    "red_team_fallback_slug:1_esport_club_frankfurt_e_v",
     "red_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
-    "red_team_fallback_slug:404_multigaming_e_v",
     "red_team_fallback_slug:AMD Team->amd_team",
     "red_team_fallback_slug:Absolved->absolved",
     "red_team_fallback_slug:Abyssal Denmark->abyssal_denmark",
     "red_team_fallback_slug:AceGaming FullHouse->acegaming_fullhouse",
     "red_team_fallback_slug:AceGaming Wildcard->acegaming_wildcard",
     "red_team_fallback_slug:Arrakis E-Sport->arrakis_e_sport",
-    "red_team_fallback_slug:BS Effortless->bs_effortless",
-    "red_team_fallback_slug:Babos Gaming Academy->babos_gaming_academy",
-    "red_team_fallback_slug:Babos Gaming->babos_gaming",
-    "red_team_fallback_slug:BiPOLAR->bipolar",
-    "red_team_fallback_slug:Bitfix RG->bitfix_rg",
-    "red_team_fallback_slug:Circus Kittens->circus_kittens",
-    "red_team_fallback_slug:Clã NKZ Vórtex->cl_nkz_v_rtex",
-    "red_team_fallback_slug:Defiance eSports->defiance_esports",
-    "red_team_fallback_slug:Docta Esports Club->docta_esports_club",
-    "red_team_fallback_slug:ESport Shadow Samurai->esport_shadow_samurai",
-    "red_team_fallback_slug:Esport Factory x Mental Rush->esport_factory_x_mental_rush",
-    "red_team_fallback_slug:Final Level eSports->final_level_esports",
-    "red_team_fallback_slug:GaloZeus Center->galozeus_center",
-    "red_team_fallback_slug:Glacial Guardians->glacial_guardians",
-    "red_team_fallback_slug:HL Tauri Esports->hl_tauri_esports",
-    "red_team_fallback_slug:Havenisserne->havenisserne",
-    "red_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
-    "red_team_fallback_slug:Inari Esports (British Team)->inari_esports_british_team",
-    "red_team_fallback_slug:Jordan (National Team)->jordan_national_team",
-    "red_team_fallback_slug:Juventus Gaming Red->juventus_gaming_red",
-    "red_team_fallback_slug:Kanji Esports AKA->kanji_esports_aka",
-    "red_team_fallback_slug:Kazakhstan (National Team)->kazakhstan_national_team",
-    "red_team_fallback_slug:Kyrgyzstan (National Team)->kyrgyzstan_national_team",
-    "red_team_fallback_slug:LOADING Gaming->loading_gaming",
-    "red_team_fallback_slug:LOOKSMAXXER->looksmaxxer",
-    "red_team_fallback_slug:Laos (National Team)->laos_national_team",
-    "red_team_fallback_slug:Locked In (Dutch Team)->locked_in_dutch_team",
-    "red_team_fallback_slug:Lufeng->lufeng",
-    "red_team_fallback_slug:MT1 Vision->mt1_vision",
-    "red_team_fallback_slug:Marere e-Sports->marere_e_sports",
-    "red_team_fallback_slug:Maze GG->maze_gg",
-    "red_team_fallback_slug:Mongolia (National Team)->mongolia_national_team",
-    "red_team_fallback_slug:Neko Elite Kittens->neko_elite_kittens",
-    "red_team_fallback_slug:Neko Elite->neko_elite",
-    "red_team_fallback_slug:Neon eSports (Brazilian Team)->neon_esports_brazilian_team",
-    "red_team_fallback_slug:NeverMind->nevermind",
-    "red_team_fallback_slug:Oman (National Team)->oman_national_team",
-    "red_team_fallback_slug:Ownage Gaming->ownage_gaming",
-    "red_team_fallback_slug:Pakistan (National Team)->pakistan_national_team",
-    "red_team_fallback_slug:Second Time Alive->second_time_alive",
-    "red_team_fallback_slug:SharkBite Furious Gaming White->sharkbite_furious_gaming_white",
-    "red_team_fallback_slug:Smoke Tram Academy->smoke_tram_academy",
-    "red_team_fallback_slug:Smoke Tram->smoke_tram",
-    "red_team_fallback_slug:Smurfando Peak->smurfando_peak",
-    "red_team_fallback_slug:Sphere Esports->sphere_esports",
-    "red_team_fallback_slug:Spongecord prime->spongecord_prime",
-    "red_team_fallback_slug:Sri Lanka (National Team)->sri_lanka_national_team",
-    "red_team_fallback_slug:Team 300 Black->team_300_black",
-    "red_team_fallback_slug:Team Legati->team_legati",
-    "red_team_fallback_slug:Team Rift->team_rift",
-    "red_team_fallback_slug:The Bandits UK->the_bandits_uk",
-    "red_team_fallback_slug:United Arab Emirates (National Team)->united_arab_emirates_national_team",
-    "red_team_fallback_slug:VfB x Engines Stuttgart->vfb_x_engines_stuttgart",
-    "red_team_fallback_slug:absolved",
-    "red_team_fallback_slug:abyssal_denmark",
-    "red_team_fallback_slug:acegaming_fullhouse",
-    "red_team_fallback_slug:acegaming_wildcard",
-    "red_team_fallback_slug:amd_team",
-    "red_team_fallback_slug:arrakis_e_sport",
-    "red_team_fallback_slug:babos_gaming",
-    "red_team_fallback_slug:babos_gaming_academy",
-    "red_team_fallback_slug:bipolar",
-    "red_team_fallback_slug:bitfix_rg",
-    "red_team_fallback_slug:bs_effortless",
-    "red_team_fallback_slug:circus_kittens",
-    "red_team_fallback_slug:cl_nkz_v_rtex",
-    "red_team_fallback_slug:defiance_esports",
-    "red_team_fallback_slug:docta_esports_club",
-    "red_team_fallback_slug:esport_factory_x_mental_rush",
-    "red_team_fallback_slug:esport_shadow_samurai",
-    "red_team_fallback_slug:final_level_esports",
-    "red_team_fallback_slug:galozeus_center",
-    "red_team_fallback_slug:glacial_guardians",
-    "red_team_fallback_slug:havenisserne",
-    "red_team_fallback_slug:hl_tauri_esports",
-    "red_team_fallback_slug:hong_kong_national_team",
-    "red_team_fallback_slug:inari_esports_british_team",
-    "red_team_fallback_slug:jordan_national_team",
-    "red_team_fallback_slug:juventus_gaming_red",
-    "red_team_fallback_slug:kanji_esports_aka",
-    "red_team_fallback_slug:kazakhstan_national_team",
-    "red_team_fallback_slug:kyrgyzstan_national_team",
-    "red_team_fallback_slug:laos_national_team",
-    "red_team_fallback_slug:loading_gaming",
-    "red_team_fallback_slug:locked_in_dutch_team",
-    "red_team_fallback_slug:looksmaxxer",
-    "red_team_fallback_slug:lufeng",
-    "red_team_fallback_slug:marere_e_sports",
-    "red_team_fallback_slug:maze_gg",
-    "red_team_fallback_slug:mongolia_national_team",
-    "red_team_fallback_slug:mt1_vision",
-    "red_team_fallback_slug:neko_elite",
-    "red_team_fallback_slug:neko_elite_kittens",
-    "red_team_fallback_slug:neon_esports_brazilian_team",
-    "red_team_fallback_slug:nevermind",
-    "red_team_fallback_slug:oman_national_team",
-    "red_team_fallback_slug:ownage_gaming",
-    "red_team_fallback_slug:pakistan_national_team",
-    "red_team_fallback_slug:second_time_alive",
-    "red_team_fallback_slug:sharkbite_furious_gaming_white",
-    "red_team_fallback_slug:smoke_tram",
-    "red_team_fallback_slug:smoke_tram_academy",
-    "red_team_fallback_slug:smurfando_peak",
-    "red_team_fallback_slug:sphere_esports",
-    "red_team_fallback_slug:spongecord_prime",
-    "red_team_fallback_slug:sri_lanka_national_team",
-    "red_team_fallback_slug:team_300_black",
-    "red_team_fallback_slug:team_legati",
-    "red_team_fallback_slug:team_rift",
-    "red_team_fallback_slug:the_bandits_uk",
-    "red_team_fallback_slug:united_arab_emirates_national_team",
-    "red_team_fallback_slug:vfb_x_engines_stuttgart"
+    "red_team_fallback_slug:omitted=53",
+    "red_team_no_history:count=61",
+    "red_team_no_history:1_esport_club_frankfurt_e_v",
+    "red_team_no_history:404_multigaming_e_v",
+    "red_team_no_history:absolved",
+    "red_team_no_history:abyssal_denmark",
+    "red_team_no_history:acegaming_fullhouse",
+    "red_team_no_history:acegaming_wildcard",
+    "red_team_no_history:amd_team",
+    "red_team_no_history:arrakis_e_sport",
+    "red_team_no_history:omitted=53"
   ],
-  "warning_count": 238
+  "warning_count": 40
 }
