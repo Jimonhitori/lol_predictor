@@ -9,7 +9,7 @@
   ],
   "bootstrap": {
     "available": true,
-    "completed": 2,
+    "completed": 3,
     "file_evidence": {
       "completion_overrides": {
         "d1_sync_completed": true,
@@ -19,7 +19,7 @@
       "d1_database_id_file_exists": false,
       "d1_sync_completed": true,
       "daily_training_published_status": false,
-      "oe_bootstrap_model_available": false,
+      "oe_bootstrap_model_available": true,
       "root": "/home/runner/work/lol-pros-analyzer/lol-pros-analyzer",
       "worker_base_url_file_exists": false,
       "worker_check_ran": false,
@@ -58,7 +58,7 @@
       },
       {
         "detail": "Use the Pages live_logistic_oe_bootstrap.json URL as bootstrap_model_url when live_logistic.json is not published yet; this enables explicit bootstrap inference while D1 collects real <=30s live frames.",
-        "done": false,
+        "done": true,
         "id": "oe_bootstrap_model_url",
         "label": "Prepare optional OE bootstrap model URL"
       },
@@ -107,12 +107,6 @@
         "label": "Resolve or create Cloudflare D1 database lol-live-frames"
       },
       {
-        "detail": "Use the Pages live_logistic_oe_bootstrap.json URL as bootstrap_model_url when live_logistic.json is not published yet; this enables explicit bootstrap inference while D1 collects real <=30s live frames.",
-        "done": false,
-        "id": "oe_bootstrap_model_url",
-        "label": "Prepare optional OE bootstrap model URL"
-      },
-      {
         "detail": "Use create_d1_database=true for first setup; add the Pages live_logistic.json URL when available or bootstrap_model_url for live_logistic_oe_bootstrap.json while the primary model is not ready, persist_window_frames=true, enable_cron=true, then keep reports/live_worker_check.json.",
         "done": false,
         "id": "worker_deploy_workflow",
@@ -130,7 +124,6 @@
       "Add GitHub secret CLOUDFLARE_ACCOUNT_ID",
       "Confirm Worker base URL for daily checks",
       "Resolve or create Cloudflare D1 database lol-live-frames",
-      "Prepare optional OE bootstrap model URL",
       "Run GitHub Actions workflow Deploy live Worker",
       "Run or wait for daily Train model workflow"
     ],
@@ -194,7 +187,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-12T18:24:12.975026+00:00",
+  "generated_at": "2026-06-12T18:30:27.663950+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -208,7 +201,7 @@
     "Configure D1, Cloudflare secrets, and Worker smoke checks."
   ],
   "oe_live_bootstrap": {
-    "available": false,
+    "available": true,
     "bootstrap_only": true,
     "cadence_note": "OE bootstrap snapshots are coarse 10/15/20/25 minute rows, not <=30s live telemetry.",
     "cadence_seconds": 300,
@@ -221,13 +214,13 @@
     },
     "feature_rows": null,
     "games": null,
-    "model_url": null,
+    "model_url": "live_logistic_oe_bootstrap.json",
     "pct_intervals_lte_30s": null,
     "production_live_telemetry": false,
-    "ready": false,
+    "ready": true,
     "rows": null,
     "source": "oracles_elixir_at_minute_snapshots",
-    "trained": false
+    "trained": true
   },
   "production_ready": false,
   "replay": {
