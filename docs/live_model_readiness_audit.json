@@ -10,9 +10,8 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 10,
+  "blocker_count": 8,
   "blockers": [
-    "live collection config validation report is missing",
     "live training readiness is false",
     "training readiness: live feature <=30s interval coverage below threshold (58.0% < 80.0%)",
     "live training pipeline is not ready",
@@ -20,14 +19,13 @@
     "live training pipeline did not replay stored frames",
     "live model evaluation report is missing",
     "live replay summary is missing",
-    "live operations wiring report is missing",
     "public manifest does not expose a live model"
   ],
   "checks": {
-    "collection_config_valid": false,
+    "collection_config_valid": true,
     "evaluation_display_ready": false,
     "manifest_exposes_model": false,
-    "ops_wiring_valid": false,
+    "ops_wiring_valid": true,
     "replay_ready": false,
     "serving_artifacts_valid": true,
     "training_pipeline_complete": false,
@@ -37,11 +35,9 @@
   "next_actions": [
     "Collect or sync more completed-game live frames, then rebuild live features.",
     "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
-    "Validate live collection settings so poll/sample intervals stay at <=30s.",
     "Train/evaluate the live model until operational_summary recommends display.",
     "Run live replay on stored frames and verify <=30s interval coverage.",
-    "Publish and validate live_logistic.json plus live_model_manifest.json.",
-    "Configure D1, Cloudflare secrets, and Worker smoke checks."
+    "Publish and validate live_logistic.json plus live_model_manifest.json."
   ],
   "production_ready": false,
   "requirements": [
@@ -54,7 +50,7 @@
       },
       "id": "live_collection_config",
       "label": "Live collection settings enforce <=30s cadence",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
@@ -79,8 +75,8 @@
         "feature_rows": 438,
         "games": 32,
         "label_sources": {
-          "combined_rows": 5746,
-          "games_rows": 5746,
+          "combined_rows": 25977,
+          "games_rows": 25977,
           "live_label_rows": 0
         },
         "labeled_rows": 438,
@@ -128,15 +124,20 @@
     },
     {
       "evidence": {
-        "ops_ok": null,
-        "ops_warning_count": null
+        "ops_ok": true,
+        "ops_warning_count": 3
       },
       "id": "operations_wiring",
       "label": "Worker, D1, workflows, and checks are wired for production operation",
-      "status": "blocked"
+      "status": "passed"
     }
   ],
   "stage": "collect_live_frames",
-  "warning_count": 0,
-  "warnings": []
+  "warning_count": 4,
+  "warnings": [
+    "live collection config validation report is missing; using workflow wiring evidence",
+    "live operations wiring: CLOUDFLARE_API_TOKEN is not configured locally; scheduled D1 sync needs a GitHub secret",
+    "live operations wiring: models/live_logistic.json is missing; live serving can still collect raw frames but cannot serve model predictions",
+    "live operations wiring: live_training_readiness.json exists but ready is false"
+  ]
 }
