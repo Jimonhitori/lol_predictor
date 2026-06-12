@@ -125,6 +125,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .liveProbability { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; font-weight: 900; line-height: 1.15; color: #cdddff; text-align: center; }
 .liveStatsLine { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 18px; position: relative; }
 .liveStatsLine::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: linear-gradient(90deg, #36a9e8 0 50%, #ff456a 50% 100%); opacity: .95; }
+.liveUnavailable { border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-size: 13px; font-weight: 700; margin-top: 14px; padding: 16px; text-align: center; }
 .liveStatsSide { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
 .liveStat { display: grid; justify-items: center; gap: 4px; color: #c9d9f6; font-size: 18px; font-weight: 500; }
 .liveStat b { color: #43b9f6; font-size: 12px; }

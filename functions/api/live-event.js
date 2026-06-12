@@ -11,10 +11,14 @@ const LIVE_MODEL_PATH = '/static/data/live_model.json';
 const LIVE_LOGISTIC_MODEL_PATH = '/live_logistic.json';
 const LIVE_BOOTSTRAP_MODEL_PATH = '/live_logistic_oe_bootstrap.json';
 const LIVE_EVENT_FINAL_BY_GAME_PATH = '/static/data/live-event-snapshots/final_by_game.json';
+const LIVE_EVENT_FINAL_BY_EVENT_PATH = '/static/data/live-event-snapshots/final_by_event.json';
+const LIVE_EVENT_LATEST_BY_EVENT_PATH = '/static/data/live-event-snapshots/latest_by_event.json';
 const PRE_MATCH_PREDICTIONS_PATH = '/pre_match_predictions.json';
 let liveModelPromise = null;
 let preMatchPredictionsCache = { expiresAt: 0, promise: null };
 let finalGameSnapshotsCache = { expiresAt: 0, promise: null };
+let finalEventSnapshotsCache = { expiresAt: 0, promise: null };
+let latestEventSnapshotsCache = { expiresAt: 0, promise: null };
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -52,7 +56,18 @@ export async function onRequestGet(context) {
     await restoreCompletedLiveSnapshots(details, context);
     cacheTtl = responseCacheSeconds(details);
   } catch (error) {
-    details = unavailable(eventId, 'event_details_fetch_failed');
+    const snapshot = await readStaticEventSnapshot(context, eventId);
+    if (snapshot?.payload) {
+      details = await enrichDetailsFromPreMatchFeed({
+        ...snapshot.payload,
+        source: `${snapshot.source}_fallback`,
+        warning: 'event_details_fetch_failed_static_snapshot_fallback',
+      }, context);
+      await restoreCompletedLiveSnapshots(details, context);
+      cacheTtl = responseCacheSeconds(details);
+    } else {
+      details = unavailable(eventId, 'event_details_fetch_failed');
+    }
   }
 
   const response = jsonResponse(details, cacheTtl);
@@ -271,7 +286,8 @@ async function readLiveSnapshot(context, eventId, gameId) {
 async function readStoredLiveSnapshot(context, eventId, gameId) {
   const cached = await readLiveSnapshot(context, eventId, gameId);
   if (cached?.live && hasMeaningfulLiveData(cached.live)) return cached;
-  return readStaticFinalGameSnapshot(context, eventId, gameId);
+  return (await readStaticFinalGameSnapshot(context, eventId, gameId))
+    || readStaticEventGameSnapshot(context, eventId, gameId);
 }
 
 async function readStaticFinalGameSnapshot(context, eventId, gameId) {
@@ -291,6 +307,45 @@ async function readStaticFinalGameSnapshot(context, eventId, gameId) {
   };
 }
 
+async function readStaticEventGameSnapshot(context, eventId, gameId) {
+  const eventSnapshot = await readStaticEventSnapshot(context, eventId);
+  const game = eventSnapshot?.payload?.games?.find(candidate => String(candidate?.id || '') === String(gameId));
+  const live = game?.live;
+  if (!live || !hasMeaningfulLiveData(live)) return null;
+  return {
+    event_id: String(eventSnapshot.payload.id || eventId),
+    game_id: String(game.id || gameId),
+    saved_at: String(eventSnapshot.checked_at || ''),
+    source: eventSnapshot.source,
+    game,
+    live,
+  };
+}
+
+async function readStaticEventSnapshot(context, eventId) {
+  if (!eventId) return null;
+  const key = String(eventId);
+  const finalPayload = await loadFinalEventSnapshots(context);
+  const finalRecord = finalPayload?.[key];
+  if (finalRecord?.payload && eventSnapshotHasMeaningfulLiveData(finalRecord.payload)) {
+    return {
+      checked_at: String(finalRecord.checked_at || ''),
+      source: 'static_final_by_event',
+      payload: finalRecord.payload,
+    };
+  }
+  const latestPayload = await loadLatestEventSnapshots(context);
+  const latestRecord = latestPayload?.[key];
+  if (latestRecord?.payload && eventSnapshotHasMeaningfulLiveData(latestRecord.payload)) {
+    return {
+      checked_at: String(latestRecord.checked_at || ''),
+      source: 'static_latest_by_event',
+      payload: latestRecord.payload,
+    };
+  }
+  return null;
+}
+
 async function loadFinalGameSnapshots(context) {
   if (finalGameSnapshotsCache.promise && Date.now() < finalGameSnapshotsCache.expiresAt) {
     return finalGameSnapshotsCache.promise;
@@ -300,6 +355,28 @@ async function loadFinalGameSnapshots(context) {
     promise: readStaticJsonAsset(context, LIVE_EVENT_FINAL_BY_GAME_PATH),
   };
   return finalGameSnapshotsCache.promise;
+}
+
+async function loadFinalEventSnapshots(context) {
+  if (finalEventSnapshotsCache.promise && Date.now() < finalEventSnapshotsCache.expiresAt) {
+    return finalEventSnapshotsCache.promise;
+  }
+  finalEventSnapshotsCache = {
+    expiresAt: Date.now() + PRE_MATCH_CACHE_SECONDS * 1000,
+    promise: readStaticJsonAsset(context, LIVE_EVENT_FINAL_BY_EVENT_PATH),
+  };
+  return finalEventSnapshotsCache.promise;
+}
+
+async function loadLatestEventSnapshots(context) {
+  if (latestEventSnapshotsCache.promise && Date.now() < latestEventSnapshotsCache.expiresAt) {
+    return latestEventSnapshotsCache.promise;
+  }
+  latestEventSnapshotsCache = {
+    expiresAt: Date.now() + PRE_MATCH_CACHE_SECONDS * 1000,
+    promise: readStaticJsonAsset(context, LIVE_EVENT_LATEST_BY_EVENT_PATH),
+  };
+  return latestEventSnapshotsCache.promise;
 }
 
 async function readStaticJsonAsset(context, path) {
@@ -577,6 +654,11 @@ function hasMeaningfulLiveData(live) {
   if ((live.blue || []).length || (live.red || []).length) return true;
   if (Number(live.game_time || 0) > 0) return true;
   return ['in_game', 'inprogress', 'in_progress', 'paused'].includes(String(live.game_state || '').toLowerCase());
+}
+
+function eventSnapshotHasMeaningfulLiveData(payload) {
+  const games = Array.isArray(payload?.games) ? payload.games : [];
+  return games.some(game => hasMeaningfulLiveData(game?.live));
 }
 
 function liveStatus(live, game) {
