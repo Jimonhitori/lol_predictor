@@ -35346,7 +35346,7 @@
   },
   "115548128963037575": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T17:52:18.033Z",
+    "checked_at": "2026-06-12T19:47:01.844Z",
     "event_id": "115548128963037575",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35359,7 +35359,7 @@
       "region": "",
       "best_of": "5",
       "status": "completed",
-      "start_time": "2026-06-12T17:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "100205573496804586",
@@ -35549,7 +35549,7 @@
   },
   "116520394663535894": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T17:52:18.033Z",
+    "checked_at": "2026-06-12T19:47:01.844Z",
     "event_id": "116520394663535894",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35562,7 +35562,7 @@
       "region": "",
       "best_of": "5",
       "status": "completed",
-      "start_time": "2026-06-12T19:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "113843163628949793",
@@ -35752,7 +35752,7 @@
   },
   "116634529527091479": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T17:52:18.033Z",
+    "checked_at": "2026-06-12T19:47:01.844Z",
     "event_id": "116634529527091479",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -35765,7 +35765,7 @@
       "region": "",
       "best_of": "3",
       "status": "completed",
-      "start_time": "2026-06-13T00:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "105503948999800557",
@@ -35889,50 +35889,346 @@
   },
   "116634566270405047": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T17:52:18.033Z",
+    "checked_at": "2026-06-12T19:47:01.844Z",
     "event_id": "116634566270405047",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566270405047",
+      "league": "",
+      "league_group": "",
+      "region": "",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
+  "116634566270405071": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-12T19:47:01.844Z",
+    "event_id": "116634566270405071",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116634566270405071",
       "league": "EMEA Masters",
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "unstarted",
-      "start_time": "2026-06-13T03:00:00.000Z",
+      "status": "completed",
+      "start_time": "",
       "teams": [
         {
-          "id": "105515219038427019",
-          "name": "Karmine Corp Blue",
-          "code": "KCB",
-          "image": "http://static.lolesports.com/teams/1765897112519_WHITE.png",
+          "id": "102787200149928963",
+          "name": "WLGaming",
+          "code": "WLG",
+          "image": "http://static.lolesports.com/teams/WLGlogo.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "109642680932009857",
+          "name": "G2 NORD",
+          "code": "G2N",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116634566270405072",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "102787200149928963",
+            "team_name": "WLGaming",
+            "team_code": "WLG"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566270405073",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "102787200149928963",
+            "team_name": "WLGaming",
+            "team_code": "WLG"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566270405074",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "102787200149928963",
+            "team_name": "WLGaming",
+            "team_code": "WLG"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116634566270405095": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-12T19:47:01.844Z",
+    "event_id": "116634566270405095",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116634566270405095",
+      "league": "EMEA Masters",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "completed",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107416483509696259",
+          "name": "Eintracht Spandau",
+          "code": "EINS",
+          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "109696073114910519",
+          "name": "Anubis Gaming",
+          "code": "ANB",
+          "image": "http://static.lolesports.com/teams/1738571697908_logo.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116634566270405096",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "109696073114910519",
+            "team_name": "Anubis Gaming",
+            "team_code": "ANB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566270405097",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "109696073114910519",
+            "team_name": "Anubis Gaming",
+            "team_code": "ANB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566270405098",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "109696073114910519",
+            "team_name": "Anubis Gaming",
+            "team_code": "ANB"
+          },
+          "red": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115548128963037581": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-12T19:47:01.844Z",
+    "event_id": "115548128963037581",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115548128963037581",
+      "league": "LCK",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "99566404579461230",
+          "name": "kt Rolster",
+          "code": "KT",
+          "image": "http://static.lolesports.com/teams/kt_darkbackground.png",
           "game_wins": "0"
         },
         {
-          "id": "107416342401528388",
-          "name": "Forsaken",
-          "code": "FSK",
-          "image": "http://static.lolesports.com/teams/1702894248711_1500_FSK_MONO.png",
+          "id": "100205573495116443",
+          "name": "Gen.G Esports",
+          "code": "GEN",
+          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
           "game_wins": "0"
         }
       ],
       "games": [
         {
-          "id": "116634566270405048",
+          "id": "115548128963037582",
           "number": 1,
           "state": "unstarted",
           "blue": {
-            "team_id": "105515219038427019",
-            "team_name": "Karmine Corp Blue",
-            "team_code": "KCB"
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
           },
           "red": {
-            "team_id": "107416342401528388",
-            "team_name": "Forsaken",
-            "team_code": "FSK"
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
           },
           "winner": "",
           "live": {
@@ -35954,18 +36250,18 @@
           }
         },
         {
-          "id": "116634566270405049",
+          "id": "115548128963037583",
           "number": 2,
           "state": "unstarted",
           "blue": {
-            "team_id": "107416342401528388",
-            "team_name": "Forsaken",
-            "team_code": "FSK"
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
           },
           "red": {
-            "team_id": "105515219038427019",
-            "team_name": "Karmine Corp Blue",
-            "team_code": "KCB"
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
           },
           "winner": "",
           "live": {
@@ -35987,18 +36283,84 @@
           }
         },
         {
-          "id": "116634566270405050",
+          "id": "115548128963037584",
           "number": 3,
           "state": "unstarted",
           "blue": {
-            "team_id": "105515219038427019",
-            "team_name": "Karmine Corp Blue",
-            "team_code": "KCB"
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
           },
           "red": {
-            "team_id": "107416342401528388",
-            "team_name": "Forsaken",
-            "team_code": "FSK"
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037585",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037586",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566404579461230",
+            "team_name": "kt Rolster",
+            "team_code": "KT"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
           },
           "winner": "",
           "live": {
@@ -36022,50 +36384,6 @@
       ],
       "source": "cloudflare_live_event",
       "warning": ""
-    }
-  },
-  "116634566270405071": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T17:52:18.033Z",
-    "event_id": "116634566270405071",
-    "status": "unavailable",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "116634566270405071",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
-    }
-  },
-  "116634566270405095": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-12T17:52:18.033Z",
-    "event_id": "116634566270405095",
-    "status": "unavailable",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "116634566270405095",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
     }
   }
 }
