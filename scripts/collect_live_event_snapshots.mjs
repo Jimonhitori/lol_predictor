@@ -11,6 +11,7 @@ const SNAPSHOT_SCHEMA = 'lol_live_event_snapshot_v1';
 const FINAL_GAME_SCHEMA = 'lol_live_game_final_snapshot_v1';
 const DEFAULT_SCHEDULE_LOOKBACK_MINUTES = 12 * 60;
 const DEFAULT_SCHEDULE_LOOKAHEAD_MINUTES = 12 * 60;
+const DEFAULT_FETCH_TIMEOUT_MS = 20_000;
 
 const args = parseArgs(process.argv.slice(2));
 const siteBaseUrl = String(args.siteBaseUrl || process.env.SITE_BASE_URL || DEFAULT_SITE_BASE_URL).replace(/\/+$/, '');
@@ -20,6 +21,7 @@ const explicitEventIds = arrayArg(args.eventId || args.eventIds);
 const completedGracePolls = numberArg(args.completedGracePolls, 3);
 const scheduleLookbackMinutes = numberArg(args.scheduleLookbackMinutes, DEFAULT_SCHEDULE_LOOKBACK_MINUTES);
 const scheduleLookaheadMinutes = numberArg(args.scheduleLookaheadMinutes, DEFAULT_SCHEDULE_LOOKAHEAD_MINUTES);
+const fetchTimeoutMs = numberArg(args.fetchTimeoutMs, DEFAULT_FETCH_TIMEOUT_MS);
 const hl = String(args.hl || 'en-US');
 
 await fs.mkdir(outputDir, { recursive: true });
@@ -104,6 +106,7 @@ const summary = {
   discovered_events: discoveredEventIds.length,
   schedule_lookback_minutes: scheduleLookbackMinutes,
   schedule_lookahead_minutes: scheduleLookaheadMinutes,
+  fetch_timeout_ms: fetchTimeoutMs,
   events_checked: eventIds.length,
   snapshots_written: snapshotsWritten,
   finalized_events: finalizedEvents,
@@ -205,14 +208,26 @@ function eventWithinCollectionWindow(event, { now, lookbackMs, lookaheadMs }) {
 }
 
 async function fetchJson(url, options = {}) {
-  const response = await fetch(url, {
-    headers: {
-      accept: 'application/json',
-      ...(options.headers || {}),
-    },
-  });
-  if (!response.ok) throw new Error(`${url} ${response.status}`);
-  return response.json();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), fetchTimeoutMs);
+  try {
+    const response = await fetch(url, {
+      signal: controller.signal,
+      headers: {
+        accept: 'application/json',
+        ...(options.headers || {}),
+      },
+    });
+    if (!response.ok) throw new Error(`${url} ${response.status}`);
+    return response.json();
+  } catch (error) {
+    if (error?.name === 'AbortError') {
+      throw new Error(`${url} timed out after ${fetchTimeoutMs}ms`);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function buildSnapshotRecord({ eventId, checkedAt, payload }) {
