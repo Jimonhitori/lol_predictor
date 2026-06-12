@@ -11,18 +11,30 @@
   "min_intervals": 25,
   "min_pct_intervals_lte_30s": 0.8,
   "oe_live_bootstrap": {
-    "available": false,
+    "available": true,
     "bootstrap_only": true,
     "cadence_note": "OE bootstrap snapshots are coarse 10/15/20/25 minute rows, not <=30s live telemetry.",
     "cadence_seconds": 300,
     "evaluation": null,
     "evaluation_available": false,
-    "model_url": null,
-    "pipeline": null,
-    "pipeline_available": false,
+    "model_url": "live_logistic_oe_bootstrap.json",
+    "pipeline": {
+      "source": "restored_model_state",
+      "trained": true,
+      "warnings": [
+        "bootstrap pipeline report missing; using restored model-state artifact"
+      ]
+    },
+    "pipeline_available": true,
     "production_live_telemetry": false,
     "source": "oracles_elixir_at_minute_snapshots",
-    "training_readiness": null
+    "training_readiness": {
+      "ready": true,
+      "source": "restored_model_state",
+      "warnings": [
+        "bootstrap readiness report missing; using restored model-state artifact"
+      ]
+    }
   },
   "schema_version": 1,
   "training_readiness": null
