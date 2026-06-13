@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LoL Esports Dashboard</title>
   <link rel="icon" href="/favicon.svg?v=20260526-lmark-left" type="image/svg+xml">
-  <link rel="stylesheet" href="static/styles.css?v=10791818d4">
+  <link rel="stylesheet" href="static/styles.css?v=meta-tier-filter-1">
 </head>
 <body>
   <main class="shell">
@@ -69,14 +69,21 @@
             <h2>Latest Data Patch Meta</h2>
             <p id="championMetaSub" class="subtleText">All roles</p>
           </div>
-          <select id="championRole" class="compactSelect" aria-label="Champion meta role">
-            <option value="all">All</option>
-            <option value="top">Top</option>
-            <option value="jng">Jungle</option>
-            <option value="mid">Mid</option>
-            <option value="bot">Bot</option>
-            <option value="sup">Support</option>
-          </select>
+          <div class="panelControls">
+            <select id="championMetaGroup" class="compactSelect" aria-label="Champion meta tier">
+              <option value="all">All tiers</option>
+              <option value="major">Major</option>
+              <option value="secondary">Secondary</option>
+            </select>
+            <select id="championRole" class="compactSelect" aria-label="Champion meta role">
+              <option value="all">All</option>
+              <option value="top">Top</option>
+              <option value="jng">Jungle</option>
+              <option value="mid">Mid</option>
+              <option value="bot">Bot</option>
+              <option value="sup">Support</option>
+            </select>
+          </div>
         </div>
         <div id="champions" class="table"></div>
       </section>
@@ -96,6 +103,6 @@
     </section>
   </main>
   <script>window.STATIC_SITE = true;</script>
-  <script src="static/app.js?v=5a5fefa504"></script>
+  <script src="static/app.js?v=meta-tier-filter-1"></script>
 </body>
 </html>
