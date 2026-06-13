@@ -175,12 +175,6 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .table { display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: minmax(120px, 1fr) 70px 70px 80px; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 .row.header { color: var(--muted); font-size: 12px; }
-.tablePager { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 6px; }
-.tablePagerInfo { color: var(--muted); font-size: 11px; font-weight: 800; white-space: nowrap; }
-.tablePagerTabs { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 5px; }
-.tablePagerTab { min-width: 28px; height: 26px; margin: 0; border: 1px solid #31404d; border-radius: 5px; background: #121a22; color: #b8c6d5; padding: 0 7px; font-size: 11px; font-weight: 900; cursor: pointer; }
-.tablePagerTab:hover, .tablePagerTab:focus-visible { border-color: #4a6072; color: #f0f6fc; outline: none; }
-.tablePagerTab.active { border-color: var(--accent); background: rgba(39, 199, 167, .14); color: var(--accent); }
 .standingsTable .row { grid-template-columns: 42px minmax(160px, 1fr) 70px 80px 80px; align-items: center; }
 .rankCell { color: var(--muted); font-weight: 900; }
 .championMetaRow { grid-template-columns: minmax(160px, 1fr) 50px 54px 54px 54px; gap: 6px; align-items: center; }
@@ -234,8 +228,6 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   .sectionHead, .panelTitleRow { align-items: stretch; flex-direction: column; gap: 8px; }
   .panelControls { align-items: stretch; flex-direction: column; }
   .compactSelect, .filters select { width: 100%; min-width: 0; }
-  .tablePager { align-items: stretch; flex-direction: column; }
-  .tablePagerTabs { justify-content: flex-start; }
   .matches { grid-template-columns: 1fr; }
   .match { min-height: 0; padding: 10px; }
   .matchMeta { font-size: 11px; }
