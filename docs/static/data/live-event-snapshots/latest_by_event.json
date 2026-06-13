@@ -36300,7 +36300,7 @@
   },
   "115548128963037581": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "115548128963037581",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36503,7 +36503,7 @@
   },
   "116453476471776166": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "116453476471776166",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36640,7 +36640,7 @@
   },
   "115616219464607515": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "115616219464607515",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36843,7 +36843,7 @@
   },
   "116520394663535900": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "116520394663535900",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37046,7 +37046,7 @@
   },
   "116453476471776170": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "116453476471776170",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37183,7 +37183,7 @@
   },
   "116634566263916920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "116634566263916920",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -37205,7 +37205,7 @@
   },
   "116634566264113534": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "116634566264113534",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -37227,7 +37227,7 @@
   },
   "116634566264113540": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "116634566264113540",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -37249,29 +37249,210 @@
   },
   "116634566264113546": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "116634566264113546",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566264113546",
-      "league": "",
+      "league": "EMEA Masters",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "103935468920814040",
+          "name": "Galions",
+          "code": "GL",
+          "image": "http://static.lolesports.com/teams/1734090136444_WHITE_GALIONS_LOGO.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "111624100955490493",
+          "name": "MISA Esports",
+          "code": "MISA",
+          "image": "http://static.lolesports.com/teams/1737386153294_MisaEsports.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116634566264113547",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "103935468920814040",
+            "team_name": "Galions",
+            "team_code": "GL"
+          },
+          "red": {
+            "team_id": "111624100955490493",
+            "team_name": "MISA Esports",
+            "team_code": "MISA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113548",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "103935468920814040",
+            "team_name": "Galions",
+            "team_code": "GL"
+          },
+          "red": {
+            "team_id": "111624100955490493",
+            "team_name": "MISA Esports",
+            "team_code": "MISA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113549",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "103935468920814040",
+            "team_name": "Galions",
+            "team_code": "GL"
+          },
+          "red": {
+            "team_id": "111624100955490493",
+            "team_name": "MISA Esports",
+            "team_code": "MISA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113550",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "103935468920814040",
+            "team_name": "Galions",
+            "team_code": "GL"
+          },
+          "red": {
+            "team_id": "111624100955490493",
+            "team_name": "MISA Esports",
+            "team_code": "MISA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113551",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "111624100955490493",
+            "team_name": "MISA Esports",
+            "team_code": "MISA"
+          },
+          "red": {
+            "team_id": "103935468920814040",
+            "team_name": "Galions",
+            "team_code": "GL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "115564793879469324": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T15:56:34.064Z",
+    "checked_at": "2026-06-13T17:19:23.228Z",
     "event_id": "115564793879469324",
     "status": "unstarted",
     "source": "cloudflare_live_event",
