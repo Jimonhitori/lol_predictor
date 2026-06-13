@@ -37046,7 +37046,7 @@
   },
   "116453476471776170": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "116453476471776170",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37183,7 +37183,7 @@
   },
   "116634566263916920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "116634566263916920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37386,7 +37386,7 @@
   },
   "116634566264113534": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "116634566264113534",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37589,7 +37589,7 @@
   },
   "116634566264113540": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "116634566264113540",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37792,7 +37792,7 @@
   },
   "116634566264113546": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "116634566264113546",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37995,29 +37995,210 @@
   },
   "115564793879469324": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "115564793879469324",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115564793879469324",
-      "league": "",
+      "league": "LCS",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-06-14T05:00:00.000Z",
+      "teams": [
+        {
+          "id": "98926509885559666",
+          "name": "Team Liquid Alienware",
+          "code": "TLAW",
+          "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "98767991877340524",
+          "name": "Cloud9 Kia",
+          "code": "C9",
+          "image": "http://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115564793879469325",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469326",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469327",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469328",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469329",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "98767991877340524",
+            "team_name": "Cloud9 Kia",
+            "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "115548128963037587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "115548128963037587",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -38220,7 +38401,7 @@
   },
   "116453476471776174": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "116453476471776174",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -38423,7 +38604,7 @@
   },
   "115616219464607521": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T21:35:59.383Z",
+    "checked_at": "2026-06-13T22:42:12.812Z",
     "event_id": "115616219464607521",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -38599,6 +38780,209 @@
             "team_id": "99566404854685458",
             "team_name": "TOP ESPORTS",
             "team_code": "TES"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520394663535906": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-13T22:42:12.812Z",
+    "event_id": "116520394663535906",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520394663535906",
+      "league": "VCS",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "113843163628949793",
+          "name": "Saigon Dino",
+          "code": "DINO",
+          "image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "114029502022567838",
+          "name": "TP.HCM SN CyberCore Esports",
+          "code": "SCBC",
+          "image": "http://static.lolesports.com/teams/1739952109504_image11.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520394663535907",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535908",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535909",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535910",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535911",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "114029502022567838",
+            "team_name": "TP.HCM SN CyberCore Esports",
+            "team_code": "SCBC"
           },
           "winner": "",
           "live": {
