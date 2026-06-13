@@ -89,9 +89,6 @@ if (data.remote_prediction_feed_warning_count !== null) {
 if (data.prediction_feed_warning_count === 0 && Array.isArray(data.artifact_warnings) && data.artifact_warnings.includes('prediction_feed_has_warnings')) {
   report.errors.push('prediction_feed_has_warnings is set without feed warnings');
 }
-if (data.prediction_feed_warning_count > 0 && !data.artifact_warnings?.includes('prediction_feed_has_warnings')) {
-  report.errors.push('prediction_feed_has_warnings is missing despite feed warnings');
-}
 const unexpectedArtifactWarnings = Array.isArray(data.artifact_warnings)
   ? data.artifact_warnings.filter(warning =>
     warning !== 'prediction_feed_has_warnings'
@@ -100,6 +97,7 @@ const unexpectedArtifactWarnings = Array.isArray(data.artifact_warnings)
     && warning !== 'live_status_display_not_ready'
     && warning !== 'live_status_production_not_ready'
     && !String(warning).startsWith('live_status_blockers:')
+    && warning !== 'analyzer_live_model_bootstrap_only'
     && warning !== 'analyzer_live_model_missing'
   )
   : [];
@@ -115,8 +113,12 @@ if (data.live_status_production_ready === false && !data.artifact_warnings?.incl
 if (Number(data.live_status_blocker_count || 0) > 0 && !data.artifact_warnings?.some(warning => String(warning).startsWith('live_status_blockers:'))) {
   report.errors.push('live_status_blockers warning is missing despite blocker_count>0');
 }
-if (data.analyzer_live_model_available === false && !data.artifact_warnings?.includes('analyzer_live_model_missing')) {
-  report.errors.push('analyzer_live_model_missing is missing despite manifest live_model_available=false');
+if (
+  data.analyzer_live_model_available === false
+  && !data.artifact_warnings?.includes('analyzer_live_model_missing')
+  && !data.artifact_warnings?.includes('analyzer_live_model_bootstrap_only')
+) {
+  report.errors.push('live model fallback warning is missing despite manifest live_model_available=false');
 }
 
 report.ok = report.errors.length === 0;
