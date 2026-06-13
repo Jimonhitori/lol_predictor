@@ -2,16 +2,23 @@
 :root { color-scheme: dark; --bg:#101418; --panel:#171d23; --line:#2a333d; --text:#edf2f7; --muted:#9ba8b5; --accent:#27c7a7; }
 * { box-sizing: border-box; }
 body { margin: 0; font-family: Inter, Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--text); }
-.shell { max-width: 1280px; margin: 0 auto; padding: 28px 24px 40px; }
-.topbar { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 18px; }
+.siteHeader { position: sticky; top: 0; z-index: 60; border-bottom: 1px solid #1f2b36; background: #080d12; }
+.siteHeaderInner { max-width: 1280px; min-height: 56px; margin: 0 auto; padding: 7px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.siteBrand { display: inline-flex; align-items: center; gap: 10px; color: #eef5ff; font-size: 15px; font-weight: 900; text-decoration: none; white-space: nowrap; }
+.siteBrandMark { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--accent); border-radius: 7px; background: rgba(39, 199, 167, .08); color: var(--accent); font-size: 15px; font-weight: 900; }
+.siteNav { display: flex; align-items: center; gap: 8px; }
+.siteNavLink { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; border: 1px solid transparent; border-radius: 7px; padding: 0 12px; color: #c8d4e2; font-size: 14px; font-weight: 900; text-decoration: none; white-space: nowrap; }
+.siteNavLink:hover, .siteNavLink.active { color: var(--accent); }
+.siteNavLink:last-child { border-color: rgba(39, 199, 167, .72); background: rgba(39, 199, 167, .08); color: var(--accent); }
+.shell { max-width: 1280px; margin: 0 auto; padding: 22px 24px 40px; }
+.dashboardHead { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 18px; }
+.dashboardTitleBlock { min-width: 0; }
 h1, h2, p { margin: 0; }
 h1 { font-size: 28px; }
 h2 { font-size: 16px; margin-bottom: 14px; }
 p, label { color: var(--muted); font-size: 13px; }
 .filters { display: flex; gap: 8px; }
-.topNav { display: flex; gap: 6px; align-items: center; }
-.topNavLink { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; border: 1px solid var(--line); border-radius: 6px; padding: 0 12px; color: #c8d4e2; font-size: 13px; font-weight: 800; text-decoration: none; white-space: nowrap; }
-.topNavLink:hover, .topNavLink.active { border-color: rgba(39, 199, 167, .55); background: rgba(39, 199, 167, .1); color: var(--accent); }
+.dashboardFilters { align-items: center; }
 .grid { display: grid; grid-template-columns: minmax(520px, 1.05fr) minmax(420px, .95fr); gap: 18px; align-items: start; }
 .detailGrid { grid-template-columns: minmax(420px, .86fr) minmax(560px, 1.14fr); margin-top: 18px; margin-bottom: 0; }
 .panelStack { display: grid; gap: 18px; }
@@ -225,8 +232,12 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 .teamHistoryResult.loss { color: #ff5d7c; border: 1px solid rgba(255, 93, 124, .45); }
 .teamHistoryScore { justify-self: center; border-radius: 5px; padding: 4px 8px; background: #252b34; color: #f3f6fb; font-size: 12px; font-weight: 900; line-height: 1; white-space: nowrap; }
 @media (max-width: 1100px) { .liveTeamRows { grid-template-columns: 160px minmax(120px, 1fr) 70px 30px 30px 30px 92px; } .liveItems, .liveRowsHeader.items, .liveCell.delta, .liveRowsHeader.delta { display: none; } }
-@media (max-width: 900px) { .topbar, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } .liveTop { grid-template-columns: 1fr; } .liveStatsLine { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .dashboardHead, .filters { align-items: stretch; flex-direction: column; } .grid { grid-template-columns: 1fr; } .formGrid, .draftGrid { grid-template-columns: 1fr; } .liveTop { grid-template-columns: 1fr; } .liveStatsLine { grid-template-columns: 1fr; } }
 @media (max-width: 720px) {
+  .siteHeaderInner { min-height: 52px; padding: 7px 10px; }
+  .siteBrand { font-size: 14px; }
+  .siteBrandMark { width: 34px; height: 34px; }
+  .siteNavLink { min-height: 34px; padding: 0 9px; font-size: 13px; }
   .shell { padding: 12px 10px 28px; }
   h1 { font-size: 22px; line-height: 1.15; }
   h2 { font-size: 15px; margin-bottom: 8px; }

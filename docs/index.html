@@ -5,21 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LoL Esports Dashboard</title>
   <link rel="icon" href="/favicon.svg?v=20260526-lmark-left" type="image/svg+xml">
-  <link rel="stylesheet" href="static/styles.css?v=rtprob-nav-1">
+  <link rel="stylesheet" href="static/styles.css?v=main-header-rtprob-1">
 </head>
 <body>
+  <header class="siteHeader">
+    <nav class="siteHeaderInner" aria-label="Main navigation">
+      <a class="siteBrand" href="/">
+        <span class="siteBrandMark">L</span>
+        <span>LoL Predictor</span>
+      </a>
+      <div class="siteNav">
+        <a class="siteNavLink" href="/">Home</a>
+        <a class="siteNavLink" href="/rtprob/">RTProb</a>
+      </div>
+    </nav>
+  </header>
   <main class="shell">
-    <section class="topbar">
-      <div>
+    <section class="dashboardHead">
+      <div class="dashboardTitleBlock">
         <h1>LoL Esports Dashboard</h1>
         <p id="meta">loading...</p>
         <p id="opsMeta" class="opsMeta"></p>
       </div>
-      <div class="filters">
-        <nav class="topNav" aria-label="Main navigation">
-          <a class="topNavLink active" href="/">Home</a>
-          <a class="topNavLink" href="/rtprob/">RTProb</a>
-        </nav>
+      <div class="filters dashboardFilters">
         <select id="leagueGroup">
           <option value="all" selected>All tiers</option>
           <option value="major">Major</option>
@@ -110,7 +118,7 @@
     </section>
   </main>
   <script>window.STATIC_SITE = true;</script>
-  <script src="static/app.js?v=rtprob-nav-1"></script>
-  <script src="static/champion_meta_patch_filter.js?v=rtprob-nav-1"></script>
+  <script src="static/app.js?v=main-header-rtprob-1"></script>
+  <script src="static/champion_meta_patch_filter.js?v=main-header-rtprob-1"></script>
 </body>
 </html>
