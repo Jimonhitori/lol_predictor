@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
+const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
@@ -567,6 +567,7 @@ async function loadOptions() {
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
   $('leagueGroup').value = 'all';
+  if ($('championMetaGroup')) $('championMetaGroup').value = 'all';
   fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
@@ -582,8 +583,16 @@ async function loadSummary() {
   const data = await api('/api/summary?' + qs());
   state.summary = data;
   $('meta').textContent = `${patchLabel(data.patch)} | ${data.games} games | ${data.leagues.join(', ')}`;
-  renderChampionMeta(data);
+  await loadChampionSummary();
   await loadTeamStandings();
+}
+
+async function loadChampionSummary() {
+  const leagueGroup = $('championMetaGroup')?.value || 'all';
+  const params = new URLSearchParams({ league_group: leagueGroup, region: $('region')?.value || 'all' });
+  const data = await api('/api/summary?' + params.toString());
+  state.championSummary = data;
+  renderChampionMeta(data);
 }
 
 async function loadTeamStandings() {
@@ -3141,7 +3150,8 @@ function setValue(id, value) {
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
-  if ($('championRole')) $('championRole').addEventListener('change', () => state.summary && renderChampionMeta(state.summary));
+  if ($('championMetaGroup')) $('championMetaGroup').addEventListener('change', () => loadChampionSummary());
+  if ($('championRole')) $('championRole').addEventListener('change', () => state.championSummary && renderChampionMeta(state.championSummary));
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
     refreshStaticMatchStatuses().finally(() => {

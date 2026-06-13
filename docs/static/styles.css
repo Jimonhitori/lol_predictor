@@ -18,6 +18,7 @@ p, label { color: var(--muted); font-size: 13px; }
 .matchStrip { margin-bottom: 16px; }
 .panelTitleRow { display: flex; align-items: start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
 .panelTitleRow h2 { margin-bottom: 4px; }
+.panelControls { display: flex; align-items: center; gap: 8px; }
 .subtleText { color: var(--muted); font-size: 12px; margin: 0; }
 .opsMeta { min-height: 16px; margin-top: 4px; color: #8190a2; font-size: 11px; }
 .compactSelect { width: auto; min-width: 170px; padding: 7px 9px; font-size: 12px; }
@@ -225,6 +226,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
   h2 { font-size: 15px; margin-bottom: 8px; }
   .panel { padding: 12px; border-radius: 7px; }
   .sectionHead, .panelTitleRow { align-items: stretch; flex-direction: column; gap: 8px; }
+  .panelControls { align-items: stretch; flex-direction: column; }
   .compactSelect, .filters select { width: 100%; min-width: 0; }
   .matches { grid-template-columns: 1fr; }
   .match { min-height: 0; padding: 10px; }
