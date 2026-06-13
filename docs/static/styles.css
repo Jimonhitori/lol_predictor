@@ -19,6 +19,9 @@ p, label { color: var(--muted); font-size: 13px; }
 .panelTitleRow { display: flex; align-items: start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
 .panelTitleRow h2 { margin-bottom: 4px; }
 .panelControls { display: flex; align-items: center; gap: 8px; }
+.championMetaTitleRow { display: grid; grid-template-columns: 1fr; align-items: stretch; gap: 10px; }
+.championMetaTitleRow .panelControls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; }
+.championMetaTitleRow .compactSelect { width: 100%; min-width: 0; }
 .subtleText { color: var(--muted); font-size: 12px; margin: 0; }
 .opsMeta { min-height: 16px; margin-top: 4px; color: #8190a2; font-size: 11px; }
 .compactSelect { width: auto; min-width: 170px; padding: 7px 9px; font-size: 12px; }
@@ -259,6 +262,7 @@ output { display: block; margin-top: 12px; font-size: 28px; font-weight: 800; }
 }
 @media (max-width: 640px) { .h2hRow { grid-template-columns: 58px minmax(64px, 1fr) 18px 48px 18px minmax(64px, 1fr); gap: 5px; font-size: 12px; } .teamHistoryGrid { grid-template-columns: 1fr; } }
 @media (max-width: 520px) {
+  .championMetaTitleRow .panelControls { grid-template-columns: 1fr; }
   .dateTabs .dateTab { padding: 6px 4px; }
   .dateTabs .dateTab strong { font-size: 11px; }
   .dateTabs .dateTab span { font-size: 10px; }

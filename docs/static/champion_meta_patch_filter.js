@@ -52,7 +52,7 @@
     renderChampionTable('champions', rows, scoped.patch && scoped.patch !== 'all' ? scoped.patch : data.patch);
   };
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function initPatchControls() {
     const select = patchSelect();
     if (!select) return;
     select.addEventListener('change', () => {
@@ -65,5 +65,11 @@
         selectedPatch = 'all';
       }, true);
     }
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPatchControls);
+  } else {
+    initPatchControls();
+  }
 })();
