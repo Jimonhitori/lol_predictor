@@ -9,7 +9,8 @@ body { margin: 0; font-family: Inter, Segoe UI, Arial, sans-serif; background: v
 .siteNav { display: flex; align-items: center; gap: 8px; }
 .siteNavLink { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; border: 1px solid transparent; border-radius: 7px; padding: 0 12px; color: #c8d4e2; font-size: 14px; font-weight: 900; text-decoration: none; white-space: nowrap; }
 .siteNavLink:hover, .siteNavLink.active { color: var(--accent); }
-.siteNavLink:last-child { border-color: rgba(39, 199, 167, .72); background: rgba(39, 199, 167, .08); color: var(--accent); }
+.siteNavLink.active { background: rgba(39, 199, 167, .07); }
+.siteNavLinkCta { border-color: rgba(39, 199, 167, .72); background: rgba(39, 199, 167, .08); color: var(--accent); }
 .shell { max-width: 1280px; margin: 0 auto; padding: 22px 24px 40px; }
 .dashboardHead { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 18px; }
 .dashboardTitleBlock { min-width: 0; }
