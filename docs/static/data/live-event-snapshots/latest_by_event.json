@@ -36640,7 +36640,7 @@
   },
   "115616219464607515": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "115616219464607515",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36843,7 +36843,7 @@
   },
   "116520394663535900": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "116520394663535900",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37046,7 +37046,7 @@
   },
   "116453476471776170": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "116453476471776170",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37183,7 +37183,7 @@
   },
   "116634566263916920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "116634566263916920",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37386,7 +37386,7 @@
   },
   "116634566264113534": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "116634566264113534",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37589,29 +37589,210 @@
   },
   "116634566264113540": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "116634566264113540",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566264113540",
-      "league": "",
+      "league": "EMEA Masters",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "107416483509696259",
+          "name": "Eintracht Spandau",
+          "code": "EINS",
+          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "107467803833323099",
+          "name": "Heretics Academy",
+          "code": "HRTS",
+          "image": "http://static.lolesports.com/teams/1661502137823_LOGOHERETICSPNG.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116634566264113541",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "107467803833323099",
+            "team_name": "Heretics Academy",
+            "team_code": "HRTS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113542",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "107467803833323099",
+            "team_name": "Heretics Academy",
+            "team_code": "HRTS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113543",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "107467803833323099",
+            "team_name": "Heretics Academy",
+            "team_code": "HRTS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113544",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "107467803833323099",
+            "team_name": "Heretics Academy",
+            "team_code": "HRTS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113545",
+          "number": 5,
+          "state": "completed",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "107467803833323099",
+            "team_name": "Heretics Academy",
+            "team_code": "HRTS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116634566264113546": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "116634566264113546",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37814,210 +37995,29 @@
   },
   "115564793879469324": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "115564793879469324",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115564793879469324",
-      "league": "LCS",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
-      "status": "unstarted",
-      "start_time": "2026-06-14T05:00:00.000Z",
-      "teams": [
-        {
-          "id": "98926509885559666",
-          "name": "Team Liquid Alienware",
-          "code": "TLAW",
-          "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "98767991877340524",
-          "name": "Cloud9 Kia",
-          "code": "C9",
-          "image": "http://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "115564793879469325",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "red": {
-            "team_id": "98767991877340524",
-            "team_name": "Cloud9 Kia",
-            "team_code": "C9"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115564793879469326",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98767991877340524",
-            "team_name": "Cloud9 Kia",
-            "team_code": "C9"
-          },
-          "red": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115564793879469327",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "red": {
-            "team_id": "98767991877340524",
-            "team_name": "Cloud9 Kia",
-            "team_code": "C9"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115564793879469328",
-          "number": 4,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98767991877340524",
-            "team_name": "Cloud9 Kia",
-            "team_code": "C9"
-          },
-          "red": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115564793879469329",
-          "number": 5,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "red": {
-            "team_id": "98767991877340524",
-            "team_name": "Cloud9 Kia",
-            "team_code": "C9"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "115548128963037587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T18:48:38.170Z",
+    "checked_at": "2026-06-13T20:08:34.246Z",
     "event_id": "115548128963037587",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -38193,6 +38193,209 @@
             "team_id": "98767991853197861",
             "team_name": "T1",
             "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116453476471776174": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-13T20:08:34.246Z",
+    "event_id": "116453476471776174",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116453476471776174",
+      "league": "LJL",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "109668849651338559",
+          "name": "FENNEL",
+          "code": "FL",
+          "image": "http://static.lolesports.com/teams/1673413831349_fl.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116046732670043900",
+          "name": "Rising Gaming",
+          "code": "RGA",
+          "image": "http://static.lolesports.com/teams/1771324524126_rsg_full_color_onW.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116453476471776175",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776176",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776177",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776178",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776179",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
           },
           "winner": "",
           "live": {
