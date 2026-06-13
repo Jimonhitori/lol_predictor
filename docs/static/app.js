@@ -800,6 +800,7 @@ function normalizePreMatchPredictionFeed(payload, candidate) {
     byEventId: {},
     byGameId: {},
     byMatchKey: {},
+    byLooseMatchKey: {},
     meta: {
       schema: payload?.schema || (Array.isArray(payload) ? 'array' : ''),
       generated_at: payload?.generated_at || '',
@@ -819,6 +820,8 @@ function normalizePreMatchPredictionFeed(payload, candidate) {
     if (prediction.game_id) result.byGameId[prediction.game_id] = prediction;
     const key = preMatchPredictionKey(prediction);
     if (key) result.byMatchKey[key] = prediction;
+    const looseKey = loosePreMatchPredictionKey(prediction);
+    if (looseKey) result.byLooseMatchKey[looseKey] = prediction;
   }
   if (!result.meta.row_count) result.status = 'empty';
   return result;
@@ -867,6 +870,16 @@ function preMatchPredictionKey(value) {
   return [league, start, blue, red].every(Boolean) ? `${league}|${start}|${blue}|${red}` : '';
 }
 
+function loosePreMatchPredictionKey(value) {
+  const league = predictionLeagueKey(value?.league || '');
+  const date = localDateKey(value?.start_time || '');
+  const teams = [
+    teamKey(value?.blue_team || value?.blue_code || value?.blue || ''),
+    teamKey(value?.red_team || value?.red_code || value?.red || ''),
+  ].filter(Boolean).sort();
+  return league && date && teams.length === 2 ? `${league}|${date}|${teams[0]}|${teams[1]}` : '';
+}
+
 function normalizedPredictionTime(value) {
   const date = parseScheduleDate(value || '');
   if (Number.isNaN(date.getTime())) return String(value || '').trim();
@@ -882,14 +895,18 @@ function applyPreMatchPredictionOverlay(matches) {
     blue_team: match?.blue_team || match?.blue_code || '',
     red_team: match?.red_team || match?.red_code || '',
   })).filter(Boolean));
+  const seenLoosePredictionKeys = new Set((matches || []).map(match => loosePreMatchPredictionKey(match)).filter(Boolean));
   const overlaid = (matches || []).map(match => {
     const eventId = String(match?.id || match?.event_id || '');
-    const prediction = eventId ? predictions.byEventId?.[eventId] : null;
-    const canOverlay = prediction && predictionMatchesSchedule(match, prediction);
+    const looseKey = loosePreMatchPredictionKey(match);
+    const prediction = (eventId ? predictions.byEventId?.[eventId] : null) || (looseKey ? predictions.byLooseMatchKey?.[looseKey] : null);
+    const canOverlay = prediction && (predictionMatchesSchedule(match, prediction) || predictionMatchesScheduleLoosely(match, prediction));
     if (eventId && (!prediction || canOverlay)) seenIds.add(eventId);
     const output = canOverlay ? overlayMatchFromPrediction(match, prediction) : match;
     const outputKey = standalonePredictionKey(output);
     if (outputKey) seenPredictionKeys.add(outputKey);
+    const outputLooseKey = loosePreMatchPredictionKey(output);
+    if (outputLooseKey) seenLoosePredictionKeys.add(outputLooseKey);
     return output;
   });
   for (const prediction of predictions.rows || []) {
@@ -897,7 +914,10 @@ function applyPreMatchPredictionOverlay(matches) {
     if (!eventId || seenIds.has(eventId)) continue;
     const predictionKey = standalonePredictionKey(prediction);
     if (predictionKey && seenPredictionKeys.has(predictionKey)) continue;
+    const looseKey = loosePreMatchPredictionKey(prediction);
+    if (looseKey && seenLoosePredictionKeys.has(looseKey)) continue;
     if (predictionKey) seenPredictionKeys.add(predictionKey);
+    if (looseKey) seenLoosePredictionKeys.add(looseKey);
     seenIds.add(eventId);
     overlaid.push(overlayMatchFromPrediction(standalonePredictionMatch(prediction, matches), prediction));
   }
@@ -908,6 +928,12 @@ function standalonePredictionKey(value) {
   const start = normalizedPredictionTime(value?.start_time || '');
   const teams = [teamKey(value?.blue_team || ''), teamKey(value?.red_team || '')].filter(Boolean).sort();
   return start && teams.length === 2 ? `${start}|${teams[0]}|${teams[1]}` : '';
+}
+
+function predictionMatchesScheduleLoosely(match, prediction) {
+  const matchKey = loosePreMatchPredictionKey(match);
+  const predictionKey = loosePreMatchPredictionKey(prediction);
+  return Boolean(matchKey && predictionKey && matchKey === predictionKey);
 }
 
 function standalonePredictionMatch(prediction, matches) {
@@ -990,7 +1016,7 @@ function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
 }
 
 function scheduleSlotKey(match) {
-  const league = shortPredictionLeague(match?.league || '').toLowerCase();
+  const league = predictionLeagueKey(match?.league || '');
   const start = normalizedPredictionTime(match?.start_time || '');
   return league && start ? `${league}|${start}` : '';
 }
@@ -1011,6 +1037,15 @@ function predictionLeagueMetadata(prediction, matches) {
 
 function shortPredictionLeague(value) {
   return String(value || '').split(' - ')[0].trim();
+}
+
+function predictionLeagueKey(value) {
+  const text = shortPredictionLeague(value).toLowerCase().trim();
+  if (!text) return '';
+  const known = ['lpl', 'lck', 'lcs', 'lec', 'lcp', 'vcs', 'ljl', 'cblol', 'nacl', 'emea masters'];
+  const match = known.find(league => text === league || text.startsWith(`${league} `));
+  if (match) return match;
+  return text.replace(/\s+20\d{2}.*$/, '').trim();
 }
 
 function overlayMatchFromPrediction(match, prediction) {
@@ -1327,7 +1362,9 @@ function preMatchPredictionForMatch(match) {
     blue_team: match?.blue_team || match?.blue || '',
     red_team: match?.red_team || match?.red || '',
   });
-  return key ? predictions.byMatchKey?.[key] || null : null;
+  if (key && predictions.byMatchKey?.[key]) return predictions.byMatchKey[key];
+  const looseKey = loosePreMatchPredictionKey(match);
+  return looseKey ? predictions.byLooseMatchKey?.[looseKey] || null : null;
 }
 
 function detailHref(id) {
