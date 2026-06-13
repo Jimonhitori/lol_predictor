@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-12T22:17:28.142433Z",
+  "generated_at": "2026-06-13T00:13:47.307671Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -10,111 +10,6 @@
     }
   },
   "predictions": [
-    {
-      "event_id": "Benelux Ascend Series/2026 Season/Summer Promotion_Round 1_3",
-      "game_id": "Benelux Ascend Series/2026 Season/Summer Promotion_Round 1_3",
-      "league": "BAS 2026 Summer Promotion",
-      "start_time": "2026-06-13 02:00:00",
-      "blue_team": "taka_ascend",
-      "red_team": "arrakis_e_sport",
-      "blue_team_name": "TAKA ASCEND",
-      "red_team_name": "Arrakis E-Sport",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "TAKA ASCEND",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:TAKA ASCEND->taka_ascend",
-        "blue_team_no_history:taka_ascend",
-        "red_team_fallback_slug:Arrakis E-Sport->arrakis_e_sport",
-        "red_team_no_history:arrakis_e_sport"
-      ]
-    },
-    {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_8",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_8",
-      "league": "PRM 3rd Div 25-26 Spring",
-      "start_time": "2026-06-13 02:00:00",
-      "blue_team": "kanji_esports_aka",
-      "red_team": "vfb_x_engines_stuttgart",
-      "blue_team_name": "Kanji Esports AKA",
-      "red_team_name": "VfB x Engines Stuttgart",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Kanji Esports AKA",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Kanji Esports AKA->kanji_esports_aka",
-        "blue_team_no_history:kanji_esports_aka",
-        "red_team_fallback_slug:VfB x Engines Stuttgart->vfb_x_engines_stuttgart",
-        "red_team_no_history:vfb_x_engines_stuttgart"
-      ]
-    },
-    {
-      "event_id": "Benelux Ascend Series/2026 Season/Summer Promotion_Round 1_4",
-      "game_id": "Benelux Ascend Series/2026 Season/Summer Promotion_Round 1_4",
-      "league": "BAS 2026 Summer Promotion",
-      "start_time": "2026-06-13 03:00:00",
-      "blue_team": "zennit_academy",
-      "red_team": "bipolar",
-      "blue_team_name": "ZennIT Academy",
-      "red_team_name": "BiPOLAR",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "ZennIT Academy",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:ZennIT Academy->zennit_academy",
-        "blue_team_no_history:zennit_academy",
-        "red_team_fallback_slug:BiPOLAR->bipolar",
-        "red_team_no_history:bipolar"
-      ]
-    },
-    {
-      "event_id": "Prime League 2nd Division/2026 Season/Spring Relegation_Relegation Round_3",
-      "game_id": "Prime League 2nd Division/2026 Season/Spring Relegation_Relegation Round_3",
-      "league": "PRM 2nd Division 25-26 Spring Relegation Round",
-      "start_time": "2026-06-13 03:30:00",
-      "blue_team": "circus_kittens",
-      "red_team": "locked_in_dutch_team",
-      "blue_team_name": "Circus Kittens",
-      "red_team_name": "Locked In (Dutch Team)",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Circus Kittens",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Circus Kittens->circus_kittens",
-        "blue_team_no_history:circus_kittens",
-        "red_team_fallback_slug:Locked In (Dutch Team)->locked_in_dutch_team",
-        "red_team_no_history:locked_in_dutch_team"
-      ]
-    },
-    {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_9",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_9",
-      "league": "PRM 3rd Div 25-26 Spring",
-      "start_time": "2026-06-13 04:45:00",
-      "blue_team": "neko_elite_kittens",
-      "red_team": "team_300_black",
-      "blue_team_name": "Neko Elite Kittens",
-      "red_team_name": "Team 300 Black",
-      "blue_win_probability": 0.542448,
-      "red_win_probability": 0.457552,
-      "predicted_winner": "Neko Elite Kittens",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Neko Elite Kittens->neko_elite_kittens",
-        "blue_team_no_history:neko_elite_kittens",
-        "red_team_fallback_slug:Team 300 Black->team_300_black",
-        "red_team_no_history:team_300_black"
-      ]
-    },
     {
       "event_id": "2026 Asian Games/Qualifier_Day 2_1",
       "game_id": "2026 Asian Games/Qualifier_Day 2_1",
@@ -1575,7 +1470,7 @@
     }
   ],
   "warnings": [
-    "blue_team_fallback_slug:count=54",
+    "blue_team_fallback_slug:count=50",
     "blue_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "blue_team_fallback_slug:Atruvia Münster Esports->atruvia_m_nster_esports",
     "blue_team_fallback_slug:BS Effortless->bs_effortless",
@@ -1584,8 +1479,8 @@
     "blue_team_fallback_slug:Cloud eSport->cloud_esport",
     "blue_team_fallback_slug:Clã NKZ Raccoons->cl_nkz_raccoons",
     "blue_team_fallback_slug:Clã NKZ->cl_nkz",
-    "blue_team_fallback_slug:omitted=46",
-    "blue_team_no_history:count=54",
+    "blue_team_fallback_slug:omitted=42",
+    "blue_team_no_history:count=50",
     "blue_team_no_history:404_multigaming_e_v",
     "blue_team_no_history:atruvia_m_nster_esports",
     "blue_team_no_history:berlin_5",
@@ -1594,8 +1489,8 @@
     "blue_team_no_history:cl_nkz",
     "blue_team_no_history:cl_nkz_raccoons",
     "blue_team_no_history:cloud_esport",
-    "blue_team_no_history:omitted=46",
-    "red_team_fallback_slug:count=58",
+    "blue_team_no_history:omitted=42",
+    "red_team_fallback_slug:count=54",
     "red_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
     "red_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "red_team_fallback_slug:AMD Team->amd_team",
@@ -1603,9 +1498,9 @@
     "red_team_fallback_slug:Abyssal Denmark->abyssal_denmark",
     "red_team_fallback_slug:AceGaming FullHouse->acegaming_fullhouse",
     "red_team_fallback_slug:AceGaming Wildcard->acegaming_wildcard",
-    "red_team_fallback_slug:Arrakis E-Sport->arrakis_e_sport",
-    "red_team_fallback_slug:omitted=50",
-    "red_team_no_history:count=58",
+    "red_team_fallback_slug:BS Effortless->bs_effortless",
+    "red_team_fallback_slug:omitted=46",
+    "red_team_no_history:count=54",
     "red_team_no_history:1_esport_club_frankfurt_e_v",
     "red_team_no_history:404_multigaming_e_v",
     "red_team_no_history:absolved",
@@ -1613,8 +1508,8 @@
     "red_team_no_history:acegaming_fullhouse",
     "red_team_no_history:acegaming_wildcard",
     "red_team_no_history:amd_team",
-    "red_team_no_history:arrakis_e_sport",
-    "red_team_no_history:omitted=50"
+    "red_team_no_history:babos_gaming",
+    "red_team_no_history:omitted=46"
   ],
   "warning_count": 40
 }
