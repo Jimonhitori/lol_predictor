@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LoL Esports Dashboard</title>
   <link rel="icon" href="/favicon.svg?v=20260526-lmark-left" type="image/svg+xml">
-  <link rel="stylesheet" href="static/styles.css?v=meta-all-rows-1">
+  <link rel="stylesheet" href="static/styles.css?v=meta-patch-filter-1">
 </head>
 <body>
   <main class="shell">
@@ -75,6 +75,9 @@
               <option value="major">Major</option>
               <option value="secondary">Secondary</option>
             </select>
+            <select id="championPatch" class="compactSelect" aria-label="Champion meta patch">
+              <option value="all">-- ALL --</option>
+            </select>
             <select id="championRole" class="compactSelect" aria-label="Champion meta role">
               <option value="all">All</option>
               <option value="top">Top</option>
@@ -103,6 +106,7 @@
     </section>
   </main>
   <script>window.STATIC_SITE = true;</script>
-  <script src="static/app.js?v=meta-all-rows-1"></script>
+  <script src="static/app.js?v=meta-patch-filter-1"></script>
+  <script src="static/champion_meta_patch_filter.js?v=meta-patch-filter-1"></script>
 </body>
 </html>
