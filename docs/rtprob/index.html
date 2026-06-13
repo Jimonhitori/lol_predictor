@@ -161,8 +161,7 @@
       if (meta.status === "loading") return "loading WR";
       if (meta.status !== "ready") return "";
       const key = normalizeName(champ.name);
-      const roleRow = meta.byRole[roleKeys[index]]?.get(key);
-      const row = roleRow || meta.all.get(key);
+      const row = meta.byRole[roleKeys[index]]?.get(key);
       if (!row) return "WR -";
       const picks = numberValue(row.picks ?? row.games);
       const winrate = row.winrate || (picks > 0 ? `${((numberValue(row.wins) / picks) * 100).toFixed(1)}%` : "-");
