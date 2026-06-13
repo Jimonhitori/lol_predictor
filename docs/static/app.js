@@ -1050,7 +1050,7 @@ function predictionLeagueKey(value) {
 
 function overlayMatchFromPrediction(match, prediction) {
   const startTime = predictionStartTimeIso(prediction);
-  const overlayTeams = hasPlaceholderTeamInfo(match) || matchScheduleLooksStale(match, prediction);
+  const overlayTeams = hasPlaceholderTeamInfo(match);
   return {
     ...match,
     id: String(match.id || prediction.event_id || prediction.game_id || ''),
@@ -1353,18 +1353,42 @@ function matchResultText(match) {
 function preMatchPredictionForMatch(match) {
   const predictions = state.preMatchPredictions || {};
   const eventId = String(match?.id || match?.event_id || '');
-  if (eventId && predictions.byEventId?.[eventId]) return predictions.byEventId[eventId];
+  if (eventId && predictions.byEventId?.[eventId]) return orientPredictionForMatch(match, predictions.byEventId[eventId]);
   const gameId = String(match?.game_id || match?.gameId || '');
-  if (gameId && predictions.byGameId?.[gameId]) return predictions.byGameId[gameId];
+  if (gameId && predictions.byGameId?.[gameId]) return orientPredictionForMatch(match, predictions.byGameId[gameId]);
   const key = preMatchPredictionKey({
     league: match?.league || '',
     start_time: match?.start_time || match?.start || '',
     blue_team: match?.blue_team || match?.blue || '',
     red_team: match?.red_team || match?.red || '',
   });
-  if (key && predictions.byMatchKey?.[key]) return predictions.byMatchKey[key];
+  if (key && predictions.byMatchKey?.[key]) return orientPredictionForMatch(match, predictions.byMatchKey[key]);
   const looseKey = loosePreMatchPredictionKey(match);
-  return looseKey ? predictions.byLooseMatchKey?.[looseKey] || null : null;
+  return looseKey && predictions.byLooseMatchKey?.[looseKey]
+    ? orientPredictionForMatch(match, predictions.byLooseMatchKey[looseKey])
+    : null;
+}
+
+function orientPredictionForMatch(match, prediction) {
+  if (!prediction) return null;
+  const matchBlue = teamKey(match?.blue_team || match?.blue_code || match?.blue || '');
+  const matchRed = teamKey(match?.red_team || match?.red_code || match?.red || '');
+  const predictionBlue = teamKey(prediction.blue_team_name || prediction.blue_team || '');
+  const predictionRed = teamKey(prediction.red_team_name || prediction.red_team || '');
+  if (!matchBlue || !matchRed || !predictionBlue || !predictionRed) return prediction;
+  if (matchBlue === predictionBlue && matchRed === predictionRed) return prediction;
+  if (matchBlue === predictionRed && matchRed === predictionBlue) {
+    return {
+      ...prediction,
+      blue_team: prediction.red_team,
+      red_team: prediction.blue_team,
+      blue_team_name: prediction.red_team_name,
+      red_team_name: prediction.blue_team_name,
+      blue_win_probability: prediction.red_win_probability,
+      red_win_probability: prediction.blue_win_probability,
+    };
+  }
+  return prediction;
 }
 
 function detailHref(id) {
