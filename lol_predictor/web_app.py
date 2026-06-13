@@ -2399,11 +2399,14 @@ def _needs_detail_status_check(match: dict[str, object]) -> bool:
 
 
 def match_detail_payload(context: AppContext, match_id: str) -> dict[str, object]:
-    details = lolesports_event_details(match_id)
+    schedule_match = next((match for match in today_matches(context.rows, context.today_cache) if str(match.get("id")) == str(match_id)), {})
+    source_match_id = str(schedule_match.get("source_match_id") or match_id)
+    details = lolesports_event_details(source_match_id)
     if not details:
         return {}
-    schedule_match = next((match for match in today_matches(context.rows, context.today_cache) if str(match.get("id")) == str(match_id)), {})
     if schedule_match:
+        details["id"] = str(schedule_match.get("id") or match_id)
+        details["source_match_id"] = source_match_id
         details["start_time"] = details.get("start_time") or schedule_match.get("start_time", "")
         details["status"] = details.get("status") or schedule_match.get("status", "")
     return details

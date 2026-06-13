@@ -79,13 +79,21 @@ async function fetchEventDetails(eventId, env) {
   const url = new URL(EVENT_DETAILS_URL);
   url.searchParams.set('hl', 'en-US');
   url.searchParams.set('id', eventId);
-  const response = await fetch(url.toString(), {
-    headers: {
-      'x-api-key': (env && env.LOL_ESPORTS_API_KEY) || DEFAULT_LOLESPORTS_API_KEY,
-      accept: 'application/json',
-    },
+  const headers = {
+    'x-api-key': (env && env.LOL_ESPORTS_API_KEY) || DEFAULT_LOLESPORTS_API_KEY,
+    accept: 'application/json',
+    'user-agent': 'lol-predictor-live-event/1.0',
+  };
+  let response = await fetch(url.toString(), {
+    headers,
     cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
   });
+  if (!response.ok) {
+    response = await fetch(url.toString(), {
+      headers,
+      cf: { cacheEverything: false, cacheTtl: 0 },
+    });
+  }
   if (!response.ok) throw new Error(`event details ${response.status}`);
   const payload = await response.json();
   const event = payload?.data?.event;

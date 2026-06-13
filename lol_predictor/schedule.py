@@ -349,6 +349,7 @@ def _normalize_lolesports_events(events: list[dict[str, Any]]) -> list[dict[str,
         matches.append(
             {
                 "id": str(match.get("id") or len(matches) + 1),
+                "source_match_id": str(event.get("id") or match.get("id") or ""),
                 "league": league,
                 "league_group": _league_group(league),
                 "region": _league_region(league),
@@ -385,6 +386,8 @@ def _series_state_from_games(
     needed = (int(best_of or 0) // 2) + 1 if str(best_of or "").isdigit() else 0
     if needed and any(win >= needed for win in wins):
         return "completed"
+    if needed and fallback.lower() in {"completed", "complete"}:
+        return "inProgress"
     if any(state == "completed" for state in states):
         return "inProgress"
     if states and all(state in {"unstarted", "unneeded"} for state in states):
@@ -426,6 +429,7 @@ def _normalize_match_list(payload: Any) -> list[dict[str, Any]]:
         matches.append(
             {
                 "id": str(item.get("id") or item.get("matchId") or item.get("gameId") or len(matches) + 1),
+                "source_match_id": str(item.get("source_match_id") or item.get("sourceMatchId") or item.get("eventId") or item.get("event_id") or ""),
                 "league": str(item.get("league") or item.get("leagueName") or item.get("tournament") or "Unknown"),
                 "league_group": str(item.get("league_group") or item.get("tier") or "all"),
                 "region": str(item.get("region") or "all"),

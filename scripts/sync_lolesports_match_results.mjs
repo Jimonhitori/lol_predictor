@@ -56,9 +56,10 @@ function scheduleUpdates(payload, { startDate, endDate }) {
     if (!id) continue;
     output.set(id, {
       id,
+      source_match_id: text(event.id || id),
       league: text(event.league?.name || event.league?.slug),
       start_time: text(event.startTime),
-      status: normalizeStatus(event.state),
+      status: normalizeEventStatus(event, match, blue, red),
       blue_team: text(blue.name || blue.code || blue.slug || 'TBD'),
       red_team: text(red.name || red.code || red.slug || 'TBD'),
       blue_code: text(blue.code || blue.name || 'TBD'),
@@ -135,6 +136,17 @@ function normalizeStatus(value) {
   if (state === 'completed') return 'completed';
   if (state === 'inprogress' || state === 'in_progress') return 'inProgress';
   return state || 'unstarted';
+}
+
+function normalizeEventStatus(event, match, blue, red) {
+  const status = normalizeStatus(event?.state);
+  if (status !== 'completed') return status;
+  const bestOf = Number(match?.strategy?.count || 0);
+  const needed = bestOf ? Math.floor(bestOf / 2) + 1 : 0;
+  if (!needed) return status;
+  const blueWins = Number(blue?.result?.gameWins ?? 0);
+  const redWins = Number(red?.result?.gameWins ?? 0);
+  return Math.max(blueWins, redWins) >= needed ? 'completed' : 'inProgress';
 }
 
 function normalizeImage(value) {
