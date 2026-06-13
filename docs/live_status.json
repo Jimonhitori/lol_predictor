@@ -1,5 +1,5 @@
 {
-  "blocker_count": 8,
+  "blocker_count": 7,
   "blockers": [
     "live training readiness is false",
     "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
@@ -7,25 +7,24 @@
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
     "live model evaluation report is missing",
-    "live replay summary is missing",
-    "live operations wiring report is missing"
+    "live replay summary is missing"
   ],
   "bootstrap": {
     "available": true,
-    "completed": 3,
+    "completed": 5,
     "file_evidence": {
       "completion_overrides": {
-        "d1_sync_completed": true,
-        "daily_training_published": false,
+        "d1_sync_completed": false,
+        "daily_training_published": true,
         "worker_deploy_completed": false
       },
       "d1_database_id_file_exists": false,
-      "d1_sync_completed": true,
-      "daily_training_published_status": false,
+      "d1_sync_completed": false,
+      "daily_training_published_status": true,
       "oe_bootstrap_model_available": true,
       "root": "/home/runner/work/lol-pros-analyzer/lol-pros-analyzer",
       "worker_base_url_file_exists": false,
-      "worker_check_ran": false,
+      "worker_check_ran": true,
       "worker_has_d1_binding": false
     },
     "items": [
@@ -49,7 +48,7 @@
       },
       {
         "detail": "Deploy live Worker can save LIVE_WORKER_BASE_URL automatically; set the repository variable manually only if automatic saving is disabled or fails.",
-        "done": false,
+        "done": true,
         "id": "live_worker_base_url",
         "label": "Confirm Worker base URL for daily checks"
       },
@@ -67,19 +66,19 @@
       },
       {
         "detail": "Use create_d1_database=true for first setup; add the Pages live_logistic.json URL when available or bootstrap_model_url for live_logistic_oe_bootstrap.json while the primary model is not ready, persist_window_frames=true, enable_cron=true, then keep reports/live_worker_check.json.",
-        "done": false,
+        "done": true,
         "id": "worker_deploy_workflow",
         "label": "Run GitHub Actions workflow Deploy live Worker"
       },
       {
         "detail": "This converts Worker-persisted frames into data/history/live_frames_history.csv and writes reports/live_d1_sync_status.json.",
-        "done": true,
+        "done": false,
         "id": "d1_sync_workflow",
         "label": "Run or wait for GitHub Actions workflow Sync live D1 frames"
       },
       {
         "detail": "This labels collected frames, trains/evaluates live_logistic.json, and publishes public/live_status.json.",
-        "done": false,
+        "done": true,
         "id": "daily_training",
         "label": "Run or wait for daily Train model workflow"
       }
@@ -98,37 +97,23 @@
         "label": "Add GitHub secret CLOUDFLARE_ACCOUNT_ID"
       },
       {
-        "detail": "Deploy live Worker can save LIVE_WORKER_BASE_URL automatically; set the repository variable manually only if automatic saving is disabled or fails.",
-        "done": false,
-        "id": "live_worker_base_url",
-        "label": "Confirm Worker base URL for daily checks"
-      },
-      {
         "detail": "The Deploy live Worker workflow can find or create this database when create_d1_database=true; verify reports/live_d1_database_id.txt or workers/wrangler.toml has a LIVE_FRAMES_DB binding afterward.",
         "done": false,
         "id": "d1_database_created",
         "label": "Resolve or create Cloudflare D1 database lol-live-frames"
       },
       {
-        "detail": "Use create_d1_database=true for first setup; add the Pages live_logistic.json URL when available or bootstrap_model_url for live_logistic_oe_bootstrap.json while the primary model is not ready, persist_window_frames=true, enable_cron=true, then keep reports/live_worker_check.json.",
+        "detail": "This converts Worker-persisted frames into data/history/live_frames_history.csv and writes reports/live_d1_sync_status.json.",
         "done": false,
-        "id": "worker_deploy_workflow",
-        "label": "Run GitHub Actions workflow Deploy live Worker"
-      },
-      {
-        "detail": "This labels collected frames, trains/evaluates live_logistic.json, and publishes public/live_status.json.",
-        "done": false,
-        "id": "daily_training",
-        "label": "Run or wait for daily Train model workflow"
+        "id": "d1_sync_workflow",
+        "label": "Run or wait for GitHub Actions workflow Sync live D1 frames"
       }
     ],
     "next_setup_actions": [
       "Add GitHub secret CLOUDFLARE_API_TOKEN",
       "Add GitHub secret CLOUDFLARE_ACCOUNT_ID",
-      "Confirm Worker base URL for daily checks",
       "Resolve or create Cloudflare D1 database lol-live-frames",
-      "Run GitHub Actions workflow Deploy live Worker",
-      "Run or wait for daily Train model workflow"
+      "Run or wait for GitHub Actions workflow Sync live D1 frames"
     ],
     "ready_for_d1_sync": false,
     "ready_for_worker_deploy": false,
@@ -136,33 +121,20 @@
   },
   "collection": {
     "archive": {
-      "available": true,
-      "empty_game_state_rows": 0,
-      "history_rows": 528,
-      "latest_timestamp": "2026-06-12T17:46:06.374000Z",
-      "live_model_prediction_rows": 0,
-      "model_version_counts": {
-        "live_logistic_oe_bootstrap": 306
-      },
-      "new_rows": 306,
-      "non_empty_game_state_rows": 528,
-      "oe_bootstrap_snapshot_rows": 306,
-      "production_live_telemetry_rows": 222,
-      "raw_frame_collection_rows": 0,
-      "sampling": {
-        "games_with_interval_samples": 38,
-        "games_with_single_frame": 0,
-        "interval_count": 248,
-        "max_interval_seconds": 256.008,
-        "median_interval_seconds": 29.99449999999996,
-        "p90_interval_seconds": 30.31090000000006,
-        "pct_intervals_lte_30s": 0.5967741935483871,
-        "pct_intervals_lte_60s": 0.9879032258064516,
-        "sub_30s_interval_count": 148,
-        "sub_60s_interval_count": 245
-      },
-      "unique_games": 38,
-      "unknown_model_version_rows": 222
+      "available": false,
+      "empty_game_state_rows": null,
+      "history_rows": null,
+      "latest_timestamp": null,
+      "live_model_prediction_rows": null,
+      "model_version_counts": {},
+      "new_rows": null,
+      "non_empty_game_state_rows": null,
+      "oe_bootstrap_snapshot_rows": null,
+      "production_live_telemetry_rows": null,
+      "raw_frame_collection_rows": null,
+      "sampling": null,
+      "unique_games": null,
+      "unknown_model_version_rows": null
     },
     "config": {
       "available": true,
@@ -175,9 +147,9 @@
       "warnings": []
     },
     "d1_sync": {
-      "available": true,
+      "available": false,
       "reason": null,
-      "skipped": false
+      "skipped": null
     },
     "readiness": {
       "available": true,
@@ -190,7 +162,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-06-13T09:43:25.491781+00:00",
+  "generated_at": "2026-06-13T11:11:46.734822+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -200,8 +172,7 @@
     "Collect or sync more completed-game live frames, then rebuild live features.",
     "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
     "Train/evaluate the live model until operational_summary recommends display.",
-    "Run live replay on stored frames and verify <=30s interval coverage.",
-    "Configure D1, Cloudflare secrets, and Worker smoke checks."
+    "Run live replay on stored frames and verify <=30s interval coverage."
   ],
   "oe_live_bootstrap": {
     "available": true,
@@ -209,19 +180,19 @@
     "cadence_note": "OE bootstrap snapshots are coarse 10/15/20/25 minute rows, not <=30s live telemetry.",
     "cadence_seconds": 300,
     "evaluation": {
-      "accuracy": null,
-      "brier_score": null,
+      "accuracy": 0.7482837528604119,
+      "brier_score": 0.1648692670096085,
       "display_recommendation": null,
       "earliest_reliable_bucket": null,
-      "log_loss": null
+      "log_loss": 0.4904490554495112
     },
-    "feature_rows": null,
-    "games": null,
+    "feature_rows": 19667,
+    "games": 5000,
     "model_url": "live_logistic_oe_bootstrap.json",
-    "pct_intervals_lte_30s": null,
+    "pct_intervals_lte_30s": 0.0,
     "production_live_telemetry": false,
     "ready": true,
-    "rows": null,
+    "rows": 19667,
     "source": "oracles_elixir_at_minute_snapshots",
     "trained": true
   },
@@ -264,8 +235,8 @@
         "feature_rows": 467,
         "games": 35,
         "label_sources": {
-          "combined_rows": 5768,
-          "games_rows": 5768,
+          "combined_rows": 25999,
+          "games_rows": 25999,
           "live_label_rows": 0
         },
         "labeled_rows": 467,
@@ -313,12 +284,12 @@
     },
     {
       "evidence": {
-        "ops_ok": null,
-        "ops_warning_count": null
+        "ops_ok": true,
+        "ops_warning_count": 3
       },
       "id": "operations_wiring",
       "label": "Worker, D1, workflows, and checks are wired for production operation",
-      "status": "blocked"
+      "status": "passed"
     }
   ],
   "schema_version": "1.0",
@@ -350,7 +321,7 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 0
+        "pre_match_rows": 87
       },
       "ready": false,
       "replay": {
@@ -367,11 +338,22 @@
     "ready": false,
     "rows": 467
   },
-  "warning_count": 1,
+  "warning_count": 4,
   "warnings": [
-    "public manifest uses OE bootstrap fallback while production live model is missing"
+    "public manifest uses OE bootstrap fallback while production live model is missing",
+    "live operations wiring: CLOUDFLARE_API_TOKEN is not configured locally; scheduled D1 sync needs a GitHub secret",
+    "live operations wiring: models/live_logistic.json is missing; live serving can still collect raw frames but cannot serve model predictions",
+    "live operations wiring: live_training_readiness.json exists but ready is false"
   ],
   "worker": {
-    "checked": false
+    "checked": true,
+    "d1_persistence_configured": true,
+    "live_checked": false,
+    "live_persisted": null,
+    "live_persisted_frame_count": null,
+    "model_version": "live_logistic_oe_bootstrap",
+    "ok": true,
+    "persist_window_frames_configured": true,
+    "warning_count": 0
   }
 }

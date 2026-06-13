@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-13T05:16:43.451053Z",
+  "generated_at": "2026-06-13T11:09:36.051265Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -151,25 +151,20 @@
       "warnings": []
     },
     {
-      "event_id": "2026 Asian Games/Qualifier_Day 2_7",
-      "game_id": "2026 Asian Games/Qualifier_Day 2_7",
-      "league": "2026 Asian Games Qualifier",
-      "start_time": "2026-06-13 18:30:00",
-      "blue_team": "saudi_arabia_national_team",
-      "red_team": "united_arab_emirates_national_team",
-      "blue_team_name": "Saudi Arabia (National Team)",
-      "red_team_name": "United Arab Emirates (National Team)",
-      "blue_win_probability": 0.537001,
-      "red_win_probability": 0.462999,
-      "predicted_winner": "Saudi Arabia (National Team)",
-      "confidence": "low",
+      "event_id": "LPL/2026 Season/Split 2 Playoffs_Round 4_2",
+      "game_id": "LPL/2026 Season/Split 2 Playoffs_Round 4_2",
+      "league": "LPL 2026 Split 2 Playoffs",
+      "start_time": "2026-06-13 17:00:00",
+      "blue_team": "team_we",
+      "red_team": "bilibili_gaming",
+      "blue_team_name": "Team WE",
+      "red_team_name": "Bilibili Gaming",
+      "blue_win_probability": 0.2052,
+      "red_win_probability": 0.7948,
+      "predicted_winner": "Bilibili Gaming",
+      "confidence": "high",
       "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
-        "blue_team_no_history:saudi_arabia_national_team",
-        "red_team_fallback_slug:United Arab Emirates (National Team)->united_arab_emirates_national_team",
-        "red_team_no_history:united_arab_emirates_national_team"
-      ]
+      "warnings": []
     },
     {
       "event_id": "2026 Asian Games/Qualifier_Day 2_8",
@@ -246,25 +241,6 @@
       "warnings": []
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_10",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_10",
-      "league": "PRM 3rd Div 25-26 Spring",
-      "start_time": "2026-06-13 21:00:00",
-      "blue_team": "black_lion",
-      "red_team": "mt1_vision",
-      "blue_team_name": "Black Lion",
-      "red_team_name": "MT1 Vision",
-      "blue_win_probability": 0.386964,
-      "red_win_probability": 0.613036,
-      "predicted_winner": "MT1 Vision",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "red_team_fallback_slug:MT1 Vision->mt1_vision",
-        "red_team_no_history:mt1_vision"
-      ]
-    },
-    {
       "event_id": "Komplettligaen/2026 Season/Spring Playoffs_Finals_1",
       "game_id": "Komplettligaen/2026 Season/Spring Playoffs_Finals_1",
       "league": "Komplettligaen 2026 Spring Playoffs",
@@ -284,6 +260,22 @@
         "red_team_fallback_slug:Bitfix RG->bitfix_rg",
         "red_team_no_history:bitfix_rg"
       ]
+    },
+    {
+      "event_id": "EMEA Masters/2026 Season/Spring Main Event_Quarterfinals_3",
+      "game_id": "EMEA Masters/2026 Season/Spring Main Event_Quarterfinals_3",
+      "league": "EM 2026 Spring Main Event",
+      "start_time": "2026-06-14 00:00:00",
+      "blue_team": "team_heretics_academy",
+      "red_team": "eintracht_spandau",
+      "blue_team_name": "Team Heretics Academy",
+      "red_team_name": "Eintracht Spandau",
+      "blue_win_probability": 0.592412,
+      "red_win_probability": 0.407588,
+      "predicted_winner": "Team Heretics Academy",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
     },
     {
       "event_id": "LigaGG/2026 Season/Copa do Barão/Split 1_Swiss 3_1",
@@ -716,6 +708,25 @@
       ]
     },
     {
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_10",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_10",
+      "league": "PRM 3rd Div 25-26 Spring",
+      "start_time": "2026-06-14 02:00:00",
+      "blue_team": "black_lion",
+      "red_team": "mt1_vision",
+      "blue_team_name": "Black Lion",
+      "red_team_name": "MT1 Vision",
+      "blue_win_probability": 0.386964,
+      "red_win_probability": 0.613036,
+      "predicted_winner": "MT1 Vision",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "red_team_fallback_slug:MT1 Vision->mt1_vision",
+        "red_team_no_history:mt1_vision"
+      ]
+    },
+    {
       "event_id": "LCS/2026 Season/Spring Playoffs_Round 3_1",
       "game_id": "LCS/2026 Season/Spring Playoffs_Round 3_1",
       "league": "LCS 2026 Spring Playoffs",
@@ -730,6 +741,252 @@
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_1",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_1",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 14:00:00",
+      "blue_team": "saudi_arabia_national_team",
+      "red_team": "vietnam_national_team",
+      "blue_team_name": "Saudi Arabia (National Team)",
+      "red_team_name": "Vietnam (National Team)",
+      "blue_win_probability": 0.603174,
+      "red_win_probability": 0.396826,
+      "predicted_winner": "Saudi Arabia (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
+        "blue_team_no_history:saudi_arabia_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_2",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_2",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 14:00:00",
+      "blue_team": "india_national_team",
+      "red_team": "hong_kong_national_team",
+      "blue_team_name": "India (National Team)",
+      "red_team_name": "Hong Kong (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "India (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:India (National Team)->india_national_team",
+        "blue_team_no_history:india_national_team",
+        "red_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
+        "red_team_no_history:hong_kong_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_3",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_3",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 15:30:00",
+      "blue_team": "oman_national_team",
+      "red_team": "mongolia_national_team",
+      "blue_team_name": "Oman (National Team)",
+      "red_team_name": "Mongolia (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Oman (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Oman (National Team)->oman_national_team",
+        "blue_team_no_history:oman_national_team",
+        "red_team_fallback_slug:Mongolia (National Team)->mongolia_national_team",
+        "red_team_no_history:mongolia_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_4",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_4",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 15:30:00",
+      "blue_team": "jordan_national_team",
+      "red_team": "malaysia_national_team",
+      "blue_team_name": "Jordan (National Team)",
+      "red_team_name": "Malaysia (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Jordan (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Jordan (National Team)->jordan_national_team",
+        "blue_team_no_history:jordan_national_team",
+        "red_team_fallback_slug:Malaysia (National Team)->malaysia_national_team",
+        "red_team_no_history:malaysia_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_5",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_5",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 17:00:00",
+      "blue_team": "saudi_arabia_national_team",
+      "red_team": "hong_kong_national_team",
+      "blue_team_name": "Saudi Arabia (National Team)",
+      "red_team_name": "Hong Kong (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Saudi Arabia (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
+        "blue_team_no_history:saudi_arabia_national_team",
+        "red_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
+        "red_team_no_history:hong_kong_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_6",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_6",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 17:00:00",
+      "blue_team": "vietnam_national_team",
+      "red_team": "india_national_team",
+      "blue_team_name": "Vietnam (National Team)",
+      "red_team_name": "India (National Team)",
+      "blue_win_probability": 0.469499,
+      "red_win_probability": 0.530501,
+      "predicted_winner": "India (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "red_team_fallback_slug:India (National Team)->india_national_team",
+        "red_team_no_history:india_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_7",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_7",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 18:30:00",
+      "blue_team": "oman_national_team",
+      "red_team": "malaysia_national_team",
+      "blue_team_name": "Oman (National Team)",
+      "red_team_name": "Malaysia (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Oman (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Oman (National Team)->oman_national_team",
+        "blue_team_no_history:oman_national_team",
+        "red_team_fallback_slug:Malaysia (National Team)->malaysia_national_team",
+        "red_team_no_history:malaysia_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_8",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_8",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 18:30:00",
+      "blue_team": "mongolia_national_team",
+      "red_team": "jordan_national_team",
+      "blue_team_name": "Mongolia (National Team)",
+      "red_team_name": "Jordan (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Mongolia (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Mongolia (National Team)->mongolia_national_team",
+        "blue_team_no_history:mongolia_national_team",
+        "red_team_fallback_slug:Jordan (National Team)->jordan_national_team",
+        "red_team_no_history:jordan_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_10",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_10",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 20:00:00",
+      "blue_team": "hong_kong_national_team",
+      "red_team": "vietnam_national_team",
+      "blue_team_name": "Hong Kong (National Team)",
+      "red_team_name": "Vietnam (National Team)",
+      "blue_win_probability": 0.603174,
+      "red_win_probability": 0.396826,
+      "predicted_winner": "Hong Kong (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Hong Kong (National Team)->hong_kong_national_team",
+        "blue_team_no_history:hong_kong_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_9",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_9",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 20:00:00",
+      "blue_team": "saudi_arabia_national_team",
+      "red_team": "india_national_team",
+      "blue_team_name": "Saudi Arabia (National Team)",
+      "red_team_name": "India (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Saudi Arabia (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Saudi Arabia (National Team)->saudi_arabia_national_team",
+        "blue_team_no_history:saudi_arabia_national_team",
+        "red_team_fallback_slug:India (National Team)->india_national_team",
+        "red_team_no_history:india_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_11",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_11",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 21:30:00",
+      "blue_team": "oman_national_team",
+      "red_team": "jordan_national_team",
+      "blue_team_name": "Oman (National Team)",
+      "red_team_name": "Jordan (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Oman (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Oman (National Team)->oman_national_team",
+        "blue_team_no_history:oman_national_team",
+        "red_team_fallback_slug:Jordan (National Team)->jordan_national_team",
+        "red_team_no_history:jordan_national_team"
+      ]
+    },
+    {
+      "event_id": "2026 Asian Games/Qualifier_Day 3_12",
+      "game_id": "2026 Asian Games/Qualifier_Day 3_12",
+      "league": "2026 Asian Games Qualifier",
+      "start_time": "2026-06-14 21:30:00",
+      "blue_team": "malaysia_national_team",
+      "red_team": "mongolia_national_team",
+      "blue_team_name": "Malaysia (National Team)",
+      "red_team_name": "Mongolia (National Team)",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "Malaysia (National Team)",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Malaysia (National Team)->malaysia_national_team",
+        "blue_team_no_history:malaysia_national_team",
+        "red_team_fallback_slug:Mongolia (National Team)->mongolia_national_team",
+        "red_team_no_history:mongolia_national_team"
+      ]
     },
     {
       "event_id": "Prime League 2nd Division/2026 Season/Spring Playoffs_Round 2_3",
@@ -839,25 +1096,6 @@
       "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_4",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-15 00:00:00",
-      "blue_team": "aix_esports",
-      "red_team": "mt1_vision",
-      "blue_team_name": "AIX eSports",
-      "red_team_name": "MT1 Vision",
-      "blue_win_probability": 0.361675,
-      "red_win_probability": 0.638325,
-      "predicted_winner": "MT1 Vision",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "red_team_fallback_slug:MT1 Vision->mt1_vision",
-        "red_team_no_history:mt1_vision"
-      ]
-    },
-    {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_5",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_5",
-      "league": "PRM 3rd Div 25-26 Spring",
-      "start_time": "2026-06-15 00:00:00",
       "blue_team": "eintracht_spandau_zwei",
       "red_team": "neko_elite_kittens",
       "blue_team_name": "Eintracht Spandau Zwei",
@@ -875,8 +1113,8 @@
       ]
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_6",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_6",
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_5",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_5",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-15 00:00:00",
       "blue_team": "glacial_guardians",
@@ -896,8 +1134,8 @@
       ]
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_7",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_7",
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_6",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_6",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-15 00:00:00",
       "blue_team": "vfb_x_engines_stuttgart",
@@ -914,27 +1152,6 @@
         "blue_team_no_history:vfb_x_engines_stuttgart",
         "red_team_fallback_slug:BS Effortless->bs_effortless",
         "red_team_no_history:bs_effortless"
-      ]
-    },
-    {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_8",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_8",
-      "league": "PRM 3rd Div 25-26 Spring",
-      "start_time": "2026-06-15 00:00:00",
-      "blue_team": "locked_int",
-      "red_team": "kanji_esports_aka",
-      "blue_team_name": "Locked Int",
-      "red_team_name": "Kanji Esports AKA",
-      "blue_win_probability": 0.537001,
-      "red_win_probability": 0.462999,
-      "predicted_winner": "Locked Int",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Locked Int->locked_int",
-        "blue_team_no_history:locked_int",
-        "red_team_fallback_slug:Kanji Esports AKA->kanji_esports_aka",
-        "red_team_no_history:kanji_esports_aka"
       ]
     },
     {
@@ -1162,8 +1379,8 @@
       ]
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_9",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_9",
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_7",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_7",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-17 02:00:00",
       "blue_team": "no_need_orga",
@@ -1246,8 +1463,8 @@
       ]
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_10",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_10",
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_8",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_8",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-18 03:00:00",
       "blue_team": "teambash_gaming",
@@ -1286,8 +1503,8 @@
       ]
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_11",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_11",
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_9",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_9",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-19 02:00:00",
       "blue_team": "404_multigaming_e_v",
@@ -1307,8 +1524,8 @@
       ]
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_12",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_12",
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_10",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_10",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-19 02:15:00",
       "blue_team": "berlin_5",
@@ -1429,8 +1646,8 @@
       ]
     },
     {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_13",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_13",
+      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_11",
+      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_11",
       "league": "PRM 3rd Div 25-26 Spring",
       "start_time": "2026-06-20 02:00:00",
       "blue_team": "cloud_esport",
@@ -1469,36 +1686,46 @@
       ]
     },
     {
-      "event_id": "115548128963037581",
-      "game_id": "115548128963037581",
-      "league": "LCK",
-      "start_time": "2026-06-13 15:00:00",
-      "blue_team": "kt_rolster",
-      "red_team": "gen_g",
-      "blue_team_name": "kt Rolster",
-      "red_team_name": "Gen.G Esports",
-      "blue_win_probability": 0.173311,
-      "red_win_probability": 0.826689,
-      "predicted_winner": "Gen.G Esports",
-      "confidence": "high",
+      "event_id": "Streamers Clash/Season 4_Third-Place Match_1",
+      "game_id": "Streamers Clash/Season 4_Third-Place Match_1",
+      "league": "Streamers Clash Season 4",
+      "start_time": "2026-06-20 19:00:00",
+      "blue_team": "stopercentn_kamilova_tutofka",
+      "red_team": "freez_v_wolt_d_cho_k",
+      "blue_team_name": "STOPERCENTNÁ KAMILOVA TUTOFKA",
+      "red_team_name": "FREEZŮV WOLT DŮCHOĎÁK",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "STOPERCENTNÁ KAMILOVA TUTOFKA",
+      "confidence": "low",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:STOPERCENTNÁ KAMILOVA TUTOFKA->stopercentn_kamilova_tutofka",
+        "blue_team_no_history:stopercentn_kamilova_tutofka",
+        "red_team_fallback_slug:FREEZŮV WOLT DŮCHOĎÁK->freez_v_wolt_d_cho_k",
+        "red_team_no_history:freez_v_wolt_d_cho_k"
+      ]
     },
     {
-      "event_id": "115616219464607515",
-      "game_id": "115616219464607515",
-      "league": "LPL",
-      "start_time": "2026-06-13 18:00:00",
-      "blue_team": "bilibili_gaming",
-      "red_team": "team_we",
-      "blue_team_name": "BILIBILI GAMING",
-      "red_team_name": "Xi'an Team WE",
-      "blue_win_probability": 0.814345,
-      "red_win_probability": 0.185655,
-      "predicted_winner": "BILIBILI GAMING",
-      "confidence": "high",
+      "event_id": "Streamers Clash/Season 4_Finals_1",
+      "game_id": "Streamers Clash/Season 4_Finals_1",
+      "league": "Streamers Clash Season 4",
+      "start_time": "2026-06-20 23:00:00",
+      "blue_team": "vedici_deemons",
+      "red_team": "herdyn_v_langusta_t_m",
+      "blue_team_name": "VEDICI DEEMONS",
+      "red_team_name": "HERDYNŮV LANGUSTA TÝM",
+      "blue_win_probability": 0.537001,
+      "red_win_probability": 0.462999,
+      "predicted_winner": "VEDICI DEEMONS",
+      "confidence": "low",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:VEDICI DEEMONS->vedici_deemons",
+        "blue_team_no_history:vedici_deemons",
+        "red_team_fallback_slug:HERDYNŮV LANGUSTA TÝM->herdyn_v_langusta_t_m",
+        "red_team_no_history:herdyn_v_langusta_t_m"
+      ]
     },
     {
       "event_id": "115564793879469324",
@@ -1518,7 +1745,7 @@
     }
   ],
   "warnings": [
-    "blue_team_fallback_slug:count=50",
+    "blue_team_fallback_slug:count=54",
     "blue_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "blue_team_fallback_slug:Atruvia Münster Esports->atruvia_m_nster_esports",
     "blue_team_fallback_slug:BS Effortless->bs_effortless",
@@ -1527,8 +1754,8 @@
     "blue_team_fallback_slug:Cloud eSport->cloud_esport",
     "blue_team_fallback_slug:Clã NKZ Raccoons->cl_nkz_raccoons",
     "blue_team_fallback_slug:Clã NKZ->cl_nkz",
-    "blue_team_fallback_slug:omitted=42",
-    "blue_team_no_history:count=50",
+    "blue_team_fallback_slug:omitted=46",
+    "blue_team_no_history:count=54",
     "blue_team_no_history:404_multigaming_e_v",
     "blue_team_no_history:atruvia_m_nster_esports",
     "blue_team_no_history:berlin_5",
@@ -1537,8 +1764,8 @@
     "blue_team_no_history:cl_nkz",
     "blue_team_no_history:cl_nkz_raccoons",
     "blue_team_no_history:cloud_esport",
-    "blue_team_no_history:omitted=42",
-    "red_team_fallback_slug:count=54",
+    "blue_team_no_history:omitted=46",
+    "red_team_fallback_slug:count=58",
     "red_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
     "red_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "red_team_fallback_slug:AMD Team->amd_team",
@@ -1547,8 +1774,8 @@
     "red_team_fallback_slug:AceGaming FullHouse->acegaming_fullhouse",
     "red_team_fallback_slug:AceGaming Wildcard->acegaming_wildcard",
     "red_team_fallback_slug:BS Effortless->bs_effortless",
-    "red_team_fallback_slug:omitted=46",
-    "red_team_no_history:count=54",
+    "red_team_fallback_slug:omitted=50",
+    "red_team_no_history:count=58",
     "red_team_no_history:1_esport_club_frankfurt_e_v",
     "red_team_no_history:404_multigaming_e_v",
     "red_team_no_history:absolved",
@@ -1557,7 +1784,7 @@
     "red_team_no_history:acegaming_wildcard",
     "red_team_no_history:amd_team",
     "red_team_no_history:babos_gaming",
-    "red_team_no_history:omitted=46"
+    "red_team_no_history:omitted=50"
   ],
   "warning_count": 40
 }
