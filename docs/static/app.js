@@ -1,11 +1,10 @@
 
-const state = { options: null, summary: null, championSummary: null, championMetaPage: 0, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
+const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
 const APP_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Tokyo';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
-const CHAMPION_META_PAGE_SIZE = 10;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const DETAIL_REFRESH_IN_PROGRESS_MS = 5000;
 const DETAIL_REFRESH_FINALIZING_MS = 60000;
@@ -505,24 +504,8 @@ function fillTeamStandingSelect() {
 
 function renderChampionTable(id, rows, patch) {
   const version = ddragonVersion(patch);
-  const sourceRows = rows || [];
-  const totalPages = Math.max(1, Math.ceil(sourceRows.length / CHAMPION_META_PAGE_SIZE));
-  const page = Math.min(Math.max(Number(state.championMetaPage || 0), 0), totalPages - 1);
-  state.championMetaPage = page;
-  const start = page * CHAMPION_META_PAGE_SIZE;
-  const visibleRows = sourceRows.slice(start, start + CHAMPION_META_PAGE_SIZE);
   const header = `<div class="row header championMetaRow"><span>Champion</span><span>Picks</span><span>Wins</span><span>WR</span><span>P/B</span></div>`;
-  const pager = totalPages > 1 ? `
-    <div class="tablePager" aria-label="Champion meta pages">
-      <span class="tablePagerInfo">${start + 1}-${Math.min(start + CHAMPION_META_PAGE_SIZE, sourceRows.length)} / ${sourceRows.length}</span>
-      <div class="tablePagerTabs">
-        ${Array.from({ length: totalPages }, (_, index) => `
-          <button type="button" class="tablePagerTab${index === page ? ' active' : ''}" data-champion-page="${index}" aria-label="Champion meta page ${index + 1}">${index + 1}</button>
-        `).join('')}
-      </div>
-    </div>
-  ` : '';
-  $(id).innerHTML = header + visibleRows.map(r => `
+  $(id).innerHTML = header + (rows || []).map(r => `
     <div class="row championMetaRow">
       <span class="championMetaCell">
         ${championImage(r.name, version)}
@@ -533,7 +516,7 @@ function renderChampionTable(id, rows, patch) {
       <span>${r.winrate}</span>
       <span>${r.presence || '-'}</span>
     </div>
-  `).join('') + pager;
+  `).join('');
 }
 
 function renderChampionMeta(data) {
@@ -3167,21 +3150,8 @@ function setValue(id, value) {
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
-  if ($('championMetaGroup')) $('championMetaGroup').addEventListener('change', () => {
-    state.championMetaPage = 0;
-    loadChampionSummary();
-  });
-  if ($('championRole')) $('championRole').addEventListener('change', () => {
-    state.championMetaPage = 0;
-    if (state.championSummary) renderChampionMeta(state.championSummary);
-  });
-  if ($('champions')) $('champions').addEventListener('click', (event) => {
-    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
-    const button = target?.closest('[data-champion-page]');
-    if (!button) return;
-    state.championMetaPage = Number(button.dataset.championPage || 0);
-    if (state.championSummary) renderChampionMeta(state.championSummary);
-  });
+  if ($('championMetaGroup')) $('championMetaGroup').addEventListener('change', () => loadChampionSummary());
+  if ($('championRole')) $('championRole').addEventListener('change', () => state.championSummary && renderChampionMeta(state.championSummary));
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
     refreshStaticMatchStatuses().finally(() => {
