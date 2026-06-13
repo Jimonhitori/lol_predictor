@@ -103,14 +103,47 @@
     </div>
   </div>
   <script>
-    const ddragon = "https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion";
-    const champions = [
-      ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["corki","Corki","Bot","Corki"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["neeko","Neeko","Support","Neeko"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
-    ].map(([id,name,role,img]) => ({ id, name, role, imageUrl: `${ddragon}/${img}.png` })).sort((a,b) => a.name.localeCompare(b.name));
+    const ddragonVersion = "15.24.1";
+    const ddragon = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/champion`;
+    const fallbackChampionRows = [
+      ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["corki","Corki","Bot","Corki"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["neeko","Neeko","Support","Neeko"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["udyr","Udyr","Jungle","Udyr"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
+    ];
+    function championFromRow([id, name, role, img]) {
+      return { id, name, role, imageUrl: `${ddragon}/${img}.png` };
+    }
+    const roleOverrides = new Map(fallbackChampionRows.map(([, name, role]) => [name.toLowerCase().replace(/[^a-z0-9]/g, ""), role]));
+    function roleFromTags(tags) {
+      const values = new Set((tags || []).map(tag => String(tag).toLowerCase()));
+      if (values.has("marksman")) return "Bot";
+      if (values.has("support")) return "Support";
+      if (values.has("mage") || values.has("assassin")) return "Mid";
+      if (values.has("fighter") || values.has("tank")) return "Top";
+      return "Flex";
+    }
+    let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
     const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() } };
     const $ = id => document.getElementById(id);
+    async function loadChampionRoster() {
+      try {
+        const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/champion.json`, { cache: "force-cache" });
+        if (!res.ok) throw new Error(`ddragon ${res.status}`);
+        const data = await res.json();
+        const rows = Object.values(data?.data || {});
+        if (!rows.length) return;
+        champions = rows.map(champ => ({
+          id: normalizeName(champ.id || champ.name),
+          name: champ.name,
+          role: roleOverrides.get(normalizeName(champ.name)) || roleFromTags(champ.tags),
+          imageUrl: `${ddragon}/${champ.image?.full || `${champ.id}.png`}`,
+        })).sort((a, b) => a.name.localeCompare(b.name));
+        render();
+        if ($("modal").classList.contains("open")) renderPicker();
+      } catch (error) {
+        champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare(b.name));
+      }
+    }
     function normalizeName(value) { return String(value || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
     function numberValue(value) { const numeric = Number(value); return Number.isFinite(numeric) ? numeric : 0; }
     function rowMap(rows) {
@@ -223,6 +256,7 @@
     $("modal").onclick = e => { if (e.target.id === "modal") $("modal").classList.remove("open"); };
     $("calc").onclick = () => { $("result").innerHTML = `<div class="resultTop"><span>Draft Result</span><span>Mock output</span></div><div class="bar"><div class="barBlue" style="width:52.3%">Blue 52.3%</div><div class="barRed" style="width:47.7%">Red 47.7%</div></div>`; };
     render();
+    loadChampionRoster();
     loadChampionMeta();
   </script>
 </body>
