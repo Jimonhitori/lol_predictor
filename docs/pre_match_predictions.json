@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-13T00:53:54.561539Z",
+  "generated_at": "2026-06-13T01:08:11.605206Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -1467,6 +1467,54 @@
         "red_team_fallback_slug:LOOKSMAXXER->looksmaxxer",
         "red_team_no_history:looksmaxxer"
       ]
+    },
+    {
+      "event_id": "115548128963037581",
+      "game_id": "115548128963037581",
+      "league": "LCK",
+      "start_time": "2026-06-13 15:00:00",
+      "blue_team": "kt_rolster",
+      "red_team": "gen_g",
+      "blue_team_name": "kt Rolster",
+      "red_team_name": "Gen.G Esports",
+      "blue_win_probability": 0.168515,
+      "red_win_probability": 0.831485,
+      "predicted_winner": "Gen.G Esports",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
+      "event_id": "115616219464607515",
+      "game_id": "115616219464607515",
+      "league": "LPL",
+      "start_time": "2026-06-13 18:00:00",
+      "blue_team": "bilibili_gaming",
+      "red_team": "team_we",
+      "blue_team_name": "BILIBILI GAMING",
+      "red_team_name": "Xi'an Team WE",
+      "blue_win_probability": 0.754751,
+      "red_win_probability": 0.245249,
+      "predicted_winner": "BILIBILI GAMING",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
+      "event_id": "115564793879469324",
+      "game_id": "115564793879469324",
+      "league": "LCS 2026 Spring Playoffs",
+      "start_time": "2026-06-14 05:00:00",
+      "blue_team": "cloud9",
+      "red_team": "team_liquid",
+      "blue_team_name": "Cloud9",
+      "red_team_name": "Team Liquid",
+      "blue_win_probability": 0.540188,
+      "red_win_probability": 0.459812,
+      "predicted_winner": "Cloud9",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
     }
   ],
   "warnings": [
