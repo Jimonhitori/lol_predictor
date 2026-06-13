@@ -36300,7 +36300,7 @@
   },
   "115548128963037581": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "115548128963037581",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36503,7 +36503,7 @@
   },
   "116453476471776166": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "116453476471776166",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36640,7 +36640,7 @@
   },
   "115616219464607515": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "115616219464607515",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -36843,7 +36843,7 @@
   },
   "116520394663535900": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "116520394663535900",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37046,7 +37046,7 @@
   },
   "116453476471776170": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "116453476471776170",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37183,51 +37183,413 @@
   },
   "116634566263916920": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "116634566263916920",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566263916920",
-      "league": "",
+      "league": "EMEA Masters",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "105515219038427019",
+          "name": "Karmine Corp Blue",
+          "code": "KCB",
+          "image": "http://static.lolesports.com/teams/1765897112519_WHITE.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "105532791598779236",
+          "name": "UCAM Esports Club",
+          "code": "UCAM",
+          "image": "http://static.lolesports.com/teams/1774563455909_ucam_c.png",
+          "game_wins": "3"
+        }
+      ],
+      "games": [
+        {
+          "id": "116634566263916921",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "red": {
+            "team_id": "105532791598779236",
+            "team_name": "UCAM Esports Club",
+            "team_code": "UCAM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113530",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "red": {
+            "team_id": "105532791598779236",
+            "team_name": "UCAM Esports Club",
+            "team_code": "UCAM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113531",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "105532791598779236",
+            "team_name": "UCAM Esports Club",
+            "team_code": "UCAM"
+          },
+          "red": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113532",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "red": {
+            "team_id": "105532791598779236",
+            "team_name": "UCAM Esports Club",
+            "team_code": "UCAM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113533",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "105515219038427019",
+            "team_name": "Karmine Corp Blue",
+            "team_code": "KCB"
+          },
+          "red": {
+            "team_id": "105532791598779236",
+            "team_name": "UCAM Esports Club",
+            "team_code": "UCAM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116634566264113534": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "116634566264113534",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116634566264113534",
-      "league": "",
+      "league": "EMEA Masters",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "105515345386578249",
+          "name": "Solary",
+          "code": "SLY",
+          "image": "http://static.lolesports.com/teams/LFL-SLY-logo.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "109642680932009857",
+          "name": "G2 NORD",
+          "code": "G2N",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116634566264113535",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "105515345386578249",
+            "team_name": "Solary",
+            "team_code": "SLY"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113536",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "105515345386578249",
+            "team_name": "Solary",
+            "team_code": "SLY"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113537",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "105515345386578249",
+            "team_name": "Solary",
+            "team_code": "SLY"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113538",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "105515345386578249",
+            "team_name": "Solary",
+            "team_code": "SLY"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116634566264113539",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "red": {
+            "team_id": "105515345386578249",
+            "team_name": "Solary",
+            "team_code": "SLY"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116634566264113540": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "116634566264113540",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -37249,7 +37611,7 @@
   },
   "116634566264113546": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "116634566264113546",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37452,7 +37814,7 @@
   },
   "115564793879469324": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-13T17:19:23.228Z",
+    "checked_at": "2026-06-13T18:48:38.170Z",
     "event_id": "115564793879469324",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -37628,6 +37990,209 @@
             "team_id": "98767991877340524",
             "team_name": "Cloud9 Kia",
             "team_code": "C9"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115548128963037587": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-13T18:48:38.170Z",
+    "event_id": "115548128963037587",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115548128963037587",
+      "league": "LCK",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "100205573495116443",
+          "name": "Gen.G Esports",
+          "code": "GEN",
+          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "98767991853197861",
+          "name": "T1",
+          "code": "T1",
+          "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128963037588",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037589",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037590",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037591",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037592",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
           },
           "winner": "",
           "live": {
