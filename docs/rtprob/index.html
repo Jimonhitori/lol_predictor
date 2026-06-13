@@ -116,31 +116,69 @@
     function rowMap(rows) {
       return new Map((rows || []).map(row => [normalizeName(row.name), row]).filter(([name]) => name));
     }
+    function aggregateRows(rows) {
+      const totals = new Map();
+      for (const row of rows || []) {
+        const name = String(row?.name || "").trim();
+        if (!name) continue;
+        const key = normalizeName(name);
+        const current = totals.get(key) || { name, picks: 0, wins: 0 };
+        current.picks += numberValue(row.picks ?? row.games);
+        current.wins += numberValue(row.wins);
+        totals.set(key, current);
+      }
+      return Array.from(totals.values()).map(row => ({
+        ...row,
+        winrate: row.picks > 0 ? `${((row.wins / row.picks) * 100).toFixed(1)}%` : "-",
+      }));
+    }
+    function isSeason16Patch(value) {
+      return /^16\.\d+$/.test(String(value || "").trim());
+    }
+    function season16ChampionMeta(data) {
+      const summaries = data?.patch_summaries && typeof data.patch_summaries === "object" ? data.patch_summaries : {};
+      const scopes = Object.entries(summaries)
+        .filter(([patch]) => isSeason16Patch(patch))
+        .map(([, scope]) => scope)
+        .filter(Boolean);
+      if (!scopes.length) {
+        return {
+          all: rowMap(data.champions),
+          byRole: Object.fromEntries(roleKeys.map(role => [role, rowMap(data.champions_by_role?.[role])])),
+        };
+      }
+      return {
+        all: rowMap(aggregateRows(scopes.flatMap(scope => scope.champions || []))),
+        byRole: Object.fromEntries(roleKeys.map(role => [
+          role,
+          rowMap(aggregateRows(scopes.flatMap(scope => scope.champions_by_role?.[role] || []))),
+        ])),
+      };
+    }
     function championMetaText(champ, index) {
-      const slot = `Slot ${index + 1}`;
-      if (!champ) return slot;
+      if (!champ) return "";
       const meta = state.championMeta;
-      if (meta.status === "loading") return `${slot} · loading WR`;
-      if (meta.status !== "ready") return slot;
+      if (meta.status === "loading") return "loading WR";
+      if (meta.status !== "ready") return "";
       const key = normalizeName(champ.name);
       const roleRow = meta.byRole[roleKeys[index]]?.get(key);
       const row = roleRow || meta.all.get(key);
-      if (!row) return `${slot} · ${meta.patch || "Current patch"} WR -`;
+      if (!row) return "WR -";
       const picks = numberValue(row.picks ?? row.games);
       const winrate = row.winrate || (picks > 0 ? `${((numberValue(row.wins) / picks) * 100).toFixed(1)}%` : "-");
-      const source = roleRow ? roles[index] : "All";
-      return `${slot} · ${meta.patch || "Current patch"} ${source} WR ${winrate}${picks ? ` · ${picks} picks` : ""}`;
+      return `WR ${winrate}${picks ? ` · ${picks} picks` : ""}`;
     }
     async function loadChampionMeta() {
       try {
         const res = await fetch("/static/data/summaries/all__all.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`summary ${res.status}`);
         const data = await res.json();
+        const meta = season16ChampionMeta(data);
         state.championMeta = {
           status: "ready",
-          patch: data.patch ? `Patch ${data.patch}` : "Current patch",
-          all: rowMap(data.champions),
-          byRole: Object.fromEntries(roleKeys.map(role => [role, rowMap(data.champions_by_role?.[role])])),
+          patch: "S16",
+          all: meta.all,
+          byRole: meta.byRole,
         };
       } catch (error) {
         state.championMeta = { status: "error", patch: "", byRole: {}, all: new Map() };
