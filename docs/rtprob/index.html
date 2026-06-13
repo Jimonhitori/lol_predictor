@@ -108,15 +108,52 @@
       ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["corki","Corki","Bot","Corki"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["neeko","Neeko","Support","Neeko"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
     ].map(([id,name,role,img]) => ({ id, name, role, imageUrl: `${ddragon}/${img}.png` })).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "" };
+    const roleKeys = ["top","jng","mid","bot","sup"];
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() } };
     const $ = id => document.getElementById(id);
+    function normalizeName(value) { return String(value || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+    function numberValue(value) { const numeric = Number(value); return Number.isFinite(numeric) ? numeric : 0; }
+    function rowMap(rows) {
+      return new Map((rows || []).map(row => [normalizeName(row.name), row]).filter(([name]) => name));
+    }
+    function championMetaText(champ, index) {
+      const slot = `Slot ${index + 1}`;
+      if (!champ) return slot;
+      const meta = state.championMeta;
+      if (meta.status === "loading") return `${slot} · loading WR`;
+      if (meta.status !== "ready") return slot;
+      const key = normalizeName(champ.name);
+      const roleRow = meta.byRole[roleKeys[index]]?.get(key);
+      const row = roleRow || meta.all.get(key);
+      if (!row) return `${slot} · ${meta.patch || "Current patch"} WR -`;
+      const picks = numberValue(row.picks ?? row.games);
+      const winrate = row.winrate || (picks > 0 ? `${((numberValue(row.wins) / picks) * 100).toFixed(1)}%` : "-");
+      const source = roleRow ? roles[index] : "All";
+      return `${slot} · ${meta.patch || "Current patch"} ${source} WR ${winrate}${picks ? ` · ${picks} picks` : ""}`;
+    }
+    async function loadChampionMeta() {
+      try {
+        const res = await fetch("/static/data/summaries/all__all.json", { cache: "no-store" });
+        if (!res.ok) throw new Error(`summary ${res.status}`);
+        const data = await res.json();
+        state.championMeta = {
+          status: "ready",
+          patch: data.patch ? `Patch ${data.patch}` : "Current patch",
+          all: rowMap(data.champions),
+          byRole: Object.fromEntries(roleKeys.map(role => [role, rowMap(data.champions_by_role?.[role])])),
+        };
+      } catch (error) {
+        state.championMeta = { status: "error", patch: "", byRole: {}, all: new Map() };
+      }
+      render();
+    }
     function selectedIds() { return new Set([...state.blue, ...state.red].filter(Boolean).map(c => c.id)); }
     function renderSlots(side) {
       const root = $(`${side}Slots`);
       root.innerHTML = state[side].map((champ, i) => `
         <div class="slot ${side}">
           <button class="portrait" data-open="${side}:${i}">${champ ? `<img src="${champ.imageUrl}" alt="">` : "+"}</button>
-          <button class="slotMain" data-open="${side}:${i}"><span class="role">${roles[i]}</span><span class="name">${champ ? champ.name : "Pick champion"}</span><span class="meta">Slot ${i + 1}</span></button>
+          <button class="slotMain" data-open="${side}:${i}"><span class="role">${roles[i]}</span><span class="name">${champ ? champ.name : "Pick champion"}</span><span class="meta">${championMetaText(champ, i)}</span></button>
           <button class="clear" data-clear="${side}:${i}" ${champ ? "" : "disabled"}>×</button>
         </div>`).join("");
     }
@@ -149,6 +186,7 @@
     $("modal").onclick = e => { if (e.target.id === "modal") $("modal").classList.remove("open"); };
     $("calc").onclick = () => { $("result").innerHTML = `<div class="resultTop"><span>Draft Result</span><span>Mock output</span></div><div class="bar"><div class="barBlue" style="width:52.3%">Blue 52.3%</div><div class="barRed" style="width:47.7%">Red 47.7%</div></div>`; };
     render();
+    loadChampionMeta();
   </script>
 </body>
 </html>
