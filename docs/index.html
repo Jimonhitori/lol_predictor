@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LoL Esports Dashboard</title>
   <link rel="icon" href="/favicon.svg?v=20260526-lmark-left" type="image/svg+xml">
-  <link rel="stylesheet" href="static/styles.css?v=meta-patch-all-s16-1">
+  <link rel="stylesheet" href="static/styles.css?v=rtprob-nav-1">
 </head>
 <body>
   <main class="shell">
@@ -16,6 +16,10 @@
         <p id="opsMeta" class="opsMeta"></p>
       </div>
       <div class="filters">
+        <nav class="topNav" aria-label="Main navigation">
+          <a class="topNavLink active" href="/">Home</a>
+          <a class="topNavLink" href="/rtprob/">RTProb</a>
+        </nav>
         <select id="leagueGroup">
           <option value="all" selected>All tiers</option>
           <option value="major">Major</option>
@@ -106,7 +110,7 @@
     </section>
   </main>
   <script>window.STATIC_SITE = true;</script>
-  <script src="static/app.js?v=meta-patch-all-s16-1"></script>
-  <script src="static/champion_meta_patch_filter.js?v=meta-patch-all-s16-1"></script>
+  <script src="static/app.js?v=rtprob-nav-1"></script>
+  <script src="static/champion_meta_patch_filter.js?v=rtprob-nav-1"></script>
 </body>
 </html>

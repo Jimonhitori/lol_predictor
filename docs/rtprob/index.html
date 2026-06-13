@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RTProb Draft Predictor Preview</title>
+  <style>
+    :root { color-scheme: dark; --bg:#081017; --panel:#101820; --panel2:#141f2a; --line:#253241; --text:#edf5ff; --muted:#8fa1b5; --cyan:#16f0c8; --blue:#2e8cff; --red:#ff476d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(circle at 50% 0%, rgba(22,240,200,.12), transparent 34rem), var(--bg); color: var(--text); font-family: Inter, Segoe UI, system-ui, sans-serif; }
+    header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: rgba(7,11,16,.96); backdrop-filter: blur(10px); }
+    nav { max-width: 1280px; margin: 0 auto; padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 9px; font-weight: 900; }
+    .brandLogo { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 7px; border: 1px solid rgba(22,240,200,.55); color: var(--cyan); background: rgba(22,240,200,.1); }
+    .menu { display: flex; gap: 8px; font-size: 14px; font-weight: 800; }
+    .menu a { color: #c8d4e2; text-decoration: none; padding: 8px 12px; border-radius: 7px; }
+    .menu a.active { color: var(--cyan); border: 1px solid rgba(22,240,200,.45); background: rgba(22,240,200,.1); }
+    main { max-width: 1280px; margin: 0 auto; padding: 24px 16px 48px; }
+    .head { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 20px; }
+    .eyebrow { margin: 0 0 8px; color: var(--cyan); font-size: 12px; font-weight: 900; letter-spacing: .28em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.02em; }
+    .desc { margin: 8px 0 0; color: var(--muted); font-size: 14px; max-width: 680px; }
+    .count { border: 1px solid var(--line); background: var(--panel); border-radius: 7px; padding: 9px 12px; color: #c7d3e1; font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .layout { display: grid; grid-template-columns: 1fr 260px 1fr; gap: 16px; align-items: start; }
+    .team { border: 1px solid var(--line); background: rgba(16,24,32,.88); border-radius: 10px; padding: 16px; box-shadow: 0 0 28px rgba(22,240,200,.12); }
+    .team.blue { border-color: rgba(46,140,255,.55); background: rgba(46,140,255,.055); }
+    .team.red { border-color: rgba(255,71,109,.55); background: rgba(255,71,109,.055); }
+    .teamHead { display: flex; justify-content: space-between; gap: 12px; align-items: end; margin-bottom: 14px; }
+    .side { margin: 0 0 4px; font-size: 11px; font-weight: 900; letter-spacing: .22em; text-transform: uppercase; }
+    .blue .side { color: var(--blue); } .red .side { color: var(--red); }
+    h2 { margin: 0; font-size: 22px; }
+    .locked { border: 1px solid var(--line); background: rgba(0,0,0,.2); border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #c7d3e1; font-weight: 800; }
+    .slots { display: grid; gap: 10px; }
+    .slot { display: grid; grid-template-columns: 56px 1fr 32px; align-items: center; gap: 12px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 8px; }
+    .slot.blue { border-color: rgba(46,140,255,.5); } .slot.red { border-color: rgba(255,71,109,.5); }
+    .portrait { width: 56px; height: 56px; border: 1px solid var(--line); background: #182331; border-radius: 8px; overflow: hidden; display: grid; place-items: center; color: #64748b; font-size: 22px; font-weight: 900; cursor: pointer; }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .slotMain { min-width: 0; background: none; border: 0; color: inherit; text-align: left; padding: 0; cursor: pointer; }
+    .role { display: block; font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .slot.blue .role { color: var(--blue); } .slot.red .role { color: var(--red); }
+    .name { display: block; margin-top: 3px; color: #fff; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .meta { display: block; margin-top: 2px; color: #607086; font-size: 12px; }
+    .clear { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 7px; background: transparent; color: #94a3b8; font-size: 18px; cursor: pointer; }
+    .clear:disabled { opacity: .25; cursor: not-allowed; }
+    .center { display: grid; gap: 12px; position: sticky; top: 82px; }
+    .control, .result { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 16px; text-align: center; }
+    .controlTitle { color: #66788c; font-size: 12px; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; }
+    .calc { width: 100%; margin-top: 14px; border: 0; border-radius: 8px; padding: 13px 14px; background: var(--cyan); color: #04110f; font-weight: 900; cursor: pointer; }
+    .calc:disabled { background: #334155; color: #94a3b8; cursor: not-allowed; }
+    .hint { margin: 10px 0 0; color: #64748b; font-size: 12px; }
+    .result { color: #94a3b8; font-size: 13px; }
+    .resultTop { display: flex; justify-content: space-between; color: var(--cyan); font-size: 11px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+    .bar { height: 40px; display: flex; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: #05090d; }
+    .bar > div { display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 13px; }
+    .barBlue { background: var(--blue); } .barRed { background: var(--red); }
+    .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: start; justify-content: center; padding: 80px 16px; background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
+    .modal.open { display: flex; }
+    .picker { width: min(760px, 100%); border: 1px solid var(--line); border-radius: 10px; background: #0c141d; overflow: hidden; box-shadow: 0 0 30px rgba(22,240,200,.18); }
+    .pickerHead { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+    .pickerHead h3 { margin: 0; }
+    .close { border: 1px solid var(--line); background: transparent; color: #cbd5e1; border-radius: 7px; padding: 7px 10px; cursor: pointer; }
+    .searchWrap { padding: 14px; border-bottom: 1px solid var(--line); }
+    .search { width: 100%; border: 1px solid var(--line); background: #111b26; color: white; outline: none; padding: 12px 14px; border-radius: 8px; }
+    .champGrid { max-height: 52vh; overflow: auto; padding: 12px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .champ { display: flex; align-items: center; gap: 10px; min-width: 0; border: 1px solid var(--line); background: #111b26; border-radius: 8px; padding: 8px; color: inherit; text-align: left; cursor: pointer; }
+    .champ:disabled { opacity: .35; cursor: not-allowed; }
+    .champ img { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; flex: 0 0 auto; }
+    .champ strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .champ span { color: #94a3b8; font-size: 12px; }
+    @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .champGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand"><div class="brandLogo">L</div><span>LoL Predictor</span></div>
+      <div class="menu"><a href="#">Home</a><a class="active" href="#">RTProb</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="head">
+      <div>
+        <p class="eyebrow">RTProb Draft Lab</p>
+        <h1>Pick/Ban Win Rate Preview</h1>
+        <p class="desc">Select ten unique champions. API/model integration comes later; this screen only manages draft state and preview output.</p>
+      </div>
+      <div class="count" id="count">0/10 champions selected</div>
+    </section>
+    <section class="layout">
+      <section class="team blue"><div class="teamHead"><div><p class="side">blue side</p><h2>Blue Team</h2></div><div class="locked" id="blueCount">0/5 locked</div></div><div class="slots" id="blueSlots"></div></section>
+      <aside class="center">
+        <div class="control"><div class="controlTitle">Draft Control</div><button class="calc" id="calc" disabled>Calculate Win Rate</button><p class="hint" id="hint">Fill every slot to enable calculation.</p></div>
+        <div class="result" id="result">Complete both drafts to unlock the prediction preview.</div>
+      </aside>
+      <section class="team red"><div class="teamHead"><div><p class="side">red side</p><h2>Red Team</h2></div><div class="locked" id="redCount">0/5 locked</div></div><div class="slots" id="redSlots"></div></section>
+    </section>
+  </main>
+  <div class="modal" id="modal">
+    <div class="picker">
+      <div class="pickerHead"><div><h3>Select Champion</h3><div class="hint">Search by champion name or role.</div></div><button class="close" id="close">Close</button></div>
+      <div class="searchWrap"><input class="search" id="search" placeholder="Search champions..." autocomplete="off"></div>
+      <div class="champGrid" id="champGrid"></div>
+    </div>
+  </div>
+  <script>
+    const ddragon = "https://ddragon.leagueoflegends.com/cdn/15.24.1/img/champion";
+    const champions = [
+      ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["corki","Corki","Bot","Corki"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["neeko","Neeko","Support","Neeko"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
+    ].map(([id,name,role,img]) => ({ id, name, role, imageUrl: `${ddragon}/${img}.png` })).sort((a,b) => a.name.localeCompare(b.name));
+    const roles = ["Top","Jungle","Mid","Bot","Support"];
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "" };
+    const $ = id => document.getElementById(id);
+    function selectedIds() { return new Set([...state.blue, ...state.red].filter(Boolean).map(c => c.id)); }
+    function renderSlots(side) {
+      const root = $(`${side}Slots`);
+      root.innerHTML = state[side].map((champ, i) => `
+        <div class="slot ${side}">
+          <button class="portrait" data-open="${side}:${i}">${champ ? `<img src="${champ.imageUrl}" alt="">` : "+"}</button>
+          <button class="slotMain" data-open="${side}:${i}"><span class="role">${roles[i]}</span><span class="name">${champ ? champ.name : "Pick champion"}</span><span class="meta">Slot ${i + 1}</span></button>
+          <button class="clear" data-clear="${side}:${i}" ${champ ? "" : "disabled"}>×</button>
+        </div>`).join("");
+    }
+    function render() {
+      renderSlots("blue"); renderSlots("red");
+      const blue = state.blue.filter(Boolean).length, red = state.red.filter(Boolean).length, total = blue + red;
+      $("blueCount").textContent = `${blue}/5 locked`; $("redCount").textContent = `${red}/5 locked`; $("count").textContent = `${total}/10 champions selected`;
+      const complete = total === 10; $("calc").disabled = !complete; $("hint").textContent = complete ? "Ready to calculate." : "Fill every slot to enable calculation.";
+      document.querySelectorAll("[data-open]").forEach(btn => btn.onclick = () => openPicker(btn.dataset.open));
+      document.querySelectorAll("[data-clear]").forEach(btn => btn.onclick = () => { const [side, idx] = btn.dataset.clear.split(":"); state[side][Number(idx)] = null; $("result").textContent = "Complete both drafts to unlock the prediction preview."; render(); });
+    }
+    function openPicker(value) { const [side, idx] = value.split(":"); state.active = { side, idx: Number(idx) }; state.query = ""; $("search").value = ""; $("modal").classList.add("open"); renderPicker(); setTimeout(() => $("search").focus(), 0); }
+    function renderPicker() {
+      const selected = selectedIds();
+      const q = state.query.trim().toLowerCase();
+      const list = champions.filter(c => !q || c.name.toLowerCase().includes(q) || c.role.toLowerCase().includes(q));
+      $("champGrid").innerHTML = list.map(c => {
+        const disabled = selected.has(c.id);
+        return `<button class="champ" data-champ="${c.id}" ${disabled ? "disabled" : ""}><img src="${c.imageUrl}" alt=""><span><strong>${c.name}</strong><span>${c.role}</span></span></button>`;
+      }).join("");
+      document.querySelectorAll("[data-champ]").forEach(btn => btn.onclick = () => {
+        const champ = champions.find(c => c.id === btn.dataset.champ);
+        if (!champ || !state.active) return;
+        state[state.active.side][state.active.idx] = champ;
+        $("modal").classList.remove("open"); $("result").textContent = "Complete both drafts to unlock the prediction preview."; render();
+      });
+    }
+    $("search").oninput = e => { state.query = e.target.value; renderPicker(); };
+    $("close").onclick = () => $("modal").classList.remove("open");
+    $("modal").onclick = e => { if (e.target.id === "modal") $("modal").classList.remove("open"); };
+    $("calc").onclick = () => { $("result").innerHTML = `<div class="resultTop"><span>Draft Result</span><span>Mock output</span></div><div class="bar"><div class="barBlue" style="width:52.3%">Blue 52.3%</div><div class="barRed" style="width:47.7%">Red 47.7%</div></div>`; };
+    render();
+  </script>
+</body>
+</html>
