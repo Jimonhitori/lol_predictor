@@ -357,10 +357,56 @@ function uniqueValues(values) {
   return [...new Set(values.filter(Boolean))];
 }
 
-async function fetchLolesportsEventDetails(matchId) {
-  if (!STATIC_SITE || !matchId) return {};
+function liveSourceMatchId(matchOrId, fallbackId = '') {
+  if (matchOrId && typeof matchOrId === 'object') {
+    return String(
+      matchOrId.source_match_id ||
+      matchOrId.live_event_id ||
+      matchOrId.lolesports_event_id ||
+      matchOrId.event_id ||
+      matchOrId.id ||
+      fallbackId ||
+      ''
+    ).trim();
+  }
+  return String(matchOrId || fallbackId || '').trim();
+}
+
+function hasExplicitLiveSourceId(details) {
+  return Boolean(String(
+    details?.source_match_id ||
+    details?.live_event_id ||
+    details?.lolesports_event_id ||
+    details?.event_id ||
+    ''
+  ).trim());
+}
+
+function needsLiveSourceIdDiagnostic(details) {
+  if (!STATIC_SITE || !details?.id || hasExplicitLiveSourceId(details)) return false;
+  const status = String(details.status || '').toLowerCase();
+  if (['completed', 'complete', 'inprogress', 'updating'].includes(status)) return true;
+  return shouldProbeLiveStats(details);
+}
+
+function annotateLiveDiagnostic(details, diagnostic) {
+  if (!diagnostic || !details?.id) return details;
+  return { ...details, live_diagnostic: diagnostic };
+}
+
+async function fetchLolesportsEventDetails(matchOrId) {
+  const eventId = liveSourceMatchId(matchOrId);
+  if (!STATIC_SITE || !eventId) return {};
+  const requestedId = matchOrId && typeof matchOrId === 'object'
+    ? String(matchOrId.id || eventId)
+    : String(eventId);
   try {
-    return await api('/api/live-event?id=' + encodeURIComponent(matchId));
+    const details = await api('/api/live-event?id=' + encodeURIComponent(eventId));
+    return {
+      ...details,
+      __requested_match_id: requestedId,
+      __live_event_id: eventId,
+    };
   } catch (error) {
     return {};
   }
@@ -1082,8 +1128,10 @@ async function refreshStaticMatchStatuses() {
     .sort((a, b) => refreshMatchPriority(b) - refreshMatchPriority(a))
     .slice(0, 40);
   if (!targets.length) return;
-  const freshDetails = await Promise.all(targets.map(match => fetchLolesportsEventDetails(match.id)));
-  const freshById = Object.fromEntries(freshDetails.filter(details => details?.id).map(details => [String(details.id), details]));
+  const freshDetails = await Promise.all(targets.map(match => fetchLolesportsEventDetails(match)));
+  const freshById = Object.fromEntries(freshDetails
+    .filter(details => details?.id || details?.__requested_match_id)
+    .map(details => [String(details.__requested_match_id || details.id), details]));
   state.allMatches = state.allMatches.map(match => {
     const fresh = freshById[String(match.id || '')];
     if (!fresh) return match;
@@ -1727,13 +1775,18 @@ async function refreshMatchDetail(initial) {
 async function fetchMatchDetail(id) {
   if (!STATIC_SITE) return api('/api/match?id=' + encodeURIComponent(id));
   const fallback = () => api('/api/match?id=' + encodeURIComponent(id));
+  const staticDetails = await fallback().catch(() => ({}));
+  const liveId = liveSourceMatchId(staticDetails, id);
+  const missingLiveSourceId = needsLiveSourceIdDiagnostic(staticDetails);
   try {
-    const liveDetails = await api('/api/live-event?id=' + encodeURIComponent(id));
+    const liveDetails = await api('/api/live-event?id=' + encodeURIComponent(liveId));
     if (liveDetails?.id && String(liveDetails.status || '').toLowerCase() !== 'unavailable') {
-      const staticDetails = await fallback().catch(() => ({}));
       return mergeFreshDetails(staticDetails, liveDetails);
     }
   } catch (error) {
+  }
+  if (staticDetails?.id) {
+    return annotateLiveDiagnostic(staticDetails, missingLiveSourceId ? 'live_id_missing' : '');
   }
   return fallback();
 }
@@ -1869,6 +1922,7 @@ function matchDetailMeta(details) {
     `BO${details.best_of || '-'}`,
     details.source || '',
     matchDetailStartLabel(details.start_time),
+    details.live_diagnostic || '',
     `auto-refresh ${matchDetailRefreshLabel(details)}`,
   ].filter(Boolean).join(' · ');
 }
