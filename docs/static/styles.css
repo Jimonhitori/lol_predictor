@@ -5,7 +5,7 @@ body { margin: 0; font-family: Inter, Segoe UI, Arial, sans-serif; background: v
 .siteHeader { position: sticky; top: 0; z-index: 60; border-bottom: 1px solid #1f2b36; background: #080d12; }
 .siteHeaderInner { max-width: 1280px; min-height: 56px; margin: 0 auto; padding: 7px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .siteBrand { display: inline-flex; align-items: center; gap: 10px; color: #eef5ff; font-size: 15px; font-weight: 900; text-decoration: none; white-space: nowrap; }
-.siteBrandMark { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--accent); border-radius: 7px; background: rgba(39, 199, 167, .08); color: var(--accent); font-size: 15px; font-weight: 900; }
+.siteBrandMark { width: 36px; height: 36px; display: block; border-radius: 7px; object-fit: contain; }
 .siteNav { display: flex; align-items: center; gap: 8px; }
 .siteNavLink { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; border: 1px solid transparent; border-radius: 7px; padding: 0 12px; color: #c8d4e2; font-size: 14px; font-weight: 900; text-decoration: none; white-space: nowrap; }
 .siteNavLink:hover, .siteNavLink.active { color: var(--accent); }
