@@ -71,6 +71,9 @@
     .bar > div { display: grid; place-items: center; color: #fff; font-weight: 900; font-size: 13px; }
     .barBlue { background: var(--blue); } .barRed { background: var(--red); }
     .barCaption { margin-top: 8px; color: #9fb2c8; font-size: 12px; font-weight: 800; text-align: center; }
+    .scoreMeta { margin-top: 9px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .scorePill { border: 1px solid rgba(143,161,181,.22); border-radius: 999px; padding: 4px 7px; color: #9fb2c8; font-size: 10px; font-weight: 900; }
+    .scorePill.ready { border-color: rgba(22,240,200,.28); color: var(--cyan); background: rgba(22,240,200,.055); }
     .laneList { display: grid; gap: 8px; }
     .laneRow { display: grid; gap: 7px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 9px 10px; }
     .laneRow.noData { opacity: .72; }
@@ -350,6 +353,27 @@
       }
       return weight > 0 ? weighted / weight : null;
     }
+    function championRowWinrate(row) {
+      if (!row) return null;
+      if (typeof row.winrate === "string" && row.winrate.trim().endsWith("%")) {
+        const value = Number(row.winrate.replace("%", ""));
+        return Number.isFinite(value) ? value : null;
+      }
+      const direct = winratePercent(row);
+      if (direct !== null) return direct;
+      const picks = numberValue(row.picks ?? row.games);
+      const wins = numberValue(row.wins);
+      return picks > 0 ? (wins / picks) * 100 : null;
+    }
+    function sideChampionRating(side) {
+      return weightedAverage(state[side].map((champ, index) => {
+        if (!champ) return null;
+        const row = state.championMeta.byRole?.[roleKeys[index]]?.get(normalizeName(champ.name));
+        const value = championRowWinrate(row);
+        const picks = numberValue(row?.picks ?? row?.games);
+        return value === null ? null : { value, weight: reliabilityWeight(picks) };
+      }).filter(Boolean));
+    }
     function sideCompositionRating(side) {
       return weightedAverage(compositionMetricsForSide(side)
         .filter(metric => metric.available)
@@ -394,24 +418,40 @@
     function laneRatings() {
       return roles.map((_, index) => laneMetric(index));
     }
-    function overallPrediction() {
+    function draftOnlyScore() {
+      const championBlue = sideChampionRating("blue");
+      const championRed = sideChampionRating("red");
       const compositionBlue = sideCompositionRating("blue");
       const compositionRed = sideCompositionRating("red");
       const laneBlue = weightedAverage(laneRatings()
         .filter(metric => metric.available)
         .map(metric => ({ value: metric.blueWr, weight: 1.5 * reliabilityWeight(metric.games) })));
       const inputs = [];
+      const components = [];
+      if (championBlue !== null && championRed !== null) {
+        inputs.push({ value: 50 + ((championBlue - championRed) * 0.45), weight: 2 });
+        components.push({ id: "champion", label: "Champion WR", available: true });
+      } else {
+        components.push({ id: "champion", label: "Champion WR", available: false });
+      }
       if (compositionBlue !== null && compositionRed !== null) {
         inputs.push({ value: 50 + ((compositionBlue - compositionRed) * 0.55), weight: 3 });
+        components.push({ id: "composition", label: "Composition", available: true });
+      } else {
+        components.push({ id: "composition", label: "Composition", available: false });
       }
       if (laneBlue !== null) {
         inputs.push({ value: laneBlue, weight: 2 });
+        components.push({ id: "lane", label: "Lane Matchups", available: true });
+      } else {
+        components.push({ id: "lane", label: "Lane Matchups", available: false });
       }
       const blue = Math.max(5, Math.min(95, weightedAverage(inputs) ?? 50));
       return {
         blue,
         red: 100 - blue,
         available: inputs.length > 0,
+        components,
       };
     }
     function renderCompositionAnalysis(side) {
@@ -434,14 +474,15 @@
         $("overallPrediction").innerHTML = "";
         return;
       }
-      const prediction = overallPrediction();
+      const prediction = draftOnlyScore();
       $("overallPrediction").hidden = false;
       $("overallPrediction").innerHTML = `
-        <h2 class="cardTitle">Overall Prediction</h2>
+        <h2 class="cardTitle">Draft Only Score</h2>
         <div class="bar" aria-label="Blue ${prediction.blue.toFixed(1)}%, Red ${prediction.red.toFixed(1)}%">
           <div class="barBlue" style="width:${prediction.blue}%">Blue ${prediction.blue.toFixed(1)}%</div>
           <div class="barRed" style="width:${prediction.red}%">Red ${prediction.red.toFixed(1)}%</div>
         </div>
+        <div class="scoreMeta">${prediction.components.map(component => `<span class="scorePill ${component.available ? "ready" : ""}">${escapeHtml(component.label)}</span>`).join("")}</div>
         ${prediction.available ? "" : `<p class="hint">No historical draft sample for this selection.</p>`}
       `;
     }
