@@ -48,6 +48,7 @@
     .compositionItem { border: 1px solid var(--line); background: #0b131c; border-radius: 8px; padding: 10px; min-width: 0; }
     .compositionItem.priority { border-color: rgba(22,240,200,.38); background: rgba(22,240,200,.055); }
     .compositionName { color: #9fb2c8; font-size: 11px; font-weight: 900; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .compositionCombo { margin-top: 4px; color: #dceaff; font-size: 11px; font-weight: 850; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .compositionWinrate { margin-top: 5px; color: #fff; font-size: 22px; font-weight: 950; letter-spacing: -.01em; }
     .compositionGames { margin-top: 2px; color: var(--muted); font-size: 11px; font-weight: 750; }
     .compositionConfidence { margin-top: 7px; display: inline-flex; border: 1px solid rgba(143,161,181,.25); border-radius: 999px; padding: 3px 7px; color: #b8c7d8; font-size: 10px; font-weight: 900; white-space: nowrap; }
@@ -277,19 +278,43 @@
       if (text.startsWith("low")) return "low";
       return "";
     }
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    }
     function compositionMetric(metric) {
       return `
         <article class="compositionItem ${metric.priority ? "priority" : ""}">
-          <div class="compositionName">${metric.label}</div>
+          <div class="compositionName">${escapeHtml(metric.label)}</div>
+          <div class="compositionCombo">${escapeHtml(metric.combo)}</div>
           <div class="compositionWinrate">${metric.winrate.toFixed(1)}%</div>
           <div class="compositionGames">${formatGames(metric.games)}</div>
-          <div class="compositionConfidence ${confidenceClass(metric.confidence)}">${metric.confidence}</div>
+          <div class="compositionConfidence ${confidenceClass(metric.confidence)}">${escapeHtml(metric.confidence)}</div>
         </article>
       `;
     }
+    function compositionComboLabel(side, id) {
+      const names = state[side].map(champ => champ?.name || "Pending");
+      if (id === "bot-duo") return `${names[3]} + ${names[4]}`;
+      if (id === "mid-jungle") return `${names[2]} + ${names[1]}`;
+      if (id === "mid-jungle-support") return `${names[2]} + ${names[1]} + ${names[4]}`;
+      if (id === "full-composition") return names.join(" / ");
+      return "Pending";
+    }
+    function compositionMetricsForSide(side) {
+      return (mockCompositionAnalysis[side] || []).map(metric => ({
+        ...metric,
+        combo: compositionComboLabel(side, metric.id),
+      }));
+    }
     function renderCompositionAnalysis(side) {
       const root = $(`${side}Composition`);
-      const metrics = mockCompositionAnalysis[side] || [];
+      if (!state.calculated) {
+        root.hidden = true;
+        root.innerHTML = "";
+        return;
+      }
+      root.hidden = false;
+      const metrics = compositionMetricsForSide(side);
       root.innerHTML = `
         <h2 class="compositionTitle">Composition Analysis</h2>
         <div class="compositionGrid">${metrics.map(compositionMetric).join("")}</div>
@@ -393,7 +418,7 @@
     $("search").oninput = e => { state.query = e.target.value; renderPicker(); };
     $("close").onclick = () => $("modal").classList.remove("open");
     $("modal").onclick = e => { if (e.target.id === "modal") $("modal").classList.remove("open"); };
-    $("calc").onclick = () => { state.calculated = true; renderPredictionPanels(); };
+    $("calc").onclick = () => { state.calculated = true; renderPredictionPanels(); renderCompositionAnalysis("blue"); renderCompositionAnalysis("red"); };
     render();
     loadChampionRoster();
     loadChampionMeta();
