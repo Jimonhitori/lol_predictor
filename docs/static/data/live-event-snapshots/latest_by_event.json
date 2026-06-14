@@ -37792,7 +37792,7 @@
   },
   "116634566264113546": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "116634566264113546",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -37995,7 +37995,7 @@
   },
   "115564793879469324": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "115564793879469324",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -38198,7 +38198,7 @@
   },
   "115548128963037587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "115548128963037587",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -38220,616 +38220,73 @@
   },
   "116453476471776174": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "116453476471776174",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116453476471776174",
-      "league": "LJL",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "109668849651338559",
-          "name": "FENNEL",
-          "code": "FL",
-          "image": "http://static.lolesports.com/teams/1673413831349_fl.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "116046732670043900",
-          "name": "Rising Gaming",
-          "code": "RGA",
-          "image": "http://static.lolesports.com/teams/1771324524126_rsg_full_color_onW.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116453476471776175",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109668849651338559",
-            "team_name": "FENNEL",
-            "team_code": "FL"
-          },
-          "red": {
-            "team_id": "116046732670043900",
-            "team_name": "Rising Gaming",
-            "team_code": "RGA"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116453476471776176",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "116046732670043900",
-            "team_name": "Rising Gaming",
-            "team_code": "RGA"
-          },
-          "red": {
-            "team_id": "109668849651338559",
-            "team_name": "FENNEL",
-            "team_code": "FL"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116453476471776177",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109668849651338559",
-            "team_name": "FENNEL",
-            "team_code": "FL"
-          },
-          "red": {
-            "team_id": "116046732670043900",
-            "team_name": "Rising Gaming",
-            "team_code": "RGA"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116453476471776178",
-          "number": 4,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "116046732670043900",
-            "team_name": "Rising Gaming",
-            "team_code": "RGA"
-          },
-          "red": {
-            "team_id": "109668849651338559",
-            "team_name": "FENNEL",
-            "team_code": "FL"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116453476471776179",
-          "number": 5,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109668849651338559",
-            "team_name": "FENNEL",
-            "team_code": "FL"
-          },
-          "red": {
-            "team_id": "116046732670043900",
-            "team_name": "Rising Gaming",
-            "team_code": "RGA"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "115616219464607521": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "115616219464607521",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115616219464607521",
-      "league": "LPL",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "99566404853854212",
-          "name": "BILIBILI GAMING",
-          "code": "BLG",
-          "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "99566404854685458",
-          "name": "TOP ESPORTS",
-          "code": "TES",
-          "image": "http://static.lolesports.com/teams/1592592064571_TopEsportsTES-01-FullonDark.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "115616219464607522",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
-          },
-          "red": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115616219464607523",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
-          },
-          "red": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115616219464607524",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
-          },
-          "red": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115616219464607525",
-          "number": 4,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
-          },
-          "red": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115616219464607526",
-          "number": 5,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
-          },
-          "red": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116520394663535906": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "116520394663535906",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520394663535906",
-      "league": "VCS",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "113843163628949793",
-          "name": "Saigon Dino",
-          "code": "DINO",
-          "image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "114029502022567838",
-          "name": "TP.HCM SN CyberCore Esports",
-          "code": "SCBC",
-          "image": "http://static.lolesports.com/teams/1739952109504_image11.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116520394663535907",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "113843163628949793",
-            "team_name": "Saigon Dino",
-            "team_code": "DINO"
-          },
-          "red": {
-            "team_id": "114029502022567838",
-            "team_name": "TP.HCM SN CyberCore Esports",
-            "team_code": "SCBC"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520394663535908",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "114029502022567838",
-            "team_name": "TP.HCM SN CyberCore Esports",
-            "team_code": "SCBC"
-          },
-          "red": {
-            "team_id": "113843163628949793",
-            "team_name": "Saigon Dino",
-            "team_code": "DINO"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520394663535909",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "113843163628949793",
-            "team_name": "Saigon Dino",
-            "team_code": "DINO"
-          },
-          "red": {
-            "team_id": "114029502022567838",
-            "team_name": "TP.HCM SN CyberCore Esports",
-            "team_code": "SCBC"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520394663535910",
-          "number": 4,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "114029502022567838",
-            "team_name": "TP.HCM SN CyberCore Esports",
-            "team_code": "SCBC"
-          },
-          "red": {
-            "team_id": "113843163628949793",
-            "team_name": "Saigon Dino",
-            "team_code": "DINO"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520394663535911",
-          "number": 5,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "113843163628949793",
-            "team_name": "Saigon Dino",
-            "team_code": "DINO"
-          },
-          "red": {
-            "team_id": "114029502022567838",
-            "team_name": "TP.HCM SN CyberCore Esports",
-            "team_code": "SCBC"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116634566264113552": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "116634566264113552",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -39032,7 +38489,7 @@
   },
   "116634566264113558": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T06:52:56.421Z",
+    "checked_at": "2026-06-14T10:17:15.809Z",
     "event_id": "116634566264113558",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -39208,6 +38665,209 @@
             "team_id": "107416483509696259",
             "team_name": "Eintracht Spandau",
             "team_code": "EINS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115564793879469330": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-14T10:17:15.809Z",
+    "event_id": "115564793879469330",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115564793879469330",
+      "league": "LCS",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "98926509885559666",
+          "name": "Team Liquid Alienware",
+          "code": "TLAW",
+          "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "99566405941863385",
+          "name": "LYON",
+          "code": "LYON",
+          "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115564793879469331",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469332",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469333",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469334",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115564793879469335",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
           },
           "winner": "",
           "live": {
