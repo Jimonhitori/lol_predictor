@@ -58,15 +58,13 @@
     .barCaption { margin-top: 8px; color: #9fb2c8; font-size: 12px; font-weight: 800; text-align: center; }
     .laneList { display: grid; gap: 8px; }
     .laneRow { display: grid; gap: 8px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 10px; }
-    .laneTop { display: grid; grid-template-columns: 62px 1fr auto; align-items: center; gap: 8px; }
+    .laneTop { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
     .laneName { color: var(--cyan); font-size: 11px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
-    .laneDuel { min-width: 0; color: #e8f2ff; font-size: 13px; font-weight: 900; text-align: center; }
-    .laneDuel .bluePick { color: #9dccff; }
-    .laneDuel .redPick { color: #ff9aae; }
     .laneWr { border: 1px solid rgba(22,240,200,.25); background: rgba(22,240,200,.07); border-radius: 7px; padding: 6px 8px; color: var(--cyan); font-size: 12px; font-weight: 950; white-space: nowrap; }
-    .laneBar { height: 16px; display: flex; overflow: hidden; border: 1px solid var(--line); border-radius: 999px; background: #05090d; }
-    .laneBarBlue { background: rgba(46,140,255,.9); }
-    .laneBarRed { background: rgba(255,71,109,.9); }
+    .laneBar { height: 34px; display: flex; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: #05090d; }
+    .laneBar > div { display: grid; place-items: center; color: #fff; font-size: 12px; font-weight: 950; white-space: nowrap; }
+    .laneBarBlue { background: var(--blue); }
+    .laneBarRed { background: var(--red); }
     .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: start; justify-content: center; padding: 80px 16px; background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
     .modal.open { display: flex; }
     .picker { width: min(760px, 100%); border: 1px solid var(--line); border-radius: 10px; background: #0c141d; overflow: hidden; box-shadow: 0 0 30px rgba(22,240,200,.18); }
@@ -82,7 +80,7 @@
     .champ strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .champ span { color: #94a3b8; font-size: 12px; }
     @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .champGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
-    @media (max-width: 520px) { .laneTop { grid-template-columns: 1fr auto; } .laneDuel { grid-column: 1 / -1; grid-row: 2; text-align: left; } }
+    @media (max-width: 520px) { .laneTop { grid-template-columns: 1fr auto; } }
   </style>
 </head>
 <body>
@@ -251,9 +249,6 @@
         </div>
       `;
     }
-    function laneChampionName(side, index) {
-      return state[side][index]?.name || "Pick pending";
-    }
     function renderLaneMatchups() {
       if (!state.calculated) {
         $("laneMatchups").hidden = true;
@@ -271,12 +266,11 @@
             <div class="laneRow">
               <div class="laneTop">
                 <div class="laneName">${role}</div>
-                <div class="laneDuel"><span class="bluePick">${laneChampionName("blue", index)}</span> vs <span class="redPick">${laneChampionName("red", index)}</span></div>
                 <div class="laneWr">${blueWr.toFixed(1)}%</div>
               </div>
               <div class="laneBar" aria-label="${role} blue ${blueWr.toFixed(1)}%, red ${redWr.toFixed(1)}%">
-                <div class="laneBarBlue" style="width:${blueWr}%"></div>
-                <div class="laneBarRed" style="width:${redWr}%"></div>
+                <div class="laneBarBlue" style="width:${blueWr}%">Blue ${blueWr.toFixed(1)}%</div>
+                <div class="laneBarRed" style="width:${redWr}%">Red ${redWr.toFixed(1)}%</div>
               </div>
             </div>
           `; }).join("")}
