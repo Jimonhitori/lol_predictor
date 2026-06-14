@@ -58,11 +58,8 @@
     .barCaption { margin-top: 8px; color: #9fb2c8; font-size: 12px; font-weight: 800; text-align: center; }
     .laneList { display: grid; gap: 8px; }
     .laneRow { display: grid; gap: 7px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 9px 10px; }
-    .laneTop { display: grid; grid-template-columns: 54px 1fr auto; align-items: center; gap: 8px; }
+    .laneTop { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
     .laneName { color: var(--cyan); font-size: 11px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
-    .laneDuel { min-width: 0; color: #dceaff; font-size: 12px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .laneDuel .bluePick { color: #9dccff; }
-    .laneDuel .redPick { color: #ff9aae; }
     .laneFavor { color: #8fa1b5; font-size: 11px; font-weight: 850; white-space: nowrap; }
     .laneFavor.blue { color: #9dccff; }
     .laneFavor.red { color: #ff9aae; }
@@ -88,7 +85,7 @@
     .champ strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .champ span { color: #94a3b8; font-size: 12px; }
     @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .champGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
-    @media (max-width: 520px) { .laneTop { grid-template-columns: 1fr auto; } .laneDuel { grid-column: 1 / -1; grid-row: 2; white-space: normal; } .laneScale { grid-template-columns: 1fr; gap: 5px; } .lanePct { text-align: center; } }
+    @media (max-width: 520px) { .laneTop { grid-template-columns: 1fr auto; } .laneScale { grid-template-columns: 1fr; gap: 5px; } .lanePct { text-align: center; } }
   </style>
 </head>
 <body>
@@ -257,9 +254,6 @@
         </div>
       `;
     }
-    function laneChampionName(side, index) {
-      return state[side][index]?.name || "Pick pending";
-    }
     function laneFavorText(blueWr) {
       const edge = Math.abs(blueWr - 50);
       if (edge < 1) return { side: "even", text: "Even" };
@@ -285,7 +279,6 @@
             <div class="laneRow">
               <div class="laneTop">
                 <div class="laneName">${role}</div>
-                <div class="laneDuel"><span class="bluePick">${laneChampionName("blue", index)}</span> vs <span class="redPick">${laneChampionName("red", index)}</span></div>
                 <div class="laneFavor ${favor.side}">${favor.text}</div>
               </div>
               <div class="laneScale">
