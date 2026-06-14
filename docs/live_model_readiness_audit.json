@@ -55,16 +55,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 39,
-        "interval_count": 248,
+        "games": 40,
+        "interval_count": 257,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 538,
-        "oe_bootstrap_snapshot_rows": 316,
-        "pct_intervals_lte_30s": 0.5967741935483871,
+        "non_empty_game_state_rows": 548,
+        "oe_bootstrap_snapshot_rows": 326,
+        "pct_intervals_lte_30s": 0.6108949416342413,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 538,
-        "sub_30s_interval_count": 148
+        "rows": 548,
+        "sub_30s_interval_count": 157
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -84,7 +84,7 @@
         "pipeline_labeled_feature_rows": 467,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 538,
+        "pipeline_resolved_rows": 548,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
