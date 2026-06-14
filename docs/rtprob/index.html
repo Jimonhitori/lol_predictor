@@ -47,6 +47,7 @@
     .compositionGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
     .compositionItem { border: 1px solid var(--line); background: #0b131c; border-radius: 8px; padding: 10px; min-width: 0; }
     .compositionItem.priority { border-color: rgba(22,240,200,.38); background: rgba(22,240,200,.055); }
+    .compositionItem.noData { opacity: .72; }
     .compositionName { color: #9fb2c8; font-size: 11px; font-weight: 900; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .compositionCombo { margin-top: 4px; color: #dceaff; font-size: 11px; font-weight: 850; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .compositionWinrate { margin-top: 5px; color: #fff; font-size: 22px; font-weight: 950; letter-spacing: -.01em; }
@@ -55,6 +56,7 @@
     .compositionConfidence.high { border-color: rgba(22,240,200,.3); color: var(--cyan); background: rgba(22,240,200,.06); }
     .compositionConfidence.medium { border-color: rgba(255,204,102,.28); color: #ffd166; background: rgba(255,204,102,.06); }
     .compositionConfidence.low { border-color: rgba(255,71,109,.28); color: #ff9aae; background: rgba(255,71,109,.06); }
+    .compositionConfidence.noData { color: #8fa1b5; }
     .center { display: grid; gap: 12px; position: sticky; top: 82px; }
     .control, .predictionCard { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 16px; }
     .control { text-align: center; }
@@ -140,20 +142,12 @@
     const ddragon = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/champion`;
     const mockPrediction = { blue: 52.3, red: 47.7 };
     const mockLaneWinRates = [58.4, 51.2, 47.8, 53.9, 49.7];
-    const mockCompositionAnalysis = {
-      blue: [
-        { id: "bot-duo", label: "Bot Duo", winrate: 54.8, games: 12400, confidence: "High Confidence" },
-        { id: "mid-jungle", label: "Mid Jungle", winrate: 56.1, games: 8900, confidence: "High Confidence" },
-        { id: "mid-jungle-support", label: "Mid Jungle Support", winrate: 58.3, games: 2100, confidence: "Medium Confidence", priority: true },
-        { id: "full-composition", label: "Full Composition", winrate: 55.2, games: 41, confidence: "Low Confidence" },
-      ],
-      red: [
-        { id: "bot-duo", label: "Bot Duo", winrate: 51.9, games: 9800, confidence: "High Confidence" },
-        { id: "mid-jungle", label: "Mid Jungle", winrate: 49.7, games: 7600, confidence: "High Confidence" },
-        { id: "mid-jungle-support", label: "Mid Jungle Support", winrate: 52.8, games: 1800, confidence: "Medium Confidence", priority: true },
-        { id: "full-composition", label: "Full Composition", winrate: 48.6, games: 35, confidence: "Low Confidence" },
-      ],
-    };
+    const compositionTypes = [
+      { id: "bot-duo", label: "Bot Duo" },
+      { id: "mid-jungle", label: "Mid Jungle" },
+      { id: "mid-jungle-support", label: "Mid Jungle Support", priority: true },
+      { id: "full-composition", label: "Full Composition" },
+    ];
     const fallbackChampionRows = [
       ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["corki","Corki","Bot","Corki"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["neeko","Neeko","Support","Neeko"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["udyr","Udyr","Jungle","Udyr"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
     ];
@@ -172,7 +166,7 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() } };
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", metrics: {} } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       try {
@@ -276,6 +270,7 @@
       if (text.startsWith("high")) return "high";
       if (text.startsWith("medium")) return "medium";
       if (text.startsWith("low")) return "low";
+      if (text.startsWith("no")) return "noData";
       return "";
     }
     function escapeHtml(value) {
@@ -283,28 +278,56 @@
     }
     function compositionMetric(metric) {
       return `
-        <article class="compositionItem ${metric.priority ? "priority" : ""}">
+        <article class="compositionItem ${metric.priority ? "priority" : ""} ${metric.available ? "" : "noData"}">
           <div class="compositionName">${escapeHtml(metric.label)}</div>
           <div class="compositionCombo">${escapeHtml(metric.combo)}</div>
-          <div class="compositionWinrate">${metric.winrate.toFixed(1)}%</div>
-          <div class="compositionGames">${formatGames(metric.games)}</div>
+          <div class="compositionWinrate">${metric.available ? `${metric.winrate.toFixed(1)}%` : "--"}</div>
+          <div class="compositionGames">${metric.available ? formatGames(metric.games) : "No sample"}</div>
           <div class="compositionConfidence ${confidenceClass(metric.confidence)}">${escapeHtml(metric.confidence)}</div>
         </article>
       `;
     }
+    function compositionChampions(side, id) {
+      const champs = state[side];
+      if (id === "bot-duo") return [champs[3], champs[4]];
+      if (id === "mid-jungle") return [champs[2], champs[1]];
+      if (id === "mid-jungle-support") return [champs[2], champs[1], champs[4]];
+      if (id === "full-composition") return champs;
+      return [];
+    }
     function compositionComboLabel(side, id) {
-      const names = state[side].map(champ => champ?.name || "Pending");
-      if (id === "bot-duo") return `${names[3]} + ${names[4]}`;
-      if (id === "mid-jungle") return `${names[2]} + ${names[1]}`;
-      if (id === "mid-jungle-support") return `${names[2]} + ${names[1]} + ${names[4]}`;
-      if (id === "full-composition") return names.join(" / ");
-      return "Pending";
+      const names = compositionChampions(side, id).map(champ => champ?.name || "Pending");
+      return id === "full-composition" ? names.join(" / ") : names.join(" + ");
+    }
+    function compositionComboKey(side, id) {
+      return compositionChampions(side, id).map(champ => normalizeName(champ?.name)).join("|");
+    }
+    function realCompositionMetric(side, type) {
+      const key = compositionComboKey(side, type.id);
+      const record = state.compositionSynergy.metrics?.[type.id]?.[key];
+      if (!record) {
+        return {
+          ...type,
+          combo: compositionComboLabel(side, type.id),
+          available: false,
+          winrate: null,
+          games: 0,
+          confidence: state.compositionSynergy.status === "loading" ? "Loading Data" : "No Data",
+        };
+      }
+      const rawWinrate = Number(record.winrate);
+      const winrate = rawWinrate <= 1 ? rawWinrate * 100 : rawWinrate;
+      return {
+        ...type,
+        combo: compositionComboLabel(side, type.id),
+        available: true,
+        winrate,
+        games: numberValue(record.games),
+        confidence: record.confidence || "Low Confidence",
+      };
     }
     function compositionMetricsForSide(side) {
-      return (mockCompositionAnalysis[side] || []).map(metric => ({
-        ...metric,
-        combo: compositionComboLabel(side, metric.id),
-      }));
+      return compositionTypes.map(type => realCompositionMetric(side, type));
     }
     function renderCompositionAnalysis(side) {
       const root = $(`${side}Composition`);
@@ -399,6 +422,18 @@
       document.querySelectorAll("[data-clear]").forEach(btn => btn.onclick = () => { const [side, idx] = btn.dataset.clear.split(":"); state[side][Number(idx)] = null; state.calculated = false; render(); });
       renderPredictionPanels();
     }
+    async function loadCompositionSynergy() {
+      try {
+        const res = await fetch("/static/data/composition_synergy.json", { cache: "no-store" });
+        if (!res.ok) throw new Error(`composition ${res.status}`);
+        const data = await res.json();
+        state.compositionSynergy = { status: "ready", metrics: data?.metrics || {} };
+      } catch (error) {
+        state.compositionSynergy = { status: "error", metrics: {} };
+      }
+      renderCompositionAnalysis("blue");
+      renderCompositionAnalysis("red");
+    }
     function openPicker(value) { const [side, idx] = value.split(":"); state.active = { side, idx: Number(idx) }; state.query = ""; $("search").value = ""; $("modal").classList.add("open"); renderPicker(); setTimeout(() => $("search").focus(), 0); }
     function renderPicker() {
       const selected = selectedIds();
@@ -422,6 +457,7 @@
     render();
     loadChampionRoster();
     loadChampionMeta();
+    loadCompositionSynergy();
   </script>
 </body>
 </html>
