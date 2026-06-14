@@ -247,6 +247,19 @@
       const winrate = row.winrate || (picks > 0 ? `${((numberValue(row.wins) / picks) * 100).toFixed(1)}%` : "-");
       return `WR ${winrate}${picks ? ` · ${picks} picks` : ""}`;
     }
+    function primaryChampionRole(champ) {
+      if (!champ || state.championMeta.status !== "ready") return champ?.role || "Flex";
+      const key = normalizeName(champ.name);
+      let best = null;
+      roleKeys.forEach((roleKey, index) => {
+        const row = state.championMeta.byRole?.[roleKey]?.get(key);
+        const picks = numberValue(row?.picks ?? row?.games);
+        if (picks > 0 && (!best || picks > best.picks)) {
+          best = { role: roles[index], picks };
+        }
+      });
+      return best?.role || champ.role || "Flex";
+    }
     async function loadChampionMeta() {
       try {
         const res = await fetch("/static/data/summaries/all__all.json", { cache: "no-store" });
@@ -263,6 +276,7 @@
         state.championMeta = { status: "error", patch: "", byRole: {}, all: new Map() };
       }
       render();
+      if ($("modal").classList.contains("open")) renderPicker();
     }
     function selectedIds() { return new Set([...state.blue, ...state.red].filter(Boolean).map(c => c.id)); }
     function formatGames(value) {
@@ -610,10 +624,14 @@
     function renderPicker() {
       const selected = selectedIds();
       const q = state.query.trim().toLowerCase();
-      const list = champions.filter(c => !q || c.name.toLowerCase().includes(q) || c.role.toLowerCase().includes(q));
+      const list = champions.filter(c => {
+        const displayRole = primaryChampionRole(c);
+        return !q || c.name.toLowerCase().includes(q) || displayRole.toLowerCase().includes(q);
+      });
       $("champGrid").innerHTML = list.map(c => {
         const disabled = selected.has(c.id);
-        return `<button class="champ" data-champ="${c.id}" ${disabled ? "disabled" : ""}><img src="${c.imageUrl}" alt=""><span><strong>${c.name}</strong><span>${c.role}</span></span></button>`;
+        const displayRole = primaryChampionRole(c);
+        return `<button class="champ" data-champ="${c.id}" ${disabled ? "disabled" : ""}><img src="${c.imageUrl}" alt=""><span><strong>${c.name}</strong><span>${displayRole}</span></span></button>`;
       }).join("");
       document.querySelectorAll("[data-champ]").forEach(btn => btn.onclick = () => {
         const champ = champions.find(c => c.id === btn.dataset.champ);
