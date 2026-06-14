@@ -661,7 +661,7 @@ async function loadMatches() {
   const predictionsReady = loadPreMatchPredictions();
   const data = await api('/api/matches/today?' + qs());
   if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
-  state.allMatches = hydrateMatchesTeamMeta(filterMatchesBySelection(data.matches || [], filters));
+  state.allMatches = dedupeCanonicalMatches(hydrateMatchesTeamMeta(filterMatchesBySelection(data.matches || [], filters)));
   state.matchSource = data.source || 'none';
   syncDefaultMatchDate(state.allMatches);
   await refreshStaticMatchStatuses();
@@ -669,7 +669,7 @@ async function loadMatches() {
   renderMatches();
   predictionsReady.then(async () => {
     if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
-    state.allMatches = hydrateMatchesTeamMeta(applyPreMatchPredictionOverlay(state.allMatches));
+    state.allMatches = dedupeCanonicalMatches(hydrateMatchesTeamMeta(applyPreMatchPredictionOverlay(state.allMatches)));
     await refreshStaticMatchStatuses();
     renderDateTabs(state.allMatches);
     renderMatches();
@@ -921,7 +921,7 @@ function applyPreMatchPredictionOverlay(matches) {
     seenIds.add(eventId);
     overlaid.push(overlayMatchFromPrediction(standalonePredictionMatch(prediction, matches), prediction));
   }
-  return sortMatchesByStart(suppressPlaceholderMatchesWithStandalonePredictions(overlaid));
+  return sortMatchesByStart(dedupeCanonicalMatches(suppressPlaceholderMatchesWithStandalonePredictions(overlaid)));
 }
 
 function standalonePredictionKey(value) {
@@ -1015,6 +1015,90 @@ function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
   });
 }
 
+function dedupeCanonicalMatches(matches) {
+  const orderedKeys = [];
+  const bestByKey = new Map();
+  const passthrough = [];
+  for (const match of matches || []) {
+    const key = canonicalMatchDuplicateKey(match);
+    if (!key) {
+      passthrough.push(match);
+      continue;
+    }
+    const existing = bestByKey.get(key);
+    if (!existing) orderedKeys.push(key);
+    bestByKey.set(key, mergeDuplicateMatch(existing, match));
+  }
+  return [
+    ...orderedKeys.map(key => bestByKey.get(key)).filter(Boolean),
+    ...passthrough,
+  ];
+}
+
+function canonicalMatchDuplicateKey(match) {
+  const league = matchDuplicateLeagueKey(match?.league || '');
+  const start = normalizedPredictionTime(match?.start_time || '');
+  const teams = teamPairKey(match);
+  return league && start && teams ? `${league}|${start}|${teams}` : '';
+}
+
+function matchDuplicateLeagueKey(value) {
+  const text = shortPredictionLeague(value).toLowerCase().trim();
+  if (!text) return '';
+  if (text.startsWith('esports world cup')) return 'ewc';
+  if (text.startsWith('2026 asian games') || text.startsWith('asian games')) return 'asian-games';
+  return predictionLeagueKey(value);
+}
+
+function mergeDuplicateMatch(existing, incoming) {
+  if (!existing) return incoming;
+  const existingScore = matchQualityScore(existing);
+  const incomingScore = matchQualityScore(incoming);
+  const primary = incomingScore > existingScore ? incoming : existing;
+  const secondary = primary === incoming ? existing : incoming;
+  const merged = { ...secondary, ...primary };
+  for (const field of ['id', 'event_id', 'game_id', 'source_match_id', 'league_group', 'region', 'best_of']) {
+    if (!merged[field] && secondary?.[field]) merged[field] = secondary[field];
+  }
+  for (const field of ['blue_team', 'red_team', 'blue_code', 'red_code']) {
+    if (isPlaceholderTeam(merged[field]) && !isPlaceholderTeam(secondary?.[field])) merged[field] = secondary[field];
+  }
+  for (const field of ['blue_image', 'red_image']) {
+    if (isPlaceholderImage(merged[field]) && !isPlaceholderImage(secondary?.[field])) merged[field] = normalizeTeamImage(secondary[field]);
+  }
+  for (const field of ['blue_score', 'red_score']) {
+    if ((merged[field] === undefined || merged[field] === null || merged[field] === '') && secondary?.[field] !== undefined) {
+      merged[field] = secondary[field];
+    }
+  }
+  return merged;
+}
+
+function matchQualityScore(match) {
+  let score = 0;
+  const source = String(match?.source || '').toLowerCase();
+  if (source.includes('lolesports')) score += 40;
+  if (source.includes('pandascore')) score += 25;
+  if (source === 'pre_match_prediction_feed') score -= 25;
+  if (match?.source_match_id) score += 20;
+  if (!hasPlaceholderTeamInfo(match)) score += 15;
+  if (!isPlaceholderImage(match?.blue_image) && !isPlaceholderImage(match?.red_image)) score += 8;
+  if (matchHasScore(match)) score += 12;
+  if (preMatchPredictionForMatch(match)) score += 6;
+  score += matchStatusQualityScore(match?.status);
+  return score;
+}
+
+function matchStatusQualityScore(status) {
+  const normalized = String(status || '').toLowerCase();
+  if (['completed', 'complete'].includes(normalized)) return 10;
+  if (normalized === 'inprogress') return 8;
+  if (normalized === 'unstarted') return 4;
+  if (normalized === 'updating') return 2;
+  if (normalized === 'unavailable') return -4;
+  return 0;
+}
+
 function scheduleSlotKey(match) {
   const league = predictionLeagueKey(match?.league || '');
   const start = normalizedPredictionTime(match?.start_time || '');
@@ -1042,6 +1126,8 @@ function shortPredictionLeague(value) {
 function predictionLeagueKey(value) {
   const text = shortPredictionLeague(value).toLowerCase().trim();
   if (!text) return '';
+  if (text.startsWith('esports world cup')) return 'ewc';
+  if (text.startsWith('2026 asian games') || text.startsWith('asian games')) return 'asian-games';
   const known = ['lpl', 'lck', 'lcs', 'lec', 'lcp', 'vcs', 'ljl', 'cblol', 'nacl', 'emea masters'];
   const match = known.find(league => text === league || text.startsWith(`${league} `));
   if (match) return match;
