@@ -21,7 +21,7 @@
     h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.02em; }
     .desc { margin: 8px 0 0; color: var(--muted); font-size: 14px; max-width: 680px; }
     .headActions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
-    .statFilter { min-width: 116px; border: 1px solid var(--line); background: var(--panel); color: #e7f0fb; border-radius: 7px; padding: 9px 10px; font-size: 12px; font-weight: 850; outline: none; }
+    .statFilter { min-width: 116px; border: 1px solid var(--line); background: var(--panel); color: #e7f0fb; border-radius: 7px; padding: 9px 10px; font-size: 12px; font-weight: 700; outline: none; }
     .count { border: 1px solid var(--line); background: var(--panel); border-radius: 7px; padding: 9px 12px; color: #c7d3e1; font-size: 12px; font-weight: 800; white-space: nowrap; }
     .layout { display: grid; grid-template-columns: 1fr 260px 1fr; gap: 16px; align-items: start; }
     .team { border: 1px solid var(--line); background: rgba(16,24,32,.88); border-radius: 10px; padding: 16px; box-shadow: 0 0 28px rgba(22,240,200,.12); }
@@ -128,6 +128,11 @@
         <p class="desc">Select ten unique champions. API/model integration comes later; this screen only manages draft state and preview output.</p>
       </div>
       <div class="headActions">
+        <select class="statFilter" id="statTierFilter" aria-label="Draft stat tier filter">
+          <option value="all">All tiers</option>
+          <option value="major">Major</option>
+          <option value="secondary">Secondary</option>
+        </select>
         <select class="statFilter" id="statPatchFilter" aria-label="Draft stat patch filter"><option value="ALL">ALL</option></select>
         <div class="count" id="count">0/10 champions selected</div>
       </div>
@@ -176,7 +181,7 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       try {
@@ -272,6 +277,11 @@
       select.innerHTML = state.patchOptions.map(patch => `<option value="${patch}">${patch}</option>`).join("");
       select.value = state.statPatch;
     }
+    function renderStatTierFilter() {
+      const select = $("statTierFilter");
+      if (!select) return;
+      select.value = state.statTier;
+    }
     function championMetaText(champ, index) {
       if (!champ) return "";
       const meta = state.championMeta;
@@ -299,15 +309,20 @@
     }
     async function loadChampionMeta() {
       try {
-        const res = await fetch("/static/data/summaries/all__all.json", { cache: "no-store" });
+        const res = await fetch(`/static/data/summaries/${state.statTier}__all.json`, { cache: "no-store" });
         if (!res.ok) throw new Error(`summary ${res.status}`);
         const data = await res.json();
         state.summaryData = data;
         state.patchOptions = statPatchOptions(data);
         applyChampionMeta();
+        renderStatTierFilter();
         renderStatPatchFilter();
       } catch (error) {
+        state.summaryData = null;
+        state.patchOptions = ["ALL"];
         state.championMeta = { status: "error", patch: "", byRole: {}, all: new Map() };
+        renderStatTierFilter();
+        renderStatPatchFilter();
       }
       render();
       if ($("modal").classList.contains("open")) renderPicker();
@@ -688,6 +703,13 @@
     $("search").oninput = e => { state.query = e.target.value; renderPicker(); };
     $("close").onclick = () => $("modal").classList.remove("open");
     $("modal").onclick = e => { if (e.target.id === "modal") $("modal").classList.remove("open"); };
+    $("statTierFilter").onchange = e => {
+      state.statTier = e.target.value || "all";
+      state.summaryData = null;
+      state.championMeta = { status: "loading", patch: "", byRole: {}, all: new Map() };
+      render();
+      loadChampionMeta();
+    };
     $("statPatchFilter").onchange = e => {
       state.statPatch = e.target.value || "ALL";
       applyChampionMeta();
