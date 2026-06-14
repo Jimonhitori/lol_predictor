@@ -38198,7 +38198,7 @@
   },
   "115548128963037587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T12:17:27.774Z",
+    "checked_at": "2026-06-14T14:33:24.504Z",
     "event_id": "115548128963037587",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -38401,29 +38401,210 @@
   },
   "116453476471776174": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T12:17:27.774Z",
+    "checked_at": "2026-06-14T14:33:24.504Z",
     "event_id": "116453476471776174",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116453476471776174",
-      "league": "",
+      "league": "LJL",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "109668849651338559",
+          "name": "FENNEL",
+          "code": "FL",
+          "image": "http://static.lolesports.com/teams/1673413831349_fl.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "116046732670043900",
+          "name": "Rising Gaming",
+          "code": "RGA",
+          "image": "http://static.lolesports.com/teams/1771324524126_rsg_full_color_onW.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116453476471776175",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776176",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776177",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776178",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116453476471776179",
+          "number": 5,
+          "state": "completed",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046732670043900",
+            "team_name": "Rising Gaming",
+            "team_code": "RGA"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "115616219464607521": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T12:17:27.774Z",
+    "checked_at": "2026-06-14T14:33:24.504Z",
     "event_id": "115616219464607521",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -38626,7 +38807,7 @@
   },
   "116520394663535906": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T12:17:27.774Z",
+    "checked_at": "2026-06-14T14:33:24.504Z",
     "event_id": "116520394663535906",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -38648,7 +38829,7 @@
   },
   "116634566264113552": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T12:17:27.774Z",
+    "checked_at": "2026-06-14T14:33:24.504Z",
     "event_id": "116634566264113552",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -38851,7 +39032,7 @@
   },
   "116634566264113558": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T12:17:27.774Z",
+    "checked_at": "2026-06-14T14:33:24.504Z",
     "event_id": "116634566264113558",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -39054,7 +39235,7 @@
   },
   "115564793879469330": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T12:17:27.774Z",
+    "checked_at": "2026-06-14T14:33:24.504Z",
     "event_id": "115564793879469330",
     "status": "unstarted",
     "source": "cloudflare_live_event",
