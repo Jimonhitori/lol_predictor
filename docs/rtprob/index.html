@@ -168,7 +168,7 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", metrics: {} } };
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       try {
@@ -390,6 +390,16 @@
       const key = `${normalizeName(blue.name)}|${normalizeName(red.name)}`;
       return state.compositionSynergy.laneMatchups?.[role]?.[key] || null;
     }
+    function botDuoMatchupRecord() {
+      const blueBot = state.blue[3];
+      const blueSupport = state.blue[4];
+      const redBot = state.red[3];
+      const redSupport = state.red[4];
+      if (!blueBot || !blueSupport || !redBot || !redSupport) return null;
+      const blueKey = [blueBot, blueSupport].map(champ => normalizeName(champ.name)).join("|");
+      const redKey = [redBot, redSupport].map(champ => normalizeName(champ.name)).join("|");
+      return state.compositionSynergy.duoMatchups?.["bot-duo"]?.[`${blueKey}::${redKey}`] || null;
+    }
     function laneMetric(index) {
       const record = laneMatchupRecord(index);
       if (!record) {
@@ -415,6 +425,31 @@
         confidence: record.confidence || "Low Confidence",
       };
     }
+    function botDuoMatchupMetric() {
+      const record = botDuoMatchupRecord();
+      if (!record) {
+        return {
+          role: "Bot Duo",
+          available: false,
+          blueWr: null,
+          redWr: null,
+          games: 0,
+          confidence: state.compositionSynergy.status === "loading" ? "Loading Data" : "No Data",
+        };
+      }
+      const blueWr = winratePercent(record);
+      if (blueWr === null) {
+        return { role: "Bot Duo", available: false, blueWr: null, redWr: null, games: 0, confidence: "No Data" };
+      }
+      return {
+        role: "Bot Duo",
+        available: true,
+        blueWr,
+        redWr: 100 - blueWr,
+        games: numberValue(record.games),
+        confidence: record.confidence || "Low Confidence",
+      };
+    }
     function laneRatings() {
       return roles.map((_, index) => laneMetric(index));
     }
@@ -423,9 +458,10 @@
       const championRed = sideChampionRating("red");
       const compositionBlue = sideCompositionRating("blue");
       const compositionRed = sideCompositionRating("red");
-      const laneBlue = weightedAverage(laneRatings()
+      const matchupRatings = [...laneRatings(), botDuoMatchupMetric()];
+      const laneBlue = weightedAverage(matchupRatings
         .filter(metric => metric.available)
-        .map(metric => ({ value: metric.blueWr, weight: 1.5 * reliabilityWeight(metric.games) })));
+        .map(metric => ({ value: metric.blueWr, weight: (metric.role === "Bot Duo" ? 2 : 1.5) * reliabilityWeight(metric.games) })));
       const inputs = [];
       const components = [];
       if (championBlue !== null && championRed !== null) {
@@ -500,12 +536,12 @@
         return;
       }
       $("laneMatchups").hidden = false;
-      const lanes = laneRatings();
+      const lanes = [...laneRatings(), botDuoMatchupMetric()];
       $("laneMatchups").innerHTML = `
         <h2 class="cardTitle">Lane Matchups</h2>
         <div class="laneList">
-          ${roles.map((role, index) => {
-            const lane = lanes[index];
+          ${lanes.map((lane) => {
+            const role = lane.role;
             const blueWr = lane.available ? lane.blueWr : 50;
             const redWr = lane.available ? lane.redWr : 50;
             const favor = laneFavorText(blueWr);
@@ -557,9 +593,9 @@
         const res = await fetch("/static/data/composition_synergy.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`composition ${res.status}`);
         const data = await res.json();
-        state.compositionSynergy = { status: "ready", metrics: data?.metrics || {}, laneMatchups: data?.lane_matchups || {} };
+        state.compositionSynergy = { status: "ready", metrics: data?.metrics || {}, laneMatchups: data?.lane_matchups || {}, duoMatchups: data?.duo_matchups || {} };
       } catch (error) {
-        state.compositionSynergy = { status: "error", metrics: {}, laneMatchups: {} };
+        state.compositionSynergy = { status: "error", metrics: {}, laneMatchups: {}, duoMatchups: {} };
       }
       renderPredictionPanels();
       renderCompositionAnalysis("blue");
