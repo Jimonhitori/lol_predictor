@@ -73,6 +73,7 @@
     .barCaption { margin-top: 8px; color: #9fb2c8; font-size: 12px; font-weight: 800; text-align: center; }
     .laneList { display: grid; gap: 8px; }
     .laneRow { display: grid; gap: 7px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 9px 10px; }
+    .laneRow.noData { opacity: .72; }
     .laneTop { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
     .laneName { color: var(--cyan); font-size: 11px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
     .laneFavor { color: #8fa1b5; font-size: 11px; font-weight: 850; white-space: nowrap; }
@@ -140,13 +141,11 @@
   <script>
     const ddragonVersion = "15.24.1";
     const ddragon = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/champion`;
-    const mockPrediction = { blue: 52.3, red: 47.7 };
-    const mockLaneWinRates = [58.4, 51.2, 47.8, 53.9, 49.7];
     const compositionTypes = [
-      { id: "bot-duo", label: "Bot Duo" },
-      { id: "mid-jungle", label: "Mid Jungle" },
-      { id: "mid-jungle-support", label: "Mid Jungle Support", priority: true },
-      { id: "full-composition", label: "Full Composition" },
+      { id: "bot-duo", label: "Bot Duo", weight: 2 },
+      { id: "mid-jungle", label: "Mid Jungle", weight: 2 },
+      { id: "mid-jungle-support", label: "Mid Jungle Support", priority: true, weight: 4 },
+      { id: "full-composition", label: "Full Composition", weight: 1 },
     ];
     const fallbackChampionRows = [
       ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["corki","Corki","Bot","Corki"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["neeko","Neeko","Support","Neeko"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["udyr","Udyr","Jungle","Udyr"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
@@ -329,6 +328,92 @@
     function compositionMetricsForSide(side) {
       return compositionTypes.map(type => realCompositionMetric(side, type));
     }
+    function winratePercent(record) {
+      const raw = Number(record?.winrate);
+      if (!Number.isFinite(raw)) return null;
+      return raw <= 1 ? raw * 100 : raw;
+    }
+    function reliabilityWeight(games) {
+      const count = Math.max(0, numberValue(games));
+      if (!count) return 0;
+      return Math.min(1, Math.sqrt(count / 30));
+    }
+    function weightedAverage(items) {
+      let weighted = 0;
+      let weight = 0;
+      for (const item of items) {
+        const value = Number(item.value);
+        const itemWeight = Number(item.weight);
+        if (!Number.isFinite(value) || !Number.isFinite(itemWeight) || itemWeight <= 0) continue;
+        weighted += value * itemWeight;
+        weight += itemWeight;
+      }
+      return weight > 0 ? weighted / weight : null;
+    }
+    function sideCompositionRating(side) {
+      return weightedAverage(compositionMetricsForSide(side)
+        .filter(metric => metric.available)
+        .map(metric => ({
+          value: metric.winrate,
+          weight: (compositionTypes.find(type => type.id === metric.id)?.weight || 1) * reliabilityWeight(metric.games),
+        })));
+    }
+    function laneMatchupRecord(index) {
+      const blue = state.blue[index];
+      const red = state.red[index];
+      const role = roleKeys[index];
+      if (!blue || !red) return null;
+      const key = `${normalizeName(blue.name)}|${normalizeName(red.name)}`;
+      return state.compositionSynergy.laneMatchups?.[role]?.[key] || null;
+    }
+    function laneMetric(index) {
+      const record = laneMatchupRecord(index);
+      if (!record) {
+        return {
+          role: roles[index],
+          available: false,
+          blueWr: null,
+          redWr: null,
+          games: 0,
+          confidence: state.compositionSynergy.status === "loading" ? "Loading Data" : "No Data",
+        };
+      }
+      const blueWr = winratePercent(record);
+      if (blueWr === null) {
+        return { role: roles[index], available: false, blueWr: null, redWr: null, games: 0, confidence: "No Data" };
+      }
+      return {
+        role: roles[index],
+        available: true,
+        blueWr,
+        redWr: 100 - blueWr,
+        games: numberValue(record.games),
+        confidence: record.confidence || "Low Confidence",
+      };
+    }
+    function laneRatings() {
+      return roles.map((_, index) => laneMetric(index));
+    }
+    function overallPrediction() {
+      const compositionBlue = sideCompositionRating("blue");
+      const compositionRed = sideCompositionRating("red");
+      const laneBlue = weightedAverage(laneRatings()
+        .filter(metric => metric.available)
+        .map(metric => ({ value: metric.blueWr, weight: 1.5 * reliabilityWeight(metric.games) })));
+      const inputs = [];
+      if (compositionBlue !== null && compositionRed !== null) {
+        inputs.push({ value: 50 + ((compositionBlue - compositionRed) * 0.55), weight: 3 });
+      }
+      if (laneBlue !== null) {
+        inputs.push({ value: laneBlue, weight: 2 });
+      }
+      const blue = Math.max(5, Math.min(95, weightedAverage(inputs) ?? 50));
+      return {
+        blue,
+        red: 100 - blue,
+        available: inputs.length > 0,
+      };
+    }
     function renderCompositionAnalysis(side) {
       const root = $(`${side}Composition`);
       if (!state.calculated) {
@@ -349,13 +434,15 @@
         $("overallPrediction").innerHTML = "";
         return;
       }
+      const prediction = overallPrediction();
       $("overallPrediction").hidden = false;
       $("overallPrediction").innerHTML = `
         <h2 class="cardTitle">Overall Prediction</h2>
-        <div class="bar" aria-label="Blue ${mockPrediction.blue.toFixed(1)}%, Red ${mockPrediction.red.toFixed(1)}%">
-          <div class="barBlue" style="width:${mockPrediction.blue}%">Blue ${mockPrediction.blue.toFixed(1)}%</div>
-          <div class="barRed" style="width:${mockPrediction.red}%">Red ${mockPrediction.red.toFixed(1)}%</div>
+        <div class="bar" aria-label="Blue ${prediction.blue.toFixed(1)}%, Red ${prediction.red.toFixed(1)}%">
+          <div class="barBlue" style="width:${prediction.blue}%">Blue ${prediction.blue.toFixed(1)}%</div>
+          <div class="barRed" style="width:${prediction.red}%">Red ${prediction.red.toFixed(1)}%</div>
         </div>
+        ${prediction.available ? "" : `<p class="hint">No historical draft sample for this selection.</p>`}
       `;
     }
     function laneFavorText(blueWr) {
@@ -372,26 +459,28 @@
         return;
       }
       $("laneMatchups").hidden = false;
+      const lanes = laneRatings();
       $("laneMatchups").innerHTML = `
         <h2 class="cardTitle">Lane Matchups</h2>
         <div class="laneList">
           ${roles.map((role, index) => {
-            const blueWr = mockLaneWinRates[index];
-            const redWr = 100 - blueWr;
+            const lane = lanes[index];
+            const blueWr = lane.available ? lane.blueWr : 50;
+            const redWr = lane.available ? lane.redWr : 50;
             const favor = laneFavorText(blueWr);
             return `
-            <div class="laneRow">
+            <div class="laneRow ${lane.available ? "" : "noData"}">
               <div class="laneTop">
                 <div class="laneName">${role}</div>
-                <div class="laneFavor ${favor.side}">${favor.text}</div>
+                <div class="laneFavor ${favor.side}">${lane.available ? favor.text : lane.confidence}</div>
               </div>
               <div class="laneScale">
-                <span class="lanePct blue">Blue ${blueWr.toFixed(1)}%</span>
+                <span class="lanePct blue">Blue ${lane.available ? `${blueWr.toFixed(1)}%` : "--"}</span>
                 <div class="laneBar" aria-label="${role} blue ${blueWr.toFixed(1)}%, red ${redWr.toFixed(1)}%">
                   <div class="laneBarBlue" style="width:${blueWr}%"></div>
                   <div class="laneBarRed" style="width:${redWr}%"></div>
                 </div>
-                <span class="lanePct red">Red ${redWr.toFixed(1)}%</span>
+                <span class="lanePct red">Red ${lane.available ? `${redWr.toFixed(1)}%` : "--"}</span>
               </div>
             </div>
           `; }).join("")}
@@ -427,10 +516,11 @@
         const res = await fetch("/static/data/composition_synergy.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`composition ${res.status}`);
         const data = await res.json();
-        state.compositionSynergy = { status: "ready", metrics: data?.metrics || {} };
+        state.compositionSynergy = { status: "ready", metrics: data?.metrics || {}, laneMatchups: data?.lane_matchups || {} };
       } catch (error) {
-        state.compositionSynergy = { status: "error", metrics: {} };
+        state.compositionSynergy = { status: "error", metrics: {}, laneMatchups: {} };
       }
+      renderPredictionPanels();
       renderCompositionAnalysis("blue");
       renderCompositionAnalysis("red");
     }
