@@ -57,12 +57,20 @@
     .barBlue { background: var(--blue); } .barRed { background: var(--red); }
     .barCaption { margin-top: 8px; color: #9fb2c8; font-size: 12px; font-weight: 800; text-align: center; }
     .laneList { display: grid; gap: 8px; }
-    .laneRow { display: grid; gap: 8px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 10px; }
-    .laneTop { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px; }
+    .laneRow { display: grid; gap: 7px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 9px 10px; }
+    .laneTop { display: grid; grid-template-columns: 54px 1fr auto; align-items: center; gap: 8px; }
     .laneName { color: var(--cyan); font-size: 11px; font-weight: 950; letter-spacing: .1em; text-transform: uppercase; }
-    .laneWr { border: 1px solid rgba(22,240,200,.25); background: rgba(22,240,200,.07); border-radius: 7px; padding: 6px 8px; color: var(--cyan); font-size: 12px; font-weight: 950; white-space: nowrap; }
-    .laneBar { height: 34px; display: flex; overflow: hidden; border: 1px solid var(--line); border-radius: 7px; background: #05090d; }
-    .laneBar > div { display: grid; place-items: center; color: #fff; font-size: 12px; font-weight: 950; white-space: nowrap; }
+    .laneDuel { min-width: 0; color: #dceaff; font-size: 12px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .laneDuel .bluePick { color: #9dccff; }
+    .laneDuel .redPick { color: #ff9aae; }
+    .laneFavor { color: #8fa1b5; font-size: 11px; font-weight: 850; white-space: nowrap; }
+    .laneFavor.blue { color: #9dccff; }
+    .laneFavor.red { color: #ff9aae; }
+    .laneScale { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
+    .lanePct { color: #9fb2c8; font-size: 11px; font-weight: 850; white-space: nowrap; }
+    .lanePct.blue { color: #9dccff; }
+    .lanePct.red { color: #ff9aae; }
+    .laneBar { height: 7px; display: flex; overflow: hidden; border: 1px solid rgba(37,50,65,.9); border-radius: 999px; background: #05090d; }
     .laneBarBlue { background: var(--blue); }
     .laneBarRed { background: var(--red); }
     .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: start; justify-content: center; padding: 80px 16px; background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
@@ -80,7 +88,7 @@
     .champ strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .champ span { color: #94a3b8; font-size: 12px; }
     @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .champGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
-    @media (max-width: 520px) { .laneTop { grid-template-columns: 1fr auto; } }
+    @media (max-width: 520px) { .laneTop { grid-template-columns: 1fr auto; } .laneDuel { grid-column: 1 / -1; grid-row: 2; white-space: normal; } .laneScale { grid-template-columns: 1fr; gap: 5px; } .lanePct { text-align: center; } }
   </style>
 </head>
 <body>
@@ -249,6 +257,16 @@
         </div>
       `;
     }
+    function laneChampionName(side, index) {
+      return state[side][index]?.name || "Pick pending";
+    }
+    function laneFavorText(blueWr) {
+      const edge = Math.abs(blueWr - 50);
+      if (edge < 1) return { side: "even", text: "Even" };
+      return blueWr > 50
+        ? { side: "blue", text: `Blue favored +${edge.toFixed(1)}` }
+        : { side: "red", text: `Red favored +${edge.toFixed(1)}` };
+    }
     function renderLaneMatchups() {
       if (!state.calculated) {
         $("laneMatchups").hidden = true;
@@ -262,15 +280,21 @@
           ${roles.map((role, index) => {
             const blueWr = mockLaneWinRates[index];
             const redWr = 100 - blueWr;
+            const favor = laneFavorText(blueWr);
             return `
             <div class="laneRow">
               <div class="laneTop">
                 <div class="laneName">${role}</div>
-                <div class="laneWr">${blueWr.toFixed(1)}%</div>
+                <div class="laneDuel"><span class="bluePick">${laneChampionName("blue", index)}</span> vs <span class="redPick">${laneChampionName("red", index)}</span></div>
+                <div class="laneFavor ${favor.side}">${favor.text}</div>
               </div>
-              <div class="laneBar" aria-label="${role} blue ${blueWr.toFixed(1)}%, red ${redWr.toFixed(1)}%">
-                <div class="laneBarBlue" style="width:${blueWr}%">Blue ${blueWr.toFixed(1)}%</div>
-                <div class="laneBarRed" style="width:${redWr}%">Red ${redWr.toFixed(1)}%</div>
+              <div class="laneScale">
+                <span class="lanePct blue">Blue ${blueWr.toFixed(1)}%</span>
+                <div class="laneBar" aria-label="${role} blue ${blueWr.toFixed(1)}%, red ${redWr.toFixed(1)}%">
+                  <div class="laneBarBlue" style="width:${blueWr}%"></div>
+                  <div class="laneBarRed" style="width:${redWr}%"></div>
+                </div>
+                <span class="lanePct red">Red ${redWr.toFixed(1)}%</span>
               </div>
             </div>
           `; }).join("")}
