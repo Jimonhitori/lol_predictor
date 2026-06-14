@@ -37995,7 +37995,7 @@
   },
   "115564793879469324": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "115564793879469324",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -38198,29 +38198,210 @@
   },
   "115548128963037587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "115548128963037587",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115548128963037587",
-      "league": "",
+      "league": "LCK",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "98767991853197861",
+          "name": "T1",
+          "code": "T1",
+          "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "100205573495116443",
+          "name": "Gen.G Esports",
+          "code": "GEN",
+          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "115548128963037588",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037589",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037590",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037591",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115548128963037592",
+          "number": 5,
+          "state": "completed",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116453476471776174": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "116453476471776174",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -38242,29 +38423,210 @@
   },
   "115616219464607521": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "115616219464607521",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115616219464607521",
-      "league": "",
+      "league": "LPL",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "99566404853854212",
+          "name": "BILIBILI GAMING",
+          "code": "BLG",
+          "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "99566404854685458",
+          "name": "TOP ESPORTS",
+          "code": "TES",
+          "image": "http://static.lolesports.com/teams/1592592064571_TopEsportsTES-01-FullonDark.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115616219464607522",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "red": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607523",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "red": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607524",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "red": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607525",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "red": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115616219464607526",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "red": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116520394663535906": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "116520394663535906",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -38286,7 +38648,7 @@
   },
   "116634566264113552": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "116634566264113552",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -38489,7 +38851,7 @@
   },
   "116634566264113558": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "116634566264113558",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -38692,7 +39054,7 @@
   },
   "115564793879469330": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-14T10:17:15.809Z",
+    "checked_at": "2026-06-14T12:17:27.774Z",
     "event_id": "115564793879469330",
     "status": "unstarted",
     "source": "cloudflare_live_event",
