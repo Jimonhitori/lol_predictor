@@ -20,6 +20,8 @@
     .eyebrow { margin: 0 0 8px; color: var(--cyan); font-size: 12px; font-weight: 900; letter-spacing: .28em; text-transform: uppercase; }
     h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.02em; }
     .desc { margin: 8px 0 0; color: var(--muted); font-size: 14px; max-width: 680px; }
+    .headActions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+    .statFilter { min-width: 116px; border: 1px solid var(--line); background: var(--panel); color: #e7f0fb; border-radius: 7px; padding: 9px 10px; font-size: 12px; font-weight: 850; outline: none; }
     .count { border: 1px solid var(--line); background: var(--panel); border-radius: 7px; padding: 9px 12px; color: #c7d3e1; font-size: 12px; font-weight: 800; white-space: nowrap; }
     .layout { display: grid; grid-template-columns: 1fr 260px 1fr; gap: 16px; align-items: start; }
     .team { border: 1px solid var(--line); background: rgba(16,24,32,.88); border-radius: 10px; padding: 16px; box-shadow: 0 0 28px rgba(22,240,200,.12); }
@@ -125,7 +127,10 @@
         <h1>Pick/Ban Win Rate Preview</h1>
         <p class="desc">Select ten unique champions. API/model integration comes later; this screen only manages draft state and preview output.</p>
       </div>
-      <div class="count" id="count">0/10 champions selected</div>
+      <div class="headActions">
+        <select class="statFilter" id="statPatchFilter" aria-label="Draft stat patch filter"><option value="ALL">ALL</option></select>
+        <div class="count" id="count">0/10 champions selected</div>
+      </div>
     </section>
     <section class="layout">
       <section class="team blue"><div class="teamHead"><div><p class="side">blue side</p><h2>Blue Team</h2></div><div class="locked" id="blueCount">0/5 locked</div></div><div class="slots" id="blueSlots"></div><section class="composition" id="blueComposition"></section></section>
@@ -171,7 +176,7 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       try {
@@ -216,8 +221,22 @@
     function isSeason16Patch(value) {
       return /^16\.\d+$/.test(String(value || "").trim());
     }
-    function season16ChampionMeta(data) {
+    function statPatchOptions(data) {
       const summaries = data?.patch_summaries && typeof data.patch_summaries === "object" ? data.patch_summaries : {};
+      const patches = Object.keys(summaries)
+        .filter(isSeason16Patch)
+        .sort((a, b) => Number(b.split(".")[1]) - Number(a.split(".")[1]));
+      return ["ALL", ...patches];
+    }
+    function championMetaFromScope(scope) {
+      return {
+        all: rowMap(scope?.champions),
+        byRole: Object.fromEntries(roleKeys.map(role => [role, rowMap(scope?.champions_by_role?.[role])])),
+      };
+    }
+    function championMetaForPatch(data, patch) {
+      const summaries = data?.patch_summaries && typeof data.patch_summaries === "object" ? data.patch_summaries : {};
+      if (patch && patch !== "ALL" && summaries[patch]) return championMetaFromScope(summaries[patch]);
       const scopes = Object.entries(summaries)
         .filter(([patch]) => isSeason16Patch(patch))
         .map(([, scope]) => scope)
@@ -235,6 +254,23 @@
           rowMap(aggregateRows(scopes.flatMap(scope => scope.champions_by_role?.[role] || []))),
         ])),
       };
+    }
+    function applyChampionMeta() {
+      if (!state.summaryData) return;
+      if (!state.patchOptions.includes(state.statPatch)) state.statPatch = "ALL";
+      const meta = championMetaForPatch(state.summaryData, state.statPatch);
+      state.championMeta = {
+        status: "ready",
+        patch: state.statPatch,
+        all: meta.all,
+        byRole: meta.byRole,
+      };
+    }
+    function renderStatPatchFilter() {
+      const select = $("statPatchFilter");
+      if (!select) return;
+      select.innerHTML = state.patchOptions.map(patch => `<option value="${patch}">${patch}</option>`).join("");
+      select.value = state.statPatch;
     }
     function championMetaText(champ, index) {
       if (!champ) return "";
@@ -266,13 +302,10 @@
         const res = await fetch("/static/data/summaries/all__all.json", { cache: "no-store" });
         if (!res.ok) throw new Error(`summary ${res.status}`);
         const data = await res.json();
-        const meta = season16ChampionMeta(data);
-        state.championMeta = {
-          status: "ready",
-          patch: "S16",
-          all: meta.all,
-          byRole: meta.byRole,
-        };
+        state.summaryData = data;
+        state.patchOptions = statPatchOptions(data);
+        applyChampionMeta();
+        renderStatPatchFilter();
       } catch (error) {
         state.championMeta = { status: "error", patch: "", byRole: {}, all: new Map() };
       }
@@ -655,6 +688,12 @@
     $("search").oninput = e => { state.query = e.target.value; renderPicker(); };
     $("close").onclick = () => $("modal").classList.remove("open");
     $("modal").onclick = e => { if (e.target.id === "modal") $("modal").classList.remove("open"); };
+    $("statPatchFilter").onchange = e => {
+      state.statPatch = e.target.value || "ALL";
+      applyChampionMeta();
+      render();
+      if ($("modal").classList.contains("open")) renderPicker();
+    };
     $("calc").onclick = () => { state.calculated = true; renderPredictionPanels(); renderCompositionAnalysis("blue"); renderCompositionAnalysis("red"); };
     render();
     loadChampionRoster();
