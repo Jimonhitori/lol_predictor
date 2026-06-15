@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-14T23:10:36.458892Z",
+  "generated_at": "2026-06-15T10:19:48.510134Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -10,67 +10,6 @@
     }
   },
   "predictions": [
-    {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_6",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 5_6",
-      "league": "PRM 3rd Div 25-26 Spring",
-      "start_time": "2026-06-15 02:00:00",
-      "blue_team": "whalepower_humpbacks",
-      "red_team": "esport_factory_x_mental_rush",
-      "blue_team_name": "Whalepower Humpbacks",
-      "red_team_name": "Esport Factory x Mental Rush",
-      "blue_win_probability": 0.537001,
-      "red_win_probability": 0.462999,
-      "predicted_winner": "Whalepower Humpbacks",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Whalepower Humpbacks->whalepower_humpbacks",
-        "blue_team_no_history:whalepower_humpbacks",
-        "red_team_fallback_slug:Esport Factory x Mental Rush->esport_factory_x_mental_rush",
-        "red_team_no_history:esport_factory_x_mental_rush"
-      ]
-    },
-    {
-      "event_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_12",
-      "game_id": "Prime League 3rd Division/2026 Season/Spring Split_Week 4_12",
-      "league": "PRM 3rd Div 25-26 Spring",
-      "start_time": "2026-06-15 03:00:00",
-      "blue_team": "locked_int",
-      "red_team": "glacial_guardians",
-      "blue_team_name": "Locked Int",
-      "red_team_name": "Glacial Guardians",
-      "blue_win_probability": 0.537001,
-      "red_win_probability": 0.462999,
-      "predicted_winner": "Locked Int",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:Locked Int->locked_int",
-        "blue_team_no_history:locked_int",
-        "red_team_fallback_slug:Glacial Guardians->glacial_guardians",
-        "red_team_no_history:glacial_guardians"
-      ]
-    },
-    {
-      "event_id": "LCS/2026 Season/Spring Playoffs_Finals_1",
-      "game_id": "LCS/2026 Season/Spring Playoffs_Finals_1",
-      "league": "LCS 2026 Spring Playoffs",
-      "start_time": "2026-06-15 05:00:00",
-      "blue_team": "lyon_2024_american_team",
-      "red_team": "team_liquid",
-      "blue_team_name": "LYON (2024 American Team)",
-      "red_team_name": "Team Liquid",
-      "blue_win_probability": 0.49838,
-      "red_win_probability": 0.50162,
-      "predicted_winner": "Team Liquid",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "blue_team_fallback_slug:LYON (2024 American Team)->lyon_2024_american_team",
-        "blue_team_no_history:lyon_2024_american_team"
-      ]
-    },
     {
       "event_id": "2026 Asia Masters_Last Chance Qualifier_1",
       "game_id": "2026 Asia Masters_Last Chance Qualifier_1",
@@ -96,8 +35,8 @@
       "red_team": "kt_rolster_challengers",
       "blue_team_name": "Top Esports Challenger",
       "red_team_name": "KT Rolster Challengers",
-      "blue_win_probability": 0.312543,
-      "red_win_probability": 0.687457,
+      "blue_win_probability": 0.287056,
+      "red_win_probability": 0.712944,
       "predicted_winner": "KT Rolster Challengers",
       "confidence": "high",
       "model": "logistic_regression_actions",
@@ -112,8 +51,8 @@
       "red_team": "top_esports_challenger",
       "blue_team_name": "Saigon Warriors",
       "red_team_name": "Top Esports Challenger",
-      "blue_win_probability": 0.683524,
-      "red_win_probability": 0.316476,
+      "blue_win_probability": 0.656683,
+      "red_win_probability": 0.343317,
       "predicted_winner": "Saigon Warriors",
       "confidence": "high",
       "model": "logistic_regression_actions",
@@ -957,7 +896,7 @@
     }
   ],
   "warnings": [
-    "blue_team_fallback_slug:count=34",
+    "blue_team_fallback_slug:count=31",
     "blue_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
     "blue_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "blue_team_fallback_slug:AceGaming FullHouse->acegaming_fullhouse",
@@ -966,8 +905,8 @@
     "blue_team_fallback_slug:Atruvia Münster Esports->atruvia_m_nster_esports",
     "blue_team_fallback_slug:BS Effortless->bs_effortless",
     "blue_team_fallback_slug:Babos Gaming Academy->babos_gaming_academy",
-    "blue_team_fallback_slug:omitted=26",
-    "blue_team_no_history:count=34",
+    "blue_team_fallback_slug:omitted=23",
+    "blue_team_no_history:count=31",
     "blue_team_no_history:1_esport_club_frankfurt_e_v",
     "blue_team_no_history:404_multigaming_e_v",
     "blue_team_no_history:acegaming_fullhouse",
@@ -976,8 +915,8 @@
     "blue_team_no_history:atruvia_m_nster_esports",
     "blue_team_no_history:babos_gaming",
     "blue_team_no_history:babos_gaming_academy",
-    "blue_team_no_history:omitted=26",
-    "red_team_fallback_slug:count=34",
+    "blue_team_no_history:omitted=23",
+    "red_team_fallback_slug:count=33",
     "red_team_fallback_slug:1. Esport Club Frankfurt e.V.->1_esport_club_frankfurt_e_v",
     "red_team_fallback_slug:404 Multigaming e.V.->404_multigaming_e_v",
     "red_team_fallback_slug:Absolved->absolved",
@@ -986,8 +925,8 @@
     "red_team_fallback_slug:Berlin 5->berlin_5",
     "red_team_fallback_slug:Circus Kittens->circus_kittens",
     "red_team_fallback_slug:Defiance eSports->defiance_esports",
-    "red_team_fallback_slug:omitted=26",
-    "red_team_no_history:count=34",
+    "red_team_fallback_slug:omitted=25",
+    "red_team_no_history:count=33",
     "red_team_no_history:1_esport_club_frankfurt_e_v",
     "red_team_no_history:404_multigaming_e_v",
     "red_team_no_history:absolved",
@@ -996,7 +935,7 @@
     "red_team_no_history:berlin_5",
     "red_team_no_history:circus_kittens",
     "red_team_no_history:defiance_esports",
-    "red_team_no_history:omitted=26"
+    "red_team_no_history:omitted=25"
   ],
   "warning_count": 40
 }

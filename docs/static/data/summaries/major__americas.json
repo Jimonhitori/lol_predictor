@@ -1,73 +1,82 @@
 {
   "patch": "16.11",
-  "games": 28,
+  "games": 31,
   "leagues": [
     "CBLOL",
     "LCS"
   ],
   "champions": [
     {
+      "name": "Rumble",
+      "picks": 9,
+      "wins": 5,
+      "winrate": "55.6%",
+      "bans": 7,
+      "ban_rate": "22.6%",
+      "presence": "51.6%"
+    },
+    {
+      "name": "Ezreal",
+      "picks": 9,
+      "wins": 4,
+      "winrate": "44.4%",
+      "bans": 1,
+      "ban_rate": "3.2%",
+      "presence": "32.3%"
+    },
+    {
+      "name": "Sion",
+      "picks": 9,
+      "wins": 2,
+      "winrate": "22.2%",
+      "bans": 1,
+      "ban_rate": "3.2%",
+      "presence": "32.3%"
+    },
+    {
       "name": "Bard",
       "picks": 8,
       "wins": 6,
       "winrate": "75.0%",
-      "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "39.3%"
+      "bans": 5,
+      "ban_rate": "16.1%",
+      "presence": "41.9%"
+    },
+    {
+      "name": "Rakan",
+      "picks": 8,
+      "wins": 6,
+      "winrate": "75.0%",
+      "bans": 2,
+      "ban_rate": "6.5%",
+      "presence": "32.3%"
     },
     {
       "name": "Ryze",
       "picks": 8,
       "wins": 6,
       "winrate": "75.0%",
-      "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "32.1%"
-    },
-    {
-      "name": "Rumble",
-      "picks": 8,
-      "wins": 4,
-      "winrate": "50.0%",
-      "bans": 6,
-      "ban_rate": "21.4%",
-      "presence": "50.0%"
-    },
-    {
-      "name": "Ezreal",
-      "picks": 8,
-      "wins": 3,
-      "winrate": "37.5%",
-      "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "32.1%"
-    },
-    {
-      "name": "Sion",
-      "picks": 8,
-      "wins": 2,
-      "winrate": "25.0%",
-      "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "32.1%"
+      "bans": 2,
+      "ban_rate": "6.5%",
+      "presence": "32.3%"
     },
     {
       "name": "Naafiri",
       "picks": 7,
       "wins": 6,
       "winrate": "85.7%",
-      "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "42.9%"
+      "bans": 8,
+      "ban_rate": "25.8%",
+      "presence": "48.4%"
     },
     {
-      "name": "Rakan",
+      "name": "Viktor",
       "picks": 7,
-      "wins": 6,
-      "winrate": "85.7%",
-      "bans": 0,
-      "ban_rate": "0.0%",
-      "presence": "25.0%"
+      "wins": 5,
+      "winrate": "71.4%",
+      "bans": 2,
+      "ban_rate": "6.5%",
+      "presence": "29.0%"
     },
     {
       "name": "Lucian",
@@ -75,8 +84,8 @@
       "wins": 4,
       "winrate": "57.1%",
       "bans": 4,
-      "ban_rate": "14.3%",
-      "presence": "39.3%"
+      "ban_rate": "12.9%",
+      "presence": "35.5%"
     },
     {
       "name": "Renekton",
@@ -84,8 +93,8 @@
       "wins": 4,
       "winrate": "57.1%",
       "bans": 2,
-      "ban_rate": "7.1%",
-      "presence": "32.1%"
+      "ban_rate": "6.5%",
+      "presence": "29.0%"
     },
     {
       "name": "Milio",
@@ -93,71 +102,107 @@
       "wins": 4,
       "winrate": "57.1%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "28.6%"
+      "ban_rate": "3.2%",
+      "presence": "25.8%"
     },
     {
-      "name": "Viktor",
+      "name": "Nocturne",
+      "picks": 7,
+      "wins": 3,
+      "winrate": "42.9%",
+      "bans": 11,
+      "ban_rate": "35.5%",
+      "presence": "58.1%"
+    },
+    {
+      "name": "Nautilus",
+      "picks": 7,
+      "wins": 3,
+      "winrate": "42.9%",
+      "bans": 7,
+      "ban_rate": "22.6%",
+      "presence": "45.2%"
+    },
+    {
+      "name": "Jarvan IV",
+      "picks": 7,
+      "wins": 2,
+      "winrate": "28.6%",
+      "bans": 10,
+      "ban_rate": "32.3%",
+      "presence": "54.8%"
+    },
+    {
+      "name": "Xayah",
       "picks": 6,
       "wins": 5,
       "winrate": "83.3%",
-      "bans": 2,
-      "ban_rate": "7.1%",
-      "presence": "28.6%"
+      "bans": 0,
+      "ban_rate": "0.0%",
+      "presence": "19.4%"
     },
     {
       "name": "Ornn",
       "picks": 6,
       "wins": 4,
       "winrate": "66.7%",
-      "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "32.1%"
-    },
-    {
-      "name": "Jarvan IV",
-      "picks": 6,
-      "wins": 2,
-      "winrate": "33.3%",
-      "bans": 9,
-      "ban_rate": "32.1%",
-      "presence": "53.6%"
-    },
-    {
-      "name": "Nocturne",
-      "picks": 6,
-      "wins": 2,
-      "winrate": "33.3%",
-      "bans": 9,
-      "ban_rate": "32.1%",
-      "presence": "53.6%"
-    },
-    {
-      "name": "Nautilus",
-      "picks": 6,
-      "wins": 2,
-      "winrate": "33.3%",
-      "bans": 6,
-      "ban_rate": "21.4%",
-      "presence": "42.9%"
-    },
-    {
-      "name": "Xayah",
-      "picks": 5,
-      "wins": 5,
-      "winrate": "100.0%",
-      "bans": 0,
-      "ban_rate": "0.0%",
-      "presence": "17.9%"
+      "bans": 4,
+      "ban_rate": "12.9%",
+      "presence": "32.3%"
     },
     {
       "name": "Orianna",
-      "picks": 5,
+      "picks": 6,
       "wins": 3,
-      "winrate": "60.0%",
+      "winrate": "50.0%",
       "bans": 15,
-      "ban_rate": "53.6%",
-      "presence": "71.4%"
+      "ban_rate": "48.4%",
+      "presence": "67.7%"
+    },
+    {
+      "name": "Neeko",
+      "picks": 6,
+      "wins": 3,
+      "winrate": "50.0%",
+      "bans": 5,
+      "ban_rate": "16.1%",
+      "presence": "35.5%"
+    },
+    {
+      "name": "Senna",
+      "picks": 6,
+      "wins": 3,
+      "winrate": "50.0%",
+      "bans": 2,
+      "ban_rate": "6.5%",
+      "presence": "25.8%"
+    },
+    {
+      "name": "Cassiopeia",
+      "picks": 6,
+      "wins": 2,
+      "winrate": "33.3%",
+      "bans": 12,
+      "ban_rate": "38.7%",
+      "presence": "58.1%"
+    },
+    {
+      "name": "Xin Zhao",
+      "picks": 6,
+      "wins": 2,
+      "winrate": "33.3%",
+      "bans": 3,
+      "ban_rate": "9.7%",
+      "presence": "29.0%"
+    },
+    {
+      "name": "Rell",
+      "picks": 6,
+      "wins": 1,
+      "winrate": "16.7%",
+      "bans": 0,
+      "ban_rate": "0.0%",
+      "presence": "19.4%"
     },
     {
       "name": "Caitlyn",
@@ -165,35 +210,26 @@
       "wins": 3,
       "winrate": "60.0%",
       "bans": 8,
-      "ban_rate": "28.6%",
-      "presence": "46.4%"
+      "ban_rate": "25.8%",
+      "presence": "41.9%"
     },
     {
       "name": "Jayce",
       "picks": 5,
       "wins": 3,
       "winrate": "60.0%",
-      "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "35.7%"
+      "bans": 6,
+      "ban_rate": "19.4%",
+      "presence": "35.5%"
     },
     {
-      "name": "Neeko",
+      "name": "K'Sante",
       "picks": 5,
       "wins": 3,
       "winrate": "60.0%",
-      "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "35.7%"
-    },
-    {
-      "name": "Cassiopeia",
-      "picks": 5,
-      "wins": 2,
-      "winrate": "40.0%",
-      "bans": 12,
-      "ban_rate": "42.9%",
-      "presence": "60.7%"
+      "bans": 3,
+      "ban_rate": "9.7%",
+      "presence": "25.8%"
     },
     {
       "name": "Twisted Fate",
@@ -201,26 +237,26 @@
       "wins": 2,
       "winrate": "40.0%",
       "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "35.7%"
+      "ban_rate": "16.1%",
+      "presence": "32.3%"
     },
     {
-      "name": "Senna",
+      "name": "Lulu",
       "picks": 5,
       "wins": 2,
       "winrate": "40.0%",
-      "bans": 2,
-      "ban_rate": "7.1%",
-      "presence": "25.0%"
+      "bans": 3,
+      "ban_rate": "9.7%",
+      "presence": "25.8%"
     },
     {
       "name": "Karma",
       "picks": 5,
       "wins": 1,
       "winrate": "20.0%",
-      "bans": 7,
-      "ban_rate": "25.0%",
-      "presence": "42.9%"
+      "bans": 9,
+      "ban_rate": "29.0%",
+      "presence": "45.2%"
     },
     {
       "name": "Annie",
@@ -228,26 +264,8 @@
       "wins": 1,
       "winrate": "20.0%",
       "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "35.7%"
-    },
-    {
-      "name": "Xin Zhao",
-      "picks": 5,
-      "wins": 1,
-      "winrate": "20.0%",
-      "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "28.6%"
-    },
-    {
-      "name": "Rell",
-      "picks": 5,
-      "wins": 1,
-      "winrate": "20.0%",
-      "bans": 0,
-      "ban_rate": "0.0%",
-      "presence": "17.9%"
+      "ban_rate": "16.1%",
+      "presence": "32.3%"
     },
     {
       "name": "Jhin",
@@ -255,8 +273,17 @@
       "wins": 0,
       "winrate": "0.0%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "21.4%"
+      "ban_rate": "3.2%",
+      "presence": "19.4%"
+    },
+    {
+      "name": "Shen",
+      "picks": 4,
+      "wins": 4,
+      "winrate": "100.0%",
+      "bans": 3,
+      "ban_rate": "9.7%",
+      "presence": "22.6%"
     },
     {
       "name": "Pantheon",
@@ -264,8 +291,17 @@
       "wins": 3,
       "winrate": "75.0%",
       "bans": 4,
-      "ban_rate": "14.3%",
-      "presence": "28.6%"
+      "ban_rate": "12.9%",
+      "presence": "25.8%"
+    },
+    {
+      "name": "Alistar",
+      "picks": 4,
+      "wins": 3,
+      "winrate": "75.0%",
+      "bans": 1,
+      "ban_rate": "3.2%",
+      "presence": "16.1%"
     },
     {
       "name": "Aurora",
@@ -273,17 +309,26 @@
       "wins": 3,
       "winrate": "75.0%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "17.9%"
+      "ban_rate": "3.2%",
+      "presence": "16.1%"
     },
     {
-      "name": "K'Sante",
+      "name": "Wukong",
+      "picks": 4,
+      "wins": 3,
+      "winrate": "75.0%",
+      "bans": 1,
+      "ban_rate": "3.2%",
+      "presence": "16.1%"
+    },
+    {
+      "name": "Galio",
       "picks": 4,
       "wins": 2,
       "winrate": "50.0%",
-      "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "25.0%"
+      "bans": 4,
+      "ban_rate": "12.9%",
+      "presence": "25.8%"
     },
     {
       "name": "Ashe",
@@ -292,7 +337,7 @@
       "winrate": "50.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "14.3%"
+      "presence": "12.9%"
     },
     {
       "name": "Sejuani",
@@ -301,79 +346,88 @@
       "winrate": "50.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "14.3%"
+      "presence": "12.9%"
     },
     {
-      "name": "Lulu",
+      "name": "Yunara",
+      "picks": 4,
+      "wins": 2,
+      "winrate": "50.0%",
+      "bans": 0,
+      "ban_rate": "0.0%",
+      "presence": "12.9%"
+    },
+    {
+      "name": "Trundle",
       "picks": 4,
       "wins": 1,
       "winrate": "25.0%",
-      "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "25.0%"
+      "bans": 5,
+      "ban_rate": "16.1%",
+      "presence": "29.0%"
     },
     {
       "name": "Ahri",
       "picks": 4,
       "wins": 1,
       "winrate": "25.0%",
-      "bans": 0,
-      "ban_rate": "0.0%",
-      "presence": "14.3%"
+      "bans": 1,
+      "ban_rate": "3.2%",
+      "presence": "16.1%"
     },
     {
-      "name": "Shen",
+      "name": "Akali",
       "picks": 3,
       "wins": 3,
       "winrate": "100.0%",
-      "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "21.4%"
+      "bans": 11,
+      "ban_rate": "35.5%",
+      "presence": "45.2%"
     },
     {
       "name": "Gnar",
       "picks": 3,
       "wins": 2,
       "winrate": "66.7%",
-      "bans": 6,
-      "ban_rate": "21.4%",
-      "presence": "32.1%"
+      "bans": 7,
+      "ban_rate": "22.6%",
+      "presence": "32.3%"
     },
     {
       "name": "Yone",
       "picks": 3,
       "wins": 2,
       "winrate": "66.7%",
-      "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "28.6%"
-    },
-    {
-      "name": "Alistar",
-      "picks": 3,
-      "wins": 2,
-      "winrate": "66.7%",
-      "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "14.3%"
+      "bans": 6,
+      "ban_rate": "19.4%",
+      "presence": "29.0%"
     },
     {
       "name": "Miss Fortune",
       "picks": 3,
       "wins": 2,
       "winrate": "66.7%",
-      "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "14.3%"
+      "bans": 2,
+      "ban_rate": "6.5%",
+      "presence": "16.1%"
     },
     {
-      "name": "Wukong",
+      "name": "Shyvana",
       "picks": 3,
       "wins": 2,
       "winrate": "66.7%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "14.3%"
+      "ban_rate": "3.2%",
+      "presence": "12.9%"
+    },
+    {
+      "name": "Corki",
+      "picks": 3,
+      "wins": 2,
+      "winrate": "66.7%",
+      "bans": 0,
+      "ban_rate": "0.0%",
+      "presence": "9.7%"
     },
     {
       "name": "Sivir",
@@ -382,7 +436,7 @@
       "winrate": "66.7%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "10.7%"
+      "presence": "9.7%"
     },
     {
       "name": "Skarner",
@@ -391,7 +445,7 @@
       "winrate": "66.7%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "10.7%"
+      "presence": "9.7%"
     },
     {
       "name": "Zaahen",
@@ -400,52 +454,34 @@
       "winrate": "66.7%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "10.7%"
+      "presence": "9.7%"
     },
     {
-      "name": "Seraphine",
+      "name": "Varus",
       "picks": 3,
       "wins": 1,
       "winrate": "33.3%",
-      "bans": 12,
-      "ban_rate": "42.9%",
-      "presence": "53.6%"
+      "bans": 22,
+      "ban_rate": "71.0%",
+      "presence": "80.6%"
     },
     {
       "name": "Lee Sin",
       "picks": 3,
       "wins": 1,
       "winrate": "33.3%",
-      "bans": 11,
-      "ban_rate": "39.3%",
-      "presence": "50.0%"
+      "bans": 14,
+      "ban_rate": "45.2%",
+      "presence": "54.8%"
     },
     {
-      "name": "Trundle",
+      "name": "Seraphine",
       "picks": 3,
       "wins": 1,
       "winrate": "33.3%",
-      "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "28.6%"
-    },
-    {
-      "name": "Galio",
-      "picks": 3,
-      "wins": 1,
-      "winrate": "33.3%",
-      "bans": 4,
-      "ban_rate": "14.3%",
-      "presence": "25.0%"
-    },
-    {
-      "name": "Yunara",
-      "picks": 3,
-      "wins": 1,
-      "winrate": "33.3%",
-      "bans": 0,
-      "ban_rate": "0.0%",
-      "presence": "10.7%"
+      "bans": 13,
+      "ban_rate": "41.9%",
+      "presence": "51.6%"
     },
     {
       "name": "Anivia",
@@ -453,17 +489,17 @@
       "wins": 0,
       "winrate": "0.0%",
       "bans": 7,
-      "ban_rate": "25.0%",
-      "presence": "35.7%"
+      "ban_rate": "22.6%",
+      "presence": "32.3%"
     },
     {
       "name": "Vi",
       "picks": 3,
       "wins": 0,
       "winrate": "0.0%",
-      "bans": 4,
-      "ban_rate": "14.3%",
-      "presence": "25.0%"
+      "bans": 5,
+      "ban_rate": "16.1%",
+      "presence": "25.8%"
     },
     {
       "name": "Mel",
@@ -472,43 +508,7 @@
       "winrate": "0.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "10.7%"
-    },
-    {
-      "name": "Akali",
-      "picks": 2,
-      "wins": 2,
-      "winrate": "100.0%",
-      "bans": 11,
-      "ban_rate": "39.3%",
-      "presence": "46.4%"
-    },
-    {
-      "name": "Shyvana",
-      "picks": 2,
-      "wins": 2,
-      "winrate": "100.0%",
-      "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "10.7%"
-    },
-    {
-      "name": "Corki",
-      "picks": 2,
-      "wins": 2,
-      "winrate": "100.0%",
-      "bans": 0,
-      "ban_rate": "0.0%",
-      "presence": "7.1%"
-    },
-    {
-      "name": "Varus",
-      "picks": 2,
-      "wins": 1,
-      "winrate": "50.0%",
-      "bans": 22,
-      "ban_rate": "78.6%",
-      "presence": "85.7%"
+      "presence": "9.7%"
     },
     {
       "name": "Kennen",
@@ -516,8 +516,8 @@
       "wins": 1,
       "winrate": "50.0%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "10.7%"
+      "ban_rate": "3.2%",
+      "presence": "9.7%"
     },
     {
       "name": "Rek'Sai",
@@ -526,34 +526,43 @@
       "winrate": "50.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "7.1%"
+      "presence": "6.5%"
     },
     {
       "name": "Ambessa",
       "picks": 2,
       "wins": 0,
       "winrate": "0.0%",
-      "bans": 6,
-      "ban_rate": "21.4%",
-      "presence": "28.6%"
+      "bans": 7,
+      "ban_rate": "22.6%",
+      "presence": "29.0%"
+    },
+    {
+      "name": "Yorick",
+      "picks": 2,
+      "wins": 0,
+      "winrate": "0.0%",
+      "bans": 5,
+      "ban_rate": "16.1%",
+      "presence": "22.6%"
     },
     {
       "name": "Sylas",
       "picks": 2,
       "wins": 0,
       "winrate": "0.0%",
-      "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "17.9%"
+      "bans": 4,
+      "ban_rate": "12.9%",
+      "presence": "19.4%"
     },
     {
       "name": "Ziggs",
       "picks": 2,
       "wins": 0,
       "winrate": "0.0%",
-      "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "10.7%"
+      "bans": 2,
+      "ban_rate": "6.5%",
+      "presence": "12.9%"
     },
     {
       "name": "Aatrox",
@@ -561,8 +570,17 @@
       "wins": 1,
       "winrate": "100.0%",
       "bans": 7,
-      "ban_rate": "25.0%",
-      "presence": "28.6%"
+      "ban_rate": "22.6%",
+      "presence": "25.8%"
+    },
+    {
+      "name": "LeBlanc",
+      "picks": 1,
+      "wins": 1,
+      "winrate": "100.0%",
+      "bans": 4,
+      "ban_rate": "12.9%",
+      "presence": "16.1%"
     },
     {
       "name": "Olaf",
@@ -570,8 +588,8 @@
       "wins": 1,
       "winrate": "100.0%",
       "bans": 4,
-      "ban_rate": "14.3%",
-      "presence": "17.9%"
+      "ban_rate": "12.9%",
+      "presence": "16.1%"
     },
     {
       "name": "Nasus",
@@ -579,8 +597,8 @@
       "wins": 1,
       "winrate": "100.0%",
       "bans": 3,
-      "ban_rate": "10.7%",
-      "presence": "14.3%"
+      "ban_rate": "9.7%",
+      "presence": "12.9%"
     },
     {
       "name": "Renata Glasc",
@@ -588,8 +606,8 @@
       "wins": 1,
       "winrate": "100.0%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "7.1%"
+      "ban_rate": "3.2%",
+      "presence": "6.5%"
     },
     {
       "name": "Zoe",
@@ -597,8 +615,8 @@
       "wins": 1,
       "winrate": "100.0%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "7.1%"
+      "ban_rate": "3.2%",
+      "presence": "6.5%"
     },
     {
       "name": "Tristana",
@@ -607,7 +625,7 @@
       "winrate": "100.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "3.6%"
+      "presence": "3.2%"
     },
     {
       "name": "Vayne",
@@ -615,17 +633,8 @@
       "wins": 0,
       "winrate": "0.0%",
       "bans": 9,
-      "ban_rate": "32.1%",
-      "presence": "35.7%"
-    },
-    {
-      "name": "Yorick",
-      "picks": 1,
-      "wins": 0,
-      "winrate": "0.0%",
-      "bans": 5,
-      "ban_rate": "17.9%",
-      "presence": "21.4%"
+      "ban_rate": "29.0%",
+      "presence": "32.3%"
     },
     {
       "name": "Pyke",
@@ -633,8 +642,8 @@
       "wins": 0,
       "winrate": "0.0%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "7.1%"
+      "ban_rate": "3.2%",
+      "presence": "6.5%"
     },
     {
       "name": "Taliyah",
@@ -642,8 +651,17 @@
       "wins": 0,
       "winrate": "0.0%",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "7.1%"
+      "ban_rate": "3.2%",
+      "presence": "6.5%"
+    },
+    {
+      "name": "Gragas",
+      "picks": 1,
+      "wins": 0,
+      "winrate": "0.0%",
+      "bans": 0,
+      "ban_rate": "0.0%",
+      "presence": "3.2%"
     },
     {
       "name": "Kha'Zix",
@@ -652,7 +670,7 @@
       "winrate": "0.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "3.6%"
+      "presence": "3.2%"
     },
     {
       "name": "Kog'Maw",
@@ -661,7 +679,7 @@
       "winrate": "0.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "3.6%"
+      "presence": "3.2%"
     },
     {
       "name": "Malphite",
@@ -670,16 +688,7 @@
       "winrate": "0.0%",
       "bans": 0,
       "ban_rate": "0.0%",
-      "presence": "3.6%"
-    },
-    {
-      "name": "LeBlanc",
-      "picks": 0,
-      "wins": 0,
-      "winrate": "",
-      "bans": 4,
-      "ban_rate": "14.3%",
-      "presence": "14.3%"
+      "presence": "3.2%"
     },
     {
       "name": "Blitzcrank",
@@ -687,8 +696,8 @@
       "wins": 0,
       "winrate": "",
       "bans": 2,
-      "ban_rate": "7.1%",
-      "presence": "7.1%"
+      "ban_rate": "6.5%",
+      "presence": "6.5%"
     },
     {
       "name": "Dr. Mundo",
@@ -696,8 +705,8 @@
       "wins": 0,
       "winrate": "",
       "bans": 2,
-      "ban_rate": "7.1%",
-      "presence": "7.1%"
+      "ban_rate": "6.5%",
+      "presence": "6.5%"
     },
     {
       "name": "Camille",
@@ -705,8 +714,8 @@
       "wins": 0,
       "winrate": "",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "3.6%"
+      "ban_rate": "3.2%",
+      "presence": "3.2%"
     },
     {
       "name": "Jax",
@@ -714,8 +723,17 @@
       "wins": 0,
       "winrate": "",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "3.6%"
+      "ban_rate": "3.2%",
+      "presence": "3.2%"
+    },
+    {
+      "name": "Poppy",
+      "picks": 0,
+      "wins": 0,
+      "winrate": "",
+      "bans": 1,
+      "ban_rate": "3.2%",
+      "presence": "3.2%"
     },
     {
       "name": "Syndra",
@@ -723,29 +741,29 @@
       "wins": 0,
       "winrate": "",
       "bans": 1,
-      "ban_rate": "3.6%",
-      "presence": "3.6%"
+      "ban_rate": "3.2%",
+      "presence": "3.2%"
     }
   ],
   "champions_by_role": {
     "top": [
       {
         "name": "Sion",
-        "picks": 8,
+        "picks": 9,
         "wins": 2,
-        "winrate": "25.0%",
+        "winrate": "22.2%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "32.1%"
+        "ban_rate": "3.2%",
+        "presence": "32.3%"
       },
       {
         "name": "Rumble",
-        "picks": 7,
-        "wins": 4,
-        "winrate": "57.1%",
-        "bans": 6,
-        "ban_rate": "21.4%",
-        "presence": "46.4%"
+        "picks": 8,
+        "wins": 5,
+        "winrate": "62.5%",
+        "bans": 7,
+        "ban_rate": "22.6%",
+        "presence": "48.4%"
       },
       {
         "name": "Renekton",
@@ -753,53 +771,53 @@
         "wins": 4,
         "winrate": "57.1%",
         "bans": 2,
-        "ban_rate": "7.1%",
-        "presence": "32.1%"
+        "ban_rate": "6.5%",
+        "presence": "29.0%"
       },
       {
         "name": "Ornn",
         "picks": 5,
         "wins": 4,
         "winrate": "80.0%",
+        "bans": 4,
+        "ban_rate": "12.9%",
+        "presence": "29.0%"
+      },
+      {
+        "name": "K'Sante",
+        "picks": 5,
+        "wins": 3,
+        "winrate": "60.0%",
         "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "28.6%"
+        "ban_rate": "9.7%",
+        "presence": "25.8%"
       },
       {
         "name": "Jayce",
         "picks": 4,
         "wins": 2,
         "winrate": "50.0%",
-        "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "32.1%"
+        "bans": 6,
+        "ban_rate": "19.4%",
+        "presence": "32.3%"
       },
       {
-        "name": "K'Sante",
-        "picks": 4,
-        "wins": 2,
-        "winrate": "50.0%",
+        "name": "Shen",
+        "picks": 3,
+        "wins": 3,
+        "winrate": "100.0%",
         "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "25.0%"
+        "ban_rate": "9.7%",
+        "presence": "19.4%"
       },
       {
         "name": "Gnar",
         "picks": 3,
         "wins": 2,
         "winrate": "66.7%",
-        "bans": 6,
-        "ban_rate": "21.4%",
-        "presence": "32.1%"
-      },
-      {
-        "name": "Shen",
-        "picks": 2,
-        "wins": 2,
-        "winrate": "100.0%",
-        "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "17.9%"
+        "bans": 7,
+        "ban_rate": "22.6%",
+        "presence": "32.3%"
       },
       {
         "name": "Zaahen",
@@ -808,16 +826,16 @@
         "winrate": "100.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "7.1%"
+        "presence": "6.5%"
       },
       {
         "name": "Yone",
         "picks": 2,
         "wins": 1,
         "winrate": "50.0%",
-        "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "25.0%"
+        "bans": 6,
+        "ban_rate": "19.4%",
+        "presence": "25.8%"
       },
       {
         "name": "Kennen",
@@ -825,17 +843,26 @@
         "wins": 1,
         "winrate": "50.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "10.7%"
+        "ban_rate": "3.2%",
+        "presence": "9.7%"
       },
       {
         "name": "Ambessa",
         "picks": 2,
         "wins": 0,
         "winrate": "0.0%",
-        "bans": 6,
-        "ban_rate": "21.4%",
-        "presence": "28.6%"
+        "bans": 7,
+        "ban_rate": "22.6%",
+        "presence": "29.0%"
+      },
+      {
+        "name": "Yorick",
+        "picks": 2,
+        "wins": 0,
+        "winrate": "0.0%",
+        "bans": 5,
+        "ban_rate": "16.1%",
+        "presence": "22.6%"
       },
       {
         "name": "Aatrox",
@@ -843,8 +870,8 @@
         "wins": 1,
         "winrate": "100.0%",
         "bans": 7,
-        "ban_rate": "25.0%",
-        "presence": "28.6%"
+        "ban_rate": "22.6%",
+        "presence": "25.8%"
       },
       {
         "name": "Sejuani",
@@ -853,7 +880,7 @@
         "winrate": "100.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "3.6%"
+        "presence": "3.2%"
       },
       {
         "name": "Vayne",
@@ -861,8 +888,8 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 9,
-        "ban_rate": "32.1%",
-        "presence": "35.7%"
+        "ban_rate": "29.0%",
+        "presence": "32.3%"
       },
       {
         "name": "Anivia",
@@ -870,26 +897,17 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 7,
-        "ban_rate": "25.0%",
-        "presence": "28.6%"
-      },
-      {
-        "name": "Yorick",
-        "picks": 1,
-        "wins": 0,
-        "winrate": "0.0%",
-        "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "21.4%"
+        "ban_rate": "22.6%",
+        "presence": "25.8%"
       },
       {
         "name": "Sylas",
         "picks": 1,
         "wins": 0,
         "winrate": "0.0%",
-        "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "14.3%"
+        "bans": 4,
+        "ban_rate": "12.9%",
+        "presence": "16.1%"
       },
       {
         "name": "Aurora",
@@ -897,8 +915,17 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "7.1%"
+        "ban_rate": "3.2%",
+        "presence": "6.5%"
+      },
+      {
+        "name": "Gragas",
+        "picks": 1,
+        "wins": 0,
+        "winrate": "0.0%",
+        "bans": 0,
+        "ban_rate": "0.0%",
+        "presence": "3.2%"
       },
       {
         "name": "Malphite",
@@ -907,7 +934,7 @@
         "winrate": "0.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "3.6%"
+        "presence": "3.2%"
       }
     ],
     "jng": [
@@ -916,27 +943,36 @@
         "picks": 7,
         "wins": 6,
         "winrate": "85.7%",
-        "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "42.9%"
-      },
-      {
-        "name": "Jarvan IV",
-        "picks": 6,
-        "wins": 2,
-        "winrate": "33.3%",
-        "bans": 9,
-        "ban_rate": "32.1%",
-        "presence": "53.6%"
+        "bans": 8,
+        "ban_rate": "25.8%",
+        "presence": "48.4%"
       },
       {
         "name": "Nocturne",
-        "picks": 6,
+        "picks": 7,
+        "wins": 3,
+        "winrate": "42.9%",
+        "bans": 11,
+        "ban_rate": "35.5%",
+        "presence": "58.1%"
+      },
+      {
+        "name": "Jarvan IV",
+        "picks": 7,
         "wins": 2,
-        "winrate": "33.3%",
-        "bans": 9,
-        "ban_rate": "32.1%",
-        "presence": "53.6%"
+        "winrate": "28.6%",
+        "bans": 10,
+        "ban_rate": "32.3%",
+        "presence": "54.8%"
+      },
+      {
+        "name": "Xin Zhao",
+        "picks": 5,
+        "wins": 2,
+        "winrate": "40.0%",
+        "bans": 3,
+        "ban_rate": "9.7%",
+        "presence": "25.8%"
       },
       {
         "name": "Pantheon",
@@ -944,26 +980,35 @@
         "wins": 3,
         "winrate": "75.0%",
         "bans": 4,
-        "ban_rate": "14.3%",
-        "presence": "28.6%"
-      },
-      {
-        "name": "Xin Zhao",
-        "picks": 4,
-        "wins": 1,
-        "winrate": "25.0%",
-        "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "25.0%"
+        "ban_rate": "12.9%",
+        "presence": "25.8%"
       },
       {
         "name": "Wukong",
+        "picks": 4,
+        "wins": 3,
+        "winrate": "75.0%",
+        "bans": 1,
+        "ban_rate": "3.2%",
+        "presence": "16.1%"
+      },
+      {
+        "name": "Trundle",
+        "picks": 4,
+        "wins": 1,
+        "winrate": "25.0%",
+        "bans": 5,
+        "ban_rate": "16.1%",
+        "presence": "29.0%"
+      },
+      {
+        "name": "Shyvana",
         "picks": 3,
         "wins": 2,
         "winrate": "66.7%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "14.3%"
+        "ban_rate": "3.2%",
+        "presence": "12.9%"
       },
       {
         "name": "Skarner",
@@ -972,25 +1017,16 @@
         "winrate": "66.7%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "10.7%"
+        "presence": "9.7%"
       },
       {
         "name": "Lee Sin",
         "picks": 3,
         "wins": 1,
         "winrate": "33.3%",
-        "bans": 11,
-        "ban_rate": "39.3%",
-        "presence": "50.0%"
-      },
-      {
-        "name": "Trundle",
-        "picks": 3,
-        "wins": 1,
-        "winrate": "33.3%",
-        "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "28.6%"
+        "bans": 14,
+        "ban_rate": "45.2%",
+        "presence": "54.8%"
       },
       {
         "name": "Sejuani",
@@ -999,25 +1035,16 @@
         "winrate": "33.3%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "10.7%"
+        "presence": "9.7%"
       },
       {
         "name": "Vi",
         "picks": 3,
         "wins": 0,
         "winrate": "0.0%",
-        "bans": 4,
-        "ban_rate": "14.3%",
-        "presence": "25.0%"
-      },
-      {
-        "name": "Shyvana",
-        "picks": 2,
-        "wins": 2,
-        "winrate": "100.0%",
-        "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "10.7%"
+        "bans": 5,
+        "ban_rate": "16.1%",
+        "presence": "25.8%"
       },
       {
         "name": "Rek'Sai",
@@ -1026,16 +1053,16 @@
         "winrate": "50.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "7.1%"
+        "presence": "6.5%"
       },
       {
         "name": "Jayce",
         "picks": 1,
         "wins": 1,
         "winrate": "100.0%",
-        "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "21.4%"
+        "bans": 6,
+        "ban_rate": "19.4%",
+        "presence": "22.6%"
       },
       {
         "name": "Olaf",
@@ -1043,8 +1070,8 @@
         "wins": 1,
         "winrate": "100.0%",
         "bans": 4,
-        "ban_rate": "14.3%",
-        "presence": "17.9%"
+        "ban_rate": "12.9%",
+        "presence": "16.1%"
       },
       {
         "name": "Nasus",
@@ -1052,8 +1079,8 @@
         "wins": 1,
         "winrate": "100.0%",
         "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "14.3%"
+        "ban_rate": "9.7%",
+        "presence": "12.9%"
       },
       {
         "name": "Shen",
@@ -1061,17 +1088,17 @@
         "wins": 1,
         "winrate": "100.0%",
         "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "14.3%"
+        "ban_rate": "9.7%",
+        "presence": "12.9%"
       },
       {
         "name": "Rumble",
         "picks": 1,
         "wins": 0,
         "winrate": "0.0%",
-        "bans": 6,
-        "ban_rate": "21.4%",
-        "presence": "25.0%"
+        "bans": 7,
+        "ban_rate": "22.6%",
+        "presence": "25.8%"
       },
       {
         "name": "Kha'Zix",
@@ -1080,7 +1107,7 @@
         "winrate": "0.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "3.6%"
+        "presence": "3.2%"
       },
       {
         "name": "Zaahen",
@@ -1089,7 +1116,7 @@
         "winrate": "0.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "3.6%"
+        "presence": "3.2%"
       }
     ],
     "mid": [
@@ -1098,36 +1125,36 @@
         "picks": 8,
         "wins": 6,
         "winrate": "75.0%",
-        "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "32.1%"
+        "bans": 2,
+        "ban_rate": "6.5%",
+        "presence": "32.3%"
       },
       {
         "name": "Viktor",
-        "picks": 6,
+        "picks": 7,
         "wins": 5,
-        "winrate": "83.3%",
+        "winrate": "71.4%",
         "bans": 2,
-        "ban_rate": "7.1%",
-        "presence": "28.6%"
+        "ban_rate": "6.5%",
+        "presence": "29.0%"
       },
       {
         "name": "Orianna",
-        "picks": 5,
+        "picks": 6,
         "wins": 3,
-        "winrate": "60.0%",
+        "winrate": "50.0%",
         "bans": 15,
-        "ban_rate": "53.6%",
-        "presence": "71.4%"
+        "ban_rate": "48.4%",
+        "presence": "67.7%"
       },
       {
         "name": "Cassiopeia",
-        "picks": 5,
+        "picks": 6,
         "wins": 2,
-        "winrate": "40.0%",
+        "winrate": "33.3%",
         "bans": 12,
-        "ban_rate": "42.9%",
-        "presence": "60.7%"
+        "ban_rate": "38.7%",
+        "presence": "58.1%"
       },
       {
         "name": "Twisted Fate",
@@ -1135,8 +1162,8 @@
         "wins": 2,
         "winrate": "40.0%",
         "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "35.7%"
+        "ban_rate": "16.1%",
+        "presence": "32.3%"
       },
       {
         "name": "Annie",
@@ -1144,17 +1171,35 @@
         "wins": 1,
         "winrate": "20.0%",
         "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "35.7%"
+        "ban_rate": "16.1%",
+        "presence": "32.3%"
+      },
+      {
+        "name": "Galio",
+        "picks": 4,
+        "wins": 2,
+        "winrate": "50.0%",
+        "bans": 4,
+        "ban_rate": "12.9%",
+        "presence": "25.8%"
       },
       {
         "name": "Ahri",
         "picks": 4,
         "wins": 1,
         "winrate": "25.0%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "14.3%"
+        "bans": 1,
+        "ban_rate": "3.2%",
+        "presence": "16.1%"
+      },
+      {
+        "name": "Akali",
+        "picks": 3,
+        "wins": 3,
+        "winrate": "100.0%",
+        "bans": 11,
+        "ban_rate": "35.5%",
+        "presence": "45.2%"
       },
       {
         "name": "Aurora",
@@ -1162,26 +1207,8 @@
         "wins": 3,
         "winrate": "100.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "14.3%"
-      },
-      {
-        "name": "Galio",
-        "picks": 3,
-        "wins": 1,
-        "winrate": "33.3%",
-        "bans": 4,
-        "ban_rate": "14.3%",
-        "presence": "25.0%"
-      },
-      {
-        "name": "Akali",
-        "picks": 2,
-        "wins": 2,
-        "winrate": "100.0%",
-        "bans": 11,
-        "ban_rate": "39.3%",
-        "presence": "46.4%"
+        "ban_rate": "3.2%",
+        "presence": "12.9%"
       },
       {
         "name": "Anivia",
@@ -1189,26 +1216,35 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 7,
-        "ban_rate": "25.0%",
-        "presence": "32.1%"
+        "ban_rate": "22.6%",
+        "presence": "29.0%"
       },
       {
         "name": "Ziggs",
         "picks": 2,
         "wins": 0,
         "winrate": "0.0%",
-        "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "10.7%"
+        "bans": 2,
+        "ban_rate": "6.5%",
+        "presence": "12.9%"
       },
       {
         "name": "Yone",
         "picks": 1,
         "wins": 1,
         "winrate": "100.0%",
-        "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "21.4%"
+        "bans": 6,
+        "ban_rate": "19.4%",
+        "presence": "22.6%"
+      },
+      {
+        "name": "LeBlanc",
+        "picks": 1,
+        "wins": 1,
+        "winrate": "100.0%",
+        "bans": 4,
+        "ban_rate": "12.9%",
+        "presence": "16.1%"
       },
       {
         "name": "Zoe",
@@ -1216,17 +1252,17 @@
         "wins": 1,
         "winrate": "100.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "7.1%"
+        "ban_rate": "3.2%",
+        "presence": "6.5%"
       },
       {
         "name": "Sylas",
         "picks": 1,
         "wins": 0,
         "winrate": "0.0%",
-        "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "14.3%"
+        "bans": 4,
+        "ban_rate": "12.9%",
+        "presence": "16.1%"
       },
       {
         "name": "Xin Zhao",
@@ -1234,8 +1270,8 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "14.3%"
+        "ban_rate": "9.7%",
+        "presence": "12.9%"
       },
       {
         "name": "Taliyah",
@@ -1243,8 +1279,8 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "7.1%"
+        "ban_rate": "3.2%",
+        "presence": "6.5%"
       },
       {
         "name": "Mel",
@@ -1253,18 +1289,18 @@
         "winrate": "0.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "3.6%"
+        "presence": "3.2%"
       }
     ],
     "bot": [
       {
         "name": "Ezreal",
-        "picks": 8,
-        "wins": 3,
-        "winrate": "37.5%",
+        "picks": 9,
+        "wins": 4,
+        "winrate": "44.4%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "32.1%"
+        "ban_rate": "3.2%",
+        "presence": "32.3%"
       },
       {
         "name": "Lucian",
@@ -1272,17 +1308,17 @@
         "wins": 4,
         "winrate": "57.1%",
         "bans": 4,
-        "ban_rate": "14.3%",
-        "presence": "39.3%"
+        "ban_rate": "12.9%",
+        "presence": "35.5%"
       },
       {
         "name": "Xayah",
-        "picks": 5,
+        "picks": 6,
         "wins": 5,
-        "winrate": "100.0%",
+        "winrate": "83.3%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "17.9%"
+        "presence": "19.4%"
       },
       {
         "name": "Caitlyn",
@@ -1290,8 +1326,17 @@
         "wins": 3,
         "winrate": "60.0%",
         "bans": 8,
-        "ban_rate": "28.6%",
-        "presence": "46.4%"
+        "ban_rate": "25.8%",
+        "presence": "41.9%"
+      },
+      {
+        "name": "Senna",
+        "picks": 5,
+        "wins": 3,
+        "winrate": "60.0%",
+        "bans": 2,
+        "ban_rate": "6.5%",
+        "presence": "22.6%"
       },
       {
         "name": "Jhin",
@@ -1299,17 +1344,8 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "21.4%"
-      },
-      {
-        "name": "Senna",
-        "picks": 4,
-        "wins": 2,
-        "winrate": "50.0%",
-        "bans": 2,
-        "ban_rate": "7.1%",
-        "presence": "21.4%"
+        "ban_rate": "3.2%",
+        "presence": "19.4%"
       },
       {
         "name": "Ashe",
@@ -1318,16 +1354,34 @@
         "winrate": "50.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "14.3%"
+        "presence": "12.9%"
+      },
+      {
+        "name": "Yunara",
+        "picks": 4,
+        "wins": 2,
+        "winrate": "50.0%",
+        "bans": 0,
+        "ban_rate": "0.0%",
+        "presence": "12.9%"
       },
       {
         "name": "Miss Fortune",
         "picks": 3,
         "wins": 2,
         "winrate": "66.7%",
-        "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "14.3%"
+        "bans": 2,
+        "ban_rate": "6.5%",
+        "presence": "16.1%"
+      },
+      {
+        "name": "Corki",
+        "picks": 3,
+        "wins": 2,
+        "winrate": "66.7%",
+        "bans": 0,
+        "ban_rate": "0.0%",
+        "presence": "9.7%"
       },
       {
         "name": "Sivir",
@@ -1336,34 +1390,16 @@
         "winrate": "66.7%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "10.7%"
-      },
-      {
-        "name": "Yunara",
-        "picks": 3,
-        "wins": 1,
-        "winrate": "33.3%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "10.7%"
-      },
-      {
-        "name": "Corki",
-        "picks": 2,
-        "wins": 2,
-        "winrate": "100.0%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "7.1%"
+        "presence": "9.7%"
       },
       {
         "name": "Varus",
-        "picks": 2,
+        "picks": 3,
         "wins": 1,
-        "winrate": "50.0%",
+        "winrate": "33.3%",
         "bans": 22,
-        "ban_rate": "78.6%",
-        "presence": "85.7%"
+        "ban_rate": "71.0%",
+        "presence": "80.6%"
       },
       {
         "name": "Mel",
@@ -1372,7 +1408,7 @@
         "winrate": "0.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "7.1%"
+        "presence": "6.5%"
       },
       {
         "name": "Tristana",
@@ -1381,16 +1417,16 @@
         "winrate": "100.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "3.6%"
+        "presence": "3.2%"
       },
       {
         "name": "Ornn",
         "picks": 1,
         "wins": 0,
         "winrate": "0.0%",
-        "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "14.3%"
+        "bans": 4,
+        "ban_rate": "12.9%",
+        "presence": "16.1%"
       },
       {
         "name": "Kog'Maw",
@@ -1399,7 +1435,7 @@
         "winrate": "0.0%",
         "bans": 0,
         "ban_rate": "0.0%",
-        "presence": "3.6%"
+        "presence": "3.2%"
       }
     ],
     "sup": [
@@ -1408,18 +1444,18 @@
         "picks": 8,
         "wins": 6,
         "winrate": "75.0%",
-        "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "39.3%"
+        "bans": 5,
+        "ban_rate": "16.1%",
+        "presence": "41.9%"
       },
       {
         "name": "Rakan",
-        "picks": 7,
+        "picks": 8,
         "wins": 6,
-        "winrate": "85.7%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "25.0%"
+        "winrate": "75.0%",
+        "bans": 2,
+        "ban_rate": "6.5%",
+        "presence": "32.3%"
       },
       {
         "name": "Milio",
@@ -1427,71 +1463,71 @@
         "wins": 4,
         "winrate": "57.1%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "28.6%"
+        "ban_rate": "3.2%",
+        "presence": "25.8%"
       },
       {
         "name": "Nautilus",
-        "picks": 6,
-        "wins": 2,
-        "winrate": "33.3%",
-        "bans": 6,
-        "ban_rate": "21.4%",
-        "presence": "42.9%"
+        "picks": 7,
+        "wins": 3,
+        "winrate": "42.9%",
+        "bans": 7,
+        "ban_rate": "22.6%",
+        "presence": "45.2%"
       },
       {
         "name": "Neeko",
-        "picks": 5,
+        "picks": 6,
         "wins": 3,
-        "winrate": "60.0%",
+        "winrate": "50.0%",
         "bans": 5,
-        "ban_rate": "17.9%",
-        "presence": "35.7%"
+        "ban_rate": "16.1%",
+        "presence": "35.5%"
+      },
+      {
+        "name": "Rell",
+        "picks": 6,
+        "wins": 1,
+        "winrate": "16.7%",
+        "bans": 0,
+        "ban_rate": "0.0%",
+        "presence": "19.4%"
+      },
+      {
+        "name": "Lulu",
+        "picks": 5,
+        "wins": 2,
+        "winrate": "40.0%",
+        "bans": 3,
+        "ban_rate": "9.7%",
+        "presence": "25.8%"
       },
       {
         "name": "Karma",
         "picks": 5,
         "wins": 1,
         "winrate": "20.0%",
-        "bans": 7,
-        "ban_rate": "25.0%",
-        "presence": "42.9%"
-      },
-      {
-        "name": "Rell",
-        "picks": 5,
-        "wins": 1,
-        "winrate": "20.0%",
-        "bans": 0,
-        "ban_rate": "0.0%",
-        "presence": "17.9%"
-      },
-      {
-        "name": "Lulu",
-        "picks": 4,
-        "wins": 1,
-        "winrate": "25.0%",
-        "bans": 3,
-        "ban_rate": "10.7%",
-        "presence": "25.0%"
+        "bans": 9,
+        "ban_rate": "29.0%",
+        "presence": "45.2%"
       },
       {
         "name": "Alistar",
-        "picks": 3,
-        "wins": 2,
-        "winrate": "66.7%",
+        "picks": 4,
+        "wins": 3,
+        "winrate": "75.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "14.3%"
+        "ban_rate": "3.2%",
+        "presence": "16.1%"
       },
       {
         "name": "Seraphine",
         "picks": 3,
         "wins": 1,
         "winrate": "33.3%",
-        "bans": 12,
-        "ban_rate": "42.9%",
-        "presence": "53.6%"
+        "bans": 13,
+        "ban_rate": "41.9%",
+        "presence": "51.6%"
       },
       {
         "name": "Renata Glasc",
@@ -1499,8 +1535,8 @@
         "wins": 1,
         "winrate": "100.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "7.1%"
+        "ban_rate": "3.2%",
+        "presence": "6.5%"
       },
       {
         "name": "Senna",
@@ -1508,8 +1544,8 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 2,
-        "ban_rate": "7.1%",
-        "presence": "10.7%"
+        "ban_rate": "6.5%",
+        "presence": "9.7%"
       },
       {
         "name": "Pyke",
@@ -1517,8 +1553,8 @@
         "wins": 0,
         "winrate": "0.0%",
         "bans": 1,
-        "ban_rate": "3.6%",
-        "presence": "7.1%"
+        "ban_rate": "3.2%",
+        "presence": "6.5%"
       }
     ]
   },
@@ -1526,12 +1562,12 @@
     {
       "value": "all",
       "label": "-- ALL --",
-      "games": 782
+      "games": 785
     },
     {
       "value": "16.11",
       "label": "16.11",
-      "games": 28
+      "games": 31
     },
     {
       "value": "16.10",
@@ -1647,7 +1683,7 @@
   "patch_summaries": {
     "all": {
       "patch": "all",
-      "games": 782,
+      "games": 785,
       "leagues": [
         "CBLOL",
         "LCS"
@@ -1655,9 +1691,9 @@
       "champions": [
         {
           "name": "K'Sante",
-          "picks": 235,
-          "wins": 109,
-          "winrate": "46.4%",
+          "picks": 236,
+          "wins": 110,
+          "winrate": "46.6%",
           "bans": 91,
           "ban_rate": "11.6%",
           "presence": "41.7%"
@@ -1669,49 +1705,49 @@
           "winrate": "48.2%",
           "bans": 148,
           "ban_rate": "18.9%",
-          "presence": "47.8%"
+          "presence": "47.6%"
         },
         {
           "name": "Nautilus",
-          "picks": 218,
-          "wins": 105,
-          "winrate": "48.2%",
-          "bans": 229,
+          "picks": 219,
+          "wins": 106,
+          "winrate": "48.4%",
+          "bans": 230,
           "ban_rate": "29.3%",
           "presence": "57.2%"
         },
         {
           "name": "Corki",
-          "picks": 212,
+          "picks": 213,
           "wins": 106,
-          "winrate": "50.0%",
+          "winrate": "49.8%",
           "bans": 99,
-          "ban_rate": "12.7%",
-          "presence": "39.8%"
+          "ban_rate": "12.6%",
+          "presence": "39.7%"
         },
         {
           "name": "Rell",
-          "picks": 212,
+          "picks": 213,
           "wins": 100,
-          "winrate": "47.2%",
+          "winrate": "46.9%",
           "bans": 65,
           "ban_rate": "8.3%",
           "presence": "35.4%"
         },
         {
           "name": "Rumble",
-          "picks": 180,
-          "wins": 84,
-          "winrate": "46.7%",
-          "bans": 287,
+          "picks": 181,
+          "wins": 85,
+          "winrate": "47.0%",
+          "bans": 288,
           "ban_rate": "36.7%",
           "presence": "59.7%"
         },
         {
           "name": "Ezreal",
-          "picks": 174,
-          "wins": 88,
-          "winrate": "50.6%",
+          "picks": 175,
+          "wins": 89,
+          "winrate": "50.9%",
           "bans": 138,
           "ban_rate": "17.6%",
           "presence": "39.9%"
@@ -1722,26 +1758,35 @@
           "wins": 92,
           "winrate": "53.8%",
           "bans": 113,
-          "ban_rate": "14.5%",
-          "presence": "36.3%"
+          "ban_rate": "14.4%",
+          "presence": "36.2%"
         },
         {
           "name": "Vi",
           "picks": 158,
           "wins": 74,
           "winrate": "46.8%",
-          "bans": 251,
+          "bans": 252,
           "ban_rate": "32.1%",
-          "presence": "52.3%"
+          "presence": "52.2%"
         },
         {
           "name": "Varus",
-          "picks": 156,
+          "picks": 157,
           "wins": 85,
-          "winrate": "54.5%",
+          "winrate": "54.1%",
           "bans": 338,
-          "ban_rate": "43.2%",
-          "presence": "63.2%"
+          "ban_rate": "43.1%",
+          "presence": "63.1%"
+        },
+        {
+          "name": "Xin Zhao",
+          "picks": 155,
+          "wins": 58,
+          "winrate": "37.4%",
+          "bans": 86,
+          "ban_rate": "11.0%",
+          "presence": "30.7%"
         },
         {
           "name": "Azir",
@@ -1749,26 +1794,17 @@
           "wins": 70,
           "winrate": "45.5%",
           "bans": 124,
-          "ban_rate": "15.9%",
-          "presence": "35.5%"
-        },
-        {
-          "name": "Xin Zhao",
-          "picks": 154,
-          "wins": 57,
-          "winrate": "37.0%",
-          "bans": 86,
-          "ban_rate": "11.0%",
-          "presence": "30.7%"
+          "ban_rate": "15.8%",
+          "presence": "35.4%"
         },
         {
           "name": "Rakan",
-          "picks": 144,
+          "picks": 145,
           "wins": 92,
-          "winrate": "63.9%",
-          "bans": 82,
-          "ban_rate": "10.5%",
-          "presence": "28.9%"
+          "winrate": "63.4%",
+          "bans": 84,
+          "ban_rate": "10.7%",
+          "presence": "29.2%"
         },
         {
           "name": "Ashe",
@@ -1776,8 +1812,8 @@
           "wins": 67,
           "winrate": "47.5%",
           "bans": 238,
-          "ban_rate": "30.4%",
-          "presence": "48.5%"
+          "ban_rate": "30.3%",
+          "presence": "48.3%"
         },
         {
           "name": "Leona",
@@ -1786,16 +1822,16 @@
           "winrate": "43.5%",
           "bans": 59,
           "ban_rate": "7.5%",
-          "presence": "25.2%"
+          "presence": "25.1%"
         },
         {
           "name": "Orianna",
-          "picks": 135,
+          "picks": 136,
           "wins": 72,
-          "winrate": "53.3%",
+          "winrate": "52.9%",
           "bans": 311,
-          "ban_rate": "39.8%",
-          "presence": "57.0%"
+          "ban_rate": "39.6%",
+          "presence": "56.9%"
         },
         {
           "name": "Sejuani",
@@ -1804,7 +1840,7 @@
           "winrate": "51.5%",
           "bans": 130,
           "ban_rate": "16.6%",
-          "presence": "33.2%"
+          "presence": "33.1%"
         },
         {
           "name": "Maokai",
@@ -1812,8 +1848,8 @@
           "wins": 67,
           "winrate": "51.9%",
           "bans": 164,
-          "ban_rate": "21.0%",
-          "presence": "37.5%"
+          "ban_rate": "20.9%",
+          "presence": "37.3%"
         },
         {
           "name": "Lucian",
@@ -1821,23 +1857,23 @@
           "wins": 60,
           "winrate": "48.4%",
           "bans": 176,
-          "ban_rate": "22.5%",
-          "presence": "38.4%"
+          "ban_rate": "22.4%",
+          "presence": "38.2%"
         },
         {
           "name": "Gnar",
           "picks": 119,
           "wins": 60,
           "winrate": "50.4%",
-          "bans": 82,
-          "ban_rate": "10.5%",
+          "bans": 83,
+          "ban_rate": "10.6%",
           "presence": "25.7%"
         },
         {
           "name": "Alistar",
-          "picks": 117,
-          "wins": 61,
-          "winrate": "52.1%",
+          "picks": 118,
+          "wins": 62,
+          "winrate": "52.5%",
           "bans": 47,
           "ban_rate": "6.0%",
           "presence": "21.0%"
@@ -1849,7 +1885,7 @@
           "winrate": "51.8%",
           "bans": 23,
           "ban_rate": "2.9%",
-          "presence": "17.0%"
+          "presence": "16.9%"
         },
         {
           "name": "Kai'Sa",
@@ -1858,7 +1894,7 @@
           "winrate": "43.6%",
           "bans": 55,
           "ban_rate": "7.0%",
-          "presence": "21.1%"
+          "presence": "21.0%"
         },
         {
           "name": "Aatrox",
@@ -1876,7 +1912,7 @@
           "winrate": "50.0%",
           "bans": 77,
           "ban_rate": "9.8%",
-          "presence": "23.4%"
+          "presence": "23.3%"
         },
         {
           "name": "Jhin",
@@ -1885,25 +1921,25 @@
           "winrate": "49.5%",
           "bans": 34,
           "ban_rate": "4.3%",
-          "presence": "17.8%"
+          "presence": "17.7%"
         },
         {
           "name": "Jarvan IV",
-          "picks": 104,
+          "picks": 105,
           "wins": 51,
-          "winrate": "49.0%",
-          "bans": 144,
-          "ban_rate": "18.4%",
-          "presence": "31.7%"
+          "winrate": "48.6%",
+          "bans": 145,
+          "ban_rate": "18.5%",
+          "presence": "31.8%"
         },
         {
           "name": "Bard",
           "picks": 101,
           "wins": 63,
           "winrate": "62.4%",
-          "bans": 99,
-          "ban_rate": "12.7%",
-          "presence": "25.6%"
+          "bans": 101,
+          "ban_rate": "12.9%",
+          "presence": "25.7%"
         },
         {
           "name": "Kalista",
@@ -1911,14 +1947,14 @@
           "wins": 45,
           "winrate": "45.0%",
           "bans": 204,
-          "ban_rate": "26.1%",
-          "presence": "38.9%"
+          "ban_rate": "26.0%",
+          "presence": "38.7%"
         },
         {
           "name": "Sion",
-          "picks": 98,
+          "picks": 99,
           "wins": 52,
-          "winrate": "53.1%",
+          "winrate": "52.5%",
           "bans": 26,
           "ban_rate": "3.3%",
           "presence": "15.9%"
@@ -1928,35 +1964,35 @@
           "picks": 96,
           "wins": 48,
           "winrate": "50.0%",
-          "bans": 67,
-          "ban_rate": "8.6%",
-          "presence": "20.8%"
+          "bans": 68,
+          "ban_rate": "8.7%",
+          "presence": "20.9%"
         },
         {
           "name": "Ahri",
           "picks": 94,
           "wins": 48,
           "winrate": "51.1%",
-          "bans": 57,
-          "ban_rate": "7.3%",
-          "presence": "19.3%"
+          "bans": 58,
+          "ban_rate": "7.4%",
+          "presence": "19.4%"
         },
         {
           "name": "Neeko",
-          "picks": 92,
+          "picks": 93,
           "wins": 47,
-          "winrate": "51.1%",
+          "winrate": "50.5%",
           "bans": 110,
-          "ban_rate": "14.1%",
-          "presence": "25.8%"
+          "ban_rate": "14.0%",
+          "presence": "25.9%"
         },
         {
           "name": "Senna",
-          "picks": 88,
-          "wins": 51,
-          "winrate": "58.0%",
+          "picks": 89,
+          "wins": 52,
+          "winrate": "58.4%",
           "bans": 147,
-          "ban_rate": "18.8%",
+          "ban_rate": "18.7%",
           "presence": "30.1%"
         },
         {
@@ -1966,16 +2002,16 @@
           "winrate": "64.4%",
           "bans": 97,
           "ban_rate": "12.4%",
-          "presence": "23.5%"
+          "presence": "23.4%"
         },
         {
           "name": "Nocturne",
-          "picks": 83,
-          "wins": 37,
-          "winrate": "44.6%",
-          "bans": 204,
-          "ban_rate": "26.1%",
-          "presence": "36.7%"
+          "picks": 84,
+          "wins": 38,
+          "winrate": "45.2%",
+          "bans": 206,
+          "ban_rate": "26.2%",
+          "presence": "36.9%"
         },
         {
           "name": "Hwei",
@@ -1984,34 +2020,34 @@
           "winrate": "45.7%",
           "bans": 30,
           "ban_rate": "3.8%",
-          "presence": "14.2%"
+          "presence": "14.1%"
         },
         {
           "name": "Karma",
           "picks": 75,
           "wins": 34,
           "winrate": "45.3%",
-          "bans": 225,
-          "ban_rate": "28.8%",
-          "presence": "38.4%"
+          "bans": 227,
+          "ban_rate": "28.9%",
+          "presence": "38.5%"
         },
         {
           "name": "Lee Sin",
           "picks": 74,
           "wins": 36,
           "winrate": "48.6%",
-          "bans": 56,
-          "ban_rate": "7.2%",
-          "presence": "16.6%"
+          "bans": 59,
+          "ban_rate": "7.5%",
+          "presence": "16.9%"
         },
         {
           "name": "Lulu",
-          "picks": 72,
-          "wins": 28,
-          "winrate": "38.9%",
+          "picks": 73,
+          "wins": 29,
+          "winrate": "39.7%",
           "bans": 46,
           "ban_rate": "5.9%",
-          "presence": "15.1%"
+          "presence": "15.2%"
         },
         {
           "name": "Tristana",
@@ -2020,22 +2056,22 @@
           "winrate": "49.3%",
           "bans": 120,
           "ban_rate": "15.3%",
-          "presence": "24.4%"
+          "presence": "24.3%"
         },
         {
           "name": "Miss Fortune",
           "picks": 71,
           "wins": 33,
           "winrate": "46.5%",
-          "bans": 38,
-          "ban_rate": "4.9%",
-          "presence": "13.9%"
+          "bans": 39,
+          "ban_rate": "5.0%",
+          "presence": "14.0%"
         },
         {
           "name": "Xayah",
-          "picks": 69,
+          "picks": 70,
           "wins": 48,
-          "winrate": "69.6%",
+          "winrate": "68.6%",
           "bans": 37,
           "ban_rate": "4.7%",
           "presence": "13.6%"
@@ -2046,8 +2082,8 @@
           "wins": 38,
           "winrate": "55.1%",
           "bans": 114,
-          "ban_rate": "14.6%",
-          "presence": "23.4%"
+          "ban_rate": "14.5%",
+          "presence": "23.3%"
         },
         {
           "name": "Aurora",
@@ -2056,15 +2092,15 @@
           "winrate": "49.3%",
           "bans": 52,
           "ban_rate": "6.6%",
-          "presence": "15.5%"
+          "presence": "15.4%"
         },
         {
           "name": "Yunara",
-          "picks": 68,
-          "wins": 31,
-          "winrate": "45.6%",
+          "picks": 69,
+          "wins": 32,
+          "winrate": "46.4%",
           "bans": 20,
-          "ban_rate": "2.6%",
+          "ban_rate": "2.5%",
           "presence": "11.3%"
         },
         {
@@ -2072,8 +2108,8 @@
           "picks": 66,
           "wins": 41,
           "winrate": "62.1%",
-          "bans": 83,
-          "ban_rate": "10.6%",
+          "bans": 84,
+          "ban_rate": "10.7%",
           "presence": "19.1%"
         },
         {
@@ -2087,9 +2123,9 @@
         },
         {
           "name": "Wukong",
-          "picks": 64,
-          "wins": 28,
-          "winrate": "43.8%",
+          "picks": 65,
+          "wins": 29,
+          "winrate": "44.6%",
           "bans": 28,
           "ban_rate": "3.6%",
           "presence": "11.8%"
@@ -2099,8 +2135,8 @@
           "picks": 63,
           "wins": 35,
           "winrate": "55.6%",
-          "bans": 61,
-          "ban_rate": "7.8%",
+          "bans": 62,
+          "ban_rate": "7.9%",
           "presence": "15.9%"
         },
         {
@@ -2108,7 +2144,7 @@
           "picks": 62,
           "wins": 30,
           "winrate": "48.4%",
-          "bans": 157,
+          "bans": 158,
           "ban_rate": "20.1%",
           "presence": "28.0%"
         },
@@ -2119,15 +2155,15 @@
           "winrate": "59.3%",
           "bans": 77,
           "ban_rate": "9.8%",
-          "presence": "17.4%"
+          "presence": "17.3%"
         },
         {
           "name": "Seraphine",
           "picks": 59,
           "wins": 30,
           "winrate": "50.8%",
-          "bans": 73,
-          "ban_rate": "9.3%",
+          "bans": 74,
+          "ban_rate": "9.4%",
           "presence": "16.9%"
         },
         {
@@ -2146,16 +2182,16 @@
           "winrate": "59.3%",
           "bans": 46,
           "ban_rate": "5.9%",
-          "presence": "12.8%"
+          "presence": "12.7%"
         },
         {
           "name": "Ornn",
           "picks": 51,
           "wins": 29,
           "winrate": "56.9%",
-          "bans": 16,
-          "ban_rate": "2.0%",
-          "presence": "8.6%"
+          "bans": 17,
+          "ban_rate": "2.2%",
+          "presence": "8.7%"
         },
         {
           "name": "Braum",
@@ -2164,7 +2200,7 @@
           "winrate": "54.0%",
           "bans": 50,
           "ban_rate": "6.4%",
-          "presence": "12.8%"
+          "presence": "12.7%"
         },
         {
           "name": "Aphelios",
@@ -2182,16 +2218,16 @@
           "winrate": "53.1%",
           "bans": 91,
           "ban_rate": "11.6%",
-          "presence": "17.9%"
+          "presence": "17.8%"
         },
         {
           "name": "Poppy",
           "picks": 49,
           "wins": 24,
           "winrate": "49.0%",
-          "bans": 84,
-          "ban_rate": "10.7%",
-          "presence": "17.0%"
+          "bans": 85,
+          "ban_rate": "10.8%",
+          "presence": "17.1%"
         },
         {
           "name": "Lillia",
@@ -2207,7 +2243,7 @@
           "picks": 47,
           "wins": 24,
           "winrate": "51.1%",
-          "bans": 103,
+          "bans": 104,
           "ban_rate": "13.2%",
           "presence": "19.2%"
         },
@@ -2218,7 +2254,7 @@
           "winrate": "44.7%",
           "bans": 52,
           "ban_rate": "6.6%",
-          "presence": "12.7%"
+          "presence": "12.6%"
         },
         {
           "name": "Annie",
@@ -2227,7 +2263,7 @@
           "winrate": "51.1%",
           "bans": 36,
           "ban_rate": "4.6%",
-          "presence": "10.4%"
+          "presence": "10.3%"
         },
         {
           "name": "Sivir",
@@ -2236,7 +2272,7 @@
           "winrate": "51.1%",
           "bans": 25,
           "ban_rate": "3.2%",
-          "presence": "9.0%"
+          "presence": "8.9%"
         },
         {
           "name": "Olaf",
@@ -2249,12 +2285,21 @@
         },
         {
           "name": "Viktor",
-          "picks": 42,
+          "picks": 43,
           "wins": 20,
-          "winrate": "47.6%",
+          "winrate": "46.5%",
           "bans": 18,
           "ban_rate": "2.3%",
-          "presence": "7.7%"
+          "presence": "7.8%"
+        },
+        {
+          "name": "Akali",
+          "picks": 42,
+          "wins": 21,
+          "winrate": "50.0%",
+          "bans": 123,
+          "ban_rate": "15.7%",
+          "presence": "21.0%"
         },
         {
           "name": "Udyr",
@@ -2262,7 +2307,7 @@
           "wins": 23,
           "winrate": "56.1%",
           "bans": 31,
-          "ban_rate": "4.0%",
+          "ban_rate": "3.9%",
           "presence": "9.2%"
         },
         {
@@ -2275,22 +2320,13 @@
           "presence": "10.6%"
         },
         {
-          "name": "Akali",
-          "picks": 41,
-          "wins": 20,
-          "winrate": "48.8%",
-          "bans": 123,
-          "ban_rate": "15.7%",
-          "presence": "21.0%"
-        },
-        {
           "name": "Anivia",
           "picks": 38,
           "wins": 17,
           "winrate": "44.7%",
           "bans": 40,
           "ban_rate": "5.1%",
-          "presence": "10.0%"
+          "presence": "9.9%"
         },
         {
           "name": "Ivern",
@@ -2298,8 +2334,8 @@
           "wins": 19,
           "winrate": "51.4%",
           "bans": 70,
-          "ban_rate": "9.0%",
-          "presence": "13.7%"
+          "ban_rate": "8.9%",
+          "presence": "13.6%"
         },
         {
           "name": "Zyra",
@@ -2312,12 +2348,21 @@
         },
         {
           "name": "Cassiopeia",
-          "picks": 35,
+          "picks": 36,
           "wins": 20,
-          "winrate": "57.1%",
+          "winrate": "55.6%",
           "bans": 47,
           "ban_rate": "6.0%",
-          "presence": "10.5%"
+          "presence": "10.6%"
+        },
+        {
+          "name": "Galio",
+          "picks": 33,
+          "wins": 19,
+          "winrate": "57.6%",
+          "bans": 14,
+          "ban_rate": "1.8%",
+          "presence": "6.0%"
         },
         {
           "name": "Viego",
@@ -2327,15 +2372,6 @@
           "bans": 8,
           "ban_rate": "1.0%",
           "presence": "5.2%"
-        },
-        {
-          "name": "Galio",
-          "picks": 32,
-          "wins": 18,
-          "winrate": "56.2%",
-          "bans": 14,
-          "ban_rate": "1.8%",
-          "presence": "5.9%"
         },
         {
           "name": "Rek'Sai",
@@ -2352,7 +2388,7 @@
           "wins": 16,
           "winrate": "51.6%",
           "bans": 67,
-          "ban_rate": "8.6%",
+          "ban_rate": "8.5%",
           "presence": "12.5%"
         },
         {
@@ -2361,7 +2397,7 @@
           "wins": 16,
           "winrate": "53.3%",
           "bans": 9,
-          "ban_rate": "1.2%",
+          "ban_rate": "1.1%",
           "presence": "5.0%"
         },
         {
@@ -2372,6 +2408,15 @@
           "bans": 25,
           "ban_rate": "3.2%",
           "presence": "7.0%"
+        },
+        {
+          "name": "Trundle",
+          "picks": 29,
+          "wins": 16,
+          "winrate": "55.2%",
+          "bans": 25,
+          "ban_rate": "3.2%",
+          "presence": "6.9%"
         },
         {
           "name": "Zaahen",
@@ -2392,21 +2437,12 @@
           "presence": "6.6%"
         },
         {
-          "name": "Trundle",
-          "picks": 28,
-          "wins": 16,
-          "winrate": "57.1%",
-          "bans": 25,
-          "ban_rate": "3.2%",
-          "presence": "6.8%"
-        },
-        {
           "name": "Nidalee",
           "picks": 28,
           "wins": 15,
           "winrate": "53.6%",
           "bans": 49,
-          "ban_rate": "6.3%",
+          "ban_rate": "6.2%",
           "presence": "9.8%"
         },
         {
@@ -2419,31 +2455,31 @@
           "presence": "6.4%"
         },
         {
+          "name": "LeBlanc",
+          "picks": 27,
+          "wins": 11,
+          "winrate": "40.7%",
+          "bans": 70,
+          "ban_rate": "8.9%",
+          "presence": "12.4%"
+        },
+        {
           "name": "Sylas",
           "picks": 26,
           "wins": 15,
           "winrate": "57.7%",
-          "bans": 33,
-          "ban_rate": "4.2%",
-          "presence": "7.5%"
-        },
-        {
-          "name": "LeBlanc",
-          "picks": 26,
-          "wins": 10,
-          "winrate": "38.5%",
-          "bans": 70,
-          "ban_rate": "9.0%",
-          "presence": "12.3%"
+          "bans": 34,
+          "ban_rate": "4.3%",
+          "presence": "7.6%"
         },
         {
           "name": "Gragas",
-          "picks": 25,
+          "picks": 26,
           "wins": 14,
-          "winrate": "56.0%",
+          "winrate": "53.8%",
           "bans": 9,
-          "ban_rate": "1.2%",
-          "presence": "4.3%"
+          "ban_rate": "1.1%",
+          "presence": "4.5%"
         },
         {
           "name": "Syndra",
@@ -2452,16 +2488,16 @@
           "winrate": "50.0%",
           "bans": 32,
           "ban_rate": "4.1%",
-          "presence": "7.2%"
+          "presence": "7.1%"
         },
         {
           "name": "Naafiri",
           "picks": 22,
           "wins": 16,
           "winrate": "72.7%",
-          "bans": 28,
-          "ban_rate": "3.6%",
-          "presence": "6.4%"
+          "bans": 31,
+          "ban_rate": "3.9%",
+          "presence": "6.8%"
         },
         {
           "name": "Aurelion Sol",
@@ -2500,6 +2536,15 @@
           "presence": "4.2%"
         },
         {
+          "name": "Yorick",
+          "picks": 16,
+          "wins": 7,
+          "winrate": "43.8%",
+          "bans": 17,
+          "ban_rate": "2.2%",
+          "presence": "4.2%"
+        },
+        {
           "name": "Vayne",
           "picks": 15,
           "wins": 8,
@@ -2509,22 +2554,13 @@
           "presence": "6.5%"
         },
         {
-          "name": "Yorick",
-          "picks": 15,
-          "wins": 7,
-          "winrate": "46.7%",
-          "bans": 17,
-          "ban_rate": "2.2%",
-          "presence": "4.1%"
-        },
-        {
           "name": "Malphite",
           "picks": 14,
           "wins": 8,
           "winrate": "57.1%",
           "bans": 68,
           "ban_rate": "8.7%",
-          "presence": "10.5%"
+          "presence": "10.4%"
         },
         {
           "name": "Amumu",
@@ -2560,7 +2596,16 @@
           "winrate": "41.7%",
           "bans": 8,
           "ban_rate": "1.0%",
-          "presence": "2.6%"
+          "presence": "2.5%"
+        },
+        {
+          "name": "Shen",
+          "picks": 11,
+          "wins": 8,
+          "winrate": "72.7%",
+          "bans": 8,
+          "ban_rate": "1.0%",
+          "presence": "2.4%"
         },
         {
           "name": "Mel",
@@ -2579,15 +2624,6 @@
           "bans": 10,
           "ban_rate": "1.3%",
           "presence": "2.7%"
-        },
-        {
-          "name": "Shen",
-          "picks": 10,
-          "wins": 7,
-          "winrate": "70.0%",
-          "bans": 8,
-          "ban_rate": "1.0%",
-          "presence": "2.3%"
         },
         {
           "name": "Thresh",
@@ -2622,8 +2658,17 @@
           "wins": 5,
           "winrate": "62.5%",
           "bans": 31,
-          "ban_rate": "4.0%",
+          "ban_rate": "3.9%",
           "presence": "5.0%"
+        },
+        {
+          "name": "Shyvana",
+          "picks": 8,
+          "wins": 5,
+          "winrate": "62.5%",
+          "bans": 3,
+          "ban_rate": "0.4%",
+          "presence": "1.4%"
         },
         {
           "name": "Gangplank",
@@ -2642,15 +2687,6 @@
           "bans": 3,
           "ban_rate": "0.4%",
           "presence": "1.4%"
-        },
-        {
-          "name": "Shyvana",
-          "picks": 7,
-          "wins": 5,
-          "winrate": "71.4%",
-          "bans": 3,
-          "ban_rate": "0.4%",
-          "presence": "1.3%"
         },
         {
           "name": "Mordekaiser",
@@ -2686,7 +2722,7 @@
           "winrate": "40.0%",
           "bans": 4,
           "ban_rate": "0.5%",
-          "presence": "1.2%"
+          "presence": "1.1%"
         },
         {
           "name": "Urgot",
@@ -2704,7 +2740,7 @@
           "winrate": "20.0%",
           "bans": 4,
           "ban_rate": "0.5%",
-          "presence": "1.2%"
+          "presence": "1.1%"
         },
         {
           "name": "Lissandra",
@@ -3026,9 +3062,9 @@
         "top": [
           {
             "name": "K'Sante",
-            "picks": 235,
-            "wins": 109,
-            "winrate": "46.4%",
+            "picks": 236,
+            "wins": 110,
+            "winrate": "46.6%",
             "bans": 91,
             "ban_rate": "11.6%",
             "presence": "41.7%"
@@ -3040,14 +3076,14 @@
             "winrate": "48.2%",
             "bans": 148,
             "ban_rate": "18.9%",
-            "presence": "47.8%"
+            "presence": "47.6%"
           },
           {
             "name": "Rumble",
-            "picks": 176,
-            "wins": 84,
-            "winrate": "47.7%",
-            "bans": 287,
+            "picks": 177,
+            "wins": 85,
+            "winrate": "48.0%",
+            "bans": 288,
             "ban_rate": "36.7%",
             "presence": "59.2%"
           },
@@ -3056,18 +3092,18 @@
             "picks": 118,
             "wins": 60,
             "winrate": "50.8%",
-            "bans": 82,
-            "ban_rate": "10.5%",
+            "bans": 83,
+            "ban_rate": "10.6%",
             "presence": "25.6%"
           },
           {
             "name": "Sion",
-            "picks": 86,
+            "picks": 87,
             "wins": 43,
-            "winrate": "50.0%",
+            "winrate": "49.4%",
             "bans": 26,
             "ban_rate": "3.3%",
-            "presence": "14.3%"
+            "presence": "14.4%"
           },
           {
             "name": "Jax",
@@ -3076,7 +3112,7 @@
             "winrate": "63.6%",
             "bans": 97,
             "ban_rate": "12.4%",
-            "presence": "22.3%"
+            "presence": "22.2%"
           },
           {
             "name": "Aatrox",
@@ -3085,25 +3121,25 @@
             "winrate": "42.5%",
             "bans": 51,
             "ban_rate": "6.5%",
-            "presence": "15.9%"
+            "presence": "15.8%"
           },
           {
             "name": "Ambessa",
             "picks": 51,
             "wins": 33,
             "winrate": "64.7%",
-            "bans": 83,
-            "ban_rate": "10.6%",
-            "presence": "17.1%"
+            "bans": 84,
+            "ban_rate": "10.7%",
+            "presence": "17.2%"
           },
           {
             "name": "Jayce",
             "picks": 41,
             "wins": 20,
             "winrate": "48.8%",
-            "bans": 157,
+            "bans": 158,
             "ban_rate": "20.1%",
-            "presence": "25.3%"
+            "presence": "25.4%"
           },
           {
             "name": "Olaf",
@@ -3112,7 +3148,7 @@
             "winrate": "41.5%",
             "bans": 76,
             "ban_rate": "9.7%",
-            "presence": "15.0%"
+            "presence": "14.9%"
           },
           {
             "name": "Udyr",
@@ -3120,17 +3156,17 @@
             "wins": 23,
             "winrate": "57.5%",
             "bans": 31,
-            "ban_rate": "4.0%",
-            "presence": "9.1%"
+            "ban_rate": "3.9%",
+            "presence": "9.0%"
           },
           {
             "name": "Ornn",
             "picks": 39,
             "wins": 24,
             "winrate": "61.5%",
-            "bans": 16,
-            "ban_rate": "2.0%",
-            "presence": "7.0%"
+            "bans": 17,
+            "ban_rate": "2.2%",
+            "presence": "7.1%"
           },
           {
             "name": "Gwen",
@@ -3138,7 +3174,7 @@
             "wins": 16,
             "winrate": "53.3%",
             "bans": 67,
-            "ban_rate": "8.6%",
+            "ban_rate": "8.5%",
             "presence": "12.4%"
           },
           {
@@ -3166,16 +3202,16 @@
             "winrate": "59.3%",
             "bans": 77,
             "ban_rate": "9.8%",
-            "presence": "13.3%"
+            "presence": "13.2%"
           },
           {
             "name": "Gragas",
-            "picks": 23,
+            "picks": 24,
             "wins": 12,
-            "winrate": "52.2%",
+            "winrate": "50.0%",
             "bans": 9,
-            "ban_rate": "1.2%",
-            "presence": "4.1%"
+            "ban_rate": "1.1%",
+            "presence": "4.2%"
           },
           {
             "name": "Rek'Sai",
@@ -3184,7 +3220,7 @@
             "winrate": "47.8%",
             "bans": 8,
             "ban_rate": "1.0%",
-            "presence": "4.0%"
+            "presence": "3.9%"
           },
           {
             "name": "Camille",
@@ -3200,9 +3236,9 @@
             "picks": 18,
             "wins": 5,
             "winrate": "27.8%",
-            "bans": 84,
-            "ban_rate": "10.7%",
-            "presence": "13.0%"
+            "bans": 85,
+            "ban_rate": "10.8%",
+            "presence": "13.1%"
           },
           {
             "name": "Aurora",
@@ -3215,12 +3251,12 @@
           },
           {
             "name": "Yorick",
-            "picks": 15,
+            "picks": 16,
             "wins": 7,
-            "winrate": "46.7%",
+            "winrate": "43.8%",
             "bans": 17,
             "ban_rate": "2.2%",
-            "presence": "4.1%"
+            "presence": "4.2%"
           },
           {
             "name": "Zaahen",
@@ -3245,9 +3281,9 @@
             "picks": 10,
             "wins": 7,
             "winrate": "70.0%",
-            "bans": 61,
-            "ban_rate": "7.8%",
-            "presence": "9.1%"
+            "bans": 62,
+            "ban_rate": "7.9%",
+            "presence": "9.2%"
           },
           {
             "name": "Zac",
@@ -3264,7 +3300,7 @@
             "wins": 5,
             "winrate": "62.5%",
             "bans": 31,
-            "ban_rate": "4.0%",
+            "ban_rate": "3.9%",
             "presence": "5.0%"
           },
           {
@@ -3275,6 +3311,15 @@
             "bans": 3,
             "ban_rate": "0.4%",
             "presence": "1.4%"
+          },
+          {
+            "name": "Shen",
+            "picks": 7,
+            "wins": 5,
+            "winrate": "71.4%",
+            "bans": 8,
+            "ban_rate": "1.0%",
+            "presence": "1.9%"
           },
           {
             "name": "Mordekaiser",
@@ -3304,22 +3349,13 @@
             "presence": "5.9%"
           },
           {
-            "name": "Shen",
-            "picks": 6,
-            "wins": 4,
-            "winrate": "66.7%",
-            "bans": 8,
-            "ban_rate": "1.0%",
-            "presence": "1.8%"
-          },
-          {
             "name": "Galio",
             "picks": 6,
             "wins": 3,
             "winrate": "50.0%",
             "bans": 14,
             "ban_rate": "1.8%",
-            "presence": "2.6%"
+            "presence": "2.5%"
           },
           {
             "name": "Urgot",
@@ -3336,8 +3372,8 @@
             "wins": 2,
             "winrate": "50.0%",
             "bans": 338,
-            "ban_rate": "43.2%",
-            "presence": "43.7%"
+            "ban_rate": "43.1%",
+            "presence": "43.6%"
           },
           {
             "name": "Malphite",
@@ -3353,9 +3389,9 @@
             "picks": 3,
             "wins": 2,
             "winrate": "66.7%",
-            "bans": 33,
-            "ban_rate": "4.2%",
-            "presence": "4.6%"
+            "bans": 34,
+            "ban_rate": "4.3%",
+            "presence": "4.7%"
           },
           {
             "name": "Nasus",
@@ -3382,7 +3418,7 @@
             "winrate": "50.0%",
             "bans": 123,
             "ban_rate": "15.7%",
-            "presence": "16.0%"
+            "presence": "15.9%"
           },
           {
             "name": "Pantheon",
@@ -3390,7 +3426,7 @@
             "wins": 1,
             "winrate": "50.0%",
             "bans": 114,
-            "ban_rate": "14.6%",
+            "ban_rate": "14.5%",
             "presence": "14.8%"
           },
           {
@@ -3427,7 +3463,7 @@
             "winrate": "100.0%",
             "bans": 130,
             "ban_rate": "16.6%",
-            "presence": "16.8%"
+            "presence": "16.7%"
           },
           {
             "name": "Riven",
@@ -3461,7 +3497,7 @@
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 229,
+            "bans": 230,
             "ban_rate": "29.3%",
             "presence": "29.4%"
           },
@@ -3470,18 +3506,18 @@
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 67,
-            "ban_rate": "8.6%",
-            "presence": "8.7%"
+            "bans": 68,
+            "ban_rate": "8.7%",
+            "presence": "8.8%"
           },
           {
             "name": "Lee Sin",
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 56,
-            "ban_rate": "7.2%",
-            "presence": "7.3%"
+            "bans": 59,
+            "ban_rate": "7.5%",
+            "presence": "7.6%"
           },
           {
             "name": "Yasuo",
@@ -3526,15 +3562,15 @@
             "picks": 158,
             "wins": 74,
             "winrate": "46.8%",
-            "bans": 251,
+            "bans": 252,
             "ban_rate": "32.1%",
-            "presence": "52.3%"
+            "presence": "52.2%"
           },
           {
             "name": "Xin Zhao",
-            "picks": 153,
-            "wins": 57,
-            "winrate": "37.3%",
+            "picks": 154,
+            "wins": 58,
+            "winrate": "37.7%",
             "bans": 86,
             "ban_rate": "11.0%",
             "presence": "30.6%"
@@ -3546,7 +3582,7 @@
             "winrate": "51.2%",
             "bans": 130,
             "ban_rate": "16.6%",
-            "presence": "33.1%"
+            "presence": "33.0%"
           },
           {
             "name": "Maokai",
@@ -3554,35 +3590,35 @@
             "wins": 60,
             "winrate": "51.7%",
             "bans": 164,
-            "ban_rate": "21.0%",
-            "presence": "35.8%"
+            "ban_rate": "20.9%",
+            "presence": "35.7%"
           },
           {
             "name": "Jarvan IV",
-            "picks": 104,
+            "picks": 105,
             "wins": 51,
-            "winrate": "49.0%",
-            "bans": 144,
-            "ban_rate": "18.4%",
-            "presence": "31.7%"
+            "winrate": "48.6%",
+            "bans": 145,
+            "ban_rate": "18.5%",
+            "presence": "31.8%"
           },
           {
             "name": "Nocturne",
-            "picks": 83,
-            "wins": 37,
-            "winrate": "44.6%",
-            "bans": 204,
-            "ban_rate": "26.1%",
-            "presence": "36.7%"
+            "picks": 84,
+            "wins": 38,
+            "winrate": "45.2%",
+            "bans": 206,
+            "ban_rate": "26.2%",
+            "presence": "36.9%"
           },
           {
             "name": "Lee Sin",
             "picks": 73,
             "wins": 36,
             "winrate": "49.3%",
-            "bans": 56,
-            "ban_rate": "7.2%",
-            "presence": "16.5%"
+            "bans": 59,
+            "ban_rate": "7.5%",
+            "presence": "16.8%"
           },
           {
             "name": "Pantheon",
@@ -3590,17 +3626,17 @@
             "wins": 37,
             "winrate": "56.1%",
             "bans": 114,
-            "ban_rate": "14.6%",
-            "presence": "23.0%"
+            "ban_rate": "14.5%",
+            "presence": "22.9%"
           },
           {
             "name": "Wukong",
-            "picks": 61,
-            "wins": 27,
-            "winrate": "44.3%",
+            "picks": 62,
+            "wins": 28,
+            "winrate": "45.2%",
             "bans": 28,
             "ban_rate": "3.6%",
-            "presence": "11.4%"
+            "presence": "11.5%"
           },
           {
             "name": "Rell",
@@ -3609,7 +3645,7 @@
             "winrate": "53.1%",
             "bans": 65,
             "ban_rate": "8.3%",
-            "presence": "14.6%"
+            "presence": "14.5%"
           },
           {
             "name": "Lillia",
@@ -3635,8 +3671,8 @@
             "wins": 19,
             "winrate": "51.4%",
             "bans": 70,
-            "ban_rate": "9.0%",
-            "presence": "13.7%"
+            "ban_rate": "8.9%",
+            "presence": "13.6%"
           },
           {
             "name": "Zyra",
@@ -3654,7 +3690,7 @@
             "winrate": "50.0%",
             "bans": 51,
             "ban_rate": "6.5%",
-            "presence": "10.9%"
+            "presence": "10.8%"
           },
           {
             "name": "Viego",
@@ -3676,12 +3712,12 @@
           },
           {
             "name": "Trundle",
-            "picks": 28,
+            "picks": 29,
             "wins": 16,
-            "winrate": "57.1%",
+            "winrate": "55.2%",
             "bans": 25,
             "ban_rate": "3.2%",
-            "presence": "6.8%"
+            "presence": "6.9%"
           },
           {
             "name": "Nidalee",
@@ -3689,7 +3725,7 @@
             "wins": 15,
             "winrate": "53.6%",
             "bans": 49,
-            "ban_rate": "6.3%",
+            "ban_rate": "6.2%",
             "presence": "9.8%"
           },
           {
@@ -3697,9 +3733,9 @@
             "picks": 24,
             "wins": 14,
             "winrate": "58.3%",
-            "bans": 84,
-            "ban_rate": "10.7%",
-            "presence": "13.8%"
+            "bans": 85,
+            "ban_rate": "10.8%",
+            "presence": "13.9%"
           },
           {
             "name": "Volibear",
@@ -3715,9 +3751,9 @@
             "picks": 22,
             "wins": 16,
             "winrate": "72.7%",
-            "bans": 28,
-            "ban_rate": "3.6%",
-            "presence": "6.4%"
+            "bans": 31,
+            "ban_rate": "3.9%",
+            "presence": "6.8%"
           },
           {
             "name": "Zaahen",
@@ -3726,7 +3762,7 @@
             "winrate": "58.8%",
             "bans": 10,
             "ban_rate": "1.3%",
-            "presence": "3.5%"
+            "presence": "3.4%"
           },
           {
             "name": "Dr. Mundo",
@@ -3742,9 +3778,9 @@
             "picks": 15,
             "wins": 8,
             "winrate": "53.3%",
-            "bans": 83,
-            "ban_rate": "10.6%",
-            "presence": "12.5%"
+            "bans": 84,
+            "ban_rate": "10.7%",
+            "presence": "12.6%"
           },
           {
             "name": "Amumu",
@@ -3770,7 +3806,7 @@
             "wins": 7,
             "winrate": "53.8%",
             "bans": 113,
-            "ban_rate": "14.5%",
+            "ban_rate": "14.4%",
             "presence": "16.1%"
           },
           {
@@ -3780,7 +3816,7 @@
             "winrate": "41.7%",
             "bans": 8,
             "ban_rate": "1.0%",
-            "presence": "2.6%"
+            "presence": "2.5%"
           },
           {
             "name": "Jax",
@@ -3789,7 +3825,7 @@
             "winrate": "70.0%",
             "bans": 97,
             "ban_rate": "12.4%",
-            "presence": "13.7%"
+            "presence": "13.6%"
           },
           {
             "name": "Malphite",
@@ -3798,14 +3834,14 @@
             "winrate": "60.0%",
             "bans": 68,
             "ban_rate": "8.7%",
-            "presence": "10.0%"
+            "presence": "9.9%"
           },
           {
             "name": "Jayce",
             "picks": 10,
             "wins": 4,
             "winrate": "40.0%",
-            "bans": 157,
+            "bans": 158,
             "ban_rate": "20.1%",
             "presence": "21.4%"
           },
@@ -3819,6 +3855,15 @@
             "presence": "2.2%"
           },
           {
+            "name": "Shyvana",
+            "picks": 8,
+            "wins": 5,
+            "winrate": "62.5%",
+            "bans": 3,
+            "ban_rate": "0.4%",
+            "presence": "1.4%"
+          },
+          {
             "name": "Kindred",
             "picks": 8,
             "wins": 2,
@@ -3826,15 +3871,6 @@
             "bans": 3,
             "ban_rate": "0.4%",
             "presence": "1.4%"
-          },
-          {
-            "name": "Shyvana",
-            "picks": 7,
-            "wins": 5,
-            "winrate": "71.4%",
-            "bans": 3,
-            "ban_rate": "0.4%",
-            "presence": "1.3%"
           },
           {
             "name": "Shen",
@@ -3904,9 +3940,9 @@
             "picks": 2,
             "wins": 1,
             "winrate": "50.0%",
-            "bans": 16,
-            "ban_rate": "2.0%",
-            "presence": "2.3%"
+            "bans": 17,
+            "ban_rate": "2.2%",
+            "presence": "2.4%"
           },
           {
             "name": "Bel'Veth",
@@ -3922,9 +3958,9 @@
             "picks": 1,
             "wins": 1,
             "winrate": "100.0%",
-            "bans": 33,
-            "ban_rate": "4.2%",
-            "presence": "4.3%"
+            "bans": 34,
+            "ban_rate": "4.3%",
+            "presence": "4.5%"
           },
           {
             "name": "Gragas",
@@ -3932,7 +3968,7 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 9,
-            "ban_rate": "1.2%",
+            "ban_rate": "1.1%",
             "presence": "1.3%"
           },
           {
@@ -3967,7 +4003,7 @@
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 287,
+            "bans": 288,
             "ban_rate": "36.7%",
             "presence": "36.8%"
           },
@@ -3976,9 +4012,9 @@
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 82,
-            "ban_rate": "10.5%",
-            "presence": "10.6%"
+            "bans": 83,
+            "ban_rate": "10.6%",
+            "presence": "10.7%"
           },
           {
             "name": "Gwen",
@@ -3986,7 +4022,7 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 67,
-            "ban_rate": "8.6%",
+            "ban_rate": "8.5%",
             "presence": "8.7%"
           },
           {
@@ -4006,8 +4042,8 @@
             "wins": 85,
             "winrate": "53.8%",
             "bans": 113,
-            "ban_rate": "14.5%",
-            "presence": "34.7%"
+            "ban_rate": "14.4%",
+            "presence": "34.5%"
           },
           {
             "name": "Azir",
@@ -4015,17 +4051,17 @@
             "wins": 70,
             "winrate": "45.5%",
             "bans": 124,
-            "ban_rate": "15.9%",
-            "presence": "35.5%"
+            "ban_rate": "15.8%",
+            "presence": "35.4%"
           },
           {
             "name": "Orianna",
-            "picks": 135,
+            "picks": 136,
             "wins": 72,
-            "winrate": "53.3%",
+            "winrate": "52.9%",
             "bans": 311,
-            "ban_rate": "39.8%",
-            "presence": "57.0%"
+            "ban_rate": "39.6%",
+            "presence": "56.9%"
           },
           {
             "name": "Corki",
@@ -4033,26 +4069,26 @@
             "wins": 67,
             "winrate": "51.1%",
             "bans": 99,
-            "ban_rate": "12.7%",
-            "presence": "29.4%"
+            "ban_rate": "12.6%",
+            "presence": "29.3%"
           },
           {
             "name": "Ryze",
             "picks": 95,
             "wins": 48,
             "winrate": "50.5%",
-            "bans": 67,
-            "ban_rate": "8.6%",
-            "presence": "20.7%"
+            "bans": 68,
+            "ban_rate": "8.7%",
+            "presence": "20.8%"
           },
           {
             "name": "Ahri",
             "picks": 94,
             "wins": 48,
             "winrate": "51.1%",
-            "bans": 57,
-            "ban_rate": "7.3%",
-            "presence": "19.3%"
+            "bans": 58,
+            "ban_rate": "7.4%",
+            "presence": "19.4%"
           },
           {
             "name": "Hwei",
@@ -4061,7 +4097,7 @@
             "winrate": "46.2%",
             "bans": 30,
             "ban_rate": "3.8%",
-            "presence": "14.1%"
+            "presence": "14.0%"
           },
           {
             "name": "Tristana",
@@ -4070,15 +4106,15 @@
             "winrate": "45.5%",
             "bans": 120,
             "ban_rate": "15.3%",
-            "presence": "23.8%"
+            "presence": "23.7%"
           },
           {
             "name": "Yone",
             "picks": 53,
             "wins": 28,
             "winrate": "52.8%",
-            "bans": 61,
-            "ban_rate": "7.8%",
+            "bans": 62,
+            "ban_rate": "7.9%",
             "presence": "14.6%"
           },
           {
@@ -4088,7 +4124,7 @@
             "winrate": "48.1%",
             "bans": 52,
             "ban_rate": "6.6%",
-            "presence": "13.3%"
+            "presence": "13.2%"
           },
           {
             "name": "Annie",
@@ -4101,48 +4137,57 @@
           },
           {
             "name": "Viktor",
-            "picks": 42,
+            "picks": 43,
             "wins": 20,
-            "winrate": "47.6%",
+            "winrate": "46.5%",
             "bans": 18,
             "ban_rate": "2.3%",
-            "presence": "7.7%"
+            "presence": "7.8%"
           },
           {
             "name": "Akali",
-            "picks": 39,
-            "wins": 19,
-            "winrate": "48.7%",
+            "picks": 40,
+            "wins": 20,
+            "winrate": "50.0%",
             "bans": 123,
             "ban_rate": "15.7%",
-            "presence": "20.7%"
+            "presence": "20.8%"
           },
           {
             "name": "Cassiopeia",
-            "picks": 35,
+            "picks": 36,
             "wins": 20,
-            "winrate": "57.1%",
+            "winrate": "55.6%",
             "bans": 47,
             "ban_rate": "6.0%",
-            "presence": "10.5%"
+            "presence": "10.6%"
           },
           {
             "name": "Karma",
             "picks": 29,
             "wins": 12,
             "winrate": "41.4%",
-            "bans": 225,
-            "ban_rate": "28.8%",
-            "presence": "32.5%"
+            "bans": 227,
+            "ban_rate": "28.9%",
+            "presence": "32.6%"
           },
           {
             "name": "Galio",
-            "picks": 26,
-            "wins": 15,
-            "winrate": "57.7%",
+            "picks": 27,
+            "wins": 16,
+            "winrate": "59.3%",
             "bans": 14,
             "ban_rate": "1.8%",
-            "presence": "5.1%"
+            "presence": "5.2%"
+          },
+          {
+            "name": "LeBlanc",
+            "picks": 27,
+            "wins": 11,
+            "winrate": "40.7%",
+            "bans": 70,
+            "ban_rate": "8.9%",
+            "presence": "12.4%"
           },
           {
             "name": "Lucian",
@@ -4150,17 +4195,8 @@
             "wins": 10,
             "winrate": "38.5%",
             "bans": 176,
-            "ban_rate": "22.5%",
-            "presence": "25.8%"
-          },
-          {
-            "name": "LeBlanc",
-            "picks": 26,
-            "wins": 10,
-            "winrate": "38.5%",
-            "bans": 70,
-            "ban_rate": "9.0%",
-            "presence": "12.3%"
+            "ban_rate": "22.4%",
+            "presence": "25.7%"
           },
           {
             "name": "Zeri",
@@ -4178,16 +4214,16 @@
             "winrate": "50.0%",
             "bans": 32,
             "ban_rate": "4.1%",
-            "presence": "7.2%"
+            "presence": "7.1%"
           },
           {
             "name": "Sylas",
             "picks": 22,
             "wins": 12,
             "winrate": "54.5%",
-            "bans": 33,
-            "ban_rate": "4.2%",
-            "presence": "7.0%"
+            "bans": 34,
+            "ban_rate": "4.3%",
+            "presence": "7.1%"
           },
           {
             "name": "Anivia",
@@ -4205,7 +4241,7 @@
             "winrate": "55.0%",
             "bans": 91,
             "ban_rate": "11.6%",
-            "presence": "14.2%"
+            "presence": "14.1%"
           },
           {
             "name": "Aurelion Sol",
@@ -4221,9 +4257,9 @@
             "picks": 19,
             "wins": 13,
             "winrate": "68.4%",
-            "bans": 103,
+            "bans": 104,
             "ban_rate": "13.2%",
-            "presence": "15.6%"
+            "presence": "15.7%"
           },
           {
             "name": "Neeko",
@@ -4231,8 +4267,8 @@
             "wins": 10,
             "winrate": "55.6%",
             "bans": 110,
-            "ban_rate": "14.1%",
-            "presence": "16.4%"
+            "ban_rate": "14.0%",
+            "presence": "16.3%"
           },
           {
             "name": "Zoe",
@@ -4250,7 +4286,7 @@
             "winrate": "56.2%",
             "bans": 138,
             "ban_rate": "17.6%",
-            "presence": "19.7%"
+            "presence": "19.6%"
           },
           {
             "name": "Smolder",
@@ -4266,7 +4302,7 @@
             "picks": 11,
             "wins": 6,
             "winrate": "54.5%",
-            "bans": 157,
+            "bans": 158,
             "ban_rate": "20.1%",
             "presence": "21.5%"
           },
@@ -4366,8 +4402,8 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 338,
-            "ban_rate": "43.2%",
-            "presence": "43.4%"
+            "ban_rate": "43.1%",
+            "presence": "43.2%"
           },
           {
             "name": "Aatrox",
@@ -4384,7 +4420,7 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 9,
-            "ban_rate": "1.2%",
+            "ban_rate": "1.1%",
             "presence": "1.3%"
           },
           {
@@ -4463,21 +4499,21 @@
         "bot": [
           {
             "name": "Ezreal",
-            "picks": 158,
-            "wins": 79,
-            "winrate": "50.0%",
+            "picks": 159,
+            "wins": 80,
+            "winrate": "50.3%",
             "bans": 138,
             "ban_rate": "17.6%",
-            "presence": "37.9%"
+            "presence": "37.8%"
           },
           {
             "name": "Varus",
-            "picks": 151,
+            "picks": 152,
             "wins": 82,
-            "winrate": "54.3%",
+            "winrate": "53.9%",
             "bans": 338,
-            "ban_rate": "43.2%",
-            "presence": "62.5%"
+            "ban_rate": "43.1%",
+            "presence": "62.4%"
           },
           {
             "name": "Ashe",
@@ -4485,8 +4521,8 @@
             "wins": 54,
             "winrate": "47.0%",
             "bans": 238,
-            "ban_rate": "30.4%",
-            "presence": "45.1%"
+            "ban_rate": "30.3%",
+            "presence": "45.0%"
           },
           {
             "name": "Kai'Sa",
@@ -4495,7 +4531,7 @@
             "winrate": "43.6%",
             "bans": 55,
             "ban_rate": "7.0%",
-            "presence": "21.1%"
+            "presence": "21.0%"
           },
           {
             "name": "Jhin",
@@ -4504,7 +4540,7 @@
             "winrate": "49.0%",
             "bans": 34,
             "ban_rate": "4.3%",
-            "presence": "17.4%"
+            "presence": "17.3%"
           },
           {
             "name": "Kalista",
@@ -4512,8 +4548,8 @@
             "wins": 45,
             "winrate": "45.0%",
             "bans": 204,
-            "ban_rate": "26.1%",
-            "presence": "38.9%"
+            "ban_rate": "26.0%",
+            "presence": "38.7%"
           },
           {
             "name": "Lucian",
@@ -4521,8 +4557,8 @@
             "wins": 50,
             "winrate": "51.0%",
             "bans": 176,
-            "ban_rate": "22.5%",
-            "presence": "35.0%"
+            "ban_rate": "22.4%",
+            "presence": "34.9%"
           },
           {
             "name": "Zeri",
@@ -4535,47 +4571,47 @@
           },
           {
             "name": "Corki",
-            "picks": 81,
+            "picks": 82,
             "wins": 39,
-            "winrate": "48.1%",
+            "winrate": "47.6%",
             "bans": 99,
-            "ban_rate": "12.7%",
-            "presence": "23.0%"
+            "ban_rate": "12.6%",
+            "presence": "23.1%"
           },
           {
             "name": "Miss Fortune",
             "picks": 71,
             "wins": 33,
             "winrate": "46.5%",
-            "bans": 38,
-            "ban_rate": "4.9%",
-            "presence": "13.9%"
+            "bans": 39,
+            "ban_rate": "5.0%",
+            "presence": "14.0%"
           },
           {
             "name": "Xayah",
-            "picks": 69,
+            "picks": 70,
             "wins": 48,
-            "winrate": "69.6%",
+            "winrate": "68.6%",
             "bans": 37,
             "ban_rate": "4.7%",
             "presence": "13.6%"
           },
           {
             "name": "Senna",
-            "picks": 69,
-            "wins": 42,
-            "winrate": "60.9%",
+            "picks": 70,
+            "wins": 43,
+            "winrate": "61.4%",
             "bans": 147,
-            "ban_rate": "18.8%",
+            "ban_rate": "18.7%",
             "presence": "27.6%"
           },
           {
             "name": "Yunara",
-            "picks": 68,
-            "wins": 31,
-            "winrate": "45.6%",
+            "picks": 69,
+            "wins": 32,
+            "winrate": "46.4%",
             "bans": 20,
-            "ban_rate": "2.6%",
+            "ban_rate": "2.5%",
             "presence": "11.3%"
           },
           {
@@ -4585,7 +4621,7 @@
             "winrate": "59.3%",
             "bans": 46,
             "ban_rate": "5.9%",
-            "presence": "12.8%"
+            "presence": "12.7%"
           },
           {
             "name": "Aphelios",
@@ -4603,7 +4639,7 @@
             "winrate": "51.1%",
             "bans": 25,
             "ban_rate": "3.2%",
-            "presence": "9.0%"
+            "presence": "8.9%"
           },
           {
             "name": "Smolder",
@@ -4619,7 +4655,7 @@
             "picks": 28,
             "wins": 11,
             "winrate": "39.3%",
-            "bans": 103,
+            "bans": 104,
             "ban_rate": "13.2%",
             "presence": "16.8%"
           },
@@ -4639,7 +4675,7 @@
             "winrate": "20.0%",
             "bans": 10,
             "ban_rate": "1.3%",
-            "presence": "2.6%"
+            "presence": "2.5%"
           },
           {
             "name": "Tristana",
@@ -4648,16 +4684,16 @@
             "winrate": "100.0%",
             "bans": 120,
             "ban_rate": "15.3%",
-            "presence": "16.0%"
+            "presence": "15.9%"
           },
           {
             "name": "Seraphine",
             "picks": 5,
             "wins": 2,
             "winrate": "40.0%",
-            "bans": 73,
-            "ban_rate": "9.3%",
-            "presence": "10.0%"
+            "bans": 74,
+            "ban_rate": "9.4%",
+            "presence": "10.1%"
           },
           {
             "name": "Mel",
@@ -4709,9 +4745,9 @@
             "picks": 2,
             "wins": 1,
             "winrate": "50.0%",
-            "bans": 16,
-            "ban_rate": "2.0%",
-            "presence": "2.3%"
+            "bans": 17,
+            "ban_rate": "2.2%",
+            "presence": "2.4%"
           },
           {
             "name": "Twitch",
@@ -4729,7 +4765,7 @@
             "winrate": "0.0%",
             "bans": 91,
             "ban_rate": "11.6%",
-            "presence": "11.8%"
+            "presence": "11.7%"
           },
           {
             "name": "Udyr",
@@ -4737,37 +4773,37 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 31,
-            "ban_rate": "4.0%",
+            "ban_rate": "3.9%",
             "presence": "4.1%"
           }
         ],
         "sup": [
           {
             "name": "Nautilus",
-            "picks": 217,
-            "wins": 105,
-            "winrate": "48.4%",
-            "bans": 229,
+            "picks": 218,
+            "wins": 106,
+            "winrate": "48.6%",
+            "bans": 230,
             "ban_rate": "29.3%",
-            "presence": "57.0%"
+            "presence": "57.1%"
           },
           {
             "name": "Rell",
-            "picks": 163,
+            "picks": 164,
             "wins": 74,
-            "winrate": "45.4%",
+            "winrate": "45.1%",
             "bans": 65,
             "ban_rate": "8.3%",
             "presence": "29.2%"
           },
           {
             "name": "Rakan",
-            "picks": 144,
+            "picks": 145,
             "wins": 92,
-            "winrate": "63.9%",
-            "bans": 82,
-            "ban_rate": "10.5%",
-            "presence": "28.9%"
+            "winrate": "63.4%",
+            "bans": 84,
+            "ban_rate": "10.7%",
+            "presence": "29.2%"
           },
           {
             "name": "Leona",
@@ -4776,13 +4812,13 @@
             "winrate": "43.5%",
             "bans": 59,
             "ban_rate": "7.5%",
-            "presence": "25.2%"
+            "presence": "25.1%"
           },
           {
             "name": "Alistar",
-            "picks": 117,
-            "wins": 61,
-            "winrate": "52.1%",
+            "picks": 118,
+            "wins": 62,
+            "winrate": "52.5%",
             "bans": 47,
             "ban_rate": "6.0%",
             "presence": "21.0%"
@@ -4794,34 +4830,34 @@
             "winrate": "51.8%",
             "bans": 23,
             "ban_rate": "2.9%",
-            "presence": "17.0%"
+            "presence": "16.9%"
           },
           {
             "name": "Bard",
             "picks": 101,
             "wins": 63,
             "winrate": "62.4%",
-            "bans": 99,
-            "ban_rate": "12.7%",
-            "presence": "25.6%"
+            "bans": 101,
+            "ban_rate": "12.9%",
+            "presence": "25.7%"
           },
           {
             "name": "Neeko",
-            "picks": 74,
+            "picks": 75,
             "wins": 37,
-            "winrate": "50.0%",
+            "winrate": "49.3%",
             "bans": 110,
-            "ban_rate": "14.1%",
-            "presence": "23.5%"
+            "ban_rate": "14.0%",
+            "presence": "23.6%"
           },
           {
             "name": "Lulu",
-            "picks": 72,
-            "wins": 28,
-            "winrate": "38.9%",
+            "picks": 73,
+            "wins": 29,
+            "winrate": "39.7%",
             "bans": 46,
             "ban_rate": "5.9%",
-            "presence": "15.1%"
+            "presence": "15.2%"
           },
           {
             "name": "Milio",
@@ -4837,9 +4873,9 @@
             "picks": 54,
             "wins": 28,
             "winrate": "51.9%",
-            "bans": 73,
-            "ban_rate": "9.3%",
-            "presence": "16.2%"
+            "bans": 74,
+            "ban_rate": "9.4%",
+            "presence": "16.3%"
           },
           {
             "name": "Braum",
@@ -4848,7 +4884,7 @@
             "winrate": "54.0%",
             "bans": 50,
             "ban_rate": "6.4%",
-            "presence": "12.8%"
+            "presence": "12.7%"
           },
           {
             "name": "Renata Glasc",
@@ -4857,16 +4893,16 @@
             "winrate": "44.7%",
             "bans": 52,
             "ban_rate": "6.6%",
-            "presence": "12.7%"
+            "presence": "12.6%"
           },
           {
             "name": "Karma",
             "picks": 46,
             "wins": 22,
             "winrate": "47.8%",
-            "bans": 225,
-            "ban_rate": "28.8%",
-            "presence": "34.7%"
+            "bans": 227,
+            "ban_rate": "28.9%",
+            "presence": "34.8%"
           },
           {
             "name": "Tahm Kench",
@@ -4874,7 +4910,7 @@
             "wins": 16,
             "winrate": "53.3%",
             "bans": 9,
-            "ban_rate": "1.2%",
+            "ban_rate": "1.1%",
             "presence": "5.0%"
           },
           {
@@ -4883,8 +4919,8 @@
             "wins": 13,
             "winrate": "50.0%",
             "bans": 238,
-            "ban_rate": "30.4%",
-            "presence": "33.8%"
+            "ban_rate": "30.3%",
+            "presence": "33.6%"
           },
           {
             "name": "Senna",
@@ -4892,8 +4928,8 @@
             "wins": 9,
             "winrate": "47.4%",
             "bans": 147,
-            "ban_rate": "18.8%",
-            "presence": "21.2%"
+            "ban_rate": "18.7%",
+            "presence": "21.1%"
           },
           {
             "name": "Maokai",
@@ -4901,8 +4937,8 @@
             "wins": 7,
             "winrate": "53.8%",
             "bans": 164,
-            "ban_rate": "21.0%",
-            "presence": "22.6%"
+            "ban_rate": "20.9%",
+            "presence": "22.5%"
           },
           {
             "name": "Anivia",
@@ -4936,18 +4972,18 @@
             "picks": 8,
             "wins": 3,
             "winrate": "37.5%",
-            "bans": 16,
-            "ban_rate": "2.0%",
-            "presence": "3.1%"
+            "bans": 17,
+            "ban_rate": "2.2%",
+            "presence": "3.2%"
           },
           {
             "name": "Poppy",
             "picks": 7,
             "wins": 5,
             "winrate": "71.4%",
-            "bans": 84,
-            "ban_rate": "10.7%",
-            "presence": "11.6%"
+            "bans": 85,
+            "ban_rate": "10.8%",
+            "presence": "11.7%"
           },
           {
             "name": "Pyke",
@@ -4981,7 +5017,7 @@
             "picks": 3,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 287,
+            "bans": 288,
             "ban_rate": "36.7%",
             "presence": "37.1%"
           },
@@ -5028,7 +5064,7 @@
             "winrate": "100.0%",
             "bans": 77,
             "ban_rate": "9.8%",
-            "presence": "10.0%"
+            "presence": "9.9%"
           },
           {
             "name": "Annie",
@@ -5054,8 +5090,8 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 114,
-            "ban_rate": "14.6%",
-            "presence": "14.7%"
+            "ban_rate": "14.5%",
+            "presence": "14.6%"
           },
           {
             "name": "Hwei",
@@ -5064,7 +5100,7 @@
             "winrate": "0.0%",
             "bans": 30,
             "ban_rate": "3.8%",
-            "presence": "4.0%"
+            "presence": "3.9%"
           },
           {
             "name": "Camille",
@@ -5091,84 +5127,93 @@
             "winrate": "0.0%",
             "bans": 26,
             "ban_rate": "3.3%",
-            "presence": "3.5%"
+            "presence": "3.4%"
           }
         ]
       },
       "data_from": "2024-01-20T16:21:31",
-      "data_through": "2026-06-13T21:59:47",
-      "source_rows": 782
+      "data_through": "2026-06-14T22:24:48",
+      "source_rows": 785
     },
     "16.11": {
       "patch": "16.11",
-      "games": 28,
+      "games": 31,
       "leagues": [
         "CBLOL",
         "LCS"
       ],
       "champions": [
         {
+          "name": "Rumble",
+          "picks": 9,
+          "wins": 5,
+          "winrate": "55.6%",
+          "bans": 7,
+          "ban_rate": "22.6%",
+          "presence": "51.6%"
+        },
+        {
+          "name": "Ezreal",
+          "picks": 9,
+          "wins": 4,
+          "winrate": "44.4%",
+          "bans": 1,
+          "ban_rate": "3.2%",
+          "presence": "32.3%"
+        },
+        {
+          "name": "Sion",
+          "picks": 9,
+          "wins": 2,
+          "winrate": "22.2%",
+          "bans": 1,
+          "ban_rate": "3.2%",
+          "presence": "32.3%"
+        },
+        {
           "name": "Bard",
           "picks": 8,
           "wins": 6,
           "winrate": "75.0%",
-          "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "39.3%"
+          "bans": 5,
+          "ban_rate": "16.1%",
+          "presence": "41.9%"
+        },
+        {
+          "name": "Rakan",
+          "picks": 8,
+          "wins": 6,
+          "winrate": "75.0%",
+          "bans": 2,
+          "ban_rate": "6.5%",
+          "presence": "32.3%"
         },
         {
           "name": "Ryze",
           "picks": 8,
           "wins": 6,
           "winrate": "75.0%",
-          "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "32.1%"
-        },
-        {
-          "name": "Rumble",
-          "picks": 8,
-          "wins": 4,
-          "winrate": "50.0%",
-          "bans": 6,
-          "ban_rate": "21.4%",
-          "presence": "50.0%"
-        },
-        {
-          "name": "Ezreal",
-          "picks": 8,
-          "wins": 3,
-          "winrate": "37.5%",
-          "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "32.1%"
-        },
-        {
-          "name": "Sion",
-          "picks": 8,
-          "wins": 2,
-          "winrate": "25.0%",
-          "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "32.1%"
+          "bans": 2,
+          "ban_rate": "6.5%",
+          "presence": "32.3%"
         },
         {
           "name": "Naafiri",
           "picks": 7,
           "wins": 6,
           "winrate": "85.7%",
-          "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "42.9%"
+          "bans": 8,
+          "ban_rate": "25.8%",
+          "presence": "48.4%"
         },
         {
-          "name": "Rakan",
+          "name": "Viktor",
           "picks": 7,
-          "wins": 6,
-          "winrate": "85.7%",
-          "bans": 0,
-          "ban_rate": "0.0%",
-          "presence": "25.0%"
+          "wins": 5,
+          "winrate": "71.4%",
+          "bans": 2,
+          "ban_rate": "6.5%",
+          "presence": "29.0%"
         },
         {
           "name": "Lucian",
@@ -5176,8 +5221,8 @@
           "wins": 4,
           "winrate": "57.1%",
           "bans": 4,
-          "ban_rate": "14.3%",
-          "presence": "39.3%"
+          "ban_rate": "12.9%",
+          "presence": "35.5%"
         },
         {
           "name": "Renekton",
@@ -5185,8 +5230,8 @@
           "wins": 4,
           "winrate": "57.1%",
           "bans": 2,
-          "ban_rate": "7.1%",
-          "presence": "32.1%"
+          "ban_rate": "6.5%",
+          "presence": "29.0%"
         },
         {
           "name": "Milio",
@@ -5194,71 +5239,107 @@
           "wins": 4,
           "winrate": "57.1%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "28.6%"
+          "ban_rate": "3.2%",
+          "presence": "25.8%"
         },
         {
-          "name": "Viktor",
+          "name": "Nocturne",
+          "picks": 7,
+          "wins": 3,
+          "winrate": "42.9%",
+          "bans": 11,
+          "ban_rate": "35.5%",
+          "presence": "58.1%"
+        },
+        {
+          "name": "Nautilus",
+          "picks": 7,
+          "wins": 3,
+          "winrate": "42.9%",
+          "bans": 7,
+          "ban_rate": "22.6%",
+          "presence": "45.2%"
+        },
+        {
+          "name": "Jarvan IV",
+          "picks": 7,
+          "wins": 2,
+          "winrate": "28.6%",
+          "bans": 10,
+          "ban_rate": "32.3%",
+          "presence": "54.8%"
+        },
+        {
+          "name": "Xayah",
           "picks": 6,
           "wins": 5,
           "winrate": "83.3%",
-          "bans": 2,
-          "ban_rate": "7.1%",
-          "presence": "28.6%"
+          "bans": 0,
+          "ban_rate": "0.0%",
+          "presence": "19.4%"
         },
         {
           "name": "Ornn",
           "picks": 6,
           "wins": 4,
           "winrate": "66.7%",
-          "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "32.1%"
-        },
-        {
-          "name": "Jarvan IV",
-          "picks": 6,
-          "wins": 2,
-          "winrate": "33.3%",
-          "bans": 9,
-          "ban_rate": "32.1%",
-          "presence": "53.6%"
-        },
-        {
-          "name": "Nocturne",
-          "picks": 6,
-          "wins": 2,
-          "winrate": "33.3%",
-          "bans": 9,
-          "ban_rate": "32.1%",
-          "presence": "53.6%"
-        },
-        {
-          "name": "Nautilus",
-          "picks": 6,
-          "wins": 2,
-          "winrate": "33.3%",
-          "bans": 6,
-          "ban_rate": "21.4%",
-          "presence": "42.9%"
-        },
-        {
-          "name": "Xayah",
-          "picks": 5,
-          "wins": 5,
-          "winrate": "100.0%",
-          "bans": 0,
-          "ban_rate": "0.0%",
-          "presence": "17.9%"
+          "bans": 4,
+          "ban_rate": "12.9%",
+          "presence": "32.3%"
         },
         {
           "name": "Orianna",
-          "picks": 5,
+          "picks": 6,
           "wins": 3,
-          "winrate": "60.0%",
+          "winrate": "50.0%",
           "bans": 15,
-          "ban_rate": "53.6%",
-          "presence": "71.4%"
+          "ban_rate": "48.4%",
+          "presence": "67.7%"
+        },
+        {
+          "name": "Neeko",
+          "picks": 6,
+          "wins": 3,
+          "winrate": "50.0%",
+          "bans": 5,
+          "ban_rate": "16.1%",
+          "presence": "35.5%"
+        },
+        {
+          "name": "Senna",
+          "picks": 6,
+          "wins": 3,
+          "winrate": "50.0%",
+          "bans": 2,
+          "ban_rate": "6.5%",
+          "presence": "25.8%"
+        },
+        {
+          "name": "Cassiopeia",
+          "picks": 6,
+          "wins": 2,
+          "winrate": "33.3%",
+          "bans": 12,
+          "ban_rate": "38.7%",
+          "presence": "58.1%"
+        },
+        {
+          "name": "Xin Zhao",
+          "picks": 6,
+          "wins": 2,
+          "winrate": "33.3%",
+          "bans": 3,
+          "ban_rate": "9.7%",
+          "presence": "29.0%"
+        },
+        {
+          "name": "Rell",
+          "picks": 6,
+          "wins": 1,
+          "winrate": "16.7%",
+          "bans": 0,
+          "ban_rate": "0.0%",
+          "presence": "19.4%"
         },
         {
           "name": "Caitlyn",
@@ -5266,35 +5347,26 @@
           "wins": 3,
           "winrate": "60.0%",
           "bans": 8,
-          "ban_rate": "28.6%",
-          "presence": "46.4%"
+          "ban_rate": "25.8%",
+          "presence": "41.9%"
         },
         {
           "name": "Jayce",
           "picks": 5,
           "wins": 3,
           "winrate": "60.0%",
-          "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "35.7%"
+          "bans": 6,
+          "ban_rate": "19.4%",
+          "presence": "35.5%"
         },
         {
-          "name": "Neeko",
+          "name": "K'Sante",
           "picks": 5,
           "wins": 3,
           "winrate": "60.0%",
-          "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "35.7%"
-        },
-        {
-          "name": "Cassiopeia",
-          "picks": 5,
-          "wins": 2,
-          "winrate": "40.0%",
-          "bans": 12,
-          "ban_rate": "42.9%",
-          "presence": "60.7%"
+          "bans": 3,
+          "ban_rate": "9.7%",
+          "presence": "25.8%"
         },
         {
           "name": "Twisted Fate",
@@ -5302,26 +5374,26 @@
           "wins": 2,
           "winrate": "40.0%",
           "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "35.7%"
+          "ban_rate": "16.1%",
+          "presence": "32.3%"
         },
         {
-          "name": "Senna",
+          "name": "Lulu",
           "picks": 5,
           "wins": 2,
           "winrate": "40.0%",
-          "bans": 2,
-          "ban_rate": "7.1%",
-          "presence": "25.0%"
+          "bans": 3,
+          "ban_rate": "9.7%",
+          "presence": "25.8%"
         },
         {
           "name": "Karma",
           "picks": 5,
           "wins": 1,
           "winrate": "20.0%",
-          "bans": 7,
-          "ban_rate": "25.0%",
-          "presence": "42.9%"
+          "bans": 9,
+          "ban_rate": "29.0%",
+          "presence": "45.2%"
         },
         {
           "name": "Annie",
@@ -5329,26 +5401,8 @@
           "wins": 1,
           "winrate": "20.0%",
           "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "35.7%"
-        },
-        {
-          "name": "Xin Zhao",
-          "picks": 5,
-          "wins": 1,
-          "winrate": "20.0%",
-          "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "28.6%"
-        },
-        {
-          "name": "Rell",
-          "picks": 5,
-          "wins": 1,
-          "winrate": "20.0%",
-          "bans": 0,
-          "ban_rate": "0.0%",
-          "presence": "17.9%"
+          "ban_rate": "16.1%",
+          "presence": "32.3%"
         },
         {
           "name": "Jhin",
@@ -5356,8 +5410,17 @@
           "wins": 0,
           "winrate": "0.0%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "21.4%"
+          "ban_rate": "3.2%",
+          "presence": "19.4%"
+        },
+        {
+          "name": "Shen",
+          "picks": 4,
+          "wins": 4,
+          "winrate": "100.0%",
+          "bans": 3,
+          "ban_rate": "9.7%",
+          "presence": "22.6%"
         },
         {
           "name": "Pantheon",
@@ -5365,8 +5428,17 @@
           "wins": 3,
           "winrate": "75.0%",
           "bans": 4,
-          "ban_rate": "14.3%",
-          "presence": "28.6%"
+          "ban_rate": "12.9%",
+          "presence": "25.8%"
+        },
+        {
+          "name": "Alistar",
+          "picks": 4,
+          "wins": 3,
+          "winrate": "75.0%",
+          "bans": 1,
+          "ban_rate": "3.2%",
+          "presence": "16.1%"
         },
         {
           "name": "Aurora",
@@ -5374,17 +5446,26 @@
           "wins": 3,
           "winrate": "75.0%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "17.9%"
+          "ban_rate": "3.2%",
+          "presence": "16.1%"
         },
         {
-          "name": "K'Sante",
+          "name": "Wukong",
+          "picks": 4,
+          "wins": 3,
+          "winrate": "75.0%",
+          "bans": 1,
+          "ban_rate": "3.2%",
+          "presence": "16.1%"
+        },
+        {
+          "name": "Galio",
           "picks": 4,
           "wins": 2,
           "winrate": "50.0%",
-          "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "25.0%"
+          "bans": 4,
+          "ban_rate": "12.9%",
+          "presence": "25.8%"
         },
         {
           "name": "Ashe",
@@ -5393,7 +5474,7 @@
           "winrate": "50.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "14.3%"
+          "presence": "12.9%"
         },
         {
           "name": "Sejuani",
@@ -5402,79 +5483,88 @@
           "winrate": "50.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "14.3%"
+          "presence": "12.9%"
         },
         {
-          "name": "Lulu",
+          "name": "Yunara",
+          "picks": 4,
+          "wins": 2,
+          "winrate": "50.0%",
+          "bans": 0,
+          "ban_rate": "0.0%",
+          "presence": "12.9%"
+        },
+        {
+          "name": "Trundle",
           "picks": 4,
           "wins": 1,
           "winrate": "25.0%",
-          "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "25.0%"
+          "bans": 5,
+          "ban_rate": "16.1%",
+          "presence": "29.0%"
         },
         {
           "name": "Ahri",
           "picks": 4,
           "wins": 1,
           "winrate": "25.0%",
-          "bans": 0,
-          "ban_rate": "0.0%",
-          "presence": "14.3%"
+          "bans": 1,
+          "ban_rate": "3.2%",
+          "presence": "16.1%"
         },
         {
-          "name": "Shen",
+          "name": "Akali",
           "picks": 3,
           "wins": 3,
           "winrate": "100.0%",
-          "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "21.4%"
+          "bans": 11,
+          "ban_rate": "35.5%",
+          "presence": "45.2%"
         },
         {
           "name": "Gnar",
           "picks": 3,
           "wins": 2,
           "winrate": "66.7%",
-          "bans": 6,
-          "ban_rate": "21.4%",
-          "presence": "32.1%"
+          "bans": 7,
+          "ban_rate": "22.6%",
+          "presence": "32.3%"
         },
         {
           "name": "Yone",
           "picks": 3,
           "wins": 2,
           "winrate": "66.7%",
-          "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "28.6%"
-        },
-        {
-          "name": "Alistar",
-          "picks": 3,
-          "wins": 2,
-          "winrate": "66.7%",
-          "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "14.3%"
+          "bans": 6,
+          "ban_rate": "19.4%",
+          "presence": "29.0%"
         },
         {
           "name": "Miss Fortune",
           "picks": 3,
           "wins": 2,
           "winrate": "66.7%",
-          "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "14.3%"
+          "bans": 2,
+          "ban_rate": "6.5%",
+          "presence": "16.1%"
         },
         {
-          "name": "Wukong",
+          "name": "Shyvana",
           "picks": 3,
           "wins": 2,
           "winrate": "66.7%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "14.3%"
+          "ban_rate": "3.2%",
+          "presence": "12.9%"
+        },
+        {
+          "name": "Corki",
+          "picks": 3,
+          "wins": 2,
+          "winrate": "66.7%",
+          "bans": 0,
+          "ban_rate": "0.0%",
+          "presence": "9.7%"
         },
         {
           "name": "Sivir",
@@ -5483,7 +5573,7 @@
           "winrate": "66.7%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "10.7%"
+          "presence": "9.7%"
         },
         {
           "name": "Skarner",
@@ -5492,7 +5582,7 @@
           "winrate": "66.7%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "10.7%"
+          "presence": "9.7%"
         },
         {
           "name": "Zaahen",
@@ -5501,52 +5591,34 @@
           "winrate": "66.7%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "10.7%"
+          "presence": "9.7%"
         },
         {
-          "name": "Seraphine",
+          "name": "Varus",
           "picks": 3,
           "wins": 1,
           "winrate": "33.3%",
-          "bans": 12,
-          "ban_rate": "42.9%",
-          "presence": "53.6%"
+          "bans": 22,
+          "ban_rate": "71.0%",
+          "presence": "80.6%"
         },
         {
           "name": "Lee Sin",
           "picks": 3,
           "wins": 1,
           "winrate": "33.3%",
-          "bans": 11,
-          "ban_rate": "39.3%",
-          "presence": "50.0%"
+          "bans": 14,
+          "ban_rate": "45.2%",
+          "presence": "54.8%"
         },
         {
-          "name": "Trundle",
+          "name": "Seraphine",
           "picks": 3,
           "wins": 1,
           "winrate": "33.3%",
-          "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "28.6%"
-        },
-        {
-          "name": "Galio",
-          "picks": 3,
-          "wins": 1,
-          "winrate": "33.3%",
-          "bans": 4,
-          "ban_rate": "14.3%",
-          "presence": "25.0%"
-        },
-        {
-          "name": "Yunara",
-          "picks": 3,
-          "wins": 1,
-          "winrate": "33.3%",
-          "bans": 0,
-          "ban_rate": "0.0%",
-          "presence": "10.7%"
+          "bans": 13,
+          "ban_rate": "41.9%",
+          "presence": "51.6%"
         },
         {
           "name": "Anivia",
@@ -5554,17 +5626,17 @@
           "wins": 0,
           "winrate": "0.0%",
           "bans": 7,
-          "ban_rate": "25.0%",
-          "presence": "35.7%"
+          "ban_rate": "22.6%",
+          "presence": "32.3%"
         },
         {
           "name": "Vi",
           "picks": 3,
           "wins": 0,
           "winrate": "0.0%",
-          "bans": 4,
-          "ban_rate": "14.3%",
-          "presence": "25.0%"
+          "bans": 5,
+          "ban_rate": "16.1%",
+          "presence": "25.8%"
         },
         {
           "name": "Mel",
@@ -5573,43 +5645,7 @@
           "winrate": "0.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "10.7%"
-        },
-        {
-          "name": "Akali",
-          "picks": 2,
-          "wins": 2,
-          "winrate": "100.0%",
-          "bans": 11,
-          "ban_rate": "39.3%",
-          "presence": "46.4%"
-        },
-        {
-          "name": "Shyvana",
-          "picks": 2,
-          "wins": 2,
-          "winrate": "100.0%",
-          "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "10.7%"
-        },
-        {
-          "name": "Corki",
-          "picks": 2,
-          "wins": 2,
-          "winrate": "100.0%",
-          "bans": 0,
-          "ban_rate": "0.0%",
-          "presence": "7.1%"
-        },
-        {
-          "name": "Varus",
-          "picks": 2,
-          "wins": 1,
-          "winrate": "50.0%",
-          "bans": 22,
-          "ban_rate": "78.6%",
-          "presence": "85.7%"
+          "presence": "9.7%"
         },
         {
           "name": "Kennen",
@@ -5617,8 +5653,8 @@
           "wins": 1,
           "winrate": "50.0%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "10.7%"
+          "ban_rate": "3.2%",
+          "presence": "9.7%"
         },
         {
           "name": "Rek'Sai",
@@ -5627,34 +5663,43 @@
           "winrate": "50.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "7.1%"
+          "presence": "6.5%"
         },
         {
           "name": "Ambessa",
           "picks": 2,
           "wins": 0,
           "winrate": "0.0%",
-          "bans": 6,
-          "ban_rate": "21.4%",
-          "presence": "28.6%"
+          "bans": 7,
+          "ban_rate": "22.6%",
+          "presence": "29.0%"
+        },
+        {
+          "name": "Yorick",
+          "picks": 2,
+          "wins": 0,
+          "winrate": "0.0%",
+          "bans": 5,
+          "ban_rate": "16.1%",
+          "presence": "22.6%"
         },
         {
           "name": "Sylas",
           "picks": 2,
           "wins": 0,
           "winrate": "0.0%",
-          "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "17.9%"
+          "bans": 4,
+          "ban_rate": "12.9%",
+          "presence": "19.4%"
         },
         {
           "name": "Ziggs",
           "picks": 2,
           "wins": 0,
           "winrate": "0.0%",
-          "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "10.7%"
+          "bans": 2,
+          "ban_rate": "6.5%",
+          "presence": "12.9%"
         },
         {
           "name": "Aatrox",
@@ -5662,8 +5707,17 @@
           "wins": 1,
           "winrate": "100.0%",
           "bans": 7,
-          "ban_rate": "25.0%",
-          "presence": "28.6%"
+          "ban_rate": "22.6%",
+          "presence": "25.8%"
+        },
+        {
+          "name": "LeBlanc",
+          "picks": 1,
+          "wins": 1,
+          "winrate": "100.0%",
+          "bans": 4,
+          "ban_rate": "12.9%",
+          "presence": "16.1%"
         },
         {
           "name": "Olaf",
@@ -5671,8 +5725,8 @@
           "wins": 1,
           "winrate": "100.0%",
           "bans": 4,
-          "ban_rate": "14.3%",
-          "presence": "17.9%"
+          "ban_rate": "12.9%",
+          "presence": "16.1%"
         },
         {
           "name": "Nasus",
@@ -5680,8 +5734,8 @@
           "wins": 1,
           "winrate": "100.0%",
           "bans": 3,
-          "ban_rate": "10.7%",
-          "presence": "14.3%"
+          "ban_rate": "9.7%",
+          "presence": "12.9%"
         },
         {
           "name": "Renata Glasc",
@@ -5689,8 +5743,8 @@
           "wins": 1,
           "winrate": "100.0%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "7.1%"
+          "ban_rate": "3.2%",
+          "presence": "6.5%"
         },
         {
           "name": "Zoe",
@@ -5698,8 +5752,8 @@
           "wins": 1,
           "winrate": "100.0%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "7.1%"
+          "ban_rate": "3.2%",
+          "presence": "6.5%"
         },
         {
           "name": "Tristana",
@@ -5708,7 +5762,7 @@
           "winrate": "100.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "3.6%"
+          "presence": "3.2%"
         },
         {
           "name": "Vayne",
@@ -5716,17 +5770,8 @@
           "wins": 0,
           "winrate": "0.0%",
           "bans": 9,
-          "ban_rate": "32.1%",
-          "presence": "35.7%"
-        },
-        {
-          "name": "Yorick",
-          "picks": 1,
-          "wins": 0,
-          "winrate": "0.0%",
-          "bans": 5,
-          "ban_rate": "17.9%",
-          "presence": "21.4%"
+          "ban_rate": "29.0%",
+          "presence": "32.3%"
         },
         {
           "name": "Pyke",
@@ -5734,8 +5779,8 @@
           "wins": 0,
           "winrate": "0.0%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "7.1%"
+          "ban_rate": "3.2%",
+          "presence": "6.5%"
         },
         {
           "name": "Taliyah",
@@ -5743,8 +5788,17 @@
           "wins": 0,
           "winrate": "0.0%",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "7.1%"
+          "ban_rate": "3.2%",
+          "presence": "6.5%"
+        },
+        {
+          "name": "Gragas",
+          "picks": 1,
+          "wins": 0,
+          "winrate": "0.0%",
+          "bans": 0,
+          "ban_rate": "0.0%",
+          "presence": "3.2%"
         },
         {
           "name": "Kha'Zix",
@@ -5753,7 +5807,7 @@
           "winrate": "0.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "3.6%"
+          "presence": "3.2%"
         },
         {
           "name": "Kog'Maw",
@@ -5762,7 +5816,7 @@
           "winrate": "0.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "3.6%"
+          "presence": "3.2%"
         },
         {
           "name": "Malphite",
@@ -5771,16 +5825,7 @@
           "winrate": "0.0%",
           "bans": 0,
           "ban_rate": "0.0%",
-          "presence": "3.6%"
-        },
-        {
-          "name": "LeBlanc",
-          "picks": 0,
-          "wins": 0,
-          "winrate": "",
-          "bans": 4,
-          "ban_rate": "14.3%",
-          "presence": "14.3%"
+          "presence": "3.2%"
         },
         {
           "name": "Blitzcrank",
@@ -5788,8 +5833,8 @@
           "wins": 0,
           "winrate": "",
           "bans": 2,
-          "ban_rate": "7.1%",
-          "presence": "7.1%"
+          "ban_rate": "6.5%",
+          "presence": "6.5%"
         },
         {
           "name": "Dr. Mundo",
@@ -5797,8 +5842,8 @@
           "wins": 0,
           "winrate": "",
           "bans": 2,
-          "ban_rate": "7.1%",
-          "presence": "7.1%"
+          "ban_rate": "6.5%",
+          "presence": "6.5%"
         },
         {
           "name": "Camille",
@@ -5806,8 +5851,8 @@
           "wins": 0,
           "winrate": "",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "3.6%"
+          "ban_rate": "3.2%",
+          "presence": "3.2%"
         },
         {
           "name": "Jax",
@@ -5815,8 +5860,17 @@
           "wins": 0,
           "winrate": "",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "3.6%"
+          "ban_rate": "3.2%",
+          "presence": "3.2%"
+        },
+        {
+          "name": "Poppy",
+          "picks": 0,
+          "wins": 0,
+          "winrate": "",
+          "bans": 1,
+          "ban_rate": "3.2%",
+          "presence": "3.2%"
         },
         {
           "name": "Syndra",
@@ -5824,29 +5878,29 @@
           "wins": 0,
           "winrate": "",
           "bans": 1,
-          "ban_rate": "3.6%",
-          "presence": "3.6%"
+          "ban_rate": "3.2%",
+          "presence": "3.2%"
         }
       ],
       "champions_by_role": {
         "top": [
           {
             "name": "Sion",
-            "picks": 8,
+            "picks": 9,
             "wins": 2,
-            "winrate": "25.0%",
+            "winrate": "22.2%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "32.1%"
+            "ban_rate": "3.2%",
+            "presence": "32.3%"
           },
           {
             "name": "Rumble",
-            "picks": 7,
-            "wins": 4,
-            "winrate": "57.1%",
-            "bans": 6,
-            "ban_rate": "21.4%",
-            "presence": "46.4%"
+            "picks": 8,
+            "wins": 5,
+            "winrate": "62.5%",
+            "bans": 7,
+            "ban_rate": "22.6%",
+            "presence": "48.4%"
           },
           {
             "name": "Renekton",
@@ -5854,53 +5908,53 @@
             "wins": 4,
             "winrate": "57.1%",
             "bans": 2,
-            "ban_rate": "7.1%",
-            "presence": "32.1%"
+            "ban_rate": "6.5%",
+            "presence": "29.0%"
           },
           {
             "name": "Ornn",
             "picks": 5,
             "wins": 4,
             "winrate": "80.0%",
+            "bans": 4,
+            "ban_rate": "12.9%",
+            "presence": "29.0%"
+          },
+          {
+            "name": "K'Sante",
+            "picks": 5,
+            "wins": 3,
+            "winrate": "60.0%",
             "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "28.6%"
+            "ban_rate": "9.7%",
+            "presence": "25.8%"
           },
           {
             "name": "Jayce",
             "picks": 4,
             "wins": 2,
             "winrate": "50.0%",
-            "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "32.1%"
+            "bans": 6,
+            "ban_rate": "19.4%",
+            "presence": "32.3%"
           },
           {
-            "name": "K'Sante",
-            "picks": 4,
-            "wins": 2,
-            "winrate": "50.0%",
+            "name": "Shen",
+            "picks": 3,
+            "wins": 3,
+            "winrate": "100.0%",
             "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "25.0%"
+            "ban_rate": "9.7%",
+            "presence": "19.4%"
           },
           {
             "name": "Gnar",
             "picks": 3,
             "wins": 2,
             "winrate": "66.7%",
-            "bans": 6,
-            "ban_rate": "21.4%",
-            "presence": "32.1%"
-          },
-          {
-            "name": "Shen",
-            "picks": 2,
-            "wins": 2,
-            "winrate": "100.0%",
-            "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "17.9%"
+            "bans": 7,
+            "ban_rate": "22.6%",
+            "presence": "32.3%"
           },
           {
             "name": "Zaahen",
@@ -5909,16 +5963,16 @@
             "winrate": "100.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "7.1%"
+            "presence": "6.5%"
           },
           {
             "name": "Yone",
             "picks": 2,
             "wins": 1,
             "winrate": "50.0%",
-            "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "25.0%"
+            "bans": 6,
+            "ban_rate": "19.4%",
+            "presence": "25.8%"
           },
           {
             "name": "Kennen",
@@ -5926,17 +5980,26 @@
             "wins": 1,
             "winrate": "50.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "10.7%"
+            "ban_rate": "3.2%",
+            "presence": "9.7%"
           },
           {
             "name": "Ambessa",
             "picks": 2,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 6,
-            "ban_rate": "21.4%",
-            "presence": "28.6%"
+            "bans": 7,
+            "ban_rate": "22.6%",
+            "presence": "29.0%"
+          },
+          {
+            "name": "Yorick",
+            "picks": 2,
+            "wins": 0,
+            "winrate": "0.0%",
+            "bans": 5,
+            "ban_rate": "16.1%",
+            "presence": "22.6%"
           },
           {
             "name": "Aatrox",
@@ -5944,8 +6007,8 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 7,
-            "ban_rate": "25.0%",
-            "presence": "28.6%"
+            "ban_rate": "22.6%",
+            "presence": "25.8%"
           },
           {
             "name": "Sejuani",
@@ -5954,7 +6017,7 @@
             "winrate": "100.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "3.6%"
+            "presence": "3.2%"
           },
           {
             "name": "Vayne",
@@ -5962,8 +6025,8 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 9,
-            "ban_rate": "32.1%",
-            "presence": "35.7%"
+            "ban_rate": "29.0%",
+            "presence": "32.3%"
           },
           {
             "name": "Anivia",
@@ -5971,26 +6034,17 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 7,
-            "ban_rate": "25.0%",
-            "presence": "28.6%"
-          },
-          {
-            "name": "Yorick",
-            "picks": 1,
-            "wins": 0,
-            "winrate": "0.0%",
-            "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "21.4%"
+            "ban_rate": "22.6%",
+            "presence": "25.8%"
           },
           {
             "name": "Sylas",
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "14.3%"
+            "bans": 4,
+            "ban_rate": "12.9%",
+            "presence": "16.1%"
           },
           {
             "name": "Aurora",
@@ -5998,8 +6052,17 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "7.1%"
+            "ban_rate": "3.2%",
+            "presence": "6.5%"
+          },
+          {
+            "name": "Gragas",
+            "picks": 1,
+            "wins": 0,
+            "winrate": "0.0%",
+            "bans": 0,
+            "ban_rate": "0.0%",
+            "presence": "3.2%"
           },
           {
             "name": "Malphite",
@@ -6008,7 +6071,7 @@
             "winrate": "0.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "3.6%"
+            "presence": "3.2%"
           }
         ],
         "jng": [
@@ -6017,27 +6080,36 @@
             "picks": 7,
             "wins": 6,
             "winrate": "85.7%",
-            "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "42.9%"
-          },
-          {
-            "name": "Jarvan IV",
-            "picks": 6,
-            "wins": 2,
-            "winrate": "33.3%",
-            "bans": 9,
-            "ban_rate": "32.1%",
-            "presence": "53.6%"
+            "bans": 8,
+            "ban_rate": "25.8%",
+            "presence": "48.4%"
           },
           {
             "name": "Nocturne",
-            "picks": 6,
+            "picks": 7,
+            "wins": 3,
+            "winrate": "42.9%",
+            "bans": 11,
+            "ban_rate": "35.5%",
+            "presence": "58.1%"
+          },
+          {
+            "name": "Jarvan IV",
+            "picks": 7,
             "wins": 2,
-            "winrate": "33.3%",
-            "bans": 9,
-            "ban_rate": "32.1%",
-            "presence": "53.6%"
+            "winrate": "28.6%",
+            "bans": 10,
+            "ban_rate": "32.3%",
+            "presence": "54.8%"
+          },
+          {
+            "name": "Xin Zhao",
+            "picks": 5,
+            "wins": 2,
+            "winrate": "40.0%",
+            "bans": 3,
+            "ban_rate": "9.7%",
+            "presence": "25.8%"
           },
           {
             "name": "Pantheon",
@@ -6045,26 +6117,35 @@
             "wins": 3,
             "winrate": "75.0%",
             "bans": 4,
-            "ban_rate": "14.3%",
-            "presence": "28.6%"
-          },
-          {
-            "name": "Xin Zhao",
-            "picks": 4,
-            "wins": 1,
-            "winrate": "25.0%",
-            "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "25.0%"
+            "ban_rate": "12.9%",
+            "presence": "25.8%"
           },
           {
             "name": "Wukong",
+            "picks": 4,
+            "wins": 3,
+            "winrate": "75.0%",
+            "bans": 1,
+            "ban_rate": "3.2%",
+            "presence": "16.1%"
+          },
+          {
+            "name": "Trundle",
+            "picks": 4,
+            "wins": 1,
+            "winrate": "25.0%",
+            "bans": 5,
+            "ban_rate": "16.1%",
+            "presence": "29.0%"
+          },
+          {
+            "name": "Shyvana",
             "picks": 3,
             "wins": 2,
             "winrate": "66.7%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "14.3%"
+            "ban_rate": "3.2%",
+            "presence": "12.9%"
           },
           {
             "name": "Skarner",
@@ -6073,25 +6154,16 @@
             "winrate": "66.7%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "10.7%"
+            "presence": "9.7%"
           },
           {
             "name": "Lee Sin",
             "picks": 3,
             "wins": 1,
             "winrate": "33.3%",
-            "bans": 11,
-            "ban_rate": "39.3%",
-            "presence": "50.0%"
-          },
-          {
-            "name": "Trundle",
-            "picks": 3,
-            "wins": 1,
-            "winrate": "33.3%",
-            "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "28.6%"
+            "bans": 14,
+            "ban_rate": "45.2%",
+            "presence": "54.8%"
           },
           {
             "name": "Sejuani",
@@ -6100,25 +6172,16 @@
             "winrate": "33.3%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "10.7%"
+            "presence": "9.7%"
           },
           {
             "name": "Vi",
             "picks": 3,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 4,
-            "ban_rate": "14.3%",
-            "presence": "25.0%"
-          },
-          {
-            "name": "Shyvana",
-            "picks": 2,
-            "wins": 2,
-            "winrate": "100.0%",
-            "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "10.7%"
+            "bans": 5,
+            "ban_rate": "16.1%",
+            "presence": "25.8%"
           },
           {
             "name": "Rek'Sai",
@@ -6127,16 +6190,16 @@
             "winrate": "50.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "7.1%"
+            "presence": "6.5%"
           },
           {
             "name": "Jayce",
             "picks": 1,
             "wins": 1,
             "winrate": "100.0%",
-            "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "21.4%"
+            "bans": 6,
+            "ban_rate": "19.4%",
+            "presence": "22.6%"
           },
           {
             "name": "Olaf",
@@ -6144,8 +6207,8 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 4,
-            "ban_rate": "14.3%",
-            "presence": "17.9%"
+            "ban_rate": "12.9%",
+            "presence": "16.1%"
           },
           {
             "name": "Nasus",
@@ -6153,8 +6216,8 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "14.3%"
+            "ban_rate": "9.7%",
+            "presence": "12.9%"
           },
           {
             "name": "Shen",
@@ -6162,17 +6225,17 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "14.3%"
+            "ban_rate": "9.7%",
+            "presence": "12.9%"
           },
           {
             "name": "Rumble",
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 6,
-            "ban_rate": "21.4%",
-            "presence": "25.0%"
+            "bans": 7,
+            "ban_rate": "22.6%",
+            "presence": "25.8%"
           },
           {
             "name": "Kha'Zix",
@@ -6181,7 +6244,7 @@
             "winrate": "0.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "3.6%"
+            "presence": "3.2%"
           },
           {
             "name": "Zaahen",
@@ -6190,7 +6253,7 @@
             "winrate": "0.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "3.6%"
+            "presence": "3.2%"
           }
         ],
         "mid": [
@@ -6199,36 +6262,36 @@
             "picks": 8,
             "wins": 6,
             "winrate": "75.0%",
-            "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "32.1%"
+            "bans": 2,
+            "ban_rate": "6.5%",
+            "presence": "32.3%"
           },
           {
             "name": "Viktor",
-            "picks": 6,
+            "picks": 7,
             "wins": 5,
-            "winrate": "83.3%",
+            "winrate": "71.4%",
             "bans": 2,
-            "ban_rate": "7.1%",
-            "presence": "28.6%"
+            "ban_rate": "6.5%",
+            "presence": "29.0%"
           },
           {
             "name": "Orianna",
-            "picks": 5,
+            "picks": 6,
             "wins": 3,
-            "winrate": "60.0%",
+            "winrate": "50.0%",
             "bans": 15,
-            "ban_rate": "53.6%",
-            "presence": "71.4%"
+            "ban_rate": "48.4%",
+            "presence": "67.7%"
           },
           {
             "name": "Cassiopeia",
-            "picks": 5,
+            "picks": 6,
             "wins": 2,
-            "winrate": "40.0%",
+            "winrate": "33.3%",
             "bans": 12,
-            "ban_rate": "42.9%",
-            "presence": "60.7%"
+            "ban_rate": "38.7%",
+            "presence": "58.1%"
           },
           {
             "name": "Twisted Fate",
@@ -6236,8 +6299,8 @@
             "wins": 2,
             "winrate": "40.0%",
             "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "35.7%"
+            "ban_rate": "16.1%",
+            "presence": "32.3%"
           },
           {
             "name": "Annie",
@@ -6245,17 +6308,35 @@
             "wins": 1,
             "winrate": "20.0%",
             "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "35.7%"
+            "ban_rate": "16.1%",
+            "presence": "32.3%"
+          },
+          {
+            "name": "Galio",
+            "picks": 4,
+            "wins": 2,
+            "winrate": "50.0%",
+            "bans": 4,
+            "ban_rate": "12.9%",
+            "presence": "25.8%"
           },
           {
             "name": "Ahri",
             "picks": 4,
             "wins": 1,
             "winrate": "25.0%",
-            "bans": 0,
-            "ban_rate": "0.0%",
-            "presence": "14.3%"
+            "bans": 1,
+            "ban_rate": "3.2%",
+            "presence": "16.1%"
+          },
+          {
+            "name": "Akali",
+            "picks": 3,
+            "wins": 3,
+            "winrate": "100.0%",
+            "bans": 11,
+            "ban_rate": "35.5%",
+            "presence": "45.2%"
           },
           {
             "name": "Aurora",
@@ -6263,26 +6344,8 @@
             "wins": 3,
             "winrate": "100.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "14.3%"
-          },
-          {
-            "name": "Galio",
-            "picks": 3,
-            "wins": 1,
-            "winrate": "33.3%",
-            "bans": 4,
-            "ban_rate": "14.3%",
-            "presence": "25.0%"
-          },
-          {
-            "name": "Akali",
-            "picks": 2,
-            "wins": 2,
-            "winrate": "100.0%",
-            "bans": 11,
-            "ban_rate": "39.3%",
-            "presence": "46.4%"
+            "ban_rate": "3.2%",
+            "presence": "12.9%"
           },
           {
             "name": "Anivia",
@@ -6290,26 +6353,35 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 7,
-            "ban_rate": "25.0%",
-            "presence": "32.1%"
+            "ban_rate": "22.6%",
+            "presence": "29.0%"
           },
           {
             "name": "Ziggs",
             "picks": 2,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "10.7%"
+            "bans": 2,
+            "ban_rate": "6.5%",
+            "presence": "12.9%"
           },
           {
             "name": "Yone",
             "picks": 1,
             "wins": 1,
             "winrate": "100.0%",
-            "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "21.4%"
+            "bans": 6,
+            "ban_rate": "19.4%",
+            "presence": "22.6%"
+          },
+          {
+            "name": "LeBlanc",
+            "picks": 1,
+            "wins": 1,
+            "winrate": "100.0%",
+            "bans": 4,
+            "ban_rate": "12.9%",
+            "presence": "16.1%"
           },
           {
             "name": "Zoe",
@@ -6317,17 +6389,17 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "7.1%"
+            "ban_rate": "3.2%",
+            "presence": "6.5%"
           },
           {
             "name": "Sylas",
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "14.3%"
+            "bans": 4,
+            "ban_rate": "12.9%",
+            "presence": "16.1%"
           },
           {
             "name": "Xin Zhao",
@@ -6335,8 +6407,8 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "14.3%"
+            "ban_rate": "9.7%",
+            "presence": "12.9%"
           },
           {
             "name": "Taliyah",
@@ -6344,8 +6416,8 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "7.1%"
+            "ban_rate": "3.2%",
+            "presence": "6.5%"
           },
           {
             "name": "Mel",
@@ -6354,18 +6426,18 @@
             "winrate": "0.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "3.6%"
+            "presence": "3.2%"
           }
         ],
         "bot": [
           {
             "name": "Ezreal",
-            "picks": 8,
-            "wins": 3,
-            "winrate": "37.5%",
+            "picks": 9,
+            "wins": 4,
+            "winrate": "44.4%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "32.1%"
+            "ban_rate": "3.2%",
+            "presence": "32.3%"
           },
           {
             "name": "Lucian",
@@ -6373,17 +6445,17 @@
             "wins": 4,
             "winrate": "57.1%",
             "bans": 4,
-            "ban_rate": "14.3%",
-            "presence": "39.3%"
+            "ban_rate": "12.9%",
+            "presence": "35.5%"
           },
           {
             "name": "Xayah",
-            "picks": 5,
+            "picks": 6,
             "wins": 5,
-            "winrate": "100.0%",
+            "winrate": "83.3%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "17.9%"
+            "presence": "19.4%"
           },
           {
             "name": "Caitlyn",
@@ -6391,8 +6463,17 @@
             "wins": 3,
             "winrate": "60.0%",
             "bans": 8,
-            "ban_rate": "28.6%",
-            "presence": "46.4%"
+            "ban_rate": "25.8%",
+            "presence": "41.9%"
+          },
+          {
+            "name": "Senna",
+            "picks": 5,
+            "wins": 3,
+            "winrate": "60.0%",
+            "bans": 2,
+            "ban_rate": "6.5%",
+            "presence": "22.6%"
           },
           {
             "name": "Jhin",
@@ -6400,17 +6481,8 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "21.4%"
-          },
-          {
-            "name": "Senna",
-            "picks": 4,
-            "wins": 2,
-            "winrate": "50.0%",
-            "bans": 2,
-            "ban_rate": "7.1%",
-            "presence": "21.4%"
+            "ban_rate": "3.2%",
+            "presence": "19.4%"
           },
           {
             "name": "Ashe",
@@ -6419,16 +6491,34 @@
             "winrate": "50.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "14.3%"
+            "presence": "12.9%"
+          },
+          {
+            "name": "Yunara",
+            "picks": 4,
+            "wins": 2,
+            "winrate": "50.0%",
+            "bans": 0,
+            "ban_rate": "0.0%",
+            "presence": "12.9%"
           },
           {
             "name": "Miss Fortune",
             "picks": 3,
             "wins": 2,
             "winrate": "66.7%",
-            "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "14.3%"
+            "bans": 2,
+            "ban_rate": "6.5%",
+            "presence": "16.1%"
+          },
+          {
+            "name": "Corki",
+            "picks": 3,
+            "wins": 2,
+            "winrate": "66.7%",
+            "bans": 0,
+            "ban_rate": "0.0%",
+            "presence": "9.7%"
           },
           {
             "name": "Sivir",
@@ -6437,34 +6527,16 @@
             "winrate": "66.7%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "10.7%"
-          },
-          {
-            "name": "Yunara",
-            "picks": 3,
-            "wins": 1,
-            "winrate": "33.3%",
-            "bans": 0,
-            "ban_rate": "0.0%",
-            "presence": "10.7%"
-          },
-          {
-            "name": "Corki",
-            "picks": 2,
-            "wins": 2,
-            "winrate": "100.0%",
-            "bans": 0,
-            "ban_rate": "0.0%",
-            "presence": "7.1%"
+            "presence": "9.7%"
           },
           {
             "name": "Varus",
-            "picks": 2,
+            "picks": 3,
             "wins": 1,
-            "winrate": "50.0%",
+            "winrate": "33.3%",
             "bans": 22,
-            "ban_rate": "78.6%",
-            "presence": "85.7%"
+            "ban_rate": "71.0%",
+            "presence": "80.6%"
           },
           {
             "name": "Mel",
@@ -6473,7 +6545,7 @@
             "winrate": "0.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "7.1%"
+            "presence": "6.5%"
           },
           {
             "name": "Tristana",
@@ -6482,16 +6554,16 @@
             "winrate": "100.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "3.6%"
+            "presence": "3.2%"
           },
           {
             "name": "Ornn",
             "picks": 1,
             "wins": 0,
             "winrate": "0.0%",
-            "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "14.3%"
+            "bans": 4,
+            "ban_rate": "12.9%",
+            "presence": "16.1%"
           },
           {
             "name": "Kog'Maw",
@@ -6500,7 +6572,7 @@
             "winrate": "0.0%",
             "bans": 0,
             "ban_rate": "0.0%",
-            "presence": "3.6%"
+            "presence": "3.2%"
           }
         ],
         "sup": [
@@ -6509,18 +6581,18 @@
             "picks": 8,
             "wins": 6,
             "winrate": "75.0%",
-            "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "39.3%"
+            "bans": 5,
+            "ban_rate": "16.1%",
+            "presence": "41.9%"
           },
           {
             "name": "Rakan",
-            "picks": 7,
+            "picks": 8,
             "wins": 6,
-            "winrate": "85.7%",
-            "bans": 0,
-            "ban_rate": "0.0%",
-            "presence": "25.0%"
+            "winrate": "75.0%",
+            "bans": 2,
+            "ban_rate": "6.5%",
+            "presence": "32.3%"
           },
           {
             "name": "Milio",
@@ -6528,71 +6600,71 @@
             "wins": 4,
             "winrate": "57.1%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "28.6%"
+            "ban_rate": "3.2%",
+            "presence": "25.8%"
           },
           {
             "name": "Nautilus",
-            "picks": 6,
-            "wins": 2,
-            "winrate": "33.3%",
-            "bans": 6,
-            "ban_rate": "21.4%",
-            "presence": "42.9%"
+            "picks": 7,
+            "wins": 3,
+            "winrate": "42.9%",
+            "bans": 7,
+            "ban_rate": "22.6%",
+            "presence": "45.2%"
           },
           {
             "name": "Neeko",
-            "picks": 5,
+            "picks": 6,
             "wins": 3,
-            "winrate": "60.0%",
+            "winrate": "50.0%",
             "bans": 5,
-            "ban_rate": "17.9%",
-            "presence": "35.7%"
+            "ban_rate": "16.1%",
+            "presence": "35.5%"
+          },
+          {
+            "name": "Rell",
+            "picks": 6,
+            "wins": 1,
+            "winrate": "16.7%",
+            "bans": 0,
+            "ban_rate": "0.0%",
+            "presence": "19.4%"
+          },
+          {
+            "name": "Lulu",
+            "picks": 5,
+            "wins": 2,
+            "winrate": "40.0%",
+            "bans": 3,
+            "ban_rate": "9.7%",
+            "presence": "25.8%"
           },
           {
             "name": "Karma",
             "picks": 5,
             "wins": 1,
             "winrate": "20.0%",
-            "bans": 7,
-            "ban_rate": "25.0%",
-            "presence": "42.9%"
-          },
-          {
-            "name": "Rell",
-            "picks": 5,
-            "wins": 1,
-            "winrate": "20.0%",
-            "bans": 0,
-            "ban_rate": "0.0%",
-            "presence": "17.9%"
-          },
-          {
-            "name": "Lulu",
-            "picks": 4,
-            "wins": 1,
-            "winrate": "25.0%",
-            "bans": 3,
-            "ban_rate": "10.7%",
-            "presence": "25.0%"
+            "bans": 9,
+            "ban_rate": "29.0%",
+            "presence": "45.2%"
           },
           {
             "name": "Alistar",
-            "picks": 3,
-            "wins": 2,
-            "winrate": "66.7%",
+            "picks": 4,
+            "wins": 3,
+            "winrate": "75.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "14.3%"
+            "ban_rate": "3.2%",
+            "presence": "16.1%"
           },
           {
             "name": "Seraphine",
             "picks": 3,
             "wins": 1,
             "winrate": "33.3%",
-            "bans": 12,
-            "ban_rate": "42.9%",
-            "presence": "53.6%"
+            "bans": 13,
+            "ban_rate": "41.9%",
+            "presence": "51.6%"
           },
           {
             "name": "Renata Glasc",
@@ -6600,8 +6672,8 @@
             "wins": 1,
             "winrate": "100.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "7.1%"
+            "ban_rate": "3.2%",
+            "presence": "6.5%"
           },
           {
             "name": "Senna",
@@ -6609,8 +6681,8 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 2,
-            "ban_rate": "7.1%",
-            "presence": "10.7%"
+            "ban_rate": "6.5%",
+            "presence": "9.7%"
           },
           {
             "name": "Pyke",
@@ -6618,14 +6690,14 @@
             "wins": 0,
             "winrate": "0.0%",
             "bans": 1,
-            "ban_rate": "3.6%",
-            "presence": "7.1%"
+            "ban_rate": "3.2%",
+            "presence": "6.5%"
           }
         ]
       },
       "data_from": "2026-05-30T16:11:23",
-      "data_through": "2026-06-13T21:59:47",
-      "source_rows": 28
+      "data_through": "2026-06-14T22:24:48",
+      "source_rows": 31
     },
     "16.10": {
       "patch": "16.10",
@@ -37747,19 +37819,19 @@
   "teams": [
     {
       "name": "Team Liquid",
-      "games": 33,
+      "games": 36,
       "wins": 22,
-      "losses": 11,
-      "winrate": "66.7%",
-      "game_record": "22-11"
+      "losses": 14,
+      "winrate": "61.1%",
+      "game_record": "22-14"
     },
     {
       "name": "LYON",
-      "games": 26,
-      "wins": 18,
+      "games": 29,
+      "wins": 21,
       "losses": 8,
-      "winrate": "69.2%",
-      "game_record": "18-8"
+      "winrate": "72.4%",
+      "game_record": "21-8"
     },
     {
       "name": "FlyQuest",
@@ -37811,17 +37883,17 @@
     }
   ],
   "standings_split": "LCS Spring",
-  "standings_series": 95,
-  "generated_at": "2026-06-14T23:10:39.314738Z",
+  "standings_series": 98,
+  "generated_at": "2026-06-15T10:19:51.308658Z",
   "data_from": "2026-05-30T16:11:23",
-  "data_through": "2026-06-13T21:59:47",
+  "data_through": "2026-06-14T22:24:48",
   "latest_patch_data_from": "2026-05-30T16:11:23",
-  "latest_patch_data_through": "2026-06-13T21:59:47",
+  "latest_patch_data_through": "2026-06-14T22:24:48",
   "all_data_from": "2024-01-20T16:21:31",
-  "all_data_through": "2026-06-13T21:59:47",
+  "all_data_through": "2026-06-14T22:24:48",
   "data_status": "fresh",
-  "data_staleness_days": 1.049,
+  "data_staleness_days": 0.497,
   "warnings": [],
   "source": "lol-pros-analyzer",
-  "source_rows": 28
+  "source_rows": 31
 }
