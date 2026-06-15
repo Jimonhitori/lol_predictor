@@ -1,0 +1,3524 @@
+{
+  "combo_types": [
+    {
+      "id": "bot-duo",
+      "label": "Bot Duo",
+      "roles": [
+        "bot",
+        "sup"
+      ]
+    },
+    {
+      "id": "mid-jungle",
+      "label": "Mid Jungle",
+      "roles": [
+        "mid",
+        "jng"
+      ]
+    },
+    {
+      "id": "mid-jungle-support",
+      "label": "Mid Jungle Support",
+      "roles": [
+        "mid",
+        "jng",
+        "sup"
+      ]
+    },
+    {
+      "id": "full-composition",
+      "label": "Full Composition",
+      "roles": [
+        "top",
+        "jng",
+        "mid",
+        "bot",
+        "sup"
+      ]
+    }
+  ],
+  "complete_team_games": 48,
+  "duo_matchups": {
+    "bot-duo": {
+      "ashe|seraphine::lucian|milio": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ashe|seraphine::lucian|milio",
+        "opponent_duo": [
+          "Lucian",
+          "Milio"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ashe|seraphine::mel|nautilus": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ashe|seraphine::mel|nautilus",
+        "opponent_duo": [
+          "Mel",
+          "Nautilus"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ashe|seraphine::missfortune|nautilus": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ashe|seraphine::missfortune|nautilus",
+        "opponent_duo": [
+          "Miss Fortune",
+          "Nautilus"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ashe|seraphine::zeri|yuumi": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ashe|seraphine::zeri|yuumi",
+        "opponent_duo": [
+          "Zeri",
+          "Yuumi"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ashe|seraphine::ziggs|pyke": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ashe|seraphine::ziggs|pyke",
+        "opponent_duo": [
+          "Ziggs",
+          "Pyke"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "caitlyn|bard::ashe|seraphine": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Caitlyn",
+          "Bard"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "caitlyn|bard::ashe|seraphine",
+        "opponent_duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "caitlyn|karma::jhin|bard": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Caitlyn",
+          "Karma"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "caitlyn|karma::jhin|bard",
+        "opponent_duo": [
+          "Jhin",
+          "Bard"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "corki|nami::lucian|milio": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Corki",
+          "Nami"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "corki|nami::lucian|milio",
+        "opponent_duo": [
+          "Lucian",
+          "Milio"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ezreal|bard::xayah|nautilus": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ezreal",
+          "Bard"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|bard::xayah|nautilus",
+        "opponent_duo": [
+          "Xayah",
+          "Nautilus"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ezreal|nautilus::jhin|karma": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ezreal",
+          "Nautilus"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|nautilus::jhin|karma",
+        "opponent_duo": [
+          "Jhin",
+          "Karma"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ezreal|neeko::ashe|seraphine": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ezreal",
+          "Neeko"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|neeko::ashe|seraphine",
+        "opponent_duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ezreal|skarner::jhin|karma": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Ezreal",
+          "Skarner"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|skarner::jhin|karma",
+        "opponent_duo": [
+          "Jhin",
+          "Karma"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jhin|bard::sivir|karma": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Jhin",
+          "Bard"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "jhin|bard::sivir|karma",
+        "opponent_duo": [
+          "Sivir",
+          "Karma"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "lucian|milio::caitlyn|bard": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Lucian",
+          "Milio"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "lucian|milio::caitlyn|bard",
+        "opponent_duo": [
+          "Caitlyn",
+          "Bard"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "lucian|milio::yunara|lulu": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Lucian",
+          "Milio"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "lucian|milio::yunara|lulu",
+        "opponent_duo": [
+          "Yunara",
+          "Lulu"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "missfortune|camille::ezreal|pyke": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Miss Fortune",
+          "Camille"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "missfortune|camille::ezreal|pyke",
+        "opponent_duo": [
+          "Ezreal",
+          "Pyke"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "missfortune|nautilus::caitlyn|lux": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Miss Fortune",
+          "Nautilus"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "missfortune|nautilus::caitlyn|lux",
+        "opponent_duo": [
+          "Caitlyn",
+          "Lux"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sivir|alistar::corki|anivia": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Sivir",
+          "Alistar"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "sivir|alistar::corki|anivia",
+        "opponent_duo": [
+          "Corki",
+          "Anivia"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sivir|karma::jhin|bard": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Sivir",
+          "Karma"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "sivir|karma::jhin|bard",
+        "opponent_duo": [
+          "Jhin",
+          "Bard"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "varus|leblanc::kaisa|neeko": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Varus",
+          "LeBlanc"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "varus|leblanc::kaisa|neeko",
+        "opponent_duo": [
+          "Kai'Sa",
+          "Neeko"
+        ],
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "yunara|lulu::ashe|seraphine": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Yunara",
+          "Lulu"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "yunara|lulu::ashe|seraphine",
+        "opponent_duo": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "yunara|lulu::lucian|milio": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Yunara",
+          "Lulu"
+        ],
+        "games": 2,
+        "id": "bot-duo",
+        "key": "yunara|lulu::lucian|milio",
+        "opponent_duo": [
+          "Lucian",
+          "Milio"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "yunara|lulu::senna|alistar": {
+        "confidence": "Low Confidence",
+        "duo": [
+          "Yunara",
+          "Lulu"
+        ],
+        "games": 1,
+        "id": "bot-duo",
+        "key": "yunara|lulu::senna|alistar",
+        "opponent_duo": [
+          "Senna",
+          "Alistar"
+        ],
+        "winrate": 0.0,
+        "wins": 0
+      }
+    }
+  },
+  "generated_at": "2026-06-15T10:21:32Z",
+  "lane_matchups": {
+    "bot": {
+      "ashe|lucian": {
+        "blue_champion": "Ashe",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ashe|lucian",
+        "red_champion": "Lucian",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ashe|mel": {
+        "blue_champion": "Ashe",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ashe|mel",
+        "red_champion": "Mel",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ashe|missfortune": {
+        "blue_champion": "Ashe",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ashe|missfortune",
+        "red_champion": "Miss Fortune",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ashe|zeri": {
+        "blue_champion": "Ashe",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ashe|zeri",
+        "red_champion": "Zeri",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ashe|ziggs": {
+        "blue_champion": "Ashe",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ashe|ziggs",
+        "red_champion": "Ziggs",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "caitlyn|ashe": {
+        "blue_champion": "Caitlyn",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "caitlyn|ashe",
+        "red_champion": "Ashe",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "caitlyn|jhin": {
+        "blue_champion": "Caitlyn",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "caitlyn|jhin",
+        "red_champion": "Jhin",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "corki|lucian": {
+        "blue_champion": "Corki",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "corki|lucian",
+        "red_champion": "Lucian",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ezreal|ashe": {
+        "blue_champion": "Ezreal",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ezreal|ashe",
+        "red_champion": "Ashe",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ezreal|jhin": {
+        "blue_champion": "Ezreal",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "ezreal|jhin",
+        "red_champion": "Jhin",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ezreal|xayah": {
+        "blue_champion": "Ezreal",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ezreal|xayah",
+        "red_champion": "Xayah",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "jhin|sivir": {
+        "blue_champion": "Jhin",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "jhin|sivir",
+        "red_champion": "Sivir",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "lucian|caitlyn": {
+        "blue_champion": "Lucian",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "lucian|caitlyn",
+        "red_champion": "Caitlyn",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "lucian|yunara": {
+        "blue_champion": "Lucian",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "lucian|yunara",
+        "red_champion": "Yunara",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "missfortune|caitlyn": {
+        "blue_champion": "Miss Fortune",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "missfortune|caitlyn",
+        "red_champion": "Caitlyn",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "missfortune|ezreal": {
+        "blue_champion": "Miss Fortune",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "missfortune|ezreal",
+        "red_champion": "Ezreal",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "sivir|corki": {
+        "blue_champion": "Sivir",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "sivir|corki",
+        "red_champion": "Corki",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sivir|jhin": {
+        "blue_champion": "Sivir",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "sivir|jhin",
+        "red_champion": "Jhin",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "varus|kaisa": {
+        "blue_champion": "Varus",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "varus|kaisa",
+        "red_champion": "Kai'Sa",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "yunara|ashe": {
+        "blue_champion": "Yunara",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "yunara|ashe",
+        "red_champion": "Ashe",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "yunara|lucian": {
+        "blue_champion": "Yunara",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "yunara|lucian",
+        "red_champion": "Lucian",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "yunara|senna": {
+        "blue_champion": "Yunara",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "yunara|senna",
+        "red_champion": "Senna",
+        "winrate": 0.0,
+        "wins": 0
+      }
+    },
+    "jng": {
+      "jarvaniv|leesin": {
+        "blue_champion": "Jarvan IV",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "jarvaniv|leesin",
+        "red_champion": "Lee Sin",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "jarvaniv|wukong": {
+        "blue_champion": "Jarvan IV",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "jarvaniv|wukong",
+        "red_champion": "Wukong",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "jayce|wukong": {
+        "blue_champion": "Jayce",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "jayce|wukong",
+        "red_champion": "Wukong",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "leesin|skarner": {
+        "blue_champion": "Lee Sin",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "leesin|skarner",
+        "red_champion": "Skarner",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "leesin|xinzhao": {
+        "blue_champion": "Lee Sin",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "leesin|xinzhao",
+        "red_champion": "Xin Zhao",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "naafiri|jarvaniv": {
+        "blue_champion": "Naafiri",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "naafiri|jarvaniv",
+        "red_champion": "Jarvan IV",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "naafiri|leesin": {
+        "blue_champion": "Naafiri",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "naafiri|leesin",
+        "red_champion": "Lee Sin",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "naafiri|pantheon": {
+        "blue_champion": "Naafiri",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "naafiri|pantheon",
+        "red_champion": "Pantheon",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "naafiri|skarner": {
+        "blue_champion": "Naafiri",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "naafiri|skarner",
+        "red_champion": "Skarner",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "naafiri|trundle": {
+        "blue_champion": "Naafiri",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "naafiri|trundle",
+        "red_champion": "Trundle",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "naafiri|viego": {
+        "blue_champion": "Naafiri",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "naafiri|viego",
+        "red_champion": "Viego",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "nocturne|wukong": {
+        "blue_champion": "Nocturne",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "nocturne|wukong",
+        "red_champion": "Wukong",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "pantheon|jarvaniv": {
+        "blue_champion": "Pantheon",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "pantheon|jarvaniv",
+        "red_champion": "Jarvan IV",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "pantheon|trundle": {
+        "blue_champion": "Pantheon",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "pantheon|trundle",
+        "red_champion": "Trundle",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "poppy|vi": {
+        "blue_champion": "Poppy",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "poppy|vi",
+        "red_champion": "Vi",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "trundle|kindred": {
+        "blue_champion": "Trundle",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "trundle|kindred",
+        "red_champion": "Kindred",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "vi|poppy": {
+        "blue_champion": "Vi",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "vi|poppy",
+        "red_champion": "Poppy",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "vi|trundle": {
+        "blue_champion": "Vi",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "vi|trundle",
+        "red_champion": "Trundle",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "wukong|leesin": {
+        "blue_champion": "Wukong",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "wukong|leesin",
+        "red_champion": "Lee Sin",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "wukong|pantheon": {
+        "blue_champion": "Wukong",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "wukong|pantheon",
+        "red_champion": "Pantheon",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "xinzhao|leesin": {
+        "blue_champion": "Xin Zhao",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "xinzhao|leesin",
+        "red_champion": "Lee Sin",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "xinzhao|pantheon": {
+        "blue_champion": "Xin Zhao",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "xinzhao|pantheon",
+        "red_champion": "Pantheon",
+        "winrate": 0.5,
+        "wins": 1
+      }
+    },
+    "mid": {
+      "ahri|ryze": {
+        "blue_champion": "Ahri",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ahri|ryze",
+        "red_champion": "Ryze",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ahri|sylas": {
+        "blue_champion": "Ahri",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ahri|sylas",
+        "red_champion": "Sylas",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "akali|cassiopeia": {
+        "blue_champion": "Akali",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "akali|cassiopeia",
+        "red_champion": "Cassiopeia",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "anivia|ryze": {
+        "blue_champion": "Anivia",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "anivia|ryze",
+        "red_champion": "Ryze",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "annie|taliyah": {
+        "blue_champion": "Annie",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "annie|taliyah",
+        "red_champion": "Taliyah",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "annie|viktor": {
+        "blue_champion": "Annie",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "annie|viktor",
+        "red_champion": "Viktor",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "aurora|orianna": {
+        "blue_champion": "Aurora",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "aurora|orianna",
+        "red_champion": "Orianna",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "aurora|ryze": {
+        "blue_champion": "Aurora",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "aurora|ryze",
+        "red_champion": "Ryze",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "aurora|twistedfate": {
+        "blue_champion": "Aurora",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "aurora|twistedfate",
+        "red_champion": "Twisted Fate",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "azir|annie": {
+        "blue_champion": "Azir",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "azir|annie",
+        "red_champion": "Annie",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "cassiopeia|akali": {
+        "blue_champion": "Cassiopeia",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "cassiopeia|akali",
+        "red_champion": "Akali",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|aurora": {
+        "blue_champion": "Cassiopeia",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "cassiopeia|aurora",
+        "red_champion": "Aurora",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|galio": {
+        "blue_champion": "Cassiopeia",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "cassiopeia|galio",
+        "red_champion": "Galio",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|ryze": {
+        "blue_champion": "Cassiopeia",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "cassiopeia|ryze",
+        "red_champion": "Ryze",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "cassiopeia|twistedfate": {
+        "blue_champion": "Cassiopeia",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "cassiopeia|twistedfate",
+        "red_champion": "Twisted Fate",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "fizz|twistedfate": {
+        "blue_champion": "Fizz",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "fizz|twistedfate",
+        "red_champion": "Twisted Fate",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ryze|ahri": {
+        "blue_champion": "Ryze",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ryze|ahri",
+        "red_champion": "Ahri",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ryze|azir": {
+        "blue_champion": "Ryze",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ryze|azir",
+        "red_champion": "Azir",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ryze|taliyah": {
+        "blue_champion": "Ryze",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ryze|taliyah",
+        "red_champion": "Taliyah",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ryze|twistedfate": {
+        "blue_champion": "Ryze",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ryze|twistedfate",
+        "red_champion": "Twisted Fate",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "sylas|viktor": {
+        "blue_champion": "Sylas",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "sylas|viktor",
+        "red_champion": "Viktor",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "twistedfate|annie": {
+        "blue_champion": "Twisted Fate",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "twistedfate|annie",
+        "red_champion": "Annie",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "viktor|orianna": {
+        "blue_champion": "Viktor",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "viktor|orianna",
+        "red_champion": "Orianna",
+        "winrate": 0.0,
+        "wins": 0
+      }
+    },
+    "sup": {
+      "alistar|anivia": {
+        "blue_champion": "Alistar",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "alistar|anivia",
+        "red_champion": "Anivia",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "bard|karma": {
+        "blue_champion": "Bard",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "bard|karma",
+        "red_champion": "Karma",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "bard|nautilus": {
+        "blue_champion": "Bard",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "bard|nautilus",
+        "red_champion": "Nautilus",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "bard|seraphine": {
+        "blue_champion": "Bard",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "bard|seraphine",
+        "red_champion": "Seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "camille|pyke": {
+        "blue_champion": "Camille",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "camille|pyke",
+        "red_champion": "Pyke",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "karma|bard": {
+        "blue_champion": "Karma",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "karma|bard",
+        "red_champion": "Bard",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "leblanc|neeko": {
+        "blue_champion": "LeBlanc",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "leblanc|neeko",
+        "red_champion": "Neeko",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "lulu|alistar": {
+        "blue_champion": "Lulu",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "lulu|alistar",
+        "red_champion": "Alistar",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "lulu|milio": {
+        "blue_champion": "Lulu",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "lulu|milio",
+        "red_champion": "Milio",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "lulu|seraphine": {
+        "blue_champion": "Lulu",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "lulu|seraphine",
+        "red_champion": "Seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "milio|bard": {
+        "blue_champion": "Milio",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "milio|bard",
+        "red_champion": "Bard",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "milio|lulu": {
+        "blue_champion": "Milio",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "milio|lulu",
+        "red_champion": "Lulu",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "nami|milio": {
+        "blue_champion": "Nami",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "nami|milio",
+        "red_champion": "Milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "nautilus|karma": {
+        "blue_champion": "Nautilus",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "nautilus|karma",
+        "red_champion": "Karma",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "nautilus|lux": {
+        "blue_champion": "Nautilus",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "nautilus|lux",
+        "red_champion": "Lux",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "neeko|seraphine": {
+        "blue_champion": "Neeko",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "neeko|seraphine",
+        "red_champion": "Seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "seraphine|milio": {
+        "blue_champion": "Seraphine",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "seraphine|milio",
+        "red_champion": "Milio",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "seraphine|nautilus": {
+        "blue_champion": "Seraphine",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "seraphine|nautilus",
+        "red_champion": "Nautilus",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "seraphine|pyke": {
+        "blue_champion": "Seraphine",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "seraphine|pyke",
+        "red_champion": "Pyke",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "seraphine|yuumi": {
+        "blue_champion": "Seraphine",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "seraphine|yuumi",
+        "red_champion": "Yuumi",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "skarner|karma": {
+        "blue_champion": "Skarner",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "skarner|karma",
+        "red_champion": "Karma",
+        "winrate": 0.0,
+        "wins": 0
+      }
+    },
+    "top": {
+      "ambessa|rumble": {
+        "blue_champion": "Ambessa",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ambessa|rumble",
+        "red_champion": "Rumble",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "gnar|sion": {
+        "blue_champion": "Gnar",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "gnar|sion",
+        "red_champion": "Sion",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jayce|sion": {
+        "blue_champion": "Jayce",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "jayce|sion",
+        "red_champion": "Sion",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jayce|xinzhao": {
+        "blue_champion": "Jayce",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "jayce|xinzhao",
+        "red_champion": "Xin Zhao",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "jayce|yorick": {
+        "blue_champion": "Jayce",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "jayce|yorick",
+        "red_champion": "Yorick",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ksante|gnar": {
+        "blue_champion": "K'Sante",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ksante|gnar",
+        "red_champion": "Gnar",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ksante|jayce": {
+        "blue_champion": "K'Sante",
+        "confidence": "Low Confidence",
+        "games": 2,
+        "key": "ksante|jayce",
+        "red_champion": "Jayce",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "ksante|rumble": {
+        "blue_champion": "K'Sante",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ksante|rumble",
+        "red_champion": "Rumble",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "malphite|gnar": {
+        "blue_champion": "Malphite",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "malphite|gnar",
+        "red_champion": "Gnar",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "maokai|gnar": {
+        "blue_champion": "Maokai",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "maokai|gnar",
+        "red_champion": "Gnar",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ornn|rumble": {
+        "blue_champion": "Ornn",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "ornn|rumble",
+        "red_champion": "Rumble",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "renekton|ambessa": {
+        "blue_champion": "Renekton",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "renekton|ambessa",
+        "red_champion": "Ambessa",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "renekton|gnar": {
+        "blue_champion": "Renekton",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "renekton|gnar",
+        "red_champion": "Gnar",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "rumble|anivia": {
+        "blue_champion": "Rumble",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "rumble|anivia",
+        "red_champion": "Anivia",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "rumble|aurora": {
+        "blue_champion": "Rumble",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "rumble|aurora",
+        "red_champion": "Aurora",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "rumble|sion": {
+        "blue_champion": "Rumble",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "rumble|sion",
+        "red_champion": "Sion",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "shen|renekton": {
+        "blue_champion": "Shen",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "shen|renekton",
+        "red_champion": "Renekton",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|gnar": {
+        "blue_champion": "Sion",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "sion|gnar",
+        "red_champion": "Gnar",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "sion|illaoi": {
+        "blue_champion": "Sion",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "sion|illaoi",
+        "red_champion": "Illaoi",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|jayce": {
+        "blue_champion": "Sion",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "sion|jayce",
+        "red_champion": "Jayce",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|yone": {
+        "blue_champion": "Sion",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "sion|yone",
+        "red_champion": "Yone",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "yorick|jayce": {
+        "blue_champion": "Yorick",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "yorick|jayce",
+        "red_champion": "Jayce",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "zaahen|renekton": {
+        "blue_champion": "Zaahen",
+        "confidence": "Low Confidence",
+        "games": 1,
+        "key": "zaahen|renekton",
+        "red_champion": "Renekton",
+        "winrate": 1.0,
+        "wins": 1
+      }
+    }
+  },
+  "league_group": "event",
+  "metrics": {
+    "bot-duo": {
+      "ashe|seraphine": {
+        "champions": [
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 8,
+        "id": "bot-duo",
+        "key": "ashe|seraphine",
+        "winrate": 0.625,
+        "wins": 5
+      },
+      "caitlyn|bard": {
+        "champions": [
+          "Caitlyn",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "bot-duo",
+        "key": "caitlyn|bard",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "caitlyn|karma": {
+        "champions": [
+          "Caitlyn",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "caitlyn|karma",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "caitlyn|lux": {
+        "champions": [
+          "Caitlyn",
+          "Lux"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "caitlyn|lux",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "corki|anivia": {
+        "champions": [
+          "Corki",
+          "Anivia"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "corki|anivia",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "corki|nami": {
+        "champions": [
+          "Corki",
+          "Nami"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "corki|nami",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ezreal|bard": {
+        "champions": [
+          "Ezreal",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|bard",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ezreal|nautilus": {
+        "champions": [
+          "Ezreal",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ezreal|neeko": {
+        "champions": [
+          "Ezreal",
+          "Neeko"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|neeko",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ezreal|pyke": {
+        "champions": [
+          "Ezreal",
+          "Pyke"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|pyke",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ezreal|skarner": {
+        "champions": [
+          "Ezreal",
+          "Skarner"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ezreal|skarner",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jhin|bard": {
+        "champions": [
+          "Jhin",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 3,
+        "id": "bot-duo",
+        "key": "jhin|bard",
+        "winrate": 0.6666666666666666,
+        "wins": 2
+      },
+      "jhin|karma": {
+        "champions": [
+          "Jhin",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "bot-duo",
+        "key": "jhin|karma",
+        "winrate": 1.0,
+        "wins": 2
+      },
+      "kaisa|neeko": {
+        "champions": [
+          "Kai'Sa",
+          "Neeko"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "kaisa|neeko",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "lucian|milio": {
+        "champions": [
+          "Lucian",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 6,
+        "id": "bot-duo",
+        "key": "lucian|milio",
+        "winrate": 0.6666666666666666,
+        "wins": 4
+      },
+      "mel|nautilus": {
+        "champions": [
+          "Mel",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "mel|nautilus",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "missfortune|camille": {
+        "champions": [
+          "Miss Fortune",
+          "Camille"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "missfortune|camille",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "missfortune|nautilus": {
+        "champions": [
+          "Miss Fortune",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "bot-duo",
+        "key": "missfortune|nautilus",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "senna|alistar": {
+        "champions": [
+          "Senna",
+          "Alistar"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "senna|alistar",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sivir|alistar": {
+        "champions": [
+          "Sivir",
+          "Alistar"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "sivir|alistar",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sivir|karma": {
+        "champions": [
+          "Sivir",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "bot-duo",
+        "key": "sivir|karma",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "varus|leblanc": {
+        "champions": [
+          "Varus",
+          "LeBlanc"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "varus|leblanc",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "xayah|nautilus": {
+        "champions": [
+          "Xayah",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "xayah|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "yunara|lulu": {
+        "champions": [
+          "Yunara",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 5,
+        "id": "bot-duo",
+        "key": "yunara|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "zeri|yuumi": {
+        "champions": [
+          "Zeri",
+          "Yuumi"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "zeri|yuumi",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ziggs|pyke": {
+        "champions": [
+          "Ziggs",
+          "Pyke"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "bot-duo",
+        "key": "ziggs|pyke",
+        "winrate": 1.0,
+        "wins": 1
+      }
+    },
+    "full-composition": {
+      "ambessa|poppy|ryze|lucian|milio": {
+        "champions": [
+          "Ambessa",
+          "Poppy",
+          "Ryze",
+          "Lucian",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "ambessa|poppy|ryze|lucian|milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ambessa|xinzhao|viktor|ashe|seraphine": {
+        "champions": [
+          "Ambessa",
+          "Xin Zhao",
+          "Viktor",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "ambessa|xinzhao|viktor|ashe|seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "anivia|leesin|galio|lucian|milio": {
+        "champions": [
+          "Anivia",
+          "Lee Sin",
+          "Galio",
+          "Lucian",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "anivia|leesin|galio|lucian|milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "aurora|wukong|taliyah|corki|anivia": {
+        "champions": [
+          "Aurora",
+          "Wukong",
+          "Taliyah",
+          "Corki",
+          "Anivia"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "aurora|wukong|taliyah|corki|anivia",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "gnar|jarvaniv|twistedfate|mel|nautilus": {
+        "champions": [
+          "Gnar",
+          "Jarvan IV",
+          "Twisted Fate",
+          "Mel",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "gnar|jarvaniv|twistedfate|mel|nautilus",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "gnar|pantheon|twistedfate|ashe|seraphine": {
+        "champions": [
+          "Gnar",
+          "Pantheon",
+          "Twisted Fate",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "gnar|pantheon|twistedfate|ashe|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "gnar|trundle|annie|zeri|yuumi": {
+        "champions": [
+          "Gnar",
+          "Trundle",
+          "Annie",
+          "Zeri",
+          "Yuumi"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "gnar|trundle|annie|zeri|yuumi",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "gnar|viego|annie|ezreal|pyke": {
+        "champions": [
+          "Gnar",
+          "Viego",
+          "Annie",
+          "Ezreal",
+          "Pyke"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "gnar|viego|annie|ezreal|pyke",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "gnar|xinzhao|akali|caitlyn|karma": {
+        "champions": [
+          "Gnar",
+          "Xin Zhao",
+          "Akali",
+          "Caitlyn",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "gnar|xinzhao|akali|caitlyn|karma",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "gnar|xinzhao|viktor|ziggs|pyke": {
+        "champions": [
+          "Gnar",
+          "Xin Zhao",
+          "Viktor",
+          "Ziggs",
+          "Pyke"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "gnar|xinzhao|viktor|ziggs|pyke",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "illaoi|skarner|twistedfate|caitlyn|lux": {
+        "champions": [
+          "Illaoi",
+          "Skarner",
+          "Twisted Fate",
+          "Caitlyn",
+          "Lux"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "illaoi|skarner|twistedfate|caitlyn|lux",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jayce|jarvaniv|ryze|corki|nami": {
+        "champions": [
+          "Jayce",
+          "Jarvan IV",
+          "Ryze",
+          "Corki",
+          "Nami"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "jayce|jarvaniv|ryze|corki|nami",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "jayce|jarvaniv|ryze|missfortune|nautilus": {
+        "champions": [
+          "Jayce",
+          "Jarvan IV",
+          "Ryze",
+          "Miss Fortune",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "jayce|jarvaniv|ryze|missfortune|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jayce|leesin|ryze|yunara|lulu": {
+        "champions": [
+          "Jayce",
+          "Lee Sin",
+          "Ryze",
+          "Yunara",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "jayce|leesin|ryze|yunara|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jayce|pantheon|cassiopeia|ezreal|neeko": {
+        "champions": [
+          "Jayce",
+          "Pantheon",
+          "Cassiopeia",
+          "Ezreal",
+          "Neeko"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "jayce|pantheon|cassiopeia|ezreal|neeko",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "jayce|trundle|akali|jhin|karma": {
+        "champions": [
+          "Jayce",
+          "Trundle",
+          "Akali",
+          "Jhin",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "jayce|trundle|akali|jhin|karma",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "jayce|trundle|ryze|senna|alistar": {
+        "champions": [
+          "Jayce",
+          "Trundle",
+          "Ryze",
+          "Senna",
+          "Alistar"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "jayce|trundle|ryze|senna|alistar",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "jayce|wukong|annie|yunara|lulu": {
+        "champions": [
+          "Jayce",
+          "Wukong",
+          "Annie",
+          "Yunara",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "jayce|wukong|annie|yunara|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ksante|naafiri|aurora|ashe|seraphine": {
+        "champions": [
+          "K'Sante",
+          "Naafiri",
+          "Aurora",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "ksante|naafiri|aurora|ashe|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ksante|naafiri|cassiopeia|ezreal|bard": {
+        "champions": [
+          "K'Sante",
+          "Naafiri",
+          "Cassiopeia",
+          "Ezreal",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "ksante|naafiri|cassiopeia|ezreal|bard",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ksante|naafiri|cassiopeia|ezreal|nautilus": {
+        "champions": [
+          "K'Sante",
+          "Naafiri",
+          "Cassiopeia",
+          "Ezreal",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "ksante|naafiri|cassiopeia|ezreal|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ksante|naafiri|ryze|caitlyn|bard": {
+        "champions": [
+          "K'Sante",
+          "Naafiri",
+          "Ryze",
+          "Caitlyn",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "ksante|naafiri|ryze|caitlyn|bard",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "malphite|naafiri|aurora|ashe|seraphine": {
+        "champions": [
+          "Malphite",
+          "Naafiri",
+          "Aurora",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "malphite|naafiri|aurora|ashe|seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "maokai|naafiri|twistedfate|missfortune|camille": {
+        "champions": [
+          "Maokai",
+          "Naafiri",
+          "Twisted Fate",
+          "Miss Fortune",
+          "Camille"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "maokai|naafiri|twistedfate|missfortune|camille",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ornn|trundle|ahri|varus|leblanc": {
+        "champions": [
+          "Ornn",
+          "Trundle",
+          "Ahri",
+          "Varus",
+          "LeBlanc"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "ornn|trundle|ahri|varus|leblanc",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "renekton|pantheon|azir|ashe|seraphine": {
+        "champions": [
+          "Renekton",
+          "Pantheon",
+          "Azir",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "renekton|pantheon|azir|ashe|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "renekton|pantheon|orianna|jhin|bard": {
+        "champions": [
+          "Renekton",
+          "Pantheon",
+          "Orianna",
+          "Jhin",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "renekton|pantheon|orianna|jhin|bard",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "renekton|skarner|azir|sivir|karma": {
+        "champions": [
+          "Renekton",
+          "Skarner",
+          "Azir",
+          "Sivir",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "renekton|skarner|azir|sivir|karma",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "renekton|vi|ahri|yunara|lulu": {
+        "champions": [
+          "Renekton",
+          "Vi",
+          "Ahri",
+          "Yunara",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "renekton|vi|ahri|yunara|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "rumble|jayce|cassiopeia|ezreal|skarner": {
+        "champions": [
+          "Rumble",
+          "Jayce",
+          "Cassiopeia",
+          "Ezreal",
+          "Skarner"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "rumble|jayce|cassiopeia|ezreal|skarner",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "rumble|kindred|sylas|kaisa|neeko": {
+        "champions": [
+          "Rumble",
+          "Kindred",
+          "Sylas",
+          "Kai'Sa",
+          "Neeko"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "rumble|kindred|sylas|kaisa|neeko",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "rumble|leesin|twistedfate|xayah|nautilus": {
+        "champions": [
+          "Rumble",
+          "Lee Sin",
+          "Twisted Fate",
+          "Xayah",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "rumble|leesin|twistedfate|xayah|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "rumble|nocturne|annie|sivir|alistar": {
+        "champions": [
+          "Rumble",
+          "Nocturne",
+          "Annie",
+          "Sivir",
+          "Alistar"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "rumble|nocturne|annie|sivir|alistar",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "rumble|pantheon|orianna|lucian|milio": {
+        "champions": [
+          "Rumble",
+          "Pantheon",
+          "Orianna",
+          "Lucian",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "rumble|pantheon|orianna|lucian|milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "rumble|wukong|cassiopeia|yunara|lulu": {
+        "champions": [
+          "Rumble",
+          "Wukong",
+          "Cassiopeia",
+          "Yunara",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "rumble|wukong|cassiopeia|yunara|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "shen|xinzhao|aurora|sivir|karma": {
+        "champions": [
+          "Shen",
+          "Xin Zhao",
+          "Aurora",
+          "Sivir",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "shen|xinzhao|aurora|sivir|karma",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|jarvaniv|aurora|ashe|seraphine": {
+        "champions": [
+          "Sion",
+          "Jarvan IV",
+          "Aurora",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "sion|jarvaniv|aurora|ashe|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|jarvaniv|cassiopeia|lucian|milio": {
+        "champions": [
+          "Sion",
+          "Jarvan IV",
+          "Cassiopeia",
+          "Lucian",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "sion|jarvaniv|cassiopeia|lucian|milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|leesin|cassiopeia|jhin|bard": {
+        "champions": [
+          "Sion",
+          "Lee Sin",
+          "Cassiopeia",
+          "Jhin",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "sion|leesin|cassiopeia|jhin|bard",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|leesin|fizz|missfortune|nautilus": {
+        "champions": [
+          "Sion",
+          "Lee Sin",
+          "Fizz",
+          "Miss Fortune",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "sion|leesin|fizz|missfortune|nautilus",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sion|leesin|sylas|ashe|seraphine": {
+        "champions": [
+          "Sion",
+          "Lee Sin",
+          "Sylas",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "sion|leesin|sylas|ashe|seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "sion|poppy|ryze|lucian|milio": {
+        "champions": [
+          "Sion",
+          "Poppy",
+          "Ryze",
+          "Lucian",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "sion|poppy|ryze|lucian|milio",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "sion|wukong|akali|jhin|karma": {
+        "champions": [
+          "Sion",
+          "Wukong",
+          "Akali",
+          "Jhin",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "sion|wukong|akali|jhin|karma",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "xinzhao|wukong|taliyah|lucian|milio": {
+        "champions": [
+          "Xin Zhao",
+          "Wukong",
+          "Taliyah",
+          "Lucian",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "xinzhao|wukong|taliyah|lucian|milio",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "yone|vi|ahri|caitlyn|bard": {
+        "champions": [
+          "Yone",
+          "Vi",
+          "Ahri",
+          "Caitlyn",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "yone|vi|ahri|caitlyn|bard",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "yorick|pantheon|viktor|ashe|seraphine": {
+        "champions": [
+          "Yorick",
+          "Pantheon",
+          "Viktor",
+          "Ashe",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "yorick|pantheon|viktor|ashe|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "yorick|vi|anivia|yunara|lulu": {
+        "champions": [
+          "Yorick",
+          "Vi",
+          "Anivia",
+          "Yunara",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "yorick|vi|anivia|yunara|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "zaahen|naafiri|ryze|jhin|bard": {
+        "champions": [
+          "Zaahen",
+          "Naafiri",
+          "Ryze",
+          "Jhin",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "full-composition",
+        "key": "zaahen|naafiri|ryze|jhin|bard",
+        "winrate": 1.0,
+        "wins": 1
+      }
+    },
+    "mid-jungle": {
+      "ahri|trundle": {
+        "champions": [
+          "Ahri",
+          "Trundle"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "ahri|trundle",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ahri|vi": {
+        "champions": [
+          "Ahri",
+          "Vi"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "ahri|vi",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "akali|trundle": {
+        "champions": [
+          "Akali",
+          "Trundle"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "akali|trundle",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "akali|wukong": {
+        "champions": [
+          "Akali",
+          "Wukong"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "akali|wukong",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "akali|xinzhao": {
+        "champions": [
+          "Akali",
+          "Xin Zhao"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "akali|xinzhao",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "anivia|vi": {
+        "champions": [
+          "Anivia",
+          "Vi"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "anivia|vi",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "annie|nocturne": {
+        "champions": [
+          "Annie",
+          "Nocturne"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "annie|nocturne",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "annie|trundle": {
+        "champions": [
+          "Annie",
+          "Trundle"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "annie|trundle",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "annie|viego": {
+        "champions": [
+          "Annie",
+          "Viego"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "annie|viego",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "annie|wukong": {
+        "champions": [
+          "Annie",
+          "Wukong"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "annie|wukong",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "aurora|jarvaniv": {
+        "champions": [
+          "Aurora",
+          "Jarvan IV"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "aurora|jarvaniv",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "aurora|naafiri": {
+        "champions": [
+          "Aurora",
+          "Naafiri"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "aurora|naafiri",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "aurora|xinzhao": {
+        "champions": [
+          "Aurora",
+          "Xin Zhao"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "aurora|xinzhao",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "azir|pantheon": {
+        "champions": [
+          "Azir",
+          "Pantheon"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "azir|pantheon",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "azir|skarner": {
+        "champions": [
+          "Azir",
+          "Skarner"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "azir|skarner",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|jarvaniv": {
+        "champions": [
+          "Cassiopeia",
+          "Jarvan IV"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "cassiopeia|jarvaniv",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "cassiopeia|jayce": {
+        "champions": [
+          "Cassiopeia",
+          "Jayce"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "cassiopeia|jayce",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|leesin": {
+        "champions": [
+          "Cassiopeia",
+          "Lee Sin"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "cassiopeia|leesin",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "cassiopeia|naafiri": {
+        "champions": [
+          "Cassiopeia",
+          "Naafiri"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "cassiopeia|naafiri",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "cassiopeia|pantheon": {
+        "champions": [
+          "Cassiopeia",
+          "Pantheon"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "cassiopeia|pantheon",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|wukong": {
+        "champions": [
+          "Cassiopeia",
+          "Wukong"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "cassiopeia|wukong",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "fizz|leesin": {
+        "champions": [
+          "Fizz",
+          "Lee Sin"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "fizz|leesin",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "galio|leesin": {
+        "champions": [
+          "Galio",
+          "Lee Sin"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "galio|leesin",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "orianna|pantheon": {
+        "champions": [
+          "Orianna",
+          "Pantheon"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "orianna|pantheon",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "ryze|jarvaniv": {
+        "champions": [
+          "Ryze",
+          "Jarvan IV"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "ryze|jarvaniv",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "ryze|leesin": {
+        "champions": [
+          "Ryze",
+          "Lee Sin"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "ryze|leesin",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ryze|naafiri": {
+        "champions": [
+          "Ryze",
+          "Naafiri"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "ryze|naafiri",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "ryze|poppy": {
+        "champions": [
+          "Ryze",
+          "Poppy"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "ryze|poppy",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "ryze|trundle": {
+        "champions": [
+          "Ryze",
+          "Trundle"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "ryze|trundle",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sylas|kindred": {
+        "champions": [
+          "Sylas",
+          "Kindred"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "sylas|kindred",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "sylas|leesin": {
+        "champions": [
+          "Sylas",
+          "Lee Sin"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "sylas|leesin",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "taliyah|wukong": {
+        "champions": [
+          "Taliyah",
+          "Wukong"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "taliyah|wukong",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "twistedfate|jarvaniv": {
+        "champions": [
+          "Twisted Fate",
+          "Jarvan IV"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "twistedfate|jarvaniv",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "twistedfate|leesin": {
+        "champions": [
+          "Twisted Fate",
+          "Lee Sin"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "twistedfate|leesin",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "twistedfate|naafiri": {
+        "champions": [
+          "Twisted Fate",
+          "Naafiri"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "twistedfate|naafiri",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "twistedfate|pantheon": {
+        "champions": [
+          "Twisted Fate",
+          "Pantheon"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "twistedfate|pantheon",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "twistedfate|skarner": {
+        "champions": [
+          "Twisted Fate",
+          "Skarner"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "twistedfate|skarner",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "viktor|pantheon": {
+        "champions": [
+          "Viktor",
+          "Pantheon"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle",
+        "key": "viktor|pantheon",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "viktor|xinzhao": {
+        "champions": [
+          "Viktor",
+          "Xin Zhao"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle",
+        "key": "viktor|xinzhao",
+        "winrate": 0.5,
+        "wins": 1
+      }
+    },
+    "mid-jungle-support": {
+      "ahri|trundle|leblanc": {
+        "champions": [
+          "Ahri",
+          "Trundle",
+          "LeBlanc"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "ahri|trundle|leblanc",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ahri|vi|bard": {
+        "champions": [
+          "Ahri",
+          "Vi",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "ahri|vi|bard",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ahri|vi|lulu": {
+        "champions": [
+          "Ahri",
+          "Vi",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "ahri|vi|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "akali|trundle|karma": {
+        "champions": [
+          "Akali",
+          "Trundle",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "akali|trundle|karma",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "akali|wukong|karma": {
+        "champions": [
+          "Akali",
+          "Wukong",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "akali|wukong|karma",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "akali|xinzhao|karma": {
+        "champions": [
+          "Akali",
+          "Xin Zhao",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "akali|xinzhao|karma",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "anivia|vi|lulu": {
+        "champions": [
+          "Anivia",
+          "Vi",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "anivia|vi|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "annie|nocturne|alistar": {
+        "champions": [
+          "Annie",
+          "Nocturne",
+          "Alistar"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "annie|nocturne|alistar",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "annie|trundle|yuumi": {
+        "champions": [
+          "Annie",
+          "Trundle",
+          "Yuumi"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "annie|trundle|yuumi",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "annie|viego|pyke": {
+        "champions": [
+          "Annie",
+          "Viego",
+          "Pyke"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "annie|viego|pyke",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "annie|wukong|lulu": {
+        "champions": [
+          "Annie",
+          "Wukong",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "annie|wukong|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "aurora|jarvaniv|seraphine": {
+        "champions": [
+          "Aurora",
+          "Jarvan IV",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "aurora|jarvaniv|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "aurora|naafiri|seraphine": {
+        "champions": [
+          "Aurora",
+          "Naafiri",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle-support",
+        "key": "aurora|naafiri|seraphine",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "aurora|xinzhao|karma": {
+        "champions": [
+          "Aurora",
+          "Xin Zhao",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "aurora|xinzhao|karma",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "azir|pantheon|seraphine": {
+        "champions": [
+          "Azir",
+          "Pantheon",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "azir|pantheon|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "azir|skarner|karma": {
+        "champions": [
+          "Azir",
+          "Skarner",
+          "Karma"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "azir|skarner|karma",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|jarvaniv|milio": {
+        "champions": [
+          "Cassiopeia",
+          "Jarvan IV",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "cassiopeia|jarvaniv|milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "cassiopeia|jayce|skarner": {
+        "champions": [
+          "Cassiopeia",
+          "Jayce",
+          "Skarner"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "cassiopeia|jayce|skarner",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|leesin|bard": {
+        "champions": [
+          "Cassiopeia",
+          "Lee Sin",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "cassiopeia|leesin|bard",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "cassiopeia|naafiri|bard": {
+        "champions": [
+          "Cassiopeia",
+          "Naafiri",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "cassiopeia|naafiri|bard",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "cassiopeia|naafiri|nautilus": {
+        "champions": [
+          "Cassiopeia",
+          "Naafiri",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "cassiopeia|naafiri|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|pantheon|neeko": {
+        "champions": [
+          "Cassiopeia",
+          "Pantheon",
+          "Neeko"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "cassiopeia|pantheon|neeko",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "cassiopeia|wukong|lulu": {
+        "champions": [
+          "Cassiopeia",
+          "Wukong",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "cassiopeia|wukong|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "fizz|leesin|nautilus": {
+        "champions": [
+          "Fizz",
+          "Lee Sin",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "fizz|leesin|nautilus",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "galio|leesin|milio": {
+        "champions": [
+          "Galio",
+          "Lee Sin",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "galio|leesin|milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "orianna|pantheon|bard": {
+        "champions": [
+          "Orianna",
+          "Pantheon",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "orianna|pantheon|bard",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "orianna|pantheon|milio": {
+        "champions": [
+          "Orianna",
+          "Pantheon",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "orianna|pantheon|milio",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ryze|jarvaniv|nami": {
+        "champions": [
+          "Ryze",
+          "Jarvan IV",
+          "Nami"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "ryze|jarvaniv|nami",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "ryze|jarvaniv|nautilus": {
+        "champions": [
+          "Ryze",
+          "Jarvan IV",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "ryze|jarvaniv|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ryze|leesin|lulu": {
+        "champions": [
+          "Ryze",
+          "Lee Sin",
+          "Lulu"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "ryze|leesin|lulu",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "ryze|naafiri|bard": {
+        "champions": [
+          "Ryze",
+          "Naafiri",
+          "Bard"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle-support",
+        "key": "ryze|naafiri|bard",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "ryze|poppy|milio": {
+        "champions": [
+          "Ryze",
+          "Poppy",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 2,
+        "id": "mid-jungle-support",
+        "key": "ryze|poppy|milio",
+        "winrate": 0.5,
+        "wins": 1
+      },
+      "ryze|trundle|alistar": {
+        "champions": [
+          "Ryze",
+          "Trundle",
+          "Alistar"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "ryze|trundle|alistar",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "sylas|kindred|neeko": {
+        "champions": [
+          "Sylas",
+          "Kindred",
+          "Neeko"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "sylas|kindred|neeko",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "sylas|leesin|seraphine": {
+        "champions": [
+          "Sylas",
+          "Lee Sin",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "sylas|leesin|seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "taliyah|wukong|anivia": {
+        "champions": [
+          "Taliyah",
+          "Wukong",
+          "Anivia"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "taliyah|wukong|anivia",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "taliyah|wukong|milio": {
+        "champions": [
+          "Taliyah",
+          "Wukong",
+          "Milio"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "taliyah|wukong|milio",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "twistedfate|jarvaniv|nautilus": {
+        "champions": [
+          "Twisted Fate",
+          "Jarvan IV",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "twistedfate|jarvaniv|nautilus",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "twistedfate|leesin|nautilus": {
+        "champions": [
+          "Twisted Fate",
+          "Lee Sin",
+          "Nautilus"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "twistedfate|leesin|nautilus",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "twistedfate|naafiri|camille": {
+        "champions": [
+          "Twisted Fate",
+          "Naafiri",
+          "Camille"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "twistedfate|naafiri|camille",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "twistedfate|pantheon|seraphine": {
+        "champions": [
+          "Twisted Fate",
+          "Pantheon",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "twistedfate|pantheon|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "twistedfate|skarner|lux": {
+        "champions": [
+          "Twisted Fate",
+          "Skarner",
+          "Lux"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "twistedfate|skarner|lux",
+        "winrate": 0.0,
+        "wins": 0
+      },
+      "viktor|pantheon|seraphine": {
+        "champions": [
+          "Viktor",
+          "Pantheon",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "viktor|pantheon|seraphine",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "viktor|xinzhao|pyke": {
+        "champions": [
+          "Viktor",
+          "Xin Zhao",
+          "Pyke"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "viktor|xinzhao|pyke",
+        "winrate": 1.0,
+        "wins": 1
+      },
+      "viktor|xinzhao|seraphine": {
+        "champions": [
+          "Viktor",
+          "Xin Zhao",
+          "Seraphine"
+        ],
+        "confidence": "Low Confidence",
+        "games": 1,
+        "id": "mid-jungle-support",
+        "key": "viktor|xinzhao|seraphine",
+        "winrate": 0.0,
+        "wins": 0
+      }
+    }
+  },
+  "patch": "16.1",
+  "region": "all",
+  "schema": "lol_composition_synergy_v2"
+}
