@@ -39822,24 +39822,205 @@
   },
   "116520394663535912": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-19T14:20:14.511Z",
+    "checked_at": "2026-06-19T16:42:49.761Z",
     "event_id": "116520394663535912",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520394663535912",
-      "league": "",
+      "league": "VCS",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "116520427289188052",
+          "name": "Saigon Zen Esport",
+          "code": "ZEN",
+          "image": "http://static.lolesports.com/teams/1777960619021_saigon_zen_logo_export-removebg-preview.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "113843163628949793",
+          "name": "Saigon Dino",
+          "code": "DINO",
+          "image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
+          "game_wins": "3"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520394663535913",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535914",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535915",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535916",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535917",
+          "number": 5,
+          "state": "completed",
+          "blue": {
+            "team_id": "116520427289188052",
+            "team_name": "Saigon Zen Esport",
+            "team_code": "ZEN"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   }
 }
