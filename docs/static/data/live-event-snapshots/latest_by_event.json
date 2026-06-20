@@ -40025,24 +40025,205 @@
   },
   "116520394663535918": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-20T11:26:27.593Z",
+    "checked_at": "2026-06-20T13:03:11.543Z",
     "event_id": "116520394663535918",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520394663535918",
-      "league": "",
+      "league": "VCS",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "116079385545526730",
+          "name": "Saigon Warrior",
+          "code": "SGW",
+          "image": "http://static.lolesports.com/teams/1771230875226_logo_SW-removebg-preview.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "113843163628949793",
+          "name": "Saigon Dino",
+          "code": "DINO",
+          "image": "http://static.lolesports.com/teams/1737108816278_SaigonDino-DINOLogo2025.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520394663535919",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535920",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535921",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535922",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "red": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520394663535923",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "113843163628949793",
+            "team_name": "Saigon Dino",
+            "team_code": "DINO"
+          },
+          "red": {
+            "team_id": "116079385545526730",
+            "team_name": "Saigon Warrior",
+            "team_code": "SGW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   }
 }
