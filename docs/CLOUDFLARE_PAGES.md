@@ -146,11 +146,11 @@ scripts\codex_publish_site_update.cmd --message "Fix stale live match tabs"
 ```
 
 The command verifies JavaScript syntax, runs the local Cloudflare-compatible
-preflight, stages the site UI paths, `docs/pre_match_predictions.json`, and
-`docs/static/data/matches-*.json`, commits, pushes the
-`codex/github-pages-static` branch, then smokes the production Pages URL. Use
-`--dry-run` to inspect the exact publish scope without staging, committing, or
-pushing.
+preflight, stages the site UI paths, `docs/pre_match_predictions.json`,
+`docs/static/data/matches-*.json`, and match detail JSON under
+`docs/static/data/matches/`, commits, pushes the `codex/github-pages-static`
+branch, then smokes the production Pages URL. Use `--dry-run` to inspect the
+exact publish scope without staging, committing, or pushing.
 
 After Cloudflare Pages and the analyzer public artifacts are deployed, the
 `Smoke production contracts` workflow runs every six hours against

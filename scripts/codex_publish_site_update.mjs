@@ -163,5 +163,9 @@ function defaultFiles() {
       .filter((name) => /^matches-.*[.]json$/.test(name))
       .sort()
       .map((name) => `docs/static/data/${name}`),
+    ...readdirSync('docs/static/data/matches')
+      .filter((name) => /^[^/]+[.]json$/.test(name))
+      .sort()
+      .map((name) => `docs/static/data/matches/${name}`),
   ];
 }
