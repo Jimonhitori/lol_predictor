@@ -1544,11 +1544,18 @@ function filteredMatches() {
 }
 
 function liveMatches(matches) {
-  return matches.filter(match => String(match.status || '').toLowerCase() === 'inprogress');
+  const today = todayDateKey();
+  return matches.filter(match => {
+    if (String(match.status || '').toLowerCase() !== 'inprogress') return false;
+    const matchDate = localDateKey(match.start_time);
+    return !matchDate || matchDate >= today;
+  });
 }
 
 function defaultMatchDate(matches) {
-  return todayDateKey();
+  const today = todayDateKey();
+  const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
+  return keys.find(key => key >= today) || keys[keys.length - 1] || today;
 }
 
 function syncDefaultMatchDate(matches) {

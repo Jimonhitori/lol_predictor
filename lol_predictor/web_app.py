@@ -910,11 +910,18 @@ function filteredMatches() {
 }
 
 function liveMatches(matches) {
-  return matches.filter(match => String(match.status || '').toLowerCase() === 'inprogress');
+  const today = localDateKey(new Date().toISOString());
+  return matches.filter(match => {
+    if (String(match.status || '').toLowerCase() !== 'inprogress') return false;
+    const matchDate = localDateKey(match.start_time);
+    return !matchDate || matchDate >= today;
+  });
 }
 
 function defaultMatchDate(matches) {
-  return localDateKey(new Date().toISOString());
+  const today = localDateKey(new Date().toISOString());
+  const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
+  return keys.find(key => key >= today) || keys[keys.length - 1] || today;
 }
 
 function matchDateOptions(matches) {
