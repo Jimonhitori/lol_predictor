@@ -889,19 +889,16 @@ function renderDateTabs(matches) {
 function visibleDateOptions(options) {
   const today = localDateKey(new Date().toISOString());
   const futureOrToday = options.filter(option => option.key >= today);
-  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
-    return futureOrToday.slice(0, 3);
-  }
-  if (state.selectedMatchDate === today) {
-    return futureOrToday.slice(0, 3);
-  }
-  if (options.length <= 3) return options;
+  const visibleOptions = futureOrToday.length ? futureOrToday : options;
+  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') return visibleOptions.slice(0, 3);
+  if (state.selectedMatchDate === today) return visibleOptions.slice(0, 3);
+  if (visibleOptions.length <= 3) return visibleOptions;
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
-    ? options.findIndex(option => option.key === state.selectedMatchDate)
-    : options.findIndex(option => option.key === localDateKey(new Date().toISOString()));
+    ? visibleOptions.findIndex(option => option.key === state.selectedMatchDate)
+    : visibleOptions.findIndex(option => option.key === today);
   const center = selected >= 0 ? selected : 0;
-  const start = Math.max(0, Math.min(center - 1, options.length - 3));
-  return options.slice(start, start + 3);
+  const start = Math.max(0, Math.min(center - 1, visibleOptions.length - 3));
+  return visibleOptions.slice(start, start + 3);
 }
 
 function filteredMatches() {
