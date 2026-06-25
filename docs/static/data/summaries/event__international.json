@@ -1,0 +1,633 @@
+{
+  "patch": "16.11",
+  "games": 24,
+  "leagues": [
+    "EWC"
+  ],
+  "champions": [],
+  "champions_by_role": {},
+  "patch_options": [
+    {
+      "value": "all",
+      "label": "All patches",
+      "games": 613
+    },
+    {
+      "value": "16.11",
+      "label": "16.11",
+      "games": 24
+    },
+    {
+      "value": "16.10",
+      "label": "16.10",
+      "games": 24
+    },
+    {
+      "value": "16.09",
+      "label": "16.09",
+      "games": 67
+    },
+    {
+      "value": "16.08",
+      "label": "16.08",
+      "games": 47
+    },
+    {
+      "value": "16.07",
+      "label": "16.07",
+      "games": 13
+    },
+    {
+      "value": "15.20",
+      "label": "15.20",
+      "games": 84
+    },
+    {
+      "value": "15.17",
+      "label": "15.17",
+      "games": 12
+    },
+    {
+      "value": "15.13",
+      "label": "15.13",
+      "games": 113
+    },
+    {
+      "value": "14.18",
+      "label": "14.18",
+      "games": 106
+    },
+    {
+      "value": "14.16",
+      "label": "14.16",
+      "games": 13
+    },
+    {
+      "value": "14.15",
+      "label": "14.15",
+      "games": 13
+    },
+    {
+      "value": "14.13",
+      "label": "14.13",
+      "games": 19
+    },
+    {
+      "value": "14.08",
+      "label": "14.08",
+      "games": 78
+    }
+  ],
+  "patch_summaries": {
+    "all": {
+      "patch": "all",
+      "games": 613,
+      "leagues": [
+        "EWC",
+        "MSI",
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-05-01T08:16:45",
+      "data_through": "2026-06-11T23:04:01",
+      "source_rows": 613
+    },
+    "16.11": {
+      "patch": "16.11",
+      "games": 24,
+      "leagues": [
+        "EWC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-06-07T16:06:52",
+      "data_through": "2026-06-11T23:04:01",
+      "source_rows": 24
+    },
+    "16.10": {
+      "patch": "16.10",
+      "games": 24,
+      "leagues": [
+        "EWC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-05-18T08:06:22",
+      "data_through": "2026-05-26T09:01:18",
+      "source_rows": 24
+    },
+    "16.09": {
+      "patch": "16.09",
+      "games": 67,
+      "leagues": [
+        "EWC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-05-04T07:16:19",
+      "data_through": "2026-05-17T17:47:12",
+      "source_rows": 67
+    },
+    "16.08": {
+      "patch": "16.08",
+      "games": 47,
+      "leagues": [
+        "EWC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-04-21T18:11:44",
+      "data_through": "2026-04-30T18:01:57",
+      "source_rows": 47
+    },
+    "16.07": {
+      "patch": "16.07",
+      "games": 13,
+      "leagues": [
+        "EWC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-04-14T18:07:58",
+      "data_through": "2026-04-16T20:49:21",
+      "source_rows": 13
+    },
+    "15.20": {
+      "patch": "15.20",
+      "games": 84,
+      "leagues": [
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-10-14T08:20:58",
+      "data_through": "2025-11-09T11:31:30",
+      "source_rows": 84
+    },
+    "15.17": {
+      "patch": "15.17",
+      "games": 12,
+      "leagues": [
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-09-25T09:14:03",
+      "data_through": "2025-09-27T12:01:17",
+      "source_rows": 12
+    },
+    "15.13": {
+      "patch": "15.13",
+      "games": 113,
+      "leagues": [
+        "EWC",
+        "MSI"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-06-27T19:13:18",
+      "data_through": "2025-07-20T15:29:19",
+      "source_rows": 113
+    },
+    "14.18": {
+      "patch": "14.18",
+      "games": 106,
+      "leagues": [
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-09-25T12:12:29",
+      "data_through": "2024-11-02T17:53:48",
+      "source_rows": 106
+    },
+    "14.16": {
+      "patch": "14.16",
+      "games": 13,
+      "leagues": [
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-09-12T08:07:23",
+      "data_through": "2024-09-14T09:36:05",
+      "source_rows": 13
+    },
+    "14.15": {
+      "patch": "14.15",
+      "games": 13,
+      "leagues": [
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-08-31T08:58:51",
+      "data_through": "2024-09-02T12:21:57",
+      "source_rows": 13
+    },
+    "14.13": {
+      "patch": "14.13",
+      "games": 19,
+      "leagues": [
+        "EWC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-07-04T15:07:08",
+      "data_through": "2024-07-07T19:38:09",
+      "source_rows": 19
+    },
+    "14.08": {
+      "patch": "14.08",
+      "games": 78,
+      "leagues": [
+        "MSI"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-05-01T08:16:45",
+      "data_through": "2024-05-19T12:09:53",
+      "source_rows": 78
+    }
+  },
+  "teams": [
+    {
+      "name": "Hanwha Life Esports",
+      "games": 12,
+      "wins": 10,
+      "losses": 2,
+      "winrate": "83.3%",
+      "game_record": "10-2"
+    },
+    {
+      "name": "GAM Esports",
+      "games": 16,
+      "wins": 9,
+      "losses": 7,
+      "winrate": "56.2%",
+      "game_record": "9-7"
+    },
+    {
+      "name": "Sentinels",
+      "games": 11,
+      "wins": 9,
+      "losses": 2,
+      "winrate": "81.8%",
+      "game_record": "9-2"
+    },
+    {
+      "name": "FlyQuest",
+      "games": 15,
+      "wins": 8,
+      "losses": 7,
+      "winrate": "53.3%",
+      "game_record": "8-7"
+    },
+    {
+      "name": "Team Liquid",
+      "games": 12,
+      "wins": 8,
+      "losses": 4,
+      "winrate": "66.7%",
+      "game_record": "8-4"
+    },
+    {
+      "name": "Movistar KOI",
+      "games": 13,
+      "wins": 7,
+      "losses": 6,
+      "winrate": "53.8%",
+      "game_record": "7-6"
+    },
+    {
+      "name": "Karmine Corp",
+      "games": 11,
+      "wins": 7,
+      "losses": 4,
+      "winrate": "63.6%",
+      "game_record": "7-4"
+    },
+    {
+      "name": "T1",
+      "games": 8,
+      "wins": 7,
+      "losses": 1,
+      "winrate": "87.5%",
+      "game_record": "7-1"
+    },
+    {
+      "name": "G2 Esports",
+      "games": 7,
+      "wins": 7,
+      "losses": 0,
+      "winrate": "100.0%",
+      "game_record": "7-0"
+    },
+    {
+      "name": "Natus Vincere",
+      "games": 11,
+      "wins": 6,
+      "losses": 5,
+      "winrate": "54.5%",
+      "game_record": "6-5"
+    },
+    {
+      "name": "Deep Cross Gaming",
+      "games": 10,
+      "wins": 6,
+      "losses": 4,
+      "winrate": "60.0%",
+      "game_record": "6-4"
+    },
+    {
+      "name": "Team Secret Whales",
+      "games": 7,
+      "wins": 6,
+      "losses": 1,
+      "winrate": "85.7%",
+      "game_record": "6-1"
+    },
+    {
+      "name": "RED Canids",
+      "games": 6,
+      "wins": 6,
+      "losses": 0,
+      "winrate": "100.0%",
+      "game_record": "6-0"
+    },
+    {
+      "name": "Dplus Kia",
+      "games": 12,
+      "wins": 5,
+      "losses": 7,
+      "winrate": "41.7%",
+      "game_record": "5-7"
+    },
+    {
+      "name": "Fukuoka SoftBank HAWKS gaming",
+      "games": 10,
+      "wins": 5,
+      "losses": 5,
+      "winrate": "50.0%",
+      "game_record": "5-5"
+    },
+    {
+      "name": "Galions",
+      "games": 9,
+      "wins": 5,
+      "losses": 4,
+      "winrate": "55.6%",
+      "game_record": "5-4"
+    },
+    {
+      "name": "LØS",
+      "games": 8,
+      "wins": 5,
+      "losses": 3,
+      "winrate": "62.5%",
+      "game_record": "5-3"
+    },
+    {
+      "name": "Nongshim RedForce",
+      "games": 9,
+      "wins": 4,
+      "losses": 5,
+      "winrate": "44.4%",
+      "game_record": "4-5"
+    },
+    {
+      "name": "GiantX",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "winrate": "50.0%",
+      "game_record": "4-4"
+    },
+    {
+      "name": "LOUD",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "winrate": "50.0%",
+      "game_record": "4-4"
+    },
+    {
+      "name": "LYON",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "winrate": "50.0%",
+      "game_record": "4-4"
+    },
+    {
+      "name": "Vivo Keyd Stars",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "winrate": "50.0%",
+      "game_record": "4-4"
+    },
+    {
+      "name": "CTBC Flying Oyster",
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "winrate": "37.5%",
+      "game_record": "3-5"
+    },
+    {
+      "name": "Team Vitality",
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "winrate": "37.5%",
+      "game_record": "3-5"
+    },
+    {
+      "name": "BNK FEARX",
+      "games": 7,
+      "wins": 3,
+      "losses": 4,
+      "winrate": "42.9%",
+      "game_record": "3-4"
+    },
+    {
+      "name": "paiN Gaming",
+      "games": 7,
+      "wins": 3,
+      "losses": 4,
+      "winrate": "42.9%",
+      "game_record": "3-4"
+    },
+    {
+      "name": "Shifters",
+      "games": 7,
+      "wins": 3,
+      "losses": 4,
+      "winrate": "42.9%",
+      "game_record": "3-4"
+    },
+    {
+      "name": "Solary",
+      "games": 7,
+      "wins": 3,
+      "losses": 4,
+      "winrate": "42.9%",
+      "game_record": "3-4"
+    },
+    {
+      "name": "Team Secret",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "winrate": "75.0%",
+      "game_record": "3-1"
+    },
+    {
+      "name": "DN SOOPers",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "Fluxo W7M",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "Fnatic",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "Cloud9",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "Disguised",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "HANJIN BRION",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "MVK Esports",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "SK Gaming",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "Ground Zero Gaming",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "winrate": "20.0%",
+      "game_record": "1-4"
+    },
+    {
+      "name": "Kiwoom DRX",
+      "games": 3,
+      "wins": 1,
+      "losses": 2,
+      "winrate": "33.3%",
+      "game_record": "1-2"
+    },
+    {
+      "name": "DetonatioN FocusMe",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "Dignitas",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "KT Rolster",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "Leviatan",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "Shopify Rebellion",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "Team Heretics",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    }
+  ],
+  "standings_split": "EWC",
+  "standings_series": 175,
+  "generated_at": "2026-06-25T02:04:05.580841Z",
+  "data_from": "2026-06-07T16:06:52",
+  "data_through": "2026-06-11T23:04:01",
+  "latest_patch_data_from": "2026-06-07T16:06:52",
+  "latest_patch_data_through": "2026-06-11T23:04:01",
+  "all_data_from": "2024-05-01T08:16:45",
+  "all_data_through": "2026-06-11T23:04:01",
+  "data_status": "stale",
+  "data_staleness_days": 13.125,
+  "warnings": [
+    "summary_data_stale:13.1d",
+    "summary_meta_fallback: champion detail tables omitted"
+  ],
+  "source": "lol-pros-analyzer",
+  "source_rows": 24
+}

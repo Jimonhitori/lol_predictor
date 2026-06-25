@@ -1,0 +1,3448 @@
+{
+  "patch": "16.11",
+  "games": 252,
+  "leagues": [
+    "AL",
+    "Asia Master",
+    "CBLOL",
+    "CD",
+    "EM",
+    "EWC",
+    "HM",
+    "LCK",
+    "LCS",
+    "LRN",
+    "LRS",
+    "NLC",
+    "ROL",
+    "TCL",
+    "VCS"
+  ],
+  "champions": [],
+  "champions_by_role": {},
+  "patch_options": [
+    {
+      "value": "all",
+      "label": "All patches",
+      "games": 25999
+    },
+    {
+      "value": "16.11",
+      "label": "16.11",
+      "games": 252
+    },
+    {
+      "value": "16.10",
+      "label": "16.10",
+      "games": 785
+    },
+    {
+      "value": "16.09",
+      "label": "16.09",
+      "games": 747
+    },
+    {
+      "value": "16.08",
+      "label": "16.08",
+      "games": 700
+    },
+    {
+      "value": "16.07",
+      "label": "16.07",
+      "games": 730
+    },
+    {
+      "value": "16.06",
+      "label": "16.06",
+      "games": 326
+    },
+    {
+      "value": "16.05",
+      "label": "16.05",
+      "games": 306
+    },
+    {
+      "value": "16.04",
+      "label": "16.04",
+      "games": 320
+    },
+    {
+      "value": "16.03",
+      "label": "16.03",
+      "games": 623
+    },
+    {
+      "value": "16.02",
+      "label": "16.02",
+      "games": 546
+    },
+    {
+      "value": "16.01",
+      "label": "16.01",
+      "games": 433
+    },
+    {
+      "value": "15.24",
+      "label": "15.24",
+      "games": 75
+    },
+    {
+      "value": "15.23",
+      "label": "15.23",
+      "games": 56
+    },
+    {
+      "value": "15.22",
+      "label": "15.22",
+      "games": 19
+    },
+    {
+      "value": "15.21",
+      "label": "15.21",
+      "games": 60
+    },
+    {
+      "value": "15.20",
+      "label": "15.20",
+      "games": 192
+    },
+    {
+      "value": "15.19",
+      "label": "15.19",
+      "games": 378
+    },
+    {
+      "value": "15.18",
+      "label": "15.18",
+      "games": 180
+    },
+    {
+      "value": "15.17",
+      "label": "15.17",
+      "games": 622
+    },
+    {
+      "value": "15.16",
+      "label": "15.16",
+      "games": 613
+    },
+    {
+      "value": "15.15",
+      "label": "15.15",
+      "games": 637
+    },
+    {
+      "value": "15.14",
+      "label": "15.14",
+      "games": 598
+    },
+    {
+      "value": "15.13",
+      "label": "15.13",
+      "games": 385
+    },
+    {
+      "value": "15.12",
+      "label": "15.12",
+      "games": 166
+    },
+    {
+      "value": "15.11",
+      "label": "15.11",
+      "games": 445
+    },
+    {
+      "value": "15.10",
+      "label": "15.10",
+      "games": 652
+    },
+    {
+      "value": "15.09",
+      "label": "15.09",
+      "games": 875
+    },
+    {
+      "value": "15.08",
+      "label": "15.08",
+      "games": 796
+    },
+    {
+      "value": "15.07",
+      "label": "15.07",
+      "games": 820
+    },
+    {
+      "value": "15.06",
+      "label": "15.06",
+      "games": 464
+    },
+    {
+      "value": "15.05",
+      "label": "15.05",
+      "games": 214
+    },
+    {
+      "value": "15.04",
+      "label": "15.04",
+      "games": 371
+    },
+    {
+      "value": "15.03",
+      "label": "15.03",
+      "games": 569
+    },
+    {
+      "value": "15.02",
+      "label": "15.02",
+      "games": 536
+    },
+    {
+      "value": "15.01",
+      "label": "15.01",
+      "games": 315
+    },
+    {
+      "value": "14.23",
+      "label": "14.23",
+      "games": 49
+    },
+    {
+      "value": "14.22",
+      "label": "14.22",
+      "games": 40
+    },
+    {
+      "value": "14.21",
+      "label": "14.21",
+      "games": 116
+    },
+    {
+      "value": "14.20",
+      "label": "14.20",
+      "games": 119
+    },
+    {
+      "value": "14.19",
+      "label": "14.19",
+      "games": 91
+    },
+    {
+      "value": "14.18",
+      "label": "14.18",
+      "games": 727
+    },
+    {
+      "value": "14.17",
+      "label": "14.17",
+      "games": 168
+    },
+    {
+      "value": "14.16",
+      "label": "14.16",
+      "games": 264
+    },
+    {
+      "value": "14.15",
+      "label": "14.15",
+      "games": 644
+    },
+    {
+      "value": "14.14",
+      "label": "14.14",
+      "games": 322
+    },
+    {
+      "value": "14.13",
+      "label": "14.13",
+      "games": 1085
+    },
+    {
+      "value": "14.12",
+      "label": "14.12",
+      "games": 708
+    },
+    {
+      "value": "14.11",
+      "label": "14.11",
+      "games": 691
+    },
+    {
+      "value": "14.10",
+      "label": "14.10",
+      "games": 562
+    },
+    {
+      "value": "14.09",
+      "label": "14.09",
+      "games": 292
+    },
+    {
+      "value": "14.08",
+      "label": "14.08",
+      "games": 266
+    },
+    {
+      "value": "14.07",
+      "label": "14.07",
+      "games": 183
+    },
+    {
+      "value": "14.06",
+      "label": "14.06",
+      "games": 265
+    },
+    {
+      "value": "14.05",
+      "label": "14.05",
+      "games": 750
+    },
+    {
+      "value": "14.04",
+      "label": "14.04",
+      "games": 662
+    },
+    {
+      "value": "14.03",
+      "label": "14.03",
+      "games": 663
+    },
+    {
+      "value": "14.02",
+      "label": "14.02",
+      "games": 716
+    },
+    {
+      "value": "14.01",
+      "label": "14.01",
+      "games": 780
+    },
+    {
+      "value": "13.24",
+      "label": "13.24",
+      "games": 18
+    }
+  ],
+  "patch_summaries": {
+    "all": {
+      "patch": "all",
+      "games": 25999,
+      "leagues": [
+        "AC",
+        "AL",
+        "ASI",
+        "Asia Master",
+        "CBLOL",
+        "CBLOLA",
+        "CCWS",
+        "CD",
+        "CDF",
+        "CT",
+        "DCup",
+        "EBL",
+        "EBLPA",
+        "EM",
+        "EPL",
+        "ESLOL",
+        "EWC",
+        "FST",
+        "GLL",
+        "GLLPA",
+        "HC",
+        "HLL",
+        "HM",
+        "HW",
+        "IC",
+        "IGNIS",
+        "KeSPA",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCO",
+        "LCP",
+        "LCS",
+        "LDL",
+        "LEC",
+        "LES",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LLA",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LTA",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "MSI",
+        "NACL",
+        "NEXO",
+        "NL",
+        "NLC",
+        "NLC Aurora Open",
+        "PCL",
+        "PCS",
+        "PRM",
+        "PRMP",
+        "RL",
+        "ROL",
+        "TCL",
+        "TSC",
+        "UL",
+        "USP",
+        "VCS",
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-01-01T05:13:15",
+      "data_through": "2026-06-12T19:14:08",
+      "source_rows": 25999
+    },
+    "16.11": {
+      "patch": "16.11",
+      "games": 252,
+      "leagues": [
+        "AL",
+        "Asia Master",
+        "CBLOL",
+        "CD",
+        "EM",
+        "EWC",
+        "HM",
+        "LCK",
+        "LCS",
+        "LRN",
+        "LRS",
+        "NLC",
+        "ROL",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-05-30T16:11:23",
+      "data_through": "2026-06-12T19:14:08",
+      "source_rows": 252
+    },
+    "16.10": {
+      "patch": "16.10",
+      "games": 785,
+      "leagues": [
+        "CBLOL",
+        "CD",
+        "EBL",
+        "EWC",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LCS",
+        "LEC",
+        "LES",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "NL",
+        "NLC",
+        "PCS",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-05-14T20:09:18",
+      "data_through": "2026-06-08T11:29:50",
+      "source_rows": 785
+    },
+    "16.09": {
+      "patch": "16.09",
+      "games": 747,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CD",
+        "EBL",
+        "EWC",
+        "HC",
+        "HLL",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LCS",
+        "LEC",
+        "LES",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "NL",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-05-01T16:13:42",
+      "data_through": "2026-05-28T11:03:37",
+      "source_rows": 747
+    },
+    "16.08": {
+      "patch": "16.08",
+      "games": 700,
+      "leagues": [
+        "CBLOL",
+        "CD",
+        "EBL",
+        "EM",
+        "EWC",
+        "HC",
+        "HLL",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LCS",
+        "LEC",
+        "LES",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "NL",
+        "PCS",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-04-18T04:07:45",
+      "data_through": "2026-05-03T13:22:08",
+      "source_rows": 700
+    },
+    "16.07": {
+      "patch": "16.07",
+      "games": 730,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CD",
+        "EBL",
+        "EM",
+        "EWC",
+        "HLL",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LCS",
+        "LEC",
+        "LES",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "NL",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-04-04T07:13:58",
+      "data_through": "2026-04-24T19:45:45",
+      "source_rows": 730
+    },
+    "16.06": {
+      "patch": "16.06",
+      "games": 326,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CD",
+        "EM",
+        "HLL",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LEC",
+        "LIT",
+        "LJL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "PRM",
+        "RL",
+        "ROL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-03-23T16:02:03",
+      "data_through": "2026-04-05T11:13:31",
+      "source_rows": 326
+    },
+    "16.05": {
+      "patch": "16.05",
+      "games": 306,
+      "leagues": [
+        "EM",
+        "FST",
+        "HW",
+        "LAS",
+        "LJL",
+        "LRN",
+        "LRS",
+        "RL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-03-05T16:32:02",
+      "data_through": "2026-03-29T14:15:48",
+      "source_rows": 306
+    },
+    "16.04": {
+      "patch": "16.04",
+      "games": 320,
+      "leagues": [
+        "AC",
+        "CBLOL",
+        "CD",
+        "EBL",
+        "HLL",
+        "HW",
+        "LCS",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "NLC",
+        "PRM",
+        "RL",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-02-20T21:09:00",
+      "data_through": "2026-03-15T10:52:45",
+      "source_rows": 320
+    },
+    "16.03": {
+      "patch": "16.03",
+      "games": 623,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "EBL",
+        "HLL",
+        "HW",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LCS",
+        "LEC",
+        "LES",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "NLC",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-02-07T01:38:49",
+      "data_through": "2026-03-08T12:04:35",
+      "source_rows": 623
+    },
+    "16.02": {
+      "patch": "16.02",
+      "games": 546,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CCWS",
+        "EBL",
+        "HLL",
+        "HW",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LCS",
+        "LEC",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LPL",
+        "NLC",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-01-24T15:51:32",
+      "data_through": "2026-02-11T12:10:08",
+      "source_rows": 546
+    },
+    "16.01": {
+      "patch": "16.01",
+      "games": 433,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CCWS",
+        "HLL",
+        "HW",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LIT",
+        "LPL",
+        "NLC",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2026-01-08T17:08:27",
+      "data_through": "2026-01-30T18:57:52",
+      "source_rows": 433
+    },
+    "15.24": {
+      "patch": "15.24",
+      "games": 75,
+      "leagues": [
+        "DCup"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-12-16T07:13:30",
+      "data_through": "2025-12-29T10:52:27",
+      "source_rows": 75
+    },
+    "15.23": {
+      "patch": "15.23",
+      "games": 56,
+      "leagues": [
+        "KeSPA"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-12-06T06:06:51",
+      "data_through": "2025-12-14T11:40:05",
+      "source_rows": 56
+    },
+    "15.22": {
+      "patch": "15.22",
+      "games": 19,
+      "leagues": [
+        "IC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-11-11T17:05:26",
+      "data_through": "2025-11-22T21:20:17",
+      "source_rows": 19
+    },
+    "15.21": {
+      "patch": "15.21",
+      "games": 60,
+      "leagues": [
+        "IC",
+        "LAS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-11-01T05:05:27",
+      "data_through": "2025-11-16T11:34:09",
+      "source_rows": 60
+    },
+    "15.20": {
+      "patch": "15.20",
+      "games": 192,
+      "leagues": [
+        "EM",
+        "LAS",
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-10-11T16:04:11",
+      "data_through": "2025-11-09T11:31:30",
+      "source_rows": 192
+    },
+    "15.19": {
+      "patch": "15.19",
+      "games": 378,
+      "leagues": [
+        "ASI",
+        "Asia Master",
+        "EM",
+        "LAS",
+        "LCP",
+        "LTA N",
+        "LTA S",
+        "NLC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-09-27T16:11:30",
+      "data_through": "2025-10-13T10:46:43",
+      "source_rows": 378
+    },
+    "15.18": {
+      "patch": "15.18",
+      "games": 180,
+      "leagues": [
+        "CD",
+        "EM",
+        "LAS",
+        "LEC",
+        "LTA",
+        "NACL",
+        "NLC"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-09-13T20:14:47",
+      "data_through": "2025-09-28T22:54:04",
+      "source_rows": 180
+    },
+    "15.17": {
+      "patch": "15.17",
+      "games": 622,
+      "leagues": [
+        "Asia Master",
+        "CD",
+        "EBL",
+        "HC",
+        "HLL",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL",
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-08-28T13:10:30",
+      "data_through": "2025-10-01T05:08:31",
+      "source_rows": 622
+    },
+    "15.16": {
+      "patch": "15.16",
+      "games": 613,
+      "leagues": [
+        "AL",
+        "CD",
+        "EBL",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "NLC",
+        "PCS",
+        "PRM",
+        "PRMP",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-08-14T21:07:07",
+      "data_through": "2025-09-12T18:44:09",
+      "source_rows": 613
+    },
+    "15.15": {
+      "patch": "15.15",
+      "games": 637,
+      "leagues": [
+        "AL",
+        "CD",
+        "EBL",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "NLC",
+        "PCS",
+        "PRM",
+        "PRMP",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-07-31T21:21:56",
+      "data_through": "2025-08-19T18:19:39",
+      "source_rows": 637
+    },
+    "15.14": {
+      "patch": "15.14",
+      "games": 598,
+      "leagues": [
+        "CD",
+        "EBL",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "NLC",
+        "PCS",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-07-17T21:08:26",
+      "data_through": "2025-08-03T21:22:56",
+      "source_rows": 598
+    },
+    "15.13": {
+      "patch": "15.13",
+      "games": 385,
+      "leagues": [
+        "AL",
+        "Asia Master",
+        "CT",
+        "EWC",
+        "HLL",
+        "LIT",
+        "LRN",
+        "LRS",
+        "LVP SL",
+        "MSI",
+        "NLC",
+        "PRM",
+        "PRMP",
+        "ROL",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-06-27T19:13:18",
+      "data_through": "2025-07-29T19:05:40",
+      "source_rows": 385
+    },
+    "15.12": {
+      "patch": "15.12",
+      "games": 166,
+      "leagues": [
+        "Asia Master",
+        "CD",
+        "EM",
+        "HLL",
+        "LJL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "NEXO"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-06-12T20:16:28",
+      "data_through": "2025-06-28T14:50:23",
+      "source_rows": 166
+    },
+    "15.11": {
+      "patch": "15.11",
+      "games": 445,
+      "leagues": [
+        "CD",
+        "CT",
+        "EM",
+        "LCK",
+        "LJL",
+        "LPL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "NACL",
+        "NEXO",
+        "PCS",
+        "ROL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-05-31T06:22:44",
+      "data_through": "2025-06-22T12:49:53",
+      "source_rows": 445
+    },
+    "15.10": {
+      "patch": "15.10",
+      "games": 652,
+      "leagues": [
+        "AL",
+        "CD",
+        "EBL",
+        "HC",
+        "HLL",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "NEXO",
+        "NLC",
+        "PCS",
+        "PRM",
+        "ROL",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-05-15T20:09:10",
+      "data_through": "2025-06-15T19:39:19",
+      "source_rows": 652
+    },
+    "15.09": {
+      "patch": "15.09",
+      "games": 875,
+      "leagues": [
+        "AL",
+        "CD",
+        "EBL",
+        "HC",
+        "HLL",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "NEXO",
+        "NLC",
+        "PCS",
+        "PRM",
+        "PRMP",
+        "RL",
+        "ROL",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-05-02T14:19:22",
+      "data_through": "2025-05-24T11:01:07",
+      "source_rows": 875
+    },
+    "15.08": {
+      "patch": "15.08",
+      "games": 796,
+      "leagues": [
+        "AL",
+        "CD",
+        "EBL",
+        "HC",
+        "HLL",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "NEXO",
+        "NLC",
+        "PCS",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-04-17T15:17:17",
+      "data_through": "2025-05-09T19:37:01",
+      "source_rows": 796
+    },
+    "15.07": {
+      "patch": "15.07",
+      "games": 820,
+      "leagues": [
+        "AL",
+        "CD",
+        "EBL",
+        "HLL",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NACL",
+        "NEXO",
+        "NLC",
+        "PCS",
+        "PRM",
+        "PRMP",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-04-04T08:09:04",
+      "data_through": "2025-04-23T18:37:30",
+      "source_rows": 820
+    },
+    "15.06": {
+      "patch": "15.06",
+      "games": 464,
+      "leagues": [
+        "CD",
+        "HC",
+        "HLL",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LEC",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "NEXO",
+        "NLC",
+        "PRM",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-03-22T08:12:20",
+      "data_through": "2025-04-13T14:17:34",
+      "source_rows": 464
+    },
+    "15.05": {
+      "patch": "15.05",
+      "games": 214,
+      "leagues": [
+        "CD",
+        "EM",
+        "FST",
+        "NEXO",
+        "PCS",
+        "RL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-03-09T15:43:45",
+      "data_through": "2025-03-30T13:00:35",
+      "source_rows": 214
+    },
+    "15.04": {
+      "patch": "15.04",
+      "games": 371,
+      "leagues": [
+        "AL",
+        "EBL",
+        "HLL",
+        "HW",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LPLOL",
+        "LVP SL",
+        "NEXO",
+        "NLC",
+        "PCS",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-02-21T19:07:39",
+      "data_through": "2025-03-10T19:20:30",
+      "source_rows": 371
+    },
+    "15.03": {
+      "patch": "15.03",
+      "games": 569,
+      "leagues": [
+        "AL",
+        "EBL",
+        "HLL",
+        "HW",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LPLOL",
+        "LTA",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NEXO",
+        "NLC",
+        "PCS",
+        "PRM",
+        "RL",
+        "ROL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-02-08T10:19:56",
+      "data_through": "2025-03-02T19:02:17",
+      "source_rows": 569
+    },
+    "15.02": {
+      "patch": "15.02",
+      "games": 536,
+      "leagues": [
+        "CD",
+        "EBL",
+        "HLL",
+        "HW",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LPL",
+        "LTA N",
+        "LTA S",
+        "LVP SL",
+        "NEXO",
+        "NLC",
+        "PRM",
+        "RL",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-01-24T09:34:15",
+      "data_through": "2025-02-16T11:10:52",
+      "source_rows": 536
+    },
+    "15.01": {
+      "patch": "15.01",
+      "games": 315,
+      "leagues": [
+        "HLL",
+        "HW",
+        "LCK",
+        "LCKC",
+        "LCP",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LPL",
+        "LVP SL",
+        "NLC",
+        "PRM",
+        "TCL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2025-01-11T11:11:24",
+      "data_through": "2025-01-31T18:54:02",
+      "source_rows": 315
+    },
+    "14.23": {
+      "patch": "14.23",
+      "games": 49,
+      "leagues": [
+        "KeSPA"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-11-30T05:25:19",
+      "data_through": "2024-12-08T09:03:13",
+      "source_rows": 49
+    },
+    "14.22": {
+      "patch": "14.22",
+      "games": 40,
+      "leagues": [
+        "LAS",
+        "NEXO"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-11-16T05:07:01",
+      "data_through": "2024-11-28T18:00:24",
+      "source_rows": 40
+    },
+    "14.21": {
+      "patch": "14.21",
+      "games": 116,
+      "leagues": [
+        "IC",
+        "IGNIS",
+        "LAS",
+        "NEXO",
+        "NLC",
+        "NLC Aurora Open"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-11-02T05:06:54",
+      "data_through": "2024-11-18T19:34:03",
+      "source_rows": 116
+    },
+    "14.20": {
+      "patch": "14.20",
+      "games": 119,
+      "leagues": [
+        "IC",
+        "LAS",
+        "NEXO",
+        "NLC",
+        "NLC Aurora Open"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-10-16T16:08:38",
+      "data_through": "2024-11-06T20:08:53",
+      "source_rows": 119
+    },
+    "14.19": {
+      "patch": "14.19",
+      "games": 91,
+      "leagues": [
+        "IC",
+        "NEXO",
+        "NLC Aurora Open"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-10-01T16:09:52",
+      "data_through": "2024-10-17T18:07:30",
+      "source_rows": 91
+    },
+    "14.18": {
+      "patch": "14.18",
+      "games": 727,
+      "leagues": [
+        "AC",
+        "CDF",
+        "EBLPA",
+        "ESLOL",
+        "GLLPA",
+        "HW",
+        "PRMP",
+        "TSC",
+        "USP",
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-09-14T20:18:48",
+      "data_through": "2024-11-10T21:34:28",
+      "source_rows": 727
+    },
+    "14.17": {
+      "patch": "14.17",
+      "games": 168,
+      "leagues": [
+        "AL",
+        "EPL",
+        "LFL2",
+        "LPLOL",
+        "NACL",
+        "NLC",
+        "UL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-09-02T10:44:01",
+      "data_through": "2024-09-23T11:49:11",
+      "source_rows": 168
+    },
+    "14.16": {
+      "patch": "14.16",
+      "games": 264,
+      "leagues": [
+        "ESLOL",
+        "IGNIS",
+        "LCK",
+        "LCKC",
+        "LCS",
+        "LFL",
+        "LVP SL",
+        "NACL",
+        "PRM",
+        "TCL",
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-08-17T20:07:21",
+      "data_through": "2024-09-22T20:02:14",
+      "source_rows": 264
+    },
+    "14.15": {
+      "patch": "14.15",
+      "games": 644,
+      "leagues": [
+        "CBLOL",
+        "CBLOLA",
+        "EM",
+        "LCK",
+        "LCKC",
+        "LCS",
+        "LEC",
+        "LLA",
+        "LPL",
+        "NACL",
+        "PCS",
+        "VCS",
+        "WLDs"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-08-03T16:17:25",
+      "data_through": "2024-09-07T19:40:35",
+      "source_rows": 644
+    },
+    "14.14": {
+      "patch": "14.14",
+      "games": 322,
+      "leagues": [
+        "CBLOL",
+        "CBLOLA",
+        "LCK",
+        "LCKC",
+        "LCS",
+        "LIT",
+        "LLA",
+        "LPL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "PCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-07-20T20:10:15",
+      "data_through": "2024-08-09T09:52:48",
+      "source_rows": 322
+    },
+    "14.13": {
+      "patch": "14.13",
+      "games": 1085,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "CT",
+        "EBL",
+        "EM",
+        "EPL",
+        "ESLOL",
+        "EWC",
+        "GLL",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCO",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LLA",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LVP SL",
+        "NACL",
+        "NLC",
+        "PCL",
+        "PCS",
+        "PRM",
+        "TCL",
+        "UL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-06-29T20:06:31",
+      "data_through": "2024-08-04T19:31:58",
+      "source_rows": 1085
+    },
+    "14.12": {
+      "patch": "14.12",
+      "games": 708,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "EBL",
+        "EPL",
+        "ESLOL",
+        "GLL",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCO",
+        "LCS",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LLA",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LVP SL",
+        "NACL",
+        "NEXO",
+        "NLC",
+        "PCL",
+        "PCS",
+        "PRM",
+        "TCL",
+        "UL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-06-15T20:11:50",
+      "data_through": "2024-07-09T12:04:16",
+      "source_rows": 708
+    },
+    "14.11": {
+      "patch": "14.11",
+      "games": 691,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "CT",
+        "EBL",
+        "EPL",
+        "ESLOL",
+        "GLL",
+        "HC",
+        "HM",
+        "LAS",
+        "LCK",
+        "LCKC",
+        "LCO",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LLA",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LVP SL",
+        "NLC",
+        "PCL",
+        "PCS",
+        "PRM",
+        "TCL",
+        "UL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-06-05T08:05:30",
+      "data_through": "2024-06-29T12:02:26",
+      "source_rows": 691
+    },
+    "14.10": {
+      "patch": "14.10",
+      "games": 562,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "EBL",
+        "ESLOL",
+        "GLL",
+        "HC",
+        "HM",
+        "LAS",
+        "LCO",
+        "LDL",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LPL",
+        "LPLOL",
+        "LRN",
+        "LRS",
+        "LVP SL",
+        "NEXO",
+        "NLC",
+        "PCL",
+        "PRM",
+        "TCL",
+        "UL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-05-21T00:12:48",
+      "data_through": "2024-06-15T12:10:59",
+      "source_rows": 562
+    },
+    "14.09": {
+      "patch": "14.09",
+      "games": 292,
+      "leagues": [
+        "AL",
+        "EBL",
+        "GLL",
+        "LAS",
+        "LDL",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LPLOL",
+        "LVP SL",
+        "NEXO",
+        "PRM"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-05-11T05:59:17",
+      "data_through": "2024-05-31T12:10:27",
+      "source_rows": 292
+    },
+    "14.08": {
+      "patch": "14.08",
+      "games": 266,
+      "leagues": [
+        "HC",
+        "IGNIS",
+        "LCO",
+        "LDL",
+        "LRN",
+        "LRS",
+        "MSI",
+        "NEXO"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-04-23T00:17:07",
+      "data_through": "2024-05-25T18:59:51",
+      "source_rows": 266
+    },
+    "14.07": {
+      "patch": "14.07",
+      "games": 183,
+      "leagues": [
+        "EM",
+        "GLL",
+        "LRN",
+        "LRS",
+        "NEXO"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-04-09T00:24:44",
+      "data_through": "2024-04-28T17:51:04",
+      "source_rows": 183
+    },
+    "14.06": {
+      "patch": "14.06",
+      "games": 265,
+      "leagues": [
+        "CBLOL",
+        "CBLOLA",
+        "LCK",
+        "LCKC",
+        "LEC",
+        "LPL",
+        "LRN",
+        "LRS",
+        "NACL",
+        "NEXO"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-03-30T06:10:37",
+      "data_through": "2024-04-28T19:07:10",
+      "source_rows": 265
+    },
+    "14.05": {
+      "patch": "14.05",
+      "games": 750,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "EBL",
+        "ESLOL",
+        "GLL",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCS",
+        "LDL",
+        "LEC",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LLA",
+        "LPL",
+        "LPLOL",
+        "LVP SL",
+        "NACL",
+        "NEXO",
+        "PCL",
+        "PCS",
+        "PRM",
+        "TCL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-03-08T21:07:46",
+      "data_through": "2024-04-14T10:54:32",
+      "source_rows": 750
+    },
+    "14.04": {
+      "patch": "14.04",
+      "games": 662,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "EBL",
+        "ESLOL",
+        "GLL",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCS",
+        "LDL",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LLA",
+        "LPL",
+        "LPLOL",
+        "LVP SL",
+        "NACL",
+        "NEXO",
+        "NLC",
+        "PRM",
+        "TCL",
+        "UL"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-02-24T21:15:52",
+      "data_through": "2024-03-27T19:54:05",
+      "source_rows": 662
+    },
+    "14.03": {
+      "patch": "14.03",
+      "games": 663,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "EBL",
+        "ESLOL",
+        "GLL",
+        "HC",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCO",
+        "LCS",
+        "LFL",
+        "LFL2",
+        "LIT",
+        "LJL",
+        "LLA",
+        "LPLOL",
+        "LVP SL",
+        "NACL",
+        "NLC",
+        "PCL",
+        "PCS",
+        "PRM",
+        "TCL",
+        "UL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-02-09T21:07:49",
+      "data_through": "2024-03-15T13:24:15",
+      "source_rows": 663
+    },
+    "14.02": {
+      "patch": "14.02",
+      "games": 716,
+      "leagues": [
+        "AL",
+        "CBLOL",
+        "CBLOLA",
+        "EBL",
+        "ESLOL",
+        "GLL",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCO",
+        "LCS",
+        "LDL",
+        "LEC",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LLA",
+        "LPL",
+        "LPLOL",
+        "LVP SL",
+        "NACL",
+        "NLC",
+        "PCS",
+        "PRM",
+        "TCL",
+        "UL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-01-27T20:15:48",
+      "data_through": "2024-03-06T10:26:15",
+      "source_rows": 716
+    },
+    "14.01": {
+      "patch": "14.01",
+      "games": 780,
+      "leagues": [
+        "CBLOL",
+        "EBL",
+        "ESLOL",
+        "GLL",
+        "HM",
+        "LCK",
+        "LCKC",
+        "LCO",
+        "LCS",
+        "LDL",
+        "LEC",
+        "LFL",
+        "LIT",
+        "LJL",
+        "LLA",
+        "LPL",
+        "LPLOL",
+        "LVP SL",
+        "NACL",
+        "NLC",
+        "PCS",
+        "PRM",
+        "TCL",
+        "TSC",
+        "UL",
+        "VCS"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-01-05T14:08:39",
+      "data_through": "2024-02-04T12:35:51",
+      "source_rows": 780
+    },
+    "13.24": {
+      "patch": "13.24",
+      "games": 18,
+      "leagues": [
+        "DCup"
+      ],
+      "champions": [],
+      "champions_by_role": {},
+      "data_from": "2024-01-01T05:13:15",
+      "data_through": "2024-01-06T10:53:29",
+      "source_rows": 18
+    }
+  },
+  "teams": [
+    {
+      "name": "Karmine Corp",
+      "games": 42,
+      "wins": 27,
+      "losses": 15,
+      "winrate": "64.3%",
+      "game_record": "27-15"
+    },
+    {
+      "name": "G2 NORD",
+      "games": 37,
+      "wins": 26,
+      "losses": 11,
+      "winrate": "70.3%",
+      "game_record": "26-11"
+    },
+    {
+      "name": "G2 Esports",
+      "games": 35,
+      "wins": 24,
+      "losses": 11,
+      "winrate": "68.6%",
+      "game_record": "24-11"
+    },
+    {
+      "name": "Anubis Gaming",
+      "games": 33,
+      "wins": 24,
+      "losses": 9,
+      "winrate": "72.7%",
+      "game_record": "24-9"
+    },
+    {
+      "name": "Eintracht Spandau",
+      "games": 32,
+      "wins": 24,
+      "losses": 8,
+      "winrate": "75.0%",
+      "game_record": "24-8"
+    },
+    {
+      "name": "Misa Esports",
+      "games": 27,
+      "wins": 24,
+      "losses": 3,
+      "winrate": "88.9%",
+      "game_record": "24-3"
+    },
+    {
+      "name": "E WIE EINFACH E-SPORTS",
+      "games": 40,
+      "wins": 23,
+      "losses": 17,
+      "winrate": "57.5%",
+      "game_record": "23-17"
+    },
+    {
+      "name": "Nightbirds",
+      "games": 31,
+      "wins": 23,
+      "losses": 8,
+      "winrate": "74.2%",
+      "game_record": "23-8"
+    },
+    {
+      "name": "CITA Kaizen",
+      "games": 30,
+      "wins": 23,
+      "losses": 7,
+      "winrate": "76.7%",
+      "game_record": "23-7"
+    },
+    {
+      "name": "Team Heretics Academy",
+      "games": 26,
+      "wins": 23,
+      "losses": 3,
+      "winrate": "88.5%",
+      "game_record": "23-3"
+    },
+    {
+      "name": "Winthrop University",
+      "games": 40,
+      "wins": 22,
+      "losses": 18,
+      "winrate": "55.0%",
+      "game_record": "22-18"
+    },
+    {
+      "name": "Bomba Team",
+      "games": 34,
+      "wins": 22,
+      "losses": 12,
+      "winrate": "64.7%",
+      "game_record": "22-12"
+    },
+    {
+      "name": "Frites Esports Club",
+      "games": 25,
+      "wins": 22,
+      "losses": 3,
+      "winrate": "88.0%",
+      "game_record": "22-3"
+    },
+    {
+      "name": "Conviction",
+      "games": 32,
+      "wins": 21,
+      "losses": 11,
+      "winrate": "65.6%",
+      "game_record": "21-11"
+    },
+    {
+      "name": "Movistar KOI",
+      "games": 34,
+      "wins": 20,
+      "losses": 14,
+      "winrate": "58.8%",
+      "game_record": "20-14"
+    },
+    {
+      "name": "Forsaken",
+      "games": 33,
+      "wins": 20,
+      "losses": 13,
+      "winrate": "60.6%",
+      "game_record": "20-13"
+    },
+    {
+      "name": "FN Esports",
+      "games": 32,
+      "wins": 20,
+      "losses": 12,
+      "winrate": "62.5%",
+      "game_record": "20-12"
+    },
+    {
+      "name": "WLGaming Esports",
+      "games": 29,
+      "wins": 20,
+      "losses": 9,
+      "winrate": "69.0%",
+      "game_record": "20-9"
+    },
+    {
+      "name": "Partizan Sangal",
+      "games": 25,
+      "wins": 20,
+      "losses": 5,
+      "winrate": "80.0%",
+      "game_record": "20-5"
+    },
+    {
+      "name": "Ethereal Enigmas",
+      "games": 23,
+      "wins": 20,
+      "losses": 3,
+      "winrate": "87.0%",
+      "game_record": "20-3"
+    },
+    {
+      "name": "PCIFIC Esports",
+      "games": 36,
+      "wins": 19,
+      "losses": 17,
+      "winrate": "52.8%",
+      "game_record": "19-17"
+    },
+    {
+      "name": "CCG Esports",
+      "games": 35,
+      "wins": 19,
+      "losses": 16,
+      "winrate": "54.3%",
+      "game_record": "19-16"
+    },
+    {
+      "name": "UCAM Esports",
+      "games": 31,
+      "wins": 19,
+      "losses": 12,
+      "winrate": "61.3%",
+      "game_record": "19-12"
+    },
+    {
+      "name": "Priority",
+      "games": 30,
+      "wins": 19,
+      "losses": 11,
+      "winrate": "63.3%",
+      "game_record": "19-11"
+    },
+    {
+      "name": "Team Liquid",
+      "games": 30,
+      "wins": 19,
+      "losses": 11,
+      "winrate": "63.3%",
+      "game_record": "19-11"
+    },
+    {
+      "name": "Maryville University",
+      "games": 29,
+      "wins": 19,
+      "losses": 10,
+      "winrate": "65.5%",
+      "game_record": "19-10"
+    },
+    {
+      "name": "MVK Esports Academy",
+      "games": 21,
+      "wins": 19,
+      "losses": 2,
+      "winrate": "90.5%",
+      "game_record": "19-2"
+    },
+    {
+      "name": "NRG",
+      "games": 29,
+      "wins": 18,
+      "losses": 11,
+      "winrate": "62.1%",
+      "game_record": "18-11"
+    },
+    {
+      "name": "Berlin International Gaming",
+      "games": 27,
+      "wins": 18,
+      "losses": 9,
+      "winrate": "66.7%",
+      "game_record": "18-9"
+    },
+    {
+      "name": "LYON",
+      "games": 26,
+      "wins": 18,
+      "losses": 8,
+      "winrate": "69.2%",
+      "game_record": "18-8"
+    },
+    {
+      "name": "FlyQuest",
+      "games": 31,
+      "wins": 17,
+      "losses": 14,
+      "winrate": "54.8%",
+      "game_record": "17-14"
+    },
+    {
+      "name": "Supernova",
+      "games": 30,
+      "wins": 17,
+      "losses": 13,
+      "winrate": "56.7%",
+      "game_record": "17-13"
+    },
+    {
+      "name": "Team Vitality",
+      "games": 30,
+      "wins": 17,
+      "losses": 13,
+      "winrate": "56.7%",
+      "game_record": "17-13"
+    },
+    {
+      "name": "Cloud9",
+      "games": 26,
+      "wins": 17,
+      "losses": 9,
+      "winrate": "65.4%",
+      "game_record": "17-9"
+    },
+    {
+      "name": "HMBLE",
+      "games": 21,
+      "wins": 17,
+      "losses": 4,
+      "winrate": "81.0%",
+      "game_record": "17-4"
+    },
+    {
+      "name": "eSuba",
+      "games": 26,
+      "wins": 16,
+      "losses": 10,
+      "winrate": "61.5%",
+      "game_record": "16-10"
+    },
+    {
+      "name": "Movistar KOI Fénix",
+      "games": 24,
+      "wins": 16,
+      "losses": 8,
+      "winrate": "66.7%",
+      "game_record": "16-8"
+    },
+    {
+      "name": "mCon esports",
+      "games": 36,
+      "wins": 15,
+      "losses": 21,
+      "winrate": "41.7%",
+      "game_record": "15-21"
+    },
+    {
+      "name": "EXILE esports Academy",
+      "games": 25,
+      "wins": 15,
+      "losses": 10,
+      "winrate": "60.0%",
+      "game_record": "15-10"
+    },
+    {
+      "name": "The Bandits",
+      "games": 25,
+      "wins": 15,
+      "losses": 10,
+      "winrate": "60.0%",
+      "game_record": "15-10"
+    },
+    {
+      "name": "3BL Esports",
+      "games": 31,
+      "wins": 14,
+      "losses": 17,
+      "winrate": "45.2%",
+      "game_record": "14-17"
+    },
+    {
+      "name": "BAAM Esports",
+      "games": 29,
+      "wins": 14,
+      "losses": 15,
+      "winrate": "48.3%",
+      "game_record": "14-15"
+    },
+    {
+      "name": "GiantX",
+      "games": 28,
+      "wins": 14,
+      "losses": 14,
+      "winrate": "50.0%",
+      "game_record": "14-14"
+    },
+    {
+      "name": "Saigon Warriors",
+      "games": 27,
+      "wins": 14,
+      "losses": 13,
+      "winrate": "51.9%",
+      "game_record": "14-13"
+    },
+    {
+      "name": "GOAL",
+      "games": 26,
+      "wins": 14,
+      "losses": 12,
+      "winrate": "53.8%",
+      "game_record": "14-12"
+    },
+    {
+      "name": "Barcząca Esports",
+      "games": 25,
+      "wins": 14,
+      "losses": 11,
+      "winrate": "56.0%",
+      "game_record": "14-11"
+    },
+    {
+      "name": "SU Esports",
+      "games": 25,
+      "wins": 14,
+      "losses": 11,
+      "winrate": "56.0%",
+      "game_record": "14-11"
+    },
+    {
+      "name": "Frank Esports",
+      "games": 23,
+      "wins": 14,
+      "losses": 9,
+      "winrate": "60.9%",
+      "game_record": "14-9"
+    },
+    {
+      "name": "TeamOrangeGaming",
+      "games": 23,
+      "wins": 14,
+      "losses": 9,
+      "winrate": "60.9%",
+      "game_record": "14-9"
+    },
+    {
+      "name": "Otter Side",
+      "games": 15,
+      "wins": 14,
+      "losses": 1,
+      "winrate": "93.3%",
+      "game_record": "14-1"
+    },
+    {
+      "name": "GMBLERS Esports",
+      "games": 28,
+      "wins": 13,
+      "losses": 15,
+      "winrate": "46.4%",
+      "game_record": "13-15"
+    },
+    {
+      "name": "Natus Vincere",
+      "games": 27,
+      "wins": 13,
+      "losses": 14,
+      "winrate": "48.1%",
+      "game_record": "13-14"
+    },
+    {
+      "name": "Magaza Esports",
+      "games": 26,
+      "wins": 13,
+      "losses": 13,
+      "winrate": "50.0%",
+      "game_record": "13-13"
+    },
+    {
+      "name": "Barça eSports",
+      "games": 24,
+      "wins": 13,
+      "losses": 11,
+      "winrate": "54.2%",
+      "game_record": "13-11"
+    },
+    {
+      "name": "The Secret Club",
+      "games": 23,
+      "wins": 13,
+      "losses": 10,
+      "winrate": "56.5%",
+      "game_record": "13-10"
+    },
+    {
+      "name": "Dragons Esports",
+      "games": 21,
+      "wins": 13,
+      "losses": 8,
+      "winrate": "61.9%",
+      "game_record": "13-8"
+    },
+    {
+      "name": "Rising Gaming",
+      "games": 19,
+      "wins": 13,
+      "losses": 6,
+      "winrate": "68.4%",
+      "game_record": "13-6"
+    },
+    {
+      "name": "JSK Esports",
+      "games": 34,
+      "wins": 12,
+      "losses": 22,
+      "winrate": "35.3%",
+      "game_record": "12-22"
+    },
+    {
+      "name": "One More Esports",
+      "games": 30,
+      "wins": 12,
+      "losses": 18,
+      "winrate": "40.0%",
+      "game_record": "12-18"
+    },
+    {
+      "name": "Andromeda Gaming",
+      "games": 27,
+      "wins": 12,
+      "losses": 15,
+      "winrate": "44.4%",
+      "game_record": "12-15"
+    },
+    {
+      "name": "CITA Kaizen Academy",
+      "games": 25,
+      "wins": 12,
+      "losses": 13,
+      "winrate": "48.0%",
+      "game_record": "12-13"
+    },
+    {
+      "name": "Once Upon A Team",
+      "games": 24,
+      "wins": 12,
+      "losses": 12,
+      "winrate": "50.0%",
+      "game_record": "12-12"
+    },
+    {
+      "name": "Ruddy Corporation",
+      "games": 22,
+      "wins": 12,
+      "losses": 10,
+      "winrate": "54.5%",
+      "game_record": "12-10"
+    },
+    {
+      "name": "Team Insidious",
+      "games": 19,
+      "wins": 12,
+      "losses": 7,
+      "winrate": "63.2%",
+      "game_record": "12-7"
+    },
+    {
+      "name": "Arneb",
+      "games": 18,
+      "wins": 12,
+      "losses": 6,
+      "winrate": "66.7%",
+      "game_record": "12-6"
+    },
+    {
+      "name": "P11 Esports",
+      "games": 17,
+      "wins": 12,
+      "losses": 5,
+      "winrate": "70.6%",
+      "game_record": "12-5"
+    },
+    {
+      "name": "FENNEL",
+      "games": 15,
+      "wins": 12,
+      "losses": 3,
+      "winrate": "80.0%",
+      "game_record": "12-3"
+    },
+    {
+      "name": "Verdant",
+      "games": 15,
+      "wins": 12,
+      "losses": 3,
+      "winrate": "80.0%",
+      "game_record": "12-3"
+    },
+    {
+      "name": "Meavedron",
+      "games": 25,
+      "wins": 11,
+      "losses": 14,
+      "winrate": "44.0%",
+      "game_record": "11-14"
+    },
+    {
+      "name": "Unicorns of Love Sexy Edition",
+      "games": 22,
+      "wins": 11,
+      "losses": 11,
+      "winrate": "50.0%",
+      "game_record": "11-11"
+    },
+    {
+      "name": "Team Phantasma",
+      "games": 19,
+      "wins": 11,
+      "losses": 8,
+      "winrate": "57.9%",
+      "game_record": "11-8"
+    },
+    {
+      "name": "SillySilly Gaming",
+      "games": 17,
+      "wins": 11,
+      "losses": 6,
+      "winrate": "64.7%",
+      "game_record": "11-6"
+    },
+    {
+      "name": "Bushido Wildcats",
+      "games": 23,
+      "wins": 10,
+      "losses": 13,
+      "winrate": "43.5%",
+      "game_record": "10-13"
+    },
+    {
+      "name": "Fnatic",
+      "games": 23,
+      "wins": 10,
+      "losses": 13,
+      "winrate": "43.5%",
+      "game_record": "10-13"
+    },
+    {
+      "name": "Bubliki",
+      "games": 20,
+      "wins": 10,
+      "losses": 10,
+      "winrate": "50.0%",
+      "game_record": "10-10"
+    },
+    {
+      "name": "Ozarox Esports",
+      "games": 20,
+      "wins": 10,
+      "losses": 10,
+      "winrate": "50.0%",
+      "game_record": "10-10"
+    },
+    {
+      "name": "Senshi eSports",
+      "games": 20,
+      "wins": 10,
+      "losses": 10,
+      "winrate": "50.0%",
+      "game_record": "10-10"
+    },
+    {
+      "name": "9Gaming Esports",
+      "games": 19,
+      "wins": 10,
+      "losses": 9,
+      "winrate": "52.6%",
+      "game_record": "10-9"
+    },
+    {
+      "name": "Colossal Gaming",
+      "games": 18,
+      "wins": 10,
+      "losses": 8,
+      "winrate": "55.6%",
+      "game_record": "10-8"
+    },
+    {
+      "name": "Uwinks",
+      "games": 18,
+      "wins": 10,
+      "losses": 8,
+      "winrate": "55.6%",
+      "game_record": "10-8"
+    },
+    {
+      "name": "GnG Amazigh",
+      "games": 26,
+      "wins": 9,
+      "losses": 17,
+      "winrate": "34.6%",
+      "game_record": "9-17"
+    },
+    {
+      "name": "Dynasty",
+      "games": 22,
+      "wins": 9,
+      "losses": 13,
+      "winrate": "40.9%",
+      "game_record": "9-13"
+    },
+    {
+      "name": "Sentinels",
+      "games": 21,
+      "wins": 9,
+      "losses": 12,
+      "winrate": "42.9%",
+      "game_record": "9-12"
+    },
+    {
+      "name": "New Meta",
+      "games": 19,
+      "wins": 9,
+      "losses": 10,
+      "winrate": "47.4%",
+      "game_record": "9-10"
+    },
+    {
+      "name": "CTBC Flying Oyster Academy",
+      "games": 13,
+      "wins": 9,
+      "losses": 4,
+      "winrate": "69.2%",
+      "game_record": "9-4"
+    },
+    {
+      "name": "BoostGate Esports",
+      "games": 21,
+      "wins": 8,
+      "losses": 13,
+      "winrate": "38.1%",
+      "game_record": "8-13"
+    },
+    {
+      "name": "Citadel Gaming",
+      "games": 20,
+      "wins": 8,
+      "losses": 12,
+      "winrate": "40.0%",
+      "game_record": "8-12"
+    },
+    {
+      "name": "ALMO Players",
+      "games": 18,
+      "wins": 8,
+      "losses": 10,
+      "winrate": "44.4%",
+      "game_record": "8-10"
+    },
+    {
+      "name": "Anonymo Esports",
+      "games": 18,
+      "wins": 8,
+      "losses": 10,
+      "winrate": "44.4%",
+      "game_record": "8-10"
+    },
+    {
+      "name": "Deer Gaming",
+      "games": 17,
+      "wins": 8,
+      "losses": 9,
+      "winrate": "47.1%",
+      "game_record": "8-9"
+    },
+    {
+      "name": "LODIS",
+      "games": 17,
+      "wins": 8,
+      "losses": 9,
+      "winrate": "47.1%",
+      "game_record": "8-9"
+    },
+    {
+      "name": "Zena Esports",
+      "games": 15,
+      "wins": 8,
+      "losses": 7,
+      "winrate": "53.3%",
+      "game_record": "8-7"
+    },
+    {
+      "name": "Karmine Corp Blue",
+      "games": 10,
+      "wins": 8,
+      "losses": 2,
+      "winrate": "80.0%",
+      "game_record": "8-2"
+    },
+    {
+      "name": "Dorado Gaming",
+      "games": 22,
+      "wins": 7,
+      "losses": 15,
+      "winrate": "31.8%",
+      "game_record": "7-15"
+    },
+    {
+      "name": "Saigon Dino",
+      "games": 21,
+      "wins": 7,
+      "losses": 14,
+      "winrate": "33.3%",
+      "game_record": "7-14"
+    },
+    {
+      "name": "SK Gaming",
+      "games": 21,
+      "wins": 7,
+      "losses": 14,
+      "winrate": "33.3%",
+      "game_record": "7-14"
+    },
+    {
+      "name": "devils.one inStreamly",
+      "games": 19,
+      "wins": 7,
+      "losses": 12,
+      "winrate": "36.8%",
+      "game_record": "7-12"
+    },
+    {
+      "name": "EXILE esports",
+      "games": 19,
+      "wins": 7,
+      "losses": 12,
+      "winrate": "36.8%",
+      "game_record": "7-12"
+    },
+    {
+      "name": "DOCISK",
+      "games": 17,
+      "wins": 7,
+      "losses": 10,
+      "winrate": "41.2%",
+      "game_record": "7-10"
+    },
+    {
+      "name": "Aeterna Esports",
+      "games": 16,
+      "wins": 7,
+      "losses": 9,
+      "winrate": "43.8%",
+      "game_record": "7-9"
+    },
+    {
+      "name": "GIANTX iTero",
+      "games": 15,
+      "wins": 7,
+      "losses": 8,
+      "winrate": "46.7%",
+      "game_record": "7-8"
+    },
+    {
+      "name": "Epitomy Esports",
+      "games": 12,
+      "wins": 7,
+      "losses": 5,
+      "winrate": "58.3%",
+      "game_record": "7-5"
+    },
+    {
+      "name": "DECOY 21",
+      "games": 10,
+      "wins": 7,
+      "losses": 3,
+      "winrate": "70.0%",
+      "game_record": "7-3"
+    },
+    {
+      "name": "Super Stars",
+      "games": 10,
+      "wins": 7,
+      "losses": 3,
+      "winrate": "70.0%",
+      "game_record": "7-3"
+    },
+    {
+      "name": "Shifters",
+      "games": 22,
+      "wins": 6,
+      "losses": 16,
+      "winrate": "27.3%",
+      "game_record": "6-16"
+    },
+    {
+      "name": "Diversion Gaming",
+      "games": 20,
+      "wins": 6,
+      "losses": 14,
+      "winrate": "30.0%",
+      "game_record": "6-14"
+    },
+    {
+      "name": "Kaufland Hangry Knights",
+      "games": 19,
+      "wins": 6,
+      "losses": 13,
+      "winrate": "31.6%",
+      "game_record": "6-13"
+    },
+    {
+      "name": "The ParadOx",
+      "games": 19,
+      "wins": 6,
+      "losses": 13,
+      "winrate": "31.6%",
+      "game_record": "6-13"
+    },
+    {
+      "name": "Gamespace Mediterranean College Esports",
+      "games": 18,
+      "wins": 6,
+      "losses": 12,
+      "winrate": "33.3%",
+      "game_record": "6-12"
+    },
+    {
+      "name": "RAYN Clocks",
+      "games": 17,
+      "wins": 6,
+      "losses": 11,
+      "winrate": "35.3%",
+      "game_record": "6-11"
+    },
+    {
+      "name": "SPIKE Syndicate",
+      "games": 17,
+      "wins": 6,
+      "losses": 11,
+      "winrate": "35.3%",
+      "game_record": "6-11"
+    },
+    {
+      "name": "Crusaders",
+      "games": 14,
+      "wins": 6,
+      "losses": 8,
+      "winrate": "42.9%",
+      "game_record": "6-8"
+    },
+    {
+      "name": "Arctic Pandas",
+      "games": 12,
+      "wins": 6,
+      "losses": 6,
+      "winrate": "50.0%",
+      "game_record": "6-6"
+    },
+    {
+      "name": "Shadow Keepers Esports",
+      "games": 11,
+      "wins": 6,
+      "losses": 5,
+      "winrate": "54.5%",
+      "game_record": "6-5"
+    },
+    {
+      "name": "Blue Otter",
+      "games": 22,
+      "wins": 5,
+      "losses": 17,
+      "winrate": "22.7%",
+      "game_record": "5-17"
+    },
+    {
+      "name": "Shopify Rebellion",
+      "games": 18,
+      "wins": 5,
+      "losses": 13,
+      "winrate": "27.8%",
+      "game_record": "5-13"
+    },
+    {
+      "name": "LUA Gaming",
+      "games": 16,
+      "wins": 5,
+      "losses": 11,
+      "winrate": "31.2%",
+      "game_record": "5-11"
+    },
+    {
+      "name": "Spartans EU",
+      "games": 14,
+      "wins": 5,
+      "losses": 9,
+      "winrate": "35.7%",
+      "game_record": "5-9"
+    },
+    {
+      "name": "EKO Esports",
+      "games": 13,
+      "wins": 5,
+      "losses": 8,
+      "winrate": "38.5%",
+      "game_record": "5-8"
+    },
+    {
+      "name": "Bulldog Esports",
+      "games": 11,
+      "wins": 5,
+      "losses": 6,
+      "winrate": "45.5%",
+      "game_record": "5-6"
+    },
+    {
+      "name": "Ronaldo Team",
+      "games": 11,
+      "wins": 5,
+      "losses": 6,
+      "winrate": "45.5%",
+      "game_record": "5-6"
+    },
+    {
+      "name": "Lenovo Legion Honvéd",
+      "games": 10,
+      "wins": 5,
+      "losses": 5,
+      "winrate": "50.0%",
+      "game_record": "5-5"
+    },
+    {
+      "name": "StoneHenge Esports",
+      "games": 18,
+      "wins": 4,
+      "losses": 14,
+      "winrate": "22.2%",
+      "game_record": "4-14"
+    },
+    {
+      "name": "Eintracht Frankfurt",
+      "games": 17,
+      "wins": 4,
+      "losses": 13,
+      "winrate": "23.5%",
+      "game_record": "4-13"
+    },
+    {
+      "name": "Myth Esports",
+      "games": 17,
+      "wins": 4,
+      "losses": 13,
+      "winrate": "23.5%",
+      "game_record": "4-13"
+    },
+    {
+      "name": "Onion Team",
+      "games": 17,
+      "wins": 4,
+      "losses": 13,
+      "winrate": "23.5%",
+      "game_record": "4-13"
+    },
+    {
+      "name": "ZennIT",
+      "games": 17,
+      "wins": 4,
+      "losses": 13,
+      "winrate": "23.5%",
+      "game_record": "4-13"
+    },
+    {
+      "name": "Team Phoenix",
+      "games": 16,
+      "wins": 4,
+      "losses": 12,
+      "winrate": "25.0%",
+      "game_record": "4-12"
+    },
+    {
+      "name": "Disguised",
+      "games": 15,
+      "wins": 4,
+      "losses": 11,
+      "winrate": "26.7%",
+      "game_record": "4-11"
+    },
+    {
+      "name": "KIA.eSuba Academy",
+      "games": 15,
+      "wins": 4,
+      "losses": 11,
+      "winrate": "26.7%",
+      "game_record": "4-11"
+    },
+    {
+      "name": "L Guide Gaming",
+      "games": 15,
+      "wins": 4,
+      "losses": 11,
+      "winrate": "26.7%",
+      "game_record": "4-11"
+    },
+    {
+      "name": "Lupus Esports",
+      "games": 11,
+      "wins": 4,
+      "losses": 7,
+      "winrate": "36.4%",
+      "game_record": "4-7"
+    },
+    {
+      "name": "wangting",
+      "games": 8,
+      "wins": 4,
+      "losses": 4,
+      "winrate": "50.0%",
+      "game_record": "4-4"
+    },
+    {
+      "name": "Solary",
+      "games": 4,
+      "wins": 4,
+      "losses": 0,
+      "winrate": "100.0%",
+      "game_record": "4-0"
+    },
+    {
+      "name": "Team Heretics",
+      "games": 20,
+      "wins": 3,
+      "losses": 17,
+      "winrate": "15.0%",
+      "game_record": "3-17"
+    },
+    {
+      "name": "Apex Mission Impossible",
+      "games": 19,
+      "wins": 3,
+      "losses": 16,
+      "winrate": "15.8%",
+      "game_record": "3-16"
+    },
+    {
+      "name": "Bohemian Guardians",
+      "games": 18,
+      "wins": 3,
+      "losses": 15,
+      "winrate": "16.7%",
+      "game_record": "3-15"
+    },
+    {
+      "name": "VfB eSports",
+      "games": 18,
+      "wins": 3,
+      "losses": 15,
+      "winrate": "16.7%",
+      "game_record": "3-15"
+    },
+    {
+      "name": "DetonatioN FocusMe Academy",
+      "games": 17,
+      "wins": 3,
+      "losses": 14,
+      "winrate": "17.6%",
+      "game_record": "3-14"
+    },
+    {
+      "name": "Dignitas",
+      "games": 17,
+      "wins": 3,
+      "losses": 14,
+      "winrate": "17.6%",
+      "game_record": "3-14"
+    },
+    {
+      "name": "Rugby Club Havířov",
+      "games": 17,
+      "wins": 3,
+      "losses": 14,
+      "winrate": "17.6%",
+      "game_record": "3-14"
+    },
+    {
+      "name": "BRUTE",
+      "games": 16,
+      "wins": 3,
+      "losses": 13,
+      "winrate": "18.8%",
+      "game_record": "3-13"
+    },
+    {
+      "name": "Falke Esports",
+      "games": 15,
+      "wins": 3,
+      "losses": 12,
+      "winrate": "20.0%",
+      "game_record": "3-12"
+    },
+    {
+      "name": "Croatian Flair",
+      "games": 11,
+      "wins": 3,
+      "losses": 8,
+      "winrate": "27.3%",
+      "game_record": "3-8"
+    },
+    {
+      "name": "Ngựa Hí Esports",
+      "games": 11,
+      "wins": 3,
+      "losses": 8,
+      "winrate": "27.3%",
+      "game_record": "3-8"
+    },
+    {
+      "name": "DMG Esports",
+      "games": 8,
+      "wins": 3,
+      "losses": 5,
+      "winrate": "37.5%",
+      "game_record": "3-5"
+    },
+    {
+      "name": "Dream Esports",
+      "games": 7,
+      "wins": 3,
+      "losses": 4,
+      "winrate": "42.9%",
+      "game_record": "3-4"
+    },
+    {
+      "name": "Francesinhas",
+      "games": 7,
+      "wins": 3,
+      "losses": 4,
+      "winrate": "42.9%",
+      "game_record": "3-4"
+    },
+    {
+      "name": "Galions",
+      "games": 4,
+      "wins": 3,
+      "losses": 1,
+      "winrate": "75.0%",
+      "game_record": "3-1"
+    },
+    {
+      "name": "Dark Passage",
+      "games": 15,
+      "wins": 2,
+      "losses": 13,
+      "winrate": "13.3%",
+      "game_record": "2-13"
+    },
+    {
+      "name": "SN CyberCore Esports",
+      "games": 11,
+      "wins": 2,
+      "losses": 9,
+      "winrate": "18.2%",
+      "game_record": "2-9"
+    },
+    {
+      "name": "TITANS",
+      "games": 10,
+      "wins": 2,
+      "losses": 8,
+      "winrate": "20.0%",
+      "game_record": "2-8"
+    },
+    {
+      "name": "GTZ Esports",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "Lund Esports Organization",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "Lundqvist Lightside",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "Team Spawn Peek",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "TQ DURPA KASHLQ",
+      "games": 7,
+      "wins": 2,
+      "losses": 5,
+      "winrate": "28.6%",
+      "game_record": "2-5"
+    },
+    {
+      "name": "Obsidian Oath",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "One Round Specialists",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "Viper Night Raider",
+      "games": 6,
+      "wins": 2,
+      "losses": 4,
+      "winrate": "33.3%",
+      "game_record": "2-4"
+    },
+    {
+      "name": "Zerolag Esports",
+      "games": 5,
+      "wins": 2,
+      "losses": 3,
+      "winrate": "40.0%",
+      "game_record": "2-3"
+    },
+    {
+      "name": "NextGeneration Esports",
+      "games": 6,
+      "wins": 1,
+      "losses": 5,
+      "winrate": "16.7%",
+      "game_record": "1-5"
+    },
+    {
+      "name": "Huskies Esports",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "winrate": "20.0%",
+      "game_record": "1-4"
+    },
+    {
+      "name": "Washed Gaming",
+      "games": 5,
+      "wins": 1,
+      "losses": 4,
+      "winrate": "20.0%",
+      "game_record": "1-4"
+    },
+    {
+      "name": "EKSI EPTA",
+      "games": 4,
+      "wins": 1,
+      "losses": 3,
+      "winrate": "25.0%",
+      "game_record": "1-3"
+    },
+    {
+      "name": "Paranormal Invaders",
+      "games": 4,
+      "wins": 1,
+      "losses": 3,
+      "winrate": "25.0%",
+      "game_record": "1-3"
+    },
+    {
+      "name": "ROSSMANN Centaurs",
+      "games": 17,
+      "wins": 0,
+      "losses": 17,
+      "winrate": "0.0%",
+      "game_record": "0-17"
+    },
+    {
+      "name": "GLORE",
+      "games": 14,
+      "wins": 0,
+      "losses": 14,
+      "winrate": "0.0%",
+      "game_record": "0-14"
+    },
+    {
+      "name": "UB Alma Mater",
+      "games": 14,
+      "wins": 0,
+      "losses": 14,
+      "winrate": "0.0%",
+      "game_record": "0-14"
+    },
+    {
+      "name": "ZeroZone Gaming",
+      "games": 7,
+      "wins": 0,
+      "losses": 7,
+      "winrate": "0.0%",
+      "game_record": "0-7"
+    },
+    {
+      "name": "Equinox Core",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "Ground Zero Academy",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "StoneHenge Esports Academy",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "Xu Ji Basalt",
+      "games": 4,
+      "wins": 0,
+      "losses": 4,
+      "winrate": "0.0%",
+      "game_record": "0-4"
+    },
+    {
+      "name": "Epitomy Warriors",
+      "games": 2,
+      "wins": 0,
+      "losses": 2,
+      "winrate": "0.0%",
+      "game_record": "0-2"
+    }
+  ],
+  "standings_split": "Spring",
+  "standings_series": 1692,
+  "generated_at": "2026-06-25T02:04:05.580841Z",
+  "data_from": "2026-05-30T16:11:23",
+  "data_through": "2026-06-12T19:14:08",
+  "latest_patch_data_from": "2026-05-30T16:11:23",
+  "latest_patch_data_through": "2026-06-12T19:14:08",
+  "all_data_from": "2024-01-01T05:13:15",
+  "all_data_through": "2026-06-12T19:14:08",
+  "data_status": "stale",
+  "data_staleness_days": 12.285,
+  "warnings": [
+    "summary_data_stale:12.3d",
+    "summary_meta_fallback: champion detail tables omitted"
+  ],
+  "source": "lol-pros-analyzer",
+  "source_rows": 252
+}
