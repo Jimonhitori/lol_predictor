@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
+const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false, userSelectedLeagueGroup: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
@@ -662,6 +662,13 @@ async function loadMatches() {
   const data = await api('/api/matches/today?' + qs());
   if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
   state.allMatches = dedupeCanonicalMatches(hydrateMatchesTeamMeta(filterMatchesBySelection(data.matches || [], filters)));
+  if (shouldFallbackInitialMajorSchedule(filters, state.allMatches)) {
+    $('leagueGroup').value = 'all';
+    state.selectedMatchDate = '';
+    state.userSelectedMatchDate = false;
+    loadSummary();
+    return loadMatches();
+  }
   state.matchSource = data.source || 'none';
   syncDefaultMatchDate(state.allMatches);
   await refreshStaticMatchStatuses();
@@ -686,6 +693,23 @@ function currentMatchFilters() {
 function sameMatchFilters(left, right) {
   return String(left?.league_group || 'all') === String(right?.league_group || 'all')
     && String(left?.region || 'all') === String(right?.region || 'all');
+}
+
+function shouldFallbackInitialMajorSchedule(filters, matches) {
+  return String(filters?.league_group || 'all') === 'major'
+    && !state.userSelectedLeagueGroup
+    && !hasCurrentOrFutureMatches(matches);
+}
+
+function hasCurrentOrFutureMatches(matches) {
+  const today = todayDateKey();
+  return (matches || []).some(match => {
+    const matchDate = localDateKey(match?.start_time);
+    if (matchDate) return matchDate >= today;
+    const status = String(match?.status || '').toLowerCase();
+    if (status === 'inprogress') return true;
+    return false;
+  });
 }
 
 function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
@@ -3374,7 +3398,13 @@ function setValue(id, value) {
 }
 
 if ($('matches')) {
-  for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => { loadSummary(); loadMatches(); });
+  for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => {
+    if (id === 'leagueGroup') state.userSelectedLeagueGroup = true;
+    state.selectedMatchDate = '';
+    state.userSelectedMatchDate = false;
+    loadSummary();
+    loadMatches();
+  });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
   if ($('championMetaGroup')) $('championMetaGroup').addEventListener('change', () => loadChampionSummary());
   if ($('championRole')) $('championRole').addEventListener('change', () => state.championSummary && renderChampionMeta(state.championSummary));
