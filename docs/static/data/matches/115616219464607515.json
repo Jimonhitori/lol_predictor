@@ -18,19 +18,115 @@
   "source": "lolesports_api",
   "teams": [
     {
-      "id": "",
+      "id": "99566404853854212",
       "name": "BILIBILI GAMING",
-      "code": "BG",
-      "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
-      "game_wins": ""
+      "code": "BLG",
+      "image": "https://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
+      "game_wins": "3"
     },
     {
-      "id": "",
+      "id": "98767991887166787",
       "name": "Xi'an Team WE",
-      "code": "XATW",
-      "image": "http://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
-      "game_wins": ""
+      "code": "WE",
+      "image": "https://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
+      "game_wins": "2"
     }
   ],
-  "games": []
+  "games": [
+    {
+      "id": "115616219464607516",
+      "number": 1,
+      "state": "completed",
+      "blue": {
+        "team_id": "99566404853854212",
+        "team_name": "BILIBILI GAMING",
+        "team_code": "BLG"
+      },
+      "red": {
+        "team_id": "98767991887166787",
+        "team_name": "Xi'an Team WE",
+        "team_code": "WE"
+      },
+      "winner": "",
+      "live": {
+        "status": "ended"
+      }
+    },
+    {
+      "id": "115616219464607517",
+      "number": 2,
+      "state": "completed",
+      "blue": {
+        "team_id": "98767991887166787",
+        "team_name": "Xi'an Team WE",
+        "team_code": "WE"
+      },
+      "red": {
+        "team_id": "99566404853854212",
+        "team_name": "BILIBILI GAMING",
+        "team_code": "BLG"
+      },
+      "winner": "",
+      "live": {
+        "status": "ended"
+      }
+    },
+    {
+      "id": "115616219464607518",
+      "number": 3,
+      "state": "completed",
+      "blue": {
+        "team_id": "99566404853854212",
+        "team_name": "BILIBILI GAMING",
+        "team_code": "BLG"
+      },
+      "red": {
+        "team_id": "98767991887166787",
+        "team_name": "Xi'an Team WE",
+        "team_code": "WE"
+      },
+      "winner": "",
+      "live": {
+        "status": "ended"
+      }
+    },
+    {
+      "id": "115616219464607519",
+      "number": 4,
+      "state": "completed",
+      "blue": {
+        "team_id": "98767991887166787",
+        "team_name": "Xi'an Team WE",
+        "team_code": "WE"
+      },
+      "red": {
+        "team_id": "99566404853854212",
+        "team_name": "BILIBILI GAMING",
+        "team_code": "BLG"
+      },
+      "winner": "",
+      "live": {
+        "status": "ended"
+      }
+    },
+    {
+      "id": "115616219464607520",
+      "number": 5,
+      "state": "completed",
+      "blue": {
+        "team_id": "99566404853854212",
+        "team_name": "BILIBILI GAMING",
+        "team_code": "BLG"
+      },
+      "red": {
+        "team_id": "98767991887166787",
+        "team_name": "Xi'an Team WE",
+        "team_code": "WE"
+      },
+      "winner": "",
+      "live": {
+        "status": "ended"
+      }
+    }
+  ]
 }

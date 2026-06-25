@@ -1522,16 +1522,19 @@ function renderDateTabs(matches) {
 function visibleDateOptions(options) {
   const today = todayDateKey();
   const futureOrToday = options.filter(option => option.key >= today);
-  const visibleOptions = futureOrToday.length ? futureOrToday : options;
-  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') return visibleOptions.slice(0, 3);
-  if (state.selectedMatchDate === today) return visibleOptions.slice(0, 3);
-  if (visibleOptions.length <= 3) return visibleOptions;
+  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
+    return futureOrToday.slice(0, 3);
+  }
+  if (state.selectedMatchDate === today) {
+    return futureOrToday.slice(0, 3);
+  }
+  if (options.length <= 3) return options;
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
-    ? visibleOptions.findIndex(option => option.key === state.selectedMatchDate)
-    : visibleOptions.findIndex(option => option.key === today);
+    ? options.findIndex(option => option.key === state.selectedMatchDate)
+    : options.findIndex(option => option.key === todayDateKey());
   const center = selected >= 0 ? selected : 0;
-  const start = Math.max(0, Math.min(center - 1, visibleOptions.length - 3));
-  return visibleOptions.slice(start, start + 3);
+  const start = Math.max(0, Math.min(center - 1, options.length - 3));
+  return options.slice(start, start + 3);
 }
 
 function filteredMatches() {
@@ -1541,18 +1544,11 @@ function filteredMatches() {
 }
 
 function liveMatches(matches) {
-  const today = todayDateKey();
-  return matches.filter(match => {
-    if (String(match.status || '').toLowerCase() !== 'inprogress') return false;
-    const matchDate = localDateKey(match.start_time);
-    return !matchDate || matchDate >= today;
-  });
+  return matches.filter(match => String(match.status || '').toLowerCase() === 'inprogress');
 }
 
 function defaultMatchDate(matches) {
-  const today = todayDateKey();
-  const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
-  return keys.find(key => key >= today) || keys[keys.length - 1] || today;
+  return todayDateKey();
 }
 
 function syncDefaultMatchDate(matches) {
