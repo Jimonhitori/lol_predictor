@@ -1523,15 +1523,28 @@ function visibleDateOptions(options) {
   const today = todayDateKey();
   const futureOrToday = options.filter(option => option.key >= today);
   const visibleOptions = futureOrToday.length ? futureOrToday : options;
-  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') return visibleOptions.slice(0, 3);
-  if (state.selectedMatchDate === today) return visibleOptions.slice(0, 3);
-  if (visibleOptions.length <= 3) return visibleOptions;
+  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') return fillDateOptions(visibleOptions.slice(0, 3), today);
+  if (state.selectedMatchDate === today) return fillDateOptions(visibleOptions.slice(0, 3), today);
+  if (visibleOptions.length <= 3) return fillDateOptions(visibleOptions, state.selectedMatchDate);
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
     ? visibleOptions.findIndex(option => option.key === state.selectedMatchDate)
     : visibleOptions.findIndex(option => option.key === today);
   const center = selected >= 0 ? selected : 0;
   const start = Math.max(0, Math.min(center - 1, visibleOptions.length - 3));
-  return visibleOptions.slice(start, start + 3);
+  return fillDateOptions(visibleOptions.slice(start, start + 3), state.selectedMatchDate);
+}
+
+function fillDateOptions(options, anchorKey) {
+  const byKey = new Map((options || []).map(option => [option.key, option]));
+  const result = [];
+  let cursor = dateFromLocalKey(anchorKey || todayDateKey());
+  if (Number.isNaN(cursor.getTime())) cursor = dateFromLocalKey(todayDateKey());
+  while (result.length < 3) {
+    const key = localDateKey(cursor.toISOString());
+    result.push(byKey.get(key) || dateTabOption(key));
+    cursor = addLocalDays(cursor, 1);
+  }
+  return result;
 }
 
 function filteredMatches() {
@@ -1570,13 +1583,15 @@ function syncDefaultMatchDate(matches) {
 
 function matchDateOptions(matches) {
   const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
-  return keys.map(key => {
-    const date = dateFromLocalKey(key);
-    const weekday = formatInAppTimeZone(date, { weekday: 'short' });
-    const md = formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
-    const isToday = key === todayDateKey();
-    return { key, title: isToday ? '今日' : weekday, sub: md };
-  });
+  return keys.map(dateTabOption);
+}
+
+function dateTabOption(key) {
+  const date = dateFromLocalKey(key);
+  const weekday = formatInAppTimeZone(date, { weekday: 'short' });
+  const md = formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
+  const isToday = key === todayDateKey();
+  return { key, title: isToday ? '今日' : weekday, sub: md };
 }
 
 function todayDateKey() {
@@ -1604,6 +1619,12 @@ function zonedDateKey(date) {
 function dateFromLocalKey(key) {
   const [year, month, day] = String(key).split('-').map(Number);
   return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+}
+
+function addLocalDays(date, days) {
+  const next = new Date(date);
+  next.setUTCDate(next.getUTCDate() + days);
+  return next;
 }
 
 function formatInAppTimeZone(date, options) {
