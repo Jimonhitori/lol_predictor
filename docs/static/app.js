@@ -1565,7 +1565,7 @@ function liveMatches(matches) {
 function defaultMatchDate(matches) {
   const today = todayDateKey();
   const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
-  return keys.find(key => key >= today) || keys[keys.length - 1] || today;
+  return keys.find(key => key >= today) || today;
 }
 
 function syncDefaultMatchDate(matches) {
