@@ -137,6 +137,21 @@ The live probability contract check also executes the dashboard render helper
 and confirms estimated probabilities display, non-estimated probabilities hide,
 and cautious validation states show a caution marker.
 
+## Codex Publish Command
+
+For Codex-driven site updates from this Windows workspace, use:
+
+```bat
+scripts\codex_publish_site_update.cmd --message "Fix stale live match tabs"
+```
+
+The command verifies JavaScript syntax, runs the local Cloudflare-compatible
+preflight, stages the site UI paths, `docs/pre_match_predictions.json`,
+`docs/static/data/matches-*.json`, and match detail JSON under
+`docs/static/data/matches/`, commits, pushes the `codex/github-pages-static`
+branch, then smokes the production Pages URL. Use `--dry-run` to inspect the
+exact publish scope without staging, committing, or pushing.
+
 After Cloudflare Pages and the analyzer public artifacts are deployed, the
 `Smoke production contracts` workflow runs every six hours against
 `https://lol-predictor.pages.dev`. The scheduled check uses `event_id=test`,
