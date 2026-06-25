@@ -1,422 +1,468 @@
 {
-  "schema_version": "1.0",
-  "generated_at": "2026-05-20T03:00:52.111190+00:00",
-  "timezone": "Asia/Tokyo",
-  "prediction_type": "pre_match",
-  "source": "lol-pros-analyzer",
-  "num_games": 12,
-  "games": [
-    {
-      "match_id": "116237388604514468",
-      "source": "lolesports_api",
-      "league": "Rift Legends",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T15:00:00+00:00",
-      "start_time_jst": "2026-05-20T00:00:00+09:00",
-      "start_time_local": "2026-05-20T00:00:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "Barcząca Esports",
-      "red_team_name": "Forsaken",
-      "blue_team_id": "barcz_ca_esports",
-      "red_team_id": "forsaken",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.556998296130326,
-        "red_win_prob": 0.4430017038696739,
-        "predicted_winner": "Barcząca Esports",
-        "predicted_winner_team_id": "barcz_ca_esports",
-        "confidence": "high",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 43,
-        "red_history_games": 30,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "116356270007984067",
-      "source": "lolesports_api",
-      "league": "TCL",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T15:00:00+00:00",
-      "start_time_jst": "2026-05-20T00:00:00+09:00",
-      "start_time_local": "2026-05-20T00:00:00+09:00",
-      "best_of": 5,
-      "blue_team_name": "SU Esports",
-      "red_team_name": "BoostGate Esports",
-      "blue_team_id": "su_esports",
-      "red_team_id": "boostgate_esports",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.7674401861164024,
-        "red_win_prob": 0.2325598138835976,
-        "predicted_winner": "SU Esports",
-        "predicted_winner_team_id": "su_esports",
-        "confidence": "high",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 37,
-        "red_history_games": 23,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "116238135725090355",
-      "source": "lolesports_api",
-      "league": "Arabian League",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T16:00:00+00:00",
-      "start_time_jst": "2026-05-20T01:00:00+09:00",
-      "start_time_local": "2026-05-20T01:00:00+09:00",
-      "best_of": 5,
-      "blue_team_name": "BAAM Esports",
-      "red_team_name": "Anubis Gaming",
-      "blue_team_id": "baam_esports",
-      "red_team_id": "anubis_gaming",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.3365220027995487,
-        "red_win_prob": 0.6634779972004513,
-        "predicted_winner": "Anubis Gaming",
-        "predicted_winner_team_id": "anubis_gaming",
-        "confidence": "high",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 64,
-        "red_history_games": 49,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "116249441374496646",
-      "source": "lolesports_api",
-      "league": "Road of Legends",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T16:00:00+00:00",
-      "start_time_jst": "2026-05-20T01:00:00+09:00",
-      "start_time_local": "2026-05-20T01:00:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "Frites Esports Club",
-      "red_team_name": "Dynasty",
-      "blue_team_id": "frites_esports_club",
-      "red_team_id": "dynasty",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.9511110360192472,
-        "red_win_prob": 0.0488889639807529,
-        "predicted_winner": "Frites Esports Club",
-        "predicted_winner_team_id": "frites_esports_club",
-        "confidence": "high",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 37,
-        "red_history_games": 31,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "116237388604448872",
-      "source": "lolesports_api",
-      "league": "Rift Legends",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T17:30:00+00:00",
-      "start_time_jst": "2026-05-20T02:30:00+09:00",
-      "start_time_local": "2026-05-20T02:30:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "DOCISK",
-      "red_team_name": "DV1 inStreamly",
-      "blue_team_id": "docisk",
-      "red_team_id": "dv1_instreamly",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.391868439010906,
-        "red_win_prob": 0.608131560989094,
-        "predicted_winner": "DV1 inStreamly",
-        "predicted_winner_team_id": "dv1_instreamly",
-        "confidence": "unavailable",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": [
-          "red_history_missing",
-          "red_history_thin"
-        ]
-      },
-      "data_quality": {
-        "blue_history_games": 23,
-        "red_history_games": 0,
-        "blue_recent_games": 10,
-        "red_recent_games": 0,
-        "alias_status": "unresolved",
-        "warnings": [
-          "red_history_missing",
-          "red_history_thin"
-        ]
-      }
-    },
-    {
-      "match_id": "116249441374496650",
-      "source": "lolesports_api",
-      "league": "Road of Legends",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T18:00:00+00:00",
-      "start_time_jst": "2026-05-20T03:00:00+09:00",
-      "start_time_local": "2026-05-20T03:00:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "The Bandits",
-      "red_team_name": "Senshi eSports",
-      "blue_team_id": "the_bandits",
-      "red_team_id": "senshi_esports",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.740146875559386,
-        "red_win_prob": 0.259853124440614,
-        "predicted_winner": "The Bandits",
-        "predicted_winner_team_id": "the_bandits",
-        "confidence": "high",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 45,
-        "red_history_games": 32,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "116051060806892952",
-      "source": "lolesports_api",
-      "league": "Circuito Desafiante",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T20:00:00+00:00",
-      "start_time_jst": "2026-05-20T05:00:00+09:00",
-      "start_time_local": "2026-05-20T05:00:00+09:00",
-      "best_of": 5,
-      "blue_team_name": "INTZ",
-      "red_team_name": "paiN Gaming Academy",
-      "blue_team_id": "intz",
-      "red_team_id": "pain_gaming_academy",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.4906458958055097,
-        "red_win_prob": 0.5093541041944902,
-        "predicted_winner": "paiN Gaming Academy",
-        "predicted_winner_team_id": "pain_gaming_academy",
-        "confidence": "medium",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 15,
-        "red_history_games": 18,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "116056974916422598",
-      "source": "lolesports_api",
-      "league": "LRS",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-19T20:00:00+00:00",
-      "start_time_jst": "2026-05-20T05:00:00+09:00",
-      "start_time_local": "2026-05-20T05:00:00+09:00",
-      "best_of": 5,
-      "blue_team_name": "Malvinas Gaming",
-      "red_team_name": "9z Globant",
-      "blue_team_id": "malvinas_gaming",
-      "red_team_id": "9z_globant",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.6798744740052793,
-        "red_win_prob": 0.3201255259947206,
-        "predicted_winner": "Malvinas Gaming",
-        "predicted_winner_team_id": "malvinas_gaming",
-        "confidence": "medium",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 24,
-        "red_history_games": 19,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "115548128962971911",
-      "source": "lolesports_api",
-      "league": "LCK",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-20T08:00:00+00:00",
-      "start_time_jst": "2026-05-20T17:00:00+09:00",
-      "start_time_local": "2026-05-20T17:00:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "T1",
-      "red_team_name": "KIWOOM DRX",
-      "blue_team_id": "t1",
-      "red_team_id": "kiwoom_drx",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.8820770147067286,
-        "red_win_prob": 0.1179229852932713,
-        "predicted_winner": "T1",
-        "predicted_winner_team_id": "t1",
-        "confidence": "high",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": []
-      },
-      "data_quality": {
-        "blue_history_games": 58,
-        "red_history_games": 69,
-        "blue_recent_games": 10,
-        "red_recent_games": 10,
-        "alias_status": "matched",
-        "warnings": []
-      }
-    },
-    {
-      "match_id": "115548128963037551",
-      "source": "lolesports_api",
-      "league": "LCK",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-20T10:00:00+00:00",
-      "start_time_jst": "2026-05-20T19:00:00+09:00",
-      "start_time_local": "2026-05-20T19:00:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "NONGSHIM RED FORCE",
-      "red_team_name": "kt Rolster",
-      "blue_team_id": "nongshim_red_force",
-      "red_team_id": "kt_rolster",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.4327305834573462,
-        "red_win_prob": 0.5672694165426537,
-        "predicted_winner": "kt Rolster",
-        "predicted_winner_team_id": "kt_rolster",
-        "confidence": "unavailable",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": [
-          "blue_history_missing",
-          "blue_history_thin"
-        ]
-      },
-      "data_quality": {
-        "blue_history_games": 0,
-        "red_history_games": 53,
-        "blue_recent_games": 0,
-        "red_recent_games": 10,
-        "alias_status": "unresolved",
-        "warnings": [
-          "blue_history_missing",
-          "blue_history_thin"
-        ]
-      }
-    },
-    {
-      "match_id": "116520394663535840",
-      "source": "lolesports_api",
-      "league": "VCS",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-20T10:00:00+00:00",
-      "start_time_jst": "2026-05-20T19:00:00+09:00",
-      "start_time_local": "2026-05-20T19:00:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "Saigon Zen Esport",
-      "red_team_name": "Saigon MVKE Academy",
-      "blue_team_id": "saigon_zen_esport",
-      "red_team_id": "saigon_mvke_academy",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.4721844546367437,
-        "red_win_prob": 0.5278155453632563,
-        "predicted_winner": "Saigon MVKE Academy",
-        "predicted_winner_team_id": "saigon_mvke_academy",
-        "confidence": "unavailable",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": [
-          "blue_history_missing",
-          "red_history_missing",
-          "blue_history_thin",
-          "red_history_thin"
-        ]
-      },
-      "data_quality": {
-        "blue_history_games": 0,
-        "red_history_games": 0,
-        "blue_recent_games": 0,
-        "red_recent_games": 0,
-        "alias_status": "unresolved",
-        "warnings": [
-          "blue_history_missing",
-          "red_history_missing",
-          "blue_history_thin",
-          "red_history_thin"
-        ]
-      }
-    },
-    {
-      "match_id": "116520394663535880",
-      "source": "lolesports_api",
-      "league": "VCS",
-      "patch": 26.9,
-      "start_time_utc": "2026-05-20T13:00:00+00:00",
-      "start_time_jst": "2026-05-20T22:00:00+09:00",
-      "start_time_local": "2026-05-20T22:00:00+09:00",
-      "best_of": 3,
-      "blue_team_name": "Saigon Warrior",
-      "red_team_name": "Saigon 9Gaming",
-      "blue_team_id": "saigon_warriors",
-      "red_team_id": "saigon_9gaming",
-      "pre_match_prediction": {
-        "available": true,
-        "blue_win_prob": 0.6355061123746237,
-        "red_win_prob": 0.3644938876253762,
-        "predicted_winner": "Saigon Warrior",
-        "predicted_winner_team_id": "saigon_warriors",
-        "confidence": "unavailable",
-        "model_version": "logistic_regression_actions_local_check",
-        "warnings": [
-          "red_history_missing",
-          "red_history_thin"
-        ]
-      },
-      "data_quality": {
-        "blue_history_games": 32,
-        "red_history_games": 0,
-        "blue_recent_games": 10,
-        "red_recent_games": 0,
-        "alias_status": "unresolved",
-        "warnings": [
-          "red_history_missing",
-          "red_history_thin"
-        ]
-      }
+  "schema": "lol_predictions_public_v1",
+  "generated_at": "2026-06-25T01:39:43.666971Z",
+  "source": "lol-pros-analyzer train workflow",
+  "models": {
+    "pre_match": {
+      "name": "elo_fallback",
+      "version": "elo_fallback",
+      "metrics": {}
     }
-  ]
+  },
+  "predictions": [
+    {
+      "event_id": "115570934355614497",
+      "game_id": "115570934355614497",
+      "league": "MSI",
+      "start_time": "2026-06-28 12:00:00",
+      "blue_team": "t1",
+      "red_team": "team_liquid_alienware",
+      "blue_team_name": "T1",
+      "red_team_name": "Team Liquid Alienware",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "T1",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction",
+        "missing_elo_rating",
+        "red_team_no_history:team_liquid_alienware"
+      ]
+    },
+    {
+      "event_id": "115570934355614503",
+      "game_id": "115570934355614503",
+      "league": "MSI",
+      "start_time": "2026-06-28 17:00:00",
+      "blue_team": "karmine_corp",
+      "red_team": "relove_deep_cross_gaming",
+      "blue_team_name": "Karmine Corp",
+      "red_team_name": "Relove Deep Cross Gaming",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "Karmine Corp",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction",
+        "missing_elo_rating",
+        "red_team_no_history:relove_deep_cross_gaming"
+      ]
+    },
+    {
+      "event_id": "116697716933016552",
+      "game_id": "116697716933016552",
+      "league": "Hellenic Legends League",
+      "start_time": "2026-06-30 22:00:00",
+      "blue_team": "valerion",
+      "red_team": "almo_players",
+      "blue_team_name": "Valerion",
+      "red_team_name": "ALMO Players",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "Valerion",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:valerion",
+        "elo_fallback_prediction",
+        "missing_elo_rating"
+      ]
+    },
+    {
+      "event_id": "116697716933016531",
+      "game_id": "116697716933016531",
+      "league": "Hellenic Legends League",
+      "start_time": "2026-07-01 00:00:00",
+      "blue_team": "gamespace_mc",
+      "red_team": "wlgaming",
+      "blue_team_name": "Gamespace M.C.",
+      "red_team_name": "WLGaming",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "Gamespace M.C.",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:gamespace_mc",
+        "elo_fallback_prediction",
+        "missing_elo_rating",
+        "red_team_no_history:wlgaming"
+      ]
+    },
+    {
+      "event_id": "116713163972558998",
+      "game_id": "116713163972558998",
+      "league": "Prime League",
+      "start_time": "2026-07-01 00:00:00",
+      "blue_team": "e_wie_einfach_e_sports",
+      "red_team": "berlin_international_gaming",
+      "blue_team_name": "E Wie Einfach E-Sports",
+      "red_team_name": "Berlin International Gaming",
+      "blue_win_probability": 0.405294,
+      "red_win_probability": 0.594706,
+      "predicted_winner": "Berlin International Gaming",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559034",
+      "game_id": "116713163972559034",
+      "league": "Prime League",
+      "start_time": "2026-07-01 01:00:00",
+      "blue_team": "eintracht_frankfurt",
+      "red_team": "unicorns_of_love_sexy_edition",
+      "blue_team_name": "Eintracht Frankfurt",
+      "red_team_name": "Unicorns of Love Sexy Edition",
+      "blue_win_probability": 0.258027,
+      "red_win_probability": 0.741973,
+      "predicted_winner": "Unicorns of Love Sexy Edition",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559060",
+      "game_id": "116713163972559060",
+      "league": "Prime League",
+      "start_time": "2026-07-01 02:00:00",
+      "blue_team": "g2_nord",
+      "red_team": "rossmann_centaurs",
+      "blue_team_name": "G2 NORD",
+      "red_team_name": "Rossmann Centaurs",
+      "blue_win_probability": 0.883554,
+      "red_win_probability": 0.116446,
+      "predicted_winner": "G2 NORD",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559026",
+      "game_id": "116713163972559026",
+      "league": "Prime League",
+      "start_time": "2026-07-01 03:00:00",
+      "blue_team": "vfb_stuttgart",
+      "red_team": "teamorangegaming",
+      "blue_team_name": "VfB Stuttgart",
+      "red_team_name": "TeamOrangeGaming",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "VfB Stuttgart",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:vfb_stuttgart",
+        "elo_fallback_prediction",
+        "missing_elo_rating"
+      ]
+    },
+    {
+      "event_id": "116713163972559066",
+      "game_id": "116713163972559066",
+      "league": "Prime League",
+      "start_time": "2026-07-01 04:00:00",
+      "blue_team": "kaufland_hangry_knights",
+      "red_team": "eintracht_spandau",
+      "blue_team_name": "Kaufland Hangry Knights",
+      "red_team_name": "Eintracht Spandau",
+      "blue_win_probability": 0.21408,
+      "red_win_probability": 0.78592,
+      "predicted_winner": "Eintracht Spandau",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116697716933082091",
+      "game_id": "116697716933082091",
+      "league": "Hellenic Legends League",
+      "start_time": "2026-07-01 22:00:00",
+      "blue_team": "theparadox_invaders",
+      "red_team": "spartans_eu",
+      "blue_team_name": "TheParadOx Invaders",
+      "red_team_name": "Spartans EU",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "TheParadOx Invaders",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:theparadox_invaders",
+        "elo_fallback_prediction",
+        "missing_elo_rating"
+      ]
+    },
+    {
+      "event_id": "116697716933016516",
+      "game_id": "116697716933016516",
+      "league": "Hellenic Legends League",
+      "start_time": "2026-07-02 00:00:00",
+      "blue_team": "hell_zerolag",
+      "red_team": "team_phantasma",
+      "blue_team_name": "Hell ZeroLag",
+      "red_team_name": "Team Phantasma",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "Hell ZeroLag",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:hell_zerolag",
+        "elo_fallback_prediction",
+        "missing_elo_rating"
+      ]
+    },
+    {
+      "event_id": "116713163972559020",
+      "game_id": "116713163972559020",
+      "league": "Prime League",
+      "start_time": "2026-07-02 00:00:00",
+      "blue_team": "eintracht_frankfurt",
+      "red_team": "teamorangegaming",
+      "blue_team_name": "Eintracht Frankfurt",
+      "red_team_name": "TeamOrangeGaming",
+      "blue_win_probability": 0.281766,
+      "red_win_probability": 0.718234,
+      "predicted_winner": "TeamOrangeGaming",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559050",
+      "game_id": "116713163972559050",
+      "league": "Prime League",
+      "start_time": "2026-07-02 01:00:00",
+      "blue_team": "g2_nord",
+      "red_team": "e_wie_einfach_e_sports",
+      "blue_team_name": "G2 NORD",
+      "red_team_name": "E Wie Einfach E-Sports",
+      "blue_win_probability": 0.661733,
+      "red_win_probability": 0.338267,
+      "predicted_winner": "G2 NORD",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559054",
+      "game_id": "116713163972559054",
+      "league": "Prime League",
+      "start_time": "2026-07-02 02:00:00",
+      "blue_team": "eintracht_spandau",
+      "red_team": "rossmann_centaurs",
+      "blue_team_name": "Eintracht Spandau",
+      "red_team_name": "Rossmann Centaurs",
+      "blue_win_probability": 0.852074,
+      "red_win_probability": 0.147926,
+      "predicted_winner": "Eintracht Spandau",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559040",
+      "game_id": "116713163972559040",
+      "league": "Prime League",
+      "start_time": "2026-07-02 03:00:00",
+      "blue_team": "vfb_stuttgart",
+      "red_team": "unicorns_of_love_sexy_edition",
+      "blue_team_name": "VfB Stuttgart",
+      "red_team_name": "Unicorns of Love Sexy Edition",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "VfB Stuttgart",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:vfb_stuttgart",
+        "elo_fallback_prediction",
+        "missing_elo_rating"
+      ]
+    },
+    {
+      "event_id": "116713163972559006",
+      "game_id": "116713163972559006",
+      "league": "Prime League",
+      "start_time": "2026-07-02 04:00:00",
+      "blue_team": "kaufland_hangry_knights",
+      "red_team": "berlin_international_gaming",
+      "blue_team_name": "Kaufland Hangry Knights",
+      "red_team_name": "Berlin International Gaming",
+      "blue_win_probability": 0.216108,
+      "red_win_probability": 0.783892,
+      "predicted_winner": "Berlin International Gaming",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116697716933082106",
+      "game_id": "116697716933082106",
+      "league": "Hellenic Legends League",
+      "start_time": "2026-07-02 22:00:00",
+      "blue_team": "spartans_eu",
+      "red_team": "hell_zerolag",
+      "blue_team_name": "Spartans EU",
+      "red_team_name": "Hell ZeroLag",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "Spartans EU",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction",
+        "missing_elo_rating",
+        "red_team_no_history:hell_zerolag"
+      ]
+    },
+    {
+      "event_id": "116697716933016504",
+      "game_id": "116697716933016504",
+      "league": "Hellenic Legends League",
+      "start_time": "2026-07-03 00:00:00",
+      "blue_team": "team_phantasma",
+      "red_team": "valerion",
+      "blue_team_name": "Team Phantasma",
+      "red_team_name": "Valerion",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "Team Phantasma",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction",
+        "missing_elo_rating",
+        "red_team_no_history:valerion"
+      ]
+    },
+    {
+      "event_id": "116713163972559056",
+      "game_id": "116713163972559056",
+      "league": "Prime League",
+      "start_time": "2026-07-03 00:00:00",
+      "blue_team": "eintracht_frankfurt",
+      "red_team": "rossmann_centaurs",
+      "blue_team_name": "Eintracht Frankfurt",
+      "red_team_name": "Rossmann Centaurs",
+      "blue_win_probability": 0.55344,
+      "red_win_probability": 0.44656,
+      "predicted_winner": "Eintracht Frankfurt",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559048",
+      "game_id": "116713163972559048",
+      "league": "Prime League",
+      "start_time": "2026-07-03 01:00:00",
+      "blue_team": "kaufland_hangry_knights",
+      "red_team": "e_wie_einfach_e_sports",
+      "blue_team_name": "Kaufland Hangry Knights",
+      "red_team_name": "E Wie Einfach E-Sports",
+      "blue_win_probability": 0.288016,
+      "red_win_probability": 0.711984,
+      "predicted_winner": "E Wie Einfach E-Sports",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559018",
+      "game_id": "116713163972559018",
+      "league": "Prime League",
+      "start_time": "2026-07-03 02:00:00",
+      "blue_team": "eintracht_spandau",
+      "red_team": "teamorangegaming",
+      "blue_team_name": "Eintracht Spandau",
+      "red_team_name": "TeamOrangeGaming",
+      "blue_win_probability": 0.645807,
+      "red_win_probability": 0.354193,
+      "predicted_winner": "Eintracht Spandau",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116713163972559082",
+      "game_id": "116713163972559082",
+      "league": "Prime League",
+      "start_time": "2026-07-03 03:00:00",
+      "blue_team": "vfb_stuttgart",
+      "red_team": "g2_nord",
+      "blue_team_name": "VfB Stuttgart",
+      "red_team_name": "G2 NORD",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "VfB Stuttgart",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:vfb_stuttgart",
+        "elo_fallback_prediction",
+        "missing_elo_rating"
+      ]
+    },
+    {
+      "event_id": "116713163972558996",
+      "game_id": "116713163972558996",
+      "league": "Prime League",
+      "start_time": "2026-07-03 04:00:00",
+      "blue_team": "unicorns_of_love_sexy_edition",
+      "red_team": "berlin_international_gaming",
+      "blue_team_name": "Unicorns of Love Sexy Edition",
+      "red_team_name": "Berlin International Gaming",
+      "blue_win_probability": 0.385063,
+      "red_win_probability": 0.614937,
+      "predicted_winner": "Berlin International Gaming",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    }
+  ],
+  "warnings": [
+    "blue_team_no_history:count=5",
+    "blue_team_no_history:gamespace_mc",
+    "blue_team_no_history:hell_zerolag",
+    "blue_team_no_history:theparadox_invaders",
+    "blue_team_no_history:valerion",
+    "blue_team_no_history:vfb_stuttgart",
+    "red_team_no_history:count=5",
+    "red_team_no_history:hell_zerolag",
+    "red_team_no_history:relove_deep_cross_gaming",
+    "red_team_no_history:team_liquid_alienware",
+    "red_team_no_history:valerion",
+    "red_team_no_history:wlgaming",
+    "elo_fallback_prediction",
+    "missing_elo_rating"
+  ],
+  "warning_count": 14
 }
