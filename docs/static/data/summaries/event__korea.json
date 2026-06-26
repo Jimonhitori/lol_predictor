@@ -3,11 +3,17 @@
   "games": 0,
   "leagues": [],
   "champions": [],
-  "champions_by_role": {},
+  "champions_by_role": {
+    "top": [],
+    "jng": [],
+    "mid": [],
+    "bot": [],
+    "sup": []
+  },
   "patch_options": [
     {
       "value": "all",
-      "label": "All patches",
+      "label": "-- ALL --",
       "games": 0
     }
   ],
@@ -17,7 +23,13 @@
       "games": 0,
       "leagues": [],
       "champions": [],
-      "champions_by_role": {},
+      "champions_by_role": {
+        "top": [],
+        "jng": [],
+        "mid": [],
+        "bot": [],
+        "sup": []
+      },
       "data_from": "",
       "data_through": "",
       "source_rows": 0
@@ -26,7 +38,7 @@
   "teams": [],
   "standings_split": "",
   "standings_series": 0,
-  "generated_at": "2026-06-25T07:03:58.377027Z",
+  "generated_at": "2026-06-13T11:09:38.800253Z",
   "data_from": "",
   "data_through": "",
   "latest_patch_data_from": "",
@@ -36,8 +48,7 @@
   "data_status": "missing",
   "data_staleness_days": null,
   "warnings": [
-    "summary_data_missing",
-    "summary_meta_fallback: champion detail tables omitted"
+    "summary_data_missing"
   ],
   "source": "lol-pros-analyzer",
   "source_rows": 0

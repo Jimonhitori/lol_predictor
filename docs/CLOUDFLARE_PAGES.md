@@ -23,7 +23,15 @@ After the Cloudflare deployment is stable, a build command can be added later:
 python -m lol_predictor.export_static --out-dir docs --max-details 80
 ```
 
-That later step requires Python dependencies and data/model files to be available in the Cloudflare build environment.
+That command refreshes static JSON data artifacts while preserving the existing
+HTML/CSS/JS shell files under `docs/`. This prevents the production dashboard
+shell from being overwritten by the older local `lol_predictor.web_app` template
+during scheduled data refreshes. Only add `--refresh-shell` when you explicitly
+intend to regenerate `docs/index.html`, `docs/match.html`, `docs/static/app.js`,
+and `docs/static/styles.css` from `lol_predictor.web_app`.
+
+That later step requires Python dependencies and data/model files to be available
+in the Cloudflare build environment.
 
 ## Runtime Behavior
 

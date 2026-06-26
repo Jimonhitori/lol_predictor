@@ -16,6 +16,7 @@ const DETAIL_REFRESH_PRESTART_WINDOW_MS = 20 * 60 * 1000;
 const LIVE_SNAPSHOT_STORAGE_PREFIX = 'lol_predictor_live_snapshot_v1:';
 const LIVE_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
+const DEFAULT_LEAGUE_GROUP = 'major';
 
 async function api(path) {
   if (STATIC_SITE && isCloudflareApiPath(path)) return fetchApiJson(path);
@@ -612,8 +613,8 @@ async function loadOptions() {
   state.options = await api('/api/options');
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
-  $('leagueGroup').value = 'major';
-  if ($('championMetaGroup')) $('championMetaGroup').value = 'all';
+  setValue('leagueGroup', DEFAULT_LEAGUE_GROUP);
+  setValue('championMetaGroup', $('leagueGroup')?.value || DEFAULT_LEAGUE_GROUP);
   fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
@@ -662,13 +663,6 @@ async function loadMatches() {
   const data = await api('/api/matches/today?' + qs());
   if (requestId !== state.matchesRequestId || !sameMatchFilters(filters, currentMatchFilters())) return;
   state.allMatches = dedupeCanonicalMatches(hydrateMatchesTeamMeta(filterMatchesBySelection(data.matches || [], filters)));
-  if (shouldFallbackInitialMajorSchedule(filters, state.allMatches)) {
-    $('leagueGroup').value = 'all';
-    state.selectedMatchDate = '';
-    state.userSelectedMatchDate = false;
-    loadSummary();
-    return loadMatches();
-  }
   state.matchSource = data.source || 'none';
   syncDefaultMatchDate(state.allMatches);
   await refreshStaticMatchStatuses();
@@ -693,23 +687,6 @@ function currentMatchFilters() {
 function sameMatchFilters(left, right) {
   return String(left?.league_group || 'all') === String(right?.league_group || 'all')
     && String(left?.region || 'all') === String(right?.region || 'all');
-}
-
-function shouldFallbackInitialMajorSchedule(filters, matches) {
-  return String(filters?.league_group || 'all') === 'major'
-    && !state.userSelectedLeagueGroup
-    && !hasCurrentOrFutureMatches(matches);
-}
-
-function hasCurrentOrFutureMatches(matches) {
-  const today = todayDateKey();
-  return (matches || []).some(match => {
-    const matchDate = localDateKey(match?.start_time);
-    if (matchDate) return matchDate >= today;
-    const status = String(match?.status || '').toLowerCase();
-    if (status === 'inprogress') return true;
-    return false;
-  });
 }
 
 function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
@@ -3397,9 +3374,19 @@ function setValue(id, value) {
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
+function syncChampionMetaGroup() {
+  const leagueGroup = $('leagueGroup')?.value || DEFAULT_LEAGUE_GROUP;
+  const championMetaGroup = $('championMetaGroup');
+  if (!championMetaGroup) return;
+  setValue('championMetaGroup', leagueGroup === 'event' ? DEFAULT_LEAGUE_GROUP : leagueGroup);
+}
+
 if ($('matches')) {
   for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => {
-    if (id === 'leagueGroup') state.userSelectedLeagueGroup = true;
+    if (id === 'leagueGroup') {
+      state.userSelectedLeagueGroup = true;
+      syncChampionMetaGroup();
+    }
     state.selectedMatchDate = '';
     state.userSelectedMatchDate = false;
     loadSummary();

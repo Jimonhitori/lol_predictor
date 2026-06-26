@@ -48,6 +48,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--champion-reference", type=Path, default=Path("data/features/champion_reference.csv"))
     parser.add_argument("--today-cache", type=Path, default=Path("data/raw/today_matches.json"))
     parser.add_argument("--max-details", type=int, default=80)
+    parser.add_argument(
+        "--refresh-shell",
+        action="store_true",
+        help=(
+            "Rewrite static HTML/CSS/JS shell files from lol_predictor.web_app. "
+            "By default existing shell files are preserved and only data artifacts are refreshed."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -67,11 +75,7 @@ def main() -> None:
     data_dir = out_dir / "static" / "data"
     if data_dir.exists():
         shutil.rmtree(data_dir)
-    write_text(out_dir / "index.html", static_html(APP_HTML))
-    write_text(out_dir / "match.html", static_html(MATCH_HTML))
-    write_text(out_dir / "match" / "index.html", static_html(MATCH_HTML, asset_prefix="../", back_href="../index.html"))
-    write_text(out_dir / "static" / "styles.css", APP_CSS)
-    write_text(out_dir / "static" / "app.js", APP_JS)
+    write_shell_files(out_dir, refresh=args.refresh_shell)
     options = options_payload(context.rows)
     write_json(data_dir / "options.json", options)
 
@@ -314,6 +318,19 @@ def first_query(query: dict[str, list[str]], key: str, default: str = "") -> str
 
 def write_json(path: Path, payload: object) -> None:
     write_text(path, json.dumps(payload, ensure_ascii=False, indent=2))
+
+
+def write_shell_files(out_dir: Path, refresh: bool = False) -> None:
+    shell_files = [
+        (out_dir / "index.html", static_html(APP_HTML)),
+        (out_dir / "match.html", static_html(MATCH_HTML)),
+        (out_dir / "match" / "index.html", static_html(MATCH_HTML, asset_prefix="../", back_href="../index.html")),
+        (out_dir / "static" / "styles.css", APP_CSS),
+        (out_dir / "static" / "app.js", APP_JS),
+    ]
+    for path, content in shell_files:
+        if refresh or not path.exists():
+            write_text(path, content)
 
 
 def write_text(path: Path, content: str) -> None:
