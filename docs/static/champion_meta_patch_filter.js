@@ -1,5 +1,5 @@
 (function () {
-  let selectedPatch = 'all';
+  let selectedPatch = '';
 
   function patchSelect() {
     return document.getElementById('championPatch');
@@ -81,11 +81,12 @@
     const select = patchSelect();
     if (!select) return;
     const options = patchOptions(data);
-    const current = selectedPatch || select.value || 'all';
+    const fallback = isSeason16Patch(data?.patch) ? String(data.patch) : 'all';
+    const current = selectedPatch || fallback;
     select.innerHTML = options
       .map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`)
       .join('');
-    selectedPatch = options.some(option => option.value === current) ? current : 'all';
+    selectedPatch = options.some(option => option.value === current) ? current : fallback;
     select.value = selectedPatch;
   }
 
@@ -122,7 +123,7 @@
     const group = $('championMetaGroup');
     if (group) {
       group.addEventListener('change', () => {
-        selectedPatch = 'all';
+        selectedPatch = '';
       }, true);
     }
   }
