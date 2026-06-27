@@ -695,7 +695,7 @@ function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
   return (matches || []).filter(match => {
     const matchGroup = String(match?.league_group || 'all');
     const matchRegion = String(match?.region || 'all');
-    return (leagueGroup === 'all' || matchGroup === leagueGroup)
+    return (leagueGroup === 'all' || matchGroup === leagueGroup || (leagueGroup === 'major' && matchGroup === 'event'))
       && (region === 'all' || matchRegion === region);
   });
 }
