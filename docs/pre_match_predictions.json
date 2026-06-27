@@ -1,11 +1,11 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-06-27T07:38:08.588545Z",
+  "generated_at": "2026-06-27T07:56:01.397427Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
-      "name": "elo_fallback",
-      "version": "elo_fallback",
+      "name": "logistic_regression_actions",
+      "version": "logistic_regression_actions",
       "metrics": {}
     }
   },
@@ -19,14 +19,12 @@
       "red_team": "team_liquid",
       "blue_team_name": "T1",
       "red_team_name": "Team Liquid",
-      "blue_win_probability": 0.750036,
-      "red_win_probability": 0.249964,
+      "blue_win_probability": 0.813407,
+      "red_win_probability": 0.186593,
       "predicted_winner": "T1",
       "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     },
     {
       "event_id": "2026 Mid-Season Invitational_Play-In Day 1_2",
@@ -37,18 +35,14 @@
       "red_team": "deep_cross_gaming",
       "blue_team_name": "Karmine Corp",
       "red_team_name": "Deep Cross Gaming",
-      "blue_win_probability": 0.616852,
-      "red_win_probability": 0.383148,
+      "blue_win_probability": 0.535347,
+      "red_win_probability": 0.464653,
       "predicted_winner": "Karmine Corp",
       "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     }
   ],
-  "warnings": [
-    "elo_fallback_prediction"
-  ],
-  "warning_count": 1
+  "warnings": [],
+  "warning_count": 0
 }
