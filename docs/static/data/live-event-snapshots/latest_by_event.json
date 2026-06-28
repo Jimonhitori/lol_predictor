@@ -40228,7 +40228,7 @@
   },
   "115570934355614497": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T14:27:39.969Z",
+    "checked_at": "2026-06-28T15:49:10.503Z",
     "event_id": "115570934355614497",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -40431,7 +40431,7 @@
   },
   "115570934355614503": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T14:27:39.969Z",
+    "checked_at": "2026-06-28T15:49:10.503Z",
     "event_id": "115570934355614503",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -40611,6 +40611,209 @@
           "winner": "",
           "live": {
             "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115570934355614509": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-28T15:49:10.503Z",
+    "event_id": "115570934355614509",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115570934355614509",
+      "league": "MSI",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "111692118851466302",
+          "name": "Karmine Corp",
+          "code": "KC",
+          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "98767991853197861",
+          "name": "T1",
+          "code": "T1",
+          "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570934355614510",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614511",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614512",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614513",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614514",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
             "game_time": 0,
             "blue": [],
             "red": [],
