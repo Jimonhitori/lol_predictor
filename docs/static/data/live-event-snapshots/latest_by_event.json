@@ -40228,7 +40228,7 @@
   },
   "115570934355614497": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T06:00:05.505Z",
+    "checked_at": "2026-06-28T09:20:48.149Z",
     "event_id": "115570934355614497",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -40431,24 +40431,205 @@
   },
   "115570934355614503": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T06:00:05.505Z",
+    "checked_at": "2026-06-28T09:20:48.149Z",
     "event_id": "115570934355614503",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115570934355614503",
-      "league": "",
+      "league": "MSI",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "107700204561086446",
+          "name": "Relove Deep Cross Gaming",
+          "code": "DCG",
+          "image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "111692118851466302",
+          "name": "Karmine Corp",
+          "code": "KC",
+          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+          "game_wins": "3"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570934355614504",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614505",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614506",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614507",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "red": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614508",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   }
 }
