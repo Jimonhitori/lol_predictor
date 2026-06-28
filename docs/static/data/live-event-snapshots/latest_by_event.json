@@ -40431,7 +40431,7 @@
   },
   "115570934355614503": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T19:04:16.355Z",
+    "checked_at": "2026-06-28T20:20:27.375Z",
     "event_id": "115570934355614503",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -40634,7 +40634,7 @@
   },
   "115570934355614509": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T19:04:16.355Z",
+    "checked_at": "2026-06-28T20:20:27.375Z",
     "event_id": "115570934355614509",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -40810,6 +40810,209 @@
             "team_id": "98767991853197861",
             "team_name": "T1",
             "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115846993721104369": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-28T20:20:27.375Z",
+    "event_id": "115846993721104369",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115846993721104369",
+      "league": "MSI",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107700204561086446",
+          "name": "Relove Deep Cross Gaming",
+          "code": "DCG",
+          "image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "98926509885559666",
+          "name": "Team Liquid Alienware",
+          "code": "TLAW",
+          "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115846993721169906",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115846993721235443",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115846993721235444",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115846993721235445",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115846993721235446",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107700204561086446",
+            "team_name": "Relove Deep Cross Gaming",
+            "team_code": "DCG"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
           },
           "winner": "",
           "live": {
