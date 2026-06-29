@@ -40634,9 +40634,9 @@
   },
   "115570934355614509": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-29T01:55:21.721Z",
+    "checked_at": "2026-06-29T06:39:08.448Z",
     "event_id": "115570934355614509",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -40646,15 +40646,15 @@
       "league_group": "",
       "region": "",
       "best_of": "5",
-      "status": "unstarted",
-      "start_time": "",
+      "status": "completed",
+      "start_time": "2026-06-29T12:00:00.000Z",
       "teams": [
         {
           "id": "98767991853197861",
           "name": "T1",
           "code": "T1",
           "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
-          "game_wins": "0"
+          "game_wins": "3"
         },
         {
           "id": "111692118851466302",
@@ -40668,7 +40668,7 @@
         {
           "id": "115570934355614510",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "98767991853197861",
             "team_name": "T1",
@@ -40681,13 +40681,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -40701,7 +40701,7 @@
         {
           "id": "115570934355614511",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "98767991853197861",
             "team_name": "T1",
@@ -40714,13 +40714,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -40734,7 +40734,7 @@
         {
           "id": "115570934355614512",
           "number": 3,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "111692118851466302",
             "team_name": "Karmine Corp",
@@ -40747,13 +40747,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -40767,7 +40767,7 @@
         {
           "id": "115570934355614513",
           "number": 4,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "98767991853197861",
             "team_name": "T1",
@@ -40780,7 +40780,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -40800,7 +40800,7 @@
         {
           "id": "115570934355614514",
           "number": 5,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "111692118851466302",
             "team_name": "Karmine Corp",
@@ -40813,7 +40813,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -40837,205 +40837,24 @@
   },
   "115846993721104369": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-29T01:55:21.721Z",
+    "checked_at": "2026-06-29T06:39:08.448Z",
     "event_id": "115846993721104369",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115846993721104369",
-      "league": "MSI",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "107700204561086446",
-          "name": "Relove Deep Cross Gaming",
-          "code": "DCG",
-          "image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "98926509885559666",
-          "name": "Team Liquid Alienware",
-          "code": "TLAW",
-          "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "115846993721169906",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107700204561086446",
-            "team_name": "Relove Deep Cross Gaming",
-            "team_code": "DCG"
-          },
-          "red": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115846993721235443",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "red": {
-            "team_id": "107700204561086446",
-            "team_name": "Relove Deep Cross Gaming",
-            "team_code": "DCG"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115846993721235444",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107700204561086446",
-            "team_name": "Relove Deep Cross Gaming",
-            "team_code": "DCG"
-          },
-          "red": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115846993721235445",
-          "number": 4,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "red": {
-            "team_id": "107700204561086446",
-            "team_name": "Relove Deep Cross Gaming",
-            "team_code": "DCG"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115846993721235446",
-          "number": 5,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107700204561086446",
-            "team_name": "Relove Deep Cross Gaming",
-            "team_code": "DCG"
-          },
-          "red": {
-            "team_id": "98926509885559666",
-            "team_name": "Team Liquid Alienware",
-            "team_code": "TLAW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   }
 }
