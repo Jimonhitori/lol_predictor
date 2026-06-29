@@ -1,5 +1,5 @@
 
-const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false, userSelectedLeagueGroup: false };
+const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
 const STATIC_DATA_VERSION = '20260523-h2h-current-schedule';
@@ -126,7 +126,7 @@ async function staticApi(path) {
   } else if (url.pathname === '/api/match') {
     return staticMatchDetail(params);
   } else if (url.pathname === '/api/roster') {
-    target = `data/rosters/${staticKey(params.get('team') || '')}.json`;
+    return staticRoster(params);
   } else if (url.pathname === '/api/team-record') {
     target = `data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
   } else if (url.pathname === '/api/team-history') {
@@ -167,6 +167,31 @@ async function staticMatchDetail(params) {
   const prediction = predictions.byEventId?.[id] || predictions.byGameId?.[id] || null;
   if (prediction) return matchDetailFromPrediction(prediction);
   return { id: '', warning: 'match_detail_static_artifact_missing' };
+}
+
+async function staticRoster(params) {
+  const team = params.get('team') || '';
+  const teamCode = params.get('team_code') || '';
+  const teamKeys = teamStaticKeys(team, teamCode);
+  await loadTeamRegistry();
+  for (const key of teamKeys) {
+    if (!key) continue;
+    const response = await fetch(staticDataUrl(`data/rosters/${key}.json`), { cache: 'no-store' });
+    if (!response.ok) continue;
+    try {
+      const data = await response.json();
+      if (Array.isArray(data.players) && data.players.length > 0) return data;
+    } catch (error) {
+      continue;
+    }
+  }
+  return {
+    team: team || teamCode,
+    matched_team: '',
+    source: 'static_missing',
+    players: [],
+    warning: 'roster_static_artifact_missing',
+  };
 }
 
 function safeMatchFileId(value) {
@@ -614,7 +639,7 @@ async function loadOptions() {
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
   setValue('leagueGroup', DEFAULT_LEAGUE_GROUP);
-  setValue('championMetaGroup', 'all');
+  setValue('championMetaGroup', $('leagueGroup')?.value || DEFAULT_LEAGUE_GROUP);
   fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
@@ -695,7 +720,7 @@ function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
   return (matches || []).filter(match => {
     const matchGroup = String(match?.league_group || 'all');
     const matchRegion = String(match?.region || 'all');
-    return (leagueGroup === 'all' || matchGroup === leagueGroup || (leagueGroup === 'major' && matchGroup === 'event'))
+    return (leagueGroup === 'all' || matchGroup === leagueGroup)
       && (region === 'all' || matchRegion === region);
   });
 }
@@ -1523,29 +1548,19 @@ function renderDateTabs(matches) {
 function visibleDateOptions(options) {
   const today = todayDateKey();
   const futureOrToday = options.filter(option => option.key >= today);
-  const visibleOptions = futureOrToday.length ? futureOrToday : options;
-  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') return fillDateOptions(visibleOptions.slice(0, 3), today);
-  if (state.selectedMatchDate === today) return fillDateOptions(visibleOptions.slice(0, 3), today);
-  if (visibleOptions.length <= 3) return fillDateOptions(visibleOptions, state.selectedMatchDate);
-  const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
-    ? visibleOptions.findIndex(option => option.key === state.selectedMatchDate)
-    : visibleOptions.findIndex(option => option.key === today);
-  const center = selected >= 0 ? selected : 0;
-  const start = Math.max(0, Math.min(center - 1, visibleOptions.length - 3));
-  return fillDateOptions(visibleOptions.slice(start, start + 3), state.selectedMatchDate);
-}
-
-function fillDateOptions(options, anchorKey) {
-  const byKey = new Map((options || []).map(option => [option.key, option]));
-  const result = [];
-  let cursor = dateFromLocalKey(anchorKey || todayDateKey());
-  if (Number.isNaN(cursor.getTime())) cursor = dateFromLocalKey(todayDateKey());
-  while (result.length < 3) {
-    const key = localDateKey(cursor.toISOString());
-    result.push(byKey.get(key) || dateTabOption(key));
-    cursor = addLocalDays(cursor, 1);
+  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
+    return futureOrToday.slice(0, 3);
   }
-  return result;
+  if (state.selectedMatchDate === today) {
+    return futureOrToday.slice(0, 3);
+  }
+  if (options.length <= 3) return options;
+  const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
+    ? options.findIndex(option => option.key === state.selectedMatchDate)
+    : options.findIndex(option => option.key === todayDateKey());
+  const center = selected >= 0 ? selected : 0;
+  const start = Math.max(0, Math.min(center - 1, options.length - 3));
+  return options.slice(start, start + 3);
 }
 
 function filteredMatches() {
@@ -1555,18 +1570,11 @@ function filteredMatches() {
 }
 
 function liveMatches(matches) {
-  const today = todayDateKey();
-  return matches.filter(match => {
-    if (String(match.status || '').toLowerCase() !== 'inprogress') return false;
-    const matchDate = localDateKey(match.start_time);
-    return !matchDate || matchDate >= today;
-  });
+  return matches.filter(match => String(match.status || '').toLowerCase() === 'inprogress');
 }
 
 function defaultMatchDate(matches) {
-  const today = todayDateKey();
-  const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
-  return keys.find(key => key >= today) || today;
+  return todayDateKey();
 }
 
 function syncDefaultMatchDate(matches) {
@@ -1584,15 +1592,13 @@ function syncDefaultMatchDate(matches) {
 
 function matchDateOptions(matches) {
   const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
-  return keys.map(dateTabOption);
-}
-
-function dateTabOption(key) {
-  const date = dateFromLocalKey(key);
-  const weekday = formatInAppTimeZone(date, { weekday: 'short' });
-  const md = formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
-  const isToday = key === todayDateKey();
-  return { key, title: isToday ? '今日' : weekday, sub: md };
+  return keys.map(key => {
+    const date = dateFromLocalKey(key);
+    const weekday = formatInAppTimeZone(date, { weekday: 'short' });
+    const md = formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
+    const isToday = key === todayDateKey();
+    return { key, title: isToday ? '今日' : weekday, sub: md };
+  });
 }
 
 function todayDateKey() {
@@ -1620,12 +1626,6 @@ function zonedDateKey(date) {
 function dateFromLocalKey(key) {
   const [year, month, day] = String(key).split('-').map(Number);
   return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
-}
-
-function addLocalDays(date, days) {
-  const next = new Date(date);
-  next.setUTCDate(next.getUTCDate() + days);
-  return next;
 }
 
 function formatInAppTimeZone(date, options) {
@@ -2730,8 +2730,8 @@ async function loadRosters(blueTeam, redTeam) {
   $('blueRosterTitle').textContent = blueName || 'Blue';
   $('redRosterTitle').textContent = redName || 'Red';
   const [blue, red] = await Promise.all([
-    api('/api/roster?team=' + encodeURIComponent(blueName)),
-    api('/api/roster?team=' + encodeURIComponent(redName)),
+    loadRosterForTeam(blueTeam),
+    loadRosterForTeam(redTeam),
   ]);
   const bluePlayers = rosterWithLiveFallback(blue.players || [], blueTeam);
   const redPlayers = rosterWithLiveFallback(red.players || [], redTeam);
@@ -2740,6 +2740,17 @@ async function loadRosters(blueTeam, redTeam) {
   $('blueRoster').innerHTML = rosterCards(bluePlayers);
   $('redRoster').innerHTML = rosterCards(redPlayers);
   if (state.currentDetails) renderLiveDraft(state.currentDetails);
+}
+
+async function loadRosterForTeam(team) {
+  const name = team.name || team.code || '';
+  const code = team.code || '';
+  const query = new URLSearchParams({ team: name, team_code: code });
+  try {
+    return await api('/api/roster?' + query.toString());
+  } catch (error) {
+    return { team: name || code, players: [], warning: 'roster_request_failed' };
+  }
 }
 
 function rememberRoster(name, code, players) {
@@ -3374,16 +3385,16 @@ function setValue(id, value) {
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
+function syncChampionMetaGroup() {
+  const leagueGroup = $('leagueGroup')?.value || DEFAULT_LEAGUE_GROUP;
+  const championMetaGroup = $('championMetaGroup');
+  if (!championMetaGroup) return;
+  setValue('championMetaGroup', leagueGroup === 'event' ? DEFAULT_LEAGUE_GROUP : leagueGroup);
+}
+
 if ($('matches')) {
-  for (const id of ['leagueGroup','region']) $(id).addEventListener('change', () => {
-    if (id === 'leagueGroup') {
-      state.userSelectedLeagueGroup = true;
-    }
-    state.selectedMatchDate = '';
-    state.userSelectedMatchDate = false;
-    loadSummary();
-    loadMatches();
-  });
+  if ($('leagueGroup')) $('leagueGroup').addEventListener('change', () => { syncChampionMetaGroup(); loadSummary(); loadMatches(); });
+  if ($('region')) $('region').addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
   if ($('championMetaGroup')) $('championMetaGroup').addEventListener('change', () => loadChampionSummary());
   if ($('championRole')) $('championRole').addEventListener('change', () => state.championSummary && renderChampionMeta(state.championSummary));
