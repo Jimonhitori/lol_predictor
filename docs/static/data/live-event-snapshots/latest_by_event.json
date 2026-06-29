@@ -40634,7 +40634,7 @@
   },
   "115570934355614509": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T23:43:52.091Z",
+    "checked_at": "2026-06-29T01:55:21.721Z",
     "event_id": "115570934355614509",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -40650,17 +40650,17 @@
       "start_time": "",
       "teams": [
         {
-          "id": "111692118851466302",
-          "name": "Karmine Corp",
-          "code": "KC",
-          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
-          "game_wins": "0"
-        },
-        {
           "id": "98767991853197861",
           "name": "T1",
           "code": "T1",
           "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "111692118851466302",
+          "name": "Karmine Corp",
+          "code": "KC",
+          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
           "game_wins": "0"
         }
       ],
@@ -40670,14 +40670,14 @@
           "number": 1,
           "state": "unstarted",
           "blue": {
-            "team_id": "111692118851466302",
-            "team_name": "Karmine Corp",
-            "team_code": "KC"
-          },
-          "red": {
             "team_id": "98767991853197861",
             "team_name": "T1",
             "team_code": "T1"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
           },
           "winner": "",
           "live": {
@@ -40837,7 +40837,7 @@
   },
   "115846993721104369": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-28T23:43:52.091Z",
+    "checked_at": "2026-06-29T01:55:21.721Z",
     "event_id": "115846993721104369",
     "status": "unstarted",
     "source": "cloudflare_live_event",
