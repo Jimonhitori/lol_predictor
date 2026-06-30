@@ -41040,7 +41040,7 @@
   },
   "115570934355614521": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "115570934355614521",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41243,7 +41243,7 @@
   },
   "116697716933016552": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "116697716933016552",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41347,29 +41347,111 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "116697716933016531",
-    "status": "unavailable",
+    "status": "inProgress",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116697716933016531",
-      "league": "",
+      "league": "Hellenic Legends League",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "2",
+      "status": "inProgress",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "105521674055625312",
+          "name": "Gamespace M.C.",
+          "code": "GSMC",
+          "image": "http://static.lolesports.com/teams/GameSpaceMediterraneanCollegeeSports.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "102787200149928963",
+          "name": "WLGaming",
+          "code": "WLG",
+          "image": "http://static.lolesports.com/teams/WLGlogo.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116697716933016532",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "105521674055625312",
+            "team_name": "Gamespace M.C.",
+            "team_code": "GSMC"
+          },
+          "red": {
+            "team_id": "102787200149928963",
+            "team_name": "WLGaming",
+            "team_code": "WLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116697716933016533",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "105521674055625312",
+            "team_name": "Gamespace M.C.",
+            "team_code": "GSMC"
+          },
+          "red": {
+            "team_id": "102787200149928963",
+            "team_name": "WLGaming",
+            "team_code": "WLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116713163972558998": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "116713163972558998",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41440,7 +41522,7 @@
   },
   "116713163972559034": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "116713163972559034",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -41462,9 +41544,9 @@
   },
   "116713163972559060": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "116713163972559060",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -41474,21 +41556,21 @@
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
-        {
-          "id": "109642680932009857",
-          "name": "G2 NORD",
-          "code": "G2N",
-          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-          "game_wins": "0"
-        },
         {
           "id": "111726828176554327",
           "name": "Rossmann Centaurs",
           "code": "ROSS",
           "image": "http://static.lolesports.com/teams/1734307301367_ROSS.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "109642680932009857",
+          "name": "G2 NORD",
+          "code": "G2N",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
           "game_wins": "0"
         }
       ],
@@ -41496,26 +41578,26 @@
         {
           "id": "116713163972559061",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "109642680932009857",
-            "team_name": "G2 NORD",
-            "team_code": "G2N"
-          },
-          "red": {
             "team_id": "111726828176554327",
             "team_name": "Rossmann Centaurs",
             "team_code": "ROSS"
           },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -41533,78 +41615,29 @@
   },
   "116713163972559066": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "116713163972559066",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559066",
-      "league": "Prime League",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "1",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "109671612150787863",
-          "name": "Kaufland Hangry Knights",
-          "code": "KHK",
-          "image": "http://static.lolesports.com/teams/1734307355268_KHK.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "107416483509696259",
-          "name": "Eintracht Spandau",
-          "code": "EINS",
-          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116713163972559067",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109671612150787863",
-            "team_name": "Kaufland Hangry Knights",
-            "team_code": "KHK"
-          },
-          "red": {
-            "team_id": "107416483509696259",
-            "team_name": "Eintracht Spandau",
-            "team_code": "EINS"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116713163972559026": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T16:02:20.827Z",
+    "checked_at": "2026-06-30T18:06:21.958Z",
     "event_id": "116713163972559026",
     "status": "unstarted",
     "source": "cloudflare_live_event",
