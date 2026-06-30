@@ -41040,7 +41040,7 @@
   },
   "115570934355614521": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "115570934355614521",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41243,111 +41243,29 @@
   },
   "116697716933016552": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "116697716933016552",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116697716933016552",
-      "league": "Hellenic Legends League",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "2",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "116803545426908406",
-          "name": "Valerion",
-          "code": "VLR",
-          "image": "http://static.lolesports.com/teams/1782280666367_ValerionGold.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "110441266196719234",
-          "name": "ALMO Players",
-          "code": "ALMO",
-          "image": "http://static.lolesports.com/teams/1766149888302_Ogi7qeR.webp",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116697716933016553",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "116803545426908406",
-            "team_name": "Valerion",
-            "team_code": "VLR"
-          },
-          "red": {
-            "team_id": "110441266196719234",
-            "team_name": "ALMO Players",
-            "team_code": "ALMO"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116697716933082090",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "116803545426908406",
-            "team_name": "Valerion",
-            "team_code": "VLR"
-          },
-          "red": {
-            "team_id": "110441266196719234",
-            "team_name": "ALMO Players",
-            "team_code": "ALMO"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "116697716933016531",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -41451,7 +41369,7 @@
   },
   "116713163972558998": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "116713163972558998",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -41522,7 +41440,7 @@
   },
   "116713163972559034": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "116713163972559034",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -41593,7 +41511,7 @@
   },
   "116713163972559060": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "116713163972559060",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -41664,7 +41582,7 @@
   },
   "116713163972559066": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "116713163972559066",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -41735,7 +41653,7 @@
   },
   "116713163972559026": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T11:34:24.951Z",
+    "checked_at": "2026-06-30T13:26:35.177Z",
     "event_id": "116713163972559026",
     "status": "unstarted",
     "source": "cloudflare_live_event",
