@@ -41040,7 +41040,7 @@
   },
   "115570934355614521": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "115570934355614521",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41243,7 +41243,7 @@
   },
   "116697716933016552": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "116697716933016552",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -41451,7 +41451,7 @@
   },
   "116713163972558998": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "116713163972558998",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41522,29 +41522,78 @@
   },
   "116713163972559034": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "116713163972559034",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559034",
-      "league": "",
+      "league": "Prime League",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "1",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "105504044166670507",
+          "name": "Unicorns of Love Sexy Edition",
+          "code": "USE",
+          "image": "http://static.lolesports.com/teams/1674832383233_PRM_USE-FullColorDarkBG.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "107456355516438414",
+          "name": "Eintracht Frankfurt",
+          "code": "SGE",
+          "image": "http://static.lolesports.com/teams/1674832854605_SGE.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559035",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "105504044166670507",
+            "team_name": "Unicorns of Love Sexy Edition",
+            "team_code": "USE"
+          },
+          "red": {
+            "team_id": "107456355516438414",
+            "team_name": "Eintracht Frankfurt",
+            "team_code": "SGE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116713163972559060": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "116713163972559060",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41615,31 +41664,80 @@
   },
   "116713163972559066": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "116713163972559066",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559066",
-      "league": "",
+      "league": "Prime League",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "1",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "109671612150787863",
+          "name": "Kaufland Hangry Knights",
+          "code": "KHK",
+          "image": "http://static.lolesports.com/teams/1734307355268_KHK.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "107416483509696259",
+          "name": "Eintracht Spandau",
+          "code": "EINS",
+          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559067",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "109671612150787863",
+            "team_name": "Kaufland Hangry Knights",
+            "team_code": "KHK"
+          },
+          "red": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116713163972559026": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-06-30T18:06:21.958Z",
+    "checked_at": "2026-06-30T20:14:01.395Z",
     "event_id": "116713163972559026",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -41649,21 +41747,21 @@
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
-        {
-          "id": "116289643859646751",
-          "name": "VfB Stuttgart",
-          "code": "VFB",
-          "image": "http://static.lolesports.com/teams/1774439138920_VfB.png",
-          "game_wins": "0"
-        },
         {
           "id": "107133963320431195",
           "name": "TeamOrangeGaming",
           "code": "TOG",
           "image": "http://static.lolesports.com/teams/1758889281207_TOG.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "116289643859646751",
+          "name": "VfB Stuttgart",
+          "code": "VFB",
+          "image": "http://static.lolesports.com/teams/1774439138920_VfB.png",
           "game_wins": "0"
         }
       ],
@@ -41671,16 +41769,219 @@
         {
           "id": "116713163972559027",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
+            "team_id": "107133963320431195",
+            "team_name": "TeamOrangeGaming",
+            "team_code": "TOG"
+          },
+          "red": {
             "team_id": "116289643859646751",
             "team_name": "VfB Stuttgart",
             "team_code": "VFB"
           },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115570969745329263": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-06-30T20:14:01.395Z",
+    "event_id": "115570969745329263",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115570969745329263",
+      "league": "MSI",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "98926509885559666",
+          "name": "Team Liquid Alienware",
+          "code": "TLAW",
+          "image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "98767991853197861",
+          "name": "T1",
+          "code": "T1",
+          "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570969745329264",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
           "red": {
-            "team_id": "107133963320431195",
-            "team_name": "TeamOrangeGaming",
-            "team_code": "TOG"
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570969745329265",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570969745329266",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570969745329267",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570969745329268",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "98926509885559666",
+            "team_name": "Team Liquid Alienware",
+            "team_code": "TLAW"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
           },
           "winner": "",
           "live": {
