@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-01T00:07:02.110Z",
+    "checked_at": "2026-07-01T04:50:27.701Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -41522,7 +41522,7 @@
   },
   "116713163972559034": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-01T00:07:02.110Z",
+    "checked_at": "2026-07-01T04:50:27.701Z",
     "event_id": "116713163972559034",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41593,7 +41593,7 @@
   },
   "116713163972559060": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-01T00:07:02.110Z",
+    "checked_at": "2026-07-01T04:50:27.701Z",
     "event_id": "116713163972559060",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41664,7 +41664,7 @@
   },
   "116713163972559066": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-01T00:07:02.110Z",
+    "checked_at": "2026-07-01T04:50:27.701Z",
     "event_id": "116713163972559066",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41735,7 +41735,7 @@
   },
   "116713163972559026": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-01T00:07:02.110Z",
+    "checked_at": "2026-07-01T04:50:27.701Z",
     "event_id": "116713163972559026",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -41806,7 +41806,7 @@
   },
   "115570969745329263": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-01T00:07:02.110Z",
+    "checked_at": "2026-07-01T04:50:27.701Z",
     "event_id": "115570969745329263",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -41982,6 +41982,356 @@
             "team_id": "98767991853197861",
             "team_name": "T1",
             "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116697716933082091": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-01T04:50:27.701Z",
+    "event_id": "116697716933082091",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116697716933082091",
+      "league": "Hellenic Legends League",
+      "league_group": "",
+      "region": "",
+      "best_of": "2",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "109704816337374156",
+          "name": "TheParadOx Invaders",
+          "code": "TPX",
+          "image": "http://static.lolesports.com/teams/1773838306977_TpOXRed_Gold-removebg-preview.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "112437059871303752",
+          "name": "Spartans EU",
+          "code": "SPAR",
+          "image": "http://static.lolesports.com/teams/1773837632921_LogoWhitetextv1.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116697716933082092",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109704816337374156",
+            "team_name": "TheParadOx Invaders",
+            "team_code": "TPX"
+          },
+          "red": {
+            "team_id": "112437059871303752",
+            "team_name": "Spartans EU",
+            "team_code": "SPAR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116697716933082093",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109704816337374156",
+            "team_name": "TheParadOx Invaders",
+            "team_code": "TPX"
+          },
+          "red": {
+            "team_id": "112437059871303752",
+            "team_name": "Spartans EU",
+            "team_code": "SPAR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116697716933016516": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-01T04:50:27.701Z",
+    "event_id": "116697716933016516",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116697716933016516",
+      "league": "Hellenic Legends League",
+      "league_group": "",
+      "region": "",
+      "best_of": "2",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "105521293297166647",
+          "name": "Hell ZeroLag",
+          "code": "HELL",
+          "image": "http://static.lolesports.com/teams/ZRLLogowhite600x600.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "105521637552587612",
+          "name": "Team Phantasma",
+          "code": "TP",
+          "image": "http://static.lolesports.com/teams/TeamPhantasma.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116697716933016517",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "105521293297166647",
+            "team_name": "Hell ZeroLag",
+            "team_code": "HELL"
+          },
+          "red": {
+            "team_id": "105521637552587612",
+            "team_name": "Team Phantasma",
+            "team_code": "TP"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116697716933016518",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "105521637552587612",
+            "team_name": "Team Phantasma",
+            "team_code": "TP"
+          },
+          "red": {
+            "team_id": "105521293297166647",
+            "team_name": "Hell ZeroLag",
+            "team_code": "HELL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116713163972559020": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-01T04:50:27.701Z",
+    "event_id": "116713163972559020",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972559020",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107456355516438414",
+          "name": "Eintracht Frankfurt",
+          "code": "SGE",
+          "image": "http://static.lolesports.com/teams/1674832854605_SGE.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "107133963320431195",
+          "name": "TeamOrangeGaming",
+          "code": "TOG",
+          "image": "http://static.lolesports.com/teams/1758889281207_TOG.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559021",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107456355516438414",
+            "team_name": "Eintracht Frankfurt",
+            "team_code": "SGE"
+          },
+          "red": {
+            "team_id": "107133963320431195",
+            "team_name": "TeamOrangeGaming",
+            "team_code": "TOG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116713163972559050": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-01T04:50:27.701Z",
+    "event_id": "116713163972559050",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972559050",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "109642680932009857",
+          "name": "G2 NORD",
+          "code": "G2N",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "105503948999800557",
+          "name": "E Wie Einfach E-Sports",
+          "code": "EWI",
+          "image": "http://static.lolesports.com/teams/1674832938539_MicrosoftTeams-image14.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559051",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "red": {
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
           },
           "winner": "",
           "live": {
