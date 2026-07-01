@@ -937,7 +937,9 @@ function visibleDateOptions(options) {
     : visibleOptions.findIndex(option => option.key === today);
   const center = selected >= 0 ? selected : 0;
   const start = Math.max(0, Math.min(center - 1, visibleOptions.length - VISIBLE_DATE_TAB_COUNT));
-  return fillDateOptions(visibleOptions.slice(start, start + VISIBLE_DATE_TAB_COUNT), state.selectedMatchDate);
+  const selectedKey = state.selectedMatchDate || visibleOptions[center]?.key || today;
+  const anchorKey = centeredDateAnchorKey(selectedKey, today);
+  return fillDateOptions(visibleOptions.slice(start, start + VISIBLE_DATE_TAB_COUNT), anchorKey);
 }
 
 function fillDateOptions(options, anchorKey) {
@@ -951,6 +953,13 @@ function fillDateOptions(options, anchorKey) {
     cursor = addLocalDays(cursor, 1);
   }
   return result;
+}
+
+function centeredDateAnchorKey(selectedKey, todayKey) {
+  if (!selectedKey || selectedKey <= todayKey) return todayKey;
+  const selectedDate = dateFromLocalKey(selectedKey);
+  if (Number.isNaN(selectedDate.getTime())) return todayKey;
+  return localDateKey(addLocalDays(selectedDate, -Math.floor(VISIBLE_DATE_TAB_COUNT / 2)).toISOString());
 }
 
 function filteredMatches() {
