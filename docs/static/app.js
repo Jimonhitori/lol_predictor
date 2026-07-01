@@ -17,6 +17,7 @@ const LIVE_SNAPSHOT_STORAGE_PREFIX = 'lol_predictor_live_snapshot_v1:';
 const LIVE_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 const DEFAULT_LEAGUE_GROUP = 'major';
+const VISIBLE_DATE_TAB_COUNT = 3;
 
 async function api(path) {
   if (STATIC_SITE && isCloudflareApiPath(path)) return fetchApiJson(path);
@@ -122,7 +123,7 @@ async function staticApi(path) {
       ? `data/summaries/league__${staticKey(params.get('league'))}.json`
       : `data/summaries/${staticKey(params.get('league_group') || $('leagueGroup')?.value || 'all')}__${staticKey(params.get('region') || $('region')?.value || 'all')}.json`;
   } else if (url.pathname === '/api/matches/today') {
-    target = `data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
+    return staticMatchesPayload(params);
   } else if (url.pathname === '/api/match') {
     return staticMatchDetail(params);
   } else if (url.pathname === '/api/roster') {
@@ -147,6 +148,23 @@ async function staticApi(path) {
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
   return data;
+}
+
+async function staticMatchesPayload(params) {
+  const group = staticKey($('leagueGroup')?.value || params.get('league_group') || 'all');
+  const region = staticKey($('region')?.value || params.get('region') || 'all');
+  const payload = await fetchStaticJson(`data/matches-${group}__${region}.json`);
+  if (group !== 'major') return payload;
+  const eventPayload = await fetchStaticJson(`data/matches-event__${region}.json`).catch(() => ({ matches: [] }));
+  const matches = dedupeCanonicalMatches([...(payload.matches || []), ...(eventPayload.matches || [])]);
+  return { ...payload, matches };
+}
+
+async function fetchStaticJson(path) {
+  const target = staticDataUrl(path);
+  const response = await fetch(target, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Static data missing: ${target}`);
+  return response.json();
 }
 
 async function staticMatchDetail(params) {
@@ -717,10 +735,11 @@ function sameMatchFilters(left, right) {
 function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
   const leagueGroup = String(filters.league_group || 'all');
   const region = String(filters.region || 'all');
+  const displayGroups = leagueGroup === 'major' ? new Set(['major', 'event']) : new Set([leagueGroup]);
   return (matches || []).filter(match => {
     const matchGroup = String(match?.league_group || 'all');
     const matchRegion = String(match?.region || 'all');
-    return (leagueGroup === 'all' || matchGroup === leagueGroup)
+    return (leagueGroup === 'all' || displayGroups.has(matchGroup))
       && (region === 'all' || matchRegion === region);
   });
 }
@@ -1549,18 +1568,31 @@ function visibleDateOptions(options) {
   const today = todayDateKey();
   const futureOrToday = options.filter(option => option.key >= today);
   if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
-    return futureOrToday.slice(0, 3);
+    return fillDateOptions(futureOrToday.slice(0, VISIBLE_DATE_TAB_COUNT), today);
   }
   if (state.selectedMatchDate === today) {
-    return futureOrToday.slice(0, 3);
+    return fillDateOptions(futureOrToday.slice(0, VISIBLE_DATE_TAB_COUNT), today);
   }
-  if (options.length <= 3) return options;
+  if (options.length <= VISIBLE_DATE_TAB_COUNT) return fillDateOptions(options, state.selectedMatchDate);
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
     ? options.findIndex(option => option.key === state.selectedMatchDate)
     : options.findIndex(option => option.key === todayDateKey());
   const center = selected >= 0 ? selected : 0;
-  const start = Math.max(0, Math.min(center - 1, options.length - 3));
-  return options.slice(start, start + 3);
+  const start = Math.max(0, Math.min(center - 1, options.length - VISIBLE_DATE_TAB_COUNT));
+  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), state.selectedMatchDate);
+}
+
+function fillDateOptions(options, anchorKey) {
+  const byKey = new Map((options || []).map(option => [option.key, option]));
+  const result = [];
+  let cursor = dateFromLocalKey(anchorKey || todayDateKey());
+  if (Number.isNaN(cursor.getTime())) cursor = new Date();
+  while (result.length < VISIBLE_DATE_TAB_COUNT) {
+    const key = localDateKey(cursor.toISOString());
+    result.push(byKey.get(key) || dateTabOption(key));
+    cursor = addLocalDays(cursor, 1);
+  }
+  return result;
 }
 
 function filteredMatches() {
@@ -1605,6 +1637,14 @@ function todayDateKey() {
   return zonedDateKey(new Date());
 }
 
+function dateTabOption(key) {
+  const date = dateFromLocalKey(key);
+  const weekday = formatInAppTimeZone(date, { weekday: 'short' });
+  const md = formatInAppTimeZone(date, { month: 'numeric', day: 'numeric' });
+  const isToday = key === todayDateKey();
+  return { key, title: isToday ? '莉頑律' : weekday, sub: md };
+}
+
 function localDateKey(value) {
   if (!value) return '';
   const date = parseScheduleDate(value);
@@ -1626,6 +1666,12 @@ function zonedDateKey(date) {
 function dateFromLocalKey(key) {
   const [year, month, day] = String(key).split('-').map(Number);
   return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+}
+
+function addLocalDays(date, days) {
+  const next = new Date(date);
+  next.setUTCDate(next.getUTCDate() + days);
+  return next;
 }
 
 function formatInAppTimeZone(date, options) {

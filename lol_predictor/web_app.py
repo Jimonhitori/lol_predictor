@@ -19,7 +19,7 @@ except ModuleNotFoundError:
 
 from .data import load_match_rows, load_patch_notes
 from .inference import build_prediction_row
-from .league_groups import filter_leagues
+from .league_groups import add_league_group, filter_leagues
 from .patches import filter_patch, latest_patch
 from .schedule import lolesports_event_details, today_matches
 
@@ -423,6 +423,7 @@ const REFRESH_INTERVAL_LABEL = '5s';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
+const VISIBLE_DATE_TAB_COUNT = 3;
 
 async function api(path) {
   if (STATIC_SITE && isCloudflareApiPath(path)) return fetchApiJson(path);
@@ -454,7 +455,7 @@ async function staticApi(path) {
       ? `data/summaries/league__${staticKey(params.get('league'))}.json`
       : `data/summaries/${staticKey(params.get('league_group') || $('leagueGroup')?.value || 'all')}__${staticKey(params.get('region') || $('region')?.value || 'all')}.json`;
   } else if (url.pathname === '/api/matches/today') {
-    target = `data/matches-${staticKey($('leagueGroup')?.value || params.get('league_group') || 'all')}__${staticKey($('region')?.value || params.get('region') || 'all')}.json`;
+    return staticMatchesPayload(params);
   } else if (url.pathname === '/api/match') {
     target = `data/matches/${encodeURIComponent(params.get('id') || '')}.json`;
   } else if (url.pathname === '/api/roster') {
@@ -477,6 +478,40 @@ async function staticApi(path) {
   if (!response.ok) throw new Error(`Static data missing: ${target}`);
   const data = await response.json();
   return data;
+}
+
+async function staticMatchesPayload(params) {
+  const group = staticKey($('leagueGroup')?.value || params.get('league_group') || 'all');
+  const region = staticKey($('region')?.value || params.get('region') || 'all');
+  const payload = await fetchStaticJson(`data/matches-${group}__${region}.json`);
+  if (group !== 'major') return payload;
+  const eventPayload = await fetchStaticJson(`data/matches-event__${region}.json`).catch(() => ({ matches: [] }));
+  const matches = staticDedupeMatches([...(payload.matches || []), ...(eventPayload.matches || [])]);
+  return { ...payload, matches };
+}
+
+function staticDedupeMatches(matches) {
+  const seen = new Set();
+  const result = [];
+  for (const match of matches || []) {
+    const key = String(match?.id || match?.source_match_id || [
+      match?.league || '',
+      match?.start_time || '',
+      match?.blue_team || '',
+      match?.red_team || '',
+    ].join('|'));
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(match);
+  }
+  return result;
+}
+
+async function fetchStaticJson(path) {
+  const target = staticDataUrl(path);
+  const response = await fetch(target, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Static data missing: ${target}`);
+  return response.json();
 }
 
 function staticDataUrl(path) {
@@ -890,15 +925,32 @@ function visibleDateOptions(options) {
   const today = localDateKey(new Date().toISOString());
   const futureOrToday = options.filter(option => option.key >= today);
   const visibleOptions = futureOrToday.length ? futureOrToday : options;
-  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') return visibleOptions.slice(0, 3);
-  if (state.selectedMatchDate === today) return visibleOptions.slice(0, 3);
-  if (visibleOptions.length <= 3) return visibleOptions;
+  if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
+    return fillDateOptions(visibleOptions.slice(0, VISIBLE_DATE_TAB_COUNT), today);
+  }
+  if (state.selectedMatchDate === today) {
+    return fillDateOptions(visibleOptions.slice(0, VISIBLE_DATE_TAB_COUNT), today);
+  }
+  if (visibleOptions.length <= VISIBLE_DATE_TAB_COUNT) return fillDateOptions(visibleOptions, state.selectedMatchDate);
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
     ? visibleOptions.findIndex(option => option.key === state.selectedMatchDate)
     : visibleOptions.findIndex(option => option.key === today);
   const center = selected >= 0 ? selected : 0;
-  const start = Math.max(0, Math.min(center - 1, visibleOptions.length - 3));
-  return visibleOptions.slice(start, start + 3);
+  const start = Math.max(0, Math.min(center - 1, visibleOptions.length - VISIBLE_DATE_TAB_COUNT));
+  return fillDateOptions(visibleOptions.slice(start, start + VISIBLE_DATE_TAB_COUNT), state.selectedMatchDate);
+}
+
+function fillDateOptions(options, anchorKey) {
+  const byKey = new Map((options || []).map(option => [option.key, option]));
+  const result = [];
+  let cursor = dateFromLocalKey(anchorKey || localDateKey(new Date().toISOString()));
+  if (Number.isNaN(cursor.getTime())) cursor = new Date();
+  while (result.length < VISIBLE_DATE_TAB_COUNT) {
+    const key = localDateKey(cursor.toISOString());
+    result.push(byKey.get(key) || dateTabOption(key));
+    cursor = addLocalDays(cursor, 1);
+  }
+  return result;
 }
 
 function filteredMatches() {
@@ -923,13 +975,15 @@ function defaultMatchDate(matches) {
 
 function matchDateOptions(matches) {
   const keys = [...new Set(matches.map(match => localDateKey(match.start_time)).filter(Boolean))].sort();
-  return keys.map(key => {
-    const date = dateFromLocalKey(key);
-    const weekday = new Intl.DateTimeFormat('ja-JP', { weekday: 'short' }).format(date);
-    const md = new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric' }).format(date);
-    const isToday = key === localDateKey(new Date().toISOString());
-    return { key, title: isToday ? '今日' : weekday, sub: md };
-  });
+  return keys.map(dateTabOption);
+}
+
+function dateTabOption(key) {
+  const date = dateFromLocalKey(key);
+  const weekday = new Intl.DateTimeFormat('ja-JP', { weekday: 'short' }).format(date);
+  const md = new Intl.DateTimeFormat('ja-JP', { month: 'numeric', day: 'numeric' }).format(date);
+  const isToday = key === localDateKey(new Date().toISOString());
+  return { key, title: isToday ? '今日' : weekday, sub: md };
 }
 
 function localDateKey(value) {
@@ -945,6 +999,12 @@ function localDateKey(value) {
 function dateFromLocalKey(key) {
   const [year, month, day] = String(key).split('-').map(Number);
   return new Date(year, month - 1, day);
+}
+
+function addLocalDays(date, days) {
+  const next = new Date(date);
+  next.setDate(next.getDate() + days);
+  return next;
 }
 
 function matchDateLabel(value) {
@@ -2340,7 +2400,7 @@ def summary_payload(rows: pd.DataFrame, query: dict[str, list[str]], context: Ap
     league_group = first_query(query, "league_group", "all")
     region = first_query(query, "region", "all")
     league = first_query(query, "league", "")
-    filtered = filter_leagues(rows, league_group=league_group, region=region)
+    filtered = filter_display_leagues(rows, league_group=league_group, region=region)
     if league:
         filtered = filtered[filtered["league"].astype(str).eq(league)]
     patch = latest_patch(filtered)
@@ -2364,15 +2424,40 @@ def matches_payload(context: AppContext, query: dict[str, list[str]]) -> dict[st
     league_group = first_query(query, "league_group", "all")
     region = first_query(query, "region", "all")
     matches = today_matches(context.rows, context.today_cache)
+    league_groups = display_league_groups(league_group)
     filtered = [
         match
         for match in matches
-        if (league_group == "all" or match.get("league_group") == league_group)
+        if (league_group == "all" or match.get("league_group") in league_groups)
         and (region == "all" or match.get("region") == region)
     ]
     filtered = [_enrich_ambiguous_match_status(match) for match in filtered]
     source = filtered[0].get("source", "none") if filtered else "none"
     return {"source": source, "matches": filtered}
+
+
+def display_league_groups(league_group: str) -> set[str]:
+    return {"major", "event"} if league_group == "major" else {league_group}
+
+
+def league_group_mask(data: pd.DataFrame, league_group: str) -> pd.Series:
+    if league_group == "major":
+        return data["league_group"].isin(display_league_groups(league_group))
+    return data["league_group"].eq(league_group)
+
+
+def filter_display_leagues(
+    data: pd.DataFrame,
+    league_group: str | None = None,
+    region: str | None = None,
+) -> pd.DataFrame:
+    if league_group == "major":
+        data = add_league_group(data)
+        data = data[league_group_mask(data, league_group)].copy()
+        if region and region != "all":
+            data = data[data["league_region"].eq(region)].copy()
+        return data
+    return filter_leagues(data, league_group=league_group, region=region)
 
 
 def _enrich_ambiguous_match_status(match: dict[str, object]) -> dict[str, object]:
