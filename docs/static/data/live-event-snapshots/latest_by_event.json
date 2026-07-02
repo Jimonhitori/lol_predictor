@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42430,7 +42430,7 @@
   },
   "116713163972559040": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116713163972559040",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -42501,7 +42501,7 @@
   },
   "116713163972559006": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116713163972559006",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -42572,7 +42572,7 @@
   },
   "116520721101367154": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116520721101367154",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -42709,7 +42709,7 @@
   },
   "116520721101367166": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116520721101367166",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -42846,7 +42846,7 @@
   },
   "116520721101367230": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116520721101367230",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -42983,7 +42983,7 @@
   },
   "116520721101367194": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116520721101367194",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -43120,7 +43120,7 @@
   },
   "116697716933082106": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116697716933082106",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116697716933016504",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43328,7 +43328,7 @@
   },
   "116713163972559056": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116713163972559056",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43399,7 +43399,7 @@
   },
   "116713163972559048": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T04:17:05.628Z",
+    "checked_at": "2026-07-02T07:45:46.139Z",
     "event_id": "116713163972559048",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43443,6 +43443,219 @@
             "team_id": "105503948999800557",
             "team_name": "E Wie Einfach E-Sports",
             "team_code": "EWI"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116713163972559018": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-02T07:45:46.139Z",
+    "event_id": "116713163972559018",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972559018",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107416483509696259",
+          "name": "Eintracht Spandau",
+          "code": "EINS",
+          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "107133963320431195",
+          "name": "TeamOrangeGaming",
+          "code": "TOG",
+          "image": "http://static.lolesports.com/teams/1758889281207_TOG.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559019",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107416483509696259",
+            "team_name": "Eintracht Spandau",
+            "team_code": "EINS"
+          },
+          "red": {
+            "team_id": "107133963320431195",
+            "team_name": "TeamOrangeGaming",
+            "team_code": "TOG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116713163972559082": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-02T07:45:46.139Z",
+    "event_id": "116713163972559082",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972559082",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "116289643859646751",
+          "name": "VfB Stuttgart",
+          "code": "VFB",
+          "image": "http://static.lolesports.com/teams/1774439138920_VfB.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "109642680932009857",
+          "name": "G2 NORD",
+          "code": "G2N",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559083",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116289643859646751",
+            "team_name": "VfB Stuttgart",
+            "team_code": "VFB"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116713163972558996": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-02T07:45:46.139Z",
+    "event_id": "116713163972558996",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972558996",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "105504044166670507",
+          "name": "Unicorns of Love Sexy Edition",
+          "code": "USE",
+          "image": "http://static.lolesports.com/teams/1674832383233_PRM_USE-FullColorDarkBG.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "102787200136756173",
+          "name": "Berlin International Gaming",
+          "code": "BIG",
+          "image": "http://static.lolesports.com/teams/1674839453682_PRM_BIG-MonochromeLightBG.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972558997",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "105504044166670507",
+            "team_name": "Unicorns of Love Sexy Edition",
+            "team_code": "USE"
+          },
+          "red": {
+            "team_id": "102787200136756173",
+            "team_name": "Berlin International Gaming",
+            "team_code": "BIG"
           },
           "winner": "",
           "live": {
