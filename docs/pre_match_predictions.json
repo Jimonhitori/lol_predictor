@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-07-02T10:06:46.986372Z",
+  "generated_at": "2026-07-02T10:27:39.152654Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -19,14 +19,28 @@
       "red_team": "team_secret_whales",
       "blue_team_name": "Hanwha Life Esports",
       "red_team_name": "Team Secret Whales",
-      "blue_win_probability": 0.993158,
-      "red_win_probability": 0.006842,
+      "blue_win_probability": 0.613082,
+      "red_win_probability": 0.386918,
       "predicted_winner": "Hanwha Life Esports",
-      "confidence": "low",
+      "confidence": "high",
       "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.317"
-      ]
+      "warnings": []
+    },
+    {
+      "event_id": "115570934355614545",
+      "game_id": "115570934355614545",
+      "league": "MSI",
+      "start_time": "2026-07-03 17:00:00",
+      "blue_team": "g2_esports",
+      "red_team": "top_esports",
+      "blue_team_name": "G2 Esports",
+      "red_team_name": "TOP ESPORTS",
+      "blue_win_probability": 0.697315,
+      "red_win_probability": 0.302685,
+      "predicted_winner": "G2 Esports",
+      "confidence": "high",
+      "model": "logistic_regression_actions_local_check",
+      "warnings": []
     },
     {
       "event_id": "115570934355614533",
@@ -37,36 +51,34 @@
       "red_team": "furia",
       "blue_team_name": "LYON",
       "red_team_name": "FURIA",
-      "blue_win_probability": 0.696553,
-      "red_win_probability": 0.303447,
-      "predicted_winner": "LYON",
-      "confidence": "low",
+      "blue_win_probability": 0.4314,
+      "red_win_probability": 0.5686,
+      "predicted_winner": "FURIA",
+      "confidence": "high",
       "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.489"
-      ]
-    }
-  ],
-  "missing_predictions": [
+      "warnings": []
+    },
     {
-      "event_id": "115570934355614545",
+      "event_id": "115570934355614527",
+      "game_id": "115570934355614527",
       "league": "MSI",
-      "start_time": "2026-07-03 17:00:00",
-      "blue_team_name": "G2 Esports",
-      "red_team_name": "TOP ESPORTS",
-      "source": "lolesports_api",
-      "reason": "prediction_guardrail_suppressed:side_sanity_delta=0.792"
+      "start_time": "2026-07-04 17:00:00",
+      "blue_team": "bilibili_gaming",
+      "red_team": "t1",
+      "blue_team_name": "BILIBILI GAMING",
+      "red_team_name": "T1",
+      "blue_win_probability": 0.560676,
+      "red_win_probability": 0.439324,
+      "predicted_winner": "BILIBILI GAMING",
+      "confidence": "high",
+      "model": "logistic_regression_actions_local_check",
+      "warnings": []
     }
   ],
-  "missing_prediction_count": 1,
-  "retry_after": "2026-07-02T13:06:46.986372Z",
-  "retry_delay_hours": 3.0,
-  "warnings": [
-    "blue_red_side_sanity_delta:0.317",
-    "blue_red_side_sanity_delta:0.489",
-    "missing_predictions:count=1",
-    "prediction_guardrail_suppressed:side_sanity_delta=0.792",
-    "prediction_guardrail_suppressed:side_sanity_delta=0.946"
-  ],
-  "warning_count": 5
+  "missing_predictions": [],
+  "missing_prediction_count": 0,
+  "retry_after": "",
+  "retry_delay_hours": 0,
+  "warnings": [],
+  "warning_count": 0
 }
