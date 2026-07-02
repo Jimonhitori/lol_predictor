@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43120,7 +43120,7 @@
   },
   "116697716933082106": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116697716933082106",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -43224,29 +43224,111 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116697716933016504",
-    "status": "unavailable",
+    "status": "inProgress",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116697716933016504",
-      "league": "",
+      "league": "Hellenic Legends League",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "2",
+      "status": "inProgress",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "105521637552587612",
+          "name": "Team Phantasma",
+          "code": "TP",
+          "image": "http://static.lolesports.com/teams/TeamPhantasma.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "116803545426908406",
+          "name": "Valerion",
+          "code": "VLR",
+          "image": "http://static.lolesports.com/teams/1782280666367_ValerionGold.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116697716933016505",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "105521637552587612",
+            "team_name": "Team Phantasma",
+            "team_code": "TP"
+          },
+          "red": {
+            "team_id": "116803545426908406",
+            "team_name": "Valerion",
+            "team_code": "VLR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116697716933016506",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116803545426908406",
+            "team_name": "Valerion",
+            "team_code": "VLR"
+          },
+          "red": {
+            "team_id": "105521637552587612",
+            "team_name": "Team Phantasma",
+            "team_code": "TP"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116713163972559056": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116713163972559056",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -43317,82 +43399,60 @@
   },
   "116713163972559048": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116713163972559048",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559048",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
-    }
-  },
-  "116713163972559018": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
-    "event_id": "116713163972559018",
-    "status": "unstarted",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "116713163972559018",
       "league": "Prime League",
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
-          "id": "107416483509696259",
-          "name": "Eintracht Spandau",
-          "code": "EINS",
-          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
+          "id": "109671612150787863",
+          "name": "Kaufland Hangry Knights",
+          "code": "KHK",
+          "image": "http://static.lolesports.com/teams/1734307355268_KHK.png",
           "game_wins": "0"
         },
         {
-          "id": "107133963320431195",
-          "name": "TeamOrangeGaming",
-          "code": "TOG",
-          "image": "http://static.lolesports.com/teams/1758889281207_TOG.png",
-          "game_wins": "0"
+          "id": "105503948999800557",
+          "name": "E Wie Einfach E-Sports",
+          "code": "EWI",
+          "image": "http://static.lolesports.com/teams/1674832938539_MicrosoftTeams-image14.png",
+          "game_wins": "1"
         }
       ],
       "games": [
         {
-          "id": "116713163972559019",
+          "id": "116713163972559049",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "107416483509696259",
-            "team_name": "Eintracht Spandau",
-            "team_code": "EINS"
+            "team_id": "109671612150787863",
+            "team_name": "Kaufland Hangry Knights",
+            "team_code": "KHK"
           },
           "red": {
-            "team_id": "107133963320431195",
-            "team_name": "TeamOrangeGaming",
-            "team_code": "TOG"
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -43408,9 +43468,31 @@
       "warning": ""
     }
   },
+  "116713163972559018": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-02T18:07:49.589Z",
+    "event_id": "116713163972559018",
+    "status": "unavailable",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972559018",
+      "league": "",
+      "league_group": "",
+      "region": "",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
   "116713163972559082": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116713163972559082",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43481,7 +43563,7 @@
   },
   "116713163972558996": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116713163972558996",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43552,7 +43634,7 @@
   },
   "116520721101367146": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116520721101367146",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43689,7 +43771,7 @@
   },
   "116520721101367174": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116520721101367174",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43826,7 +43908,7 @@
   },
   "116520721101367198": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116520721101367198",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43963,7 +44045,7 @@
   },
   "116520721101367218": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "116520721101367218",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -44100,7 +44182,7 @@
   },
   "115570934355614539": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T16:22:34.123Z",
+    "checked_at": "2026-07-02T18:07:49.589Z",
     "event_id": "115570934355614539",
     "status": "unstarted",
     "source": "cloudflare_live_event",
