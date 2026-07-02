@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43120,111 +43120,29 @@
   },
   "116697716933082106": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116697716933082106",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116697716933082106",
-      "league": "Hellenic Legends League",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "2",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "112437059871303752",
-          "name": "Spartans EU",
-          "code": "SPAR",
-          "image": "http://static.lolesports.com/teams/1773837632921_LogoWhitetextv1.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "105521293297166647",
-          "name": "Hell ZeroLag",
-          "code": "HELL",
-          "image": "http://static.lolesports.com/teams/ZRLLogowhite600x600.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116697716933082107",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "112437059871303752",
-            "team_name": "Spartans EU",
-            "team_code": "SPAR"
-          },
-          "red": {
-            "team_id": "105521293297166647",
-            "team_name": "Hell ZeroLag",
-            "team_code": "HELL"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116697716933082108",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "112437059871303752",
-            "team_name": "Spartans EU",
-            "team_code": "SPAR"
-          },
-          "red": {
-            "team_id": "105521293297166647",
-            "team_name": "Hell ZeroLag",
-            "team_code": "HELL"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116697716933016504",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43328,7 +43246,7 @@
   },
   "116713163972559056": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116713163972559056",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43399,7 +43317,7 @@
   },
   "116713163972559048": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116713163972559048",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43470,7 +43388,7 @@
   },
   "116713163972559018": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116713163972559018",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43541,7 +43459,7 @@
   },
   "116713163972559082": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116713163972559082",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43612,7 +43530,7 @@
   },
   "116713163972558996": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116713163972558996",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43683,7 +43601,7 @@
   },
   "116520721101367146": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116520721101367146",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43820,7 +43738,7 @@
   },
   "116520721101367174": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116520721101367174",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -43957,7 +43875,7 @@
   },
   "116520721101367198": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116520721101367198",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -44094,7 +44012,7 @@
   },
   "116520721101367218": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-02T12:23:44.998Z",
+    "checked_at": "2026-07-02T14:34:30.455Z",
     "event_id": "116520721101367218",
     "status": "unstarted",
     "source": "cloudflare_live_event",
