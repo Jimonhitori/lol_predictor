@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-07-02T08:58:26.055913Z",
+  "generated_at": "2026-07-02T09:39:19.275922Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -11,187 +11,6 @@
   },
   "predictions": [
     {
-      "event_id": "116697716933082106",
-      "game_id": "116697716933082106",
-      "league": "Hellenic Legends League",
-      "start_time": "2026-07-02 22:00:00",
-      "blue_team": "spartans_eu",
-      "red_team": "hell_zerolag",
-      "blue_team_name": "Spartans EU",
-      "red_team_name": "Hell ZeroLag",
-      "blue_win_probability": 0.376026,
-      "red_win_probability": 0.623974,
-      "predicted_winner": "Hell ZeroLag",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "red_team_fallback_slug:Hell ZeroLag->hell_zerolag",
-        "red_team_no_history:hell_zerolag"
-      ]
-    },
-    {
-      "event_id": "116697716933016504",
-      "game_id": "116697716933016504",
-      "league": "Hellenic Legends League",
-      "start_time": "2026-07-03 00:00:00",
-      "blue_team": "team_phantasma",
-      "red_team": "valerion",
-      "blue_team_name": "Team Phantasma",
-      "red_team_name": "Valerion",
-      "blue_win_probability": 0.913058,
-      "red_win_probability": 0.086942,
-      "predicted_winner": "Team Phantasma",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.220",
-        "red_team_fallback_slug:Valerion->valerion",
-        "red_team_no_history:valerion"
-      ]
-    },
-    {
-      "event_id": "116713163972559056",
-      "game_id": "116713163972559056",
-      "league": "Prime League",
-      "start_time": "2026-07-03 00:00:00",
-      "blue_team": "eintracht_frankfurt",
-      "red_team": "rossmann_centaurs",
-      "blue_team_name": "Eintracht Frankfurt",
-      "red_team_name": "Rossmann Centaurs",
-      "blue_win_probability": 0.941276,
-      "red_win_probability": 0.058724,
-      "predicted_winner": "Eintracht Frankfurt",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.283"
-      ]
-    },
-    {
-      "event_id": "116713163972559048",
-      "game_id": "116713163972559048",
-      "league": "Prime League",
-      "start_time": "2026-07-03 01:00:00",
-      "blue_team": "kaufland_hangry_knights",
-      "red_team": "e_wie_einfach_e_sports",
-      "blue_team_name": "Kaufland Hangry Knights",
-      "red_team_name": "E Wie Einfach E-Sports",
-      "blue_win_probability": 0.542666,
-      "red_win_probability": 0.457334,
-      "predicted_winner": "Kaufland Hangry Knights",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.459"
-      ]
-    },
-    {
-      "event_id": "116713163972559018",
-      "game_id": "116713163972559018",
-      "league": "Prime League",
-      "start_time": "2026-07-03 02:00:00",
-      "blue_team": "eintracht_spandau",
-      "red_team": "teamorangegaming",
-      "blue_team_name": "Eintracht Spandau",
-      "red_team_name": "TeamOrangeGaming",
-      "blue_win_probability": 0.927495,
-      "red_win_probability": 0.072505,
-      "predicted_winner": "Eintracht Spandau",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.511"
-      ]
-    },
-    {
-      "event_id": "116713163972559082",
-      "game_id": "116713163972559082",
-      "league": "Prime League",
-      "start_time": "2026-07-03 03:00:00",
-      "blue_team": "vfb_stuttgart",
-      "red_team": "g2_nord",
-      "blue_team_name": "VfB Stuttgart",
-      "red_team_name": "G2 NORD",
-      "blue_win_probability": 0.218916,
-      "red_win_probability": 0.781084,
-      "predicted_winner": "G2 NORD",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_team_fallback_slug:VfB Stuttgart->vfb_stuttgart",
-        "blue_team_no_history:vfb_stuttgart"
-      ]
-    },
-    {
-      "event_id": "116713163972558996",
-      "game_id": "116713163972558996",
-      "league": "Prime League",
-      "start_time": "2026-07-03 04:00:00",
-      "blue_team": "unicorns_of_love_sexy_edition",
-      "red_team": "berlin_international_gaming",
-      "blue_team_name": "Unicorns of Love Sexy Edition",
-      "red_team_name": "Berlin International Gaming",
-      "blue_win_probability": 0.754359,
-      "red_win_probability": 0.245641,
-      "predicted_winner": "Unicorns of Love Sexy Edition",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.721"
-      ]
-    },
-    {
-      "event_id": "116520721101367146",
-      "game_id": "116520721101367146",
-      "league": "LRS",
-      "start_time": "2026-07-03 05:00:00",
-      "blue_team": "seven_dark",
-      "red_team": "docta_esports_club",
-      "blue_team_name": "Seven Dark",
-      "red_team_name": "Docta Esports Club",
-      "blue_win_probability": 0.446245,
-      "red_win_probability": 0.553755,
-      "predicted_winner": "Docta Esports Club",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "red_team_fallback_slug:Docta Esports Club->docta_esports_club",
-        "red_team_no_history:docta_esports_club"
-      ]
-    },
-    {
-      "event_id": "116520721101367198",
-      "game_id": "116520721101367198",
-      "league": "LRS",
-      "start_time": "2026-07-03 08:00:00",
-      "blue_team": "volticons",
-      "red_team": "maze_gaming",
-      "blue_team_name": "Volticons",
-      "red_team_name": "Maze Gaming",
-      "blue_win_probability": 0.777848,
-      "red_win_probability": 0.222152,
-      "predicted_winner": "Volticons",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116520721101367218",
-      "game_id": "116520721101367218",
-      "league": "LRS",
-      "start_time": "2026-07-03 08:00:00",
-      "blue_team": "9z_globant",
-      "red_team": "golden_lions",
-      "blue_team_name": "9z Globant",
-      "red_team_name": "Golden Lions",
-      "blue_win_probability": 0.281671,
-      "red_win_probability": 0.718329,
-      "predicted_winner": "Golden Lions",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
       "event_id": "115570934355614539",
       "game_id": "115570934355614539",
       "league": "MSI",
@@ -200,84 +19,13 @@
       "red_team": "team_secret_whales",
       "blue_team_name": "Hanwha Life Esports",
       "red_team_name": "Team Secret Whales",
-      "blue_win_probability": 0.990818,
-      "red_win_probability": 0.009182,
+      "blue_win_probability": 0.993158,
+      "red_win_probability": 0.006842,
       "predicted_winner": "Hanwha Life Esports",
       "confidence": "low",
       "model": "logistic_regression_actions_local_check",
       "warnings": [
-        "blue_red_side_sanity_delta:0.526"
-      ]
-    },
-    {
-      "event_id": "115570934355614545",
-      "game_id": "115570934355614545",
-      "league": "MSI",
-      "start_time": "2026-07-03 17:00:00",
-      "blue_team": "g2_esports",
-      "red_team": "top_esports",
-      "blue_team_name": "G2 Esports",
-      "red_team_name": "TOP ESPORTS",
-      "blue_win_probability": 0.977792,
-      "red_win_probability": 0.022208,
-      "predicted_winner": "G2 Esports",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.796"
-      ]
-    },
-    {
-      "event_id": "116520721101367202",
-      "game_id": "116520721101367202",
-      "league": "LRS",
-      "start_time": "2026-07-04 05:00:00",
-      "blue_team": "9z_globant",
-      "red_team": "maze_gaming",
-      "blue_team_name": "9z Globant",
-      "red_team_name": "Maze Gaming",
-      "blue_win_probability": 0.756453,
-      "red_win_probability": 0.243547,
-      "predicted_winner": "9z Globant",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.204"
-      ]
-    },
-    {
-      "event_id": "116520721101367234",
-      "game_id": "116520721101367234",
-      "league": "LRS",
-      "start_time": "2026-07-04 05:00:00",
-      "blue_team": "volticons",
-      "red_team": "malvinas_gaming",
-      "blue_team_name": "Volticons",
-      "red_team_name": "Malvinas Gaming",
-      "blue_win_probability": 0.394481,
-      "red_win_probability": 0.605519,
-      "predicted_winner": "Malvinas Gaming",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116520721101367142",
-      "game_id": "116520721101367142",
-      "league": "LRS",
-      "start_time": "2026-07-04 08:00:00",
-      "blue_team": "golden_lions",
-      "red_team": "docta_esports_club",
-      "blue_team_name": "Golden Lions",
-      "red_team_name": "Docta Esports Club",
-      "blue_win_probability": 0.770178,
-      "red_win_probability": 0.229822,
-      "predicted_winner": "Golden Lions",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "red_team_fallback_slug:Docta Esports Club->docta_esports_club",
-        "red_team_no_history:docta_esports_club"
+        "blue_red_side_sanity_delta:0.317"
       ]
     },
     {
@@ -289,345 +37,36 @@
       "red_team": "furia",
       "blue_team_name": "LYON",
       "red_team_name": "FURIA",
-      "blue_win_probability": 0.615331,
-      "red_win_probability": 0.384669,
+      "blue_win_probability": 0.696553,
+      "red_win_probability": 0.303447,
       "predicted_winner": "LYON",
       "confidence": "low",
       "model": "logistic_regression_actions_local_check",
       "warnings": [
-        "blue_red_side_sanity_delta:0.498"
+        "blue_red_side_sanity_delta:0.489"
       ]
-    },
-    {
-      "event_id": "115570934355614527",
-      "game_id": "115570934355614527",
-      "league": "MSI",
-      "start_time": "2026-07-04 17:00:00",
-      "blue_team": "bilibili_gaming",
-      "red_team": "t1",
-      "blue_team_name": "BILIBILI GAMING",
-      "red_team_name": "T1",
-      "blue_win_probability": 0.989954,
-      "red_win_probability": 0.010046,
-      "predicted_winner": "BILIBILI GAMING",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.943"
-      ]
-    },
-    {
-      "event_id": "116520885021717720",
-      "game_id": "116520885021717720",
-      "league": "LRN",
-      "start_time": "2026-07-05 04:00:00",
-      "blue_team": "kits_esports",
-      "red_team": "fuego",
-      "blue_team_name": "Kits Esports",
-      "red_team_name": "FUEGO",
-      "blue_win_probability": 0.140654,
-      "red_win_probability": 0.859346,
-      "predicted_winner": "FUEGO",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_team_fallback_slug:Kits Esports->kits_esports",
-        "blue_team_no_history:kits_esports"
-      ]
-    },
-    {
-      "event_id": "116520885021783296",
-      "game_id": "116520885021783296",
-      "league": "LRN",
-      "start_time": "2026-07-05 04:00:00",
-      "blue_team": "3v_team",
-      "red_team": "lyon_academy",
-      "blue_team_name": "3V TEAM",
-      "red_team_name": "Lyon Academy",
-      "blue_win_probability": 0.670429,
-      "red_win_probability": 0.329571,
-      "predicted_winner": "3V TEAM",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_team_fallback_slug:3V TEAM->3v_team",
-        "blue_team_no_history:3v_team"
-      ]
-    },
-    {
-      "event_id": "116520885021783284",
-      "game_id": "116520885021783284",
-      "league": "LRN",
-      "start_time": "2026-07-05 07:00:00",
-      "blue_team": "polar_squad_esports",
-      "red_team": "zeu5_esports",
-      "blue_team_name": "Polar Squad",
-      "red_team_name": "Zeu5 Esports",
-      "blue_win_probability": 0.322478,
-      "red_win_probability": 0.677522,
-      "predicted_winner": "Zeu5 Esports",
-      "confidence": "medium",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116520885021783308",
-      "game_id": "116520885021783308",
-      "league": "LRN",
-      "start_time": "2026-07-05 07:00:00",
-      "blue_team": "ncg_esports",
-      "red_team": "sdm_tigres",
-      "blue_team_name": "NCG Esports",
-      "red_team_name": "SDM Tigres",
-      "blue_win_probability": 0.107692,
-      "red_win_probability": 0.892308,
-      "predicted_winner": "SDM Tigres",
-      "confidence": "medium",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116520885021455556",
-      "game_id": "116520885021455556",
-      "league": "LRN",
-      "start_time": "2026-07-06 04:00:00",
-      "blue_team": "zeu5_esports",
-      "red_team": "fuego",
-      "blue_team_name": "Zeu5 Esports",
-      "red_team_name": "FUEGO",
-      "blue_win_probability": 0.062184,
-      "red_win_probability": 0.937816,
-      "predicted_winner": "FUEGO",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116520885021783340",
-      "game_id": "116520885021783340",
-      "league": "LRN",
-      "start_time": "2026-07-06 04:00:00",
-      "blue_team": "polar_squad_esports",
-      "red_team": "3v_team",
-      "blue_team_name": "Polar Squad",
-      "red_team_name": "3V TEAM",
-      "blue_win_probability": 0.505295,
-      "red_win_probability": 0.494705,
-      "predicted_winner": "Polar Squad",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "red_team_fallback_slug:3V TEAM->3v_team",
-        "red_team_no_history:3v_team"
-      ]
-    },
-    {
-      "event_id": "116520885021783288",
-      "game_id": "116520885021783288",
-      "league": "LRN",
-      "start_time": "2026-07-06 07:00:00",
-      "blue_team": "sdm_tigres",
-      "red_team": "lyon_academy",
-      "blue_team_name": "SDM Tigres",
-      "red_team_name": "Lyon Academy",
-      "blue_win_probability": 0.967526,
-      "red_win_probability": 0.032474,
-      "predicted_winner": "SDM Tigres",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116520885021783328",
-      "game_id": "116520885021783328",
-      "league": "LRN",
-      "start_time": "2026-07-06 07:00:00",
-      "blue_team": "kits_esports",
-      "red_team": "ncg_esports",
-      "blue_team_name": "Kits Esports",
-      "red_team_name": "NCG Esports",
-      "blue_win_probability": 0.502048,
-      "red_win_probability": 0.497952,
-      "predicted_winner": "Kits Esports",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_team_fallback_slug:Kits Esports->kits_esports",
-        "blue_team_no_history:kits_esports"
-      ]
-    },
-    {
-      "event_id": "116697716933082094",
-      "game_id": "116697716933082094",
-      "league": "Hellenic Legends League",
-      "start_time": "2026-07-07 22:00:00",
-      "blue_team": "wlgaming_esports",
-      "red_team": "theparadox_invaders",
-      "blue_team_name": "WLGaming",
-      "red_team_name": "TheParadOx Invaders",
-      "blue_win_probability": 0.886835,
-      "red_win_probability": 0.113165,
-      "predicted_winner": "WLGaming",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "red_team_fallback_slug:TheParadOx Invaders->theparadox_invaders",
-        "red_team_no_history:theparadox_invaders"
-      ]
-    },
-    {
-      "event_id": "116697716933016537",
-      "game_id": "116697716933016537",
-      "league": "Hellenic Legends League",
-      "start_time": "2026-07-08 00:00:00",
-      "blue_team": "almo_players",
-      "red_team": "gamespace_m_c",
-      "blue_team_name": "ALMO Players",
-      "red_team_name": "Gamespace M.C.",
-      "blue_win_probability": 0.403371,
-      "red_win_probability": 0.596629,
-      "predicted_winner": "Gamespace M.C.",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "red_team_fallback_slug:Gamespace M.C.->gamespace_m_c",
-        "red_team_no_history:gamespace_m_c"
-      ]
-    },
-    {
-      "event_id": "116713163972559014",
-      "game_id": "116713163972559014",
-      "league": "Prime League",
-      "start_time": "2026-07-08 00:00:00",
-      "blue_team": "e_wie_einfach_e_sports",
-      "red_team": "teamorangegaming",
-      "blue_team_name": "E Wie Einfach E-Sports",
-      "red_team_name": "TeamOrangeGaming",
-      "blue_win_probability": 0.658707,
-      "red_win_probability": 0.341293,
-      "predicted_winner": "E Wie Einfach E-Sports",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.511"
-      ]
-    },
-    {
-      "event_id": "116713163972559032",
-      "game_id": "116713163972559032",
-      "league": "Prime League",
-      "start_time": "2026-07-08 01:00:00",
-      "blue_team": "eintracht_spandau",
-      "red_team": "unicorns_of_love_sexy_edition",
-      "blue_team_name": "Eintracht Spandau",
-      "red_team_name": "Unicorns of Love Sexy Edition",
-      "blue_win_probability": 0.926632,
-      "red_win_probability": 0.073368,
-      "predicted_winner": "Eintracht Spandau",
-      "confidence": "low",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": [
-        "blue_red_side_sanity_delta:0.758"
-      ]
-    },
-    {
-      "event_id": "116713163972559074",
-      "game_id": "116713163972559074",
-      "league": "Prime League",
-      "start_time": "2026-07-08 02:00:00",
-      "blue_team": "g2_nord",
-      "red_team": "eintracht_frankfurt",
-      "blue_team_name": "G2 NORD",
-      "red_team_name": "Eintracht Frankfurt",
-      "blue_win_probability": 0.962463,
-      "red_win_probability": 0.037537,
-      "predicted_winner": "G2 NORD",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116713163972559000",
-      "game_id": "116713163972559000",
-      "league": "Prime League",
-      "start_time": "2026-07-08 03:00:00",
-      "blue_team": "rossmann_centaurs",
-      "red_team": "berlin_international_gaming",
-      "blue_team_name": "Rossmann Centaurs",
-      "red_team_name": "Berlin International Gaming",
-      "blue_win_probability": 0.029323,
-      "red_win_probability": 0.970677,
-      "predicted_winner": "Berlin International Gaming",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
-    },
-    {
-      "event_id": "116713163972559078",
-      "game_id": "116713163972559078",
-      "league": "Prime League",
-      "start_time": "2026-07-08 04:00:00",
-      "blue_team": "g2_nord",
-      "red_team": "kaufland_hangry_knights",
-      "blue_team_name": "G2 NORD",
-      "red_team_name": "Kaufland Hangry Knights",
-      "blue_win_probability": 0.964989,
-      "red_win_probability": 0.035011,
-      "predicted_winner": "G2 NORD",
-      "confidence": "high",
-      "model": "logistic_regression_actions_local_check",
-      "warnings": []
     }
   ],
   "missing_predictions": [
     {
-      "event_id": "116520721101367174",
-      "league": "LRS",
-      "start_time": "2026-07-03 05:00:00",
-      "blue_team_name": "Malvinas Gaming",
-      "red_team_name": "ZEN",
+      "event_id": "115570934355614545",
+      "league": "MSI",
+      "start_time": "2026-07-03 17:00:00",
+      "blue_team_name": "G2 Esports",
+      "red_team_name": "TOP ESPORTS",
       "source": "lolesports_api",
-      "reason": "schedule_prediction_missing"
+      "reason": "prediction_guardrail_suppressed:side_sanity_delta=0.792"
     }
   ],
   "missing_prediction_count": 1,
-  "retry_after": "2026-07-02T11:58:26.055913Z",
+  "retry_after": "2026-07-02T12:39:19.275922Z",
   "retry_delay_hours": 3.0,
   "warnings": [
-    "blue_red_side_sanity_delta:0.204",
-    "blue_red_side_sanity_delta:0.220",
-    "blue_red_side_sanity_delta:0.283",
-    "blue_red_side_sanity_delta:0.459",
-    "blue_red_side_sanity_delta:0.498",
-    "blue_red_side_sanity_delta:0.511",
-    "blue_red_side_sanity_delta:0.526",
-    "blue_red_side_sanity_delta:0.721",
-    "blue_red_side_sanity_delta:0.758",
-    "blue_red_side_sanity_delta:0.796",
-    "blue_red_side_sanity_delta:0.943",
-    "blue_team_fallback_slug:3V TEAM->3v_team",
-    "blue_team_fallback_slug:Kits Esports->kits_esports",
-    "blue_team_fallback_slug:VfB Stuttgart->vfb_stuttgart",
-    "blue_team_fallback_slug:count=3",
-    "blue_team_no_history:3v_team",
-    "blue_team_no_history:count=3",
-    "blue_team_no_history:kits_esports",
-    "blue_team_no_history:vfb_stuttgart",
+    "blue_red_side_sanity_delta:0.317",
+    "blue_red_side_sanity_delta:0.489",
     "missing_predictions:count=1",
-    "red_team_fallback_slug:3V TEAM->3v_team",
-    "red_team_fallback_slug:Docta Esports Club->docta_esports_club",
-    "red_team_fallback_slug:Gamespace M.C.->gamespace_m_c",
-    "red_team_fallback_slug:Hell ZeroLag->hell_zerolag",
-    "red_team_fallback_slug:TheParadOx Invaders->theparadox_invaders",
-    "red_team_fallback_slug:Valerion->valerion",
-    "red_team_fallback_slug:count=6",
-    "red_team_no_history:3v_team",
-    "red_team_no_history:count=6",
-    "red_team_no_history:docta_esports_club",
-    "red_team_no_history:gamespace_m_c",
-    "red_team_no_history:hell_zerolag",
-    "red_team_no_history:theparadox_invaders",
-    "red_team_no_history:valerion"
+    "prediction_guardrail_suppressed:side_sanity_delta=0.792",
+    "prediction_guardrail_suppressed:side_sanity_delta=0.946"
   ],
-  "warning_count": 34
+  "warning_count": 5
 }
