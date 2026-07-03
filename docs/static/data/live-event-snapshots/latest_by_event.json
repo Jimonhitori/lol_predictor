@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -44434,7 +44434,7 @@
   },
   "115570934355614545": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "115570934355614545",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -44637,7 +44637,7 @@
   },
   "116520721101367234": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "116520721101367234",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -44774,7 +44774,7 @@
   },
   "116520721101367202": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "116520721101367202",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -44911,7 +44911,7 @@
   },
   "116520721101367142": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "116520721101367142",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -45048,7 +45048,7 @@
   },
   "116520721101367170": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-03T13:02:46.318Z",
+    "checked_at": "2026-07-03T15:18:49.747Z",
     "event_id": "116520721101367170",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -45158,6 +45158,209 @@
             "team_id": "116783232785317266",
             "team_name": "ZEN",
             "team_code": "Z3N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115570934355614533": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-03T15:18:49.747Z",
+    "event_id": "115570934355614533",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115570934355614533",
+      "league": "MSI",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "2026-07-04T12:00:00.000Z",
+      "teams": [
+        {
+          "id": "99566405941863385",
+          "name": "LYON",
+          "code": "LYON",
+          "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "100205576309502431",
+          "name": "FURIA",
+          "code": "FUR",
+          "image": "http://static.lolesports.com/teams/FURIA---black.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570934355614534",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614535",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614536",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614537",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614538",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
           },
           "winner": "",
           "live": {
