@@ -138,19 +138,19 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 634,
-      "latest_timestamp": "2026-07-02T22:52:19.980000Z",
+      "history_rows": 664,
+      "latest_timestamp": "2026-07-03T07:29:43.754000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {
-        "live_logistic_oe_bootstrap": 412
+        "live_logistic_oe_bootstrap": 442
       },
-      "new_rows": 412,
-      "non_empty_game_state_rows": 634,
-      "oe_bootstrap_snapshot_rows": 412,
+      "new_rows": 442,
+      "non_empty_game_state_rows": 664,
+      "oe_bootstrap_snapshot_rows": 442,
       "production_live_telemetry_rows": 222,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 49,
+        "games_with_interval_samples": 52,
         "games_with_single_frame": 0,
         "interval_count": 257,
         "max_interval_seconds": 256.008,
@@ -161,7 +161,7 @@
         "sub_30s_interval_count": 157,
         "sub_60s_interval_count": 254
       },
-      "unique_games": 49,
+      "unique_games": 52,
       "unknown_model_version_rows": 222
     },
     "config": {
@@ -190,7 +190,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-07-03T04:26:51.868887+00:00",
+  "generated_at": "2026-07-03T07:47:45.127319+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -244,15 +244,15 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 49,
+        "games": 52,
         "interval_count": 257,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 634,
-        "oe_bootstrap_snapshot_rows": 412,
+        "non_empty_game_state_rows": 664,
+        "oe_bootstrap_snapshot_rows": 442,
         "pct_intervals_lte_30s": 0.6108949416342413,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 634,
+        "rows": 664,
         "sub_30s_interval_count": 157
       },
       "id": "live_frame_collection",
@@ -261,19 +261,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 553,
-        "games": 44,
+        "feature_rows": 593,
+        "games": 48,
         "label_sources": {
-          "combined_rows": 5986,
-          "games_rows": 5986,
+          "combined_rows": 6003,
+          "games_rows": 6003,
           "live_label_rows": 0
         },
-        "labeled_rows": 553,
-        "pipeline_feature_rows": 553,
-        "pipeline_labeled_feature_rows": 553,
+        "labeled_rows": 593,
+        "pipeline_feature_rows": 593,
+        "pipeline_labeled_feature_rows": 593,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 634,
+        "pipeline_resolved_rows": 664,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
@@ -326,7 +326,7 @@
   "stage": "collect_live_frames",
   "training": {
     "available": true,
-    "games": 44,
+    "games": 48,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
@@ -336,13 +336,13 @@
         "brier_score": null,
         "log_loss": null
       },
-      "feature_rows": 553,
-      "labeled_feature_rows": 553,
+      "feature_rows": 593,
+      "labeled_feature_rows": 593,
       "mapping": {
-        "accepted_rows": 41,
-        "candidate_rows": 245,
+        "accepted_rows": 45,
+        "candidate_rows": 260,
         "direct_id_overlap_games": 0,
-        "map_rows": 77
+        "map_rows": 81
       },
       "priors": {
         "post_draft_non_default_rows": 0,
@@ -359,13 +359,13 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 634,
+      "resolved_rows": 664,
       "trained": false,
       "warning_count": 0,
       "warnings": []
     },
     "ready": false,
-    "rows": 553
+    "rows": 593
   },
   "warning_count": 1,
   "warnings": [
