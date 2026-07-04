@@ -2,7 +2,7 @@
   "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
+    "training readiness: live feature <=30s interval coverage below threshold (61.3% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
@@ -138,15 +138,15 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 710,
-      "latest_timestamp": "2026-07-04T21:21:35.318000Z",
+      "history_rows": 714,
+      "latest_timestamp": "2026-07-04T21:21:39.594000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {
-        "live_logistic_oe_bootstrap": 488
+        "live_logistic_oe_bootstrap": 492
       },
-      "new_rows": 488,
-      "non_empty_game_state_rows": 710,
-      "oe_bootstrap_snapshot_rows": 488,
+      "new_rows": 492,
+      "non_empty_game_state_rows": 714,
+      "oe_bootstrap_snapshot_rows": 492,
       "production_live_telemetry_rows": 222,
       "raw_frame_collection_rows": 0,
       "sampling": {
@@ -190,7 +190,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-07-04T21:27:03.850549+00:00",
+  "generated_at": "2026-07-04T23:32:47.889183+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -247,12 +247,12 @@
         "games": 57,
         "interval_count": 257,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 710,
-        "oe_bootstrap_snapshot_rows": 488,
+        "non_empty_game_state_rows": 714,
+        "oe_bootstrap_snapshot_rows": 492,
         "pct_intervals_lte_30s": 0.6108949416342413,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 710,
+        "rows": 714,
         "sub_30s_interval_count": 157
       },
       "id": "live_frame_collection",
@@ -261,19 +261,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 467,
-        "games": 35,
+        "feature_rows": 633,
+        "games": 52,
         "label_sources": {
-          "combined_rows": 25999,
-          "games_rows": 25999,
+          "combined_rows": 6026,
+          "games_rows": 6026,
           "live_label_rows": 0
         },
-        "labeled_rows": 467,
-        "pipeline_feature_rows": 467,
-        "pipeline_labeled_feature_rows": 467,
+        "labeled_rows": 633,
+        "pipeline_feature_rows": 633,
+        "pipeline_labeled_feature_rows": 633,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 710,
+        "pipeline_resolved_rows": 714,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
@@ -326,7 +326,7 @@
   "stage": "collect_live_frames",
   "training": {
     "available": true,
-    "games": 35,
+    "games": 52,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
@@ -336,13 +336,13 @@
         "brier_score": null,
         "log_loss": null
       },
-      "feature_rows": 467,
-      "labeled_feature_rows": 467,
+      "feature_rows": 633,
+      "labeled_feature_rows": 633,
       "mapping": {
-        "accepted_rows": 32,
-        "candidate_rows": 200,
+        "accepted_rows": 49,
+        "candidate_rows": 285,
         "direct_id_overlap_games": 0,
-        "map_rows": 83
+        "map_rows": 85
       },
       "priors": {
         "post_draft_non_default_rows": 0,
@@ -359,13 +359,13 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 710,
+      "resolved_rows": 714,
       "trained": false,
       "warning_count": 0,
       "warnings": []
     },
     "ready": false,
-    "rows": 467
+    "rows": 633
   },
   "warning_count": 1,
   "warnings": [
