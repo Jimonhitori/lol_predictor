@@ -2,7 +2,7 @@
 const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
-const STATIC_DATA_VERSION = '20260702-g2-roster-stats';
+const STATIC_DATA_VERSION = '20260705-player-champion-stats';
 const APP_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Tokyo';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
@@ -1579,9 +1579,7 @@ function visibleDateOptions(options) {
     : options.findIndex(option => option.key === todayDateKey());
   const center = selected >= 0 ? selected : 0;
   const start = Math.max(0, Math.min(center - 1, options.length - VISIBLE_DATE_TAB_COUNT));
-  const selectedKey = state.selectedMatchDate || options[center]?.key || today;
-  const anchorKey = centeredDateAnchorKey(selectedKey, today);
-  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), anchorKey);
+  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), state.selectedMatchDate);
 }
 
 function fillDateOptions(options, anchorKey) {
@@ -1595,13 +1593,6 @@ function fillDateOptions(options, anchorKey) {
     cursor = addLocalDays(cursor, 1);
   }
   return result;
-}
-
-function centeredDateAnchorKey(selectedKey, todayKey) {
-  if (!selectedKey || selectedKey <= todayKey) return todayKey;
-  const selectedDate = dateFromLocalKey(selectedKey);
-  if (Number.isNaN(selectedDate.getTime())) return todayKey;
-  return localDateKey(addLocalDays(selectedDate, -Math.floor(VISIBLE_DATE_TAB_COUNT / 2)).toISOString());
 }
 
 function filteredMatches() {
@@ -3419,9 +3410,21 @@ function rosterCards(players) {
     <div class="playerCard">
       <div class="playerCardTop"><strong>${escapeHtml(compactRoleLabel(player.role))}</strong><strong>${escapeHtml(player.player)}</strong></div>
       ${rosterMetaText(player) ? `<div class="playerMeta">${escapeHtml(rosterMetaText(player))}</div>` : ''}
-      <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
+      <div class="playerMeta">Top champs: ${escapeHtml(rosterChampionStatsText(player))}</div>
     </div>
   `).join('');
+}
+
+function rosterChampionStatsText(player) {
+  const stats = Array.isArray(player.champion_stats) ? player.champion_stats : [];
+  if (stats.length) {
+    return stats.slice(0, 3).map(row => {
+      const games = Number(row.games || 0);
+      const winrate = Number(row.winrate || 0);
+      return `${row.champion || '-'} ${games}G ${(winrate * 100).toFixed(1)}%`;
+    }).join(', ');
+  }
+  return (player.top_champions || []).join(', ') || '-';
 }
 
 function rosterMetaText(player) {

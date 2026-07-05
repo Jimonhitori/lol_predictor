@@ -924,22 +924,19 @@ function renderDateTabs(matches) {
 function visibleDateOptions(options) {
   const today = localDateKey(new Date().toISOString());
   const futureOrToday = options.filter(option => option.key >= today);
-  const visibleOptions = futureOrToday.length ? futureOrToday : options;
   if (!state.selectedMatchDate || state.selectedMatchDate === 'live') {
-    return fillDateOptions(visibleOptions.slice(0, VISIBLE_DATE_TAB_COUNT), today);
+    return fillDateOptions(futureOrToday.slice(0, VISIBLE_DATE_TAB_COUNT), today);
   }
   if (state.selectedMatchDate === today) {
-    return fillDateOptions(visibleOptions.slice(0, VISIBLE_DATE_TAB_COUNT), today);
+    return fillDateOptions(futureOrToday.slice(0, VISIBLE_DATE_TAB_COUNT), today);
   }
-  if (visibleOptions.length <= VISIBLE_DATE_TAB_COUNT) return fillDateOptions(visibleOptions, state.selectedMatchDate);
+  if (options.length <= VISIBLE_DATE_TAB_COUNT) return fillDateOptions(options, state.selectedMatchDate);
   const selected = state.selectedMatchDate && state.selectedMatchDate !== 'live'
-    ? visibleOptions.findIndex(option => option.key === state.selectedMatchDate)
-    : visibleOptions.findIndex(option => option.key === today);
+    ? options.findIndex(option => option.key === state.selectedMatchDate)
+    : options.findIndex(option => option.key === localDateKey(new Date().toISOString()));
   const center = selected >= 0 ? selected : 0;
-  const start = Math.max(0, Math.min(center - 1, visibleOptions.length - VISIBLE_DATE_TAB_COUNT));
-  const selectedKey = state.selectedMatchDate || visibleOptions[center]?.key || today;
-  const anchorKey = centeredDateAnchorKey(selectedKey, today);
-  return fillDateOptions(visibleOptions.slice(start, start + VISIBLE_DATE_TAB_COUNT), anchorKey);
+  const start = Math.max(0, Math.min(center - 1, options.length - VISIBLE_DATE_TAB_COUNT));
+  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), state.selectedMatchDate);
 }
 
 function fillDateOptions(options, anchorKey) {
@@ -953,13 +950,6 @@ function fillDateOptions(options, anchorKey) {
     cursor = addLocalDays(cursor, 1);
   }
   return result;
-}
-
-function centeredDateAnchorKey(selectedKey, todayKey) {
-  if (!selectedKey || selectedKey <= todayKey) return todayKey;
-  const selectedDate = dateFromLocalKey(selectedKey);
-  if (Number.isNaN(selectedDate.getTime())) return todayKey;
-  return localDateKey(addLocalDays(selectedDate, -Math.floor(VISIBLE_DATE_TAB_COUNT / 2)).toISOString());
 }
 
 function filteredMatches() {
@@ -1536,7 +1526,6 @@ function renderLiveDraft(details) {
   const meaningfulLive = hasMeaningfulLiveData(live);
   const badgeText = liveBadgeText(details, game, hasLive, meaningfulLive);
   const timerText = liveTimerText(details, game, live, meaningfulLive);
-  const winProbText = liveWinProbabilityText(game, live);
   const board = $('liveBoard');
   if (!board) return;
   board.innerHTML = `
@@ -1547,7 +1536,6 @@ function renderLiveDraft(details) {
         <div class="liveCenter">
           <span class="liveBadge">${escapeHtml(badgeText)}</span>
           ${timerText ? `<span class="liveTimer">${escapeHtml(timerText)}</span>` : ''}
-          ${winProbText ? `<span class="liveTimer">${escapeHtml(winProbText)}</span>` : ''}
         </div>
         ${liveTeamHeader(redTeam)}
       </div>
@@ -1562,16 +1550,6 @@ function renderLiveDraft(details) {
     </div>
   `;
   attachLiveTabHandlers(details);
-}
-
-function liveWinProbabilityText(game, live) {
-  const probability = live?.win_probability;
-  if (!probability || probability.status !== 'estimated') return '';
-  const blue = Number(probability.blue);
-  if (!Number.isFinite(blue)) return '';
-  const blueName = game?.blue?.team_code || game?.blue?.team_name || 'Blue';
-  const redName = game?.red?.team_code || game?.red?.team_name || 'Red';
-  return `${blueName} ${(blue * 100).toFixed(1)}% / ${redName} ${((1 - blue) * 100).toFixed(1)}%`;
 }
 
 function displayTeamStats(teamStats, players) {
@@ -2246,9 +2224,21 @@ function rosterCards(players) {
     <div class="playerCard">
       <div class="playerCardTop"><strong>${escapeHtml(compactRoleLabel(player.role))}</strong><strong>${escapeHtml(player.player)}</strong></div>
       <div class="playerMeta">${escapeHtml(rosterMetaText(player))}</div>
-      <div class="playerMeta">Top champs: ${escapeHtml(player.top_champions.join(', ') || '-')}</div>
+      <div class="playerMeta">Top champs: ${escapeHtml(rosterChampionStatsText(player))}</div>
     </div>
   `).join('');
+}
+
+function rosterChampionStatsText(player) {
+  const stats = Array.isArray(player.champion_stats) ? player.champion_stats : [];
+  if (stats.length) {
+    return stats.slice(0, 3).map(row => {
+      const games = Number(row.games || 0);
+      const winrate = Number(row.winrate || 0);
+      return `${row.champion || '-'} ${games}G ${(winrate * 100).toFixed(1)}%`;
+    }).join(', ');
+  }
+  return (player.top_champions || []).join(', ') || '-';
 }
 
 function rosterMetaText(player) {
@@ -2497,14 +2487,11 @@ def _needs_detail_status_check(match: dict[str, object]) -> bool:
 
 
 def match_detail_payload(context: AppContext, match_id: str) -> dict[str, object]:
-    schedule_match = next((match for match in today_matches(context.rows, context.today_cache) if str(match.get("id")) == str(match_id)), {})
-    source_match_id = str(schedule_match.get("source_match_id") or match_id)
-    details = lolesports_event_details(source_match_id)
+    details = lolesports_event_details(match_id)
     if not details:
         return {}
+    schedule_match = next((match for match in today_matches(context.rows, context.today_cache) if str(match.get("id")) == str(match_id)), {})
     if schedule_match:
-        details["id"] = str(schedule_match.get("id") or match_id)
-        details["source_match_id"] = source_match_id
         details["start_time"] = details.get("start_time") or schedule_match.get("start_time", "")
         details["status"] = details.get("status") or schedule_match.get("status", "")
     return details
@@ -2675,6 +2662,21 @@ def roster_payload(rows: pd.DataFrame, team: str) -> dict[str, object]:
             if "champion" in player_games.columns
             else []
         )
+        champion_stats = []
+        if "champion" in player_games.columns:
+            for champion, champion_games in player_games.dropna(subset=["champion"]).groupby("champion"):
+                champion_result = pd.to_numeric(champion_games.get("result"), errors="coerce").fillna(0)
+                champion_games_count = int(len(champion_games))
+                champion_wins = int(champion_result.sum())
+                champion_stats.append(
+                    {
+                        "champion": str(champion),
+                        "games": champion_games_count,
+                        "wins": champion_wins,
+                        "winrate": float(champion_wins / champion_games_count) if champion_games_count else 0.0,
+                    }
+                )
+            champion_stats.sort(key=lambda row: (-int(row["games"]), -int(row["wins"]), str(row["champion"])))
         players.append(
             {
                 "role": role.upper(),
@@ -2685,6 +2687,7 @@ def roster_payload(rows: pd.DataFrame, team: str) -> dict[str, object]:
                 "winrate": float(result.mean()) if len(player_games) else 0.0,
                 "kda": float((kills.sum() + assists.sum()) / max(1, deaths.sum())),
                 "top_champions": top_champions,
+                "champion_stats": champion_stats,
                 "last_seen": str(latest["date"]),
             }
         )
