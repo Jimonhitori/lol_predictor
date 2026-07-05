@@ -44,6 +44,21 @@
     .meta { display: block; margin-top: 2px; color: #607086; font-size: 12px; }
     .clear { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 7px; background: transparent; color: #94a3b8; font-size: 18px; cursor: pointer; }
     .clear:disabled { opacity: .25; cursor: not-allowed; }
+    .ccSummary { margin-top: 14px; border: 1px solid var(--line); background: rgba(12,20,29,.88); border-radius: 10px; padding: 12px; }
+    .ccSummary[hidden] { display: none; }
+    .ccSummaryHead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 9px; }
+    .ccSummaryTitle { color: var(--text); font-size: 12px; font-weight: 950; letter-spacing: .14em; text-transform: uppercase; }
+    .ccSummaryNote { color: #64748b; font-size: 10px; font-weight: 800; text-align: right; }
+    .ccTotals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+    .ccTotal { border: 1px solid rgba(143,161,181,.2); border-radius: 8px; background: #0b131c; padding: 8px; min-width: 0; }
+    .ccTotal span { display: block; color: #8fa1b5; font-size: 10px; font-weight: 900; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ccTotal strong { display: block; margin-top: 3px; color: #fff; font-size: 20px; line-height: 1; font-weight: 950; }
+    .ccChampionList { display: grid; gap: 6px; margin-top: 10px; }
+    .ccChampionRow { display: grid; grid-template-columns: minmax(64px, 1fr) repeat(4, minmax(28px, 34px)); gap: 5px; align-items: center; border: 1px solid rgba(143,161,181,.16); border-radius: 8px; background: #0b131c; padding: 7px 8px; min-width: 0; overflow: hidden; }
+    .ccChampionRow.header { background: transparent; border-color: transparent; padding-top: 0; padding-bottom: 0; color: #8fa1b5; font-size: 10px; font-weight: 950; text-transform: uppercase; }
+    .ccChampionRow span { min-width: 0; color: #dceaff; font-size: 11px; font-weight: 850; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ccChampionRow.header span { color: #8fa1b5; }
+    .ccChampionRow strong { min-width: 0; color: #fff; font-size: 13px; font-weight: 950; text-align: center; overflow: hidden; text-overflow: ellipsis; }
     .composition { margin-top: 14px; border: 1px solid var(--line); background: rgba(12,20,29,.88); border-radius: 10px; padding: 12px; }
     .compositionTitle { margin: 0 0 10px; color: var(--text); font-size: 12px; font-weight: 950; letter-spacing: .14em; text-transform: uppercase; }
     .compositionGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
@@ -109,7 +124,7 @@
     .champ span { color: #94a3b8; font-size: 12px; }
     .champDivider { grid-column: 1 / -1; height: 1px; margin: 4px 0; background: rgba(143,161,181,.22); }
     @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .champGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
-    @media (max-width: 620px) { .compositionGrid { grid-template-columns: 1fr; } }
+    @media (max-width: 620px) { .compositionGrid, .ccTotals { grid-template-columns: 1fr; } .ccChampionRow { grid-template-columns: minmax(58px, 1fr) repeat(4, minmax(24px, 30px)); gap: 4px; padding-left: 6px; padding-right: 6px; } .ccChampionRow span, .ccChampionRow strong { font-size: 10px; } }
     @media (max-width: 520px) { .laneTop { grid-template-columns: 1fr auto; } .laneScale { grid-template-columns: 1fr; gap: 5px; } .lanePct { text-align: center; } }
   </style>
 </head>
@@ -138,13 +153,13 @@
       </div>
     </section>
     <section class="layout">
-      <section class="team blue"><div class="teamHead"><div><p class="side">blue side</p><h2>Blue Team</h2></div><div class="locked" id="blueCount">0/5 locked</div></div><div class="slots" id="blueSlots"></div><section class="composition" id="blueComposition"></section></section>
+      <section class="team blue"><div class="teamHead"><div><p class="side">blue side</p><h2>Blue Team</h2></div><div class="locked" id="blueCount">0/5 locked</div></div><div class="slots" id="blueSlots"></div><section class="composition" id="blueComposition"></section><section class="ccSummary" id="blueCcSummary"></section></section>
       <aside class="center">
         <div class="control"><div class="controlTitle">Draft Control</div><button class="calc" id="calc" disabled>Calculate Win Rate</button><p class="hint" id="hint">Fill every slot to enable calculation.</p></div>
         <section class="predictionCard" id="overallPrediction"></section>
         <section class="predictionCard" id="laneMatchups"></section>
       </aside>
-      <section class="team red"><div class="teamHead"><div><p class="side">red side</p><h2>Red Team</h2></div><div class="locked" id="redCount">0/5 locked</div></div><div class="slots" id="redSlots"></div><section class="composition" id="redComposition"></section></section>
+      <section class="team red"><div class="teamHead"><div><p class="side">red side</p><h2>Red Team</h2></div><div class="locked" id="redCount">0/5 locked</div></div><div class="slots" id="redSlots"></div><section class="composition" id="redComposition"></section><section class="ccSummary" id="redCcSummary"></section></section>
     </section>
   </main>
   <div class="modal" id="modal">
@@ -163,6 +178,35 @@
       { id: "mid-jungle-support", label: "Mid Jungle Support", priority: true, weight: 4 },
       { id: "full-composition", label: "Full Composition", weight: 1 },
     ];
+    const ccEffects = [
+      { key: "airborne", label: "Airborne", hard: true, patterns: [/airborne/i, /knock(?:ed)?\s+up/i, /knock(?:ed)?\s+back/i, /pull(?:ed)?/i] },
+      { key: "charm", label: "Charm", hard: true, patterns: [/charm(?:ed)?/i] },
+      { key: "fear", label: "Fear", hard: true, patterns: [/fear(?:ed)?/i, /flee(?:ing)?/i] },
+      { key: "polymorph", label: "Polymorph", hard: true, patterns: [/polymorph/i] },
+      { key: "root", label: "Root", hard: true, patterns: [/root(?:ed)?/i] },
+      { key: "sleep", label: "Sleep", hard: true, patterns: [/sleep|drowsy/i] },
+      { key: "stasis", label: "Stasis", hard: true, patterns: [/stasis/i] },
+      { key: "stun", label: "Stun", hard: true, patterns: [/stun(?:ned)?/i] },
+      { key: "suppress", label: "Suppress", hard: true, patterns: [/suppress(?:ed)?/i] },
+      { key: "taunt", label: "Taunt", hard: true, patterns: [/taunt(?:ed)?/i] },
+      { key: "blind", label: "Blind", hard: false, patterns: [/blind(?:ed)?/i] },
+      { key: "cripple", label: "Cripple", hard: false, patterns: [/cripple(?:d)?/i] },
+      { key: "ground", label: "Ground", hard: false, patterns: [/ground(?:ed)?/i] },
+      { key: "silence", label: "Silence", hard: false, patterns: [/silence(?:d)?/i] },
+      { key: "slow", label: "Slow", hard: false, patterns: [/slow(?:ed|s)?/i] },
+    ];
+    const skillshotIndicators = [
+      /missile/i, /projectile/i, /skillshot/i, /line/i, /direction/i, /target direction/i,
+      /first enemy/i, /first champion/i, /collid/i, /passes through/i, /travels/i, /fires/i,
+      /throws/i, /launches/i, /shoots/i, /cone/i, /arc/i, /wave/i, /after a delay/i,
+    ];
+    const guaranteedIndicators = [
+      /target champion/i, /target enemy/i, /nearby enemies/i, /around (?:him|her|them|it)/i,
+      /surrounding enemies/i, /in an area around/i, /all enemies in the area/i, /enemies within/i,
+    ];
+    const guaranteedCcSpellOverrides = new Set([
+      "vi:ceaseanddesist",
+    ]);
     const fallbackChampionRows = [
       ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["corki","Corki","Bot","Corki"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["neeko","Neeko","Support","Neeko"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["udyr","Udyr","Jungle","Udyr"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
     ];
@@ -181,7 +225,7 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, championCc: { status: "loading", profiles: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       try {
@@ -306,6 +350,128 @@
       const picks = numberValue(row.picks ?? row.games);
       const winrate = row.winrate || (picks > 0 ? `${((numberValue(row.wins) / picks) * 100).toFixed(1)}%` : "-");
       return `WR ${winrate}${picks ? ` · ${picks} picks` : ""}`;
+    }
+    function profileForChampion(champ) {
+      if (!champ) return null;
+      return state.championCc.profiles.get(normalizeName(champ.name)) || state.championCc.profiles.get(normalizeName(champ.id)) || null;
+    }
+    function normalizeDescription(value) {
+      const div = document.createElement("div");
+      div.innerHTML = String(value || "").replace(/<br\s*\/?>/gi, " ");
+      return div.textContent || div.innerText || "";
+    }
+    function spellOverrideKey(champ, spell) {
+      return `${normalizeName(champ?.id || champ?.name)}:${normalizeName(spell?.name)}`;
+    }
+    function isGuaranteedCcSpell(champ, spell, text, hard, skillshot) {
+      if (!hard) return false;
+      if (guaranteedCcSpellOverrides.has(spellOverrideKey(champ, spell))) return true;
+      return !skillshot && guaranteedIndicators.some(pattern => pattern.test(text));
+    }
+    function spellCcEntries(spell, champ) {
+      const text = `${spell?.name || ""} ${normalizeDescription(spell?.description)} ${normalizeDescription(spell?.tooltip)}`;
+      const effects = ccEffects.filter(effect => effect.patterns.some(pattern => pattern.test(text)));
+      if (!effects.length) return [];
+      const hard = effects.some(effect => effect.hard);
+      const skillshot = skillshotIndicators.some(pattern => pattern.test(text)) && !guaranteedIndicators.some(pattern => pattern.test(text));
+      return [{
+        spell: spell?.name || "",
+        effects,
+        hard,
+        skillshot,
+        guaranteed: isGuaranteedCcSpell(champ, spell, text, hard, skillshot),
+      }];
+    }
+    function championCcProfile(champ) {
+      const spells = (champ?.spells || []).flatMap(spell => spellCcEntries(spell, champ));
+      return {
+        name: champ?.name || "",
+        total: spells.length,
+        hard: spells.filter(spell => spell.hard).length,
+        guaranteed: spells.filter(spell => spell.guaranteed).length,
+        skillshot: spells.filter(spell => spell.skillshot).length,
+      };
+    }
+    function sideCcTotals(side) {
+      const totals = { total: 0, hard: 0, guaranteed: 0, skillshot: 0, picked: 0 };
+      for (const champ of state[side]) {
+        if (!champ) continue;
+        totals.picked += 1;
+        const profile = profileForChampion(champ);
+        if (!profile) continue;
+        totals.total += profile.total;
+        totals.hard += profile.hard;
+        totals.guaranteed += profile.guaranteed;
+        totals.skillshot += profile.skillshot;
+      }
+      return totals;
+    }
+    function sideCcRows(side) {
+      return state[side].map((champ, index) => {
+        if (!champ) return null;
+        const profile = profileForChampion(champ) || { total: 0, hard: 0, guaranteed: 0, skillshot: 0 };
+        return {
+          role: roles[index],
+          name: champ.name,
+          total: profile.total,
+          hard: profile.hard,
+          guaranteed: profile.guaranteed,
+          skillshot: profile.skillshot,
+        };
+      }).filter(Boolean);
+    }
+    function renderCcSummary(side) {
+      const root = $(`${side}CcSummary`);
+      const totals = sideCcTotals(side);
+      if (!totals.picked) {
+        root.hidden = true;
+        root.innerHTML = "";
+        return;
+      }
+      root.hidden = false;
+      const status = state.championCc.status === "ready" ? "Ability text" : state.championCc.status === "loading" ? "Loading" : "Unavailable";
+      const rows = sideCcRows(side);
+      root.innerHTML = `
+        <div class="ccSummaryHead">
+          <div class="ccSummaryTitle">Team CC</div>
+          <div class="ccSummaryNote">${escapeHtml(status)}</div>
+        </div>
+        <div class="ccTotals">
+          <div class="ccTotal"><span>Total CC</span><strong>${totals.total}</strong></div>
+          <div class="ccTotal"><span>Hard CC</span><strong>${totals.hard}</strong></div>
+          <div class="ccTotal"><span>確定CC</span><strong>${totals.guaranteed}</strong></div>
+          <div class="ccTotal"><span>スキルショットCC</span><strong>${totals.skillshot}</strong></div>
+        </div>
+        <div class="ccChampionList">
+          <div class="ccChampionRow header"><span>Champion</span><span>CC</span><span>Hard</span><span>確定</span><span>Skillshot</span></div>
+          ${rows.map(row => `
+            <div class="ccChampionRow">
+              <span title="${escapeHtml(row.role)}">${escapeHtml(row.name)}</span>
+              <strong>${row.total}</strong>
+              <strong>${row.hard}</strong>
+              <strong>${row.guaranteed}</strong>
+              <strong>${row.skillshot}</strong>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+    async function loadChampionCcProfiles() {
+      try {
+        const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/championFull.json`, { cache: "force-cache" });
+        if (!res.ok) throw new Error(`championFull ${res.status}`);
+        const data = await res.json();
+        const profiles = new Map();
+        for (const champ of Object.values(data?.data || {})) {
+          const profile = championCcProfile(champ);
+          profiles.set(normalizeName(champ.name), profile);
+          profiles.set(normalizeName(champ.id), profile);
+        }
+        state.championCc = { status: "ready", profiles };
+      } catch (error) {
+        state.championCc = { status: "error", profiles: new Map() };
+      }
+      render();
     }
     function primaryChampionRole(champ) {
       if (!champ || state.championMeta.status !== "ready") return champ?.role || "Flex";
@@ -661,6 +827,7 @@
     }
     function render() {
       renderSlots("blue"); renderSlots("red");
+      renderCcSummary("blue"); renderCcSummary("red");
       renderCompositionAnalysis("blue");
       renderCompositionAnalysis("red");
       const blue = state.blue.filter(Boolean).length, red = state.red.filter(Boolean).length, total = blue + red;
@@ -748,6 +915,7 @@
     $("calc").onclick = () => { state.calculated = true; renderPredictionPanels(); renderCompositionAnalysis("blue"); renderCompositionAnalysis("red"); };
     render();
     loadChampionRoster();
+    loadChampionCcProfiles();
     loadChampionMeta();
   </script>
 </body>
