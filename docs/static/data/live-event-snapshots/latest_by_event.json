@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -45591,7 +45591,7 @@
   },
   "116520885021717720": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "116520885021717720",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -45728,7 +45728,7 @@
   },
   "116520885021783296": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "116520885021783296",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -45865,7 +45865,7 @@
   },
   "116520885021783308": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "116520885021783308",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46002,7 +46002,7 @@
   },
   "116520885021783284": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "116520885021783284",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46139,14 +46139,217 @@
   },
   "115570934355614569": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
+    "checked_at": "2026-07-05T08:16:33.756Z",
     "event_id": "115570934355614569",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115570934355614569",
+      "league": "MSI",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "113661839307879869",
+          "name": "Team Secret Whales",
+          "code": "TSW",
+          "image": "http://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "99566404854685458",
+          "name": "TOP ESPORTS",
+          "code": "TES",
+          "image": "http://static.lolesports.com/teams/1592592064571_TopEsportsTES-01-FullonDark.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570934355614570",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
+          },
+          "red": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614571",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
+          },
+          "red": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614572",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "red": {
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614573",
+          "number": 4,
+          "state": "completed",
+          "blue": {
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
+          },
+          "red": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614574",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "99566404854685458",
+            "team_name": "TOP ESPORTS",
+            "team_code": "TES"
+          },
+          "red": {
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "115570934355614557": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-05T08:16:33.756Z",
+    "event_id": "115570934355614557",
+    "status": "unavailable",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115570934355614557",
       "league": "",
       "league_group": "",
       "region": "",
@@ -46159,52 +46362,52 @@
       "warning": "event_details_fetch_failed"
     }
   },
-  "115570934355614557": {
+  "116520885021783340": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T05:12:29.139Z",
-    "event_id": "115570934355614557",
+    "checked_at": "2026-07-05T08:16:33.756Z",
+    "event_id": "116520885021783340",
     "status": "unstarted",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
-      "id": "115570934355614557",
-      "league": "MSI",
+      "id": "116520885021783340",
+      "league": "LRN",
       "league_group": "",
       "region": "",
-      "best_of": "5",
+      "best_of": "3",
       "status": "unstarted",
       "start_time": "",
       "teams": [
         {
-          "id": "100205573496804586",
-          "name": "Hanwha Life Esports",
-          "code": "HLE",
-          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+          "id": "108121057213928999",
+          "name": "Polar Squad",
+          "code": "PLS",
+          "image": "http://static.lolesports.com/teams/1772041837794_PLS_C.png",
           "game_wins": "0"
         },
         {
-          "id": "98767991926151025",
-          "name": "G2 Esports",
-          "code": "G2",
-          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+          "id": "107582157086477662",
+          "name": "3V TEAM",
+          "code": "3V",
+          "image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
           "game_wins": "0"
         }
       ],
       "games": [
         {
-          "id": "115570934355614558",
+          "id": "116520885021783341",
           "number": 1,
           "state": "unstarted",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "108121057213928999",
+            "team_name": "Polar Squad",
+            "team_code": "PLS"
           },
           "red": {
-            "team_id": "98767991926151025",
-            "team_name": "G2 Esports",
-            "team_code": "G2"
+            "team_id": "107582157086477662",
+            "team_name": "3V TEAM",
+            "team_code": "3V"
           },
           "winner": "",
           "live": {
@@ -46226,18 +46429,18 @@
           }
         },
         {
-          "id": "115570934355614559",
+          "id": "116520885021783342",
           "number": 2,
           "state": "unstarted",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "107582157086477662",
+            "team_name": "3V TEAM",
+            "team_code": "3V"
           },
           "red": {
-            "team_id": "98767991926151025",
-            "team_name": "G2 Esports",
-            "team_code": "G2"
+            "team_id": "108121057213928999",
+            "team_name": "Polar Squad",
+            "team_code": "PLS"
           },
           "winner": "",
           "live": {
@@ -46259,18 +46462,89 @@
           }
         },
         {
-          "id": "115570934355614560",
+          "id": "116520885021783343",
           "number": 3,
           "state": "unstarted",
           "blue": {
-            "team_id": "98767991926151025",
-            "team_name": "G2 Esports",
-            "team_code": "G2"
+            "team_id": "108121057213928999",
+            "team_name": "Polar Squad",
+            "team_code": "PLS"
           },
           "red": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "107582157086477662",
+            "team_name": "3V TEAM",
+            "team_code": "3V"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520885021455556": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-05T08:16:33.756Z",
+    "event_id": "116520885021455556",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520885021455556",
+      "league": "LRN",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107603600826620492",
+          "name": "Zeu5 Esports",
+          "code": "Z5",
+          "image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "107581765633427097",
+          "name": "FUEGO",
+          "code": "FUE",
+          "image": "http://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520885021521093",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107603600826620492",
+            "team_name": "Zeu5 Esports",
+            "team_code": "Z5"
+          },
+          "red": {
+            "team_id": "107581765633427097",
+            "team_name": "FUEGO",
+            "team_code": "FUE"
           },
           "winner": "",
           "live": {
@@ -46292,18 +46566,18 @@
           }
         },
         {
-          "id": "115570934355614561",
-          "number": 4,
+          "id": "116520885021717702",
+          "number": 2,
           "state": "unstarted",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "107581765633427097",
+            "team_name": "FUEGO",
+            "team_code": "FUE"
           },
           "red": {
-            "team_id": "98767991926151025",
-            "team_name": "G2 Esports",
-            "team_code": "G2"
+            "team_id": "107603600826620492",
+            "team_name": "Zeu5 Esports",
+            "team_code": "Z5"
           },
           "winner": "",
           "live": {
@@ -46325,18 +46599,18 @@
           }
         },
         {
-          "id": "115570934355614562",
-          "number": 5,
+          "id": "116520885021717703",
+          "number": 3,
           "state": "unstarted",
           "blue": {
-            "team_id": "98767991926151025",
-            "team_name": "G2 Esports",
-            "team_code": "G2"
+            "team_id": "107603600826620492",
+            "team_name": "Zeu5 Esports",
+            "team_code": "Z5"
           },
           "red": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "107581765633427097",
+            "team_name": "FUEGO",
+            "team_code": "FUE"
           },
           "winner": "",
           "live": {
