@@ -373,7 +373,7 @@
       const effects = ccEffects.filter(effect => effect.patterns.some(pattern => pattern.test(text)));
       if (!effects.length) return [];
       const hard = effects.some(effect => effect.hard);
-      const skillshot = skillshotIndicators.some(pattern => pattern.test(text)) && !guaranteedIndicators.some(pattern => pattern.test(text));
+      const skillshot = skillshotIndicators.some(pattern => pattern.test(text));
       return [{
         spell: spell?.name || "",
         effects,
