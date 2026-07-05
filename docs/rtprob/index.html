@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -28,6 +28,11 @@
     .team.blue { border-color: rgba(46,140,255,.55); background: rgba(46,140,255,.055); }
     .team.red { border-color: rgba(255,71,109,.55); background: rgba(255,71,109,.055); }
     .teamHead { display: flex; justify-content: space-between; gap: 12px; align-items: end; margin-bottom: 14px; }
+    .teamTitleLine { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .teamPick { min-height: 34px; max-width: 190px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 6px 9px; color: #dceaff; font-size: 12px; font-weight: 900; cursor: pointer; }
+    .teamPick img { width: 22px; height: 22px; border-radius: 5px; object-fit: contain; background: rgba(255,255,255,.04); flex: 0 0 auto; }
+    .teamPick span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .teamPick.empty { color: #8fa1b5; }
     .side { margin: 0 0 4px; font-size: 11px; font-weight: 900; letter-spacing: .22em; text-transform: uppercase; }
     .blue .side { color: var(--blue); } .red .side { color: var(--red); }
     h2 { margin: 0; font-size: 22px; }
@@ -41,6 +46,7 @@
     .role { display: block; font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
     .slot.blue .role { color: var(--blue); } .slot.red .role { color: var(--red); }
     .name { display: block; margin-top: 3px; color: #fff; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .playerName { display: block; margin-top: 2px; color: #b7c6d8; font-size: 12px; font-weight: 850; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .meta { display: block; margin-top: 2px; color: #607086; font-size: 12px; }
     .clear { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 7px; background: transparent; color: #94a3b8; font-size: 18px; cursor: pointer; }
     .clear:disabled { opacity: .25; cursor: not-allowed; }
@@ -102,6 +108,10 @@
     .laneFavor.red { color: #ff9aae; }
     .laneGames { color: #64748b; font-size: 10px; font-weight: 850; white-space: nowrap; }
     .laneScale { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
+    .lanePlayers { display: grid; gap: 4px; color: #8fa1b5; font-size: 11px; font-weight: 800; }
+    .lanePlayers span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .lanePlayers .blue { color: #9dccff; }
+    .lanePlayers .red { color: #ff9aae; }
     .lanePct { color: #9fb2c8; font-size: 11px; font-weight: 850; white-space: nowrap; }
     .lanePct.blue { color: #9dccff; }
     .lanePct.red { color: #ff9aae; }
@@ -153,13 +163,13 @@
       </div>
     </section>
     <section class="layout">
-      <section class="team blue"><div class="teamHead"><div><p class="side">blue side</p><h2>Blue Team</h2></div><div class="locked" id="blueCount">0/5 locked</div></div><div class="slots" id="blueSlots"></div><section class="composition" id="blueComposition"></section><section class="ccSummary" id="blueCcSummary"></section></section>
+      <section class="team blue"><div class="teamHead"><div><p class="side">blue side</p><div class="teamTitleLine"><h2>Blue Team</h2><button class="teamPick empty" id="blueTeamPick" data-team-open="blue"><span>Select team</span></button></div></div><div class="locked" id="blueCount">0/5 locked</div></div><div class="slots" id="blueSlots"></div><section class="composition" id="blueComposition"></section><section class="ccSummary" id="blueCcSummary"></section></section>
       <aside class="center">
         <div class="control"><div class="controlTitle">Draft Control</div><button class="calc" id="calc" disabled>Calculate Win Rate</button><p class="hint" id="hint">Fill every slot to enable calculation.</p></div>
         <section class="predictionCard" id="overallPrediction"></section>
         <section class="predictionCard" id="laneMatchups"></section>
       </aside>
-      <section class="team red"><div class="teamHead"><div><p class="side">red side</p><h2>Red Team</h2></div><div class="locked" id="redCount">0/5 locked</div></div><div class="slots" id="redSlots"></div><section class="composition" id="redComposition"></section><section class="ccSummary" id="redCcSummary"></section></section>
+      <section class="team red"><div class="teamHead"><div><p class="side">red side</p><div class="teamTitleLine"><h2>Red Team</h2><button class="teamPick empty" id="redTeamPick" data-team-open="red"><span>Select team</span></button></div></div><div class="locked" id="redCount">0/5 locked</div></div><div class="slots" id="redSlots"></div><section class="composition" id="redComposition"></section><section class="ccSummary" id="redCcSummary"></section></section>
     </section>
   </main>
   <div class="modal" id="modal">
@@ -225,7 +235,25 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, championCc: { status: "loading", profiles: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
+    const state = {
+      blue: Array(5).fill(null),
+      red: Array(5).fill(null),
+      active: null,
+      pickerMode: "champion",
+      query: "",
+      calculated: false,
+      statTier: "all",
+      statPatch: "ALL",
+      patchOptions: ["ALL"],
+      summaryData: null,
+      selectedTeams: { blue: null, red: null },
+      teamRosters: { blue: [], red: [] },
+      teamIndex: { status: "loading", teams: [] },
+      playerMatchups: { status: "loading", records: {} },
+      championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() },
+      championCc: { status: "loading", profiles: new Map() },
+      compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} },
+    };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       try {
@@ -246,8 +274,101 @@
         champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare(b.name));
       }
     }
+    async function loadTeamIndex() {
+      try {
+        const res = await fetch(staticData("rosters/index.json"), { cache: "no-store" });
+        if (!res.ok) throw new Error(`teams ${res.status}`);
+        const data = await res.json();
+        const teams = (data?.teams || []).filter(team => team?.file && team?.name);
+        state.teamIndex = { status: "ready", teams };
+      } catch (error) {
+        state.teamIndex = { status: "error", teams: [] };
+      }
+      renderTeamPicks();
+      if ($("modal").classList.contains("open") && state.pickerMode === "team") renderPicker();
+    }
+    async function loadPlayerMatchups() {
+      try {
+        const res = await fetch(staticData("player-champion-matchups.json"), { cache: "no-store" });
+        if (!res.ok) throw new Error(`player matchups ${res.status}`);
+        const data = await res.json();
+        state.playerMatchups = { status: "ready", records: data?.records || {} };
+      } catch (error) {
+        state.playerMatchups = { status: "error", records: {} };
+      }
+      renderPredictionPanels();
+    }
+    async function selectTeam(side, team) {
+      state.selectedTeams[side] = team;
+      state.teamRosters[side] = [];
+      render();
+      try {
+        const res = await fetch(staticData(`rosters/${team.file}`), { cache: "no-store" });
+        if (!res.ok) throw new Error(`roster ${res.status}`);
+        const data = await res.json();
+        state.teamRosters[side] = rosterPlayers(data);
+      } catch (error) {
+        state.teamRosters[side] = [];
+      }
+      state.calculated = false;
+      render();
+    }
     function normalizeName(value) { return String(value || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
     function numberValue(value) { const numeric = Number(value); return Number.isFinite(numeric) ? numeric : 0; }
+    function staticData(path) { return new URL(`../static/data/${path.replace(/^\/+/, "")}`, location.href).toString(); }
+    function roleKeyFromValue(value) {
+      const key = normalizeName(value);
+      if (key === "jungle") return "jng";
+      if (key === "support") return "sup";
+      if (key === "bottom" || key === "adc") return "bot";
+      return key;
+    }
+    function rosterPlayers(payload) {
+      if (Array.isArray(payload?.players)) return payload.players;
+      if (payload?.players && typeof payload.players === "object") {
+        return Object.values(payload.players).flatMap(value => Array.isArray(value) ? value : [value]).filter(Boolean);
+      }
+      return [];
+    }
+    function playerForRole(side, index) {
+      const wanted = roleKeys[index];
+      return (state.teamRosters[side] || []).find(player => roleKeyFromValue(player.role) === wanted) || null;
+    }
+    function playerChampionStat(player, champ) {
+      if (!player || !champ) return null;
+      const key = normalizeName(champ.name);
+      return (player.champion_stats || []).find(row => normalizeName(row.champion) === key) || null;
+    }
+    function percentText(value) {
+      const numeric = Number(value);
+      if (!Number.isFinite(numeric)) return "-";
+      return `${((numeric <= 1 ? numeric * 100 : numeric)).toFixed(1)}%`;
+    }
+    function recordText(record) {
+      if (!record) return "No sample";
+      const games = numberValue(record.games);
+      if (!games) return "No sample";
+      const wins = numberValue(record.wins);
+      return `${wins}-${Math.max(0, games - wins)} (${percentText(record.winrate)}) ﾂｷ ${games} games`;
+    }
+    function playerMatchupKey(side, index) {
+      const player = playerForRole(side, index);
+      const own = state[side][index];
+      const other = side === "blue" ? "red" : "blue";
+      const opp = state[other][index];
+      if (!player || !own || !opp) return "";
+      return [
+        normalizeName(player.team || state.selectedTeams[side]?.name || state.selectedTeams[side]?.team),
+        normalizeName(player.player),
+        roleKeys[index],
+        normalizeName(own.name),
+        normalizeName(opp.name),
+      ].join("|");
+    }
+    function playerLaneRecord(side, index) {
+      const key = playerMatchupKey(side, index);
+      return key ? state.playerMatchups.records[key] || null : null;
+    }
     function rowMap(rows) {
       return new Map((rows || []).map(row => [normalizeName(row.name), row]).filter(([name]) => name));
     }
@@ -349,7 +470,19 @@
       if (!row) return "WR -";
       const picks = numberValue(row.picks ?? row.games);
       const winrate = row.winrate || (picks > 0 ? `${((numberValue(row.wins) / picks) * 100).toFixed(1)}%` : "-");
-      return `WR ${winrate}${picks ? ` · ${picks} picks` : ""}`;
+      return `WR ${winrate}${picks ? ` ﾂｷ ${picks} picks` : ""}`;
+    }
+    function slotPlayerName(side, index) {
+      return playerForRole(side, index)?.player || "";
+    }
+    function slotPlayerMetaText(side, champ, index) {
+      const player = playerForRole(side, index);
+      if (!player) return championMetaText(champ, index);
+      if (!champ) return `${player.player} - select champion`;
+      const stat = playerChampionStat(player, champ);
+      if (!stat) return `${player.player} - WR - - 0 picks`;
+      const picks = numberValue(stat.games ?? stat.picks);
+      return `${player.player} - WR ${percentText(stat.winrate)} - ${picks} picks`;
     }
     function profileForChampion(champ) {
       if (!champ) return null;
@@ -439,11 +572,11 @@
         <div class="ccTotals">
           <div class="ccTotal"><span>Total CC</span><strong>${totals.total}</strong></div>
           <div class="ccTotal"><span>Hard CC</span><strong>${totals.hard}</strong></div>
-          <div class="ccTotal"><span>確定CC</span><strong>${totals.guaranteed}</strong></div>
-          <div class="ccTotal"><span>スキルショットCC</span><strong>${totals.skillshot}</strong></div>
+          <div class="ccTotal"><span>遒ｺ螳咾C</span><strong>${totals.guaranteed}</strong></div>
+          <div class="ccTotal"><span>繧ｹ繧ｭ繝ｫ繧ｷ繝ｧ繝・ヨCC</span><strong>${totals.skillshot}</strong></div>
         </div>
         <div class="ccChampionList">
-          <div class="ccChampionRow header"><span>Champion</span><span>CC</span><span>Hard</span><span>確定</span><span>Skillshot</span></div>
+          <div class="ccChampionRow header"><span>Champion</span><span>CC</span><span>Hard</span><span>遒ｺ螳・/span><span>Skillshot</span></div>
           ${rows.map(row => `
             <div class="ccChampionRow">
               <span title="${escapeHtml(row.role)}">${escapeHtml(row.name)}</span>
@@ -488,7 +621,7 @@
     }
     async function loadChampionMeta() {
       try {
-        const res = await fetch(`/static/data/summaries/${state.statTier}__all.json`, { cache: "no-store" });
+        const res = await fetch(staticData(`summaries/${state.statTier}__all.json`), { cache: "no-store" });
         if (!res.ok) throw new Error(`summary ${res.status}`);
         const data = await res.json();
         state.summaryData = data;
@@ -774,6 +907,21 @@
         ? { side: "blue", text: `Blue favored +${edge.toFixed(1)}` }
         : { side: "red", text: `Red favored +${edge.toFixed(1)}` };
     }
+    function lanePlayerDetails(index) {
+      const bluePlayer = playerForRole("blue", index);
+      const redPlayer = playerForRole("red", index);
+      const blueChamp = state.blue[index];
+      const redChamp = state.red[index];
+      if (!blueChamp || !redChamp || (!bluePlayer && !redPlayer)) return "";
+      const blueRecord = bluePlayer ? playerLaneRecord("blue", index) : null;
+      const redRecord = redPlayer ? playerLaneRecord("red", index) : null;
+      return `
+        <div class="lanePlayers">
+          ${bluePlayer ? `<span class="blue">${escapeHtml(bluePlayer.player)} ${escapeHtml(blueChamp.name)} vs ${escapeHtml(redChamp.name)}: ${escapeHtml(recordText(blueRecord))}</span>` : ""}
+          ${redPlayer ? `<span class="red">${escapeHtml(redPlayer.player)} ${escapeHtml(redChamp.name)} vs ${escapeHtml(blueChamp.name)}: ${escapeHtml(recordText(redRecord))}</span>` : ""}
+        </div>
+      `;
+    }
     function renderLaneMatchups() {
       if (!state.calculated) {
         $("laneMatchups").hidden = true;
@@ -807,6 +955,7 @@
                 </div>
                 <span class="lanePct red">Red ${lane.available ? `${redWr.toFixed(1)}%` : "--"}</span>
               </div>
+              ${lane.role === "Bot Duo" ? "" : lanePlayerDetails(roles.indexOf(lane.role))}
             </div>
           `; }).join("")}
         </div>
@@ -816,16 +965,28 @@
       renderOverallPrediction();
       renderLaneMatchups();
     }
+    function renderTeamPicks() {
+      for (const side of ["blue", "red"]) {
+        const button = $(`${side}TeamPick`);
+        if (!button) continue;
+        const team = state.selectedTeams[side];
+        button.classList.toggle("empty", !team);
+        button.innerHTML = team
+          ? `${team.logo ? `<img src="${escapeHtml(team.logo)}" alt="">` : ""}<span>${escapeHtml(team.code || team.name)}</span>`
+          : `<span>Select team</span>`;
+      }
+    }
     function renderSlots(side) {
       const root = $(`${side}Slots`);
       root.innerHTML = state[side].map((champ, i) => `
         <div class="slot ${side}">
           <button class="portrait" data-open="${side}:${i}">${champ ? `<img src="${champ.imageUrl}" alt="">` : "+"}</button>
-          <button class="slotMain" data-open="${side}:${i}"><span class="role">${roles[i]}</span><span class="name">${champ ? champ.name : "Pick champion"}</span><span class="meta">${championMetaText(champ, i)}</span></button>
-          <button class="clear" data-clear="${side}:${i}" ${champ ? "" : "disabled"}>×</button>
+          <button class="slotMain" data-open="${side}:${i}"><span class="role">${roles[i]}</span><span class="name">${champ ? champ.name : "Pick champion"}</span>${slotPlayerName(side, i) ? `<span class="playerName">${escapeHtml(slotPlayerName(side, i))}</span>` : ""}<span class="meta">${escapeHtml(slotPlayerMetaText(side, champ, i))}</span></button>
+          <button class="clear" data-clear="${side}:${i}" ${champ ? "" : "disabled"}>ﾃ・/button>
         </div>`).join("");
     }
     function render() {
+      renderTeamPicks();
       renderSlots("blue"); renderSlots("red");
       renderCcSummary("blue"); renderCcSummary("red");
       renderCompositionAnalysis("blue");
@@ -834,6 +995,7 @@
       $("blueCount").textContent = `${blue}/5 locked`; $("redCount").textContent = `${red}/5 locked`; $("count").textContent = `${total}/10 champions selected`;
       const complete = total === 10; $("calc").disabled = !complete; $("hint").textContent = complete ? "Ready to calculate." : "Fill every slot to enable calculation.";
       document.querySelectorAll("[data-open]").forEach(btn => btn.onclick = () => openPicker(btn.dataset.open));
+      document.querySelectorAll("[data-team-open]").forEach(btn => btn.onclick = () => openTeamPicker(btn.dataset.teamOpen));
       document.querySelectorAll("[data-clear]").forEach(btn => btn.onclick = () => { const [side, idx] = btn.dataset.clear.split(":"); state[side][Number(idx)] = null; state.calculated = false; render(); });
       renderPredictionPanels();
     }
@@ -845,11 +1007,11 @@
       renderCompositionAnalysis("red");
       try {
         let data = null;
-        const scoped = await fetch(`/static/data/composition-synergy/${scopeKey}.json`, { cache: "no-store" });
+        const scoped = await fetch(staticData(`composition-synergy/${scopeKey}.json`), { cache: "no-store" });
         if (scoped.ok) {
           data = await scoped.json();
         } else {
-          const legacy = await fetch("/static/data/composition_synergy.json", { cache: "no-store" });
+          const legacy = await fetch(staticData("composition_synergy.json"), { cache: "no-store" });
           if (!legacy.ok) throw new Error(`composition ${scoped.status}/${legacy.status}`);
           data = await legacy.json();
         }
@@ -863,8 +1025,33 @@
       renderCompositionAnalysis("blue");
       renderCompositionAnalysis("red");
     }
-    function openPicker(value) { const [side, idx] = value.split(":"); state.active = { side, idx: Number(idx) }; state.query = ""; $("search").value = ""; $("modal").classList.add("open"); renderPicker(); setTimeout(() => $("search").focus(), 0); }
+    function openPicker(value) {
+      const [side, idx] = value.split(":");
+      state.pickerMode = "champion";
+      state.active = { side, idx: Number(idx) };
+      state.query = "";
+      $("search").value = "";
+      $("modal").classList.add("open");
+      renderPicker();
+      setTimeout(() => $("search").focus(), 0);
+    }
+    function openTeamPicker(side) {
+      state.pickerMode = "team";
+      state.active = { side, idx: null };
+      state.query = "";
+      $("search").value = "";
+      $("modal").classList.add("open");
+      renderPicker();
+      setTimeout(() => $("search").focus(), 0);
+    }
     function renderPicker() {
+      if (state.pickerMode === "team") {
+        renderTeamPicker();
+        return;
+      }
+      $("modal").querySelector("h3").textContent = "Select Champion";
+      $("modal").querySelector(".pickerHead .hint").textContent = "Search by champion name or role.";
+      $("search").placeholder = "Search champions...";
       const selected = selectedIds();
       const q = state.query.trim().toLowerCase();
       const list = champions.filter(c => {
@@ -894,6 +1081,28 @@
         $("modal").classList.remove("open"); state.calculated = false; render();
       });
     }
+    function renderTeamPicker() {
+      $("modal").querySelector("h3").textContent = "Select Team";
+      $("modal").querySelector(".pickerHead .hint").textContent = "Search by team name or code.";
+      $("search").placeholder = "Search teams...";
+      const q = state.query.trim().toLowerCase();
+      const teams = state.teamIndex.teams.filter(team => {
+        const haystack = `${team.name || ""} ${team.code || ""} ${team.team || ""}`.toLowerCase();
+        return !q || haystack.includes(q);
+      });
+      $("champGrid").innerHTML = teams.length ? teams.map(team => `
+        <button class="champ" data-team="${escapeHtml(team.file)}">
+          ${team.logo ? `<img src="${escapeHtml(team.logo)}" alt="">` : `<span></span>`}
+          <span><strong>${escapeHtml(team.name || team.team)}</strong><span>${escapeHtml(team.code || team.team || "")}</span></span>
+        </button>
+      `).join("") : `<div class="hint">No teams found.</div>`;
+      document.querySelectorAll("[data-team]").forEach(btn => btn.onclick = () => {
+        const team = state.teamIndex.teams.find(row => row.file === btn.dataset.team);
+        if (!team || !state.active?.side) return;
+        $("modal").classList.remove("open");
+        selectTeam(state.active.side, team);
+      });
+    }
     $("search").oninput = e => { state.query = e.target.value; renderPicker(); };
     $("close").onclick = () => $("modal").classList.remove("open");
     $("modal").onclick = e => { if (e.target.id === "modal") $("modal").classList.remove("open"); };
@@ -914,6 +1123,8 @@
     };
     $("calc").onclick = () => { state.calculated = true; renderPredictionPanels(); renderCompositionAnalysis("blue"); renderCompositionAnalysis("red"); };
     render();
+    loadTeamIndex();
+    loadPlayerMatchups();
     loadChampionRoster();
     loadChampionCcProfiles();
     loadChampionMeta();
