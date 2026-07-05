@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -46002,7 +46002,7 @@
   },
   "116520885021783284": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "116520885021783284",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46139,7 +46139,7 @@
   },
   "115570934355614569": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "115570934355614569",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46342,29 +46342,210 @@
   },
   "115570934355614557": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "115570934355614557",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115570934355614557",
-      "league": "",
+      "league": "MSI",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "100205573496804586",
+          "name": "Hanwha Life Esports",
+          "code": "HLE",
+          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "98767991926151025",
+          "name": "G2 Esports",
+          "code": "G2",
+          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570934355614558",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614559",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614560",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614561",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614562",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
+          "red": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116520885021783340": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "116520885021783340",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -46501,7 +46682,7 @@
   },
   "116520885021455556": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T08:16:33.756Z",
+    "checked_at": "2026-07-05T10:29:29.682Z",
     "event_id": "116520885021455556",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -46611,6 +46792,280 @@
             "team_id": "107581765633427097",
             "team_name": "FUEGO",
             "team_code": "FUE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520885021783288": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-05T10:29:29.682Z",
+    "event_id": "116520885021783288",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520885021783288",
+      "league": "LRN",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "114194060984264362",
+          "name": "SDM Tigres",
+          "code": "SDM",
+          "image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "114194110230896602",
+          "name": "Lyon Academy",
+          "code": "LYON",
+          "image": "http://static.lolesports.com/teams/1771401158736_FULL_COLOR_FOR_DARK_BG-1.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520885021783289",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114194060984264362",
+            "team_name": "SDM Tigres",
+            "team_code": "SDM"
+          },
+          "red": {
+            "team_id": "114194110230896602",
+            "team_name": "Lyon Academy",
+            "team_code": "LYON"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520885021783290",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114194110230896602",
+            "team_name": "Lyon Academy",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "114194060984264362",
+            "team_name": "SDM Tigres",
+            "team_code": "SDM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520885021783291",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114194060984264362",
+            "team_name": "SDM Tigres",
+            "team_code": "SDM"
+          },
+          "red": {
+            "team_id": "114194110230896602",
+            "team_name": "Lyon Academy",
+            "team_code": "LYON"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520885021783328": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-05T10:29:29.682Z",
+    "event_id": "116520885021783328",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520885021783328",
+      "league": "LRN",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "116775262063798569",
+          "name": "Kits Esports",
+          "code": "KITS",
+          "image": "http://static.lolesports.com/teams/1781849092985_KITSLOGONEGRO.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116056892206058175",
+          "name": "NCG Esports",
+          "code": "NCG",
+          "image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520885021783329",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116775262063798569",
+            "team_name": "Kits Esports",
+            "team_code": "KITS"
+          },
+          "red": {
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520885021783330",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
+          },
+          "red": {
+            "team_id": "116775262063798569",
+            "team_name": "Kits Esports",
+            "team_code": "KITS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520885021783331",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116775262063798569",
+            "team_name": "Kits Esports",
+            "team_code": "KITS"
+          },
+          "red": {
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
           },
           "winner": "",
           "live": {
