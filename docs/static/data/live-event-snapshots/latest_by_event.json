@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -46545,7 +46545,7 @@
   },
   "116520885021783340": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "116520885021783340",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46682,7 +46682,7 @@
   },
   "116520885021455556": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "116520885021455556",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46819,7 +46819,7 @@
   },
   "116520885021783288": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "116520885021783288",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46956,29 +46956,144 @@
   },
   "116520885021783328": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "116520885021783328",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520885021783328",
-      "league": "",
+      "league": "LRN",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "3",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "116056892206058175",
+          "name": "NCG Esports",
+          "code": "NCG",
+          "image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "116775262063798569",
+          "name": "Kits Esports",
+          "code": "KITS",
+          "image": "http://static.lolesports.com/teams/1781849092985_KITSLOGONEGRO.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520885021783329",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
+          },
+          "red": {
+            "team_id": "116775262063798569",
+            "team_name": "Kits Esports",
+            "team_code": "KITS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520885021783330",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116775262063798569",
+            "team_name": "Kits Esports",
+            "team_code": "KITS"
+          },
+          "red": {
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520885021783331",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116775262063798569",
+            "team_name": "Kits Esports",
+            "team_code": "KITS"
+          },
+          "red": {
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "115570934355614551": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "115570934355614551",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -47181,7 +47296,7 @@
   },
   "115570934355614563": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-05T23:41:43.347Z",
+    "checked_at": "2026-07-06T01:22:25.416Z",
     "event_id": "115570934355614563",
     "status": "unstarted",
     "source": "cloudflare_live_event",
