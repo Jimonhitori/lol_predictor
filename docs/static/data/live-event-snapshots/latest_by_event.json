@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -46545,7 +46545,7 @@
   },
   "116520885021783340": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "116520885021783340",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46682,7 +46682,7 @@
   },
   "116520885021455556": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "116520885021455556",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46819,7 +46819,7 @@
   },
   "116520885021783288": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "116520885021783288",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46956,7 +46956,7 @@
   },
   "116520885021783328": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "116520885021783328",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47093,9 +47093,9 @@
   },
   "115570934355614551": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "115570934355614551",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -47105,7 +47105,7 @@
       "league_group": "",
       "region": "",
       "best_of": "5",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
@@ -47113,7 +47113,7 @@
           "name": "BILIBILI GAMING",
           "code": "BLG",
           "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
-          "game_wins": "0"
+          "game_wins": "3"
         },
         {
           "id": "99566405941863385",
@@ -47127,7 +47127,7 @@
         {
           "id": "115570934355614552",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "99566404853854212",
             "team_name": "BILIBILI GAMING",
@@ -47140,13 +47140,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -47160,7 +47160,7 @@
         {
           "id": "115570934355614553",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "99566404853854212",
             "team_name": "BILIBILI GAMING",
@@ -47173,13 +47173,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -47193,26 +47193,26 @@
         {
           "id": "115570934355614554",
           "number": 3,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
-          },
-          "red": {
             "team_id": "99566404853854212",
             "team_name": "BILIBILI GAMING",
             "team_code": "BLG"
           },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -47226,7 +47226,7 @@
         {
           "id": "115570934355614555",
           "number": 4,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "99566404853854212",
             "team_name": "BILIBILI GAMING",
@@ -47239,7 +47239,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -47259,7 +47259,7 @@
         {
           "id": "115570934355614556",
           "number": 5,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
             "team_id": "99566405941863385",
             "team_name": "LYON",
@@ -47272,7 +47272,7 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -47296,205 +47296,24 @@
   },
   "115570934355614563": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T01:22:25.416Z",
+    "checked_at": "2026-07-06T05:42:03.229Z",
     "event_id": "115570934355614563",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115570934355614563",
-      "league": "MSI",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "98767991853197861",
-          "name": "T1",
-          "code": "T1",
-          "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "100205576309502431",
-          "name": "FURIA",
-          "code": "FUR",
-          "image": "http://static.lolesports.com/teams/FURIA---black.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "115570934355614564",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98767991853197861",
-            "team_name": "T1",
-            "team_code": "T1"
-          },
-          "red": {
-            "team_id": "100205576309502431",
-            "team_name": "FURIA",
-            "team_code": "FUR"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614565",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98767991853197861",
-            "team_name": "T1",
-            "team_code": "T1"
-          },
-          "red": {
-            "team_id": "100205576309502431",
-            "team_name": "FURIA",
-            "team_code": "FUR"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614566",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "100205576309502431",
-            "team_name": "FURIA",
-            "team_code": "FUR"
-          },
-          "red": {
-            "team_id": "98767991853197861",
-            "team_name": "T1",
-            "team_code": "T1"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614567",
-          "number": 4,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "98767991853197861",
-            "team_name": "T1",
-            "team_code": "T1"
-          },
-          "red": {
-            "team_id": "100205576309502431",
-            "team_name": "FURIA",
-            "team_code": "FUR"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614568",
-          "number": 5,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "100205576309502431",
-            "team_name": "FURIA",
-            "team_code": "FUR"
-          },
-          "red": {
-            "team_id": "98767991853197861",
-            "team_name": "T1",
-            "team_code": "T1"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   }
 }
