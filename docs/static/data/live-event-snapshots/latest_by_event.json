@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -46682,7 +46682,7 @@
   },
   "116520885021455556": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "116520885021455556",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46819,7 +46819,7 @@
   },
   "116520885021783288": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "116520885021783288",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -46956,7 +46956,7 @@
   },
   "116520885021783328": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "116520885021783328",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47093,7 +47093,7 @@
   },
   "115570934355614551": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "115570934355614551",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47296,24 +47296,205 @@
   },
   "115570934355614563": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-06T05:42:03.229Z",
+    "checked_at": "2026-07-06T09:43:22.239Z",
     "event_id": "115570934355614563",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115570934355614563",
-      "league": "",
+      "league": "MSI",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "98767991853197861",
+          "name": "T1",
+          "code": "T1",
+          "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "100205576309502431",
+          "name": "FURIA",
+          "code": "FUR",
+          "image": "http://static.lolesports.com/teams/FURIA---black.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "115570934355614564",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614565",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614566",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614567",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "115570934355614568",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "red": {
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   }
 }
