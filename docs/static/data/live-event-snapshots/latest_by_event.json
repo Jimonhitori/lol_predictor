@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47603,7 +47603,7 @@
   },
   "116697716933016537": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116697716933016537",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47707,7 +47707,7 @@
   },
   "116713163972559014": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116713163972559014",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47778,7 +47778,7 @@
   },
   "116713163972559032": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116713163972559032",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47849,31 +47849,80 @@
   },
   "116713163972559074": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116713163972559074",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559074",
-      "league": "",
+      "league": "Prime League",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "1",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "109642680932009857",
+          "name": "G2 NORD",
+          "code": "G2N",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "107456355516438414",
+          "name": "Eintracht Frankfurt",
+          "code": "SGE",
+          "image": "http://static.lolesports.com/teams/1674832854605_SGE.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559075",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "red": {
+            "team_id": "107456355516438414",
+            "team_name": "Eintracht Frankfurt",
+            "team_code": "SGE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116713163972559000": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116713163972559000",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -47883,7 +47932,7 @@
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
@@ -47898,14 +47947,14 @@
           "name": "Berlin International Gaming",
           "code": "BIG",
           "image": "http://static.lolesports.com/teams/1674839453682_PRM_BIG-MonochromeLightBG.png",
-          "game_wins": "0"
+          "game_wins": "1"
         }
       ],
       "games": [
         {
           "id": "116713163972559001",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "111726828176554327",
             "team_name": "Rossmann Centaurs",
@@ -47918,13 +47967,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -47942,78 +47991,29 @@
   },
   "116713163972559078": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "116713163972559078",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559078",
-      "league": "Prime League",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "1",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "109642680932009857",
-          "name": "G2 NORD",
-          "code": "G2N",
-          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "109671612150787863",
-          "name": "Kaufland Hangry Knights",
-          "code": "KHK",
-          "image": "http://static.lolesports.com/teams/1734307355268_KHK.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116713163972559079",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109642680932009857",
-            "team_name": "G2 NORD",
-            "team_code": "G2N"
-          },
-          "red": {
-            "team_id": "109671612150787863",
-            "team_name": "Kaufland Hangry Knights",
-            "team_code": "KHK"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "115570934355614587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T17:46:22.355Z",
+    "checked_at": "2026-07-07T19:26:20.433Z",
     "event_id": "115570934355614587",
     "status": "unstarted",
     "source": "cloudflare_live_event",
