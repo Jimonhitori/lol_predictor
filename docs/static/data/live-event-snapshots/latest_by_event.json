@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,111 +47499,29 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116697716933082094",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116697716933082094",
-      "league": "Hellenic Legends League",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "2",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "102787200149928963",
-          "name": "WLGaming",
-          "code": "WLG",
-          "image": "http://static.lolesports.com/teams/WLGlogo.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "109704816337374156",
-          "name": "TheParadOx Invaders",
-          "code": "TPX",
-          "image": "http://static.lolesports.com/teams/1773838306977_TpOXRed_Gold-removebg-preview.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116697716933082095",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "102787200149928963",
-            "team_name": "WLGaming",
-            "team_code": "WLG"
-          },
-          "red": {
-            "team_id": "109704816337374156",
-            "team_name": "TheParadOx Invaders",
-            "team_code": "TPX"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116697716933082096",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "109704816337374156",
-            "team_name": "TheParadOx Invaders",
-            "team_code": "TPX"
-          },
-          "red": {
-            "team_id": "102787200149928963",
-            "team_name": "WLGaming",
-            "team_code": "WLG"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116697716933016537": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116697716933016537",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -47707,7 +47625,7 @@
   },
   "116713163972559014": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116713163972559014",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -47778,7 +47696,7 @@
   },
   "116713163972559032": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116713163972559032",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -47849,7 +47767,7 @@
   },
   "116713163972559074": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116713163972559074",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -47920,7 +47838,7 @@
   },
   "116713163972559000": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116713163972559000",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -47991,7 +47909,7 @@
   },
   "116713163972559078": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-07T10:41:25.290Z",
+    "checked_at": "2026-07-07T13:04:11.380Z",
     "event_id": "116713163972559078",
     "status": "unstarted",
     "source": "cloudflare_live_event",
