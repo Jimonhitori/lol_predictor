@@ -936,7 +936,9 @@ function visibleDateOptions(options) {
     : options.findIndex(option => option.key === localDateKey(new Date().toISOString()));
   const center = selected >= 0 ? selected : 0;
   const start = Math.max(0, Math.min(center - 1, options.length - VISIBLE_DATE_TAB_COUNT));
-  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), state.selectedMatchDate);
+  const selectedKey = state.selectedMatchDate || options[center]?.key || today;
+  const anchorKey = centeredDateAnchorKey(selectedKey, today);
+  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), anchorKey);
 }
 
 function fillDateOptions(options, anchorKey) {
@@ -950,6 +952,13 @@ function fillDateOptions(options, anchorKey) {
     cursor = addLocalDays(cursor, 1);
   }
   return result;
+}
+
+function centeredDateAnchorKey(selectedKey, todayKey) {
+  if (!selectedKey || selectedKey <= todayKey) return todayKey;
+  const selectedDate = dateFromLocalKey(selectedKey);
+  if (Number.isNaN(selectedDate.getTime())) return todayKey;
+  return localDateKey(addLocalDays(selectedDate, -Math.floor(VISIBLE_DATE_TAB_COUNT / 2)).toISOString());
 }
 
 function filteredMatches() {
@@ -2262,6 +2271,7 @@ if ($('matches')) {
   if ($('championRole')) $('championRole').addEventListener('change', () => state.summary && renderChampionMeta(state.summary));
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
+    state.userSelectedMatchDate = true;
     refreshStaticMatchStatuses().finally(() => {
       renderDateTabs(state.allMatches);
       renderMatches();

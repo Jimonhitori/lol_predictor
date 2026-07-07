@@ -1,768 +1,329 @@
 {
-  "source": "analyzer_schedule",
+  "source": "lolesports_api",
   "matches": [
     {
-      "id": "115548128962971923",
-      "league": "LCK",
+      "id": "115570934355614551",
+      "league": "MSI",
       "league_group": "major",
-      "region": "korea",
-      "block_name": "",
-      "best_of": "3",
+      "region": "international",
+      "start_time": "2026-07-06T03:00:00Z",
       "status": "completed",
-      "teams": [
-        {
-          "id": "100725845022060229",
-          "name": "BNK FEARX",
-          "code": "BFX",
-          "image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "100205573495116443",
-          "name": "Gen.G Esports",
-          "code": "GEN",
-          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-          "game_wins": "2"
-        }
-      ],
-      "games": [
-        {
-          "id": "115548128962971924",
-          "number": 1,
-          "state": "completed",
-          "blue": {
-            "team_id": "100725845022060229",
-            "team_name": "BNK FEARX",
-            "team_code": "BFX"
-          },
-          "red": {
-            "team_id": "100205573495116443",
-            "team_name": "Gen.G Esports",
-            "team_code": "GEN"
-          },
-          "live": {}
-        },
-        {
-          "id": "115548128962971925",
-          "number": 2,
-          "state": "completed",
-          "blue": {
-            "team_id": "100725845022060229",
-            "team_name": "BNK FEARX",
-            "team_code": "BFX"
-          },
-          "red": {
-            "team_id": "100205573495116443",
-            "team_name": "Gen.G Esports",
-            "team_code": "GEN"
-          },
-          "live": {}
-        },
-        {
-          "id": "115548128962971926",
-          "number": 3,
-          "state": "unneeded",
-          "blue": {
-            "team_id": "100205573495116443",
-            "team_name": "Gen.G Esports",
-            "team_code": "GEN"
-          },
-          "red": {
-            "team_id": "100725845022060229",
-            "team_name": "BNK FEARX",
-            "team_code": "BFX"
-          },
-          "live": {}
-        }
-      ],
-      "source": "lolesports_api",
-      "start_time": "2026-05-14T08:00:00Z"
-    },
-    {
-      "id": "115615924499588641",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "block_name": "",
-      "best_of": "3",
-      "status": "completed",
-      "teams": [
-        {
-          "id": "99566404850008779",
-          "name": "Suzhou LNG Esports",
-          "code": "LNG",
-          "image": "http://static.lolesports.com/teams/1717487697003_LNGlogo.png",
-          "game_wins": "2"
-        },
-        {
-          "id": "99566404846951820",
-          "name": "LGD GAMING",
-          "code": "LGD",
-          "image": "http://static.lolesports.com/teams/LGD-FullonDark-1.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "115615924499588642",
-          "number": 1,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404850008779",
-            "team_name": "Suzhou LNG Esports",
-            "team_code": "LNG"
-          },
-          "red": {
-            "team_id": "99566404846951820",
-            "team_name": "LGD GAMING",
-            "team_code": "LGD"
-          },
-          "live": {}
-        },
-        {
-          "id": "115615926685761093",
-          "number": 2,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404850008779",
-            "team_name": "Suzhou LNG Esports",
-            "team_code": "LNG"
-          },
-          "red": {
-            "team_id": "99566404846951820",
-            "team_name": "LGD GAMING",
-            "team_code": "LGD"
-          },
-          "live": {}
-        },
-        {
-          "id": "115615926685761094",
-          "number": 3,
-          "state": "unneeded",
-          "blue": {
-            "team_id": "99566404850008779",
-            "team_name": "Suzhou LNG Esports",
-            "team_code": "LNG"
-          },
-          "red": {
-            "team_id": "99566404846951820",
-            "team_name": "LGD GAMING",
-            "team_code": "LGD"
-          },
-          "live": {}
-        }
-      ],
-      "source": "lolesports_api",
-      "start_time": "2026-05-14T09:00:00Z"
-    },
-    {
-      "id": "115548128963037555",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "block_name": "",
-      "best_of": "3",
-      "status": "completed",
-      "teams": [
-        {
-          "id": "99566404585387054",
-          "name": "KIWOOM DRX",
-          "code": "KRX",
-          "image": "http://static.lolesports.com/teams/1774247803537_horizontal_EN_Wh.png",
-          "game_wins": "1"
-        },
-        {
-          "id": "99566404579461230",
-          "name": "kt Rolster",
-          "code": "KT",
-          "image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-          "game_wins": "2"
-        }
-      ],
-      "games": [
-        {
-          "id": "115548128963037556",
-          "number": 1,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404585387054",
-            "team_name": "KIWOOM DRX",
-            "team_code": "KRX"
-          },
-          "red": {
-            "team_id": "99566404579461230",
-            "team_name": "kt Rolster",
-            "team_code": "KT"
-          },
-          "live": {}
-        },
-        {
-          "id": "115548128963037557",
-          "number": 2,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404579461230",
-            "team_name": "kt Rolster",
-            "team_code": "KT"
-          },
-          "red": {
-            "team_id": "99566404585387054",
-            "team_name": "KIWOOM DRX",
-            "team_code": "KRX"
-          },
-          "live": {}
-        },
-        {
-          "id": "115548128963037558",
-          "number": 3,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404585387054",
-            "team_name": "KIWOOM DRX",
-            "team_code": "KRX"
-          },
-          "red": {
-            "team_id": "99566404579461230",
-            "team_name": "kt Rolster",
-            "team_code": "KT"
-          },
-          "live": {}
-        }
-      ],
-      "source": "lolesports_api",
-      "start_time": "2026-05-14T10:00:00Z"
-    },
-    {
-      "id": "115615926677896679",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "block_name": "",
-      "best_of": "3",
-      "status": "completed",
-      "teams": [
-        {
-          "id": "99566404852189289",
-          "name": "Beijing JDG Esports",
-          "code": "JDG",
-          "image": "http://static.lolesports.com/teams/1627457924722_29.png",
-          "game_wins": "1"
-        },
-        {
-          "id": "99566404853058754",
-          "name": "WeiboGaming",
-          "code": "WBG",
-          "image": "http://static.lolesports.com/teams/1641202879910_3.png",
-          "game_wins": "2"
-        }
-      ],
-      "games": [
-        {
-          "id": "115615926677896680",
-          "number": 1,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404852189289",
-            "team_name": "Beijing JDG Esports",
-            "team_code": "JDG"
-          },
-          "red": {
-            "team_id": "99566404853058754",
-            "team_name": "WeiboGaming",
-            "team_code": "WBG"
-          },
-          "live": {}
-        },
-        {
-          "id": "115615926677896681",
-          "number": 2,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404853058754",
-            "team_name": "WeiboGaming",
-            "team_code": "WBG"
-          },
-          "red": {
-            "team_id": "99566404852189289",
-            "team_name": "Beijing JDG Esports",
-            "team_code": "JDG"
-          },
-          "live": {}
-        },
-        {
-          "id": "115615926677896682",
-          "number": 3,
-          "state": "completed",
-          "blue": {
-            "team_id": "99566404852189289",
-            "team_name": "Beijing JDG Esports",
-            "team_code": "JDG"
-          },
-          "red": {
-            "team_id": "99566404853058754",
-            "team_name": "WeiboGaming",
-            "team_code": "WBG"
-          },
-          "live": {}
-        }
-      ],
-      "source": "lolesports_api",
-      "start_time": "2026-05-14T11:00:00Z"
-    },
-    {
-      "id": "115548128962971867",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "block_name": "",
-      "best_of": "3",
-      "status": "inProgress",
-      "teams": [
-        {
-          "id": "100205573496804586",
-          "name": "Hanwha Life Esports",
-          "code": "HLE",
-          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-          "game_wins": "1"
-        },
-        {
-          "id": "100725845018863243",
-          "name": "Dplus KIA",
-          "code": "DK",
-          "image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "115548128962971868",
-          "number": 1,
-          "state": "completed",
-          "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
-          },
-          "red": {
-            "team_id": "100725845018863243",
-            "team_name": "Dplus KIA",
-            "team_code": "DK"
-          },
-          "live": {}
-        },
-        {
-          "id": "115548128962971869",
-          "number": 2,
-          "state": "inProgress",
-          "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
-          },
-          "red": {
-            "team_id": "100725845018863243",
-            "team_name": "Dplus KIA",
-            "team_code": "DK"
-          },
-          "live": {}
-        },
-        {
-          "id": "115548128962971870",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "100725845018863243",
-            "team_name": "Dplus KIA",
-            "team_code": "DK"
-          },
-          "red": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
-          },
-          "live": {}
-        }
-      ],
-      "source": "lolesports_api",
-      "start_time": "2026-05-15T08:00:00Z"
-    },
-    {
-      "id": "115548128962971895",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-16T08:00:00Z",
-      "status": "completed",
-      "blue_team": "Gen.G Esports",
-      "red_team": "T1",
-      "blue_code": "GEN",
-      "red_code": "T1",
-      "blue_image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-      "red_image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
-      "blue_score": "1",
-      "red_score": "2",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115570683341249987",
-      "league": "LCP",
-      "league_group": "major",
-      "region": "pacific",
-      "start_time": "2026-05-16T09:00:00Z",
-      "status": "completed",
-      "blue_team": "Ground Zero Gaming",
-      "red_team": "Relove Deep Cross Gaming",
-      "blue_code": "GZ",
-      "red_code": "DCG",
-      "blue_image": "http://static.lolesports.com/teams/1766395585595_LCP_TEAMLogo_GZ_Full_B.png",
-      "red_image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
-      "blue_score": "1",
-      "red_score": "2",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115615924499588637",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "start_time": "2026-05-16T09:00:00Z",
-      "status": "completed",
-      "blue_team": "THUNDER TALK GAMING",
-      "red_team": "EDWARD GAMING",
-      "blue_code": "TT",
-      "red_code": "EDG",
-      "blue_image": "http://static.lolesports.com/teams/TT-FullonDark.png",
-      "red_image": "http://static.lolesports.com/teams/1631819297476_edg-2021-worlds.png",
-      "blue_score": "2",
-      "red_score": "1",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971935",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-16T10:00:00Z",
-      "status": "completed",
-      "blue_team": "BNK FEARX",
-      "red_team": "NONGSHIM RED FORCE",
-      "blue_code": "BFX",
-      "red_code": "NS",
-      "blue_image": "http://static.lolesports.com/teams/1734691810721_BFXfullcolorfordarkbg.png",
-      "red_image": "http://static.lolesports.com/teams/NSFullonDark.png",
-      "blue_score": "2",
+      "blue_team": "BILIBILI GAMING",
+      "red_team": "LYON",
+      "blue_code": "BLG",
+      "red_code": "LYON",
+      "blue_image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
+      "red_image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+      "blue_score": "3",
       "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115615926677896683",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "start_time": "2026-05-16T11:00:00Z",
-      "status": "completed",
-      "blue_team": "Xi'an Team WE",
-      "red_team": "Shenzhen NINJAS IN PYJAMAS",
-      "blue_code": "WE",
-      "red_code": "NIP",
-      "blue_image": "http://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
-      "red_image": "http://static.lolesports.com/teams/1673425724696_NIP-Symbol-RGB-NeonYellow1.png",
-      "blue_score": "1",
-      "red_score": "2",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115570683341446639",
-      "league": "LCP",
-      "league_group": "major",
-      "region": "pacific",
-      "start_time": "2026-05-16T11:30:00Z",
-      "status": "completed",
-      "blue_team": "Fukuoka SoftBank HAWKS gaming",
-      "red_team": "MVK Esports",
-      "blue_code": "SHG",
-      "red_code": "MVK",
-      "blue_image": "http://static.lolesports.com/teams/1725885083108_SHG_White_Main.png",
-      "red_image": "http://static.lolesports.com/teams/1767089709161_White_Logo.png",
-      "blue_score": "1",
-      "red_score": "2",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115565670260181839",
-      "league": "CBLOL",
-      "league_group": "major",
-      "region": "americas",
-      "start_time": "2026-05-16T16:00:00Z",
-      "status": "completed",
-      "blue_team": "Fluxo",
-      "red_team": "RED Canids Kalunga",
-      "blue_code": "FX",
-      "red_code": "RED",
-      "blue_image": "http://static.lolesports.com/teams/1766161431111_LogoColorida.png",
-      "red_image": "http://static.lolesports.com/teams/1631820575924_red-2021-worlds.png",
-      "blue_score": "1",
-      "red_score": "3",
       "best_of": "5",
       "source": "lolesports_api"
     },
     {
-      "id": "115564793879403688",
-      "league": "LCS",
+      "id": "115570934355614563",
+      "league": "MSI",
       "league_group": "major",
-      "region": "americas",
-      "start_time": "2026-05-16T20:00:00Z",
+      "region": "international",
+      "start_time": "2026-07-06T08:00:00Z",
       "status": "completed",
-      "blue_team": "Cloud9 Kia",
-      "red_team": "Team Liquid Alienware",
-      "blue_code": "C9",
-      "red_code": "TLAW",
-      "blue_image": "http://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png",
-      "red_image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
-      "blue_score": "2",
+      "blue_team": "T1",
+      "red_team": "FURIA",
+      "blue_code": "T1",
+      "red_code": "FUR",
+      "blue_image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+      "red_image": "http://static.lolesports.com/teams/FURIA---black.png",
+      "blue_score": "3",
+      "red_score": "0",
+      "best_of": "5",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115570934355614587",
+      "league": "MSI",
+      "league_group": "major",
+      "region": "international",
+      "start_time": "2026-07-08T03:00:00Z",
+      "status": "unstarted",
+      "blue_team": "LYON",
+      "red_team": "Team Secret Whales",
+      "blue_code": "LYON",
+      "red_code": "TSW",
+      "blue_image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+      "red_image": "http://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "5",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115570934355614581",
+      "league": "MSI",
+      "league_group": "major",
+      "region": "international",
+      "start_time": "2026-07-08T08:00:00Z",
+      "status": "unstarted",
+      "blue_team": "G2 Esports",
+      "red_team": "T1",
+      "blue_code": "G2",
+      "red_code": "T1",
+      "blue_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+      "red_image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "5",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115570934355614575",
+      "league": "MSI",
+      "league_group": "major",
+      "region": "international",
+      "start_time": "2026-07-09T08:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Hanwha Life Esports",
+      "red_team": "BILIBILI GAMING",
+      "blue_code": "HLE",
+      "red_code": "BLG",
+      "blue_image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+      "red_image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "5",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115570934355614593",
+      "league": "MSI",
+      "league_group": "major",
+      "region": "international",
+      "start_time": "2026-07-10T08:00:00Z",
+      "status": "unstarted",
+      "blue_team": "TBD",
+      "red_team": "TBD",
+      "blue_code": "TBD",
+      "red_code": "TBD",
+      "blue_image": "https://static.lolesports.com/teams/team-tbd.png",
+      "red_image": "https://static.lolesports.com/teams/team-tbd.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115570934355614599",
+      "league": "MSI",
+      "league_group": "major",
+      "region": "international",
+      "start_time": "2026-07-11T08:00:00Z",
+      "status": "unstarted",
+      "blue_team": "TBD",
+      "red_team": "TBD",
+      "blue_code": "TBD",
+      "red_code": "TBD",
+      "blue_image": "https://static.lolesports.com/teams/team-tbd.png",
+      "red_image": "https://static.lolesports.com/teams/team-tbd.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115570934355614605",
+      "league": "MSI",
+      "league_group": "major",
+      "region": "international",
+      "start_time": "2026-07-12T06:00:00Z",
+      "status": "unstarted",
+      "blue_team": "TBD",
+      "red_team": "TBD",
+      "blue_code": "TBD",
+      "red_code": "TBD",
+      "blue_image": "https://static.lolesports.com/teams/team-tbd.png",
+      "red_image": "https://static.lolesports.com/teams/team-tbd.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115548681803406275",
+      "league": "LEC",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-07-24T14:00:00Z",
+      "status": "unstarted",
+      "blue_team": "G2 Esports",
+      "red_team": "Movistar KOI",
+      "blue_code": "G2",
+      "red_code": "MKOI",
+      "blue_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+      "red_image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+      "blue_score": "0",
       "red_score": "0",
       "best_of": "3",
       "source": "lolesports_api"
     },
     {
-      "id": "115564793879403720",
+      "id": "115548681803406199",
+      "league": "LEC",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-07-24T17:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Team Vitality",
+      "red_team": "Karmine Corp",
+      "blue_code": "VIT",
+      "red_code": "KC",
+      "blue_image": "http://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
+      "red_image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115548681803406203",
+      "league": "LEC",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-07-25T14:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Team Vitality",
+      "red_team": "G2 Esports",
+      "blue_code": "VIT",
+      "red_code": "G2",
+      "blue_image": "http://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
+      "red_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115548681803406271",
+      "league": "LEC",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-07-25T17:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Karmine Corp",
+      "red_team": "Movistar KOI",
+      "blue_code": "KC",
+      "red_code": "MKOI",
+      "blue_image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+      "red_image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115564797164345551",
       "league": "LCS",
       "league_group": "major",
       "region": "americas",
-      "start_time": "2026-05-16T23:00:00Z",
-      "status": "completed",
+      "start_time": "2026-07-25T20:00:00Z",
+      "status": "unstarted",
+      "blue_team": "FlyQuest",
+      "red_team": "LYON",
+      "blue_code": "FLY",
+      "red_code": "LYON",
+      "blue_image": "http://static.lolesports.com/teams/flyquest-new-on-dark.png",
+      "red_image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115564797163821179",
+      "league": "LCS",
+      "league_group": "major",
+      "region": "americas",
+      "start_time": "2026-07-25T23:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Dignitas",
+      "red_team": "Sentinels",
+      "blue_code": "DIG",
+      "red_code": "SEN",
+      "blue_image": "http://static.lolesports.com/teams/DIG-FullonDark.png",
+      "red_image": "http://static.lolesports.com/teams/1767769784669_Sentinels_2020_Icon.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115548681803406191",
+      "league": "LEC",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-07-26T14:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Movistar KOI",
+      "red_team": "Team Vitality",
+      "blue_code": "MKOI",
+      "red_code": "VIT",
+      "blue_image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+      "red_image": "http://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115548681803406287",
+      "league": "LEC",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-07-26T17:00:00Z",
+      "status": "unstarted",
+      "blue_team": "G2 Esports",
+      "red_team": "Karmine Corp",
+      "blue_code": "G2",
+      "red_code": "KC",
+      "blue_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+      "red_image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115564797163886759",
+      "league": "LCS",
+      "league_group": "major",
+      "region": "americas",
+      "start_time": "2026-07-26T20:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Team Liquid Alienware",
+      "red_team": "Cloud9 Kia",
+      "blue_code": "TLAW",
+      "red_code": "C9",
+      "blue_image": "http://static.lolesports.com/teams/1769357207762_TLAlienware_Minimal_Bug-White.png",
+      "red_image": "http://static.lolesports.com/teams/1736924120254_C9Kia_IconBlue_Transparent_2000x2000.png",
+      "blue_score": "0",
+      "red_score": "0",
+      "best_of": "3",
+      "source": "lolesports_api"
+    },
+    {
+      "id": "115564797163952327",
+      "league": "LCS",
+      "league_group": "major",
+      "region": "americas",
+      "start_time": "2026-07-26T23:00:00Z",
+      "status": "unstarted",
       "blue_team": "Shopify Rebellion",
       "red_team": "Disguised",
       "blue_code": "SR",
       "red_code": "DSG",
       "blue_image": "http://static.lolesports.com/teams/1701424227458_Teams204_Shopify_1632869404072.png",
       "red_image": "http://static.lolesports.com/teams/1731496922454_Disguised-Wordmark-Yellow-Main.png",
-      "blue_score": "2",
+      "blue_score": "0",
       "red_score": "0",
       "best_of": "3",
       "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971871",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-17T08:00:00Z",
-      "status": "inProgress",
-      "blue_team": "kt Rolster",
-      "red_team": "Hanwha Life Esports",
-      "blue_code": "KT",
-      "red_code": "HLE",
-      "blue_image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-      "red_image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-      "blue_score": "1",
-      "red_score": "1",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115570683341249979",
-      "league": "LCP",
-      "league_group": "major",
-      "region": "pacific",
-      "start_time": "2026-05-17T09:00:00Z",
-      "status": "inProgress",
-      "blue_team": "DetonatioN FocusMe",
-      "red_team": "Team Secret Whales",
-      "blue_code": "DFM",
-      "red_code": "TSW",
-      "blue_image": "http://static.lolesports.com/teams/1673415140442_dfm.png",
-      "red_image": "http://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
-      "blue_score": "0",
-      "red_score": "1",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115615926677896647",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "start_time": "2026-05-17T09:00:00Z",
-      "status": "inProgress",
-      "blue_team": "Beijing JDG Esports",
-      "red_team": "Invictus Gaming",
-      "blue_code": "JDG",
-      "red_code": "IG",
-      "blue_image": "http://static.lolesports.com/teams/1627457924722_29.png",
-      "red_image": "http://static.lolesports.com/teams/1634762917340_300px-Invictus_Gaming_logo.png",
-      "blue_score": "0",
-      "red_score": "1",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115616219464541895",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "start_time": "2026-05-24T06:00:00Z",
-      "status": "completed",
-      "blue_team": "Shenzhen NINJAS IN PYJAMAS",
-      "red_team": "EDWARD GAMING",
-      "blue_code": "NIP",
-      "red_code": "EDG",
-      "blue_image": "https://static.lolesports.com/teams/1673425724696_NIP-Symbol-RGB-NeonYellow1.png",
-      "red_image": "https://static.lolesports.com/teams/1631819297476_edg-2021-worlds.png",
-      "blue_score": "2",
-      "red_score": "3",
-      "best_of": "5",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971947",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-24T08:00:00Z",
-      "status": "completed",
-      "blue_team": "Gen.G Esports",
-      "red_team": "DN SOOPers",
-      "blue_code": "GEN",
-      "red_code": "DNS",
-      "blue_image": "https://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-      "red_image": "https://static.lolesports.com/teams/1767340467921_DN_SOOPerslogo_profile.webp",
-      "blue_score": "2",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115570683341512193",
-      "league": "LCP",
-      "league_group": "major",
-      "region": "pacific",
-      "start_time": "2026-05-24T09:00:00Z",
-      "status": "completed",
-      "blue_team": "Fukuoka SoftBank HAWKS gaming",
-      "red_team": "Relove Deep Cross Gaming",
-      "blue_code": "SHG",
-      "red_code": "DCG",
-      "blue_image": "https://static.lolesports.com/teams/1725885083108_SHG_White_Main.png",
-      "red_image": "https://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
-      "blue_score": "0",
-      "red_score": "3",
-      "best_of": "5",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115616219464541901",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "start_time": "2026-05-24T09:00:00Z",
-      "status": "completed",
-      "blue_team": "WeiboGaming",
-      "red_team": "LGD GAMING",
-      "blue_code": "WBG",
-      "red_code": "LGD",
-      "blue_image": "https://static.lolesports.com/teams/1641202879910_3.png",
-      "red_image": "https://static.lolesports.com/teams/LGD-FullonDark-1.png",
-      "blue_score": "0",
-      "red_score": "1",
-      "best_of": "5",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128962971891",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-05-24T10:00:00Z",
-      "status": "completed",
-      "blue_team": "T1",
-      "red_team": "HANJIN BRION",
-      "blue_code": "T1",
-      "red_code": "BRO",
-      "blue_image": "https://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
-      "red_image": "https://static.lolesports.com/teams/1716454325887_Nowyprojekt.png",
-      "blue_score": "2",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548128963037581",
-      "source_match_id": "115548128963037581",
-      "league": "LCK",
-      "league_group": "major",
-      "region": "korea",
-      "start_time": "2026-06-13T06:00:00Z",
-      "status": "completed",
-      "blue_team": "Gen.G Esports",
-      "red_team": "kt Rolster",
-      "blue_code": "GEN",
-      "red_code": "KT",
-      "blue_image": "https://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-      "red_image": "https://static.lolesports.com/teams/kt_darkbackground.png",
-      "blue_score": "3",
-      "red_score": "0",
-      "best_of": "5",
-      "source": "lolesports_api",
-      "teams": [
-        {
-          "id": "",
-          "name": "kt Rolster",
-          "code": "KR",
-          "image": "http://static.lolesports.com/teams/kt_darkbackground.png",
-          "game_wins": ""
-        },
-        {
-          "id": "",
-          "name": "Gen.G Esports",
-          "code": "GGE",
-          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
-          "game_wins": ""
-        }
-      ],
-      "games": []
-    },
-    {
-      "id": "115616219464607515",
-      "source_match_id": "115616219464607515",
-      "league": "LPL",
-      "league_group": "major",
-      "region": "china",
-      "start_time": "2026-06-13T09:00:00Z",
-      "status": "completed",
-      "blue_team": "BILIBILI GAMING",
-      "red_team": "Xi'an Team WE",
-      "blue_code": "BLG",
-      "red_code": "WE",
-      "blue_image": "https://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
-      "red_image": "https://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
-      "blue_score": "3",
-      "red_score": "2",
-      "best_of": "5",
-      "source": "lolesports_api",
-      "teams": [
-        {
-          "id": "",
-          "name": "BILIBILI GAMING",
-          "code": "BG",
-          "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
-          "game_wins": ""
-        },
-        {
-          "id": "",
-          "name": "Xi'an Team WE",
-          "code": "XATW",
-          "image": "http://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
-          "game_wins": ""
-        }
-      ],
-      "games": []
     }
   ]
 }

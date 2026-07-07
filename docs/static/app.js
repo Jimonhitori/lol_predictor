@@ -737,11 +737,20 @@ function filterMatchesBySelection(matches, filters = currentMatchFilters()) {
   const region = String(filters.region || 'all');
   const displayGroups = leagueGroup === 'major' ? new Set(['major', 'event']) : new Set([leagueGroup]);
   return (matches || []).filter(match => {
-    const matchGroup = String(match?.league_group || 'all');
+    const matchGroup = matchLeagueGroup(match);
     const matchRegion = String(match?.region || 'all');
     return (leagueGroup === 'all' || displayGroups.has(matchGroup))
       && (region === 'all' || matchRegion === region);
   });
+}
+
+function matchLeagueGroup(match) {
+  const explicit = String(match?.league_group || '').trim();
+  if (explicit) return explicit;
+  const league = String(match?.league || '').toUpperCase();
+  if (['MSI', 'WORLDS', 'WLDS'].includes(league)) return 'major';
+  if (['EWC'].includes(league)) return 'event';
+  return 'all';
 }
 
 function hydrateMatchesTeamMeta(matches) {
@@ -1579,7 +1588,9 @@ function visibleDateOptions(options) {
     : options.findIndex(option => option.key === todayDateKey());
   const center = selected >= 0 ? selected : 0;
   const start = Math.max(0, Math.min(center - 1, options.length - VISIBLE_DATE_TAB_COUNT));
-  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), state.selectedMatchDate);
+  const selectedKey = state.selectedMatchDate || options[center]?.key || today;
+  const anchorKey = centeredDateAnchorKey(selectedKey, today);
+  return fillDateOptions(options.slice(start, start + VISIBLE_DATE_TAB_COUNT), anchorKey);
 }
 
 function fillDateOptions(options, anchorKey) {
@@ -1593,6 +1604,13 @@ function fillDateOptions(options, anchorKey) {
     cursor = addLocalDays(cursor, 1);
   }
   return result;
+}
+
+function centeredDateAnchorKey(selectedKey, todayKey) {
+  if (!selectedKey || selectedKey <= todayKey) return todayKey;
+  const selectedDate = dateFromLocalKey(selectedKey);
+  if (Number.isNaN(selectedDate.getTime())) return todayKey;
+  return localDateKey(addLocalDays(selectedDate, -Math.floor(VISIBLE_DATE_TAB_COUNT / 2)).toISOString());
 }
 
 function filteredMatches() {
@@ -3458,6 +3476,7 @@ if ($('matches')) {
   if ($('championRole')) $('championRole').addEventListener('change', () => state.championSummary && renderChampionMeta(state.championSummary));
   $('scheduleDate').addEventListener('change', () => {
     state.selectedMatchDate = $('scheduleDate').value || defaultMatchDate(state.allMatches);
+    state.userSelectedMatchDate = true;
     refreshStaticMatchStatuses().finally(() => {
       renderDateTabs(state.allMatches);
       renderMatches();
