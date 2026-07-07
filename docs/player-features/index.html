@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Draft Lens</title>
+  <style>
+    :root { color-scheme: dark; --bg:#081017; --panel:#101820; --line:#253241; --text:#edf5ff; --muted:#8fa1b5; --cyan:#16f0c8; --blue:#2e8cff; --red:#ff476d; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(circle at 50% 0%, rgba(22,240,200,.12), transparent 34rem), var(--bg); color: var(--text); font-family: Inter, Segoe UI, system-ui, sans-serif; }
+    header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid var(--line); background: rgba(7,11,16,.96); backdrop-filter: blur(10px); }
+    nav { max-width: 1280px; min-height: 56px; margin: 0 auto; padding: 7px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 15px; font-weight: 900; text-decoration: none; white-space: nowrap; }
+    .brandLogo { width: 36px; height: 36px; display: block; border-radius: 7px; object-fit: contain; }
+    .menu { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 900; }
+    .menu a { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; color: #c8d4e2; text-decoration: none; padding: 0 10px; white-space: nowrap; }
+    .menu a.active { color: var(--cyan); }
+    main { max-width: 1280px; margin: 0 auto; padding: 22px 24px 48px; }
+    .head { display: flex; justify-content: space-between; gap: 16px; align-items: end; margin-bottom: 20px; }
+    .headActions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+    .statFilter { min-width: 116px; border: 1px solid var(--line); background: var(--panel); color: #e7f0fb; border-radius: 7px; padding: 9px 10px; font-size: 12px; font-weight: 800; outline: none; }
+    .eyebrow { margin: 0 0 8px; color: var(--cyan); font-size: 12px; font-weight: 900; letter-spacing: .28em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.02em; }
+    .desc { margin: 8px 0 0; color: var(--muted); font-size: 14px; max-width: 720px; }
+    .count { border: 1px solid var(--line); background: var(--panel); border-radius: 7px; padding: 9px 12px; color: #c7d3e1; font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px minmax(0, 1fr); gap: 16px; align-items: start; }
+    .team { border: 1px solid var(--line); background: rgba(16,24,32,.88); border-radius: 10px; padding: 16px; box-shadow: 0 0 28px rgba(22,240,200,.12); }
+    .team.blue { border-color: rgba(46,140,255,.55); background: rgba(46,140,255,.055); }
+    .team.red { border-color: rgba(255,71,109,.55); background: rgba(255,71,109,.055); }
+    .teamHead { display: flex; justify-content: space-between; gap: 12px; align-items: start; margin-bottom: 14px; }
+    .side { margin: 0 0 4px; font-size: 11px; font-weight: 900; letter-spacing: .22em; text-transform: uppercase; }
+    .blue .side { color: var(--blue); } .red .side { color: var(--red); }
+    h2 { margin: 0; font-size: 22px; }
+    .locked { border: 1px solid var(--line); background: rgba(0,0,0,.2); border-radius: 6px; padding: 6px 10px; font-size: 12px; color: #c7d3e1; font-weight: 800; white-space: nowrap; }
+    .teamSelect { width: 100%; min-height: 56px; margin-bottom: 12px; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 8px; background: #0c141d; color: inherit; padding: 8px 10px; text-align: left; cursor: pointer; }
+    .teamSelect img { width: 40px; height: 40px; border-radius: 7px; object-fit: contain; background: rgba(255,255,255,.04); }
+    .teamMark { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 7px; color: #64748b; font-size: 20px; font-weight: 950; }
+    .teamName { display: block; min-width: 0; color: #fff; font-weight: 950; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .teamMeta { display: block; margin-top: 2px; color: #7f90a5; font-size: 12px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .teamAction { color: #94a3b8; font-size: 12px; font-weight: 900; }
+    .slots { display: grid; gap: 10px; }
+    .slot { display: grid; grid-template-columns: 56px minmax(0, 1fr) 32px; align-items: center; gap: 12px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 8px; }
+    .slot.blue { border-color: rgba(46,140,255,.5); } .slot.red { border-color: rgba(255,71,109,.5); }
+    .portrait { width: 56px; height: 56px; border: 1px solid var(--line); background: #182331; border-radius: 8px; overflow: hidden; display: grid; place-items: center; color: #64748b; font-size: 22px; font-weight: 900; cursor: pointer; }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; }
+    .slotMain { min-width: 0; background: none; border: 0; color: inherit; text-align: left; padding: 0; cursor: pointer; }
+    .role { display: block; font-size: 11px; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
+    .slot.blue .role { color: var(--blue); } .slot.red .role { color: var(--red); }
+    .champName { display: block; margin-top: 3px; color: #fff; font-weight: 950; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .playerName { display: block; margin-top: 2px; color: #c5d2e2; font-size: 12px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .statLine { display: block; margin-top: 2px; color: #7f90a5; font-size: 12px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .clear { width: 32px; height: 32px; border: 1px solid var(--line); border-radius: 7px; background: transparent; color: #94a3b8; font-size: 18px; cursor: pointer; }
+    .clear:disabled { opacity: .25; cursor: not-allowed; }
+    .center { display: grid; gap: 12px; position: sticky; top: 82px; }
+    .panel { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 16px; box-shadow: 0 0 24px rgba(22,240,200,.08); }
+    .panelTitle { margin: 0 0 12px; color: var(--text); font-size: 13px; font-weight: 950; letter-spacing: .14em; text-transform: uppercase; }
+    .summaryGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .summaryItem { border: 1px solid rgba(143,161,181,.2); border-radius: 8px; background: #0b131c; padding: 9px; min-width: 0; }
+    .summaryItem span { display: block; color: #8fa1b5; font-size: 10px; font-weight: 900; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .summaryItem strong { display: block; margin-top: 4px; color: #fff; font-size: 20px; line-height: 1; font-weight: 950; }
+    .laneList { display: grid; gap: 8px; }
+    .laneRow { display: grid; gap: 6px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 10px; }
+    .laneTop { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+    .laneName { color: var(--cyan); font-size: 12px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+    .laneGame { color: #64748b; font-size: 10px; font-weight: 850; white-space: nowrap; }
+    .laneDetail { color: #9fb2c8; font-size: 11px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .laneDetail.blue { color: #9dccff; }
+    .laneDetail.red { color: #ff9aae; }
+    .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: start; justify-content: center; padding: 80px 16px; background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
+    .modal.open { display: flex; }
+    .picker { width: min(760px, 100%); border: 1px solid var(--line); border-radius: 10px; background: #0c141d; overflow: hidden; box-shadow: 0 0 30px rgba(22,240,200,.18); }
+    .pickerHead { display: flex; justify-content: space-between; gap: 12px; align-items: center; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+    .pickerHead h3 { margin: 0; }
+    .close { border: 1px solid var(--line); background: transparent; color: #cbd5e1; border-radius: 7px; padding: 7px 10px; cursor: pointer; }
+    .searchWrap { padding: 14px; border-bottom: 1px solid var(--line); }
+    .search { width: 100%; border: 1px solid var(--line); background: #111b26; color: white; outline: none; padding: 12px 14px; border-radius: 8px; }
+    .pickGrid { max-height: 52vh; overflow: auto; padding: 12px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+    .pickButton { display: flex; align-items: center; gap: 10px; min-width: 0; border: 1px solid var(--line); background: #111b26; border-radius: 8px; padding: 8px; color: inherit; text-align: left; cursor: pointer; }
+    .pickButton:disabled { opacity: .35; cursor: not-allowed; }
+    .pickButton img { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; flex: 0 0 auto; }
+    .pickButton > span { min-width: 0; }
+    .pickButton strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .pickButton span span { display: block; color: #94a3b8; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .divider { grid-column: 1 / -1; height: 1px; margin: 4px 0; background: rgba(143,161,181,.22); }
+    .leagueHeader { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; margin: 8px 0 0; color: var(--cyan); font-size: 11px; font-weight: 950; letter-spacing: .16em; text-transform: uppercase; }
+    .leagueHeader::after { content: ""; height: 1px; flex: 1; background: rgba(143,161,181,.22); }
+    @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .pickGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
+    @media (max-width: 520px) { main { padding-left: 14px; padding-right: 14px; } .summaryGrid { grid-template-columns: 1fr; } .slot { grid-template-columns: 52px minmax(0, 1fr) 30px; gap: 9px; } .portrait { width: 52px; height: 52px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="/"><img class="brandLogo" src="/favicon.svg" alt="" aria-hidden="true"><span>LoL Predictor</span></a>
+      <div class="menu"><a href="/">Home</a><a href="/rtprob/">Draft Lab</a><a class="active" href="/player-features/" aria-current="page">Draft Lens</a></div>
+    </nav>
+  </header>
+  <main>
+    <section class="head">
+      <div>
+        <p class="eyebrow">Draft Lab</p>
+        <h1>Draft Lens</h1>
+        <p class="desc">チームとチャンピオンを選択して、各ロールの選手別 champion stats と lane matchup を確認する別ページ案です。</p>
+      </div>
+      <div class="headActions">
+        <select class="statFilter" id="statTierFilter" aria-label="Player feature tier filter">
+          <option value="all">All tiers</option>
+          <option value="major">Major</option>
+          <option value="secondary">Secondary</option>
+        </select>
+        <select class="statFilter" id="statPatchFilter" aria-label="Player feature patch filter"><option value="ALL">ALL</option></select>
+        <div class="count" id="count">0/10 champions selected</div>
+      </div>
+    </section>
+    <section class="layout">
+      <section class="team blue">
+        <div class="teamHead"><div><p class="side">blue side</p><h2>Blue Team</h2></div><div class="locked" id="blueCount">0/5 locked</div></div>
+        <button class="teamSelect" id="blueTeamSelect" data-team-side="blue"></button>
+        <div class="slots" id="blueSlots"></div>
+      </section>
+      <aside class="center">
+        <section class="panel" id="featureSummary"></section>
+        <section class="panel" id="laneMatchups"></section>
+      </aside>
+      <section class="team red">
+        <div class="teamHead"><div><p class="side">red side</p><h2>Red Team</h2></div><div class="locked" id="redCount">0/5 locked</div></div>
+        <button class="teamSelect" id="redTeamSelect" data-team-side="red"></button>
+        <div class="slots" id="redSlots"></div>
+      </section>
+    </section>
+  </main>
+  <div class="modal" id="modal">
+    <div class="picker">
+      <div class="pickerHead"><div><h3 id="modalTitle">Select</h3><div class="hint" id="modalHint"></div></div><button class="close" id="close">Close</button></div>
+      <div class="searchWrap"><input class="search" id="search" placeholder="Search..." autocomplete="off"></div>
+      <div class="pickGrid" id="pickGrid"></div>
+    </div>
+  </div>
+  <script>
+    const ddragonVersion = "15.24.1";
+    const ddragon = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/champion`;
+    const roles = ["Top", "Jungle", "Mid", "Bot", "Support"];
+    const roleKeys = ["top", "jng", "mid", "bot", "sup"];
+    const teamCodeAliases = new Map(Object.entries({
+      bnkfearx: "BFX",
+      dnsoopers: "DN",
+      dpluskia: "DK",
+      geng: "GEN",
+      hanjinbrion: "BRO",
+      hanwhalifeesports: "HLE",
+      kiwoomdrx: "DRX",
+      ktrolster: "KT",
+      nongshimredforce: "NS",
+      t1: "T1",
+    }));
+    const fallbackChampionRows = [
+      ["aatrox","Aatrox","Top","Aatrox"],["ahri","Ahri","Mid","Ahri"],["akali","Akali","Mid","Akali"],["alistar","Alistar","Support","Alistar"],["aphelios","Aphelios","Bot","Aphelios"],["ashe","Ashe","Bot","Ashe"],["azir","Azir","Mid","Azir"],["bard","Bard","Support","Bard"],["caitlyn","Caitlyn","Bot","Caitlyn"],["ezreal","Ezreal","Bot","Ezreal"],["gnar","Gnar","Top","Gnar"],["gragas","Gragas","Jungle","Gragas"],["jarvaniv","Jarvan IV","Jungle","JarvanIV"],["jax","Jax","Top","Jax"],["jinx","Jinx","Bot","Jinx"],["kaisa","Kai'Sa","Bot","Kaisa"],["ksante","K'Sante","Top","KSante"],["leesin","Lee Sin","Jungle","LeeSin"],["leona","Leona","Support","Leona"],["lucian","Lucian","Bot","Lucian"],["lulu","Lulu","Support","Lulu"],["maokai","Maokai","Jungle","Maokai"],["milio","Milio","Support","Milio"],["nautilus","Nautilus","Support","Nautilus"],["orianna","Orianna","Mid","Orianna"],["ornn","Ornn","Top","Ornn"],["poppy","Poppy","Jungle","Poppy"],["rakan","Rakan","Support","Rakan"],["renekton","Renekton","Top","Renekton"],["rumble","Rumble","Top","Rumble"],["sejuani","Sejuani","Jungle","Sejuani"],["sion","Sion","Top","Sion"],["sylas","Sylas","Mid","Sylas"],["taliyah","Taliyah","Mid","Taliyah"],["tristana","Tristana","Mid","Tristana"],["udyr","Udyr","Jungle","Udyr"],["varus","Varus","Bot","Varus"],["vi","Vi","Jungle","Vi"],["viego","Viego","Jungle","Viego"],["xayah","Xayah","Bot","Xayah"],["xin-zhao","Xin Zhao","Jungle","XinZhao"],["yone","Yone","Mid","Yone"],["yuumi","Yuumi","Support","Yuumi"]
+    ];
+    const state = {
+      blue: Array(5).fill(null),
+      red: Array(5).fill(null),
+      teams: [],
+      selectedTeams: { blue: null, red: null },
+      rosters: { blue: [], red: [] },
+      featureData: null,
+      statTier: "all",
+      statPatch: "26ALL",
+      patchOptions: [],
+      active: null,
+      pickerMode: "champion",
+      query: "",
+    };
+    const $ = id => document.getElementById(id);
+    const normalize = value => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    const dataUrl = path => new URL(`../static/data/${path.replace(/^\/+/, "")}`, location.href).toString();
+    const championFromRow = ([id, name, role, img]) => ({ id, name, role, imageUrl: `${ddragon}/${img}.png` });
+    const roleOverrides = new Map(fallbackChampionRows.map(([, name, role]) => [normalize(name), role]));
+    let champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare(b.name));
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    }
+    function roleFromTags(tags) {
+      const values = new Set((tags || []).map(tag => String(tag).toLowerCase()));
+      if (values.has("marksman")) return "Bot";
+      if (values.has("support")) return "Support";
+      if (values.has("mage") || values.has("assassin")) return "Mid";
+      if (values.has("fighter") || values.has("tank")) return "Top";
+      return "Flex";
+    }
+    function roleKeyFromValue(value) {
+      const key = normalize(value);
+      if (key === "jungle") return "jng";
+      if (key === "support") return "sup";
+      if (key === "bottom" || key === "adc") return "bot";
+      return key;
+    }
+    function rosterPlayers(payload) {
+      if (Array.isArray(payload?.players)) return payload.players;
+      if (payload?.players && typeof payload.players === "object") return Object.values(payload.players).flat().filter(Boolean);
+      return [];
+    }
+    function playerForRole(side, index) {
+      return state.rosters[side].find(player => roleKeyFromValue(player.role) === roleKeys[index]) || null;
+    }
+    function playerChampionStat(player, champ) {
+      if (!player || !champ) return null;
+      const key = [normalize(player.team), normalize(player.player), roleKeyFromValue(player.role), normalize(champ.name)].join("|");
+      return activeFeatureBucket().player_champions[key] || null;
+    }
+    function pct(value) {
+      const numeric = Number(value);
+      if (!Number.isFinite(numeric)) return "-";
+      return `${(numeric <= 1 ? numeric * 100 : numeric).toFixed(1)}%`;
+    }
+    function formatRecord(record) {
+      if (!record || !record.games) return "No sample";
+      const wins = Number(record.wins || 0);
+      const games = Number(record.games || 0);
+      return `${wins}-${Math.max(0, games - wins)} (${pct(record.winrate)}) - ${games} games`;
+    }
+    function matchupKey(side, index) {
+      const player = playerForRole(side, index);
+      const own = state[side][index];
+      const other = side === "blue" ? "red" : "blue";
+      const opp = state[other][index];
+      if (!player || !own || !opp) return "";
+      return [normalize(player.team || state.selectedTeams[side]?.team), normalize(player.player), roleKeys[index], normalize(own.name), normalize(opp.name)].join("|");
+    }
+    function matchupRecord(side, index) {
+      const key = matchupKey(side, index);
+      return key ? activeFeatureBucket().matchups[key] || null : null;
+    }
+    function mergeRecordMap(target, source) {
+      for (const [key, value] of Object.entries(source || {})) {
+        if (!target[key]) target[key] = { games: 0, wins: 0, winrate: 0 };
+        target[key].games += Number(value.games ?? value.picks ?? 0);
+        target[key].wins += Number(value.wins || 0);
+        target[key].winrate = target[key].games ? target[key].wins / target[key].games : 0;
+      }
+    }
+    function combinedPatchBucket(scope, patchPrefix) {
+      const combined = { player_champions: {}, matchups: {} };
+      for (const [patch, bucket] of Object.entries(scope?.patches || {})) {
+        if (!patch.startsWith(patchPrefix)) continue;
+        mergeRecordMap(combined.player_champions, bucket.player_champions);
+        mergeRecordMap(combined.matchups, bucket.matchups);
+      }
+      return combined;
+    }
+    function activeFeatureBucket() {
+      const empty = { player_champions: {}, matchups: {} };
+      const scope = state.featureData?.scopes?.[state.statTier] || state.featureData?.scopes?.all;
+      if (!scope) return empty;
+      if (state.statPatch === "26ALL") return combinedPatchBucket(scope, "16.");
+      if (state.statPatch === "25ALL") return combinedPatchBucket(scope, "15.");
+      if (state.statPatch && state.statPatch !== "ALL") return scope.patches?.[state.statPatch] || empty;
+      return scope.all || empty;
+    }
+    function patchFilterOptions() {
+      const patches = state.patchOptions || [];
+      const options = [];
+      if (patches.some(patch => String(patch).startsWith("16."))) options.push({ value: "26ALL", label: "26ALL" });
+      if (patches.some(patch => String(patch).startsWith("15."))) options.push({ value: "25ALL", label: "25ALL" });
+      options.push({ value: "ALL", label: "ALL" });
+      for (const patch of patches) options.push({ value: patch, label: patch });
+      return options;
+    }
+    function patchLabel(value) {
+      return patchFilterOptions().find(option => option.value === value)?.label || value || "ALL";
+    }
+
+    async function loadChampionData() {
+      try {
+        const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/champion.json`, { cache: "force-cache" });
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+        champions = Object.values(data?.data || {}).map(champ => ({
+          id: normalize(champ.id || champ.name),
+          name: champ.name,
+          role: roleOverrides.get(normalize(champ.name)) || roleFromTags(champ.tags),
+          imageUrl: `${ddragon}/${champ.image?.full || `${champ.id}.png`}`,
+        })).sort((a, b) => a.name.localeCompare(b.name));
+        render();
+      } catch {}
+    }
+    async function loadTeams() {
+      try {
+        const res = await fetch(dataUrl("rosters/index.json"), { cache: "no-store" });
+        const data = await res.json();
+        state.teams = (data.teams || []).filter(team => team.file && team.name);
+      } catch {
+        state.teams = [];
+      }
+      render();
+    }
+    async function loadFeatureData() {
+      try {
+        const res = await fetch(dataUrl("player-features.json"), { cache: "no-store" });
+        const data = await res.json();
+        state.featureData = data;
+        state.patchOptions = Array.isArray(data.patch_options) ? data.patch_options : [];
+        if (!patchFilterOptions().some(option => option.value === state.statPatch)) state.statPatch = patchFilterOptions()[0]?.value || "ALL";
+      } catch {
+        state.featureData = null;
+        state.patchOptions = [];
+        state.statPatch = "ALL";
+      }
+      renderFilters();
+      render();
+    }
+    async function selectTeam(side, team) {
+      state.selectedTeams[side] = team;
+      state.rosters[side] = [];
+      render();
+      try {
+        const res = await fetch(dataUrl(`rosters/${team.file}`), { cache: "no-store" });
+        const data = await res.json();
+        state.rosters[side] = rosterPlayers(data);
+      } catch {
+        state.rosters[side] = [];
+      }
+      render();
+    }
+
+    function renderTeamSelect(side) {
+      const team = state.selectedTeams[side];
+      const button = $(`${side}TeamSelect`);
+      button.innerHTML = `
+        ${team?.logo ? `<img src="${escapeHtml(team.logo)}" alt="">` : `<span class="teamMark">+</span>`}
+        <span><span class="teamName">${escapeHtml(team ? teamDisplayCode(team) : "Select team")}</span><span class="teamMeta">${escapeHtml(team?.name || "Team roster")}</span></span>
+        <span class="teamAction">Change</span>
+      `;
+    }
+    function teamDisplayCode(team) {
+      const alias = teamCodeAliases.get(normalize(team?.name)) || teamCodeAliases.get(normalize(team?.team));
+      if (alias) return alias;
+      const code = String(team?.code || "").trim();
+      if (code && code.length <= 8) return code;
+      const teamKey = String(team?.team || "").trim();
+      if (teamKey && teamKey.length <= 8) return teamKey;
+      const name = String(team?.name || team?.team || "").trim();
+      const compact = name.replace(/[^A-Za-z0-9]+/g, "");
+      if (compact.length <= 8) return compact || "TEAM";
+      const initials = name.match(/[A-Za-z0-9]+/g)?.map(part => part[0]).join("").toUpperCase() || "";
+      return initials.slice(0, 6) || "TEAM";
+    }
+    function renderFilters() {
+      const tier = $("statTierFilter");
+      const patch = $("statPatchFilter");
+      if (tier) tier.value = state.statTier;
+      if (patch) {
+        patch.innerHTML = patchFilterOptions().map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("");
+        patch.value = state.statPatch;
+      }
+    }
+    function slotStat(side, champ, index) {
+      const player = playerForRole(side, index);
+      if (!player) return champ ? "No team selected" : "Select champion";
+      if (!champ) return `${player.player} - select champion`;
+      const stat = playerChampionStat(player, champ);
+      if (!stat) return `${player.player} - WR - - 0 picks`;
+      const picks = Number(stat.games ?? stat.picks ?? 0);
+      return `${player.player} - WR ${pct(stat.winrate)} - ${picks} picks`;
+    }
+    function renderSlots(side) {
+      $(`${side}Slots`).innerHTML = state[side].map((champ, index) => {
+        const player = playerForRole(side, index);
+        return `
+          <div class="slot ${side}">
+            <button class="portrait" data-open-champ="${side}:${index}">${champ ? `<img src="${escapeHtml(champ.imageUrl)}" alt="">` : "+"}</button>
+            <button class="slotMain" data-open-champ="${side}:${index}">
+              <span class="role">${roles[index]}</span>
+              <span class="champName">${escapeHtml(champ?.name || "Pick champion")}</span>
+              ${player ? `<span class="playerName">${escapeHtml(player.player)}</span>` : ""}
+              <span class="statLine">${escapeHtml(slotStat(side, champ, index))}</span>
+            </button>
+            <button class="clear" data-clear="${side}:${index}" ${champ ? "" : "disabled"}>x</button>
+          </div>
+        `;
+      }).join("");
+    }
+    function renderSummary() {
+      const players = ["blue", "red"].flatMap(side => roles.map((_, index) => ({ side, player: playerForRole(side, index), champ: state[side][index] })));
+      const statRows = players.map(row => playerChampionStat(row.player, row.champ)).filter(Boolean);
+      const picks = statRows.reduce((sum, row) => sum + Number(row.games ?? row.picks ?? 0), 0);
+      const wins = statRows.reduce((sum, row) => sum + Number(row.wins ?? 0), 0);
+      const covered = players.filter(row => row.player && row.champ).length;
+      $("featureSummary").innerHTML = `
+        <h2 class="panelTitle">Player Features</h2>
+        <div class="summaryGrid">
+          <div class="summaryItem"><span>Scope</span><strong>${escapeHtml(state.statTier.toUpperCase())}</strong></div>
+          <div class="summaryItem"><span>Patch</span><strong>${escapeHtml(patchLabel(state.statPatch))}</strong></div>
+          <div class="summaryItem"><span>Covered Slots</span><strong>${covered}/10</strong></div>
+          <div class="summaryItem"><span>Player Picks</span><strong>${picks}</strong></div>
+          <div class="summaryItem"><span>Player Wins</span><strong>${wins}</strong></div>
+          <div class="summaryItem"><span>Player WR</span><strong>${picks ? pct(wins / picks) : "-"}</strong></div>
+        </div>
+      `;
+    }
+    function renderLaneMatchups() {
+      $("laneMatchups").innerHTML = `
+        <h2 class="panelTitle">Lane Matchups</h2>
+        <div class="laneList">
+          ${roles.map((role, index) => {
+            const bluePlayer = playerForRole("blue", index);
+            const redPlayer = playerForRole("red", index);
+            const blueChamp = state.blue[index];
+            const redChamp = state.red[index];
+            const ready = blueChamp && redChamp && (bluePlayer || redPlayer);
+            return `
+              <div class="laneRow">
+                <div class="laneTop"><div class="laneName">${role}</div><div class="laneGame">${ready ? "Player sample" : "Pending"}</div></div>
+                <div class="laneDetail blue">${bluePlayer && blueChamp && redChamp ? `${escapeHtml(bluePlayer.player)} ${escapeHtml(blueChamp.name)} vs ${escapeHtml(redChamp.name)}: ${escapeHtml(formatRecord(matchupRecord("blue", index)))}` : "Blue: -"}</div>
+                <div class="laneDetail red">${redPlayer && redChamp && blueChamp ? `${escapeHtml(redPlayer.player)} ${escapeHtml(redChamp.name)} vs ${escapeHtml(blueChamp.name)}: ${escapeHtml(formatRecord(matchupRecord("red", index)))}` : "Red: -"}</div>
+              </div>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+    function render() {
+      renderTeamSelect("blue");
+      renderTeamSelect("red");
+      renderSlots("blue");
+      renderSlots("red");
+      const blue = state.blue.filter(Boolean).length;
+      const red = state.red.filter(Boolean).length;
+      $("blueCount").textContent = `${blue}/5 locked`;
+      $("redCount").textContent = `${red}/5 locked`;
+      $("count").textContent = `${blue + red}/10 champions selected`;
+      renderSummary();
+      renderLaneMatchups();
+      document.querySelectorAll("[data-team-side]").forEach(button => button.onclick = () => openTeamPicker(button.dataset.teamSide));
+      document.querySelectorAll("[data-open-champ]").forEach(button => button.onclick = () => openChampionPicker(button.dataset.openChamp));
+      document.querySelectorAll("[data-clear]").forEach(button => button.onclick = () => {
+        const [side, index] = button.dataset.clear.split(":");
+        state[side][Number(index)] = null;
+        render();
+      });
+    }
+    function openChampionPicker(value) {
+      const [side, index] = value.split(":");
+      state.pickerMode = "champion";
+      state.active = { side, index: Number(index) };
+      state.query = "";
+      $("search").value = "";
+      $("modal").classList.add("open");
+      renderPicker();
+      setTimeout(() => $("search").focus(), 0);
+    }
+    function openTeamPicker(side) {
+      state.pickerMode = "team";
+      state.active = { side, index: null };
+      state.query = "";
+      $("search").value = "";
+      $("modal").classList.add("open");
+      renderPicker();
+      setTimeout(() => $("search").focus(), 0);
+    }
+    function renderPicker() {
+      if (state.pickerMode === "team") return renderTeamPicker();
+      $("modalTitle").textContent = "Select Champion";
+      $("modalHint").textContent = "Search by champion name or role.";
+      $("search").placeholder = "Search champions...";
+      const selected = new Set([...state.blue, ...state.red].filter(Boolean).map(champ => champ.id));
+      const q = state.query.trim().toLowerCase();
+      const targetRole = roles[state.active?.index ?? 0];
+      const list = champions.filter(champ => !q || champ.name.toLowerCase().includes(q) || champ.role.toLowerCase().includes(q));
+      const sameRole = list.filter(champ => champ.role === targetRole);
+      const otherRoles = list.filter(champ => champ.role !== targetRole);
+      const button = champ => `<button class="pickButton" data-champ="${champ.id}" ${selected.has(champ.id) ? "disabled" : ""}><img src="${escapeHtml(champ.imageUrl)}" alt=""><span><strong>${escapeHtml(champ.name)}</strong><span>${escapeHtml(champ.role)}</span></span></button>`;
+      $("pickGrid").innerHTML = [...sameRole.map(button), sameRole.length && otherRoles.length ? `<div class="divider"></div>` : "", ...otherRoles.map(button)].join("");
+      document.querySelectorAll("[data-champ]").forEach(button => button.onclick = () => {
+        const champ = champions.find(row => row.id === button.dataset.champ);
+        if (!champ || !state.active) return;
+        state[state.active.side][state.active.index] = champ;
+        $("modal").classList.remove("open");
+        render();
+      });
+    }
+    function renderTeamPicker() {
+      $("modalTitle").textContent = "Select Team";
+      $("modalHint").textContent = "Grouped by league. Search by team, code, or league.";
+      $("search").placeholder = "Search teams...";
+      const q = state.query.trim().toLowerCase();
+      const teams = state.teams.filter(team => !q || `${team.name} ${team.code} ${team.team} ${team.league_label || team.league || ""}`.toLowerCase().includes(q));
+      const grouped = new Map();
+      for (const team of teams) {
+        const league = team.league_label || team.league || "Other";
+        if (!grouped.has(league)) grouped.set(league, []);
+        grouped.get(league).push(team);
+      }
+      $("pickGrid").innerHTML = teams.length ? [...grouped.entries()].map(([league, rows]) => `
+        <div class="leagueHeader">${escapeHtml(league)}</div>
+        ${rows.map(team => `
+          <button class="pickButton" data-team="${escapeHtml(team.file)}">
+            ${team.logo ? `<img src="${escapeHtml(team.logo)}" alt="">` : `<span class="teamMark">+</span>`}
+            <span><strong>${escapeHtml(teamDisplayCode(team))}</strong><span>${escapeHtml(team.name || team.team)}</span></span>
+          </button>
+        `).join("")}
+      `).join("") : `<div class="hint">No teams found.</div>`;
+      document.querySelectorAll("[data-team]").forEach(button => button.onclick = () => {
+        const team = state.teams.find(row => row.file === button.dataset.team);
+        if (!team || !state.active?.side) return;
+        $("modal").classList.remove("open");
+        selectTeam(state.active.side, team);
+      });
+    }
+    $("search").oninput = event => { state.query = event.target.value; renderPicker(); };
+    $("close").onclick = () => $("modal").classList.remove("open");
+    $("modal").onclick = event => { if (event.target.id === "modal") $("modal").classList.remove("open"); };
+    $("statTierFilter").onchange = event => {
+      state.statTier = event.target.value || "all";
+      render();
+    };
+    $("statPatchFilter").onchange = event => {
+      state.statPatch = event.target.value || "ALL";
+      render();
+    };
+    render();
+    renderFilters();
+    loadTeams();
+    loadFeatureData();
+    loadChampionData();
+  </script>
+</body>
+</html>
