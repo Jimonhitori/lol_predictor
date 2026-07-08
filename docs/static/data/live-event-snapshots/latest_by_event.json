@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47778,7 +47778,7 @@
   },
   "116713163972559032": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116713163972559032",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -48062,7 +48062,7 @@
   },
   "115570934355614587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "115570934355614587",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -48265,7 +48265,7 @@
   },
   "115570934355614581": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "115570934355614581",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -48287,7 +48287,7 @@
   },
   "116697716933082112": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116697716933082112",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -48391,7 +48391,7 @@
   },
   "116697716933082100": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116697716933082100",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -48495,7 +48495,7 @@
   },
   "116713163972559042": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116713163972559042",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -48566,7 +48566,7 @@
   },
   "116713163972559038": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116713163972559038",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -48637,7 +48637,7 @@
   },
   "116713163972559022": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116713163972559022",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -48708,7 +48708,7 @@
   },
   "116713163972559070": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T06:16:34.648Z",
+    "checked_at": "2026-07-08T08:46:04.300Z",
     "event_id": "116713163972559070",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -48752,6 +48752,351 @@
             "team_id": "107416483509696259",
             "team_name": "Eintracht Spandau",
             "team_code": "EINS"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116713163972559004": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-08T08:46:04.300Z",
+    "event_id": "116713163972559004",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972559004",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107456355516438414",
+          "name": "Eintracht Frankfurt",
+          "code": "SGE",
+          "image": "http://static.lolesports.com/teams/1674832854605_SGE.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "102787200136756173",
+          "name": "Berlin International Gaming",
+          "code": "BIG",
+          "image": "http://static.lolesports.com/teams/1674839453682_PRM_BIG-MonochromeLightBG.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559005",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107456355516438414",
+            "team_name": "Eintracht Frankfurt",
+            "team_code": "SGE"
+          },
+          "red": {
+            "team_id": "102787200136756173",
+            "team_name": "Berlin International Gaming",
+            "team_code": "BIG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520721101367158": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-08T08:46:04.300Z",
+    "event_id": "116520721101367158",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520721101367158",
+      "league": "LRS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "107598651997213225",
+          "name": "9z Globant",
+          "code": "9ZG",
+          "image": "http://static.lolesports.com/teams/1771234194177_FULL_COLOR_FOR_DARK_BG-2.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116775295130449796",
+          "name": "Docta Esports Club",
+          "code": "DEC",
+          "image": "http://static.lolesports.com/teams/1781849600840_DOCTA-DOH.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520721101367159",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107598651997213225",
+            "team_name": "9z Globant",
+            "team_code": "9ZG"
+          },
+          "red": {
+            "team_id": "116775295130449796",
+            "team_name": "Docta Esports Club",
+            "team_code": "DEC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367160",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116775295130449796",
+            "team_name": "Docta Esports Club",
+            "team_code": "DEC"
+          },
+          "red": {
+            "team_id": "107598651997213225",
+            "team_name": "9z Globant",
+            "team_code": "9ZG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367161",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107598651997213225",
+            "team_name": "9z Globant",
+            "team_code": "9ZG"
+          },
+          "red": {
+            "team_id": "116775295130449796",
+            "team_name": "Docta Esports Club",
+            "team_code": "DEC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520721101367190": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-08T08:46:04.300Z",
+    "event_id": "116520721101367190",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520721101367190",
+      "league": "LRS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "114193860596475398",
+          "name": "Seven Dark",
+          "code": "7D",
+          "image": "http://static.lolesports.com/teams/1770889439846_FULL_COLOR_FOR_DARK_BG-3.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "107599144012469862",
+          "name": "Maze Gaming",
+          "code": "MAZ",
+          "image": "http://static.lolesports.com/teams/1643036820055_maze-ColorLight.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520721101367191",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114193860596475398",
+            "team_name": "Seven Dark",
+            "team_code": "7D"
+          },
+          "red": {
+            "team_id": "107599144012469862",
+            "team_name": "Maze Gaming",
+            "team_code": "MAZ"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367192",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107599144012469862",
+            "team_name": "Maze Gaming",
+            "team_code": "MAZ"
+          },
+          "red": {
+            "team_id": "114193860596475398",
+            "team_name": "Seven Dark",
+            "team_code": "7D"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367193",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114193860596475398",
+            "team_name": "Seven Dark",
+            "team_code": "7D"
+          },
+          "red": {
+            "team_id": "107599144012469862",
+            "team_name": "Maze Gaming",
+            "team_code": "MAZ"
           },
           "winner": "",
           "live": {
