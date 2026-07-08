@@ -13,7 +13,7 @@
   "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
+    "training readiness: live feature <=30s interval coverage below threshold (61.3% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
@@ -55,15 +55,15 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 65,
+        "games": 67,
         "interval_count": 257,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 794,
-        "oe_bootstrap_snapshot_rows": 572,
+        "non_empty_game_state_rows": 814,
+        "oe_bootstrap_snapshot_rows": 592,
         "pct_intervals_lte_30s": 0.6108949416342413,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 794,
+        "rows": 814,
         "sub_30s_interval_count": 157
       },
       "id": "live_frame_collection",
@@ -72,19 +72,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 467,
-        "games": 35,
+        "feature_rows": 723,
+        "games": 61,
         "label_sources": {
-          "combined_rows": 25999,
-          "games_rows": 25999,
+          "combined_rows": 6081,
+          "games_rows": 6081,
           "live_label_rows": 0
         },
-        "labeled_rows": 467,
-        "pipeline_feature_rows": 467,
-        "pipeline_labeled_feature_rows": 467,
+        "labeled_rows": 723,
+        "pipeline_feature_rows": 723,
+        "pipeline_labeled_feature_rows": 723,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 794,
+        "pipeline_resolved_rows": 814,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
