@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47778,7 +47778,7 @@
   },
   "116713163972559032": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116713163972559032",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47849,7 +47849,7 @@
   },
   "116713163972559074": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116713163972559074",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47920,7 +47920,7 @@
   },
   "116713163972559000": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116713163972559000",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -47991,7 +47991,7 @@
   },
   "116713163972559078": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "116713163972559078",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -48062,210 +48062,29 @@
   },
   "115570934355614587": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "115570934355614587",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115570934355614587",
-      "league": "MSI",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
-      "status": "unstarted",
-      "start_time": "2026-07-08T12:00:00.000Z",
-      "teams": [
-        {
-          "id": "99566405941863385",
-          "name": "LYON",
-          "code": "LYON",
-          "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "113661839307879869",
-          "name": "Team Secret Whales",
-          "code": "TSW",
-          "image": "http://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "115570934355614588",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
-          },
-          "red": {
-            "team_id": "113661839307879869",
-            "team_name": "Team Secret Whales",
-            "team_code": "TSW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614589",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
-          },
-          "red": {
-            "team_id": "113661839307879869",
-            "team_name": "Team Secret Whales",
-            "team_code": "TSW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614590",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "113661839307879869",
-            "team_name": "Team Secret Whales",
-            "team_code": "TSW"
-          },
-          "red": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614591",
-          "number": 4,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
-          },
-          "red": {
-            "team_id": "113661839307879869",
-            "team_name": "Team Secret Whales",
-            "team_code": "TSW"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "115570934355614592",
-          "number": 5,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "113661839307879869",
-            "team_name": "Team Secret Whales",
-            "team_code": "TSW"
-          },
-          "red": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "115570934355614581": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-08T00:14:34.181Z",
+    "checked_at": "2026-07-08T03:46:03.981Z",
     "event_id": "115570934355614581",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -48441,6 +48260,285 @@
             "team_id": "98767991926151025",
             "team_name": "G2 Esports",
             "team_code": "G2"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116697716933082112": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-08T03:46:03.981Z",
+    "event_id": "116697716933082112",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116697716933082112",
+      "league": "Hellenic Legends League",
+      "league_group": "",
+      "region": "",
+      "best_of": "2",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "105521293297166647",
+          "name": "Hell ZeroLag",
+          "code": "HELL",
+          "image": "http://static.lolesports.com/teams/ZRLLogowhite600x600.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "102787200149928963",
+          "name": "WLGaming",
+          "code": "WLG",
+          "image": "http://static.lolesports.com/teams/WLGlogo.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116697716933082113",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "105521293297166647",
+            "team_name": "Hell ZeroLag",
+            "team_code": "HELL"
+          },
+          "red": {
+            "team_id": "102787200149928963",
+            "team_name": "WLGaming",
+            "team_code": "WLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116697716933082114",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "102787200149928963",
+            "team_name": "WLGaming",
+            "team_code": "WLG"
+          },
+          "red": {
+            "team_id": "105521293297166647",
+            "team_name": "Hell ZeroLag",
+            "team_code": "HELL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116697716933082100": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-08T03:46:03.981Z",
+    "event_id": "116697716933082100",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116697716933082100",
+      "league": "Hellenic Legends League",
+      "league_group": "",
+      "region": "",
+      "best_of": "2",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "109704816337374156",
+          "name": "TheParadOx Invaders",
+          "code": "TPX",
+          "image": "http://static.lolesports.com/teams/1773838306977_TpOXRed_Gold-removebg-preview.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "110441266196719234",
+          "name": "ALMO Players",
+          "code": "ALMO",
+          "image": "http://static.lolesports.com/teams/1766149888302_Ogi7qeR.webp",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116697716933082101",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109704816337374156",
+            "team_name": "TheParadOx Invaders",
+            "team_code": "TPX"
+          },
+          "red": {
+            "team_id": "110441266196719234",
+            "team_name": "ALMO Players",
+            "team_code": "ALMO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116697716933082102",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109704816337374156",
+            "team_name": "TheParadOx Invaders",
+            "team_code": "TPX"
+          },
+          "red": {
+            "team_id": "110441266196719234",
+            "team_name": "ALMO Players",
+            "team_code": "ALMO"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116713163972559042": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-08T03:46:03.981Z",
+    "event_id": "116713163972559042",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116713163972559042",
+      "league": "Prime League",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "111726828176554327",
+          "name": "Rossmann Centaurs",
+          "code": "ROSS",
+          "image": "http://static.lolesports.com/teams/1734307301367_ROSS.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "105503948999800557",
+          "name": "E Wie Einfach E-Sports",
+          "code": "EWI",
+          "image": "http://static.lolesports.com/teams/1674832938539_MicrosoftTeams-image14.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559043",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "111726828176554327",
+            "team_name": "Rossmann Centaurs",
+            "team_code": "ROSS"
+          },
+          "red": {
+            "team_id": "105503948999800557",
+            "team_name": "E Wie Einfach E-Sports",
+            "team_code": "EWI"
           },
           "winner": "",
           "live": {
