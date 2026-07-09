@@ -657,7 +657,7 @@ async function loadOptions() {
   fillSelect('league', state.options.leagues);
   for (const id of ['top_champion','jng_champion','mid_champion','bot_champion','sup_champion']) fillSelect(id, state.options.champions);
   setValue('leagueGroup', DEFAULT_LEAGUE_GROUP);
-  setValue('championMetaGroup', $('leagueGroup')?.value || DEFAULT_LEAGUE_GROUP);
+  setValue('championMetaGroup', 'all');
   fillTeamStandingSelect();
   setValue('league', 'LCK');
   if ($('team')) $('team').value = 'T1';
@@ -3461,15 +3461,8 @@ function setValue(id, value) {
   if ([...el.options].some(option => option.value === value)) el.value = value;
 }
 
-function syncChampionMetaGroup() {
-  const leagueGroup = $('leagueGroup')?.value || DEFAULT_LEAGUE_GROUP;
-  const championMetaGroup = $('championMetaGroup');
-  if (!championMetaGroup) return;
-  setValue('championMetaGroup', leagueGroup === 'event' ? DEFAULT_LEAGUE_GROUP : leagueGroup);
-}
-
 if ($('matches')) {
-  if ($('leagueGroup')) $('leagueGroup').addEventListener('change', () => { syncChampionMetaGroup(); loadSummary(); loadMatches(); });
+  if ($('leagueGroup')) $('leagueGroup').addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('region')) $('region').addEventListener('change', () => { loadSummary(); loadMatches(); });
   if ($('teamLeague')) $('teamLeague').addEventListener('change', loadTeamStandings);
   if ($('championMetaGroup')) $('championMetaGroup').addEventListener('change', () => loadChampionSummary());
