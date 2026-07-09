@@ -37,6 +37,7 @@ REGIONS = ["all", "korea", "china", "emea", "americas", "pacific", "internationa
 APP_JS_VERSION = hashlib.sha1(APP_JS.encode("utf-8")).hexdigest()[:10]
 APP_CSS_VERSION = hashlib.sha1(APP_CSS.encode("utf-8")).hexdigest()[:10]
 GOL_USER_AGENT = "Mozilla/5.0 (compatible; lol-predictor-static-export/1.0)"
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 def parse_args() -> argparse.Namespace:
@@ -56,11 +57,20 @@ def parse_args() -> argparse.Namespace:
             "By default existing shell files are preserved and only data artifacts are refreshed."
         ),
     )
+    parser.add_argument(
+        "--allow-tracked-out-dir",
+        action="store_true",
+        help=(
+            "Allow writing directly to the tracked production docs directory. "
+            "Use this only inside a clean publish clone/worktree."
+        ),
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    guard_tracked_out_dir(args.out_dir, allow=args.allow_tracked_out_dir)
     os.environ["LOL_ESPORTS_SKIP_LIVE"] = "1"
     context = AppContext(
         SimpleNamespace(
@@ -133,6 +143,18 @@ def main() -> None:
         write_json(data_dir / "team-records" / f"{static_key(league)}__{static_key(team)}.json", team_record_payload(context, team, league))
 
     print(f"Exported static snapshot to {out_dir}")
+
+
+def guard_tracked_out_dir(out_dir: Path, *, allow: bool) -> None:
+    resolved = (out_dir if out_dir.is_absolute() else Path.cwd() / out_dir).resolve()
+    tracked_docs = (REPO_ROOT / "docs").resolve()
+    if allow or resolved != tracked_docs:
+        return
+    raise SystemExit(
+        "Refusing to write static export directly to tracked docs/. "
+        "Use --out-dir _codex_static_export for local previews, or run in a clean publish clone/worktree "
+        "with --allow-tracked-out-dir when you intentionally want a production docs/ diff."
+    )
 
 
 def static_html(html: str, asset_prefix: str = "", back_href: str = "index.html") -> str:

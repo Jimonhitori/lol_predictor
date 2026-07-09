@@ -4,3 +4,11 @@ __pycache__/
 data/raw/
 data/live_snapshots/
 models/
+
+# Local preview/export scratch. Production docs/ updates should happen in a
+# clean publish clone/worktree with an explicit export override.
+_codex*/
+_codex_static_export/
+artifact-*/
+*.prod.json
+*.verify.json

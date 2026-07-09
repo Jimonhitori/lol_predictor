@@ -20,10 +20,23 @@ Starting with no Cloudflare build step avoids dependency, model, and data setup 
 After the Cloudflare deployment is stable, a build command can be added later:
 
 ```bash
-python -m lol_predictor.export_static --out-dir docs --max-details 80
+python -m lol_predictor.export_static --out-dir _codex_static_export --max-details 80
 ```
 
-That command refreshes static JSON data artifacts while preserving the existing
+That command refreshes static JSON data artifacts in a local preview directory
+while preserving the existing production checkout. When you intentionally need
+to refresh committed production artifacts under `docs/`, run the export from a
+clean publish clone/worktree and pass the explicit override:
+
+```bash
+python -m lol_predictor.export_static --out-dir docs --max-details 80 --allow-tracked-out-dir
+```
+
+The guard prevents accidental local runs from rewriting tracked files such as
+`docs/static/data/matches-*.json`, which otherwise creates a large dirty working
+tree and makes later production pushes conflict-prone.
+
+The export refreshes static JSON data artifacts while preserving the existing
 HTML/CSS/JS shell files under `docs/`. This prevents the production dashboard
 shell from being overwritten by the older local `lol_predictor.web_app` template
 during scheduled data refreshes. Only add `--refresh-shell` when you explicitly
