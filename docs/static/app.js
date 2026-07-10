@@ -18,6 +18,8 @@ const LIVE_SNAPSHOT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const MATCH_DETAIL_PAGE = Boolean($('matchTitle'));
 const DEFAULT_LEAGUE_GROUP = 'major';
 const VISIBLE_DATE_TAB_COUNT = 3;
+const INTERNATIONAL_EVENT_KEYS = new Set(['msi', 'worlds', 'ewc', 'esports-world-cup']);
+const TEAM_ARTIFACT_LEAGUES = ['lck', 'lpl', 'lec', 'lcs', 'lcp', 'cblol', 'vcs', 'tcl', 'lfl', 'nacl', 'lck-challengers'];
 
 async function api(path) {
   if (STATIC_SITE && isCloudflareApiPath(path)) return fetchApiJson(path);
@@ -129,7 +131,7 @@ async function staticApi(path) {
   } else if (url.pathname === '/api/roster') {
     return staticRoster(params);
   } else if (url.pathname === '/api/team-record') {
-    target = `data/team-records/${staticKey(params.get('league') || 'all')}__${staticKey(params.get('team') || '')}.json`;
+    return staticTeamRecord(params);
   } else if (url.pathname === '/api/team-history') {
     return staticTeamHistory(params);
   } else if (url.pathname === '/api/head-to-head') {
@@ -181,10 +183,66 @@ async function staticMatchDetail(params) {
     } catch (error) {
     }
   }
+  const scheduledDetail = await staticMatchIndexDetail(id).catch(() => ({}));
   const predictions = await loadPreMatchPredictions();
   const prediction = predictions.byEventId?.[id] || predictions.byGameId?.[id] || null;
-  if (prediction) return matchDetailFromPrediction(prediction);
+  const predictedDetail = prediction ? matchDetailFromPrediction(prediction) : {};
+  if (scheduledDetail?.id || predictedDetail?.id) {
+    return mergeMatchDetailSources(scheduledDetail, predictedDetail);
+  }
   return { id: '', warning: 'match_detail_static_artifact_missing' };
+}
+
+async function staticMatchIndexDetail(id) {
+  for (const path of ['data/matches-all__all.json', 'data/matches-event__all.json']) {
+    const payload = await fetchStaticJson(path).catch(() => ({}));
+    const match = (payload.matches || []).find(row =>
+      String(row?.id || '') === id || String(row?.source_match_id || '') === id
+    );
+    if (match) return matchDetailFromIndexMatch(match);
+  }
+  return {};
+}
+
+function matchDetailFromIndexMatch(match) {
+  return {
+    ...match,
+    id: String(match?.id || match?.source_match_id || ''),
+    teams: [
+      {
+        side: 'blue',
+        name: match?.blue_team || match?.blue_code || '',
+        code: match?.blue_code || match?.blue_team || '',
+        image: normalizeTeamImage(match?.blue_image || ''),
+        game_wins: match?.blue_score ?? '',
+      },
+      {
+        side: 'red',
+        name: match?.red_team || match?.red_code || '',
+        code: match?.red_code || match?.red_team || '',
+        image: normalizeTeamImage(match?.red_image || ''),
+        game_wins: match?.red_score ?? '',
+      },
+    ],
+    games: Array.isArray(match?.games) ? match.games : [],
+    source: match?.source || 'static_match_index',
+  };
+}
+
+function mergeMatchDetailSources(base, overlay) {
+  if (!base?.id) return overlay || {};
+  if (!overlay?.id) return base;
+  return {
+    ...base,
+    ...overlay,
+    id: overlay.id || base.id,
+    league: overlay.league || base.league || '',
+    best_of: overlay.best_of || base.best_of || '',
+    start_time: base.start_time || overlay.start_time || '',
+    status: overlay.status || base.status || '',
+    teams: Array.isArray(overlay.teams) && overlay.teams.length >= 2 ? overlay.teams : base.teams,
+    games: Array.isArray(overlay.games) && overlay.games.length ? overlay.games : (base.games || []),
+  };
 }
 
 async function staticRoster(params) {
@@ -212,6 +270,31 @@ async function staticRoster(params) {
   };
 }
 
+async function staticTeamRecord(params) {
+  const team = params.get('team') || '';
+  const teamCode = params.get('team_code') || '';
+  const leagueKeys = teamArtifactLeagueKeys(params.get('league'));
+  const teamKeys = teamStaticKeys(team, teamCode);
+  for (const league of leagueKeys) {
+    for (const key of teamKeys) {
+      const response = await fetch(staticDataUrl(`data/team-records/${league}__${key}.json`), { cache: 'no-store' });
+      if (!response.ok) continue;
+      try {
+        return await response.json();
+      } catch (error) {
+        continue;
+      }
+    }
+  }
+  return {
+    team: team || teamCode,
+    matched_team: '',
+    league_record: '',
+    games: 0,
+    warning: 'team_record_static_artifact_missing',
+  };
+}
+
 function safeMatchFileId(value) {
   return String(value || '').replace(/[^A-Za-z0-9_.-]+/g, '_');
 }
@@ -219,7 +302,7 @@ function safeMatchFileId(value) {
 async function staticTeamHistory(params) {
   const team = params.get('team') || '';
   const teamCode = params.get('team_code') || '';
-  const leagueKeys = uniqueValues([staticKey(params.get('league') || 'all'), 'all']);
+  const leagueKeys = teamArtifactLeagueKeys(params.get('league'));
   const teamKeys = teamStaticKeys(team, teamCode);
   await loadTeamRegistry();
   for (const league of leagueKeys) {
@@ -242,8 +325,15 @@ async function staticTeamHistory(params) {
   };
 }
 
+function teamArtifactLeagueKeys(league) {
+  const requested = staticKey(league || 'all');
+  if (!INTERNATIONAL_EVENT_KEYS.has(requested)) return uniqueValues([requested, 'all']);
+  return uniqueValues([requested, ...TEAM_ARTIFACT_LEAGUES, 'all']);
+}
+
 function enrichTeamHistoryPayload(payload) {
   if (!Array.isArray(payload?.matches)) return payload;
+  const seen = new Set();
   return {
     ...payload,
     matches: payload.matches.map(match => {
@@ -254,8 +344,26 @@ function enrichTeamHistoryPayload(payload) {
         team_image: normalizeTeamImage(match.team_image || teamMeta.logo || ''),
         opponent_image: normalizeTeamImage(match.opponent_image || opponentMeta.logo || ''),
       };
+    }).filter(match => {
+      const key = teamHistoryMatchKey(match);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
     }),
   };
+}
+
+function teamHistoryMatchKey(match) {
+  const timestamp = parseScheduleDate(match?.date || '');
+  const date = Number.isNaN(timestamp.getTime()) ? String(match?.date || '') : timestamp.toISOString();
+  return [
+    date,
+    teamKey(match?.team || ''),
+    teamKey(match?.opponent || ''),
+    String(match?.team_score ?? ''),
+    String(match?.opponent_score ?? ''),
+    String(match?.result || ''),
+  ].join('|');
 }
 
 async function staticHeadToHead(params) {

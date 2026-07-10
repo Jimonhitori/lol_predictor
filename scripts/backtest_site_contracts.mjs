@@ -352,14 +352,19 @@ async function checkTeamHistoryStaticLookup(baseDir, source) {
       ));
     output.missing_lookup_returns_empty = Array.isArray(missing.matches) && missing.matches.length === 0
       && missing.warning === 'team_history_static_artifact_missing';
-    if (output.bfx_history_count !== 5) {
-      output.errors.push(`BFX recent team history returned ${output.bfx_history_count}`);
-    }
-    if (output.t1a_history_count !== 5) {
-      output.errors.push(`T1A recent team history returned ${output.t1a_history_count}`);
-    }
-    if (output.tlaw_history_count !== 5) {
-      output.errors.push(`TLAW recent team history returned ${output.tlaw_history_count}`);
+    for (const [label, payload] of [['BFX', bfx], ['T1A', t1a], ['TLAW', tlaw]]) {
+      const matches = Array.isArray(payload.matches) ? payload.matches : [];
+      const unique = new Set(matches.map((match) => [
+        match.date || '',
+        match.opponent || '',
+        match.team_score ?? '',
+        match.opponent_score ?? '',
+      ].join('__')));
+      if (!matches.length) {
+        output.errors.push(`${label} recent team history is empty`);
+      } else if (unique.size !== matches.length) {
+        output.errors.push(`${label} recent team history contains duplicate series`);
+      }
     }
     if (!output.lyon_history_has_logos) {
       output.errors.push('LYON recent team history is missing team/opponent logos');

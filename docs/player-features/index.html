@@ -85,7 +85,7 @@
     .leagueHeader { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; margin: 8px 0 0; color: var(--cyan); font-size: 11px; font-weight: 950; letter-spacing: .16em; text-transform: uppercase; }
     .leagueHeader::after { content: ""; height: 1px; flex: 1; background: rgba(143,161,181,.22); }
     @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .pickGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
-    @media (max-width: 520px) { main { padding-left: 14px; padding-right: 14px; } .summaryGrid { grid-template-columns: 1fr; } .slot { grid-template-columns: 52px minmax(0, 1fr) 30px; gap: 9px; } .portrait { width: 52px; height: 52px; } }
+    @media (max-width: 520px) { nav { padding-left: 10px; padding-right: 10px; gap: 8px; } .brand span { display: none; } .menu { gap: 2px; } .menu a { padding: 0 6px; font-size: 12px; } main { padding-left: 14px; padding-right: 14px; } .summaryGrid { grid-template-columns: 1fr; } .slot { grid-template-columns: 52px minmax(0, 1fr) 30px; gap: 9px; } .portrait { width: 52px; height: 52px; } }
   </style>
 </head>
 <body>
@@ -100,7 +100,7 @@
       <div>
         <p class="eyebrow">Draft Lab</p>
         <h1>Draft Lens</h1>
-        <p class="desc">チームとチャンピオンを選択して、各ロールの選手別 champion stats と lane matchup を確認する別ページ案です。</p>
+        <p class="desc">チームとチャンピオンを選択して、各ロールの選手別 champion stats と lane matchup を確認できます。</p>
       </div>
       <div class="headActions">
         <select class="statFilter" id="statTierFilter" aria-label="Player feature tier filter">
@@ -163,6 +163,10 @@
       selectedTeams: { blue: null, red: null },
       rosters: { blue: [], red: [] },
       featureData: null,
+      activeFeatureBucket: { player_champions: {}, matchups: {} },
+      featureBucketCache: new Map(),
+      featureShardCache: new Map(),
+      featureLoadToken: 0,
       statTier: "all",
       statPatch: "26ALL",
       patchOptions: [],
@@ -203,9 +207,23 @@
     function playerForRole(side, index) {
       return state.rosters[side].find(player => roleKeyFromValue(player.role) === roleKeys[index]) || null;
     }
+    function featureIdentity(player, team) {
+      const playerKey = normalize(player?.player);
+      const roleKey = roleKeyFromValue(player?.role);
+      const lookup = state.featureData?.player_lookup || {};
+      const teamValues = [player?.team, team?.team, team?.name, team?.code];
+      for (const value of teamValues) {
+        const teamKey = normalize(value);
+        if (teamKey && lookup[`${teamKey}|${playerKey}|${roleKey}`]) return lookup[`${teamKey}|${playerKey}|${roleKey}`];
+      }
+      return lookup[`*|${playerKey}|${roleKey}`] || playerKey;
+    }
+    function attachFeatureIdentities(players, team) {
+      return (players || []).map(player => ({ ...player, featureKey: featureIdentity(player, team) }));
+    }
     function playerChampionStat(player, champ) {
       if (!player || !champ) return null;
-      const key = [normalize(player.team), normalize(player.player), roleKeyFromValue(player.role), normalize(champ.name)].join("|");
+      const key = [player.featureKey || normalize(player.player), roleKeyFromValue(player.role), normalize(champ.name)].join("|");
       return activeFeatureBucket().player_champions[key] || null;
     }
     function pct(value) {
@@ -225,7 +243,7 @@
       const other = side === "blue" ? "red" : "blue";
       const opp = state[other][index];
       if (!player || !own || !opp) return "";
-      return [normalize(player.team || state.selectedTeams[side]?.team), normalize(player.player), roleKeys[index], normalize(own.name), normalize(opp.name)].join("|");
+      return [player.featureKey || normalize(player.player), roleKeys[index], normalize(own.name), normalize(opp.name)].join("|");
     }
     function matchupRecord(side, index) {
       const key = matchupKey(side, index);
@@ -248,14 +266,78 @@
       }
       return combined;
     }
-    function activeFeatureBucket() {
+    function legacyBucketForScope(scope) {
       const empty = { player_champions: {}, matchups: {} };
-      const scope = state.featureData?.scopes?.[state.statTier] || state.featureData?.scopes?.all;
       if (!scope) return empty;
       if (state.statPatch === "26ALL") return combinedPatchBucket(scope, "16.");
       if (state.statPatch === "25ALL") return combinedPatchBucket(scope, "15.");
       if (state.statPatch && state.statPatch !== "ALL") return scope.patches?.[state.statPatch] || empty;
       return scope.all || empty;
+    }
+    function legacyFeatureBucket() {
+      const empty = { player_champions: {}, matchups: {} };
+      const scopes = state.featureData?.scopes || {};
+      if (state.statTier !== "all") return legacyBucketForScope(scopes[state.statTier]);
+      if (scopes.all) return legacyBucketForScope(scopes.all);
+      const combined = { player_champions: {}, matchups: {} };
+      for (const scope of Object.values(scopes)) {
+        const bucket = legacyBucketForScope(scope);
+        mergeRecordMap(combined.player_champions, bucket.player_champions);
+        mergeRecordMap(combined.matchups, bucket.matchups);
+      }
+      return Object.keys(scopes).length ? combined : empty;
+    }
+    function activeFeatureBucket() {
+      return state.activeFeatureBucket || { player_champions: {}, matchups: {} };
+    }
+    async function loadFeatureShard(path) {
+      if (!path) return { player_champions: {}, matchups: {} };
+      if (!state.featureShardCache.has(path)) {
+        const pending = fetch(dataUrl(path), { cache: "no-store" }).then(res => {
+          if (!res.ok) throw new Error(`Feature shard ${res.status}`);
+          return res.json();
+        }).catch(error => {
+          state.featureShardCache.delete(path);
+          throw error;
+        });
+        state.featureShardCache.set(path, pending);
+      }
+      return state.featureShardCache.get(path);
+    }
+    async function selectedFeatureBucket() {
+      if (!state.featureData?.buckets) return legacyFeatureBucket();
+      const scopeNames = state.statTier === "all"
+        ? (state.featureData.buckets.all?.[state.statPatch] ? ["all"] : Object.keys(state.featureData.buckets).filter(scope => scope !== "all"))
+        : [state.statTier];
+      const paths = scopeNames.map(scope => state.featureData.buckets?.[scope]?.[state.statPatch]).filter(Boolean);
+      const shards = await Promise.all(paths.map(loadFeatureShard));
+      const combined = { player_champions: {}, matchups: {} };
+      for (const shard of shards) {
+        mergeRecordMap(combined.player_champions, shard.player_champions);
+        mergeRecordMap(combined.matchups, shard.matchups);
+      }
+      return combined;
+    }
+    async function refreshActiveFeatureBucket() {
+      const cacheKey = `${state.statTier}:${state.statPatch}`;
+      const token = ++state.featureLoadToken;
+      if (state.featureBucketCache.has(cacheKey)) {
+        state.activeFeatureBucket = state.featureBucketCache.get(cacheKey);
+        render();
+        return;
+      }
+      state.activeFeatureBucket = { player_champions: {}, matchups: {} };
+      render();
+      try {
+        const bucket = await selectedFeatureBucket();
+        if (token !== state.featureLoadToken) return;
+        state.featureBucketCache.set(cacheKey, bucket);
+        state.activeFeatureBucket = bucket;
+      } catch {
+        if (token !== state.featureLoadToken) return;
+        state.activeFeatureBucket = { player_champions: {}, matchups: {} };
+      }
+      render();
     }
     function patchFilterOptions() {
       const patches = state.patchOptions || [];
@@ -288,7 +370,9 @@
       try {
         const res = await fetch(dataUrl("rosters/index.json"), { cache: "no-store" });
         const data = await res.json();
-        state.teams = (data.teams || []).filter(team => team.file && team.name);
+        const teams = (data.teams || []).filter(team => team.file && team.name);
+        const hasPlayerCounts = teams.some(team => Number.isFinite(Number(team.player_count)));
+        state.teams = hasPlayerCounts ? teams.filter(team => Number(team.player_count) > 0) : teams;
       } catch {
         state.teams = [];
       }
@@ -299,6 +383,11 @@
         const res = await fetch(dataUrl("player-features.json"), { cache: "no-store" });
         const data = await res.json();
         state.featureData = data;
+        state.featureBucketCache.clear();
+        state.featureShardCache.clear();
+        for (const side of ["blue", "red"]) {
+          state.rosters[side] = attachFeatureIdentities(state.rosters[side], state.selectedTeams[side]);
+        }
         state.patchOptions = Array.isArray(data.patch_options) ? data.patch_options : [];
         if (!patchFilterOptions().some(option => option.value === state.statPatch)) state.statPatch = patchFilterOptions()[0]?.value || "ALL";
       } catch {
@@ -307,7 +396,7 @@
         state.statPatch = "ALL";
       }
       renderFilters();
-      render();
+      await refreshActiveFeatureBucket();
     }
     async function selectTeam(side, team) {
       state.selectedTeams[side] = team;
@@ -316,7 +405,7 @@
       try {
         const res = await fetch(dataUrl(`rosters/${team.file}`), { cache: "no-store" });
         const data = await res.json();
-        state.rosters[side] = rosterPlayers(data);
+        state.rosters[side] = attachFeatureIdentities(rosterPlayers(data), team);
       } catch {
         state.rosters[side] = [];
       }
@@ -512,11 +601,11 @@
     $("modal").onclick = event => { if (event.target.id === "modal") $("modal").classList.remove("open"); };
     $("statTierFilter").onchange = event => {
       state.statTier = event.target.value || "all";
-      render();
+      refreshActiveFeatureBucket();
     };
     $("statPatchFilter").onchange = event => {
       state.statPatch = event.target.value || "ALL";
-      render();
+      refreshActiveFeatureBucket();
     };
     render();
     renderFilters();

@@ -112,6 +112,9 @@ if (appSource.ok) {
     'function renderPredictionPanel(id, details)',
     'function applyPreMatchPredictionOverlay(matches)',
     'function staticMatchDetail(params)',
+    'function staticMatchIndexDetail(id)',
+    'function matchDetailFromIndexMatch(match)',
+    'function mergeMatchDetailSources(base, overlay)',
     'function matchDetailFromPrediction(prediction)',
     'function safeMatchFileId(value)',
     'function parseScheduleDate(value)',
@@ -660,6 +663,8 @@ function checkMatchCenterLogos(appSourceText) {
       card_has_red_score_data_attr: appSourceText.includes('data-red-score='),
       dataset_scores_preserved: null,
       detail_merge_reorders_scores: null,
+      index_fallback_preserves_start: null,
+      prediction_overlay_resolves_teams: null,
     },
   };
   const context = {
@@ -707,6 +712,26 @@ function checkMatchCenterLogos(appSourceText) {
           { name: 'Team Blue', code: 'BLU', game_wins: '0' },
         ]
       });
+      const indexDetail = matchDetailFromIndexMatch({
+        id: 'match-1',
+        league: 'MSI',
+        best_of: '5',
+        start_time: '2026-07-10T08:00:00Z',
+        status: 'unstarted',
+        blue_team: 'TBD',
+        red_team: 'TBD',
+        blue_code: 'TBD',
+        red_code: 'TBD',
+      });
+      const mergedSources = mergeMatchDetailSources(indexDetail, matchDetailFromPrediction({
+        event_id: 'match-1',
+        league: 'MSI',
+        start_time: '2026-07-10 17:00:00',
+        blue_team: 'lyon',
+        red_team: 'g2_esports',
+        blue_team_name: 'LYON',
+        red_team_name: 'G2 Esports',
+      }));
       ({
         cardBlueImage: cardDetails.teams[0].image,
         cardRedImage: cardDetails.teams[1].image,
@@ -716,6 +741,9 @@ function checkMatchCenterLogos(appSourceText) {
         mergedRedImage: merged.teams[1].image,
         mergedBlueScore: merged.teams[0].game_wins,
         mergedRedScore: merged.teams[1].game_wins,
+        fallbackStart: mergedSources.start_time,
+        fallbackBestOf: mergedSources.best_of,
+        fallbackTeams: mergedSources.teams.map(team => team.name),
       })
     `, context, { timeout: VM_TIMEOUT_MS });
     output.summary.dataset_images_preserved = result.cardBlueImage === 'https://static.lolesports.com/blue.png'
@@ -724,6 +752,9 @@ function checkMatchCenterLogos(appSourceText) {
       && result.mergedRedImage === 'https://static.lolesports.com/red.png';
     output.summary.dataset_scores_preserved = result.cardBlueScore === '0' && result.cardRedScore === '3';
     output.summary.detail_merge_reorders_scores = result.mergedBlueScore === '0' && result.mergedRedScore === '3';
+    output.summary.index_fallback_preserves_start = result.fallbackStart === '2026-07-10T08:00:00Z'
+      && result.fallbackBestOf === '5';
+    output.summary.prediction_overlay_resolves_teams = result.fallbackTeams.join('|') === 'LYON|G2 Esports';
     if (!output.summary.card_has_blue_image_data_attr || !output.summary.card_has_red_image_data_attr) {
       output.errors.push('match cards must expose team image data attributes for Match Center');
     }
@@ -741,6 +772,12 @@ function checkMatchCenterLogos(appSourceText) {
     }
     if (!output.summary.detail_merge_reorders_scores) {
       output.errors.push('Match Center detail merge did not align reversed detail scores to card sides');
+    }
+    if (!output.summary.index_fallback_preserves_start) {
+      output.errors.push('match detail index fallback did not preserve schedule start/best-of');
+    }
+    if (!output.summary.prediction_overlay_resolves_teams) {
+      output.errors.push('prediction detail overlay did not replace placeholder index teams');
     }
   } catch (error) {
     output.errors.push(`match center logo probe failed: ${error instanceof Error ? error.message : String(error)}`);
