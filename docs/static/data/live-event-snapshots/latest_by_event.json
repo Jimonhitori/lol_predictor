@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -50345,7 +50345,7 @@
   },
   "116520721101367242": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116520721101367242",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -50482,7 +50482,7 @@
   },
   "116520721101367162": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116520721101367162",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -50619,7 +50619,7 @@
   },
   "116520721101367206": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116520721101367206",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -50756,7 +50756,7 @@
   },
   "116520721101367150": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "116520721101367150",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -50893,7 +50893,7 @@
   },
   "115570934355614593": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-10T07:48:26.755Z",
+    "checked_at": "2026-07-10T10:39:19.553Z",
     "event_id": "115570934355614593",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -50911,6 +50911,280 @@
       "games": [],
       "source": "cloudflare_live_event",
       "warning": "event_details_fetch_failed"
+    }
+  },
+  "116520721101367222": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-10T10:39:19.553Z",
+    "event_id": "116520721101367222",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520721101367222",
+      "league": "LRS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "2026-07-11T05:00:00.000Z",
+      "teams": [
+        {
+          "id": "107598878262940546",
+          "name": "Malvinas Gaming",
+          "code": "MVG",
+          "image": "http://static.lolesports.com/teams/1770889502736_FULL_COLOR_FOR_DARK_BG1.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "114193860596475398",
+          "name": "Seven Dark",
+          "code": "7D",
+          "image": "http://static.lolesports.com/teams/1770889439846_FULL_COLOR_FOR_DARK_BG-3.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520721101367223",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107598878262940546",
+            "team_name": "Malvinas Gaming",
+            "team_code": "MVG"
+          },
+          "red": {
+            "team_id": "114193860596475398",
+            "team_name": "Seven Dark",
+            "team_code": "7D"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367224",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114193860596475398",
+            "team_name": "Seven Dark",
+            "team_code": "7D"
+          },
+          "red": {
+            "team_id": "107598878262940546",
+            "team_name": "Malvinas Gaming",
+            "team_code": "MVG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367225",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107598878262940546",
+            "team_name": "Malvinas Gaming",
+            "team_code": "MVG"
+          },
+          "red": {
+            "team_id": "114193860596475398",
+            "team_name": "Seven Dark",
+            "team_code": "7D"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520721101367214": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-10T10:39:19.553Z",
+    "event_id": "116520721101367214",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520721101367214",
+      "league": "LRS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "2026-07-11T05:00:00.000Z",
+      "teams": [
+        {
+          "id": "116057016064992483",
+          "name": "Volticons",
+          "code": "VTC",
+          "image": "http://static.lolesports.com/teams/1770889539409_FULL_COLOR_FOR_DARK_BG2.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "114787896019712117",
+          "name": "Golden Lions",
+          "code": "GLE",
+          "image": "http://static.lolesports.com/teams/1770889382925_FULL_COLOR_FOR_DARK_BG.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520721101367215",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116057016064992483",
+            "team_name": "Volticons",
+            "team_code": "VTC"
+          },
+          "red": {
+            "team_id": "114787896019712117",
+            "team_name": "Golden Lions",
+            "team_code": "GLE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367216",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114787896019712117",
+            "team_name": "Golden Lions",
+            "team_code": "GLE"
+          },
+          "red": {
+            "team_id": "116057016064992483",
+            "team_name": "Volticons",
+            "team_code": "VTC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367217",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116057016064992483",
+            "team_name": "Volticons",
+            "team_code": "VTC"
+          },
+          "red": {
+            "team_id": "114787896019712117",
+            "team_name": "Golden Lions",
+            "team_code": "GLE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
     }
   }
 }
