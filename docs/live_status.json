@@ -2,7 +2,7 @@
   "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (62.8% < 80.0%)",
+    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
@@ -190,7 +190,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-07-10T10:01:15.278122+00:00",
+  "generated_at": "2026-07-10T12:40:50.487516+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -261,16 +261,16 @@
     },
     {
       "evidence": {
-        "feature_rows": 753,
-        "games": 64,
+        "feature_rows": 467,
+        "games": 35,
         "label_sources": {
-          "combined_rows": 6105,
-          "games_rows": 6105,
+          "combined_rows": 25999,
+          "games_rows": 25999,
           "live_label_rows": 0
         },
-        "labeled_rows": 753,
-        "pipeline_feature_rows": 753,
-        "pipeline_labeled_feature_rows": 753,
+        "labeled_rows": 467,
+        "pipeline_feature_rows": 467,
+        "pipeline_labeled_feature_rows": 467,
         "pipeline_ready": false,
         "pipeline_replayed": false,
         "pipeline_resolved_rows": 834,
@@ -326,7 +326,7 @@
   "stage": "collect_live_frames",
   "training": {
     "available": true,
-    "games": 64,
+    "games": 35,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
@@ -336,11 +336,11 @@
         "brier_score": null,
         "log_loss": null
       },
-      "feature_rows": 753,
-      "labeled_feature_rows": 753,
+      "feature_rows": 467,
+      "labeled_feature_rows": 467,
       "mapping": {
-        "accepted_rows": 61,
-        "candidate_rows": 345,
+        "accepted_rows": 32,
+        "candidate_rows": 200,
         "direct_id_overlap_games": 0,
         "map_rows": 97
       },
@@ -365,7 +365,7 @@
       "warnings": []
     },
     "ready": false,
-    "rows": 753
+    "rows": 467
   },
   "warning_count": 1,
   "warnings": [
