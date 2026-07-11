@@ -1,7 +1,7 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-07-10T02:09:28.468342Z",
-  "source": "lol-pros-analyzer train workflow",
+  "generated_at": "2026-07-11T03:55:49.187054Z",
+  "source": "lol-pros-analyzer manual official schedule refresh",
   "models": {
     "pre_match": {
       "name": "logistic_regression_actions_local_check",
@@ -596,6 +596,22 @@
       "predicted_winner": "LYON",
       "confidence": "high",
       "model": "logistic_regression_actions_local_check",
+      "warnings": []
+    },
+    {
+      "event_id": "115570934355614599",
+      "game_id": "115570934355614599",
+      "league": "MSI",
+      "start_time": "2026-07-11 17:00:00",
+      "blue_team": "hanwha_life_esports",
+      "red_team": "lyon",
+      "blue_team_name": "Hanwha Life Esports",
+      "red_team_name": "LYON",
+      "blue_win_probability": 0.767109,
+      "red_win_probability": 0.232891,
+      "predicted_winner": "Hanwha Life Esports",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
       "warnings": []
     }
   ],
