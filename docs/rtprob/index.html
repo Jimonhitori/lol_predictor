@@ -170,8 +170,9 @@
     </div>
   </div>
   <script>
-    const ddragonVersion = "15.24.1";
-    const ddragon = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/champion`;
+    let ddragonVersion = "16.13.1";
+    let ddragon = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/champion`;
+    const localChampionRosterUrl = new URL("../static/data/champions.json", location.href).toString();
     const compositionTypes = [
       { id: "bot-duo", label: "Bot Duo", weight: 2 },
       { id: "mid-jungle", label: "Mid Jungle", weight: 2 },
@@ -228,23 +229,31 @@
     const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, championCc: { status: "loading", profiles: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
-      try {
-        const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/champion.json`, { cache: "force-cache" });
-        if (!res.ok) throw new Error(`ddragon ${res.status}`);
-        const data = await res.json();
-        const rows = Object.values(data?.data || {});
-        if (!rows.length) return;
-        champions = rows.map(champ => ({
-          id: normalizeName(champ.id || champ.name),
-          name: champ.name,
-          role: roleOverrides.get(normalizeName(champ.name)) || roleFromTags(champ.tags),
-          imageUrl: `${ddragon}/${champ.image?.full || `${champ.id}.png`}`,
-        })).sort((a, b) => a.name.localeCompare(b.name));
-        render();
-        if ($("modal").classList.contains("open")) renderPicker();
-      } catch (error) {
-        champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare(b.name));
+      const sources = [
+        localChampionRosterUrl,
+        `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/champion.json`,
+      ];
+      for (const source of sources) {
+        try {
+          const res = await fetch(source, { cache: "force-cache" });
+          if (!res.ok) throw new Error(`champion roster ${res.status}`);
+          const data = await res.json();
+          const rows = Object.values(data?.data || {});
+          if (!rows.length) continue;
+          ddragonVersion = data.version || ddragonVersion;
+          ddragon = `https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/img/champion`;
+          champions = rows.map(champ => ({
+            id: normalizeName(champ.id || champ.name),
+            name: champ.name,
+            role: roleOverrides.get(normalizeName(champ.name)) || roleFromTags(champ.tags),
+            imageUrl: `${ddragon}/${champ.image?.full || `${champ.id}.png`}`,
+          })).sort((a, b) => a.name.localeCompare(b.name));
+          render();
+          if ($("modal").classList.contains("open")) renderPicker();
+          return;
+        } catch (error) {}
       }
+      champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare(b.name));
     }
     function normalizeName(value) { return String(value || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
     function numberValue(value) { const numeric = Number(value); return Number.isFinite(numeric) ? numeric : 0; }
@@ -505,7 +514,6 @@
       }
       render();
       if ($("modal").classList.contains("open")) renderPicker();
-      loadCompositionSynergy();
     }
     function selectedIds() { return new Set([...state.blue, ...state.red].filter(Boolean).map(c => c.id)); }
     function formatGames(value) {
@@ -892,6 +900,12 @@
         if (!champ || !state.active) return;
         state[state.active.side][state.active.idx] = champ;
         $("modal").classList.remove("open"); state.calculated = false; render();
+        const selectedCount = selectedIds().size;
+        if (selectedCount === 1) {
+          loadChampionMeta();
+          loadChampionCcProfiles();
+        }
+        if (selectedCount >= 2 && state.compositionSynergy.status === "loading") loadCompositionSynergy();
       });
     }
     $("search").oninput = e => { state.query = e.target.value; renderPicker(); };
@@ -904,6 +918,7 @@
       state.compositionSynergy = { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} };
       render();
       loadChampionMeta();
+      if (selectedIds().size >= 2) loadCompositionSynergy();
     };
     $("statPatchFilter").onchange = e => {
       state.statPatch = e.target.value || "ALL";
@@ -912,11 +927,17 @@
       if ($("modal").classList.contains("open")) renderPicker();
       loadCompositionSynergy();
     };
-    $("calc").onclick = () => { state.calculated = true; renderPredictionPanels(); renderCompositionAnalysis("blue"); renderCompositionAnalysis("red"); };
+    $("calc").onclick = () => {
+      state.calculated = true;
+      if (state.championMeta.status === "loading") loadChampionMeta();
+      if (state.championCc.status === "loading") loadChampionCcProfiles();
+      if (state.compositionSynergy.status === "loading") loadCompositionSynergy();
+      renderPredictionPanels();
+      renderCompositionAnalysis("blue");
+      renderCompositionAnalysis("red");
+    };
     render();
     loadChampionRoster();
-    loadChampionCcProfiles();
-    loadChampionMeta();
   </script>
 </body>
 </html>
