@@ -13,7 +13,7 @@
   "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (62.8% < 80.0%)",
+    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
@@ -72,16 +72,16 @@
     },
     {
       "evidence": {
-        "feature_rows": 753,
-        "games": 64,
+        "feature_rows": 467,
+        "games": 35,
         "label_sources": {
-          "combined_rows": 6116,
-          "games_rows": 6116,
+          "combined_rows": 25999,
+          "games_rows": 25999,
           "live_label_rows": 0
         },
-        "labeled_rows": 753,
-        "pipeline_feature_rows": 753,
-        "pipeline_labeled_feature_rows": 753,
+        "labeled_rows": 467,
+        "pipeline_feature_rows": 467,
+        "pipeline_labeled_feature_rows": 467,
         "pipeline_ready": false,
         "pipeline_replayed": false,
         "pipeline_resolved_rows": 846,
