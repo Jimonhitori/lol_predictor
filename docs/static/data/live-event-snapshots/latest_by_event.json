@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -51096,7 +51096,7 @@
   },
   "116520721101367222": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116520721101367222",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -51233,7 +51233,7 @@
   },
   "116520721101367214": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116520721101367214",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -51370,7 +51370,7 @@
   },
   "116520721101367182": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116520721101367182",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -51507,7 +51507,7 @@
   },
   "116520721101367138": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "116520721101367138",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -51644,50 +51644,72 @@
   },
   "115570934355614599": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-11T06:24:43.911Z",
+    "checked_at": "2026-07-11T08:17:55.511Z",
     "event_id": "115570934355614599",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "115570934355614599",
-      "league": "MSI",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "5",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
+  "116520885021783312": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-11T08:17:55.511Z",
+    "event_id": "116520885021783312",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520885021783312",
+      "league": "LRN",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
       "status": "unstarted",
-      "start_time": "2026-07-11T17:00:00.000Z",
+      "start_time": "2026-07-12T04:00:00.000Z",
       "teams": [
         {
-          "id": "100205573496804586",
-          "name": "Hanwha Life Esports",
-          "code": "HLE",
-          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+          "id": "107582157086477662",
+          "name": "3V TEAM",
+          "code": "3V",
+          "image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
           "game_wins": "0"
         },
         {
-          "id": "99566405941863385",
-          "name": "LYON",
-          "code": "LYON",
-          "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
+          "id": "114194060984264362",
+          "name": "SDM Tigres",
+          "code": "SDM",
+          "image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
           "game_wins": "0"
         }
       ],
       "games": [
         {
-          "id": "115570934355614600",
+          "id": "116520885021783313",
           "number": 1,
           "state": "unstarted",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "107582157086477662",
+            "team_name": "3V TEAM",
+            "team_code": "3V"
           },
           "red": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
+            "team_id": "114194060984264362",
+            "team_name": "SDM Tigres",
+            "team_code": "SDM"
           },
           "winner": "",
           "live": {
@@ -51709,18 +51731,18 @@
           }
         },
         {
-          "id": "115570934355614601",
+          "id": "116520885021783314",
           "number": 2,
           "state": "unstarted",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "114194060984264362",
+            "team_name": "SDM Tigres",
+            "team_code": "SDM"
           },
           "red": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
+            "team_id": "107582157086477662",
+            "team_name": "3V TEAM",
+            "team_code": "3V"
           },
           "winner": "",
           "live": {
@@ -51742,18 +51764,89 @@
           }
         },
         {
-          "id": "115570934355614602",
+          "id": "116520885021783315",
           "number": 3,
           "state": "unstarted",
           "blue": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
+            "team_id": "107582157086477662",
+            "team_name": "3V TEAM",
+            "team_code": "3V"
           },
           "red": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "114194060984264362",
+            "team_name": "SDM Tigres",
+            "team_code": "SDM"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520885021783332": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-11T08:17:55.511Z",
+    "event_id": "116520885021783332",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520885021783332",
+      "league": "LRN",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "2026-07-12T04:00:00.000Z",
+      "teams": [
+        {
+          "id": "108121057213928999",
+          "name": "Polar Squad",
+          "code": "PLS",
+          "image": "http://static.lolesports.com/teams/1772041837794_PLS_C.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116056892206058175",
+          "name": "NCG Esports",
+          "code": "NCG",
+          "image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520885021783333",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "108121057213928999",
+            "team_name": "Polar Squad",
+            "team_code": "PLS"
+          },
+          "red": {
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
           },
           "winner": "",
           "live": {
@@ -51775,18 +51868,18 @@
           }
         },
         {
-          "id": "115570934355614603",
-          "number": 4,
+          "id": "116520885021783334",
+          "number": 2,
           "state": "unstarted",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
           },
           "red": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
+            "team_id": "108121057213928999",
+            "team_name": "Polar Squad",
+            "team_code": "PLS"
           },
           "winner": "",
           "live": {
@@ -51808,18 +51901,18 @@
           }
         },
         {
-          "id": "115570934355614604",
-          "number": 5,
+          "id": "116520885021783335",
+          "number": 3,
           "state": "unstarted",
           "blue": {
-            "team_id": "99566405941863385",
-            "team_name": "LYON",
-            "team_code": "LYON"
+            "team_id": "108121057213928999",
+            "team_name": "Polar Squad",
+            "team_code": "PLS"
           },
           "red": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
+            "team_id": "116056892206058175",
+            "team_name": "NCG Esports",
+            "team_code": "NCG"
           },
           "winner": "",
           "live": {
