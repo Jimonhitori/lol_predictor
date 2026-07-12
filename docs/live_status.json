@@ -2,7 +2,7 @@
   "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
+    "training readiness: live feature <=30s interval coverage below threshold (62.8% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
@@ -138,19 +138,19 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 858,
-      "latest_timestamp": "2026-07-12T21:04:39.340000Z",
+      "history_rows": 864,
+      "latest_timestamp": "2026-07-12T21:59:13.951000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {
-        "live_logistic_oe_bootstrap": 636
+        "live_logistic_oe_bootstrap": 642
       },
-      "new_rows": 636,
-      "non_empty_game_state_rows": 858,
-      "oe_bootstrap_snapshot_rows": 636,
+      "new_rows": 642,
+      "non_empty_game_state_rows": 864,
+      "oe_bootstrap_snapshot_rows": 642,
       "production_live_telemetry_rows": 222,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 73,
+        "games_with_interval_samples": 74,
         "games_with_single_frame": 0,
         "interval_count": 275,
         "max_interval_seconds": 256.008,
@@ -161,7 +161,7 @@
         "sub_30s_interval_count": 175,
         "sub_60s_interval_count": 272
       },
-      "unique_games": 73,
+      "unique_games": 74,
       "unknown_model_version_rows": 222
     },
     "config": {
@@ -190,7 +190,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-07-12T21:22:20.303219+00:00",
+  "generated_at": "2026-07-12T23:26:53.061564+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -244,15 +244,15 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 73,
+        "games": 74,
         "interval_count": 275,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 858,
-        "oe_bootstrap_snapshot_rows": 636,
+        "non_empty_game_state_rows": 864,
+        "oe_bootstrap_snapshot_rows": 642,
         "pct_intervals_lte_30s": 0.6363636363636364,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 858,
+        "rows": 864,
         "sub_30s_interval_count": 175
       },
       "id": "live_frame_collection",
@@ -261,19 +261,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 467,
-        "games": 35,
+        "feature_rows": 771,
+        "games": 67,
         "label_sources": {
-          "combined_rows": 25999,
-          "games_rows": 25999,
+          "combined_rows": 6142,
+          "games_rows": 6142,
           "live_label_rows": 0
         },
-        "labeled_rows": 467,
-        "pipeline_feature_rows": 467,
-        "pipeline_labeled_feature_rows": 467,
+        "labeled_rows": 771,
+        "pipeline_feature_rows": 771,
+        "pipeline_labeled_feature_rows": 771,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 858,
+        "pipeline_resolved_rows": 864,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
@@ -326,7 +326,7 @@
   "stage": "collect_live_frames",
   "training": {
     "available": true,
-    "games": 35,
+    "games": 67,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
@@ -336,11 +336,11 @@
         "brier_score": null,
         "log_loss": null
       },
-      "feature_rows": 467,
-      "labeled_feature_rows": 467,
+      "feature_rows": 771,
+      "labeled_feature_rows": 771,
       "mapping": {
-        "accepted_rows": 32,
-        "candidate_rows": 200,
+        "accepted_rows": 64,
+        "candidate_rows": 370,
         "direct_id_overlap_games": 0,
         "map_rows": 100
       },
@@ -359,13 +359,13 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 858,
+      "resolved_rows": 864,
       "trained": false,
       "warning_count": 0,
       "warnings": []
     },
     "ready": false,
-    "rows": 467
+    "rows": 771
   },
   "warning_count": 1,
   "warnings": [
