@@ -190,7 +190,7 @@
     }
   },
   "display_ready": false,
-  "generated_at": "2026-07-12T04:08:23.447649+00:00",
+  "generated_at": "2026-07-12T07:08:32.807589+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -261,16 +261,16 @@
     },
     {
       "evidence": {
-        "feature_rows": 765,
-        "games": 66,
+        "feature_rows": 771,
+        "games": 67,
         "label_sources": {
-          "combined_rows": 6129,
-          "games_rows": 6129,
+          "combined_rows": 6137,
+          "games_rows": 6137,
           "live_label_rows": 0
         },
-        "labeled_rows": 765,
-        "pipeline_feature_rows": 765,
-        "pipeline_labeled_feature_rows": 765,
+        "labeled_rows": 771,
+        "pipeline_feature_rows": 771,
+        "pipeline_labeled_feature_rows": 771,
         "pipeline_ready": false,
         "pipeline_replayed": false,
         "pipeline_resolved_rows": 852,
@@ -326,7 +326,7 @@
   "stage": "collect_live_frames",
   "training": {
     "available": true,
-    "games": 66,
+    "games": 67,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
@@ -336,13 +336,13 @@
         "brier_score": null,
         "log_loss": null
       },
-      "feature_rows": 765,
-      "labeled_feature_rows": 765,
+      "feature_rows": 771,
+      "labeled_feature_rows": 771,
       "mapping": {
-        "accepted_rows": 63,
+        "accepted_rows": 64,
         "candidate_rows": 360,
         "direct_id_overlap_games": 0,
-        "map_rows": 99
+        "map_rows": 100
       },
       "priors": {
         "post_draft_non_default_rows": 0,
@@ -365,7 +365,7 @@
       "warnings": []
     },
     "ready": false,
-    "rows": 765
+    "rows": 771
   },
   "warning_count": 1,
   "warnings": [
