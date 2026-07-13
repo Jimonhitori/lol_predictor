@@ -138,30 +138,30 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 864,
-      "latest_timestamp": "2026-07-12T21:59:13.951000Z",
+      "history_rows": 874,
+      "latest_timestamp": "2026-07-13T19:00:31.389000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {
-        "live_logistic_oe_bootstrap": 642
+        "live_logistic_oe_bootstrap": 652
       },
-      "new_rows": 642,
-      "non_empty_game_state_rows": 864,
-      "oe_bootstrap_snapshot_rows": 642,
+      "new_rows": 652,
+      "non_empty_game_state_rows": 874,
+      "oe_bootstrap_snapshot_rows": 652,
       "production_live_telemetry_rows": 222,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 74,
+        "games_with_interval_samples": 75,
         "games_with_single_frame": 0,
-        "interval_count": 275,
+        "interval_count": 284,
         "max_interval_seconds": 256.008,
-        "median_interval_seconds": 29.990999999999985,
-        "p90_interval_seconds": 30.26720000000005,
-        "pct_intervals_lte_30s": 0.6363636363636364,
-        "pct_intervals_lte_60s": 0.9890909090909091,
-        "sub_30s_interval_count": 175,
-        "sub_60s_interval_count": 272
+        "median_interval_seconds": 29.99000000000001,
+        "p90_interval_seconds": 30.251000000000023,
+        "pct_intervals_lte_30s": 0.647887323943662,
+        "pct_intervals_lte_60s": 0.9894366197183099,
+        "sub_30s_interval_count": 184,
+        "sub_60s_interval_count": 281
       },
-      "unique_games": 74,
+      "unique_games": 75,
       "unknown_model_version_rows": 222
     },
     "config": {
@@ -184,13 +184,13 @@
       "ready": false,
       "warning_count": 2,
       "warnings": [
-        "live frame <=30s interval coverage below threshold (63.6% < 80.0%)",
+        "live frame <=30s interval coverage below threshold (64.8% < 80.0%)",
         "OE bootstrap snapshot rows are present in collection history; they are coarse offline rows, not production live telemetry"
       ]
     }
   },
   "display_ready": false,
-  "generated_at": "2026-07-13T18:16:59.870659+00:00",
+  "generated_at": "2026-07-13T19:57:25.303470+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -244,16 +244,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 74,
-        "interval_count": 275,
+        "games": 75,
+        "interval_count": 284,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 864,
-        "oe_bootstrap_snapshot_rows": 642,
-        "pct_intervals_lte_30s": 0.6363636363636364,
+        "non_empty_game_state_rows": 874,
+        "oe_bootstrap_snapshot_rows": 652,
+        "pct_intervals_lte_30s": 0.647887323943662,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 864,
-        "sub_30s_interval_count": 175
+        "rows": 874,
+        "sub_30s_interval_count": 184
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -273,7 +273,7 @@
         "pipeline_labeled_feature_rows": 467,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 864,
+        "pipeline_resolved_rows": 874,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
@@ -359,7 +359,7 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 864,
+      "resolved_rows": 874,
       "trained": false,
       "warning_count": 0,
       "warnings": []
