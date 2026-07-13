@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -53146,7 +53146,7 @@
   },
   "116713163972559028": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116713163972559028",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53217,7 +53217,7 @@
   },
   "116713163972559072": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116713163972559072",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53288,7 +53288,7 @@
   },
   "116713163972559016": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116713163972559016",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53359,7 +53359,7 @@
   },
   "116713163972559046": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116713163972559046",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53430,7 +53430,7 @@
   },
   "116713163972559010": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116713163972559010",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53501,144 +53501,29 @@
   },
   "116520885021783276": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116520885021783276",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520885021783276",
-      "league": "LRN",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "3",
-      "status": "unstarted",
-      "start_time": "2026-07-14T08:00:00.000Z",
-      "teams": [
-        {
-          "id": "107582157086477662",
-          "name": "3V TEAM",
-          "code": "3V",
-          "image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "107603600826620492",
-          "name": "Zeu5 Esports",
-          "code": "Z5",
-          "image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116520885021783277",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107582157086477662",
-            "team_name": "3V TEAM",
-            "team_code": "3V"
-          },
-          "red": {
-            "team_id": "107603600826620492",
-            "team_name": "Zeu5 Esports",
-            "team_code": "Z5"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520885021783278",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107603600826620492",
-            "team_name": "Zeu5 Esports",
-            "team_code": "Z5"
-          },
-          "red": {
-            "team_id": "107582157086477662",
-            "team_name": "3V TEAM",
-            "team_code": "3V"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520885021783279",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107582157086477662",
-            "team_name": "3V TEAM",
-            "team_code": "3V"
-          },
-          "red": {
-            "team_id": "107603600826620492",
-            "team_name": "Zeu5 Esports",
-            "team_code": "Z5"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116520885021783300": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116520885021783300",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -53775,7 +53660,7 @@
   },
   "116520885021717712": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116520885021717712",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -53912,7 +53797,7 @@
   },
   "116520885021783320": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-13T22:08:39.462Z",
+    "checked_at": "2026-07-13T23:10:05.638Z",
     "event_id": "116520885021783320",
     "status": "unstarted",
     "source": "cloudflare_live_event",
