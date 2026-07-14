@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -53430,7 +53430,7 @@
   },
   "116713163972559010": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116713163972559010",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53501,7 +53501,7 @@
   },
   "116520885021783276": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116520885021783276",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53638,7 +53638,7 @@
   },
   "116520885021783300": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116520885021783300",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53775,7 +53775,7 @@
   },
   "116520885021717712": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116520885021717712",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -53912,7 +53912,7 @@
   },
   "116520885021783320": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116520885021783320",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54049,7 +54049,7 @@
   },
   "116833506932259271": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116833506932259271",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54186,7 +54186,7 @@
   },
   "116793933805935744": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116793933805935744",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54323,7 +54323,7 @@
   },
   "116833506932128107": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116833506932128107",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54460,7 +54460,7 @@
   },
   "116793933806066924": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T07:29:45.125Z",
+    "checked_at": "2026-07-14T09:26:33.587Z",
     "event_id": "116793933806066924",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54570,6 +54570,280 @@
             "team_id": "107128093558481418",
             "team_name": "ZennIT",
             "team_code": "ZNT"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520721101367186": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-14T09:26:33.587Z",
+    "event_id": "116520721101367186",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520721101367186",
+      "league": "LRS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "2026-07-15T05:00:00.000Z",
+      "teams": [
+        {
+          "id": "114787896019712117",
+          "name": "Golden Lions",
+          "code": "GLE",
+          "image": "http://static.lolesports.com/teams/1770889382925_FULL_COLOR_FOR_DARK_BG.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "107599144012469862",
+          "name": "Maze Gaming",
+          "code": "MAZ",
+          "image": "http://static.lolesports.com/teams/1643036820055_maze-ColorLight.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520721101367187",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114787896019712117",
+            "team_name": "Golden Lions",
+            "team_code": "GLE"
+          },
+          "red": {
+            "team_id": "107599144012469862",
+            "team_name": "Maze Gaming",
+            "team_code": "MAZ"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367188",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107599144012469862",
+            "team_name": "Maze Gaming",
+            "team_code": "MAZ"
+          },
+          "red": {
+            "team_id": "114787896019712117",
+            "team_name": "Golden Lions",
+            "team_code": "GLE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367189",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "114787896019712117",
+            "team_name": "Golden Lions",
+            "team_code": "GLE"
+          },
+          "red": {
+            "team_id": "107599144012469862",
+            "team_name": "Maze Gaming",
+            "team_code": "MAZ"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116520721101367134": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-14T09:26:33.587Z",
+    "event_id": "116520721101367134",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520721101367134",
+      "league": "LRS",
+      "league_group": "",
+      "region": "",
+      "best_of": "3",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "116783232785317266",
+          "name": "ZEN",
+          "code": "Z3N",
+          "image": "http://static.lolesports.com/teams/1782197670211_FULL_COLOR_FOR_LIGHT_BG.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116775295130449796",
+          "name": "Docta Esports Club",
+          "code": "DEC",
+          "image": "http://static.lolesports.com/teams/1781849600840_DOCTA-DOH.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116520721101367135",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116783232785317266",
+            "team_name": "ZEN",
+            "team_code": "Z3N"
+          },
+          "red": {
+            "team_id": "116775295130449796",
+            "team_name": "Docta Esports Club",
+            "team_code": "DEC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367136",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116775295130449796",
+            "team_name": "Docta Esports Club",
+            "team_code": "DEC"
+          },
+          "red": {
+            "team_id": "116783232785317266",
+            "team_name": "ZEN",
+            "team_code": "Z3N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116520721101367137",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116783232785317266",
+            "team_name": "ZEN",
+            "team_code": "Z3N"
+          },
+          "red": {
+            "team_id": "116775295130449796",
+            "team_name": "Docta Esports Club",
+            "team_code": "DEC"
           },
           "winner": "",
           "live": {
