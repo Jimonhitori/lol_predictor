@@ -2,7 +2,7 @@
 const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
-const STATIC_DATA_VERSION = '20260714-site-spec-guard';
+const STATIC_DATA_VERSION = '20260714-prediction-time-guard';
 const APP_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Tokyo';
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
@@ -1052,6 +1052,7 @@ function applyPreMatchPredictionOverlay(matches) {
   const predictions = state.preMatchPredictions || {};
   if (predictions.status !== 'loaded') return matches;
   const seenIds = new Set();
+  const mismatchedPredictionIds = new Set();
   const seenPredictionKeys = new Set((matches || []).map(match => standalonePredictionKey({
     start_time: match?.start_time || '',
     blue_team: match?.blue_team || match?.blue_code || '',
@@ -1063,6 +1064,7 @@ function applyPreMatchPredictionOverlay(matches) {
     const looseKey = loosePreMatchPredictionKey(match);
     const prediction = (eventId ? predictions.byEventId?.[eventId] : null) || (looseKey ? predictions.byLooseMatchKey?.[looseKey] : null);
     const canOverlay = prediction && (predictionMatchesSchedule(match, prediction) || predictionMatchesScheduleLoosely(match, prediction));
+    if (eventId && prediction && !canOverlay) mismatchedPredictionIds.add(eventId);
     if (eventId && (!prediction || canOverlay)) seenIds.add(eventId);
     const output = canOverlay ? overlayMatchFromPrediction(match, prediction) : match;
     const outputKey = standalonePredictionKey(output);
@@ -1077,7 +1079,7 @@ function applyPreMatchPredictionOverlay(matches) {
     const predictionKey = standalonePredictionKey(prediction);
     if (predictionKey && seenPredictionKeys.has(predictionKey)) continue;
     const looseKey = loosePreMatchPredictionKey(prediction);
-    if (looseKey && seenLoosePredictionKeys.has(looseKey)) continue;
+    if (looseKey && seenLoosePredictionKeys.has(looseKey) && !mismatchedPredictionIds.has(eventId)) continue;
     if (predictionKey) seenPredictionKeys.add(predictionKey);
     if (looseKey) seenLoosePredictionKeys.add(looseKey);
     seenIds.add(eventId);
@@ -1170,7 +1172,7 @@ function suppressPlaceholderMatchesWithStandalonePredictions(matches) {
     if (String(match?.source || '') === 'pre_match_prediction_feed') return true;
     const slot = scheduleSlotKey(match);
     const eventSlot = predictionEventSlots.get(String(match?.id || match?.event_id || ''));
-    if (eventSlot && eventSlot !== slot) return false;
+    if (eventSlot && eventSlot !== slot) return !hasPlaceholderTeamInfo(match);
     const predictionTeams = predictionSlotTeams.get(slot);
     if (!predictionTeams) return true;
     return teamPairKey(match) === predictionTeams;

@@ -151,6 +151,17 @@ if (appSource.ok) {
   scheduleOverlay = overlayCheck.summary;
   if (!overlayCheck.ok) errors.push(...overlayCheck.errors);
   warnings.push(...overlayCheck.warnings);
+  if (target?.prediction && target?.match?.start_time) {
+    const targetId = String(target.prediction.event_id || target.prediction.game_id || '');
+    const mismatchedStart = new Date(new Date(target.match.start_time).getTime() + 24 * 60 * 60 * 1000).toISOString();
+    const mismatchedPredictions = predictions.map((prediction) =>
+      prediction === target.prediction ? { ...prediction, start_time: mismatchedStart } : prediction
+    );
+    const mismatchCheck = checkPredictionScheduleOverlay(appSource.text, mismatchedPredictions, matches, targetId);
+    scheduleOverlay.synthetic_time_mismatch = mismatchCheck.summary;
+    if (!mismatchCheck.ok) errors.push(...mismatchCheck.errors.map(error => `synthetic mismatch: ${error}`));
+    warnings.push(...mismatchCheck.warnings.map(warning => `synthetic mismatch: ${warning}`));
+  }
   const predictionOnlyDetailCheck = checkPredictionOnlyDetailFallback(appSource.text, predictions, matchesById);
   predictionOnlyDetailFallback = predictionOnlyDetailCheck.summary;
   if (!predictionOnlyDetailCheck.ok) errors.push(...predictionOnlyDetailCheck.errors);
