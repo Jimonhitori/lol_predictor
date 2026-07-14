@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -54049,7 +54049,7 @@
   },
   "116833506932259271": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116833506932259271",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54186,7 +54186,7 @@
   },
   "116793933805935744": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116793933805935744",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54323,7 +54323,7 @@
   },
   "116833506932128107": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116833506932128107",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54460,29 +54460,144 @@
   },
   "116793933806066924": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116793933806066924",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116793933806066924",
-      "league": "",
+      "league": "Road of Legends",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
+      "best_of": "3",
+      "status": "completed",
+      "start_time": "2026-07-15T03:00:00.000Z",
+      "teams": [
+        {
+          "id": "113865643197386183",
+          "name": "Senshi eSports",
+          "code": "SNSH",
+          "image": "http://static.lolesports.com/teams/1737451831210_SNSH_COLOR_LIGHTDARKBG.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "107128093558481418",
+          "name": "ZennIT",
+          "code": "ZNT",
+          "image": "http://static.lolesports.com/teams/1671442841824_ZennIT.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116793933806066925",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "113865643197386183",
+            "team_name": "Senshi eSports",
+            "team_code": "SNSH"
+          },
+          "red": {
+            "team_id": "107128093558481418",
+            "team_name": "ZennIT",
+            "team_code": "ZNT"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116793933806066926",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "113865643197386183",
+            "team_name": "Senshi eSports",
+            "team_code": "SNSH"
+          },
+          "red": {
+            "team_id": "107128093558481418",
+            "team_name": "ZennIT",
+            "team_code": "ZNT"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116793933806066927",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "107128093558481418",
+            "team_name": "ZennIT",
+            "team_code": "ZNT"
+          },
+          "red": {
+            "team_id": "113865643197386183",
+            "team_name": "Senshi eSports",
+            "team_code": "SNSH"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116520721101367186": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116520721101367186",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -54504,144 +54619,29 @@
   },
   "116520721101367134": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116520721101367134",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520721101367134",
-      "league": "LRS",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "3",
-      "status": "unstarted",
+      "best_of": "",
+      "status": "unavailable",
       "start_time": "",
-      "teams": [
-        {
-          "id": "116783232785317266",
-          "name": "ZEN",
-          "code": "Z3N",
-          "image": "http://static.lolesports.com/teams/1782197670211_FULL_COLOR_FOR_LIGHT_BG.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "116775295130449796",
-          "name": "Docta Esports Club",
-          "code": "DEC",
-          "image": "http://static.lolesports.com/teams/1781849600840_DOCTA-DOH.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116520721101367135",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "116783232785317266",
-            "team_name": "ZEN",
-            "team_code": "Z3N"
-          },
-          "red": {
-            "team_id": "116775295130449796",
-            "team_name": "Docta Esports Club",
-            "team_code": "DEC"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520721101367136",
-          "number": 2,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "116775295130449796",
-            "team_name": "Docta Esports Club",
-            "team_code": "DEC"
-          },
-          "red": {
-            "team_id": "116783232785317266",
-            "team_name": "ZEN",
-            "team_code": "Z3N"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        },
-        {
-          "id": "116520721101367137",
-          "number": 3,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "116783232785317266",
-            "team_name": "ZEN",
-            "team_code": "Z3N"
-          },
-          "red": {
-            "team_id": "116775295130449796",
-            "team_name": "Docta Esports Club",
-            "team_code": "DEC"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116520721101367226": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116520721101367226",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54778,7 +54778,7 @@
   },
   "116520721101367238": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T20:34:20.655Z",
+    "checked_at": "2026-07-14T21:33:04.958Z",
     "event_id": "116520721101367238",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54888,6 +54888,148 @@
             "team_id": "107598878262940546",
             "team_name": "Malvinas Gaming",
             "team_code": "MVG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116855104460702316": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-14T21:33:04.958Z",
+    "event_id": "116855104460702316",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116855104460702316",
+      "league": "Esports World Cup",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "2026-07-15T18:00:00.000Z",
+      "teams": [
+        {
+          "id": "100205573495116443",
+          "name": "Gen.G Esports",
+          "code": "GEN",
+          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "111692118851466302",
+          "name": "Karmine Corp",
+          "code": "KC",
+          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116855104460702317",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
+          },
+          "red": {
+            "team_id": "111692118851466302",
+            "team_name": "Karmine Corp",
+            "team_code": "KC"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116855104460702314": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-14T21:33:04.958Z",
+    "event_id": "116855104460702314",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116855104460702314",
+      "league": "Esports World Cup",
+      "league_group": "",
+      "region": "",
+      "best_of": "1",
+      "status": "unstarted",
+      "start_time": "2026-07-15T18:00:00.000Z",
+      "teams": [
+        {
+          "id": "107251295460371069",
+          "name": "Team Secret",
+          "code": "TS",
+          "image": "http://static.lolesports.com/teams/1656693717651_TS.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "115688562107799886",
+          "name": "Sentinels",
+          "code": "SEN",
+          "image": "http://static.lolesports.com/teams/1767769784669_Sentinels_2020_Icon.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116855104460702315",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "107251295460371069",
+            "team_name": "Team Secret",
+            "team_code": "TS"
+          },
+          "red": {
+            "team_id": "115688562107799886",
+            "team_name": "Sentinels",
+            "team_code": "SEN"
           },
           "winner": "",
           "live": {
