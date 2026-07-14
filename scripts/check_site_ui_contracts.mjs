@@ -8,6 +8,8 @@ const errors = [];
 const checks = {};
 
 const index = await readText('index.html');
+const match = await readText('match.html');
+const matchIndex = await readText('match/index.html');
 const app = await readText('static/app.js');
 const draftLab = await readText('rtprob/index.html');
 const draftLens = await readText('player-features/index.html');
@@ -16,6 +18,16 @@ const champions = await readJson('static/data/champions.json');
 requireChecks('navigation', {
   draft_lab: index.includes('href="/rtprob/"') && index.includes('Draft Lab'),
   draft_lens: index.includes('href="/player-features/"') && index.includes('Draft Lens'),
+});
+
+const appAssetVersions = [index, match, matchIndex]
+  .map(source => source.match(/static\/app[.]js[?]v=([^"']+)/)?.[1] || '');
+requireChecks('asset_versions', {
+  present_on_all_pages: appAssetVersions.every(Boolean),
+  consistent: new Set(appAssetVersions).size === 1,
+  current: appAssetVersions[0] === 'site-spec-guard-20260714',
+  data_cache_current: app.includes("const STATIC_DATA_VERSION = '20260714-site-spec-guard'")
+    || app.includes('const STATIC_DATA_VERSION = "20260714-site-spec-guard"'),
 });
 
 requireChecks('schedule', {
