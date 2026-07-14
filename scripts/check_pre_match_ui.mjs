@@ -450,7 +450,7 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
         generated_at: '2026-05-20T00:00:00Z',
         predictions: ${JSON.stringify(predictions)}
       }, { source: 'probe', url: 'probe://predictions' });
-      applyPreMatchPredictionOverlay(${JSON.stringify(matches)}).filter(match => String(match.id || match.event_id || '') === ${JSON.stringify(targetId)});
+      applyPreMatchPredictionOverlay(${JSON.stringify(matches)});
     `, context, { timeout: VM_TIMEOUT_MS });
     const predictionStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(targetPrediction.start_time || '')})`, context, { timeout: VM_TIMEOUT_MS });
     const scheduleStart = targetMatch
@@ -460,9 +460,21 @@ function checkPredictionScheduleOverlay(appSourceText, predictions, matches, mat
     output.summary.schedule_start_time = scheduleStart;
     output.summary.prediction_start_time = predictionStart;
     const resultRows = Array.isArray(result) ? result : [];
-    const scheduleResult = resultRows.find(match => String(match.start_time || '') === String(targetMatch?.start_time || ''));
-    const standaloneResult = resultRows.find(match => String(match.source || '') === 'pre_match_prediction_feed')
-      || resultRows.find(match => String(match.start_time || '') !== String(targetMatch?.start_time || ''));
+    const targetRows = resultRows.filter(match => String(match.id || match.event_id || '') === targetId);
+    const scheduleResult = targetRows.find(match => String(match.start_time || '') === String(targetMatch?.start_time || ''));
+    const predictionTeams = [
+      targetPrediction.blue_team_name || targetPrediction.blue_team || '',
+      targetPrediction.red_team_name || targetPrediction.red_team || '',
+    ].map(value => vm.runInContext(`teamKey(${JSON.stringify(value)})`, context, { timeout: VM_TIMEOUT_MS })).sort();
+    const standaloneResult = resultRows.find((match) => {
+      const rowStart = vm.runInContext(`normalizedPredictionTime(${JSON.stringify(match.start_time || '')})`, context, { timeout: VM_TIMEOUT_MS });
+      const rowTeams = [match.blue_team || match.blue_code || '', match.red_team || match.red_code || '']
+        .map(value => vm.runInContext(`teamKey(${JSON.stringify(value)})`, context, { timeout: VM_TIMEOUT_MS }))
+        .sort();
+      return String(rowStart || '') === String(predictionStart || '')
+        && rowTeams.length === predictionTeams.length
+        && rowTeams.every((team, index) => team === predictionTeams[index]);
+    });
     output.summary.overlaid_start_time = String(scheduleResult?.start_time || '');
     output.summary.overlaid_blue_team = String(scheduleResult?.blue_team || '');
     output.summary.overlaid_red_team = String(scheduleResult?.red_team || '');
