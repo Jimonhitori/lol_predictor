@@ -6,6 +6,7 @@ This site can be deployed to Cloudflare Pages as a static site.
 
 - Project source: `Jimonhitori/lol_predictor`
 - Production branch: `codex/github-pages-static`
+- Canonical/default branch: `codex/github-pages-static`
 - Build command: leave empty
 - Build output directory: `docs`
 - Root directory: repository root
@@ -45,6 +46,22 @@ and `docs/static/styles.css` from `lol_predictor.web_app`.
 
 That later step requires Python dependencies and data/model files to be available
 in the Cloudflare build environment.
+
+## Production Ownership And Rollback Prevention
+
+`codex/github-pages-static` is the source of truth for both the deployed UI and
+its generated data. The older `codex/lol-predictor-web` branch must not be used
+as the base for site changes because its static shell predates the production
+Draft Lab, Draft Lens, schedule, and diagnostics behavior.
+
+Automated analyzer branches may update JSON under `docs/static/data/` and the
+explicit analyzer artifact files under `docs/`. They must not update HTML,
+CSS, JavaScript, Pages Functions, or site scripts. `Verify site contracts`
+enforces this scope for every `analyzer-*` pull request and checks the durable
+UI behavior in `scripts/check_site_ui_contracts.mjs`.
+
+Analyzer sync pull requests must remain unmerged until the site contract check
+passes. Do not enable direct merge for generated artifact PRs.
 
 ## Runtime Behavior
 

@@ -60,6 +60,7 @@ if (!skipProductionSmoke) {
 console.log('Site update command completed.');
 
 function preflight() {
+  run('node', ['scripts/check_site_ui_contracts.mjs', 'docs']);
   run('node', ['--check', 'docs/static/app.js']);
   run('node', ['--check', 'functions/api/diagnostics.js']);
   run('node', ['--check', 'functions/api/live-event.js']);

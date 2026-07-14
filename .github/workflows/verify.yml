@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -36,12 +38,21 @@ jobs:
           node --check scripts/check_ops_meta.mjs
           node --check scripts/check_pre_match_ui.mjs
           node --check scripts/check_static_asset_sizes.mjs
+          node --check scripts/check_site_ui_contracts.mjs
+          node --check scripts/check_automation_change_scope.mjs
           node --check scripts/serve_cloudflare_preview.mjs
           node --check scripts/backtest_site_contracts.mjs
           node --check scripts/sync_lolesports_match_results.mjs
 
       - name: Run local Cloudflare preflight
         run: |
+          node scripts/check_site_ui_contracts.mjs docs
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            node scripts/check_automation_change_scope.mjs \
+              --branch "${{ github.head_ref }}" \
+              --base "${{ github.event.pull_request.base.sha }}" \
+              --head "${{ github.event.pull_request.head.sha }}"
+          fi
           node scripts/serve_cloudflare_preview.mjs > preview.log 2>&1 &
           PREVIEW_PID=$!
           trap 'kill "$PREVIEW_PID" 2>/dev/null || true' EXIT

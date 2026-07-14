@@ -92,6 +92,7 @@ if (data.prediction_feed_warning_count === 0 && Array.isArray(data.artifact_warn
 const unexpectedArtifactWarnings = Array.isArray(data.artifact_warnings)
   ? data.artifact_warnings.filter(warning =>
     warning !== 'prediction_feed_has_warnings'
+    && warning !== 'prediction_feed_stale'
     && warning !== 'prediction_match_overlap_zero'
     && warning !== 'live_status_stale'
     && warning !== 'live_status_display_not_ready'
