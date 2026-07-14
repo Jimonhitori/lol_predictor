@@ -2,8 +2,9 @@
 const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
-const STATIC_DATA_VERSION = '20260714-prediction-time-guard';
+const STATIC_DATA_VERSION = '20260714-naive-time-jst';
 const APP_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Tokyo';
+const NAIVE_SCHEDULE_UTC_OFFSET_HOURS = 9;
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
 const LIVE_PRESTART_PROBE_MS = 20 * 60 * 1000;
 const DETAIL_REFRESH_IN_PROGRESS_MS = 5000;
@@ -1824,7 +1825,14 @@ function parseScheduleDate(value) {
   const naiveDateTime = text.match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?$/);
   if (naiveDateTime) {
     const [, year, month, day, hour, minute, second = '00'] = naiveDateTime;
-    return new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute), Number(second));
+    return new Date(Date.UTC(
+      Number(year),
+      Number(month) - 1,
+      Number(day),
+      Number(hour) - NAIVE_SCHEDULE_UTC_OFFSET_HOURS,
+      Number(minute),
+      Number(second),
+    ));
   }
   return new Date(text);
 }

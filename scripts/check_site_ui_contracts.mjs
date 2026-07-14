@@ -25,9 +25,9 @@ const appAssetVersions = [index, match, matchIndex]
 requireChecks('asset_versions', {
   present_on_all_pages: appAssetVersions.every(Boolean),
   consistent: new Set(appAssetVersions).size === 1,
-  current: appAssetVersions[0] === 'prediction-time-guard-20260714',
-  data_cache_current: app.includes("const STATIC_DATA_VERSION = '20260714-prediction-time-guard'")
-    || app.includes('const STATIC_DATA_VERSION = "20260714-prediction-time-guard"'),
+  current: appAssetVersions[0] === 'naive-time-jst-20260714',
+  data_cache_current: app.includes("const STATIC_DATA_VERSION = '20260714-naive-time-jst'")
+    || app.includes('const STATIC_DATA_VERSION = "20260714-naive-time-jst"'),
 });
 
 requireChecks('schedule', {
