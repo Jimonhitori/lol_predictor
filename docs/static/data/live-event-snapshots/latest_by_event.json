@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -54049,7 +54049,7 @@
   },
   "116833506932259271": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116833506932259271",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54186,104 +54186,60 @@
   },
   "116793933805935744": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116793933805935744",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116793933805935744",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
-    }
-  },
-  "116833506932128107": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
-    "event_id": "116833506932128107",
-    "status": "unavailable",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "116833506932128107",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
-    }
-  },
-  "116793933806066924": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
-    "event_id": "116793933806066924",
-    "status": "unstarted",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "116793933806066924",
       "league": "Road of Legends",
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "unstarted",
-      "start_time": "2026-07-15T03:00:00.000Z",
+      "status": "completed",
+      "start_time": "2026-07-15T02:00:00.000Z",
       "teams": [
         {
-          "id": "107128093558481418",
-          "name": "ZennIT",
-          "code": "ZNT",
-          "image": "http://static.lolesports.com/teams/1671442841824_ZennIT.png",
+          "id": "105520816474194464",
+          "name": "Dynasty",
+          "code": "DYN",
+          "image": "http://static.lolesports.com/teams/1767914106312_dyn_w.png",
           "game_wins": "0"
         },
         {
-          "id": "113865643197386183",
-          "name": "Senshi eSports",
-          "code": "SNSH",
-          "image": "http://static.lolesports.com/teams/1737451831210_SNSH_COLOR_LIGHTDARKBG.png",
-          "game_wins": "0"
+          "id": "105520822049210915",
+          "name": "mCon Esports",
+          "code": "MCON",
+          "image": "http://static.lolesports.com/teams/MCon_esportslogo_square.png",
+          "game_wins": "2"
         }
       ],
       "games": [
         {
-          "id": "116793933806066925",
+          "id": "116793933806001281",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "107128093558481418",
-            "team_name": "ZennIT",
-            "team_code": "ZNT"
+            "team_id": "105520816474194464",
+            "team_name": "Dynasty",
+            "team_code": "DYN"
           },
           "red": {
-            "team_id": "113865643197386183",
-            "team_name": "Senshi eSports",
-            "team_code": "SNSH"
+            "team_id": "105520822049210915",
+            "team_name": "mCon Esports",
+            "team_code": "MCON"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -54295,28 +54251,28 @@
           }
         },
         {
-          "id": "116793933806066926",
+          "id": "116793933806001282",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "107128093558481418",
-            "team_name": "ZennIT",
-            "team_code": "ZNT"
+            "team_id": "105520822049210915",
+            "team_name": "mCon Esports",
+            "team_code": "MCON"
           },
           "red": {
-            "team_id": "113865643197386183",
-            "team_name": "Senshi eSports",
-            "team_code": "SNSH"
+            "team_id": "105520816474194464",
+            "team_name": "Dynasty",
+            "team_code": "DYN"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -54328,22 +54284,22 @@
           }
         },
         {
-          "id": "116793933806066927",
+          "id": "116793933806001283",
           "number": 3,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
-            "team_id": "113865643197386183",
-            "team_name": "Senshi eSports",
-            "team_code": "SNSH"
+            "team_id": "105520816474194464",
+            "team_name": "Dynasty",
+            "team_code": "DYN"
           },
           "red": {
-            "team_id": "107128093558481418",
-            "team_name": "ZennIT",
-            "team_code": "ZNT"
+            "team_id": "105520822049210915",
+            "team_name": "mCon Esports",
+            "team_code": "MCON"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -54365,9 +54321,53 @@
       "warning": ""
     }
   },
+  "116833506932128107": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-14T19:23:19.650Z",
+    "event_id": "116833506932128107",
+    "status": "unavailable",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116833506932128107",
+      "league": "",
+      "league_group": "",
+      "region": "",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
+  "116793933806066924": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-14T19:23:19.650Z",
+    "event_id": "116793933806066924",
+    "status": "unavailable",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116793933806066924",
+      "league": "",
+      "league_group": "",
+      "region": "",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
   "116520721101367186": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116520721101367186",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54504,7 +54504,7 @@
   },
   "116520721101367134": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116520721101367134",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54641,7 +54641,7 @@
   },
   "116520721101367226": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116520721101367226",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -54778,7 +54778,7 @@
   },
   "116520721101367238": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T17:59:01.999Z",
+    "checked_at": "2026-07-14T19:23:19.650Z",
     "event_id": "116520721101367238",
     "status": "unstarted",
     "source": "cloudflare_live_event",
