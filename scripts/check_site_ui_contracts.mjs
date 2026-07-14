@@ -33,6 +33,7 @@ requireChecks('asset_versions', {
 requireChecks('schedule', {
   live_plus_three_dates: /const VISIBLE_DATE_TAB_COUNT\s*=\s*3/.test(app),
   centered_selected_date: app.includes('function centeredDateAnchorKey('),
+  major_includes_events: app.includes("leagueGroup === 'major' ? new Set(['major', 'event'])"),
 });
 
 requireChecks('patch_meta', {
