@@ -133,7 +133,7 @@
       <div>
         <p class="eyebrow">Draft Lab</p>
         <h1>Draft Lens</h1>
-        <p class="desc">繝√・繝縺ｨ繝√Ε繝ｳ繝斐が繝ｳ繧帝∈謚槭＠縺ｦ縲∝推繝ｭ繝ｼ繝ｫ縺ｮ驕ｸ謇句挨 champion stats 縺ｨ lane matchup 繧堤｢ｺ隱阪〒縺阪∪縺吶・/p>
+        <p class="desc">チームとチャンピオンを選択して、各ロールの選手別 champion stats と lane matchup を確認できます。</p>
       </div>
       <div class="headActions">
         <select class="statFilter" id="statTierFilter" aria-label="Player feature tier filter">
@@ -214,7 +214,113 @@
     };
     const $ = id => document.getElementById(id);
     const normalize = value => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-    const dataUr…4915 tokens truncated…  return weightedAverage(rows.map(row => ({ value: smoothedPercent(row, 10), weight: Math.min(4, Math.sqrt(numericRecord(row).games)) })));
+    const dataUrl = path => new URL(`../static/data/${path.replace(/^\/+/, "")}`, location.href).toString();
+    const championFromRow = ([id, name, role, img]) => ({ id, name, role, imageUrl: `${ddragon}/${img}.png` });
+    const roleOverrides = new Map(fallbackChampionRows.map(([, name, role]) => [normalize(name), role]));
+    let champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare…3307 tokens truncated…entities(rosterPlayers(data), team);
+      } catch {
+        state.rosters[side] = [];
+      }
+      render();
+    }
+
+    function renderTeamSelect(side) {
+      const team = state.selectedTeams[side];
+      const button = $(`${side}TeamSelect`);
+      button.innerHTML = `
+        ${team?.logo ? `<img src="${escapeHtml(team.logo)}" alt="">` : `<span class="teamMark">+</span>`}
+        <span><span class="teamName">${escapeHtml(team ? teamDisplayCode(team) : "Select team")}</span><span class="teamMeta">${escapeHtml(team?.name || "Team roster")}</span></span>
+        <span class="teamAction">Change</span>
+      `;
+    }
+    function teamDisplayCode(team) {
+      const alias = teamCodeAliases.get(normalize(team?.name)) || teamCodeAliases.get(normalize(team?.team));
+      if (alias) return alias;
+      const code = String(team?.code || "").trim();
+      if (code && code.length <= 8) return code;
+      const teamKey = String(team?.team || "").trim();
+      if (teamKey && teamKey.length <= 8) return teamKey;
+      const name = String(team?.name || team?.team || "").trim();
+      const compact = name.replace(/[^A-Za-z0-9]+/g, "");
+      if (compact.length <= 8) return compact || "TEAM";
+      const initials = name.match(/[A-Za-z0-9]+/g)?.map(part => part[0]).join("").toUpperCase() || "";
+      return initials.slice(0, 6) || "TEAM";
+    }
+    function renderFilters() {
+      const tier = $("statTierFilter");
+      const patch = $("statPatchFilter");
+      if (tier) tier.value = state.statTier;
+      if (patch) {
+        patch.innerHTML = patchFilterOptions().map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("");
+        patch.value = state.statPatch;
+      }
+    }
+    function slotStat(side, champ, index) {
+      const player = playerForRole(side, index);
+      if (!player) return champ ? "No team selected" : "Select champion";
+      if (!champ) return `${player.player} - select champion`;
+      const stat = playerChampionStat(player, champ);
+      if (!stat) return `${player.player} - WR - - 0 picks`;
+      const picks = Number(stat.games ?? stat.picks ?? 0);
+      return `${player.player} - WR ${pct(stat.winrate)} - ${picks} picks`;
+    }
+    function renderSlots(side) {
+      $(`${side}Slots`).innerHTML = state[side].map((champ, index) => {
+        const player = playerForRole(side, index);
+        return `
+          <div class="slot ${side}">
+            <button class="portrait" data-open-champ="${side}:${index}">${champ ? `<img src="${escapeHtml(champ.imageUrl)}" alt="">` : "+"}</button>
+            <button class="slotMain" data-open-champ="${side}:${index}">
+              <span class="role">${roles[index]}</span>
+              <span class="champName">${escapeHtml(champ?.name || "Pick champion")}</span>
+              ${player ? `<span class="playerName">${escapeHtml(player.player)}</span>` : ""}
+              <span class="statLine">${escapeHtml(slotStat(side, champ, index))}</span>
+            </button>
+            <button class="clear" data-clear="${side}:${index}" ${champ ? "" : "disabled"}>x</button>
+          </div>
+        `;
+      }).join("");
+    }
+    function numericRecord(record) {
+      const games = Number(record?.games ?? record?.picks ?? 0);
+      const wins = Number(record?.wins || 0);
+      return { games, wins, losses: Math.max(0, games - wins), winrate: games ? wins / games : null };
+    }
+    function smoothedPercent(record, priorGames = 6) {
+      const row = numericRecord(record);
+      return row.games ? ((row.wins + (priorGames * 0.5)) / (row.games + priorGames)) * 100 : null;
+    }
+    function weightedAverage(rows) {
+      const valid = rows.filter(row => Number.isFinite(row.value) && Number(row.weight) > 0);
+      const weight = valid.reduce((sum, row) => sum + row.weight, 0);
+      return weight ? valid.reduce((sum, row) => sum + (row.value * row.weight), 0) / weight : null;
+    }
+    function sideFeatureSummary(side) {
+      const selected = roles.map((_, index) => ({ player: playerForRole(side, index), champ: state[side][index] }));
+      const rows = selected.map(row => playerChampionStat(row.player, row.champ)).filter(Boolean);
+      const picks = rows.reduce((sum, row) => sum + numericRecord(row).games, 0);
+      const wins = rows.reduce((sum, row) => sum + numericRecord(row).wins, 0);
+      return { covered: rows.length, picks, wins, winrate: picks ? wins / picks : null, rows };
+    }
+    function teamSummaryRecord(side) {
+      const team = state.selectedTeams[side];
+      const keys = new Set([team?.name, team?.team, team?.code, teamDisplayCode(team)].map(normalize).filter(Boolean));
+      const rows = selectedSummaryBucket()?.teams?.length ? selectedSummaryBucket().teams : (state.summaryData?.teams || []);
+      return rows.find(row => keys.has(normalize(row.name))) || null;
+    }
+    function championSummaryRecord(champ, index) {
+      if (!champ) return null;
+      const bucket = selectedSummaryBucket();
+      const rows = bucket?.champions_by_role?.[roleKeys[index]] || bucket?.champions || [];
+      return rows.find(row => normalize(row.name) === normalize(champ.name)) || null;
+    }
+    function sidePlayerRating(side) {
+      const rows = roles.map((_, index) => playerChampionStat(playerForRole(side, index), state[side][index])).filter(Boolean);
+      return weightedAverage(rows.map(row => ({ value: smoothedPercent(row, 4), weight: Math.min(3, Math.sqrt(numericRecord(row).games)) })));
+    }
+    function sideChampionRating(side) {
+      const rows = roles.map((_, index) => championSummaryRecord(state[side][index], index)).filter(Boolean);
+      return weightedAverage(rows.map(row => ({ value: smoothedPercent(row, 10), weight: Math.min(4, Math.sqrt(numericRecord(row).games)) })));
     }
     function laneMetric(index, smooth = false) {
       const blueRecord = matchupRecord("blue", index);
