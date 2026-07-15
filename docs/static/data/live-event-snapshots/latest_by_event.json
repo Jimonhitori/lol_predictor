@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -55145,7 +55145,7 @@
   },
   "116855104460702316": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702316",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55216,7 +55216,7 @@
   },
   "116855104460702314": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702314",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55287,7 +55287,7 @@
   },
   "116855104460702330": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702330",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55358,7 +55358,7 @@
   },
   "116855104460702328": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702328",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55429,7 +55429,7 @@
   },
   "116855104460702302": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702302",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55500,7 +55500,7 @@
   },
   "116855104460702300": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702300",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55571,9 +55571,9 @@
   },
   "116855104460702342": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702342",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -55583,48 +55583,48 @@
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
-        {
-          "id": "100205573496804586",
-          "name": "Hanwha Life Esports",
-          "code": "HLE",
-          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-          "game_wins": "0"
-        },
         {
           "id": "116855252180212213",
           "name": "MIBR.LOS",
           "code": "ML",
           "image": "http://static.lolesports.com/teams/1783069635946_600px-MIBR_LOS_allmode.png",
           "game_wins": "0"
+        },
+        {
+          "id": "100205573496804586",
+          "name": "Hanwha Life Esports",
+          "code": "HLE",
+          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
+          "game_wins": "1"
         }
       ],
       "games": [
         {
           "id": "116855104460702343",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
-          },
-          "red": {
             "team_id": "116855252180212213",
             "team_name": "MIBR.LOS",
             "team_code": "ML"
           },
+          "red": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
+          },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -55642,9 +55642,9 @@
   },
   "116855104460702344": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702344",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -55654,7 +55654,7 @@
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "2026-07-15T21:30:00.000Z",
       "teams": [
         {
@@ -55662,7 +55662,7 @@
           "name": "Beijing JDG Esports",
           "code": "JDG",
           "image": "http://static.lolesports.com/teams/1627457924722_29.png",
-          "game_wins": "0"
+          "game_wins": "1"
         },
         {
           "id": "99566405941863385",
@@ -55676,7 +55676,7 @@
         {
           "id": "116855104460702345",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "99566404852189289",
             "team_name": "Beijing JDG Esports",
@@ -55689,13 +55689,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -55713,7 +55713,7 @@
   },
   "116855104460702304": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702304",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55784,7 +55784,7 @@
   },
   "116855104460702306": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702306",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55921,7 +55921,7 @@
   },
   "116833506932193683": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116833506932193683",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56058,7 +56058,7 @@
   },
   "116764853817433758": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116764853817433758",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56195,7 +56195,7 @@
   },
   "116855104460702318": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702318",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56266,7 +56266,7 @@
   },
   "116855104460702320": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702320",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56403,7 +56403,7 @@
   },
   "116833506932193659": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116833506932193659",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56540,7 +56540,7 @@
   },
   "116764853817499362": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116764853817499362",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56677,7 +56677,7 @@
   },
   "116855104460702334": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702334",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56814,7 +56814,7 @@
   },
   "116855104460702348": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T12:58:20.150Z",
+    "checked_at": "2026-07-15T14:51:08.323Z",
     "event_id": "116855104460702348",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56830,17 +56830,17 @@
       "start_time": "",
       "teams": [
         {
-          "id": "0",
-          "name": "TBD",
-          "code": "TBD",
-          "image": "https://static.lolesports.com/teams/team-tbd.png",
+          "id": "99566405941863385",
+          "name": "LYON",
+          "code": "LYON",
+          "image": "http://static.lolesports.com/teams/1743717443673_isotypelyon-03.png",
           "game_wins": "0"
         },
         {
-          "id": "0",
-          "name": "TBD",
-          "code": "TBD",
-          "image": "https://static.lolesports.com/teams/team-tbd.png",
+          "id": "116855252180212213",
+          "name": "MIBR.LOS",
+          "code": "ML",
+          "image": "http://static.lolesports.com/teams/1783069635946_600px-MIBR_LOS_allmode.png",
           "game_wins": "0"
         }
       ],
@@ -56849,8 +56849,16 @@
           "id": "116855104460702349",
           "number": 1,
           "state": "unstarted",
-          "blue": {},
-          "red": {},
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "116855252180212213",
+            "team_name": "MIBR.LOS",
+            "team_code": "ML"
+          },
           "winner": "",
           "live": {
             "game_state": "unstarted",
@@ -56874,8 +56882,16 @@
           "id": "116855104460702350",
           "number": 2,
           "state": "unstarted",
-          "blue": {},
-          "red": {},
+          "blue": {
+            "team_id": "116855252180212213",
+            "team_name": "MIBR.LOS",
+            "team_code": "ML"
+          },
+          "red": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
           "winner": "",
           "live": {
             "game_state": "unstarted",
@@ -56899,8 +56915,16 @@
           "id": "116855104460702351",
           "number": 3,
           "state": "unstarted",
-          "blue": {},
-          "red": {},
+          "blue": {
+            "team_id": "99566405941863385",
+            "team_name": "LYON",
+            "team_code": "LYON"
+          },
+          "red": {
+            "team_id": "116855252180212213",
+            "team_name": "MIBR.LOS",
+            "team_code": "ML"
+          },
           "winner": "",
           "live": {
             "game_state": "unstarted",
