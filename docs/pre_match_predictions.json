@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-07-15T00:04:16.487229Z",
+  "generated_at": "2026-07-15T00:57:40.805450Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -10,70 +10,6 @@
     }
   },
   "predictions": [
-    {
-      "event_id": "116793933806066924",
-      "game_id": "116793933806066924",
-      "league": "Road of Legends",
-      "start_time": "2026-07-15 03:00:00",
-      "blue_team": "senshi_esports",
-      "red_team": "zennit",
-      "blue_team_name": "Senshi eSports",
-      "red_team_name": "ZennIT",
-      "blue_win_probability": 0.443794,
-      "red_win_probability": 0.556206,
-      "predicted_winner": "ZennIT",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116520721101367186",
-      "game_id": "116520721101367186",
-      "league": "LRS",
-      "start_time": "2026-07-15 05:00:00",
-      "blue_team": "golden_lions",
-      "red_team": "maze_gaming",
-      "blue_team_name": "Golden Lions",
-      "red_team_name": "Maze Gaming",
-      "blue_win_probability": 0.5253,
-      "red_win_probability": 0.4747,
-      "predicted_winner": "Golden Lions",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116520721101367226",
-      "game_id": "116520721101367226",
-      "league": "LRS",
-      "start_time": "2026-07-15 08:00:00",
-      "blue_team": "seven_dark",
-      "red_team": "volticons",
-      "blue_team_name": "Seven Dark",
-      "red_team_name": "Volticons",
-      "blue_win_probability": 0.342948,
-      "red_win_probability": 0.657052,
-      "predicted_winner": "Volticons",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "116520721101367238",
-      "game_id": "116520721101367238",
-      "league": "LRS",
-      "start_time": "2026-07-15 08:00:00",
-      "blue_team": "malvinas_gaming",
-      "red_team": "9z_globant",
-      "blue_team_name": "Malvinas Gaming",
-      "red_team_name": "9z Globant",
-      "blue_win_probability": 0.373232,
-      "red_win_probability": 0.626768,
-      "predicted_winner": "9z Globant",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
     {
       "event_id": "116855104460702314",
       "game_id": "116855104460702314",
