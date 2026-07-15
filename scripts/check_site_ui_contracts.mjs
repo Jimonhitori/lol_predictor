@@ -57,6 +57,17 @@ requireChecks('draft_lens', {
   player_name: draftLens.includes('class="playerName"'),
   player_winrate_and_picks: draftLens.includes('WR ${pct(stat.winrate)}') && draftLens.includes('${picks} picks'),
   lane_matchups: draftLens.includes('id="laneMatchups"'),
+  lane_matchup_comparison: draftLens.includes('class="laneVersus"')
+    && draftLens.includes('No direct player matchup sample'),
+  team_split_player_features: draftLens.includes('class="featureCompare"')
+    && draftLens.includes('renderFeatureSide("blue")')
+    && draftLens.includes('renderFeatureSide("red")'),
+  team_player_prediction: draftLens.includes('id="lensPrediction"')
+    && draftLens.includes('function featurePrediction()')
+    && draftLens.includes('Team form (overall)')
+    && draftLens.includes('Player champion')
+    && draftLens.includes('Champion meta')
+    && draftLens.includes('Lane matchup'),
   default_26_all: draftLens.includes('statPatch: "26ALL"'),
   filter_26_all: draftLens.includes('value: "26ALL", label: "26ALL"'),
   filter_25_all: draftLens.includes('value: "25ALL", label: "25ALL"'),
@@ -118,3 +129,4 @@ function requireChecks(group, values) {
     if (!ok) errors.push(`${group}: ${name} failed`);
   }
 }
+

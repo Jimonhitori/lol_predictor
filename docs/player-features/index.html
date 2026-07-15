@@ -23,7 +23,7 @@
     h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); letter-spacing: -.02em; }
     .desc { margin: 8px 0 0; color: var(--muted); font-size: 14px; max-width: 720px; }
     .count { border: 1px solid var(--line); background: var(--panel); border-radius: 7px; padding: 9px 12px; color: #c7d3e1; font-size: 12px; font-weight: 800; white-space: nowrap; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px minmax(0, 1fr); gap: 16px; align-items: start; }
+    .layout { display: grid; grid-template-columns: minmax(340px, 1fr) minmax(360px, 400px) minmax(340px, 1fr); gap: 16px; align-items: start; }
     .team { border: 1px solid var(--line); background: rgba(16,24,32,.88); border-radius: 10px; padding: 16px; box-shadow: 0 0 28px rgba(22,240,200,.12); }
     .team.blue { border-color: rgba(46,140,255,.55); background: rgba(46,140,255,.055); }
     .team.red { border-color: rgba(255,71,109,.55); background: rgba(255,71,109,.055); }
@@ -54,18 +54,50 @@
     .center { display: grid; gap: 12px; position: sticky; top: 82px; }
     .panel { border: 1px solid var(--line); background: var(--panel); border-radius: 10px; padding: 16px; box-shadow: 0 0 24px rgba(22,240,200,.08); }
     .panelTitle { margin: 0 0 12px; color: var(--text); font-size: 13px; font-weight: 950; letter-spacing: .14em; text-transform: uppercase; }
-    .summaryGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    .summaryItem { border: 1px solid rgba(143,161,181,.2); border-radius: 8px; background: #0b131c; padding: 9px; min-width: 0; }
-    .summaryItem span { display: block; color: #8fa1b5; font-size: 10px; font-weight: 900; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .summaryItem strong { display: block; margin-top: 4px; color: #fff; font-size: 20px; line-height: 1; font-weight: 950; }
+    .predictionEmpty { display: grid; gap: 10px; }
+    .predictionButton { width: 100%; min-height: 42px; border: 0; border-radius: 7px; background: var(--cyan); color: #03100e; font-size: 13px; font-weight: 950; cursor: pointer; }
+    .predictionButton:disabled { background: #263441; color: #718397; cursor: not-allowed; }
+    .predictionHint { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .predictionHead { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; margin-bottom: 10px; }
+    .predictionHead strong { color: #fff; font-size: 12px; }
+    .predictionHead span { color: var(--muted); font-size: 10px; font-weight: 850; text-transform: uppercase; }
+    .predictionNumbers { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 7px; font-size: 18px; font-weight: 950; }
+    .predictionNumbers .blue { color: #9dccff; } .predictionNumbers .red { color: #ff9aae; }
+    .predictionBar { height: 14px; display: flex; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: #071019; }
+    .predictionBarBlue { background: var(--blue); } .predictionBarRed { background: var(--red); }
+    .featureChips { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+    .featureChip { border: 1px solid var(--line); border-radius: 4px; padding: 4px 6px; color: #63758a; font-size: 9px; font-weight: 900; text-transform: uppercase; }
+    .featureChip.ready { border-color: rgba(22,240,200,.4); color: var(--cyan); background: rgba(22,240,200,.05); }
+    .summaryContext { display: flex; justify-content: space-between; gap: 8px; margin: -5px 0 10px; color: var(--muted); font-size: 10px; font-weight: 850; text-transform: uppercase; }
+    .featureCompare { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+    .featureSide { min-width: 0; border: 1px solid var(--line); border-radius: 8px; background: #0b131c; padding: 10px; }
+    .featureSide.blue { border-color: rgba(46,140,255,.4); } .featureSide.red { border-color: rgba(255,71,109,.4); }
+    .featureSideName { display: block; color: #fff; font-size: 13px; font-weight: 950; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .featureSide.blue .featureSideName { color: #9dccff; } .featureSide.red .featureSideName { color: #ff9aae; }
+    .featureCovered { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; font-weight: 850; text-transform: uppercase; }
+    .featureStats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px; margin-top: 9px; }
+    .featureStat { min-width: 0; }
+    .featureStat span { display: block; color: #718397; font-size: 8px; font-weight: 900; text-transform: uppercase; }
+    .featureStat strong { display: block; margin-top: 2px; color: #fff; font-size: 15px; line-height: 1; font-weight: 950; white-space: nowrap; }
     .laneList { display: grid; gap: 8px; }
-    .laneRow { display: grid; gap: 6px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 10px; }
-    .laneTop { display: flex; justify-content: space-between; gap: 8px; align-items: start; }
+    .laneRow { display: grid; gap: 8px; border: 1px solid var(--line); background: #0c141d; border-radius: 8px; padding: 10px; }
+    .laneTop { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
     .laneName { color: var(--cyan); font-size: 12px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
-    .laneGame { color: #64748b; font-size: 10px; font-weight: 850; white-space: nowrap; }
-    .laneDetail { color: #9fb2c8; font-size: 11px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .laneDetail.blue { color: #9dccff; }
-    .laneDetail.red { color: #ff9aae; }
+    .laneGame { color: #7f90a5; font-size: 10px; font-weight: 850; white-space: nowrap; }
+    .laneVersus { display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr); gap: 7px; align-items: center; }
+    .laneSide { min-width: 0; }
+    .laneSide.red { text-align: right; }
+    .lanePlayer { display: block; color: #fff; font-size: 11px; font-weight: 900; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .laneChampion { display: block; margin-top: 2px; font-size: 13px; font-weight: 950; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .laneSide.blue .laneChampion { color: #9dccff; } .laneSide.red .laneChampion { color: #ff9aae; }
+    .laneRecord { display: block; margin-top: 3px; color: #8fa1b5; font-size: 10px; font-weight: 850; white-space: nowrap; }
+    .laneVs { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #718397; font-size: 9px; font-weight: 950; }
+    .laneEdge { display: flex; align-items: center; gap: 7px; }
+    .lanePct { width: 34px; color: #8fa1b5; font-size: 10px; font-weight: 950; }
+    .lanePct.red { text-align: right; }
+    .laneBar { flex: 1; height: 7px; display: flex; overflow: hidden; border-radius: 3px; background: #071019; }
+    .laneBarBlue { background: var(--blue); } .laneBarRed { background: var(--red); }
+    .laneNoSample { flex: 1; color: #64748b; font-size: 9px; font-weight: 850; text-align: center; }
     .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: start; justify-content: center; padding: 80px 16px; background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
     .modal.open { display: flex; }
     .picker { width: min(760px, 100%); border: 1px solid var(--line); border-radius: 10px; background: #0c141d; overflow: hidden; box-shadow: 0 0 30px rgba(22,240,200,.18); }
@@ -84,8 +116,9 @@
     .divider { grid-column: 1 / -1; height: 1px; margin: 4px 0; background: rgba(143,161,181,.22); }
     .leagueHeader { grid-column: 1 / -1; display: flex; align-items: center; gap: 10px; margin: 8px 0 0; color: var(--cyan); font-size: 11px; font-weight: 950; letter-spacing: .16em; text-transform: uppercase; }
     .leagueHeader::after { content: ""; height: 1px; flex: 1; background: rgba(143,161,181,.22); }
+    @media (max-width: 1120px) { .layout { grid-template-columns: minmax(300px, 1fr) 360px minmax(300px, 1fr); } }
     @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .pickGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
-    @media (max-width: 520px) { nav { padding-left: 10px; padding-right: 10px; gap: 8px; } .brand span { display: none; } .menu { gap: 2px; } .menu a { padding: 0 6px; font-size: 12px; } main { padding-left: 14px; padding-right: 14px; } .summaryGrid { grid-template-columns: 1fr; } .slot { grid-template-columns: 52px minmax(0, 1fr) 30px; gap: 9px; } .portrait { width: 52px; height: 52px; } }
+    @media (max-width: 520px) { nav { padding-left: 10px; padding-right: 10px; gap: 8px; } .brand span { display: none; } .menu { gap: 2px; } .menu a { padding: 0 6px; font-size: 12px; } main { padding-left: 14px; padding-right: 14px; } .slot { grid-template-columns: 52px minmax(0, 1fr) 30px; gap: 9px; } .portrait { width: 52px; height: 52px; } }
   </style>
 </head>
 <body>
@@ -100,7 +133,7 @@
       <div>
         <p class="eyebrow">Draft Lab</p>
         <h1>Draft Lens</h1>
-        <p class="desc">チームとチャンピオンを選択して、各ロールの選手別 champion stats と lane matchup を確認できます。</p>
+        <p class="desc">繝√・繝縺ｨ繝√Ε繝ｳ繝斐が繝ｳ繧帝∈謚槭＠縺ｦ縲∝推繝ｭ繝ｼ繝ｫ縺ｮ驕ｸ謇句挨 champion stats 縺ｨ lane matchup 繧堤｢ｺ隱阪〒縺阪∪縺吶・/p>
       </div>
       <div class="headActions">
         <select class="statFilter" id="statTierFilter" aria-label="Player feature tier filter">
@@ -119,6 +152,7 @@
         <div class="slots" id="blueSlots"></div>
       </section>
       <aside class="center">
+        <section class="panel" id="lensPrediction"></section>
         <section class="panel" id="featureSummary"></section>
         <section class="panel" id="laneMatchups"></section>
       </aside>
@@ -163,6 +197,9 @@
       selectedTeams: { blue: null, red: null },
       rosters: { blue: [], red: [] },
       featureData: null,
+      summaryData: null,
+      summaryCache: new Map(),
+      summaryLoadToken: 0,
       activeFeatureBucket: { player_champions: {}, matchups: {} },
       featureBucketCache: new Map(),
       featureShardCache: new Map(),
@@ -170,322 +207,120 @@
       statTier: "all",
       statPatch: "26ALL",
       patchOptions: [],
+      calculated: false,
       active: null,
       pickerMode: "champion",
       query: "",
     };
     const $ = id => document.getElementById(id);
     const normalize = value => String(value || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-    const dataUrl = path => new URL(`../static/data/${path.replace(/^\/+/, "")}`, location.href).toString();
-    const championFromRow = ([id, name, role, img]) => ({ id, name, role, imageUrl: `${ddragon}/${img}.png` });
-    const roleOverrides = new Map(fallbackChampionRows.map(([, name, role]) => [normalize(name), role]));
-    let champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare(b.name));
-
-    function escapeHtml(value) {
-      return String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    const dataUr…4915 tokens truncated…  return weightedAverage(rows.map(row => ({ value: smoothedPercent(row, 10), weight: Math.min(4, Math.sqrt(numericRecord(row).games)) })));
     }
-    function roleFromTags(tags) {
-      const values = new Set((tags || []).map(tag => String(tag).toLowerCase()));
-      if (values.has("marksman")) return "Bot";
-      if (values.has("support")) return "Support";
-      if (values.has("mage") || values.has("assassin")) return "Mid";
-      if (values.has("fighter") || values.has("tank")) return "Top";
-      return "Flex";
+    function laneMetric(index, smooth = false) {
+      const blueRecord = matchupRecord("blue", index);
+      const redRecord = matchupRecord("red", index);
+      const blueStats = numericRecord(blueRecord);
+      const redStats = numericRecord(redRecord);
+      const samples = [];
+      if (blueStats.games) samples.push({
+        value: smooth ? smoothedPercent(blueRecord, 4) : blueStats.winrate * 100,
+        weight: Math.sqrt(blueStats.games),
+      });
+      if (redStats.games) samples.push({
+        value: 100 - (smooth ? smoothedPercent(redRecord, 4) : redStats.winrate * 100),
+        weight: Math.sqrt(redStats.games),
+      });
+      return {
+        blueRecord, redRecord, blueStats, redStats,
+        available: samples.length > 0,
+        blue: Math.max(0, Math.min(100, weightedAverage(samples) ?? 50)),
+      };
     }
-    function roleKeyFromValue(value) {
-      const key = normalize(value);
-      if (key === "jungle") return "jng";
-      if (key === "support") return "sup";
-      if (key === "bottom" || key === "adc") return "bot";
-      return key;
+    function featurePrediction() {
+      const components = [];
+      const inputs = [];
+      const addPair = (label, blueRating, redRating, weight) => {
+        const available = Number.isFinite(blueRating) && Number.isFinite(redRating);
+        components.push({ label, available });
+        if (available) inputs.push({ value: 50 + ((blueRating - redRating) * 0.5), weight });
+      };
+      addPair("Team form (overall)", smoothedPercent(teamSummaryRecord("blue"), 12), smoothedPercent(teamSummaryRecord("red"), 12), 4);
+      addPair("Player champion", sidePlayerRating("blue"), sidePlayerRating("red"), 3);
+      addPair("Champion meta", sideChampionRating("blue"), sideChampionRating("red"), 2);
+      const laneBlue = weightedAverage(roles.map((_, index) => laneMetric(index, true)).filter(row => row.available).map(row => ({
+        value: row.blue,
+        weight: Math.min(3, Math.sqrt(row.blueStats.games + row.redStats.games)),
+      })));
+      components.push({ label: "Lane matchup", available: Number.isFinite(laneBlue) });
+      if (Number.isFinite(laneBlue)) inputs.push({ value: laneBlue, weight: 2 });
+      const rawBlue = weightedAverage(inputs) ?? 50;
+      const blue = Math.max(10, Math.min(90, rawBlue));
+      return { blue, red: 100 - blue, components, available: inputs.length > 0 };
     }
-    function rosterPlayers(payload) {
-      if (Array.isArray(payload?.players)) return payload.players;
-      if (payload?.players && typeof payload.players === "object") return Object.values(payload.players).flat().filter(Boolean);
-      return [];
+    function predictionReady() {
+      return Boolean(state.selectedTeams.blue && state.selectedTeams.red
+        && state.blue.every(Boolean) && state.red.every(Boolean)
+        && state.featureData && state.summaryData);
     }
-    function playerForRole(side, index) {
-      return state.rosters[side].find(player => roleKeyFromValue(player.role) === roleKeys[index]) || null;
+    function predictionHint() {
+      if (!state.selectedTeams.blue || !state.selectedTeams.red) return "Select both teams to include team and roster features.";
+      if (![...state.blue, ...state.red].every(Boolean)) return "Fill all ten champion slots to calculate.";
+      if (!state.featureData || !state.summaryData) return "Loading filtered feature data...";
+      return "Team, player, champion, and lane samples are ready.";
     }
-    function featureIdentity(player, team) {
-      const playerKey = normalize(player?.player);
-      const roleKey = roleKeyFromValue(player?.role);
-      const lookup = state.featureData?.player_lookup || {};
-      const teamValues = [player?.team, team?.team, team?.name, team?.code];
-      for (const value of teamValues) {
-        const teamKey = normalize(value);
-        if (teamKey && lookup[`${teamKey}|${playerKey}|${roleKey}`]) return lookup[`${teamKey}|${playerKey}|${roleKey}`];
-      }
-      return lookup[`*|${playerKey}|${roleKey}`] || playerKey;
-    }
-    function attachFeatureIdentities(players, team) {
-      return (players || []).map(player => ({ ...player, featureKey: featureIdentity(player, team) }));
-    }
-    function playerChampionStat(player, champ) {
-      if (!player || !champ) return null;
-      const key = [player.featureKey || normalize(player.player), roleKeyFromValue(player.role), normalize(champ.name)].join("|");
-      return activeFeatureBucket().player_champions[key] || null;
-    }
-    function pct(value) {
-      const numeric = Number(value);
-      if (!Number.isFinite(numeric)) return "-";
-      return `${(numeric <= 1 ? numeric * 100 : numeric).toFixed(1)}%`;
-    }
-    function formatRecord(record) {
-      if (!record || !record.games) return "No sample";
-      const wins = Number(record.wins || 0);
-      const games = Number(record.games || 0);
-      return `${wins}-${Math.max(0, games - wins)} (${pct(record.winrate)}) - ${games} games`;
-    }
-    function matchupKey(side, index) {
-      const player = playerForRole(side, index);
-      const own = state[side][index];
-      const other = side === "blue" ? "red" : "blue";
-      const opp = state[other][index];
-      if (!player || !own || !opp) return "";
-      return [player.featureKey || normalize(player.player), roleKeys[index], normalize(own.name), normalize(opp.name)].join("|");
-    }
-    function matchupRecord(side, index) {
-      const key = matchupKey(side, index);
-      return key ? activeFeatureBucket().matchups[key] || null : null;
-    }
-    function mergeRecordMap(target, source) {
-      for (const [key, value] of Object.entries(source || {})) {
-        if (!target[key]) target[key] = { games: 0, wins: 0, winrate: 0 };
-        target[key].games += Number(value.games ?? value.picks ?? 0);
-        target[key].wins += Number(value.wins || 0);
-        target[key].winrate = target[key].games ? target[key].wins / target[key].games : 0;
-      }
-    }
-    function combinedPatchBucket(scope, patchPrefix) {
-      const combined = { player_champions: {}, matchups: {} };
-      for (const [patch, bucket] of Object.entries(scope?.patches || {})) {
-        if (!patch.startsWith(patchPrefix)) continue;
-        mergeRecordMap(combined.player_champions, bucket.player_champions);
-        mergeRecordMap(combined.matchups, bucket.matchups);
-      }
-      return combined;
-    }
-    function legacyBucketForScope(scope) {
-      const empty = { player_champions: {}, matchups: {} };
-      if (!scope) return empty;
-      if (state.statPatch === "26ALL") return combinedPatchBucket(scope, "16.");
-      if (state.statPatch === "25ALL") return combinedPatchBucket(scope, "15.");
-      if (state.statPatch && state.statPatch !== "ALL") return scope.patches?.[state.statPatch] || empty;
-      return scope.all || empty;
-    }
-    function legacyFeatureBucket() {
-      const empty = { player_champions: {}, matchups: {} };
-      const scopes = state.featureData?.scopes || {};
-      if (state.statTier !== "all") return legacyBucketForScope(scopes[state.statTier]);
-      if (scopes.all) return legacyBucketForScope(scopes.all);
-      const combined = { player_champions: {}, matchups: {} };
-      for (const scope of Object.values(scopes)) {
-        const bucket = legacyBucketForScope(scope);
-        mergeRecordMap(combined.player_champions, bucket.player_champions);
-        mergeRecordMap(combined.matchups, bucket.matchups);
-      }
-      return Object.keys(scopes).length ? combined : empty;
-    }
-    function activeFeatureBucket() {
-      return state.activeFeatureBucket || { player_champions: {}, matchups: {} };
-    }
-    async function loadFeatureShard(path) {
-      if (!path) return { player_champions: {}, matchups: {} };
-      if (!state.featureShardCache.has(path)) {
-        const pending = fetch(dataUrl(path), { cache: "no-store" }).then(res => {
-          if (!res.ok) throw new Error(`Feature shard ${res.status}`);
-          return res.json();
-        }).catch(error => {
-          state.featureShardCache.delete(path);
-          throw error;
-        });
-        state.featureShardCache.set(path, pending);
-      }
-      return state.featureShardCache.get(path);
-    }
-    async function selectedFeatureBucket() {
-      if (!state.featureData?.buckets) return legacyFeatureBucket();
-      const scopeNames = state.statTier === "all"
-        ? (state.featureData.buckets.all?.[state.statPatch] ? ["all"] : Object.keys(state.featureData.buckets).filter(scope => scope !== "all"))
-        : [state.statTier];
-      const paths = scopeNames.map(scope => state.featureData.buckets?.[scope]?.[state.statPatch]).filter(Boolean);
-      const shards = await Promise.all(paths.map(loadFeatureShard));
-      const combined = { player_champions: {}, matchups: {} };
-      for (const shard of shards) {
-        mergeRecordMap(combined.player_champions, shard.player_champions);
-        mergeRecordMap(combined.matchups, shard.matchups);
-      }
-      return combined;
-    }
-    async function refreshActiveFeatureBucket() {
-      const cacheKey = `${state.statTier}:${state.statPatch}`;
-      const token = ++state.featureLoadToken;
-      if (state.featureBucketCache.has(cacheKey)) {
-        state.activeFeatureBucket = state.featureBucketCache.get(cacheKey);
-        render();
-        return;
-      }
-      state.activeFeatureBucket = { player_champions: {}, matchups: {} };
-      render();
-      try {
-        const bucket = await selectedFeatureBucket();
-        if (token !== state.featureLoadToken) return;
-        state.featureBucketCache.set(cacheKey, bucket);
-        state.activeFeatureBucket = bucket;
-      } catch {
-        if (token !== state.featureLoadToken) return;
-        state.activeFeatureBucket = { player_champions: {}, matchups: {} };
-      }
-      render();
-    }
-    function patchFilterOptions() {
-      const patches = state.patchOptions || [];
-      const options = [];
-      if (patches.some(patch => String(patch).startsWith("16."))) options.push({ value: "26ALL", label: "26ALL" });
-      if (patches.some(patch => String(patch).startsWith("15."))) options.push({ value: "25ALL", label: "25ALL" });
-      options.push({ value: "ALL", label: "ALL" });
-      for (const patch of patches) options.push({ value: patch, label: patch });
-      return options;
-    }
-    function patchLabel(value) {
-      return patchFilterOptions().find(option => option.value === value)?.label || value || "ALL";
-    }
-
-    async function loadChampionData() {
-      try {
-        const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/champion.json`, { cache: "force-cache" });
-        if (!res.ok) throw new Error(res.status);
-        const data = await res.json();
-        champions = Object.values(data?.data || {}).map(champ => ({
-          id: normalize(champ.id || champ.name),
-          name: champ.name,
-          role: roleOverrides.get(normalize(champ.name)) || roleFromTags(champ.tags),
-          imageUrl: `${ddragon}/${champ.image?.full || `${champ.id}.png`}`,
-        })).sort((a, b) => a.name.localeCompare(b.name));
-        render();
-      } catch {}
-    }
-    async function loadTeams() {
-      try {
-        const res = await fetch(dataUrl("rosters/index.json"), { cache: "no-store" });
-        const data = await res.json();
-        const teams = (data.teams || []).filter(team => team.file && team.name);
-        const hasPlayerCounts = teams.some(team => Number.isFinite(Number(team.player_count)));
-        state.teams = hasPlayerCounts ? teams.filter(team => Number(team.player_count) > 0) : teams;
-      } catch {
-        state.teams = [];
-      }
-      render();
-    }
-    async function loadFeatureData() {
-      try {
-        const res = await fetch(dataUrl("player-features.json"), { cache: "no-store" });
-        const data = await res.json();
-        state.featureData = data;
-        state.featureBucketCache.clear();
-        state.featureShardCache.clear();
-        for (const side of ["blue", "red"]) {
-          state.rosters[side] = attachFeatureIdentities(state.rosters[side], state.selectedTeams[side]);
-        }
-        state.patchOptions = Array.isArray(data.patch_options) ? data.patch_options : [];
-        if (!patchFilterOptions().some(option => option.value === state.statPatch)) state.statPatch = patchFilterOptions()[0]?.value || "ALL";
-      } catch {
-        state.featureData = null;
-        state.patchOptions = [];
-        state.statPatch = "ALL";
-      }
-      renderFilters();
-      await refreshActiveFeatureBucket();
-    }
-    async function selectTeam(side, team) {
-      state.selectedTeams[side] = team;
-      state.rosters[side] = [];
-      render();
-      try {
-        const res = await fetch(dataUrl(`rosters/${team.file}`), { cache: "no-store" });
-        const data = await res.json();
-        state.rosters[side] = attachFeatureIdentities(rosterPlayers(data), team);
-      } catch {
-        state.rosters[side] = [];
-      }
-      render();
-    }
-
-    function renderTeamSelect(side) {
-      const team = state.selectedTeams[side];
-      const button = $(`${side}TeamSelect`);
-      button.innerHTML = `
-        ${team?.logo ? `<img src="${escapeHtml(team.logo)}" alt="">` : `<span class="teamMark">+</span>`}
-        <span><span class="teamName">${escapeHtml(team ? teamDisplayCode(team) : "Select team")}</span><span class="teamMeta">${escapeHtml(team?.name || "Team roster")}</span></span>
-        <span class="teamAction">Change</span>
-      `;
-    }
-    function teamDisplayCode(team) {
-      const alias = teamCodeAliases.get(normalize(team?.name)) || teamCodeAliases.get(normalize(team?.team));
-      if (alias) return alias;
-      const code = String(team?.code || "").trim();
-      if (code && code.length <= 8) return code;
-      const teamKey = String(team?.team || "").trim();
-      if (teamKey && teamKey.length <= 8) return teamKey;
-      const name = String(team?.name || team?.team || "").trim();
-      const compact = name.replace(/[^A-Za-z0-9]+/g, "");
-      if (compact.length <= 8) return compact || "TEAM";
-      const initials = name.match(/[A-Za-z0-9]+/g)?.map(part => part[0]).join("").toUpperCase() || "";
-      return initials.slice(0, 6) || "TEAM";
-    }
-    function renderFilters() {
-      const tier = $("statTierFilter");
-      const patch = $("statPatchFilter");
-      if (tier) tier.value = state.statTier;
-      if (patch) {
-        patch.innerHTML = patchFilterOptions().map(option => `<option value="${escapeHtml(option.value)}">${escapeHtml(option.label)}</option>`).join("");
-        patch.value = state.statPatch;
-      }
-    }
-    function slotStat(side, champ, index) {
-      const player = playerForRole(side, index);
-      if (!player) return champ ? "No team selected" : "Select champion";
-      if (!champ) return `${player.player} - select champion`;
-      const stat = playerChampionStat(player, champ);
-      if (!stat) return `${player.player} - WR - - 0 picks`;
-      const picks = Number(stat.games ?? stat.picks ?? 0);
-      return `${player.player} - WR ${pct(stat.winrate)} - ${picks} picks`;
-    }
-    function renderSlots(side) {
-      $(`${side}Slots`).innerHTML = state[side].map((champ, index) => {
-        const player = playerForRole(side, index);
-        return `
-          <div class="slot ${side}">
-            <button class="portrait" data-open-champ="${side}:${index}">${champ ? `<img src="${escapeHtml(champ.imageUrl)}" alt="">` : "+"}</button>
-            <button class="slotMain" data-open-champ="${side}:${index}">
-              <span class="role">${roles[index]}</span>
-              <span class="champName">${escapeHtml(champ?.name || "Pick champion")}</span>
-              ${player ? `<span class="playerName">${escapeHtml(player.player)}</span>` : ""}
-              <span class="statLine">${escapeHtml(slotStat(side, champ, index))}</span>
-            </button>
-            <button class="clear" data-clear="${side}:${index}" ${champ ? "" : "disabled"}>x</button>
+    function renderPrediction() {
+      const ready = predictionReady();
+      if (!state.calculated) {
+        $("lensPrediction").innerHTML = `
+          <h2 class="panelTitle">Draft Lens Prediction</h2>
+          <div class="predictionEmpty">
+            <button class="predictionButton" id="calculateLens" ${ready ? "" : "disabled"}>Calculate Win Rate</button>
+            <p class="predictionHint">${escapeHtml(predictionHint())}</p>
           </div>
         `;
-      }).join("");
+        return;
+      }
+      const result = featurePrediction();
+      const blueName = teamDisplayCode(state.selectedTeams.blue);
+      const redName = teamDisplayCode(state.selectedTeams.red);
+      const covered = result.components.filter(component => component.available).length;
+      $("lensPrediction").innerHTML = `
+        <h2 class="panelTitle">Draft Lens Prediction</h2>
+        <div class="predictionHead"><strong>${escapeHtml(blueName)} vs ${escapeHtml(redName)}</strong><span>${covered}/${result.components.length} features</span></div>
+        <div class="predictionNumbers"><span class="blue">${result.blue.toFixed(1)}%</span><span class="red">${result.red.toFixed(1)}%</span></div>
+        <div class="predictionBar" aria-label="${escapeHtml(blueName)} ${result.blue.toFixed(1)}%, ${escapeHtml(redName)} ${result.red.toFixed(1)}%">
+          <span class="predictionBarBlue" style="width:${result.blue}%"></span>
+          <span class="predictionBarRed" style="width:${result.red}%"></span>
+        </div>
+        <div class="featureChips">${result.components.map(component => `<span class="featureChip ${component.available ? "ready" : ""}">${escapeHtml(component.label)}</span>`).join("")}</div>
+        <p class="predictionHint">Team form uses the tier scope overall; player, champion, and lane features use the selected patch.</p>
+      `;
     }
-    function renderSummary() {
-      const players = ["blue", "red"].flatMap(side => roles.map((_, index) => ({ side, player: playerForRole(side, index), champ: state[side][index] })));
-      const statRows = players.map(row => playerChampionStat(row.player, row.champ)).filter(Boolean);
-      const picks = statRows.reduce((sum, row) => sum + Number(row.games ?? row.picks ?? 0), 0);
-      const wins = statRows.reduce((sum, row) => sum + Number(row.wins ?? 0), 0);
-      const covered = players.filter(row => row.player && row.champ).length;
-      $("featureSummary").innerHTML = `
-        <h2 class="panelTitle">Player Features</h2>
-        <div class="summaryGrid">
-          <div class="summaryItem"><span>Scope</span><strong>${escapeHtml(state.statTier.toUpperCase())}</strong></div>
-          <div class="summaryItem"><span>Patch</span><strong>${escapeHtml(patchLabel(state.statPatch))}</strong></div>
-          <div class="summaryItem"><span>Covered Slots</span><strong>${covered}/10</strong></div>
-          <div class="summaryItem"><span>Player Picks</span><strong>${picks}</strong></div>
-          <div class="summaryItem"><span>Player Wins</span><strong>${wins}</strong></div>
-          <div class="summaryItem"><span>Player WR</span><strong>${picks ? pct(wins / picks) : "-"}</strong></div>
+    function renderFeatureSide(side) {
+      const summary = sideFeatureSummary(side);
+      const team = state.selectedTeams[side];
+      return `
+        <div class="featureSide ${side}">
+          <span class="featureSideName">${escapeHtml(team ? teamDisplayCode(team) : side.toUpperCase())}</span>
+          <span class="featureCovered">${summary.covered}/5 champion samples</span>
+          <div class="featureStats">
+            <div class="featureStat"><span>Picks</span><strong>${summary.picks}</strong></div>
+            <div class="featureStat"><span>Wins</span><strong>${summary.wins}</strong></div>
+            <div class="featureStat"><span>WR</span><strong>${summary.winrate === null ? "-" : pct(summary.winrate)}</strong></div>
+          </div>
         </div>
       `;
+    }
+    function renderSummary() {
+      $("featureSummary").innerHTML = `
+        <h2 class="panelTitle">Player Features</h2>
+        <div class="summaryContext"><span>${escapeHtml(state.statTier.toUpperCase())}</span><span>${escapeHtml(patchLabel(state.statPatch))}</span></div>
+        <div class="featureCompare">${renderFeatureSide("blue")}${renderFeatureSide("red")}</div>
+      `;
+    }
+    function recordLabel(record) {
+      const row = numericRecord(record);
+      return row.games ? `${row.wins}-${row.losses} / ${pct(row.winrate)} / ${row.games}G` : "No sample";
     }
     function renderLaneMatchups() {
       $("laneMatchups").innerHTML = `
@@ -496,12 +331,35 @@
             const redPlayer = playerForRole("red", index);
             const blueChamp = state.blue[index];
             const redChamp = state.red[index];
-            const ready = blueChamp && redChamp && (bluePlayer || redPlayer);
+            const metric = laneMetric(index);
+            const blueWidth = metric.available ? metric.blue : 50;
+            const redWidth = 100 - blueWidth;
             return `
               <div class="laneRow">
-                <div class="laneTop"><div class="laneName">${role}</div><div class="laneGame">${ready ? "Player sample" : "Pending"}</div></div>
-                <div class="laneDetail blue">${bluePlayer && blueChamp && redChamp ? `${escapeHtml(bluePlayer.player)} ${escapeHtml(blueChamp.name)} vs ${escapeHtml(redChamp.name)}: ${escapeHtml(formatRecord(matchupRecord("blue", index)))}` : "Blue: -"}</div>
-                <div class="laneDetail red">${redPlayer && redChamp && blueChamp ? `${escapeHtml(redPlayer.player)} ${escapeHtml(redChamp.name)} vs ${escapeHtml(blueChamp.name)}: ${escapeHtml(formatRecord(matchupRecord("red", index)))}` : "Red: -"}</div>
+                <div class="laneTop"><div class="laneName">${role}</div><div class="laneGame">B ${metric.blueStats.games}G / R ${metric.redStats.games}G</div></div>
+                <div class="laneVersus">
+                  <div class="laneSide blue">
+                    <span class="lanePlayer">${escapeHtml(bluePlayer?.player || "Blue player")}</span>
+                    <span class="laneChampion">${escapeHtml(blueChamp?.name || "No champion")}</span>
+                    <span class="laneRecord">${escapeHtml(recordLabel(metric.blueRecord))}</span>
+                  </div>
+                  <div class="laneVs">VS</div>
+                  <div class="laneSide red">
+                    <span class="lanePlayer">${escapeHtml(redPlayer?.player || "Red player")}</span>
+                    <span class="laneChampion">${escapeHtml(redChamp?.name || "No champion")}</span>
+                    <span class="laneRecord">${escapeHtml(recordLabel(metric.redRecord))}</span>
+                  </div>
+                </div>
+                <div class="laneEdge">
+                  ${metric.available ? `
+                    <span class="lanePct">${blueWidth.toFixed(0)}%</span>
+                    <div class="laneBar" aria-label="${role} blue perspective ${blueWidth.toFixed(1)}%">
+                      <span class="laneBarBlue" style="width:${blueWidth}%"></span>
+                      <span class="laneBarRed" style="width:${redWidth}%"></span>
+                    </div>
+                    <span class="lanePct red">${redWidth.toFixed(0)}%</span>
+                  ` : `<span class="laneNoSample">No direct player matchup sample</span>`}
+                </div>
               </div>
             `;
           }).join("")}
@@ -518,13 +376,17 @@
       $("blueCount").textContent = `${blue}/5 locked`;
       $("redCount").textContent = `${red}/5 locked`;
       $("count").textContent = `${blue + red}/10 champions selected`;
+      renderPrediction();
       renderSummary();
       renderLaneMatchups();
+      const calculate = $("calculateLens");
+      if (calculate) calculate.onclick = () => { state.calculated = true; render(); };
       document.querySelectorAll("[data-team-side]").forEach(button => button.onclick = () => openTeamPicker(button.dataset.teamSide));
       document.querySelectorAll("[data-open-champ]").forEach(button => button.onclick = () => openChampionPicker(button.dataset.openChamp));
       document.querySelectorAll("[data-clear]").forEach(button => button.onclick = () => {
         const [side, index] = button.dataset.clear.split(":");
         state[side][Number(index)] = null;
+        state.calculated = false;
         render();
       });
     }
@@ -564,6 +426,7 @@
         const champ = champions.find(row => row.id === button.dataset.champ);
         if (!champ || !state.active) return;
         state[state.active.side][state.active.index] = champ;
+        state.calculated = false;
         $("modal").classList.remove("open");
         render();
       });
@@ -601,11 +464,15 @@
     $("modal").onclick = event => { if (event.target.id === "modal") $("modal").classList.remove("open"); };
     $("statTierFilter").onchange = event => {
       state.statTier = event.target.value || "all";
+      state.calculated = false;
       refreshActiveFeatureBucket();
+      loadSummaryData();
     };
     $("statPatchFilter").onchange = event => {
       state.statPatch = event.target.value || "ALL";
+      state.calculated = false;
       refreshActiveFeatureBucket();
+      loadSummaryData();
     };
     render();
     renderFilters();
