@@ -10,13 +10,9 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 8,
+  "blocker_count": 4,
   "blockers": [
-    "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
-    "live training pipeline is not ready",
-    "live training pipeline did not train a model",
-    "live training pipeline did not replay stored frames",
+    "live training readiness report is missing",
     "live model evaluation report is missing",
     "live replay summary is missing",
     "live operations wiring report is missing"
@@ -28,13 +24,12 @@
     "ops_wiring_valid": false,
     "replay_ready": false,
     "serving_artifacts_valid": true,
-    "training_pipeline_complete": false,
+    "training_pipeline_complete": true,
     "training_ready": false
   },
   "display_ready": false,
   "next_actions": [
     "Collect or sync more completed-game live frames, then rebuild live features.",
-    "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
     "Train/evaluate the live model until operational_summary recommends display.",
     "Run live replay on stored frames and verify <=30s interval coverage.",
     "Configure D1, Cloudflare secrets, and Worker smoke checks."
@@ -54,17 +49,17 @@
     },
     {
       "evidence": {
-        "empty_game_state_rate": 0.0,
-        "games": 77,
-        "interval_count": 284,
-        "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 885,
-        "oe_bootstrap_snapshot_rows": 663,
-        "pct_intervals_lte_30s": 0.647887323943662,
-        "production_live_telemetry_rows": 222,
-        "raw_frame_collection_rows": 0,
-        "rows": 885,
-        "sub_30s_interval_count": 184
+        "empty_game_state_rate": null,
+        "games": null,
+        "interval_count": null,
+        "live_model_prediction_rows": null,
+        "non_empty_game_state_rows": null,
+        "oe_bootstrap_snapshot_rows": null,
+        "pct_intervals_lte_30s": null,
+        "production_live_telemetry_rows": null,
+        "raw_frame_collection_rows": null,
+        "rows": null,
+        "sub_30s_interval_count": null
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -72,20 +67,16 @@
     },
     {
       "evidence": {
-        "feature_rows": 467,
-        "games": 35,
-        "label_sources": {
-          "combined_rows": 25999,
-          "games_rows": 25999,
-          "live_label_rows": 0
-        },
-        "labeled_rows": 467,
-        "pipeline_feature_rows": 467,
-        "pipeline_labeled_feature_rows": 467,
-        "pipeline_ready": false,
-        "pipeline_replayed": false,
-        "pipeline_resolved_rows": 885,
-        "pipeline_trained": false,
+        "feature_rows": null,
+        "games": null,
+        "label_sources": null,
+        "labeled_rows": null,
+        "pipeline_feature_rows": null,
+        "pipeline_labeled_feature_rows": null,
+        "pipeline_ready": null,
+        "pipeline_replayed": null,
+        "pipeline_resolved_rows": null,
+        "pipeline_trained": null,
         "pipeline_warnings": []
       },
       "id": "completed_game_labels",
@@ -133,8 +124,9 @@
     }
   ],
   "stage": "collect_live_frames",
-  "warning_count": 1,
+  "warning_count": 2,
   "warnings": [
+    "live training pipeline summary is missing",
     "public manifest uses OE bootstrap fallback while production live model is missing"
   ]
 }
