@@ -217,7 +217,291 @@
     const dataUrl = path => new URL(`../static/data/${path.replace(/^\/+/, "")}`, location.href).toString();
     const championFromRow = ([id, name, role, img]) => ({ id, name, role, imageUrl: `${ddragon}/${img}.png` });
     const roleOverrides = new Map(fallbackChampionRows.map(([, name, role]) => [normalize(name), role]));
-    let champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare…3307 tokens truncated…entities(rosterPlayers(data), team);
+    let champions = fallbackChampionRows.map(championFromRow).sort((a, b) => a.name.localeCompare(b.name));
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
+    }
+    function roleFromTags(tags) {
+      const values = new Set((tags || []).map(tag => String(tag).toLowerCase()));
+      if (values.has("marksman")) return "Bot";
+      if (values.has("support")) return "Support";
+      if (values.has("mage") || values.has("assassin")) return "Mid";
+      if (values.has("fighter") || values.has("tank")) return "Top";
+      return "Flex";
+    }
+    function roleKeyFromValue(value) {
+      const key = normalize(value);
+      if (key === "jungle") return "jng";
+      if (key === "support") return "sup";
+      if (key === "bottom" || key === "adc") return "bot";
+      return key;
+    }
+    function rosterPlayers(payload) {
+      if (Array.isArray(payload?.players)) return payload.players;
+      if (payload?.players && typeof payload.players === "object") return Object.values(payload.players).flat().filter(Boolean);
+      return [];
+    }
+    function playerForRole(side, index) {
+      return state.rosters[side].find(player => roleKeyFromValue(player.role) === roleKeys[index]) || null;
+    }
+    function featureIdentity(player, team) {
+      const playerKey = normalize(player?.player);
+      const roleKey = roleKeyFromValue(player?.role);
+      const lookup = state.featureData?.player_lookup || {};
+      const teamValues = [player?.team, team?.team, team?.name, team?.code];
+      for (const value of teamValues) {
+        const teamKey = normalize(value);
+        if (teamKey && lookup[`${teamKey}|${playerKey}|${roleKey}`]) return lookup[`${teamKey}|${playerKey}|${roleKey}`];
+      }
+      return lookup[`*|${playerKey}|${roleKey}`] || playerKey;
+    }
+    function attachFeatureIdentities(players, team) {
+      return (players || []).map(player => ({ ...player, featureKey: featureIdentity(player, team) }));
+    }
+    function playerChampionStat(player, champ) {
+      if (!player || !champ) return null;
+      const key = [player.featureKey || normalize(player.player), roleKeyFromValue(player.role), normalize(champ.name)].join("|");
+      return activeFeatureBucket().player_champions[key] || null;
+    }
+    function pct(value) {
+      const numeric = Number(value);
+      if (!Number.isFinite(numeric)) return "-";
+      return `${(numeric <= 1 ? numeric * 100 : numeric).toFixed(1)}%`;
+    }
+    function formatRecord(record) {
+      if (!record || !record.games) return "No sample";
+      const wins = Number(record.wins || 0);
+      const games = Number(record.games || 0);
+      return `${wins}-${Math.max(0, games - wins)} (${pct(record.winrate)}) - ${games} games`;
+    }
+    function matchupKey(side, index) {
+      const player = playerForRole(side, index);
+      const own = state[side][index];
+      const other = side === "blue" ? "red" : "blue";
+      const opp = state[other][index];
+      if (!player || !own || !opp) return "";
+      return [player.featureKey || normalize(player.player), roleKeys[index], normalize(own.name), normalize(opp.name)].join("|");
+    }
+    function matchupRecord(side, index) {
+      const key = matchupKey(side, index);
+      return key ? activeFeatureBucket().matchups[key] || null : null;
+    }
+    function mergeRecordMap(target, source) {
+      for (const [key, value] of Object.entries(source || {})) {
+        if (!target[key]) target[key] = { games: 0, wins: 0, winrate: 0 };
+        target[key].games += Number(value.games ?? value.picks ?? 0);
+        target[key].wins += Number(value.wins || 0);
+        target[key].winrate = target[key].games ? target[key].wins / target[key].games : 0;
+      }
+    }
+    function combinedPatchBucket(scope, patchPrefix) {
+      const combined = { player_champions: {}, matchups: {} };
+      for (const [patch, bucket] of Object.entries(scope?.patches || {})) {
+        if (!patch.startsWith(patchPrefix)) continue;
+        mergeRecordMap(combined.player_champions, bucket.player_champions);
+        mergeRecordMap(combined.matchups, bucket.matchups);
+      }
+      return combined;
+    }
+    function legacyBucketForScope(scope) {
+      const empty = { player_champions: {}, matchups: {} };
+      if (!scope) return empty;
+      if (state.statPatch === "26ALL") return combinedPatchBucket(scope, "16.");
+      if (state.statPatch === "25ALL") return combinedPatchBucket(scope, "15.");
+      if (state.statPatch && state.statPatch !== "ALL") return scope.patches?.[state.statPatch] || empty;
+      return scope.all || empty;
+    }
+    function legacyFeatureBucket() {
+      const empty = { player_champions: {}, matchups: {} };
+      const scopes = state.featureData?.scopes || {};
+      if (state.statTier !== "all") return legacyBucketForScope(scopes[state.statTier]);
+      if (scopes.all) return legacyBucketForScope(scopes.all);
+      const combined = { player_champions: {}, matchups: {} };
+      for (const scope of Object.values(scopes)) {
+        const bucket = legacyBucketForScope(scope);
+        mergeRecordMap(combined.player_champions, bucket.player_champions);
+        mergeRecordMap(combined.matchups, bucket.matchups);
+      }
+      return Object.keys(scopes).length ? combined : empty;
+    }
+    function activeFeatureBucket() {
+      return state.activeFeatureBucket || { player_champions: {}, matchups: {} };
+    }
+    async function loadFeatureShard(path) {
+      if (!path) return { player_champions: {}, matchups: {} };
+      if (!state.featureShardCache.has(path)) {
+        const pending = fetch(dataUrl(path), { cache: "no-store" }).then(res => {
+          if (!res.ok) throw new Error(`Feature shard ${res.status}`);
+          return res.json();
+        }).catch(error => {
+          state.featureShardCache.delete(path);
+          throw error;
+        });
+        state.featureShardCache.set(path, pending);
+      }
+      return state.featureShardCache.get(path);
+    }
+    async function selectedFeatureBucket() {
+      if (!state.featureData?.buckets) return legacyFeatureBucket();
+      const scopeNames = state.statTier === "all"
+        ? (state.featureData.buckets.all?.[state.statPatch] ? ["all"] : Object.keys(state.featureData.buckets).filter(scope => scope !== "all"))
+        : [state.statTier];
+      const paths = scopeNames.map(scope => state.featureData.buckets?.[scope]?.[state.statPatch]).filter(Boolean);
+      const shards = await Promise.all(paths.map(loadFeatureShard));
+      const combined = { player_champions: {}, matchups: {} };
+      for (const shard of shards) {
+        mergeRecordMap(combined.player_champions, shard.player_champions);
+        mergeRecordMap(combined.matchups, shard.matchups);
+      }
+      return combined;
+    }
+    async function refreshActiveFeatureBucket() {
+      const cacheKey = `${state.statTier}:${state.statPatch}`;
+      const token = ++state.featureLoadToken;
+      if (state.featureBucketCache.has(cacheKey)) {
+        state.activeFeatureBucket = state.featureBucketCache.get(cacheKey);
+        render();
+        return;
+      }
+      state.activeFeatureBucket = { player_champions: {}, matchups: {} };
+      render();
+      try {
+        const bucket = await selectedFeatureBucket();
+        if (token !== state.featureLoadToken) return;
+        state.featureBucketCache.set(cacheKey, bucket);
+        state.activeFeatureBucket = bucket;
+      } catch {
+        if (token !== state.featureLoadToken) return;
+        state.activeFeatureBucket = { player_champions: {}, matchups: {} };
+      }
+      render();
+    }
+    function patchFilterOptions() {
+      const patches = state.patchOptions || [];
+      const options = [];
+      if (patches.some(patch => String(patch).startsWith("16."))) options.push({ value: "26ALL", label: "26ALL" });
+      if (patches.some(patch => String(patch).startsWith("15."))) options.push({ value: "25ALL", label: "25ALL" });
+      options.push({ value: "ALL", label: "ALL" });
+      for (const patch of patches) options.push({ value: patch, label: patch });
+      return options;
+    }
+    function patchLabel(value) {
+      return patchFilterOptions().find(option => option.value === value)?.label || value || "ALL";
+    }
+
+    function mergeSummaryRows(target, rows, countField) {
+      for (const row of rows || []) {
+        const key = normalize(row.name);
+        if (!key) continue;
+        if (!target.has(key)) target.set(key, { name: row.name, games: 0, wins: 0 });
+        const entry = target.get(key);
+        entry.games += Number(row[countField] ?? row.games ?? row.picks ?? 0);
+        entry.wins += Number(row.wins || 0);
+      }
+    }
+    function combinedSummaryBucket(prefix) {
+      const teamRows = new Map();
+      const championRows = new Map();
+      const roleRows = Object.fromEntries(roleKeys.map(role => [role, new Map()]));
+      for (const [patch, bucket] of Object.entries(state.summaryData?.patch_summaries || {})) {
+        if (!patch.startsWith(prefix)) continue;
+        mergeSummaryRows(teamRows, bucket.teams, "games");
+        mergeSummaryRows(championRows, bucket.champions, "picks");
+        for (const role of roleKeys) mergeSummaryRows(roleRows[role], bucket.champions_by_role?.[role], "picks");
+      }
+      return {
+        teams: [...teamRows.values()],
+        champions: [...championRows.values()],
+        champions_by_role: Object.fromEntries(roleKeys.map(role => [role, [...roleRows[role].values()]])),
+      };
+    }
+    function selectedSummaryBucket() {
+      const summaries = state.summaryData?.patch_summaries || {};
+      if (state.statPatch === "26ALL") return combinedSummaryBucket("16.");
+      if (state.statPatch === "25ALL") return combinedSummaryBucket("15.");
+      if (state.statPatch === "ALL") return summaries.all || null;
+      return summaries[state.statPatch] || null;
+    }
+    async function loadSummaryData() {
+      const token = ++state.summaryLoadToken;
+      const scope = state.statTier === "all" ? "all" : state.statTier;
+      const path = `summaries/${scope}__all.json`;
+      state.calculated = false;
+      state.summaryData = null;
+      render();
+      try {
+        if (!state.summaryCache.has(path)) {
+          state.summaryCache.set(path, fetch(dataUrl(path), { cache: "no-store" }).then(response => {
+            if (!response.ok) throw new Error(`Summary ${response.status}`);
+            return response.json();
+          }).catch(error => { state.summaryCache.delete(path); throw error; }));
+        }
+        const data = await state.summaryCache.get(path);
+        if (token !== state.summaryLoadToken) return;
+        state.summaryData = data;
+      } catch {
+        if (token !== state.summaryLoadToken) return;
+        state.summaryData = null;
+      }
+      render();
+    }
+
+    async function loadChampionData() {
+      try {
+        const res = await fetch(`https://ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data/en_US/champion.json`, { cache: "force-cache" });
+        if (!res.ok) throw new Error(res.status);
+        const data = await res.json();
+        champions = Object.values(data?.data || {}).map(champ => ({
+          id: normalize(champ.id || champ.name),
+          name: champ.name,
+          role: roleOverrides.get(normalize(champ.name)) || roleFromTags(champ.tags),
+          imageUrl: `${ddragon}/${champ.image?.full || `${champ.id}.png`}`,
+        })).sort((a, b) => a.name.localeCompare(b.name));
+        render();
+      } catch {}
+    }
+    async function loadTeams() {
+      try {
+        const res = await fetch(dataUrl("rosters/index.json"), { cache: "no-store" });
+        const data = await res.json();
+        const teams = (data.teams || []).filter(team => team.file && team.name);
+        const hasPlayerCounts = teams.some(team => Number.isFinite(Number(team.player_count)));
+        state.teams = hasPlayerCounts ? teams.filter(team => Number(team.player_count) > 0) : teams;
+      } catch {
+        state.teams = [];
+      }
+      render();
+    }
+    async function loadFeatureData() {
+      try {
+        const res = await fetch(dataUrl("player-features.json"), { cache: "no-store" });
+        const data = await res.json();
+        state.featureData = data;
+        state.featureBucketCache.clear();
+        state.featureShardCache.clear();
+        for (const side of ["blue", "red"]) {
+          state.rosters[side] = attachFeatureIdentities(state.rosters[side], state.selectedTeams[side]);
+        }
+        state.patchOptions = Array.isArray(data.patch_options) ? data.patch_options : [];
+        if (!patchFilterOptions().some(option => option.value === state.statPatch)) state.statPatch = patchFilterOptions()[0]?.value || "ALL";
+      } catch {
+        state.featureData = null;
+        state.patchOptions = [];
+        state.statPatch = "ALL";
+      }
+      renderFilters();
+      await Promise.all([refreshActiveFeatureBucket(), loadSummaryData()]);
+    }
+    async function selectTeam(side, team) {
+      state.selectedTeams[side] = team;
+      state.rosters[side] = [];
+      state.calculated = false;
+      render();
+      try {
+        const res = await fetch(dataUrl(`rosters/${team.file}`), { cache: "no-store" });
+        const data = await res.json();
+        state.rosters[side] = attachFeatureIdentities(rosterPlayers(data), team);
       } catch {
         state.rosters[side] = [];
       }
