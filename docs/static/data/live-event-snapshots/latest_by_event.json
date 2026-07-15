@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -54049,7 +54049,7 @@
   },
   "116833506932259271": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116833506932259271",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54062,7 +54062,7 @@
       "region": "",
       "best_of": "3",
       "status": "completed",
-      "start_time": "2026-07-15T00:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "112444725757989017",
@@ -54186,7 +54186,7 @@
   },
   "116793933805935744": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116793933805935744",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54199,7 +54199,7 @@
       "region": "",
       "best_of": "3",
       "status": "completed",
-      "start_time": "2026-07-15T02:00:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "105520816474194464",
@@ -54323,7 +54323,7 @@
   },
   "116833506932128107": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116833506932128107",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54336,7 +54336,7 @@
       "region": "",
       "best_of": "3",
       "status": "completed",
-      "start_time": "2026-07-15T02:30:00.000Z",
+      "start_time": "",
       "teams": [
         {
           "id": "105532791598779236",
@@ -54460,7 +54460,7 @@
   },
   "116793933806066924": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116793933806066924",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54597,7 +54597,7 @@
   },
   "116520721101367186": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116520721101367186",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54734,7 +54734,7 @@
   },
   "116520721101367134": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116520721101367134",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -54871,60 +54871,82 @@
   },
   "116520721101367226": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116520721101367226",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116520721101367226",
+      "league": "",
+      "league_group": "",
+      "region": "",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
+  "116520721101367238": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-15T00:13:08.521Z",
+    "event_id": "116520721101367238",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116520721101367238",
       "league": "LRS",
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "2026-07-15T08:00:00.000Z",
       "teams": [
         {
-          "id": "114193860596475398",
-          "name": "Seven Dark",
-          "code": "7D",
-          "image": "http://static.lolesports.com/teams/1770889439846_FULL_COLOR_FOR_DARK_BG-3.png",
+          "id": "107598878262940546",
+          "name": "Malvinas Gaming",
+          "code": "MVG",
+          "image": "http://static.lolesports.com/teams/1770889502736_FULL_COLOR_FOR_DARK_BG1.png",
           "game_wins": "0"
         },
         {
-          "id": "116057016064992483",
-          "name": "Volticons",
-          "code": "VTC",
-          "image": "http://static.lolesports.com/teams/1770889539409_FULL_COLOR_FOR_DARK_BG2.png",
-          "game_wins": "0"
+          "id": "107598651997213225",
+          "name": "9z Globant",
+          "code": "9ZG",
+          "image": "http://static.lolesports.com/teams/1771234194177_FULL_COLOR_FOR_DARK_BG-2.png",
+          "game_wins": "2"
         }
       ],
       "games": [
         {
-          "id": "116520721101367227",
+          "id": "116520721101367239",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "114193860596475398",
-            "team_name": "Seven Dark",
-            "team_code": "7D"
+            "team_id": "107598878262940546",
+            "team_name": "Malvinas Gaming",
+            "team_code": "MVG"
           },
           "red": {
-            "team_id": "116057016064992483",
-            "team_name": "Volticons",
-            "team_code": "VTC"
+            "team_id": "107598651997213225",
+            "team_name": "9z Globant",
+            "team_code": "9ZG"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -54936,28 +54958,28 @@
           }
         },
         {
-          "id": "116520721101367228",
+          "id": "116520721101367240",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "116057016064992483",
-            "team_name": "Volticons",
-            "team_code": "VTC"
+            "team_id": "107598878262940546",
+            "team_name": "Malvinas Gaming",
+            "team_code": "MVG"
           },
           "red": {
-            "team_id": "114193860596475398",
-            "team_name": "Seven Dark",
-            "team_code": "7D"
+            "team_id": "107598651997213225",
+            "team_name": "9z Globant",
+            "team_code": "9ZG"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -54969,22 +54991,22 @@
           }
         },
         {
-          "id": "116520721101367229",
+          "id": "116520721101367241",
           "number": 3,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
-            "team_id": "116057016064992483",
-            "team_name": "Volticons",
-            "team_code": "VTC"
+            "team_id": "107598651997213225",
+            "team_name": "9z Globant",
+            "team_code": "9ZG"
           },
           "red": {
-            "team_id": "114193860596475398",
-            "team_name": "Seven Dark",
-            "team_code": "7D"
+            "team_id": "107598878262940546",
+            "team_name": "Malvinas Gaming",
+            "team_code": "MVG"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -55006,31 +55028,9 @@
       "warning": ""
     }
   },
-  "116520721101367238": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
-    "event_id": "116520721101367238",
-    "status": "unavailable",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "116520721101367238",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
-    }
-  },
   "116855104460702316": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116855104460702316",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55101,7 +55101,7 @@
   },
   "116855104460702314": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116855104460702314",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55172,7 +55172,7 @@
   },
   "116855104460702330": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116855104460702330",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55243,7 +55243,7 @@
   },
   "116855104460702328": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116855104460702328",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55314,7 +55314,7 @@
   },
   "116855104460702302": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116855104460702302",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55385,7 +55385,7 @@
   },
   "116855104460702300": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-14T23:27:38.951Z",
+    "checked_at": "2026-07-15T00:13:08.521Z",
     "event_id": "116855104460702300",
     "status": "unstarted",
     "source": "cloudflare_live_event",
