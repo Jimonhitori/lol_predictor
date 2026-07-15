@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -54871,7 +54871,7 @@
   },
   "116520721101367226": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116520721101367226",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55145,7 +55145,7 @@
   },
   "116855104460702316": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702316",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55216,7 +55216,7 @@
   },
   "116855104460702314": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702314",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55287,7 +55287,7 @@
   },
   "116855104460702330": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702330",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55358,7 +55358,7 @@
   },
   "116855104460702328": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702328",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -55429,9 +55429,9 @@
   },
   "116855104460702302": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702302",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -55441,7 +55441,7 @@
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
@@ -55456,14 +55456,14 @@
           "name": "AG.AL",
           "code": "AGAL",
           "image": "http://static.lolesports.com/teams/1783069593213_t103524.png",
-          "game_wins": "0"
+          "game_wins": "1"
         }
       ],
       "games": [
         {
           "id": "116855104460702303",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
             "team_id": "100725845018863243",
             "team_name": "Dplus KIA",
@@ -55476,13 +55476,13 @@
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -55500,9 +55500,9 @@
   },
   "116855104460702300": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702300",
-    "status": "unstarted",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
@@ -55512,48 +55512,48 @@
       "league_group": "",
       "region": "",
       "best_of": "1",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "2026-07-15T20:20:00.000Z",
       "teams": [
-        {
-          "id": "98767991926151025",
-          "name": "G2 Esports",
-          "code": "G2",
-          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
-          "game_wins": "0"
-        },
         {
           "id": "100205576309502431",
           "name": "FURIA",
           "code": "FUR",
           "image": "http://static.lolesports.com/teams/FURIA---black.png",
           "game_wins": "0"
+        },
+        {
+          "id": "98767991926151025",
+          "name": "G2 Esports",
+          "code": "G2",
+          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+          "game_wins": "1"
         }
       ],
       "games": [
         {
           "id": "116855104460702301",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "98767991926151025",
-            "team_name": "G2 Esports",
-            "team_code": "G2"
-          },
-          "red": {
             "team_id": "100205576309502431",
             "team_name": "FURIA",
             "team_code": "FUR"
           },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -55571,7 +55571,7 @@
   },
   "116855104460702342": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702342",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55642,7 +55642,7 @@
   },
   "116855104460702344": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702344",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55713,7 +55713,7 @@
   },
   "116855104460702304": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702304",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55729,17 +55729,17 @@
       "start_time": "",
       "teams": [
         {
-          "id": "0",
-          "name": "TBD",
-          "code": "TBD",
-          "image": "https://static.lolesports.com/teams/team-tbd.png",
+          "id": "116855249601968876",
+          "name": "AG.AL",
+          "code": "AGAL",
+          "image": "http://static.lolesports.com/teams/1783069593213_t103524.png",
           "game_wins": "0"
         },
         {
-          "id": "0",
-          "name": "TBD",
-          "code": "TBD",
-          "image": "https://static.lolesports.com/teams/team-tbd.png",
+          "id": "98767991926151025",
+          "name": "G2 Esports",
+          "code": "G2",
+          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
           "game_wins": "0"
         }
       ],
@@ -55748,8 +55748,16 @@
           "id": "116855104460702305",
           "number": 1,
           "state": "unstarted",
-          "blue": {},
-          "red": {},
+          "blue": {
+            "team_id": "116855249601968876",
+            "team_name": "AG.AL",
+            "team_code": "AGAL"
+          },
+          "red": {
+            "team_id": "98767991926151025",
+            "team_name": "G2 Esports",
+            "team_code": "G2"
+          },
           "winner": "",
           "live": {
             "game_state": "unstarted",
@@ -55776,7 +55784,7 @@
   },
   "116855104460702306": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702306",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -55792,17 +55800,17 @@
       "start_time": "",
       "teams": [
         {
-          "id": "0",
-          "name": "TBD",
-          "code": "TBD",
-          "image": "https://static.lolesports.com/teams/team-tbd.png",
+          "id": "100725845018863243",
+          "name": "Dplus KIA",
+          "code": "DK",
+          "image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
           "game_wins": "0"
         },
         {
-          "id": "0",
-          "name": "TBD",
-          "code": "TBD",
-          "image": "https://static.lolesports.com/teams/team-tbd.png",
+          "id": "100205576309502431",
+          "name": "FURIA",
+          "code": "FUR",
+          "image": "http://static.lolesports.com/teams/FURIA---black.png",
           "game_wins": "0"
         }
       ],
@@ -55811,8 +55819,16 @@
           "id": "116855104460702307",
           "number": 1,
           "state": "unstarted",
-          "blue": {},
-          "red": {},
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
           "winner": "",
           "live": {
             "game_state": "unstarted",
@@ -55836,8 +55852,16 @@
           "id": "116855104460702308",
           "number": 2,
           "state": "unstarted",
-          "blue": {},
-          "red": {},
+          "blue": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
+          "red": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
           "winner": "",
           "live": {
             "game_state": "unstarted",
@@ -55861,8 +55885,16 @@
           "id": "116855104460702309",
           "number": 3,
           "state": "unstarted",
-          "blue": {},
-          "red": {},
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "100205576309502431",
+            "team_name": "FURIA",
+            "team_code": "FUR"
+          },
           "winner": "",
           "live": {
             "game_state": "unstarted",
@@ -55889,7 +55921,7 @@
   },
   "116833506932193683": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116833506932193683",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56026,7 +56058,7 @@
   },
   "116764853817433758": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116764853817433758",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56163,7 +56195,7 @@
   },
   "116855104460702318": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702318",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56234,7 +56266,7 @@
   },
   "116855104460702320": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702320",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56371,7 +56403,7 @@
   },
   "116833506932193659": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116833506932193659",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56508,7 +56540,7 @@
   },
   "116764853817499362": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116764853817499362",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56645,7 +56677,7 @@
   },
   "116855104460702334": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702334",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -56782,7 +56814,7 @@
   },
   "116855104460702348": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-15T11:45:03.885Z",
+    "checked_at": "2026-07-15T12:58:20.150Z",
     "event_id": "116855104460702348",
     "status": "unstarted",
     "source": "cloudflare_live_event",
