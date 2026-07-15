@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-07-15T01:35:53.687646Z",
+  "generated_at": "2026-07-15T02:32:33.388616Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -424,12 +424,14 @@
       "red_team": "pyramid_iv_esports",
       "blue_team_name": "GNG Amazigh",
       "red_team_name": "Pyramid IV Esports",
-      "blue_win_probability": 0.205411,
-      "red_win_probability": 0.794589,
-      "predicted_winner": "Pyramid IV Esports",
-      "confidence": "medium",
+      "blue_win_probability": 0.613403,
+      "red_win_probability": 0.386597,
+      "predicted_winner": "GNG Amazigh",
+      "confidence": "low",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_red_side_sanity_delta:0.487"
+      ]
     },
     {
       "event_id": "116713163972559012",
@@ -1419,7 +1421,8 @@
     "red_team_fallback_slug:TheParadOx Invaders->theparadox_invaders",
     "red_team_fallback_slug:⁠Movistar KOI Fénix->movistar_koi_f_nix",
     "red_team_no_history:count=1",
-    "red_team_no_history:theparadox_invaders"
+    "red_team_no_history:theparadox_invaders",
+    "blue_red_side_sanity_delta:0.487"
   ],
-  "warning_count": 9
+  "warning_count": 10
 }
