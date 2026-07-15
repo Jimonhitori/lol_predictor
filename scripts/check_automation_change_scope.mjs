@@ -55,16 +55,36 @@ function compareSummary(file, before, after) {
   if (beforeThrough && afterThrough && Date.parse(afterThrough) < Date.parse(beforeThrough)) {
     regressions.push({ file, field: 'data_through', before: beforeThrough, after: afterThrough });
   }
-  const beforePatches = Array.isArray(before?.patch_options) ? before.patch_options.length : 0;
-  const afterPatches = Array.isArray(after?.patch_options) ? after.patch_options.length : 0;
-  if (beforePatches && afterPatches < beforePatches) {
-    regressions.push({ file, field: 'patch_options', before: beforePatches, after: afterPatches });
+  const beforePatches = summaryPatchValues(before);
+  const afterPatches = summaryPatchValues(after);
+  const missing = [...beforePatches].filter(value => !afterPatches.has(value)).sort();
+  if (missing.length) {
+    regressions.push({
+      file,
+      field: 'patch_options',
+      before: beforePatches.size,
+      after: afterPatches.size,
+      missing,
+    });
   }
   return regressions;
 }
 
 function summaryDataThrough(summary) {
   return String(summary?.all_data_through || summary?.data_through || '').trim();
+}
+
+function summaryPatchValues(summary) {
+  if (!Array.isArray(summary?.patch_options)) return new Set();
+  return new Set(summary.patch_options
+    .map(option => canonicalPatchKey(option?.value))
+    .filter(Boolean));
+}
+
+function canonicalPatchKey(value) {
+  const patch = String(value || '').trim();
+  const match = patch.match(/^(25|26)\.(.+)$/);
+  return match ? `${Number(match[1]) - 10}.${match[2]}` : patch;
 }
 
 function readJsonAt(ref, file) {
