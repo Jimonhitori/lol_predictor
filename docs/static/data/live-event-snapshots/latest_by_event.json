@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -57882,7 +57882,7 @@
   },
   "116697716933016513": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116697716933016513",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -59163,7 +59163,7 @@
   },
   "116884625201897755": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116884625201897755",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -59300,29 +59300,210 @@
   },
   "116917034792783705": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116917034792783705",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116917034792783705",
-      "league": "",
+      "league": "LJL",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
+      "best_of": "5",
+      "status": "completed",
+      "start_time": "2026-07-17T17:00:00.000Z",
+      "teams": [
+        {
+          "id": "113866183798490434",
+          "name": "RAYN Clocks",
+          "code": "RCK",
+          "image": "http://static.lolesports.com/teams/1776849368514_A_RAYN_logo_FULL2_W.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116046715496396520",
+          "name": "L Guide Gaming",
+          "code": "LGG",
+          "image": "http://static.lolesports.com/teams/1771324562336_lgg_full_color_onW.png",
+          "game_wins": "3"
+        }
+      ],
+      "games": [
+        {
+          "id": "116917034792783706",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783707",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "red": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783708",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783709",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783710",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "red": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116855104460702356": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116855104460702356",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -59338,17 +59519,17 @@
       "start_time": "",
       "teams": [
         {
-          "id": "100205573496804586",
-          "name": "Hanwha Life Esports",
-          "code": "HLE",
-          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
-          "game_wins": "0"
-        },
-        {
           "id": "98767991853197861",
           "name": "T1",
           "code": "T1",
           "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "100205573496804586",
+          "name": "Hanwha Life Esports",
+          "code": "HLE",
+          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
           "game_wins": "0"
         }
       ],
@@ -59358,14 +59539,14 @@
           "number": 1,
           "state": "unstarted",
           "blue": {
-            "team_id": "100205573496804586",
-            "team_name": "Hanwha Life Esports",
-            "team_code": "HLE"
-          },
-          "red": {
             "team_id": "98767991853197861",
             "team_name": "T1",
             "team_code": "T1"
+          },
+          "red": {
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
           },
           "winner": "",
           "live": {
@@ -59459,7 +59640,7 @@
   },
   "116855104460702360": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116855104460702360",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -59596,7 +59777,7 @@
   },
   "116855104460702364": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116855104460702364",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -59733,7 +59914,7 @@
   },
   "116855104460702368": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116855104460702368",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -59870,7 +60051,7 @@
   },
   "116713163972559008": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116713163972559008",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -59941,7 +60122,7 @@
   },
   "116764853817433786": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116764853817433786",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60078,7 +60259,7 @@
   },
   "116713163972559002": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116713163972559002",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60149,7 +60330,7 @@
   },
   "116713163972559068": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116713163972559068",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60220,7 +60401,7 @@
   },
   "116713163972559052": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116713163972559052",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60291,7 +60472,7 @@
   },
   "116764853817499382": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116764853817499382",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60428,7 +60609,7 @@
   },
   "116713163972559030": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116713163972559030",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60499,7 +60680,7 @@
   },
   "116884625219920160": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T10:22:46.485Z",
+    "checked_at": "2026-07-17T11:46:41.474Z",
     "event_id": "116884625219920160",
     "status": "unstarted",
     "source": "cloudflare_live_event",
