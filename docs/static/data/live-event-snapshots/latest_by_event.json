@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -57882,7 +57882,7 @@
   },
   "116697716933016513": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116697716933016513",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -59300,7 +59300,7 @@
   },
   "116917034792783705": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116917034792783705",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -59503,82 +59503,60 @@
   },
   "116855104460702356": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116855104460702356",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116855104460702356",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
-    }
-  },
-  "116855104460702360": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
-    "event_id": "116855104460702360",
-    "status": "unstarted",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "116855104460702360",
       "league": "Esports World Cup",
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
-          "id": "116855249601968876",
-          "name": "AG.AL",
-          "code": "AGAL",
-          "image": "http://static.lolesports.com/teams/1783069593213_t103524.png",
-          "game_wins": "0"
+          "id": "98767991853197861",
+          "name": "T1",
+          "code": "T1",
+          "image": "http://static.lolesports.com/teams/1726801573959_539px-T1_2019_full_allmode.png",
+          "game_wins": "2"
         },
         {
-          "id": "111692118851466302",
-          "name": "Karmine Corp",
-          "code": "KC",
-          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+          "id": "100205573496804586",
+          "name": "Hanwha Life Esports",
+          "code": "HLE",
+          "image": "http://static.lolesports.com/teams/1631819564399_hle-2021-worlds.png",
           "game_wins": "0"
         }
       ],
       "games": [
         {
-          "id": "116855104460702361",
+          "id": "116855104460702357",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "116855249601968876",
-            "team_name": "AG.AL",
-            "team_code": "AGAL"
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
           },
           "red": {
-            "team_id": "111692118851466302",
-            "team_name": "Karmine Corp",
-            "team_code": "KC"
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -59590,28 +59568,28 @@
           }
         },
         {
-          "id": "116855104460702362",
+          "id": "116855104460702358",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "116855249601968876",
-            "team_name": "AG.AL",
-            "team_code": "AGAL"
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
           },
           "red": {
-            "team_id": "111692118851466302",
-            "team_name": "Karmine Corp",
-            "team_code": "KC"
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -59623,22 +59601,22 @@
           }
         },
         {
-          "id": "116855104460702363",
+          "id": "116855104460702359",
           "number": 3,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
-            "team_id": "111692118851466302",
-            "team_name": "Karmine Corp",
-            "team_code": "KC"
+            "team_id": "98767991853197861",
+            "team_name": "T1",
+            "team_code": "T1"
           },
           "red": {
-            "team_id": "116855249601968876",
-            "team_name": "AG.AL",
-            "team_code": "AGAL"
+            "team_id": "100205573496804586",
+            "team_name": "Hanwha Life Esports",
+            "team_code": "HLE"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -59660,16 +59638,16 @@
       "warning": ""
     }
   },
-  "116855104460702364": {
+  "116855104460702360": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
-    "event_id": "116855104460702364",
+    "checked_at": "2026-07-17T14:20:39.334Z",
+    "event_id": "116855104460702360",
     "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
-      "id": "116855104460702364",
+      "id": "116855104460702360",
       "league": "",
       "league_group": "",
       "region": "",
@@ -59682,62 +59660,62 @@
       "warning": "event_details_fetch_failed"
     }
   },
-  "116855104460702368": {
+  "116855104460702364": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
-    "event_id": "116855104460702368",
-    "status": "unstarted",
+    "checked_at": "2026-07-17T14:20:39.334Z",
+    "event_id": "116855104460702364",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
-      "id": "116855104460702368",
+      "id": "116855104460702364",
       "league": "Esports World Cup",
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
-          "id": "99566404853854212",
-          "name": "BILIBILI GAMING",
-          "code": "BLG",
-          "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
-          "game_wins": "0"
+          "id": "100205573495116443",
+          "name": "Gen.G Esports",
+          "code": "GEN",
+          "image": "http://static.lolesports.com/teams/1773829250929_GENGLOGO_GOLD.png",
+          "game_wins": "2"
         },
         {
-          "id": "100725845018863243",
-          "name": "Dplus KIA",
-          "code": "DK",
-          "image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
+          "id": "99566404852189289",
+          "name": "Beijing JDG Esports",
+          "code": "JDG",
+          "image": "http://static.lolesports.com/teams/1627457924722_29.png",
           "game_wins": "0"
         }
       ],
       "games": [
         {
-          "id": "116855104460702369",
+          "id": "116855104460702365",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
           },
           "red": {
-            "team_id": "100725845018863243",
-            "team_name": "Dplus KIA",
-            "team_code": "DK"
+            "team_id": "99566404852189289",
+            "team_name": "Beijing JDG Esports",
+            "team_code": "JDG"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -59749,28 +59727,28 @@
           }
         },
         {
-          "id": "116855104460702370",
+          "id": "116855104460702366",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
+            "team_id": "99566404852189289",
+            "team_name": "Beijing JDG Esports",
+            "team_code": "JDG"
           },
           "red": {
-            "team_id": "100725845018863243",
-            "team_name": "Dplus KIA",
-            "team_code": "DK"
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -59782,22 +59760,22 @@
           }
         },
         {
-          "id": "116855104460702371",
+          "id": "116855104460702367",
           "number": 3,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
-            "team_id": "100725845018863243",
-            "team_name": "Dplus KIA",
-            "team_code": "DK"
+            "team_id": "99566404852189289",
+            "team_name": "Beijing JDG Esports",
+            "team_code": "JDG"
           },
           "red": {
-            "team_id": "99566404853854212",
-            "team_name": "BILIBILI GAMING",
-            "team_code": "BLG"
+            "team_id": "100205573495116443",
+            "team_name": "Gen.G Esports",
+            "team_code": "GEN"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -59819,9 +59797,31 @@
       "warning": ""
     }
   },
+  "116855104460702368": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-17T14:20:39.334Z",
+    "event_id": "116855104460702368",
+    "status": "unavailable",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116855104460702368",
+      "league": "",
+      "league_group": "",
+      "region": "",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
   "116713163972559008": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116713163972559008",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -59892,7 +59892,7 @@
   },
   "116764853817433786": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116764853817433786",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60029,7 +60029,7 @@
   },
   "116713163972559002": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116713163972559002",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60100,7 +60100,7 @@
   },
   "116713163972559068": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116713163972559068",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60171,7 +60171,7 @@
   },
   "116713163972559052": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116713163972559052",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60242,7 +60242,7 @@
   },
   "116764853817499382": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116764853817499382",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60379,7 +60379,7 @@
   },
   "116713163972559030": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116713163972559030",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60450,7 +60450,7 @@
   },
   "116884625219920160": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116884625219920160",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60587,7 +60587,7 @@
   },
   "116884625332707651": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T12:49:55.626Z",
+    "checked_at": "2026-07-17T14:20:39.334Z",
     "event_id": "116884625332707651",
     "status": "unstarted",
     "source": "cloudflare_live_event",
