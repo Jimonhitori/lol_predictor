@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -57882,7 +57882,7 @@
   },
   "116697716933016513": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116697716933016513",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -59300,7 +59300,7 @@
   },
   "116917034792783705": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116917034792783705",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -59503,7 +59503,7 @@
   },
   "116855104460702356": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116855104460702356",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -59640,7 +59640,7 @@
   },
   "116855104460702360": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116855104460702360",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -59777,7 +59777,7 @@
   },
   "116855104460702364": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116855104460702364",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -59914,51 +59914,215 @@
   },
   "116855104460702368": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116855104460702368",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116855104460702368",
-      "league": "",
+      "league": "Esports World Cup",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "3",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "100725845018863243",
+          "name": "Dplus KIA",
+          "code": "DK",
+          "image": "http://static.lolesports.com/teams/1673260049703_DPlusKIALOGO11.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "99566404853854212",
+          "name": "BILIBILI GAMING",
+          "code": "BLG",
+          "image": "http://static.lolesports.com/teams/1682322954525_Bilibili_Gaming_logo_20211.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116855104460702369",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116855104460702370",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "red": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116855104460702371",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404853854212",
+            "team_name": "BILIBILI GAMING",
+            "team_code": "BLG"
+          },
+          "red": {
+            "team_id": "100725845018863243",
+            "team_name": "Dplus KIA",
+            "team_code": "DK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116713163972559008": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116713163972559008",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559008",
-      "league": "",
+      "league": "Prime League",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
+      "best_of": "1",
+      "status": "completed",
+      "start_time": "2026-07-18T00:00:00.000Z",
+      "teams": [
+        {
+          "id": "102787200136756173",
+          "name": "Berlin International Gaming",
+          "code": "BIG",
+          "image": "http://static.lolesports.com/teams/1674839453682_PRM_BIG-MonochromeLightBG.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "109642680932009857",
+          "name": "G2 NORD",
+          "code": "G2N",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116713163972559009",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "102787200136756173",
+            "team_name": "Berlin International Gaming",
+            "team_code": "BIG"
+          },
+          "red": {
+            "team_id": "109642680932009857",
+            "team_name": "G2 NORD",
+            "team_code": "G2N"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116764853817433786": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116764853817433786",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -59980,78 +60144,29 @@
   },
   "116713163972559002": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116713163972559002",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116713163972559002",
-      "league": "Prime League",
+      "league": "",
       "league_group": "",
       "region": "",
-      "best_of": "1",
-      "status": "unstarted",
-      "start_time": "2026-07-18T01:00:00.000Z",
-      "teams": [
-        {
-          "id": "107416483509696259",
-          "name": "Eintracht Spandau",
-          "code": "EINS",
-          "image": "http://static.lolesports.com/teams/1674832820210_PRM_EINS-FullColorDarkBG.png",
-          "game_wins": "0"
-        },
-        {
-          "id": "102787200136756173",
-          "name": "Berlin International Gaming",
-          "code": "BIG",
-          "image": "http://static.lolesports.com/teams/1674839453682_PRM_BIG-MonochromeLightBG.png",
-          "game_wins": "0"
-        }
-      ],
-      "games": [
-        {
-          "id": "116713163972559003",
-          "number": 1,
-          "state": "unstarted",
-          "blue": {
-            "team_id": "107416483509696259",
-            "team_name": "Eintracht Spandau",
-            "team_code": "EINS"
-          },
-          "red": {
-            "team_id": "102787200136756173",
-            "team_name": "Berlin International Gaming",
-            "team_code": "BIG"
-          },
-          "winner": "",
-          "live": {
-            "game_state": "unstarted",
-            "game_time": 0,
-            "blue": [],
-            "red": [],
-            "blue_stats": {},
-            "red_stats": {},
-            "status": "unstarted",
-            "warning": "",
-            "win_probability": {
-              "blue": 0.5,
-              "red": 0.5,
-              "model": "heuristic_live_v0",
-              "status": "waiting_for_live_stats",
-              "warning": ""
-            }
-          }
-        }
-      ],
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
       "source": "cloudflare_live_event",
-      "warning": ""
+      "warning": "event_details_fetch_failed"
     }
   },
   "116713163972559068": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116713163972559068",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60122,7 +60237,7 @@
   },
   "116713163972559052": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116713163972559052",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60193,7 +60308,7 @@
   },
   "116764853817499382": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116764853817499382",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60330,7 +60445,7 @@
   },
   "116713163972559030": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116713163972559030",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60401,7 +60516,7 @@
   },
   "116884625219920160": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116884625219920160",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -60538,7 +60653,7 @@
   },
   "116884625332707651": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-17T15:49:06.676Z",
+    "checked_at": "2026-07-17T16:52:44.864Z",
     "event_id": "116884625332707651",
     "status": "unstarted",
     "source": "cloudflare_live_event",
