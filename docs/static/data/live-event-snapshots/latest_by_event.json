@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -57882,7 +57882,7 @@
   },
   "116697716933016513": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116697716933016513",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -61157,7 +61157,7 @@
   },
   "116855104460702372": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116855104460702372",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -61294,7 +61294,7 @@
   },
   "116855104460702376": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116855104460702376",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -61431,7 +61431,7 @@
   },
   "116520885021783268": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116520885021783268",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -61568,7 +61568,7 @@
   },
   "116520885021783292": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116520885021783292",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -61705,7 +61705,7 @@
   },
   "116520885021783344": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116520885021783344",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -61842,7 +61842,7 @@
   },
   "116520885021717716": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-18T19:45:02.533Z",
+    "checked_at": "2026-07-18T20:31:42.139Z",
     "event_id": "116520885021717716",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -61952,6 +61952,209 @@
             "team_id": "107581765633427097",
             "team_name": "FUEGO",
             "team_code": "FUE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
+      "source": "cloudflare_live_event",
+      "warning": ""
+    }
+  },
+  "116917034792783723": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-18T20:31:42.139Z",
+    "event_id": "116917034792783723",
+    "status": "unstarted",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "116917034792783723",
+      "league": "LJL",
+      "league_group": "",
+      "region": "",
+      "best_of": "5",
+      "status": "unstarted",
+      "start_time": "",
+      "teams": [
+        {
+          "id": "109668849651338559",
+          "name": "FENNEL",
+          "code": "FL",
+          "image": "http://static.lolesports.com/teams/1673413831349_fl.png",
+          "game_wins": "0"
+        },
+        {
+          "id": "116046715496396520",
+          "name": "L Guide Gaming",
+          "code": "LGG",
+          "image": "http://static.lolesports.com/teams/1771324562336_lgg_full_color_onW.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116917034792783724",
+          "number": 1,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783725",
+          "number": 2,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783726",
+          "number": 3,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783727",
+          "number": 4,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
+          },
+          "red": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unstarted",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783728",
+          "number": 5,
+          "state": "unstarted",
+          "blue": {
+            "team_id": "116046715496396520",
+            "team_name": "L Guide Gaming",
+            "team_code": "LGG"
+          },
+          "red": {
+            "team_id": "109668849651338559",
+            "team_name": "FENNEL",
+            "team_code": "FL"
           },
           "winner": "",
           "live": {
