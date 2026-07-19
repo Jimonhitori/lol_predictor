@@ -13,7 +13,7 @@
   "blocker_count": 8,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
+    "training readiness: live feature <=30s interval coverage below threshold (64.3% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
@@ -55,16 +55,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 77,
-        "interval_count": 284,
+        "games": 94,
+        "interval_count": 293,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 885,
-        "oe_bootstrap_snapshot_rows": 663,
-        "pct_intervals_lte_30s": 0.647887323943662,
+        "non_empty_game_state_rows": 1040,
+        "oe_bootstrap_snapshot_rows": 818,
+        "pct_intervals_lte_30s": 0.658703071672355,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 885,
-        "sub_30s_interval_count": 184
+        "rows": 1040,
+        "sub_30s_interval_count": 193
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -72,19 +72,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 467,
-        "games": 35,
+        "feature_rows": 926,
+        "games": 85,
         "label_sources": {
-          "combined_rows": 25999,
-          "games_rows": 25999,
+          "combined_rows": 6285,
+          "games_rows": 6285,
           "live_label_rows": 0
         },
-        "labeled_rows": 467,
-        "pipeline_feature_rows": 467,
-        "pipeline_labeled_feature_rows": 467,
+        "labeled_rows": 926,
+        "pipeline_feature_rows": 926,
+        "pipeline_labeled_feature_rows": 926,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 885,
+        "pipeline_resolved_rows": 1040,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
