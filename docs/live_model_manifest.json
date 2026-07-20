@@ -41,26 +41,26 @@
     "empty_game_state_rate": 0.0,
     "empty_game_state_rows": 0,
     "features_path": "data/live/live_features.csv",
-    "games": 35,
-    "labeled_rows": 467,
+    "games": 90,
+    "labeled_rows": 969,
     "max_empty_game_state_rate": 0.25,
     "min_games": 5,
     "min_intervals": 25,
     "min_pct_intervals_lte_30s": 0.8,
     "min_rows": 50,
     "ready": false,
-    "rows": 467,
+    "rows": 969,
     "sampling": {
-      "interval_count": 208,
+      "interval_count": 235,
       "max_interval_seconds": 256.008,
-      "median_interval_seconds": 29.993999999999915,
-      "p90_interval_seconds": 30.388500000000022,
-      "pct_intervals_lte_30s": 0.5961538461538461,
-      "pct_intervals_lte_60s": 0.9855769230769231
+      "median_interval_seconds": 29.98199999999997,
+      "p90_interval_seconds": 30.33020000000006,
+      "pct_intervals_lte_30s": 0.6425531914893617,
+      "pct_intervals_lte_60s": 0.9872340425531915
     },
     "warning_count": 1,
     "warnings": [
-      "live feature <=30s interval coverage below threshold (59.6% < 80.0%)"
+      "live feature <=30s interval coverage below threshold (64.3% < 80.0%)"
     ]
   }
 }
