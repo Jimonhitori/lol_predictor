@@ -9,7 +9,7 @@ const SLUG_ALIASES = Object.freeze({ wukong: 'monkeyking', nunuwillump: 'nunu', 
 const DEFAULT_SUMMARY = 'docs/static/data/summaries/all__all.json';
 const DEFAULT_OUTPUT = 'docs/static/data/ranked-matchups.json';
 const SOURCE_NAME = 'OP.GG';
-const SOURCE_TIER = 'Emerald+';
+const SOURCE_TIER = 'Master+';
 const SOURCE_REGION = 'Global';
 const REQUEST_USER_AGENT = 'Mozilla/5.0 (compatible; lol-predictor/1.0; +https://lol-predictor.pages.dev/)';
 
@@ -23,10 +23,11 @@ function slug(value) {
 }
 
 function argsFrom(argv) {
-  const options = { summary: DEFAULT_SUMMARY, output: DEFAULT_OUTPUT, delayMs: 1500, limit: 0, force: false, only: [] };
+  const options = { summary: DEFAULT_SUMMARY, output: DEFAULT_OUTPUT, delayMs: 1500, limit: 0, force: false, only: [], existingOnly: false };
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (arg === '--force') options.force = true;
+    else if (arg === '--existing-only') options.existingOnly = true;
     else if (arg === '--summary') options.summary = argv[++index];
     else if (arg === '--output') options.output = argv[++index];
     else if (arg === '--delay-ms') options.delayMs = Number(argv[++index]);
@@ -106,7 +107,7 @@ function sameUtcDate(left, right) {
 }
 
 function sourceUrl(target) {
-  return `https://op.gg/lol/champions/${encodeURIComponent(target.slug)}/counters/${target.route}`;
+  return `https://op.gg/lol/champions/${encodeURIComponent(target.slug)}/counters/${target.route}?tier=master_plus`;
 }
 
 async function fetchCounter(target) {
@@ -140,7 +141,7 @@ async function main() {
   if (!summary) throw new Error(`Summary not found: ${options.summary}`);
   const now = new Date().toISOString();
   const previous = await readJson(options.output, {});
-  if (!options.force && !options.only.length && sameUtcDate(previous.generated_at, now) && previous.source === SOURCE_NAME) {
+  if (!options.force && !options.only.length && !options.existingOnly && sameUtcDate(previous.generated_at, now) && previous.source === SOURCE_NAME && previous.tier === SOURCE_TIER) {
     console.log(`Ranked matchups already refreshed today: ${previous.generated_at}`);
     return;
   }
@@ -151,12 +152,14 @@ async function main() {
   const requestedKeys = new Set(options.only);
   const refreshTargets = options.only.length
     ? discoveredTargets.filter(target => requestedKeys.has(`${target.role}|${target.champion_key}`))
+    : options.existingOnly
+      ? discoveredTargets.filter(target => previousKeys.has(`${target.role}|${target.champion_key}`))
     : options.force
       ? discoveredTargets
       : discoveredTargets.filter(target => primaryKeys.has(`${target.role}|${target.champion_key}`) || previousKeys.has(`${target.role}|${target.champion_key}`));
   const allTargets = refreshTargets;
   const targets = options.limit ? allTargets.slice(0, options.limit) : allTargets;
-  const entries = { ...(previous.entries || {}) };
+  const entries = previous.tier === SOURCE_TIER ? { ...(previous.entries || {}) } : {};
   const failures = [];
   let sourcePatch = previous.patch || '';
 
