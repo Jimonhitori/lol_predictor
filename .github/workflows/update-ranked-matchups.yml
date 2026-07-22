@@ -1,0 +1,42 @@
+name: Update ranked matchup cache
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "20 1 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-ranked-matchups
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: codex/github-pages-static
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - name: Verify parser
+        run: node scripts/test_ranked_matchup_parser.mjs
+      - name: Refresh OP.GG ranked matchup cache
+        run: node scripts/update_ranked_matchups.mjs --delay-ms 1500
+      - name: Commit changed cache only
+        shell: bash
+        run: |
+          if git diff --quiet -- docs/static/data/ranked-matchups.json; then
+            echo "No ranked matchup changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/static/data/ranked-matchups.json
+          git commit -m "Update ranked matchup cache"
+          git pull --rebase origin codex/github-pages-static
+          git push origin HEAD:codex/github-pages-static

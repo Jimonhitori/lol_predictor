@@ -108,6 +108,15 @@
     .laneBar { height: 7px; display: flex; overflow: hidden; border: 1px solid rgba(37,50,65,.9); border-radius: 999px; background: #05090d; }
     .laneBarBlue { background: var(--blue); }
     .laneBarRed { background: var(--red); }
+    .laneDataset { margin-top: 3px; color: #718397; font-size: 8px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+    .rankedMatchup { display: grid; gap: 7px; padding-top: 9px; border-top: 1px solid rgba(143,161,181,.18); }
+    .rankedHead { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+    .rankedLabel { color: #aebdcd; font-size: 9px; font-weight: 950; letter-spacing: .08em; text-transform: uppercase; }
+    .rankedSource { color: var(--cyan); font-size: 9px; font-weight: 900; text-decoration: none; }
+    .rankedScale { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; }
+    .rankedGames { color: #718397; font-size: 9px; font-weight: 850; text-align: center; white-space: nowrap; }
+    .rankedMeta { color: #718397; font-size: 8px; font-weight: 850; text-align: center; }
+    .rankedEmpty { color: #718397; font-size: 9px; font-weight: 850; line-height: 1.4; }
     .modal { position: fixed; inset: 0; z-index: 50; display: none; align-items: start; justify-content: center; padding: 80px 16px; background: rgba(0,0,0,.72); backdrop-filter: blur(5px); }
     .modal.open { display: flex; }
     .picker { width: min(760px, 100%); border: 1px solid var(--line); border-radius: 10px; background: #0c141d; overflow: hidden; box-shadow: 0 0 30px rgba(22,240,200,.18); }
@@ -125,7 +134,7 @@
     .champDivider { grid-column: 1 / -1; height: 1px; margin: 4px 0; background: rgba(143,161,181,.22); }
     @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .center { order: 3; position: static; } .champGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .head { align-items: start; flex-direction: column; } }
     @media (max-width: 620px) { .compositionGrid, .ccTotals { grid-template-columns: 1fr; } .ccChampionRow { grid-template-columns: minmax(58px, 1fr) repeat(4, minmax(24px, 30px)); gap: 4px; padding-left: 6px; padding-right: 6px; } .ccChampionRow span, .ccChampionRow strong { font-size: 10px; } }
-    @media (max-width: 520px) { nav { padding-left: 10px; padding-right: 10px; gap: 8px; } .brand span { display: none; } .menu { gap: 2px; } .menu a { padding: 0 6px; font-size: 12px; } .laneTop { grid-template-columns: 1fr auto; } .laneScale { grid-template-columns: 1fr; gap: 5px; } .lanePct { text-align: center; } }
+    @media (max-width: 520px) { nav { padding-left: 10px; padding-right: 10px; gap: 8px; } .brand span { display: none; } .menu { gap: 2px; } .menu a { padding: 0 6px; font-size: 12px; } .laneTop { grid-template-columns: 1fr auto; } .laneScale, .rankedScale { grid-template-columns: 1fr; gap: 5px; } .lanePct { text-align: center; } }
   </style>
 </head>
 <body>
@@ -227,7 +236,7 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, championCc: { status: "loading", profiles: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, rankedMatchups: { status: "idle", data: null }, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, championCc: { status: "loading", profiles: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       const sources = [
@@ -688,6 +697,59 @@
         confidence: record.confidence || "Low Confidence",
       };
     }
+    function rankedMatchupMetric(index) {
+      const blue = state.blue[index];
+      const red = state.red[index];
+      if (!blue || !red || state.rankedMatchups.status !== "ready") return null;
+      const entries = state.rankedMatchups.data?.entries || {};
+      const role = roleKeys[index];
+      const blueEntry = entries[`${role}|${normalizeName(blue.name)}`];
+      const redEntry = entries[`${role}|${normalizeName(red.name)}`];
+      const direct = blueEntry?.matchups?.[normalizeName(red.name)];
+      const inverse = redEntry?.matchups?.[normalizeName(blue.name)];
+      const record = direct || inverse;
+      if (!record || numberValue(record.games) <= 0) return null;
+      const blueWr = Math.max(0, Math.min(100, direct ? numberValue(record.winrate) : 100 - numberValue(record.winrate)));
+      return {
+        blueWr,
+        redWr: 100 - blueWr,
+        games: numberValue(record.games),
+        patch: blueEntry?.patch || redEntry?.patch || state.rankedMatchups.data?.patch || "",
+        sourceUrl: (direct ? blueEntry?.source_url : redEntry?.source_url) || "https://op.gg/lol/champions",
+      };
+    }
+    function renderRankedMatchup(index, ranked) {
+      if (index < 0) return "";
+      if (!ranked) {
+        const status = state.rankedMatchups.status === "loading" ? "Loading ranked data..." : "No ranked sample for this matchup.";
+        return `<div class="rankedMatchup"><div class="rankedHead"><span class="rankedLabel">Ranked Matchup</span><span class="rankedSource">OP.GG</span></div><div class="rankedEmpty">${status}</div></div>`;
+      }
+      return `
+        <div class="rankedMatchup">
+          <div class="rankedHead"><span class="rankedLabel">Ranked Matchup</span><a class="rankedSource" href="${escapeHtml(ranked.sourceUrl)}" target="_blank" rel="noreferrer">OP.GG</a></div>
+          <div class="rankedScale">
+            <span class="lanePct blue">Blue ${ranked.blueWr.toFixed(1)}%</span>
+            <div class="laneBar" aria-label="Ranked blue ${ranked.blueWr.toFixed(1)}%, red ${ranked.redWr.toFixed(1)}%"><div class="laneBarBlue" style="width:${ranked.blueWr}%"></div><div class="laneBarRed" style="width:${ranked.redWr}%"></div></div>
+            <span class="lanePct red">Red ${ranked.redWr.toFixed(1)}%</span>
+          </div>
+          <div class="rankedGames">${formatGames(ranked.games)}</div>
+          <div class="rankedMeta">Global ${escapeHtml(state.rankedMatchups.data?.tier || "Emerald+")} / Patch ${escapeHtml(ranked.patch || "-")} / Ranked Solo/Duo</div>
+        </div>
+      `;
+    }
+    async function loadRankedMatchups() {
+      if (state.rankedMatchups.status === "loading") return;
+      state.rankedMatchups = { status: "loading", data: state.rankedMatchups.data };
+      renderPredictionPanels();
+      try {
+        const response = await fetch("/static/data/ranked-matchups.json", { cache: "no-store" });
+        if (!response.ok) throw new Error(`ranked matchups ${response.status}`);
+        state.rankedMatchups = { status: "ready", data: await response.json() };
+      } catch (error) {
+        state.rankedMatchups = { status: "error", data: null };
+      }
+      renderPredictionPanels();
+    }
     function botDuoMatchupMetric() {
       const record = botDuoMatchupRecord();
       if (!record) {
@@ -799,22 +861,23 @@
         return;
       }
       $("laneMatchups").hidden = false;
-      const lanes = [...laneRatings(), botDuoMatchupMetric()];
+      const lanes = [...laneRatings().map((lane, index) => ({ lane, index })), { lane: botDuoMatchupMetric(), index: -1 }];
       $("laneMatchups").innerHTML = `
         <h2 class="cardTitle">Lane Matchups</h2>
         <div class="laneList">
-          ${lanes.map((lane) => {
+          ${lanes.map(({ lane, index }) => {
             const role = lane.role;
+            const ranked = index >= 0 ? rankedMatchupMetric(index) : null;
             const blueWr = lane.available ? lane.blueWr : 50;
             const redWr = lane.available ? lane.redWr : 50;
             const favor = laneFavorText(blueWr);
             return `
-            <div class="laneRow ${lane.available ? "" : "noData"}">
+            <div class="laneRow ${lane.available || ranked ? "" : "noData"}">
               <div class="laneTop">
-                <div class="laneName">${role}</div>
+                <div><div class="laneName">${role}</div><div class="laneDataset">Pro Matchup</div></div>
                 <div class="laneSummary">
                   <div class="laneFavor ${favor.side}">${lane.available ? favor.text : lane.confidence}</div>
-                  ${lane.available ? `<div class="laneGames">${formatGames(lane.games)}</div>` : ""}
+                  ${lane.available ? `<div class="laneGames">${formatGames(lane.games)}${lane.games <= 10 ? " / Small sample" : ""}</div>` : ""}
                 </div>
               </div>
               <div class="laneScale">
@@ -825,6 +888,7 @@
                 </div>
                 <span class="lanePct red">Red ${lane.available ? `${redWr.toFixed(1)}%` : "--"}</span>
               </div>
+              ${renderRankedMatchup(index, ranked)}
             </div>
           `; }).join("")}
         </div>
@@ -918,6 +982,7 @@
           loadChampionCcProfiles();
         }
         if (selectedCount >= 2 && state.compositionSynergy.status === "loading") loadCompositionSynergy();
+        if (selectedCount >= 2 && ["idle", "error"].includes(state.rankedMatchups.status)) loadRankedMatchups();
       });
     }
     $("search").oninput = e => { state.query = e.target.value; renderPicker(); };
