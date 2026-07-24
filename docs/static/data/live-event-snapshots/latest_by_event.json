@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -57882,7 +57882,7 @@
   },
   "116697716933016513": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116697716933016513",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -67874,7 +67874,7 @@
   },
   "116697716933082103": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116697716933082103",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -71278,7 +71278,7 @@
   },
   "116566854547769620": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116566854547769620",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -73434,7 +73434,7 @@
   },
   "116884625236435237": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116884625236435237",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -73571,7 +73571,7 @@
   },
   "116884625039565023": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116884625039565023",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -73708,51 +73708,347 @@
   },
   "116917034792783717": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116917034792783717",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116917034792783717",
-      "league": "",
+      "league": "LJL",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "5",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "116435864316749917",
+          "name": "Arneb",
+          "code": "ARB",
+          "image": "http://static.lolesports.com/teams/1784111170695__-arthur1.png",
+          "game_wins": "3"
+        },
+        {
+          "id": "113866183798490434",
+          "name": "RAYN Clocks",
+          "code": "RCK",
+          "image": "http://static.lolesports.com/teams/1776849368514_A_RAYN_logo_FULL2_W.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116917034792783718",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "red": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783719",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "red": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783720",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "red": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783721",
+          "number": 4,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "red": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116917034792783722",
+          "number": 5,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "116435864316749917",
+            "team_name": "Arneb",
+            "team_code": "ARB"
+          },
+          "red": {
+            "team_id": "113866183798490434",
+            "team_name": "RAYN Clocks",
+            "team_code": "RCK"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "unneeded",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "unstarted",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116566854547769600": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116566854547769600",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116566854547769600",
-      "league": "",
+      "league": "LPL",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "3",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "99566404852189289",
+          "name": "Beijing JDG Esports",
+          "code": "JDG",
+          "image": "http://static.lolesports.com/teams/1627457924722_29.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "98767991887166787",
+          "name": "Xi'an Team WE",
+          "code": "WE",
+          "image": "http://static.lolesports.com/teams/1634763008788_220px-Team_WE_logo.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116566854547769601",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404852189289",
+            "team_name": "Beijing JDG Esports",
+            "team_code": "JDG"
+          },
+          "red": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116566854547769602",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
+          },
+          "red": {
+            "team_id": "99566404852189289",
+            "team_name": "Beijing JDG Esports",
+            "team_code": "JDG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116566854547769603",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404852189289",
+            "team_name": "Beijing JDG Esports",
+            "team_code": "JDG"
+          },
+          "red": {
+            "team_id": "98767991887166787",
+            "team_name": "Xi'an Team WE",
+            "team_code": "WE"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "116566854547769564": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116566854547769564",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -73889,7 +74185,7 @@
   },
   "115548681803406275": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "115548681803406275",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -74026,7 +74322,7 @@
   },
   "116696189685662235": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116696189685662235",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -74097,7 +74393,7 @@
   },
   "116696189685662217": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116696189685662217",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -74168,7 +74464,7 @@
   },
   "115548681803406199": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "115548681803406199",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -74305,7 +74601,7 @@
   },
   "116696189685662265": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116696189685662265",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -74376,7 +74672,7 @@
   },
   "116696189685662241": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "116696189685662241",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -74447,7 +74743,7 @@
   },
   "115565004607949375": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-24T10:47:19.998Z",
+    "checked_at": "2026-07-24T12:07:28.415Z",
     "event_id": "115565004607949375",
     "status": "unstarted",
     "source": "cloudflare_live_event",
