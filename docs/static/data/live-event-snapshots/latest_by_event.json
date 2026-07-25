@@ -41347,7 +41347,7 @@
   },
   "116697716933016531": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116697716933016531",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -42009,7 +42009,7 @@
   },
   "116697716933082091": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116697716933082091",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -43224,7 +43224,7 @@
   },
   "116697716933016504": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116697716933016504",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -47499,7 +47499,7 @@
   },
   "116697716933082094": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116697716933082094",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -57882,7 +57882,7 @@
   },
   "116697716933016513": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116697716933016513",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -67874,7 +67874,7 @@
   },
   "116697716933082103": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116697716933082103",
     "status": "inProgress",
     "source": "cloudflare_live_event",
@@ -74743,7 +74743,7 @@
   },
   "115565004607949375": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115565004607949375",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -74765,7 +74765,7 @@
   },
   "116566854547769604": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116566854547769604",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -74902,29 +74902,144 @@
   },
   "116566854547835312": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116566854547835312",
-    "status": "unavailable",
+    "status": "completed",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116566854547835312",
-      "league": "",
+      "league": "LPL",
       "league_group": "",
       "region": "",
-      "best_of": "",
-      "status": "unavailable",
+      "best_of": "3",
+      "status": "completed",
       "start_time": "",
-      "teams": [],
-      "games": [],
+      "teams": [
+        {
+          "id": "99566404848691211",
+          "name": "Invictus Gaming",
+          "code": "IG",
+          "image": "http://static.lolesports.com/teams/1634762917340_300px-Invictus_Gaming_logo.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "99566404853058754",
+          "name": "WeiboGaming",
+          "code": "WBG",
+          "image": "http://static.lolesports.com/teams/1641202879910_3.png",
+          "game_wins": "1"
+        }
+      ],
+      "games": [
+        {
+          "id": "116566854547835313",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404848691211",
+            "team_name": "Invictus Gaming",
+            "team_code": "IG"
+          },
+          "red": {
+            "team_id": "99566404853058754",
+            "team_name": "WeiboGaming",
+            "team_code": "WBG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116566854547835314",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404848691211",
+            "team_name": "Invictus Gaming",
+            "team_code": "IG"
+          },
+          "red": {
+            "team_id": "99566404853058754",
+            "team_name": "WeiboGaming",
+            "team_code": "WBG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        },
+        {
+          "id": "116566854547835315",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "99566404853058754",
+            "team_name": "WeiboGaming",
+            "team_code": "WBG"
+          },
+          "red": {
+            "team_id": "99566404848691211",
+            "team_name": "Invictus Gaming",
+            "team_code": "IG"
+          },
+          "winner": "",
+          "live": {
+            "game_state": "completed",
+            "game_time": 0,
+            "blue": [],
+            "red": [],
+            "blue_stats": {},
+            "red_stats": {},
+            "status": "ended",
+            "warning": "",
+            "win_probability": {
+              "blue": 0.5,
+              "red": 0.5,
+              "model": "heuristic_live_v0",
+              "status": "waiting_for_live_stats",
+              "warning": ""
+            }
+          }
+        }
+      ],
       "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
+      "warning": ""
     }
   },
   "115570814727838285": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115570814727838285",
     "status": "completed",
     "source": "cloudflare_live_event",
@@ -75061,60 +75176,82 @@
   },
   "116566854547769592": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "116566854547769592",
-    "status": "unstarted",
+    "status": "unavailable",
     "source": "cloudflare_live_event",
     "has_meaningful_live": false,
     "is_finalizable": false,
     "payload": {
       "id": "116566854547769592",
-      "league": "LPL",
+      "league": "",
+      "league_group": "",
+      "region": "",
+      "best_of": "",
+      "status": "unavailable",
+      "start_time": "",
+      "teams": [],
+      "games": [],
+      "source": "cloudflare_live_event",
+      "warning": "event_details_fetch_failed"
+    }
+  },
+  "115570814727903825": {
+    "schema": "lol_live_event_snapshot_v1",
+    "checked_at": "2026-07-25T14:13:02.303Z",
+    "event_id": "115570814727903825",
+    "status": "completed",
+    "source": "cloudflare_live_event",
+    "has_meaningful_live": false,
+    "is_finalizable": false,
+    "payload": {
+      "id": "115570814727903825",
+      "league": "LCP",
       "league_group": "",
       "region": "",
       "best_of": "3",
-      "status": "unstarted",
+      "status": "completed",
       "start_time": "",
       "teams": [
         {
-          "id": "99566404854685458",
-          "name": "TOP ESPORTS",
-          "code": "TES",
-          "image": "http://static.lolesports.com/teams/1592592064571_TopEsportsTES-01-FullonDark.png",
-          "game_wins": "0"
+          "id": "113661839307879869",
+          "name": "Team Secret Whales",
+          "code": "TSW",
+          "image": "http://static.lolesports.com/teams/1774598000328_White_EyeText_600p.png",
+          "game_wins": "2"
         },
         {
-          "id": "101388912911039804",
-          "name": "THUNDER TALK GAMING",
-          "code": "TT",
-          "image": "http://static.lolesports.com/teams/TT-FullonDark.png",
+          "id": "103535282119620510",
+          "name": "Fukuoka SoftBank HAWKS gaming",
+          "code": "SHG",
+          "image": "http://static.lolesports.com/teams/1725885083108_SHG_White_Main.png",
           "game_wins": "0"
         }
       ],
       "games": [
         {
-          "id": "116566854547769593",
+          "id": "115570814727903826",
           "number": 1,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
           },
           "red": {
-            "team_id": "101388912911039804",
-            "team_name": "THUNDER TALK GAMING",
-            "team_code": "TT"
+            "team_id": "103535282119620510",
+            "team_name": "Fukuoka SoftBank HAWKS gaming",
+            "team_code": "SHG"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -75126,28 +75263,28 @@
           }
         },
         {
-          "id": "116566854547769594",
+          "id": "115570814727903827",
           "number": 2,
-          "state": "unstarted",
+          "state": "completed",
           "blue": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
           },
           "red": {
-            "team_id": "101388912911039804",
-            "team_name": "THUNDER TALK GAMING",
-            "team_code": "TT"
+            "team_id": "103535282119620510",
+            "team_name": "Fukuoka SoftBank HAWKS gaming",
+            "team_code": "SHG"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "completed",
             "game_time": 0,
             "blue": [],
             "red": [],
             "blue_stats": {},
             "red_stats": {},
-            "status": "unstarted",
+            "status": "ended",
             "warning": "",
             "win_probability": {
               "blue": 0.5,
@@ -75159,22 +75296,22 @@
           }
         },
         {
-          "id": "116566854547769595",
+          "id": "115570814727903828",
           "number": 3,
-          "state": "unstarted",
+          "state": "unneeded",
           "blue": {
-            "team_id": "101388912911039804",
-            "team_name": "THUNDER TALK GAMING",
-            "team_code": "TT"
+            "team_id": "113661839307879869",
+            "team_name": "Team Secret Whales",
+            "team_code": "TSW"
           },
           "red": {
-            "team_id": "99566404854685458",
-            "team_name": "TOP ESPORTS",
-            "team_code": "TES"
+            "team_id": "103535282119620510",
+            "team_name": "Fukuoka SoftBank HAWKS gaming",
+            "team_code": "SHG"
           },
           "winner": "",
           "live": {
-            "game_state": "unstarted",
+            "game_state": "unneeded",
             "game_time": 0,
             "blue": [],
             "red": [],
@@ -75196,31 +75333,9 @@
       "warning": ""
     }
   },
-  "115570814727903825": {
-    "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
-    "event_id": "115570814727903825",
-    "status": "unavailable",
-    "source": "cloudflare_live_event",
-    "has_meaningful_live": false,
-    "is_finalizable": false,
-    "payload": {
-      "id": "115570814727903825",
-      "league": "",
-      "league_group": "",
-      "region": "",
-      "best_of": "",
-      "status": "unavailable",
-      "start_time": "",
-      "teams": [],
-      "games": [],
-      "source": "cloudflare_live_event",
-      "warning": "event_details_fetch_failed"
-    }
-  },
   "115548681803406203": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115548681803406203",
     "status": "unavailable",
     "source": "cloudflare_live_event",
@@ -75242,7 +75357,7 @@
   },
   "115565671526402945": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115565671526402945",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -75379,7 +75494,7 @@
   },
   "115548681803406271": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115548681803406271",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -75516,7 +75631,7 @@
   },
   "115565671526402997": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115565671526402997",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -75653,7 +75768,7 @@
   },
   "115564797164345551": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115564797164345551",
     "status": "unstarted",
     "source": "cloudflare_live_event",
@@ -75790,7 +75905,7 @@
   },
   "115564797163821179": {
     "schema": "lol_live_event_snapshot_v1",
-    "checked_at": "2026-07-25T11:32:35.101Z",
+    "checked_at": "2026-07-25T14:13:02.303Z",
     "event_id": "115564797163821179",
     "status": "unstarted",
     "source": "cloudflare_live_event",
