@@ -236,7 +236,7 @@
     let champions = fallbackChampionRows.map(championFromRow).sort((a,b) => a.name.localeCompare(b.name));
     const roles = ["Top","Jungle","Mid","Bot","Support"];
     const roleKeys = ["top","jng","mid","bot","sup"];
-    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, rankedMatchups: { status: "idle", data: null }, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, championCc: { status: "loading", profiles: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} } };
+    const state = { blue: Array(5).fill(null), red: Array(5).fill(null), active: null, query: "", calculated: false, statTier: "all", statPatch: "ALL", patchOptions: ["ALL"], summaryData: null, rankedMatchups: { status: "idle", data: null }, championMeta: { status: "loading", patch: "", byRole: {}, all: new Map() }, championCc: { status: "loading", profiles: new Map() }, compositionSynergy: { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {}, shards: new Map() } };
     const $ = id => document.getElementById(id);
     async function loadChampionRoster() {
       const sources = [
@@ -920,27 +920,78 @@
       document.querySelectorAll("[data-clear]").forEach(btn => btn.onclick = () => { const [side, idx] = btn.dataset.clear.split(":"); state[side][Number(idx)] = null; state.calculated = false; render(); });
       renderPredictionPanels();
     }
+    function compositionShardBucket(value) {
+      let hash = 2166136261;
+      for (const char of String(value || "")) {
+        hash ^= char.codePointAt(0);
+        hash = Math.imul(hash, 16777619) >>> 0;
+      }
+      return hash % 8;
+    }
+    function requestedCompositionShards() {
+      const requests = [];
+      for (const side of ["blue", "red"]) {
+        for (const type of compositionTypes) {
+          if (compositionChampions(side, type.id).every(Boolean)) {
+            requests.push(["metrics", type.id, compositionComboKey(side, type.id)]);
+          }
+        }
+      }
+      roleKeys.forEach((role, index) => {
+        const blue = state.blue[index];
+        const red = state.red[index];
+        if (blue && red) requests.push(["lane-matchups", role, `${normalizeName(blue.name)}|${normalizeName(red.name)}`]);
+      });
+      const blueDuo = [state.blue[3], state.blue[4]];
+      const redDuo = [state.red[3], state.red[4]];
+      if ([...blueDuo, ...redDuo].every(Boolean)) {
+        const blueKey = blueDuo.map(champ => normalizeName(champ.name)).join("|");
+        const redKey = redDuo.map(champ => normalizeName(champ.name)).join("|");
+        requests.push(["duo-matchups", "bot-duo", `${blueKey}::${redKey}`]);
+      }
+      return requests;
+    }
+    async function loadCompositionShard(scopeKey, section, item, lookupKey) {
+      const bucket = compositionShardBucket(lookupKey);
+      const cacheKey = `${scopeKey}/${section}/${item}/${bucket}`;
+      let request = state.compositionSynergy.shards.get(cacheKey);
+      if (!request) {
+        request = fetch(`/static/data/composition-synergy/${cacheKey}.json`, { cache: "no-store" }).then(async response => {
+          if (!response.ok) throw new Error(`composition shard ${response.status}`);
+          return response.json();
+        }).catch(error => {
+          state.compositionSynergy.shards.delete(cacheKey);
+          throw error;
+        });
+        state.compositionSynergy.shards.set(cacheKey, request);
+      }
+      const records = await request;
+      if (scopeKey !== compositionScopeKey()) return;
+      const targetName = section === "lane-matchups" ? "laneMatchups" : section === "duo-matchups" ? "duoMatchups" : "metrics";
+      state.compositionSynergy[targetName][item] = {
+        ...(state.compositionSynergy[targetName][item] || {}),
+        ...records,
+      };
+    }
     async function loadCompositionSynergy() {
       const scopeKey = compositionScopeKey();
-      state.compositionSynergy = { status: "loading", scopeKey, metrics: {}, laneMatchups: {}, duoMatchups: {} };
+      if (state.compositionSynergy.scopeKey !== scopeKey) {
+        state.compositionSynergy = { status: "loading", scopeKey, metrics: {}, laneMatchups: {}, duoMatchups: {}, shards: new Map() };
+      } else {
+        state.compositionSynergy.status = "loading";
+      }
       renderPredictionPanels();
       renderCompositionAnalysis("blue");
       renderCompositionAnalysis("red");
       try {
-        let data = null;
-        const scoped = await fetch(`/static/data/composition-synergy/${scopeKey}.json`, { cache: "no-store" });
-        if (scoped.ok) {
-          data = await scoped.json();
-        } else {
-          const legacy = await fetch("/static/data/composition_synergy.json", { cache: "no-store" });
-          if (!legacy.ok) throw new Error(`composition ${scoped.status}/${legacy.status}`);
-          data = await legacy.json();
-        }
+        const requests = requestedCompositionShards()
+          .map(([section, item, lookupKey]) => loadCompositionShard(scopeKey, section, item, lookupKey));
+        await Promise.all(requests);
         if (scopeKey !== compositionScopeKey()) return;
-        state.compositionSynergy = { status: "ready", scopeKey, metrics: data?.metrics || {}, laneMatchups: data?.lane_matchups || {}, duoMatchups: data?.duo_matchups || {} };
+        state.compositionSynergy.status = "ready";
       } catch (error) {
         if (scopeKey !== compositionScopeKey()) return;
-        state.compositionSynergy = { status: "error", scopeKey, metrics: {}, laneMatchups: {}, duoMatchups: {} };
+        state.compositionSynergy.status = "error";
       }
       renderPredictionPanels();
       renderCompositionAnalysis("blue");
@@ -981,7 +1032,7 @@
           loadChampionMeta();
           loadChampionCcProfiles();
         }
-        if (selectedCount >= 2 && state.compositionSynergy.status === "loading") loadCompositionSynergy();
+        if (selectedCount >= 2) loadCompositionSynergy();
         if (selectedCount >= 2 && ["idle", "error"].includes(state.rankedMatchups.status)) loadRankedMatchups();
       });
     }
@@ -992,7 +1043,7 @@
       state.statTier = e.target.value || "all";
       state.summaryData = null;
       state.championMeta = { status: "loading", patch: "", byRole: {}, all: new Map() };
-      state.compositionSynergy = { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {} };
+      state.compositionSynergy = { status: "loading", scopeKey: "", metrics: {}, laneMatchups: {}, duoMatchups: {}, shards: new Map() };
       render();
       loadChampionMeta();
       if (selectedIds().size >= 2) loadCompositionSynergy();

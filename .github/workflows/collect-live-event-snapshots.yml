@@ -1,8 +1,6 @@
 name: Collect live event snapshots
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"
   workflow_dispatch:
     inputs:
       event_id:

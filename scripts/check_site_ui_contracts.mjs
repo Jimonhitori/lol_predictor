@@ -13,6 +13,7 @@ const matchIndex = await readText('match/index.html');
 const app = await readText('static/app.js');
 const draftLab = await readText('rtprob/index.html');
 const draftLens = await readText('player-features/index.html');
+const liveSnapshotWorkflow = await readText('../.github/workflows/collect-live-event-snapshots.yml');
 const champions = await readJson('static/data/champions.json');
 
 requireChecks('navigation', {
@@ -50,6 +51,15 @@ requireChecks('draft_lab', {
     && draftLab.indexOf('localChampionRosterUrl') < draftLab.indexOf('ddragon.leagueoflegends.com/cdn/${ddragonVersion}/data'),
   local_images: draftLab.includes('localChampionImageBaseUrl'),
   lazy_picker_images: draftLab.includes('loading="lazy"'),
+  sharded_composition_data: draftLab.includes('function compositionShardBucket(')
+    && draftLab.includes('/static/data/composition-synergy/${cacheKey}.json')
+    && !draftLab.includes('/static/data/composition_synergy.json'),
+});
+
+requireChecks('live_collection', {
+  manual_only: liveSnapshotWorkflow.includes('workflow_dispatch:')
+    && !liveSnapshotWorkflow.includes('schedule:')
+    && !liveSnapshotWorkflow.includes('cron:'),
 });
 
 requireChecks('draft_lens', {
