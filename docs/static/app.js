@@ -1,8 +1,10 @@
 
-const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
+const state = { options: null, summary: null, championSummary: null, detailMatchId: null, detailTimer: null, matchesTimer: null, liveClockTimer: null, rosterKey: '', teamHistoryKey: '', selectedLiveGameId: '', rosters: {}, currentDetails: null, allMatches: [], selectedMatchDate: '', matchSource: '', liveFrames: {}, teamStanding: 'league:LCK', preMatchPredictions: { byEventId: {}, byGameId: {}, byMatchKey: {}, meta: {}, status: 'not_loaded' }, preMatchPredictionPromise: null, teamRegistry: { byKey: {}, status: 'not_loaded' }, teamRegistryPromise: null, diagnostics: null, diagnosticsPromise: null, scheduleCache: null, scheduleCacheExpiresAt: 0, schedulePromise: null, matchesRequestId: 0, userSelectedMatchDate: false };
 const $ = (id) => document.getElementById(id);
 const STATIC_SITE = Boolean(window.STATIC_SITE);
-const STATIC_DATA_VERSION = '20260714-naive-time-jst';
+const STATIC_DATA_VERSION = '20260802-cloudflare-schedule';
+const SCHEDULE_API_URL = String(window.LOL_PREDICTOR_SCHEDULE_API_URL || 'https://lol-predictor-data.next1gg1.workers.dev/schedule').trim();
+const SCHEDULE_API_CACHE_MS = 5 * 60 * 1000;
 const APP_TIME_ZONE = Intl.DateTimeFormat().resolvedOptions().timeZone || 'Asia/Tokyo';
 const NAIVE_SCHEDULE_UTC_OFFSET_HOURS = 9;
 const MATCHES_REFRESH_INTERVAL_MS = 60000;
@@ -157,10 +159,50 @@ async function staticMatchesPayload(params) {
   const group = staticKey($('leagueGroup')?.value || params.get('league_group') || 'all');
   const region = staticKey($('region')?.value || params.get('region') || 'all');
   const payload = await fetchStaticJson(`data/matches-${group}__${region}.json`);
-  if (group !== 'major') return payload;
-  const eventPayload = await fetchStaticJson(`data/matches-event__${region}.json`).catch(() => ({ matches: [] }));
-  const matches = dedupeCanonicalMatches([...(payload.matches || []), ...(eventPayload.matches || [])]);
-  return { ...payload, matches };
+  const eventPayload = group === 'major'
+    ? await fetchStaticJson(`data/matches-event__${region}.json`).catch(() => ({ matches: [] }))
+    : { matches: [] };
+  const schedulePayload = await fetchCloudflareSchedulePayload().catch(() => null);
+  const scheduleMatches = filterMatchesBySelection(schedulePayload?.matches || [], {
+    league_group: group,
+    region,
+  });
+  const matches = dedupeCanonicalMatches([
+    ...(payload.matches || []),
+    ...(eventPayload.matches || []),
+    ...scheduleMatches,
+  ]);
+  return {
+    ...payload,
+    source: schedulePayload?.ok ? 'cloudflare_lolesports_schedule+static_fallback' : payload.source,
+    schedule_generated_at: schedulePayload?.generated_at || '',
+    matches,
+  };
+}
+
+async function fetchCloudflareSchedulePayload() {
+  if (!STATIC_SITE || !SCHEDULE_API_URL) return null;
+  if (state.scheduleCache && Date.now() < state.scheduleCacheExpiresAt) return state.scheduleCache;
+  if (state.schedulePromise) return state.schedulePromise;
+  state.schedulePromise = (async () => {
+    const response = await fetch(SCHEDULE_API_URL);
+    const contentType = response.headers.get('content-type') || '';
+    if (!response.ok || !contentType.includes('application/json')) {
+      throw new Error(`Cloudflare schedule unavailable: ${response.status}`);
+    }
+    const payload = await response.json();
+    if (!payload?.ok || !Array.isArray(payload.matches)) {
+      throw new Error('Cloudflare schedule response is invalid');
+    }
+    state.scheduleCache = payload;
+    state.scheduleCacheExpiresAt = Date.now() + SCHEDULE_API_CACHE_MS;
+    return payload;
+  })();
+  try {
+    return await state.schedulePromise;
+  } finally {
+    state.schedulePromise = null;
+  }
 }
 
 async function fetchStaticJson(path) {
