@@ -26,15 +26,18 @@ const appAssetVersions = [index, match, matchIndex]
 requireChecks('asset_versions', {
   present_on_all_pages: appAssetVersions.every(Boolean),
   consistent: new Set(appAssetVersions).size === 1,
-  current: appAssetVersions[0] === 'naive-time-jst-20260714',
-  data_cache_current: app.includes("const STATIC_DATA_VERSION = '20260714-naive-time-jst'")
-    || app.includes('const STATIC_DATA_VERSION = "20260714-naive-time-jst"'),
+  current: appAssetVersions[0] === 'cloudflare-schedule-20260802',
+  data_cache_current: app.includes("const STATIC_DATA_VERSION = '20260802-cloudflare-schedule'")
+    || app.includes('const STATIC_DATA_VERSION = "20260802-cloudflare-schedule"'),
 });
 
 requireChecks('schedule', {
   live_plus_three_dates: /const VISIBLE_DATE_TAB_COUNT\s*=\s*3/.test(app),
   centered_selected_date: app.includes('function centeredDateAnchorKey('),
   major_includes_events: app.includes("leagueGroup === 'major' ? new Set(['major', 'event'])"),
+  cloudflare_free_worker: app.includes('https://lol-predictor-data.next1gg1.workers.dev/schedule'),
+  worker_static_fallback: app.includes("schedulePayload?.ok ? 'cloudflare_lolesports_schedule+static_fallback' : payload.source"),
+  worker_cache_five_minutes: /const SCHEDULE_API_CACHE_MS\s*=\s*5 \* 60 \* 1000/.test(app),
 });
 
 requireChecks('patch_meta', {
