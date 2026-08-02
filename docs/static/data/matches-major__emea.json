@@ -1,113 +1,365 @@
 {
-  "source": "lolesports_api",
+  "source": "analyzer_schedule",
   "matches": [
     {
-      "id": "115548681803406275",
-      "league": "LEC",
+      "id": "LEC/2026 Season/Summer Season_Week 2_5",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
       "league_group": "major",
       "region": "emea",
-      "start_time": "2026-07-24T14:00:00Z",
+      "start_time": "2026-08-02T15:00:00Z",
       "status": "unstarted",
-      "blue_team": "G2 Esports",
-      "red_team": "Movistar KOI",
-      "blue_code": "G2",
-      "red_code": "MKOI",
-      "blue_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
-      "red_image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548681803406199",
-      "league": "LEC",
-      "league_group": "major",
-      "region": "emea",
-      "start_time": "2026-07-24T17:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Team Vitality",
-      "red_team": "Karmine Corp",
-      "blue_code": "VIT",
-      "red_code": "KC",
-      "blue_image": "http://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
-      "red_image": "http://static.lolesports.com/teams/1704714951336_KC.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "115548681803406203",
-      "league": "LEC",
-      "league_group": "major",
-      "region": "emea",
-      "start_time": "2026-07-25T14:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Team Vitality",
+      "blue_team": "SK Gaming",
       "red_team": "G2 Esports",
-      "blue_code": "VIT",
-      "red_code": "G2",
-      "blue_image": "http://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
+      "blue_code": "SG",
+      "red_code": "GE",
+      "blue_image": "",
       "red_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "blue_score": "",
+      "red_score": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "SK Gaming",
+          "code": "SG",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "G2 Esports",
+          "code": "GE",
+          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     },
     {
-      "id": "115548681803406271",
-      "league": "LEC",
+      "id": "LEC/2026 Season/Summer Season_Week 2_6",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
       "league_group": "major",
       "region": "emea",
-      "start_time": "2026-07-25T17:00:00Z",
+      "start_time": "2026-08-02T17:15:00Z",
+      "status": "unstarted",
+      "blue_team": "Fnatic",
+      "red_team": "Movistar KOI",
+      "blue_code": "FNAT",
+      "red_code": "MK",
+      "blue_image": "",
+      "red_image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Fnatic",
+          "code": "FNAT",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Movistar KOI",
+          "code": "MK",
+          "image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "LEC/2026 Season/Summer Season_Week 2_7",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-08-03T15:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Natus Vincere",
+      "red_team": "Shifters",
+      "blue_code": "NV",
+      "red_code": "SHIF",
+      "blue_image": "",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Natus Vincere",
+          "code": "NV",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Shifters",
+          "code": "SHIF",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "LEC/2026 Season/Summer Season_Week 2_8",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-08-03T17:15:00Z",
       "status": "unstarted",
       "blue_team": "Karmine Corp",
-      "red_team": "Movistar KOI",
+      "red_team": "Team Heretics",
       "blue_code": "KC",
-      "red_code": "MKOI",
+      "red_code": "TH",
       "blue_image": "http://static.lolesports.com/teams/1704714951336_KC.png",
-      "red_image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Karmine Corp",
+          "code": "KC",
+          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Team Heretics",
+          "code": "TH",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     },
     {
-      "id": "115548681803406191",
-      "league": "LEC",
+      "id": "LEC/2026 Season/Summer Season_Week 3_1",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
       "league_group": "major",
       "region": "emea",
-      "start_time": "2026-07-26T14:00:00Z",
+      "start_time": "2026-08-07T15:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Shifters",
+      "red_team": "GIANTX",
+      "blue_code": "SHIF",
+      "red_code": "GIAN",
+      "blue_image": "",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Shifters",
+          "code": "SHIF",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "GIANTX",
+          "code": "GIAN",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "LEC/2026 Season/Summer Season_Week 3_2",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-08-07T17:15:00Z",
+      "status": "unstarted",
+      "blue_team": "Team Heretics",
+      "red_team": "Fnatic",
+      "blue_code": "TH",
+      "red_code": "FNAT",
+      "blue_image": "",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Team Heretics",
+          "code": "TH",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Fnatic",
+          "code": "FNAT",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "LEC/2026 Season/Summer Season_Week 3_3",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-08-08T15:00:00Z",
+      "status": "unstarted",
+      "blue_team": "SK Gaming",
+      "red_team": "Natus Vincere",
+      "blue_code": "SG",
+      "red_code": "NV",
+      "blue_image": "",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "SK Gaming",
+          "code": "SG",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Natus Vincere",
+          "code": "NV",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "LEC/2026 Season/Summer Season_Week 3_4",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-08-08T17:15:00Z",
       "status": "unstarted",
       "blue_team": "Movistar KOI",
-      "red_team": "Team Vitality",
-      "blue_code": "MKOI",
-      "red_code": "VIT",
+      "red_team": "GIANTX",
+      "blue_code": "MK",
+      "red_code": "GIAN",
       "blue_image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
-      "red_image": "http://static.lolesports.com/teams/1675865863968_Vitality_FullColor.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Movistar KOI",
+          "code": "MK",
+          "image": "http://static.lolesports.com/teams/1734012609283_MKOI_FullColor_Blue.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "GIANTX",
+          "code": "GIAN",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     },
     {
-      "id": "115548681803406287",
-      "league": "LEC",
+      "id": "LEC/2026 Season/Summer Season_Week 3_5",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
       "league_group": "major",
       "region": "emea",
-      "start_time": "2026-07-26T17:00:00Z",
+      "start_time": "2026-08-09T15:00:00Z",
       "status": "unstarted",
-      "blue_team": "G2 Esports",
-      "red_team": "Karmine Corp",
-      "blue_code": "G2",
-      "red_code": "KC",
-      "blue_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
-      "red_image": "http://static.lolesports.com/teams/1704714951336_KC.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "blue_team": "Team Heretics",
+      "red_team": "G2 Esports",
+      "blue_code": "TH",
+      "red_code": "GE",
+      "blue_image": "",
+      "red_image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+      "blue_score": "",
+      "red_score": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Team Heretics",
+          "code": "TH",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "G2 Esports",
+          "code": "GE",
+          "image": "http://static.lolesports.com/teams/G2-FullonDark.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "LEC/2026 Season/Summer Season_Week 3_6",
+      "source_match_id": "",
+      "league": "LEC 2026 Summer",
+      "league_group": "major",
+      "region": "emea",
+      "start_time": "2026-08-09T17:15:00Z",
+      "status": "unstarted",
+      "blue_team": "Fnatic",
+      "red_team": "Karmine Corp",
+      "blue_code": "FNAT",
+      "red_code": "KC",
+      "blue_image": "",
+      "red_image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Fnatic",
+          "code": "FNAT",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Karmine Corp",
+          "code": "KC",
+          "image": "http://static.lolesports.com/teams/1704714951336_KC.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     }
   ]
 }

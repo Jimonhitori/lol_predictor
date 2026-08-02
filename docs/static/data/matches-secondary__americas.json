@@ -1,383 +1,375 @@
 {
-  "source": "lolesports_api",
+  "source": "analyzer_schedule",
   "matches": [
     {
-      "id": "116520885021783312",
-      "league": "LRN",
+      "id": "116170292916591253",
+      "league": "NACL",
       "league_group": "secondary",
       "region": "americas",
-      "start_time": "2026-07-11T19:00:00Z",
-      "status": "unstarted",
-      "blue_team": "3V TEAM",
-      "red_team": "SDM Tigres",
-      "blue_code": "3V",
-      "red_code": "SDM",
-      "blue_image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
-      "red_image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "block_name": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "status": "completed",
+      "teams": [
+        {
+          "id": "102141671183409133",
+          "name": "Maryville University",
+          "code": "MU",
+          "image": "http://static.lolesports.com/teams/1773762488904_maryvilleesportslogo.png",
+          "game_wins": "1"
+        },
+        {
+          "id": "106857761435870473",
+          "name": "Supernova",
+          "code": "SN",
+          "image": "http://static.lolesports.com/teams/1641603984263_SN.png",
+          "game_wins": "2"
+        }
+      ],
+      "games": [
+        {
+          "id": "116170292916591254",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "102141671183409133",
+            "team_name": "Maryville University",
+            "team_code": "MU"
+          },
+          "red": {
+            "team_id": "106857761435870473",
+            "team_name": "Supernova",
+            "team_code": "SN"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916591255",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "102141671183409133",
+            "team_name": "Maryville University",
+            "team_code": "MU"
+          },
+          "red": {
+            "team_id": "106857761435870473",
+            "team_name": "Supernova",
+            "team_code": "SN"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916591256",
+          "number": 3,
+          "state": "completed",
+          "blue": {
+            "team_id": "102141671183409133",
+            "team_name": "Maryville University",
+            "team_code": "MU"
+          },
+          "red": {
+            "team_id": "106857761435870473",
+            "team_name": "Supernova",
+            "team_code": "SN"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T20:00:00Z"
     },
     {
-      "id": "116520885021783332",
-      "league": "LRN",
+      "id": "116170292916656869",
+      "league": "NACL",
       "league_group": "secondary",
       "region": "americas",
-      "start_time": "2026-07-11T19:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Polar Squad",
-      "red_team": "NCG Esports",
-      "blue_code": "PLS",
-      "red_code": "NCG",
-      "blue_image": "http://static.lolesports.com/teams/1772041837794_PLS_C.png",
-      "red_image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
-      "blue_score": "0",
-      "red_score": "0",
+      "block_name": "",
       "best_of": "3",
-      "source": "lolesports_api"
+      "status": "completed",
+      "teams": [
+        {
+          "id": "109783170393931575",
+          "name": "Conviction",
+          "code": "CNV",
+          "image": "http://static.lolesports.com/teams/1675158238331_Conviction.png",
+          "game_wins": "2"
+        },
+        {
+          "id": "114746424759893687",
+          "name": "Dorado Gaming",
+          "code": "DOG",
+          "image": "http://static.lolesports.com/teams/1750891473240_Dorado_Gaminglogo_square1.png",
+          "game_wins": "0"
+        }
+      ],
+      "games": [
+        {
+          "id": "116170292916656870",
+          "number": 1,
+          "state": "completed",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "114746424759893687",
+            "team_name": "Dorado Gaming",
+            "team_code": "DOG"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916656871",
+          "number": 2,
+          "state": "completed",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "114746424759893687",
+            "team_name": "Dorado Gaming",
+            "team_code": "DOG"
+          },
+          "live": {}
+        },
+        {
+          "id": "116170292916656872",
+          "number": 3,
+          "state": "unneeded",
+          "blue": {
+            "team_id": "109783170393931575",
+            "team_name": "Conviction",
+            "team_code": "CNV"
+          },
+          "red": {
+            "team_id": "114746424759893687",
+            "team_name": "Dorado Gaming",
+            "team_code": "DOG"
+          },
+          "live": {}
+        }
+      ],
+      "source": "lolesports_api",
+      "start_time": "2026-05-14T23:00:00Z"
     },
     {
-      "id": "116520885021717704",
-      "league": "LRN",
+      "id": "North American Challengers League/2026 Season/Summer Season_Week 4_1",
+      "source_match_id": "",
+      "league": "NACL 2026 Summer",
       "league_group": "secondary",
       "region": "americas",
-      "start_time": "2026-07-11T22:00:00Z",
+      "start_time": "2026-08-05T21:00:00Z",
       "status": "unstarted",
-      "blue_team": "Lyon Academy",
-      "red_team": "FUEGO",
-      "blue_code": "LYON",
-      "red_code": "FUE",
-      "blue_image": "http://static.lolesports.com/teams/1771401158736_FULL_COLOR_FOR_DARK_BG-1.png",
-      "red_image": "http://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783280",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-11T22:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Kits Esports",
-      "red_team": "Zeu5 Esports",
-      "blue_code": "KITS",
-      "red_code": "Z5",
-      "blue_image": "http://static.lolesports.com/teams/1781849092985_KITSLOGONEGRO.png",
-      "red_image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783272",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-12T19:00:00Z",
-      "status": "unstarted",
-      "blue_team": "NCG Esports",
-      "red_team": "Zeu5 Esports",
-      "blue_code": "NCG",
-      "red_code": "Z5",
-      "blue_image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
-      "red_image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021717708",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-12T19:00:00Z",
-      "status": "unstarted",
-      "blue_team": "SDM Tigres",
-      "red_team": "FUEGO",
-      "blue_code": "SDM",
-      "red_code": "FUE",
-      "blue_image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
-      "red_image": "http://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783336",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-12T22:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Kits Esports",
-      "red_team": "3V TEAM",
-      "blue_code": "KITS",
-      "red_code": "3V",
-      "blue_image": "http://static.lolesports.com/teams/1781849092985_KITSLOGONEGRO.png",
-      "red_image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783304",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-12T22:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Polar Squad",
-      "red_team": "Lyon Academy",
-      "blue_code": "PLS",
-      "red_code": "LYON",
-      "blue_image": "http://static.lolesports.com/teams/1772041837794_PLS_C.png",
-      "red_image": "http://static.lolesports.com/teams/1771401158736_FULL_COLOR_FOR_DARK_BG-1.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783276",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-13T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "3V TEAM",
-      "red_team": "Zeu5 Esports",
-      "blue_code": "3V",
-      "red_code": "Z5",
-      "blue_image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
-      "red_image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783300",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-13T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Kits Esports",
-      "red_team": "Lyon Academy",
-      "blue_code": "KITS",
-      "red_code": "LYON",
-      "blue_image": "http://static.lolesports.com/teams/1781849092985_KITSLOGONEGRO.png",
-      "red_image": "http://static.lolesports.com/teams/1771401158736_FULL_COLOR_FOR_DARK_BG-1.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021717712",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-14T02:00:00Z",
-      "status": "unstarted",
-      "blue_team": "NCG Esports",
-      "red_team": "FUEGO",
-      "blue_code": "NCG",
-      "red_code": "FUE",
-      "blue_image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
-      "red_image": "http://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783320",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-14T02:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Polar Squad",
-      "red_team": "SDM Tigres",
-      "blue_code": "PLS",
-      "red_code": "SDM",
-      "blue_image": "http://static.lolesports.com/teams/1772041837794_PLS_C.png",
-      "red_image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783268",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-18T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "SDM Tigres",
-      "red_team": "Zeu5 Esports",
-      "blue_code": "SDM",
-      "red_code": "Z5",
-      "blue_image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
-      "red_image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783292",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-18T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "NCG Esports",
-      "red_team": "Lyon Academy",
-      "blue_code": "NCG",
-      "red_code": "LYON",
-      "blue_image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
-      "red_image": "http://static.lolesports.com/teams/1771401158736_FULL_COLOR_FOR_DARK_BG-1.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783344",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-19T02:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Polar Squad",
-      "red_team": "Kits Esports",
-      "blue_code": "PLS",
-      "red_code": "KITS",
-      "blue_image": "http://static.lolesports.com/teams/1772041837794_PLS_C.png",
-      "red_image": "http://static.lolesports.com/teams/1781849092985_KITSLOGONEGRO.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021717716",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-19T02:00:00Z",
-      "status": "unstarted",
-      "blue_team": "3V TEAM",
-      "red_team": "FUEGO",
-      "blue_code": "3V",
-      "red_code": "FUE",
-      "blue_image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
-      "red_image": "http://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021717724",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-19T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Polar Squad",
-      "red_team": "FUEGO",
-      "blue_code": "PLS",
-      "red_code": "FUE",
-      "blue_image": "http://static.lolesports.com/teams/1772041837794_PLS_C.png",
-      "red_image": "http://static.lolesports.com/teams/1711010140737_FUEGO-C.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783316",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-19T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Kits Esports",
-      "red_team": "SDM Tigres",
-      "blue_code": "KITS",
-      "red_code": "SDM",
-      "blue_image": "http://static.lolesports.com/teams/1781849092985_KITSLOGONEGRO.png",
-      "red_image": "http://static.lolesports.com/teams/1742463079753_FULL_COLOR_FOR_DARK_BG6.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021717728",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-20T02:00:00Z",
-      "status": "unstarted",
-      "blue_team": "Lyon Academy",
-      "red_team": "Zeu5 Esports",
-      "blue_code": "LYON",
-      "red_code": "Z5",
-      "blue_image": "http://static.lolesports.com/teams/1771401158736_FULL_COLOR_FOR_DARK_BG-1.png",
-      "red_image": "http://static.lolesports.com/teams/1742462885664_FULL_COLOR_FOR_DARK_BG7.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783324",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-20T02:00:00Z",
-      "status": "unstarted",
-      "blue_team": "3V TEAM",
-      "red_team": "NCG Esports",
-      "blue_code": "3V",
-      "red_code": "NCG",
-      "blue_image": "http://static.lolesports.com/teams/1781969964341_3v_w.png",
-      "red_image": "http://static.lolesports.com/teams/1770887650353_FULL_COLOR_FOR_DARK_BG-1.png",
-      "blue_score": "0",
-      "red_score": "0",
-      "best_of": "3",
-      "source": "lolesports_api"
-    },
-    {
-      "id": "116520885021783348",
-      "league": "LRN",
-      "league_group": "secondary",
-      "region": "americas",
-      "start_time": "2026-07-27T23:00:00Z",
-      "status": "unstarted",
-      "blue_team": "TBD",
-      "red_team": "TBD",
-      "blue_code": "TBD",
-      "red_code": "TBD",
-      "blue_image": "https://static.lolesports.com/teams/team-tbd.png",
-      "red_image": "https://static.lolesports.com/teams/team-tbd.png",
+      "blue_team": "Blue Otter",
+      "red_team": "Winthrop University",
+      "blue_code": "BO",
+      "red_code": "WU",
+      "blue_image": "",
+      "red_image": "http://static.lolesports.com/teams/1675157784150_WinthropUniversity.png",
       "blue_score": "",
       "red_score": "",
-      "best_of": "5",
-      "source": "lolesports_api"
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Blue Otter",
+          "code": "BO",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Winthrop University",
+          "code": "WU",
+          "image": "http://static.lolesports.com/teams/1675157784150_WinthropUniversity.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "North American Challengers League/2026 Season/Summer Season_Week 4_2",
+      "source_match_id": "",
+      "league": "NACL 2026 Summer",
+      "league_group": "secondary",
+      "region": "americas",
+      "start_time": "2026-08-06T00:00:00Z",
+      "status": "unstarted",
+      "blue_team": "NRG",
+      "red_team": "Cupid Esports",
+      "blue_code": "NRG",
+      "red_code": "CE",
+      "blue_image": "",
+      "red_image": "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/3/36/Caldya_Esportlogo_square.png/revision/latest?cb=20250605114422",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "NRG",
+          "code": "NRG",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Cupid Esports",
+          "code": "CE",
+          "image": "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/3/36/Caldya_Esportlogo_square.png/revision/latest?cb=20250605114422",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "North American Challengers League/2026 Season/Summer Season_Week 4_3",
+      "source_match_id": "",
+      "league": "NACL 2026 Summer",
+      "league_group": "secondary",
+      "region": "americas",
+      "start_time": "2026-08-06T21:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Maryville University",
+      "red_team": "CCG Esports",
+      "blue_code": "MU",
+      "red_code": "CE",
+      "blue_image": "http://static.lolesports.com/teams/1773762488904_maryvilleesportslogo.png",
+      "red_image": "http://static.lolesports.com/teams/1743818097778__CCGIcon_Main.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Maryville University",
+          "code": "MU",
+          "image": "http://static.lolesports.com/teams/1773762488904_maryvilleesportslogo.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "CCG Esports",
+          "code": "CE",
+          "image": "http://static.lolesports.com/teams/1743818097778__CCGIcon_Main.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "North American Challengers League/2026 Season/Summer Season_Week 4_4",
+      "source_match_id": "",
+      "league": "NACL 2026 Summer",
+      "league_group": "secondary",
+      "region": "americas",
+      "start_time": "2026-08-07T00:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Conviction",
+      "red_team": "Contingent Esports",
+      "blue_code": "CONV",
+      "red_code": "CE",
+      "blue_image": "http://static.lolesports.com/teams/1675158238331_Conviction.png",
+      "red_image": "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/3/36/Caldya_Esportlogo_square.png/revision/latest?cb=20250605114422",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Conviction",
+          "code": "CONV",
+          "image": "http://static.lolesports.com/teams/1675158238331_Conviction.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Contingent Esports",
+          "code": "CE",
+          "image": "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/3/36/Caldya_Esportlogo_square.png/revision/latest?cb=20250605114422",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "North American Challengers League/2026 Season/Summer Season_Week 4_5",
+      "source_match_id": "",
+      "league": "NACL 2026 Summer",
+      "league_group": "secondary",
+      "region": "americas",
+      "start_time": "2026-08-07T21:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Blue Otter",
+      "red_team": "Dorado Gaming",
+      "blue_code": "BO",
+      "red_code": "DG",
+      "blue_image": "",
+      "red_image": "http://static.lolesports.com/teams/1750891473240_Dorado_Gaminglogo_square1.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Blue Otter",
+          "code": "BO",
+          "image": "",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Dorado Gaming",
+          "code": "DG",
+          "image": "http://static.lolesports.com/teams/1750891473240_Dorado_Gaminglogo_square1.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "North American Challengers League/2026 Season/Summer Season_Week 4_6",
+      "source_match_id": "",
+      "league": "NACL 2026 Summer",
+      "league_group": "secondary",
+      "region": "americas",
+      "start_time": "2026-08-08T00:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Maryville University",
+      "red_team": "Contingent Esports",
+      "blue_code": "MU",
+      "red_code": "CE",
+      "blue_image": "http://static.lolesports.com/teams/1773762488904_maryvilleesportslogo.png",
+      "red_image": "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/3/36/Caldya_Esportlogo_square.png/revision/latest?cb=20250605114422",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "leaguepedia",
+      "teams": [
+        {
+          "id": "",
+          "name": "Maryville University",
+          "code": "MU",
+          "image": "http://static.lolesports.com/teams/1773762488904_maryvilleesportslogo.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Contingent Esports",
+          "code": "CE",
+          "image": "https://static.wikia.nocookie.net/lolesports_gamepedia_en/images/3/36/Caldya_Esportlogo_square.png/revision/latest?cb=20250605114422",
+          "game_wins": ""
+        }
+      ],
+      "games": []
     }
   ]
 }
