@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = path.resolve(process.argv[2] || '.');
 const source = await fs.readFile(path.join(root, 'functions/api/leaguepedia-cargo.js'), 'utf8');
-if (!source.includes('UPSTREAM_TIMEOUT_MS = 8_000') || !source.includes('fetchWithTimeout')) {
+if (!source.includes('UPSTREAM_TIMEOUT_MS = 8_000') || !source.includes('fetchBodyWithTimeout')) {
   throw new Error('bounded upstream timeout is missing');
 }
 const moduleUrl = `data:text/javascript;base64,${Buffer.from(source).toString('base64')}`;

@@ -50,8 +50,11 @@ export async function onRequestGet(context) {
   apiUrl.search = new URLSearchParams({ action: 'cargoquery', format: 'json', ...query }).toString();
   let apiError = null;
   try {
-    const response = await fetchWithTimeout(apiUrl, { headers: upstreamHeaders('application/json') });
-    const payload = await response.json();
+    const { response, body: payload } = await fetchBodyWithTimeout(
+      apiUrl,
+      { headers: upstreamHeaders('application/json') },
+      'json',
+    );
     if (response.ok && !payload?.error) {
       return cacheResponse(context, cache, cacheKey, jsonResponse(payload));
     }
@@ -63,9 +66,12 @@ export async function onRequestGet(context) {
   try {
     const exportUrl = new URL(UPSTREAM_EXPORT_URL);
     exportUrl.search = new URLSearchParams({ ...query, format: 'csv' }).toString();
-    const response = await fetchWithTimeout(exportUrl, { headers: upstreamHeaders('text/csv,*/*;q=0.8') });
+    const { response, body: text } = await fetchBodyWithTimeout(
+      exportUrl,
+      { headers: upstreamHeaders('text/csv,*/*;q=0.8') },
+      'text',
+    );
     if (!response.ok) throw new Error(`CargoExport HTTP ${response.status}`);
-    const text = await response.text();
     if (/^\s*(?:<!doctype html|<html|error:)/i.test(text)) {
       throw new Error('CargoExport returned a non-CSV response');
     }
@@ -123,11 +129,13 @@ function upstreamHeaders(accept) {
   };
 }
 
-async function fetchWithTimeout(url, options) {
+async function fetchBodyWithTimeout(url, options, bodyType) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
   try {
-    return await fetch(url, { ...options, signal: controller.signal });
+    const response = await fetch(url, { ...options, signal: controller.signal });
+    const body = bodyType === 'json' ? await response.json() : await response.text();
+    return { response, body };
   } finally {
     clearTimeout(timeout);
   }
