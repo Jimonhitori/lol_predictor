@@ -35,12 +35,15 @@ const report = {
   analyzer_live_manifest_available: data.analyzer_live_manifest_available,
   prediction_schema_has_top_level_warnings: data.prediction_schema_has_top_level_warnings,
   prediction_feed_warning_count: data.prediction_feed_warning_count,
+  prediction_feed_blocking_warning_count: data.prediction_feed_blocking_warning_count,
+  prediction_feed_advisory_warning_count: data.prediction_feed_advisory_warning_count,
   match_index_rows: data.match_index_rows,
   prediction_match_overlap_rows: data.prediction_match_overlap_rows,
   prediction_match_missing_rows: data.prediction_match_missing_rows,
   site_data_status: data.site_data_status,
   remote_prediction_feed_warning_count: data.remote_prediction_feed_warning_count,
   artifact_warnings: data.artifact_warnings,
+  artifact_advisories: data.artifact_advisories,
   warnings: data.warnings,
   errors: [],
 };
@@ -67,6 +70,23 @@ if (data.prediction_schema_has_top_level_warnings !== true) {
 }
 if (!Number.isInteger(data.prediction_feed_warning_count) || data.prediction_feed_warning_count < 0) {
   report.errors.push(`default prediction feed warning count is invalid: ${data.prediction_feed_warning_count}`);
+}
+if (!Number.isInteger(data.prediction_feed_blocking_warning_count) || data.prediction_feed_blocking_warning_count < 0) {
+  report.errors.push(`default prediction feed blocking warning count is invalid: ${data.prediction_feed_blocking_warning_count}`);
+}
+if (!Number.isInteger(data.prediction_feed_advisory_warning_count) || data.prediction_feed_advisory_warning_count < 0) {
+  report.errors.push(`default prediction feed advisory warning count is invalid: ${data.prediction_feed_advisory_warning_count}`);
+}
+if (data.prediction_feed_warning_count !== data.prediction_feed_blocking_warning_count + data.prediction_feed_advisory_warning_count) {
+  report.errors.push('prediction warning classes do not add up to the total warning count');
+}
+if (data.prediction_feed_advisories?.includes('exhibition_neutral_no_transferable_history')) {
+  if (data.artifact_warnings?.includes('prediction_feed_has_warnings')) {
+    report.errors.push('exhibition safety advisory incorrectly degrades the site');
+  }
+  if (!data.artifact_advisories?.includes('prediction_feed_has_advisories')) {
+    report.errors.push('prediction_feed_has_advisories is missing for exhibition safety warnings');
+  }
 }
 if (!Number.isInteger(data.match_index_rows) || data.match_index_rows < 0) {
   report.errors.push(`default match index row count is invalid: ${data.match_index_rows}`);
