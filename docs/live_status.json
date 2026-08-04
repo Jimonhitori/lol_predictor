@@ -1,14 +1,6 @@
 {
-  "blocker_count": 7,
-  "blockers": [
-    "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (67.7% < 80.0%)",
-    "live training pipeline is not ready",
-    "live training pipeline did not train a model",
-    "live training pipeline did not replay stored frames",
-    "live model evaluation report is missing",
-    "live replay summary is missing"
-  ],
+  "blocker_count": 0,
+  "blockers": [],
   "bootstrap": {
     "available": true,
     "completed": 3,
@@ -137,31 +129,29 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 1377,
-      "latest_timestamp": "2026-07-23T23:49:33.735000Z",
+      "history_rows": 503,
+      "latest_timestamp": "2026-08-04T12:33:30.603000Z",
       "live_model_prediction_rows": 0,
-      "model_version_counts": {
-        "live_logistic_oe_bootstrap": 1155
-      },
+      "model_version_counts": {},
       "new_rows": 0,
-      "non_empty_game_state_rows": 1377,
-      "oe_bootstrap_snapshot_rows": 1155,
-      "production_live_telemetry_rows": 222,
+      "non_empty_game_state_rows": 503,
+      "oe_bootstrap_snapshot_rows": 0,
+      "production_live_telemetry_rows": 503,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 128,
-        "games_with_single_frame": 0,
-        "interval_count": 321,
-        "max_interval_seconds": 256.008,
-        "median_interval_seconds": 29.980000000000018,
-        "p90_interval_seconds": 30.190999999999917,
-        "pct_intervals_lte_30s": 0.6853582554517134,
-        "pct_intervals_lte_60s": 0.9906542056074766,
-        "sub_30s_interval_count": 220,
-        "sub_60s_interval_count": 318
+        "games_with_interval_samples": 18,
+        "games_with_single_frame": 3,
+        "interval_count": 482,
+        "max_interval_seconds": 256.0,
+        "median_interval_seconds": 30.0,
+        "p90_interval_seconds": 30.0,
+        "pct_intervals_lte_30s": 0.9190871369294605,
+        "pct_intervals_lte_60s": 0.9937759336099585,
+        "sub_30s_interval_count": 443,
+        "sub_60s_interval_count": 479
       },
-      "unique_games": 128,
-      "unknown_model_version_rows": 222
+      "unique_games": 21,
+      "unknown_model_version_rows": 503
     },
     "config": {
       "available": true,
@@ -180,27 +170,19 @@
     },
     "readiness": {
       "available": true,
-      "ready": false,
-      "warning_count": 2,
-      "warnings": [
-        "live frame <=30s interval coverage below threshold (68.5% < 80.0%)",
-        "OE bootstrap snapshot rows are present in collection history; they are coarse offline rows, not production live telemetry"
-      ]
+      "ready": true,
+      "warning_count": 0,
+      "warnings": []
     }
   },
-  "display_ready": false,
-  "generated_at": "2026-08-04T09:26:38.983378+00:00",
+  "display_ready": true,
+  "generated_at": "2026-08-04T13:55:58.080427+00:00",
   "live_manifest_url": "live_model_manifest.json",
-  "live_model_available": false,
-  "live_model_url": null,
+  "live_model_available": true,
+  "live_model_url": "live_logistic.json",
   "live_readiness_audit_url": "live_model_readiness_audit.json",
-  "live_replay_available": false,
-  "next_actions": [
-    "Collect or sync more completed-game live frames, then rebuild live features.",
-    "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
-    "Train/evaluate the live model until operational_summary recommends display.",
-    "Run live replay on stored frames and verify <=30s interval coverage."
-  ],
+  "live_replay_available": true,
+  "next_actions": [],
   "oe_live_bootstrap": {
     "available": true,
     "bootstrap_only": true,
@@ -223,9 +205,13 @@
     "source": "oracles_elixir_at_minute_snapshots",
     "trained": true
   },
-  "production_ready": false,
+  "production_ready": true,
   "replay": {
-    "available": false
+    "available": true,
+    "games": 21,
+    "ok": true,
+    "pct_intervals_lte_target": 0.9190871369294605,
+    "rows": 503
   },
   "requirements": [
     {
@@ -242,66 +228,66 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 128,
-        "interval_count": 321,
+        "games": 21,
+        "interval_count": 482,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 1377,
-        "oe_bootstrap_snapshot_rows": 1155,
-        "pct_intervals_lte_30s": 0.6853582554517134,
-        "production_live_telemetry_rows": 222,
+        "non_empty_game_state_rows": 503,
+        "oe_bootstrap_snapshot_rows": 0,
+        "pct_intervals_lte_30s": 0.9190871369294605,
+        "production_live_telemetry_rows": 503,
         "raw_frame_collection_rows": 0,
-        "rows": 1377,
-        "sub_30s_interval_count": 220
+        "rows": 503,
+        "sub_30s_interval_count": 443
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "feature_rows": 1266,
-        "games": 120,
+        "feature_rows": 460,
+        "games": 18,
         "label_sources": {
           "combined_rows": 27106,
           "games_rows": 27106,
           "live_label_rows": 0
         },
-        "labeled_rows": 1266,
-        "pipeline_feature_rows": 1266,
-        "pipeline_labeled_feature_rows": 1266,
-        "pipeline_ready": false,
-        "pipeline_replayed": false,
-        "pipeline_resolved_rows": 1377,
-        "pipeline_trained": false,
+        "labeled_rows": 460,
+        "pipeline_feature_rows": 460,
+        "pipeline_labeled_feature_rows": 460,
+        "pipeline_ready": true,
+        "pipeline_replayed": true,
+        "pipeline_resolved_rows": 503,
+        "pipeline_trained": true,
         "pipeline_warnings": []
       },
       "id": "completed_game_labels",
       "label": "Live frames joined to completed-game winners",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "display_recommendation": null,
-        "earliest_reliable_bucket": null
+        "display_recommendation": "show_live_probability",
+        "earliest_reliable_bucket": "00-10"
       },
       "id": "live_model_evaluation",
       "label": "Live model evaluated with display-safe elapsed buckets",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "games": null,
-        "pct_intervals_lte_target": null,
-        "rows": null
+        "games": 21,
+        "pct_intervals_lte_target": 0.9190871369294605,
+        "rows": 503
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "live_model_available": false,
-        "live_model_url": null,
+        "live_model_available": true,
+        "live_model_url": "live_logistic.json",
         "live_status_available": true,
         "validation_ok": true
       },
@@ -312,7 +298,7 @@
     {
       "evidence": {
         "ops_ok": true,
-        "ops_warning_count": 2
+        "ops_warning_count": 0
       },
       "id": "operations_wiring",
       "label": "Live collection, training, and serving operations are wired",
@@ -321,24 +307,24 @@
   ],
   "schema_version": "1.0",
   "source": "lol-pros-analyzer",
-  "stage": "collect_live_frames",
+  "stage": "production_ready",
   "training": {
     "available": true,
-    "games": 120,
+    "games": 18,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
       "available": true,
       "evaluation": {
-        "accuracy": null,
-        "brier_score": null,
-        "log_loss": null
+        "accuracy": 0.5357142857142857,
+        "brier_score": 0.23586133887351,
+        "log_loss": 0.664701409310025
       },
-      "feature_rows": 1266,
-      "labeled_feature_rows": 1266,
+      "feature_rows": 460,
+      "labeled_feature_rows": 460,
       "mapping": {
-        "accepted_rows": 76,
-        "candidate_rows": 640,
+        "accepted_rows": 8,
+        "candidate_rows": 95,
         "direct_id_overlap_games": 0,
         "map_rows": 153
       },
@@ -350,27 +336,23 @@
         "pre_match_path": "data/processed/schedule_predictions.csv",
         "pre_match_rows": 49
       },
-      "ready": false,
+      "ready": true,
       "replay": {
-        "games": null,
-        "ok": null,
-        "rows": null
+        "games": 21,
+        "ok": true,
+        "rows": 503
       },
-      "replayed": false,
-      "resolved_rows": 1377,
-      "trained": false,
+      "replayed": true,
+      "resolved_rows": 503,
+      "trained": true,
       "warning_count": 0,
       "warnings": []
     },
-    "ready": false,
-    "rows": 1266
+    "ready": true,
+    "rows": 460
   },
-  "warning_count": 3,
-  "warnings": [
-    "public manifest uses OE bootstrap fallback while production live model is missing",
-    "live operations wiring: models/live_logistic.json is missing; live serving can still collect raw frames but cannot serve model predictions",
-    "live operations wiring: live_training_readiness.json exists but ready is false"
-  ],
+  "warning_count": 0,
+  "warnings": [],
   "worker": {
     "checked": false
   }

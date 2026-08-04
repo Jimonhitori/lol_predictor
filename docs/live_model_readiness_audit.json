@@ -10,34 +10,21 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 7,
-  "blockers": [
-    "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (67.7% < 80.0%)",
-    "live training pipeline is not ready",
-    "live training pipeline did not train a model",
-    "live training pipeline did not replay stored frames",
-    "live model evaluation report is missing",
-    "live replay summary is missing"
-  ],
+  "blocker_count": 0,
+  "blockers": [],
   "checks": {
     "collection_config_valid": true,
-    "evaluation_display_ready": false,
+    "evaluation_display_ready": true,
     "manifest_exposes_model": true,
     "ops_wiring_valid": true,
-    "replay_ready": false,
+    "replay_ready": true,
     "serving_artifacts_valid": true,
-    "training_pipeline_complete": false,
-    "training_ready": false
+    "training_pipeline_complete": true,
+    "training_ready": true
   },
-  "display_ready": false,
-  "next_actions": [
-    "Collect or sync more completed-game live frames, then rebuild live features.",
-    "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
-    "Train/evaluate the live model until operational_summary recommends display.",
-    "Run live replay on stored frames and verify <=30s interval coverage."
-  ],
-  "production_ready": false,
+  "display_ready": true,
+  "next_actions": [],
+  "production_ready": true,
   "requirements": [
     {
       "evidence": {
@@ -53,66 +40,66 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 128,
-        "interval_count": 321,
+        "games": 21,
+        "interval_count": 482,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 1377,
-        "oe_bootstrap_snapshot_rows": 1155,
-        "pct_intervals_lte_30s": 0.6853582554517134,
-        "production_live_telemetry_rows": 222,
+        "non_empty_game_state_rows": 503,
+        "oe_bootstrap_snapshot_rows": 0,
+        "pct_intervals_lte_30s": 0.9190871369294605,
+        "production_live_telemetry_rows": 503,
         "raw_frame_collection_rows": 0,
-        "rows": 1377,
-        "sub_30s_interval_count": 220
+        "rows": 503,
+        "sub_30s_interval_count": 443
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "feature_rows": 1266,
-        "games": 120,
+        "feature_rows": 460,
+        "games": 18,
         "label_sources": {
           "combined_rows": 27106,
           "games_rows": 27106,
           "live_label_rows": 0
         },
-        "labeled_rows": 1266,
-        "pipeline_feature_rows": 1266,
-        "pipeline_labeled_feature_rows": 1266,
-        "pipeline_ready": false,
-        "pipeline_replayed": false,
-        "pipeline_resolved_rows": 1377,
-        "pipeline_trained": false,
+        "labeled_rows": 460,
+        "pipeline_feature_rows": 460,
+        "pipeline_labeled_feature_rows": 460,
+        "pipeline_ready": true,
+        "pipeline_replayed": true,
+        "pipeline_resolved_rows": 503,
+        "pipeline_trained": true,
         "pipeline_warnings": []
       },
       "id": "completed_game_labels",
       "label": "Live frames joined to completed-game winners",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "display_recommendation": null,
-        "earliest_reliable_bucket": null
+        "display_recommendation": "show_live_probability",
+        "earliest_reliable_bucket": "00-10"
       },
       "id": "live_model_evaluation",
       "label": "Live model evaluated with display-safe elapsed buckets",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "games": null,
-        "pct_intervals_lte_target": null,
-        "rows": null
+        "games": 21,
+        "pct_intervals_lte_target": 0.9190871369294605,
+        "rows": 503
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
-      "status": "blocked"
+      "status": "passed"
     },
     {
       "evidence": {
-        "live_model_available": false,
-        "live_model_url": null,
+        "live_model_available": true,
+        "live_model_url": "live_logistic.json",
         "live_status_available": true,
         "validation_ok": true
       },
@@ -123,18 +110,14 @@
     {
       "evidence": {
         "ops_ok": true,
-        "ops_warning_count": 2
+        "ops_warning_count": 0
       },
       "id": "operations_wiring",
       "label": "Live collection, training, and serving operations are wired",
       "status": "passed"
     }
   ],
-  "stage": "collect_live_frames",
-  "warning_count": 3,
-  "warnings": [
-    "public manifest uses OE bootstrap fallback while production live model is missing",
-    "live operations wiring: models/live_logistic.json is missing; live serving can still collect raw frames but cannot serve model predictions",
-    "live operations wiring: live_training_readiness.json exists but ready is false"
-  ]
+  "stage": "production_ready",
+  "warning_count": 0,
+  "warnings": []
 }
