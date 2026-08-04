@@ -19,6 +19,7 @@ const EXPECTED_ORDER = 'SG.DateTime_UTC DESC';
 const WHERE_PATTERN = /^SG\.DateTime_UTC >= '\d{4}-\d{2}-\d{2} 00:00:00' AND SG\.DateTime_UTC <= '\d{4}-\d{2}-\d{2} 23:59:59' AND SG\.Team1 IS NOT NULL AND SG\.Team2 IS NOT NULL AND SG\.Team1 != '' AND SG\.Team2 != '' AND SG\.Winner IS NOT NULL AND SG\.Winner != ''$/;
 const MAX_ROWS = 100;
 const CACHE_SECONDS = 10 * 60;
+const UPSTREAM_TIMEOUT_MS = 8_000;
 
 const RESPONSE_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -49,7 +50,7 @@ export async function onRequestGet(context) {
   apiUrl.search = new URLSearchParams({ action: 'cargoquery', format: 'json', ...query }).toString();
   let apiError = null;
   try {
-    const response = await fetch(apiUrl, { headers: upstreamHeaders('application/json') });
+    const response = await fetchWithTimeout(apiUrl, { headers: upstreamHeaders('application/json') });
     const payload = await response.json();
     if (response.ok && !payload?.error) {
       return cacheResponse(context, cache, cacheKey, jsonResponse(payload));
@@ -62,7 +63,7 @@ export async function onRequestGet(context) {
   try {
     const exportUrl = new URL(UPSTREAM_EXPORT_URL);
     exportUrl.search = new URLSearchParams({ ...query, format: 'csv' }).toString();
-    const response = await fetch(exportUrl, { headers: upstreamHeaders('text/csv,*/*;q=0.8') });
+    const response = await fetchWithTimeout(exportUrl, { headers: upstreamHeaders('text/csv,*/*;q=0.8') });
     if (!response.ok) throw new Error(`CargoExport HTTP ${response.status}`);
     const text = await response.text();
     if (/^\s*(?:<!doctype html|<html|error:)/i.test(text)) {
@@ -120,6 +121,16 @@ function upstreamHeaders(accept) {
     Accept: accept,
     'User-Agent': 'lol-predictor-pages/1.0',
   };
+}
+
+async function fetchWithTimeout(url, options) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), UPSTREAM_TIMEOUT_MS);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 function jsonResponse(payload, status = 200) {
