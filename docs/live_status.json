@@ -129,33 +129,33 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 503,
-      "latest_timestamp": "2026-08-04T12:33:30.603000Z",
+      "history_rows": 728,
+      "latest_timestamp": "2026-08-04T16:09:29.834000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {},
       "new_rows": 0,
-      "non_empty_game_state_rows": 503,
+      "non_empty_game_state_rows": 728,
       "oe_bootstrap_snapshot_rows": 0,
-      "production_live_telemetry_rows": 503,
+      "production_live_telemetry_rows": 728,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 18,
+        "games_with_interval_samples": 25,
         "games_with_single_frame": 3,
-        "interval_count": 482,
-        "max_interval_seconds": 256.0,
+        "interval_count": 700,
+        "max_interval_seconds": 644.0,
         "median_interval_seconds": 30.0,
         "p90_interval_seconds": 30.0,
-        "pct_intervals_lte_30s": 0.9190871369294605,
-        "pct_intervals_lte_60s": 0.9937759336099585,
-        "sub_30s_interval_count": 443,
-        "sub_60s_interval_count": 479
+        "pct_intervals_lte_30s": 0.9342857142857143,
+        "pct_intervals_lte_60s": 0.9871428571428571,
+        "sub_30s_interval_count": 654,
+        "sub_60s_interval_count": 691
       },
-      "unique_games": 21,
-      "unknown_model_version_rows": 503
+      "unique_games": 28,
+      "unknown_model_version_rows": 728
     },
     "config": {
       "available": true,
-      "duration_seconds": 600.0,
+      "duration_seconds": 480.0,
       "max_interval_seconds": 30.0,
       "ok": true,
       "poll_interval_seconds": 15.0,
@@ -176,7 +176,7 @@
     }
   },
   "display_ready": true,
-  "generated_at": "2026-08-04T13:55:58.080427+00:00",
+  "generated_at": "2026-08-04T16:23:44.188082+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": true,
   "live_model_url": "live_logistic.json",
@@ -208,10 +208,10 @@
   "production_ready": true,
   "replay": {
     "available": true,
-    "games": 21,
+    "games": 28,
     "ok": true,
-    "pct_intervals_lte_target": 0.9190871369294605,
-    "rows": 503
+    "pct_intervals_lte_target": 0.9342857142857143,
+    "rows": 728
   },
   "requirements": [
     {
@@ -228,16 +228,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 21,
-        "interval_count": 482,
+        "games": 28,
+        "interval_count": 700,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 503,
+        "non_empty_game_state_rows": 728,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9190871369294605,
-        "production_live_telemetry_rows": 503,
+        "pct_intervals_lte_30s": 0.9342857142857143,
+        "production_live_telemetry_rows": 728,
         "raw_frame_collection_rows": 0,
-        "rows": 503,
-        "sub_30s_interval_count": 443
+        "rows": 728,
+        "sub_30s_interval_count": 654
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -248,8 +248,8 @@
         "feature_rows": 460,
         "games": 18,
         "label_sources": {
-          "combined_rows": 27106,
-          "games_rows": 27106,
+          "combined_rows": 27353,
+          "games_rows": 27353,
           "live_label_rows": 0
         },
         "labeled_rows": 460,
@@ -257,7 +257,7 @@
         "pipeline_labeled_feature_rows": 460,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 503,
+        "pipeline_resolved_rows": 728,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -276,9 +276,9 @@
     },
     {
       "evidence": {
-        "games": 21,
-        "pct_intervals_lte_target": 0.9190871369294605,
-        "rows": 503
+        "games": 28,
+        "pct_intervals_lte_target": 0.9342857142857143,
+        "rows": 728
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
@@ -324,7 +324,7 @@
       "labeled_feature_rows": 460,
       "mapping": {
         "accepted_rows": 8,
-        "candidate_rows": 95,
+        "candidate_rows": 140,
         "direct_id_overlap_games": 0,
         "map_rows": 153
       },
@@ -338,12 +338,12 @@
       },
       "ready": true,
       "replay": {
-        "games": 21,
+        "games": 28,
         "ok": true,
-        "rows": 503
+        "rows": 728
       },
       "replayed": true,
-      "resolved_rows": 503,
+      "resolved_rows": 728,
       "trained": true,
       "warning_count": 0,
       "warnings": []

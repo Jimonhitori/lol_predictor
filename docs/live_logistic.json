@@ -39,12 +39,62 @@
   "evaluation": {
     "accuracy": 0.5357142857142857,
     "brier_score": 0.23586133887351,
+    "bucket_metrics": [
+      {
+        "accuracy": 0.5972222222222222,
+        "brier_score": 0.22212844357291198,
+        "elapsed_bucket": "00-10",
+        "is_display_candidate": true,
+        "is_small_sample": false,
+        "log_loss": 0.6356679650668546,
+        "num_predictions": 72
+      },
+      {
+        "accuracy": 0.425,
+        "brier_score": 0.2605805504145864,
+        "elapsed_bucket": "10-20",
+        "is_display_candidate": false,
+        "is_small_sample": false,
+        "log_loss": 0.7169616089477314,
+        "num_predictions": 40
+      },
+      {
+        "accuracy": null,
+        "brier_score": null,
+        "elapsed_bucket": "20-30",
+        "is_display_candidate": false,
+        "is_small_sample": true,
+        "log_loss": null,
+        "num_predictions": 0
+      },
+      {
+        "accuracy": null,
+        "brier_score": null,
+        "elapsed_bucket": "30-40",
+        "is_display_candidate": false,
+        "is_small_sample": true,
+        "log_loss": null,
+        "num_predictions": 0
+      },
+      {
+        "accuracy": null,
+        "brier_score": null,
+        "elapsed_bucket": "40+",
+        "is_display_candidate": false,
+        "is_small_sample": true,
+        "log_loss": null,
+        "num_predictions": 0
+      }
+    ],
     "display_recommendation": "show_live_probability",
     "earliest_reliable_bucket": "00-10",
     "log_loss": 0.664701409310025,
+    "max_bucket_brier_score": 0.25,
+    "max_bucket_log_loss": 0.7,
     "min_bucket_predictions": 20,
     "num_predictions": 112
   },
+  "exported_at": "2026-08-04T16:23:42.254269Z",
   "feature_columns": [
     "elapsed_seconds",
     "elapsed_minutes",
@@ -144,6 +194,8 @@
       "tower_diff": 0.27798099404836923
     }
   },
+  "test_rows": 112,
+  "trained_at": "2026-08-04T16:23:42.253464Z",
   "training": {
     "epochs": 1500,
     "l2": 0.01,
@@ -156,5 +208,6 @@
     "split_strategy": "chronological_game_holdout",
     "test_fraction": 0.2
   },
+  "training_rows": 348,
   "workers_compatible": true
 }
