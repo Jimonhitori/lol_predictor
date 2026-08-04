@@ -1,29 +1,28 @@
 {
-  "blocker_count": 8,
+  "blocker_count": 7,
   "blockers": [
     "live training readiness is false",
-    "training readiness: live feature <=30s interval coverage below threshold (59.6% < 80.0%)",
+    "training readiness: live feature <=30s interval coverage below threshold (67.7% < 80.0%)",
     "live training pipeline is not ready",
     "live training pipeline did not train a model",
     "live training pipeline did not replay stored frames",
     "live model evaluation report is missing",
-    "live replay summary is missing",
-    "live operations wiring report is missing"
+    "live replay summary is missing"
   ],
   "bootstrap": {
     "available": true,
     "completed": 3,
     "file_evidence": {
       "completion_overrides": {
-        "d1_sync_completed": true,
-        "daily_training_published": false,
+        "d1_sync_completed": false,
+        "daily_training_published": true,
         "worker_deploy_completed": false
       },
       "d1_database_id_file_exists": false,
-      "d1_sync_completed": true,
-      "daily_training_published_status": false,
+      "d1_sync_completed": false,
+      "daily_training_published_status": true,
       "oe_bootstrap_model_available": true,
-      "root": "/home/runner/work/lol-pros-analyzer/lol-pros-analyzer",
+      "root": "/home/ubuntu/lol-sync/lol-pros-analyzer",
       "worker_base_url_file_exists": false,
       "worker_check_ran": false,
       "worker_has_d1_binding": false
@@ -73,13 +72,13 @@
       },
       {
         "detail": "This converts Worker-persisted frames into data/history/live_frames_history.csv and writes reports/live_d1_sync_status.json.",
-        "done": true,
+        "done": false,
         "id": "d1_sync_workflow",
         "label": "Run or wait for GitHub Actions workflow Sync live D1 frames"
       },
       {
         "detail": "This labels collected frames, trains/evaluates live_logistic.json, and publishes public/live_status.json.",
-        "done": false,
+        "done": true,
         "id": "daily_training",
         "label": "Run or wait for daily Train model workflow"
       }
@@ -116,10 +115,10 @@
         "label": "Run GitHub Actions workflow Deploy live Worker"
       },
       {
-        "detail": "This labels collected frames, trains/evaluates live_logistic.json, and publishes public/live_status.json.",
+        "detail": "This converts Worker-persisted frames into data/history/live_frames_history.csv and writes reports/live_d1_sync_status.json.",
         "done": false,
-        "id": "daily_training",
-        "label": "Run or wait for daily Train model workflow"
+        "id": "d1_sync_workflow",
+        "label": "Run or wait for GitHub Actions workflow Sync live D1 frames"
       }
     ],
     "next_setup_actions": [
@@ -128,7 +127,7 @@
       "Confirm Worker base URL for daily checks",
       "Resolve or create Cloudflare D1 database lol-live-frames",
       "Run GitHub Actions workflow Deploy live Worker",
-      "Run or wait for daily Train model workflow"
+      "Run or wait for GitHub Actions workflow Sync live D1 frames"
     ],
     "ready_for_d1_sync": false,
     "ready_for_worker_deploy": false,
@@ -138,30 +137,30 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 885,
-      "latest_timestamp": "2026-07-14T01:54:18.269000Z",
+      "history_rows": 1377,
+      "latest_timestamp": "2026-07-23T23:49:33.735000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {
-        "live_logistic_oe_bootstrap": 663
+        "live_logistic_oe_bootstrap": 1155
       },
-      "new_rows": 663,
-      "non_empty_game_state_rows": 885,
-      "oe_bootstrap_snapshot_rows": 663,
+      "new_rows": 0,
+      "non_empty_game_state_rows": 1377,
+      "oe_bootstrap_snapshot_rows": 1155,
       "production_live_telemetry_rows": 222,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 77,
+        "games_with_interval_samples": 128,
         "games_with_single_frame": 0,
-        "interval_count": 284,
+        "interval_count": 321,
         "max_interval_seconds": 256.008,
-        "median_interval_seconds": 29.99000000000001,
-        "p90_interval_seconds": 30.251000000000023,
-        "pct_intervals_lte_30s": 0.647887323943662,
-        "pct_intervals_lte_60s": 0.9894366197183099,
-        "sub_30s_interval_count": 184,
-        "sub_60s_interval_count": 281
+        "median_interval_seconds": 29.980000000000018,
+        "p90_interval_seconds": 30.190999999999917,
+        "pct_intervals_lte_30s": 0.6853582554517134,
+        "pct_intervals_lte_60s": 0.9906542056074766,
+        "sub_30s_interval_count": 220,
+        "sub_60s_interval_count": 318
       },
-      "unique_games": 77,
+      "unique_games": 128,
       "unknown_model_version_rows": 222
     },
     "config": {
@@ -176,21 +175,21 @@
     },
     "d1_sync": {
       "available": true,
-      "reason": null,
-      "skipped": false
+      "reason": "VPS direct live collection is active; Cloudflare D1 is not required",
+      "skipped": true
     },
     "readiness": {
       "available": true,
       "ready": false,
       "warning_count": 2,
       "warnings": [
-        "live frame <=30s interval coverage below threshold (64.8% < 80.0%)",
+        "live frame <=30s interval coverage below threshold (68.5% < 80.0%)",
         "OE bootstrap snapshot rows are present in collection history; they are coarse offline rows, not production live telemetry"
       ]
     }
   },
   "display_ready": false,
-  "generated_at": "2026-07-14T10:15:51.237125+00:00",
+  "generated_at": "2026-08-04T09:26:38.983378+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": false,
   "live_model_url": null,
@@ -200,8 +199,7 @@
     "Collect or sync more completed-game live frames, then rebuild live features.",
     "Review live_training_pipeline.json to find whether mapping, labeling, training, or replay stopped.",
     "Train/evaluate the live model until operational_summary recommends display.",
-    "Run live replay on stored frames and verify <=30s interval coverage.",
-    "Configure D1, Cloudflare secrets, and Worker smoke checks."
+    "Run live replay on stored frames and verify <=30s interval coverage."
   ],
   "oe_live_bootstrap": {
     "available": true,
@@ -244,16 +242,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 77,
-        "interval_count": 284,
+        "games": 128,
+        "interval_count": 321,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 885,
-        "oe_bootstrap_snapshot_rows": 663,
-        "pct_intervals_lte_30s": 0.647887323943662,
+        "non_empty_game_state_rows": 1377,
+        "oe_bootstrap_snapshot_rows": 1155,
+        "pct_intervals_lte_30s": 0.6853582554517134,
         "production_live_telemetry_rows": 222,
         "raw_frame_collection_rows": 0,
-        "rows": 885,
-        "sub_30s_interval_count": 184
+        "rows": 1377,
+        "sub_30s_interval_count": 220
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -261,19 +259,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 467,
-        "games": 35,
+        "feature_rows": 1266,
+        "games": 120,
         "label_sources": {
-          "combined_rows": 25999,
-          "games_rows": 25999,
+          "combined_rows": 27106,
+          "games_rows": 27106,
           "live_label_rows": 0
         },
-        "labeled_rows": 467,
-        "pipeline_feature_rows": 467,
-        "pipeline_labeled_feature_rows": 467,
+        "labeled_rows": 1266,
+        "pipeline_feature_rows": 1266,
+        "pipeline_labeled_feature_rows": 1266,
         "pipeline_ready": false,
         "pipeline_replayed": false,
-        "pipeline_resolved_rows": 885,
+        "pipeline_resolved_rows": 1377,
         "pipeline_trained": false,
         "pipeline_warnings": []
       },
@@ -313,12 +311,12 @@
     },
     {
       "evidence": {
-        "ops_ok": null,
-        "ops_warning_count": null
+        "ops_ok": true,
+        "ops_warning_count": 2
       },
       "id": "operations_wiring",
-      "label": "Worker, D1, workflows, and checks are wired for production operation",
-      "status": "blocked"
+      "label": "Live collection, training, and serving operations are wired",
+      "status": "passed"
     }
   ],
   "schema_version": "1.0",
@@ -326,7 +324,7 @@
   "stage": "collect_live_frames",
   "training": {
     "available": true,
-    "games": 35,
+    "games": 120,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
@@ -336,13 +334,13 @@
         "brier_score": null,
         "log_loss": null
       },
-      "feature_rows": 467,
-      "labeled_feature_rows": 467,
+      "feature_rows": 1266,
+      "labeled_feature_rows": 1266,
       "mapping": {
-        "accepted_rows": 32,
-        "candidate_rows": 200,
+        "accepted_rows": 76,
+        "candidate_rows": 640,
         "direct_id_overlap_games": 0,
-        "map_rows": 102
+        "map_rows": 153
       },
       "priors": {
         "post_draft_non_default_rows": 0,
@@ -350,7 +348,7 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 0
+        "pre_match_rows": 49
       },
       "ready": false,
       "replay": {
@@ -359,17 +357,19 @@
         "rows": null
       },
       "replayed": false,
-      "resolved_rows": 885,
+      "resolved_rows": 1377,
       "trained": false,
       "warning_count": 0,
       "warnings": []
     },
     "ready": false,
-    "rows": 467
+    "rows": 1266
   },
-  "warning_count": 1,
+  "warning_count": 3,
   "warnings": [
-    "public manifest uses OE bootstrap fallback while production live model is missing"
+    "public manifest uses OE bootstrap fallback while production live model is missing",
+    "live operations wiring: models/live_logistic.json is missing; live serving can still collect raw frames but cannot serve model predictions",
+    "live operations wiring: live_training_readiness.json exists but ready is false"
   ],
   "worker": {
     "checked": false
