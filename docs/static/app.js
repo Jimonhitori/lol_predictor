@@ -2753,6 +2753,7 @@ function renderLiveDraft(details) {
 function liveWinProbabilityText(game, live) {
   const probability = live?.win_probability;
   if (!probability || probability.status !== 'estimated') return '';
+  if (probability.validation?.display === 'hide_live_probability') return '';
   const blue = Number(probability.blue);
   if (!Number.isFinite(blue)) return '';
   const blueName = game?.blue?.team_code || game?.blue?.team_name || 'Blue';

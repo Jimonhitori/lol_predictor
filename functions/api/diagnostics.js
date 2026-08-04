@@ -100,6 +100,10 @@ export async function onRequestGet(context) {
   const remotePredictionFeedWarnings = predictionArtifactWarnings(remotePredictionProbe?.json);
   const blockingPredictionFeedWarnings = predictionFeedWarnings.filter(isBlockingPredictionArtifactWarning);
   const blockingRemotePredictionFeedWarnings = remotePredictionFeedWarnings.filter(isBlockingPredictionArtifactWarning);
+  const advisoryPredictionFeedWarnings = predictionFeedWarnings.filter(warning => !isBlockingPredictionArtifactWarning(warning));
+  const advisoryRemotePredictionFeedWarnings = remotePredictionFeedWarnings.filter(
+    warning => !isBlockingPredictionArtifactWarning(warning),
+  );
   const predictionRows = Array.isArray(predictionFeed?.json?.predictions) ? predictionFeed.json.predictions : [];
   const matchRows = extractMatchRows(matchIndex?.json);
   const predictionMatchOverlap = predictionRows.length && matchRows.length
@@ -123,6 +127,10 @@ export async function onRequestGet(context) {
     ...(liveManifest.ok && liveManifest.json?.live_model_available === false
       ? [liveManifest.json?.oe_live_bootstrap?.available === true ? 'analyzer_live_model_bootstrap_only' : 'analyzer_live_model_missing']
       : []),
+  ];
+  const artifactAdvisories = [
+    ...(advisoryPredictionFeedWarnings.length ? ['prediction_feed_has_advisories'] : []),
+    ...(advisoryRemotePredictionFeedWarnings.length ? ['remote_prediction_feed_has_advisories'] : []),
   ];
   const contractWarnings = [
     ...(siteContract.json?.contract_version === EXPECTED_SITE_CONTRACT_VERSION ? [] : ['site_contract_version_mismatch']),
@@ -180,6 +188,9 @@ export async function onRequestGet(context) {
     prediction_feed_rows: predictionRows.length,
     prediction_feed_warning_count: predictionFeedWarnings.length,
     prediction_feed_warnings: predictionFeedWarnings,
+    prediction_feed_blocking_warning_count: blockingPredictionFeedWarnings.length,
+    prediction_feed_advisory_warning_count: advisoryPredictionFeedWarnings.length,
+    prediction_feed_advisories: advisoryPredictionFeedWarnings,
     match_index_available: Boolean(matchIndex.ok),
     match_index_last_fetch_status: matchIndex.status,
     match_index_source: matchIndex.json?.source || (Array.isArray(matchIndex.json) ? 'array' : ''),
@@ -197,6 +208,9 @@ export async function onRequestGet(context) {
     remote_prediction_feed_rows: Array.isArray(remotePredictionProbe?.json?.predictions) ? remotePredictionProbe.json.predictions.length : null,
     remote_prediction_feed_warning_count: remotePredictionProbe ? remotePredictionFeedWarnings.length : null,
     remote_prediction_feed_warnings: remotePredictionProbe ? remotePredictionFeedWarnings : null,
+    remote_prediction_feed_blocking_warning_count: remotePredictionProbe ? blockingRemotePredictionFeedWarnings.length : null,
+    remote_prediction_feed_advisory_warning_count: remotePredictionProbe ? advisoryRemotePredictionFeedWarnings.length : null,
+    remote_prediction_feed_advisories: remotePredictionProbe ? advisoryRemotePredictionFeedWarnings : null,
     prediction_schema_url: predictionSchemaUrl,
     configured_prediction_schema_url: remoteSchemaUrl,
     prediction_schema_available: Boolean(predictionSchema?.ok),
@@ -234,6 +248,7 @@ export async function onRequestGet(context) {
     analyzer_oe_bootstrap_available: liveManifest.json?.oe_live_bootstrap?.available ?? null,
     site_data_status: siteDataStatus,
     artifact_warnings: artifactWarnings,
+    artifact_advisories: artifactAdvisories,
     warnings: contractWarnings,
   };
   return jsonResponse(payload);
@@ -262,6 +277,7 @@ function isBlockingPredictionArtifactWarning(warning) {
     'red_team_fallback_slug',
     'blue_team_no_history',
     'red_team_no_history',
+    'exhibition_neutral_no_transferable_history',
   ];
   return !nonBlockingPrefixes.some(prefix => value === prefix || value.startsWith(`${prefix}:`) || value.startsWith(`${prefix}=`));
 }

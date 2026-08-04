@@ -830,14 +830,31 @@ function isWorkersLiveLogisticModel(model) {
 function workersLiveValidation(model, elapsedSeconds) {
   const evaluation = model.evaluation || {};
   const earliest = String(evaluation.earliest_reliable_bucket || '');
-  const display = evaluation.display_recommendation || (model.bootstrap_only ? 'show_live_probability' : 'show_live_probability');
+  const bucketName = workersLiveElapsedBucket(elapsedSeconds);
+  const bucketMetrics = Array.isArray(evaluation.bucket_metrics) ? evaluation.bucket_metrics : [];
+  const bucket = bucketMetrics.find(item => String(item?.elapsed_bucket || '') === bucketName) || null;
+  const display = bucket?.is_display_candidate === true
+    ? 'show_live_probability'
+    : 'hide_live_probability';
   return {
     display,
     source: model.bootstrap_source || model.model_version || '',
     earliest_reliable_bucket: earliest,
     elapsed_seconds: number(elapsedSeconds),
+    elapsed_bucket: bucketName,
+    bucket_num_predictions: bucket ? number(bucket.num_predictions) : null,
+    bucket_is_display_candidate: bucket ? bucket.is_display_candidate === true : null,
     bootstrap_only: Boolean(model.bootstrap_only),
   };
+}
+
+function workersLiveElapsedBucket(elapsedSeconds) {
+  const seconds = Math.max(0, number(elapsedSeconds));
+  if (seconds < 10 * 60) return '00-10';
+  if (seconds < 20 * 60) return '10-20';
+  if (seconds < 30 * 60) return '20-30';
+  if (seconds < 40 * 60) return '30-40';
+  return '40+';
 }
 
 function liveValidationBucket(model, gameTime) {

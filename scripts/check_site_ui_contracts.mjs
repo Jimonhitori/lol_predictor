@@ -14,6 +14,7 @@ const app = await readText('static/app.js');
 const draftLab = await readText('rtprob/index.html');
 const draftLens = await readText('player-features/index.html');
 const liveSnapshotWorkflow = await readText('../.github/workflows/collect-live-event-snapshots.yml');
+const liveEventFunction = await readText('../functions/api/live-event.js');
 const champions = await readJson('static/data/champions.json');
 
 requireChecks('navigation', {
@@ -63,6 +64,13 @@ requireChecks('live_collection', {
   manual_only: liveSnapshotWorkflow.includes('workflow_dispatch:')
     && !liveSnapshotWorkflow.includes('schedule:')
     && !liveSnapshotWorkflow.includes('cron:'),
+});
+
+requireChecks('live_probability_safety', {
+  worker_uses_evaluated_bucket_metrics: liveEventFunction.includes('evaluation.bucket_metrics')
+    && liveEventFunction.includes("bucket?.is_display_candidate === true")
+    && liveEventFunction.includes("'hide_live_probability'"),
+  unsupported_bucket_hidden: app.includes("probability.validation?.display === 'hide_live_probability'"),
 });
 
 requireChecks('draft_lens', {
