@@ -40,16 +40,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 62,
-        "interval_count": 1760,
+        "games": 128,
+        "interval_count": 4001,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 1822,
+        "non_empty_game_state_rows": 4129,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9386363636363636,
-        "production_live_telemetry_rows": 1822,
+        "pct_intervals_lte_30s": 0.9450137465633591,
+        "production_live_telemetry_rows": 4129,
         "raw_frame_collection_rows": 0,
-        "rows": 1822,
-        "sub_30s_interval_count": 1652
+        "rows": 4129,
+        "sub_30s_interval_count": 3781
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -57,19 +57,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 460,
-        "games": 18,
+        "feature_rows": 2674,
+        "games": 85,
         "label_sources": {
-          "combined_rows": 27353,
-          "games_rows": 27353,
+          "combined_rows": 27453,
+          "games_rows": 27453,
           "live_label_rows": 0
         },
-        "labeled_rows": 460,
-        "pipeline_feature_rows": 460,
-        "pipeline_labeled_feature_rows": 460,
+        "labeled_rows": 2674,
+        "pipeline_feature_rows": 2674,
+        "pipeline_labeled_feature_rows": 2674,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 1822,
+        "pipeline_resolved_rows": 4129,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -88,9 +88,9 @@
     },
     {
       "evidence": {
-        "games": 62,
-        "pct_intervals_lte_target": 0.9386363636363636,
-        "rows": 1822
+        "games": 128,
+        "pct_intervals_lte_target": 0.9450137465633591,
+        "rows": 4129
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
