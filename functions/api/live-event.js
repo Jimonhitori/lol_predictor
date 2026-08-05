@@ -2,6 +2,8 @@ const EVENT_DETAILS_URL = 'https://esports-api.lolesports.com/persisted/gw/getEv
 const LIVE_WINDOW_URL = 'https://feed.lolesports.com/livestats/v1/window/';
 const LIVE_DETAILS_URL = 'https://feed.lolesports.com/livestats/v1/details/';
 const DEFAULT_LOLESPORTS_API_KEY = '0TvQnueqKa5mxJntVWt0w4LpLfEkrV1Ta8rQBb9Z';
+const LOLESPORTS_OFFICIAL_PAGE_URL = 'https://lolesports.com/en-US/';
+const LOLESPORTS_OFFICIAL_PAGE_MAX_CHARS = 5_000_000;
 const EVENT_CACHE_SECONDS = 45;
 const LIVE_CACHE_SECONDS = 4;
 const PRE_MATCH_CACHE_SECONDS = 60;
@@ -94,11 +96,105 @@ async function fetchEventDetails(eventId, env) {
       cf: { cacheEverything: false, cacheTtl: 0 },
     });
   }
+  if (response.status === 403) {
+    const officialEvent = await fetchOfficialPageEvent(eventId);
+    if (officialEvent) return officialEvent;
+  }
   if (!response.ok) throw new Error(`event details ${response.status}`);
   const payload = await response.json();
   const event = payload?.data?.event;
   if (!event || typeof event !== 'object') throw new Error('event details empty');
   return event;
+}
+
+async function fetchOfficialPageEvent(eventId) {
+  const response = await fetch(LOLESPORTS_OFFICIAL_PAGE_URL, {
+    headers: {
+      accept: 'text/html',
+      'user-agent': 'lol-predictor-live-event/1.0',
+    },
+    cf: { cacheEverything: true, cacheTtl: EVENT_CACHE_SECONDS },
+  });
+  if (!response.ok) throw new Error(`official schedule ${response.status}`);
+  const contentLength = Number(response.headers.get('content-length') || 0);
+  if (contentLength > LOLESPORTS_OFFICIAL_PAGE_MAX_CHARS) {
+    throw new Error('official schedule response too large');
+  }
+  const html = await response.text();
+  if (html.length > LOLESPORTS_OFFICIAL_PAGE_MAX_CHARS) {
+    throw new Error('official schedule response too large');
+  }
+  return officialPageHtmlToEvent(html, eventId);
+}
+
+export function officialPageHtmlToEvent(html, eventId) {
+  const marker = '[Symbol.for("ApolloSSRDataTransport")] ??= []).push(';
+  const targetId = String(eventId || '');
+  let position = 0;
+  while (position < html.length) {
+    const markerIndex = html.indexOf(marker, position);
+    if (markerIndex < 0) break;
+    const objectStart = markerIndex + marker.length;
+    const extracted = extractJsonObject(html, objectStart);
+    position = extracted.end;
+    let transport;
+    try {
+      transport = JSON.parse(extracted.text.replace(/:undefined(?=[,}])/g, ':null'));
+    } catch (error) {
+      continue;
+    }
+    for (const result of Object.values(transport.rehydrate || {})) {
+      const events = result?.data?.esports?.events;
+      if (!Array.isArray(events)) continue;
+      const event = events.find(candidate => String(candidate?.id || '') === targetId);
+      if (event) return normalizeOfficialPageEvent(event);
+    }
+  }
+  return null;
+}
+
+function normalizeOfficialPageEvent(event) {
+  const match = { ...(event.match || {}) };
+  const matchId = String(match.id || event.id || '');
+  const sourceTeams = Array.isArray(event.matchTeams)
+    ? event.matchTeams
+    : (Array.isArray(match.teams) ? match.teams : []);
+  match.teams = sourceTeams.map(team => {
+    const normalized = { ...team };
+    const prefix = `${matchId}:`;
+    const teamId = String(team?.id || '');
+    normalized.id = teamId.startsWith(prefix) ? teamId.slice(prefix.length) : teamId;
+    return normalized;
+  });
+  return {
+    ...event,
+    match,
+    __source: 'lolesports_official_page',
+    __warning: 'event_details_403_official_page_fallback',
+  };
+}
+
+function extractJsonObject(text, start) {
+  if (text[start] !== '{') throw new Error('official schedule JSON object missing');
+  let depth = 0;
+  let inString = false;
+  let escaped = false;
+  for (let index = start; index < text.length; index += 1) {
+    const character = text[index];
+    if (inString) {
+      if (escaped) escaped = false;
+      else if (character === '\\') escaped = true;
+      else if (character === '"') inString = false;
+      continue;
+    }
+    if (character === '"') inString = true;
+    else if (character === '{') depth += 1;
+    else if (character === '}') {
+      depth -= 1;
+      if (depth === 0) return { text: text.slice(start, index + 1), end: index + 1 };
+    }
+  }
+  throw new Error('official schedule JSON object unterminated');
 }
 
 function normalizeEventDetails(event) {
@@ -119,7 +215,8 @@ function normalizeEventDetails(event) {
     start_time: String(event.startTime || ''),
     teams: normalizedTeams,
     games: normalizedGames,
-    source: 'cloudflare_live_event',
+    source: String(event.__source || 'cloudflare_live_event'),
+    warning: String(event.__warning || ''),
   };
 }
 
