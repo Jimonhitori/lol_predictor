@@ -43,6 +43,7 @@ jobs:
           node --check scripts/serve_cloudflare_preview.mjs
           node --check scripts/backtest_site_contracts.mjs
           node --check scripts/sync_lolesports_match_results.mjs
+          node --check scripts/test_lolesports_official_event_fallback.mjs
 
       - name: Run local Cloudflare preflight
         run: |
@@ -85,3 +86,4 @@ jobs:
             echo "::warning::site artifact backtest failed; continuing verify because analyzer sync can refresh stale data artifacts independently."
           fi
           node scripts/check_live_probability_contract.mjs
+          node scripts/test_lolesports_official_event_fallback.mjs
