@@ -567,42 +567,6 @@
       "games": []
     },
     {
-      "id": "LJL/2026 Season/Summer Championship_Round 4_1",
-      "source_match_id": "",
-      "league": "LJL 2026 Summer Championship",
-      "league_group": "secondary",
-      "region": "pacific",
-      "start_time": "2026-08-05T08:00:00Z",
-      "status": "unstarted",
-      "blue_team": "FENNEL",
-      "red_team": "New Meta",
-      "blue_code": "FENN",
-      "red_code": "NM",
-      "blue_image": "http://static.lolesports.com/teams/1673413831349_fl.png",
-      "red_image": "http://static.lolesports.com/teams/1771324815499_nm_full_color_onW.png",
-      "blue_score": "",
-      "red_score": "",
-      "best_of": "5",
-      "source": "leaguepedia",
-      "teams": [
-        {
-          "id": "",
-          "name": "FENNEL",
-          "code": "FENN",
-          "image": "http://static.lolesports.com/teams/1673413831349_fl.png",
-          "game_wins": ""
-        },
-        {
-          "id": "",
-          "name": "New Meta",
-          "code": "NM",
-          "image": "http://static.lolesports.com/teams/1771324815499_nm_full_color_onW.png",
-          "game_wins": ""
-        }
-      ],
-      "games": []
-    },
-    {
       "id": "LCP/2026 Season/Split 3_Round 3_4",
       "source_match_id": "",
       "league": "LCP 2026 Split 3",
@@ -676,13 +640,13 @@
     },
     {
       "id": "LCP/2026 Season/Split 3_Round 4_2",
-      "source_match_id": "",
-      "league": "LCP 2026 Split 3",
+      "source_match_id": "115570814727903873",
+      "league": "LCP",
       "league_group": "major",
       "region": "pacific",
       "start_time": "2026-08-08T09:00:00Z",
       "status": "unstarted",
-      "blue_team": "Deep Cross Gaming",
+      "blue_team": "Relove Deep Cross Gaming",
       "red_team": "MVK Esports",
       "blue_code": "DCG",
       "red_code": "ME",
@@ -691,11 +655,11 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "5",
-      "source": "site_match_index",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
-          "name": "Deep Cross Gaming",
+          "name": "Relove Deep Cross Gaming",
           "code": "DCG",
           "image": "http://static.lolesports.com/teams/1773832146741_LCP_DCG_Full_W.png",
           "game_wins": ""
@@ -892,14 +856,14 @@
     },
     {
       "id": "LJL/2026 Season/Summer Championship_Round 3_1",
-      "source_match_id": "",
-      "league": "LJL 2026 Summer Championship",
+      "source_match_id": "116917034792783747",
+      "league": "LJL",
       "league_group": "secondary",
       "region": "pacific",
       "start_time": "2026-08-11T08:00:00Z",
       "status": "unstarted",
-      "blue_team": "Uwinks",
-      "red_team": "L Guide Gaming",
+      "blue_team": "L Guide Gaming",
+      "red_team": "UWinks",
       "blue_code": "UWIN",
       "red_code": "LGG",
       "blue_image": "http://static.lolesports.com/teams/1771324707957_uw_full_color_onW.png",
@@ -907,20 +871,56 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "5",
-      "source": "leaguepedia",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
-          "name": "Uwinks",
+          "name": "L Guide Gaming",
           "code": "UWIN",
           "image": "http://static.lolesports.com/teams/1771324707957_uw_full_color_onW.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "L Guide Gaming",
+          "name": "UWinks",
           "code": "LGG",
           "image": "http://static.lolesports.com/teams/1771324562336_lgg_full_color_onW.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "116951349275512128",
+      "source_match_id": "",
+      "league": "PCS",
+      "league_group": "secondary",
+      "region": "pacific",
+      "start_time": "2026-08-11T09:00:00Z",
+      "status": "unstarted",
+      "blue_team": "CTBC Flying Oyster Academy",
+      "red_team": "Embrace Whatever Happens",
+      "blue_code": "CFOA",
+      "red_code": "EWH",
+      "blue_image": "https://static.lolesports.com/teams/1738762962228_1000_CFOA-FlyingOyster.png",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "CTBC Flying Oyster Academy",
+          "code": "CFOA",
+          "image": "https://static.lolesports.com/teams/1738762962228_1000_CFOA-FlyingOyster.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Embrace Whatever Happens",
+          "code": "EWH",
+          "image": "",
           "game_wins": ""
         }
       ],
@@ -956,6 +956,42 @@
           "id": "",
           "name": "Ground Zero Academy",
           "code": "GZA",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "116951349275512132",
+      "source_match_id": "",
+      "league": "PCS",
+      "league_group": "secondary",
+      "region": "pacific",
+      "start_time": "2026-08-11T12:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Frank Esports",
+      "red_team": "SillySilly Gaming",
+      "blue_code": "FE",
+      "red_code": "SG",
+      "blue_image": "https://static.lolesports.com/teams/1656308269827_220621_FRANK_Final_Logo_W.png",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "Frank Esports",
+          "code": "FE",
+          "image": "https://static.lolesports.com/teams/1656308269827_220621_FRANK_Final_Logo_W.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "SillySilly Gaming",
+          "code": "SG",
           "image": "",
           "game_wins": ""
         }
