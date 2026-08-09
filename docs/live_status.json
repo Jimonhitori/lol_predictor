@@ -129,29 +129,29 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 8220,
-      "latest_timestamp": "2026-08-08T20:30:33.707000Z",
+      "history_rows": 9080,
+      "latest_timestamp": "2026-08-09T20:36:57.478000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {},
       "new_rows": 0,
-      "non_empty_game_state_rows": 8220,
+      "non_empty_game_state_rows": 9080,
       "oe_bootstrap_snapshot_rows": 0,
-      "production_live_telemetry_rows": 8220,
+      "production_live_telemetry_rows": 9080,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 228,
+        "games_with_interval_samples": 251,
         "games_with_single_frame": 8,
-        "interval_count": 7984,
+        "interval_count": 8821,
         "max_interval_seconds": 2418.0,
         "median_interval_seconds": 15.0,
-        "p90_interval_seconds": 30.0,
-        "pct_intervals_lte_30s": 0.9495240480961924,
-        "pct_intervals_lte_60s": 0.9551603206412825,
-        "sub_30s_interval_count": 7581,
-        "sub_60s_interval_count": 7626
+        "p90_interval_seconds": 19.0,
+        "pct_intervals_lte_30s": 0.9509125949438839,
+        "pct_intervals_lte_60s": 0.9560140573631107,
+        "sub_30s_interval_count": 8388,
+        "sub_60s_interval_count": 8433
       },
-      "unique_games": 236,
-      "unknown_model_version_rows": 8220
+      "unique_games": 259,
+      "unknown_model_version_rows": 9080
     },
     "config": {
       "available": true,
@@ -176,7 +176,7 @@
     }
   },
   "display_ready": true,
-  "generated_at": "2026-08-08T20:55:11.656359+00:00",
+  "generated_at": "2026-08-09T20:55:22.692547+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": true,
   "live_model_url": "live_logistic.json",
@@ -208,10 +208,10 @@
   "production_ready": true,
   "replay": {
     "available": true,
-    "games": 236,
+    "games": 259,
     "ok": true,
-    "pct_intervals_lte_target": 0.9495240480961924,
-    "rows": 8220
+    "pct_intervals_lte_target": 0.9509125949438839,
+    "rows": 9080
   },
   "requirements": [
     {
@@ -228,16 +228,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 236,
-        "interval_count": 7984,
+        "games": 259,
+        "interval_count": 8821,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 8220,
+        "non_empty_game_state_rows": 9080,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9495240480961924,
-        "production_live_telemetry_rows": 8220,
+        "pct_intervals_lte_30s": 0.9509125949438839,
+        "production_live_telemetry_rows": 9080,
         "raw_frame_collection_rows": 0,
-        "rows": 8220,
-        "sub_30s_interval_count": 7581
+        "rows": 9080,
+        "sub_30s_interval_count": 8388
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -245,19 +245,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 2436,
-        "games": 70,
+        "feature_rows": 2707,
+        "games": 77,
         "label_sources": {
           "combined_rows": 27453,
           "games_rows": 27453,
           "live_label_rows": 0
         },
-        "labeled_rows": 2436,
-        "pipeline_feature_rows": 2436,
-        "pipeline_labeled_feature_rows": 2436,
+        "labeled_rows": 2707,
+        "pipeline_feature_rows": 2707,
+        "pipeline_labeled_feature_rows": 2707,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 8220,
+        "pipeline_resolved_rows": 9080,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -268,7 +268,7 @@
     {
       "evidence": {
         "display_recommendation": "show_live_probability",
-        "earliest_reliable_bucket": "00-10"
+        "earliest_reliable_bucket": "10-20"
       },
       "id": "live_model_evaluation",
       "label": "Live model evaluated with display-safe elapsed buckets",
@@ -276,9 +276,9 @@
     },
     {
       "evidence": {
-        "games": 236,
-        "pct_intervals_lte_target": 0.9495240480961924,
-        "rows": 8220
+        "games": 259,
+        "pct_intervals_lte_target": 0.9509125949438839,
+        "rows": 9080
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
@@ -310,23 +310,23 @@
   "stage": "production_ready",
   "training": {
     "available": true,
-    "games": 70,
+    "games": 77,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
       "available": true,
       "evaluation": {
-        "accuracy": 0.8064516129032258,
-        "brier_score": 0.13208823096418162,
-        "log_loss": 0.396904797806681
+        "accuracy": 0.7619047619047619,
+        "brier_score": 0.15537384228601525,
+        "log_loss": 0.625673204805196
       },
-      "feature_rows": 2436,
-      "labeled_feature_rows": 2436,
+      "feature_rows": 2707,
+      "labeled_feature_rows": 2707,
       "mapping": {
-        "accepted_rows": 60,
-        "candidate_rows": 1180,
+        "accepted_rows": 67,
+        "candidate_rows": 1295,
         "direct_id_overlap_games": 0,
-        "map_rows": 336
+        "map_rows": 359
       },
       "priors": {
         "post_draft_non_default_rows": 0,
@@ -334,22 +334,22 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 55
+        "pre_match_rows": 34
       },
       "ready": true,
       "replay": {
-        "games": 236,
+        "games": 259,
         "ok": true,
-        "rows": 8220
+        "rows": 9080
       },
       "replayed": true,
-      "resolved_rows": 8220,
+      "resolved_rows": 9080,
       "trained": true,
       "warning_count": 0,
       "warnings": []
     },
     "ready": true,
-    "rows": 2436
+    "rows": 2707
   },
   "warning_count": 0,
   "warnings": [],
