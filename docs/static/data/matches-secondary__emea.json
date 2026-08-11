@@ -279,8 +279,8 @@
       "region": "emea",
       "start_time": "2026-08-11T14:00:00Z",
       "status": "unstarted",
-      "blue_team": "NightBirds",
-      "red_team": "Onion Team",
+      "blue_team": "Onion Team",
+      "red_team": "NightBirds",
       "blue_code": "NIGH",
       "red_code": "OT",
       "blue_image": "http://static.lolesports.com/teams/1739978270852_NBS_BIG.png",
@@ -292,14 +292,14 @@
       "teams": [
         {
           "id": "",
-          "name": "NightBirds",
+          "name": "Onion Team",
           "code": "NIGH",
           "image": "http://static.lolesports.com/teams/1739978270852_NBS_BIG.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "Onion Team",
+          "name": "NightBirds",
           "code": "OT",
           "image": "http://static.lolesports.com/teams/1770636854068_image.png",
           "game_wins": ""
@@ -423,8 +423,8 @@
       "region": "emea",
       "start_time": "2026-08-11T16:30:00Z",
       "status": "unstarted",
-      "blue_team": "BRUTE",
-      "red_team": "Bohemian Guardians",
+      "blue_team": "Bohemian Guardians",
+      "red_team": "BRUTE",
       "blue_code": "BRUT",
       "red_code": "BG",
       "blue_image": "http://static.lolesports.com/teams/1643479836323_HM_BRT_white.png",
@@ -436,14 +436,14 @@
       "teams": [
         {
           "id": "",
-          "name": "BRUTE",
+          "name": "Bohemian Guardians",
           "code": "BRUT",
           "image": "http://static.lolesports.com/teams/1643479836323_HM_BRT_white.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "Bohemian Guardians",
+          "name": "BRUTE",
           "code": "BG",
           "image": "http://static.lolesports.com/teams/1776718185398_bohemian.png",
           "game_wins": ""
@@ -495,12 +495,12 @@
       "region": "emea",
       "start_time": "2026-08-11T18:30:00Z",
       "status": "unstarted",
-      "blue_team": "BAAM Esports",
-      "red_team": "GNG Amazigh",
+      "blue_team": "GNG Amazigh",
+      "red_team": "BAAM Esports",
       "blue_code": "BE",
       "red_code": "GA",
       "blue_image": "http://static.lolesports.com/teams/1738571384294_.png",
-      "red_image": "",
+      "red_image": "http://static.lolesports.com/teams/1738571384294_.png",
       "blue_score": "",
       "red_score": "",
       "best_of": "3",
@@ -508,16 +508,16 @@
       "teams": [
         {
           "id": "",
-          "name": "BAAM Esports",
+          "name": "GNG Amazigh",
           "code": "BE",
           "image": "http://static.lolesports.com/teams/1738571384294_.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "GNG Amazigh",
+          "name": "BAAM Esports",
           "code": "GA",
-          "image": "",
+          "image": "http://static.lolesports.com/teams/1738571384294_.png",
           "game_wins": ""
         }
       ],
@@ -921,8 +921,8 @@
     },
     {
       "id": "NLC/2026 Season/Summer Split_Swiss Round 4_6",
-      "source_match_id": "",
-      "league": "NLC 2026 Summer",
+      "source_match_id": "116878159559860043",
+      "league": "NLC",
       "league_group": "secondary",
       "region": "emea",
       "start_time": "2026-08-12T18:00:00Z",
@@ -936,7 +936,7 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "3",
-      "source": "leaguepedia",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
@@ -957,8 +957,8 @@
     },
     {
       "id": "Arabian League/2026 Season/Summer Split_Week 5_4",
-      "source_match_id": "",
-      "league": "Arabian League 2026 Summer",
+      "source_match_id": "116764853817499342",
+      "league": "Arabian League",
       "league_group": "secondary",
       "region": "emea",
       "start_time": "2026-08-12T18:30:00Z",
@@ -972,7 +972,7 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "3",
-      "source": "leaguepedia",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
@@ -986,6 +986,42 @@
           "name": "Anubis Gaming",
           "code": "AG",
           "image": "http://static.lolesports.com/teams/1738571697908_logo.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "117054582581341056",
+      "source_match_id": "",
+      "league": "Hitpoint Masters",
+      "league_group": "secondary",
+      "region": "emea",
+      "start_time": "2026-08-13T14:00:00Z",
+      "status": "unstarted",
+      "blue_team": "NightBirds",
+      "red_team": "eSuba",
+      "blue_code": "NIGH",
+      "red_code": "ESUB",
+      "blue_image": "http://static.lolesports.com/teams/1739978270852_NBS_BIG.png",
+      "red_image": "http://static.lolesports.com/teams/1705300013762_HM_ESB_logo.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "NightBirds",
+          "code": "NIGH",
+          "image": "http://static.lolesports.com/teams/1739978270852_NBS_BIG.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "eSuba",
+          "code": "ESUB",
+          "image": "http://static.lolesports.com/teams/1705300013762_HM_ESB_logo.png",
           "game_wins": ""
         }
       ],
