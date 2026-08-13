@@ -1,198 +1,198 @@
 {
   "live_evaluation": {
-    "accuracy": 0.7275862068965517,
+    "accuracy": 0.8213058419243986,
     "actual_column": "actual_blue_result",
-    "brier_score": 0.19045217208543297,
+    "brier_score": 0.13171946657654873,
     "bucket_size": 0.1,
     "calibration_buckets": [
       {
-        "actual_win_rate": 0.104,
-        "avg_predicted_prob": 0.02280867350907386,
+        "actual_win_rate": 0.0,
+        "avg_predicted_prob": 0.023122848716075645,
         "bucket_end": 0.1,
         "bucket_start": 0.0,
-        "count": 125
+        "count": 82
       },
       {
-        "actual_win_rate": 0.4,
-        "avg_predicted_prob": 0.14253863042317924,
+        "actual_win_rate": 0.0,
+        "avg_predicted_prob": 0.15443148995362646,
         "bucket_end": 0.2,
         "bucket_start": 0.1,
-        "count": 90
+        "count": 45
       },
       {
-        "actual_win_rate": 0.25882352941176473,
-        "avg_predicted_prob": 0.24701106333926787,
+        "actual_win_rate": 0.16666666666666666,
+        "avg_predicted_prob": 0.2709027939720227,
         "bucket_end": 0.3,
         "bucket_start": 0.2,
-        "count": 85
+        "count": 42
       },
       {
-        "actual_win_rate": 0.42857142857142855,
-        "avg_predicted_prob": 0.34149227235069485,
+        "actual_win_rate": 0.28125,
+        "avg_predicted_prob": 0.34845000871580645,
         "bucket_end": 0.4,
         "bucket_start": 0.3,
-        "count": 70
+        "count": 64
       },
       {
-        "actual_win_rate": 0.7346938775510204,
-        "avg_predicted_prob": 0.4419423529831083,
+        "actual_win_rate": 0.5192307692307693,
+        "avg_predicted_prob": 0.4514874892944315,
         "bucket_end": 0.5,
         "bucket_start": 0.4,
-        "count": 49
+        "count": 104
       },
       {
-        "actual_win_rate": 0.8409090909090909,
-        "avg_predicted_prob": 0.5397128934175245,
+        "actual_win_rate": 0.7125,
+        "avg_predicted_prob": 0.5433944152159669,
         "bucket_end": 0.6,
         "bucket_start": 0.5,
-        "count": 44
+        "count": 80
       },
       {
-        "actual_win_rate": 0.7368421052631579,
-        "avg_predicted_prob": 0.6414105623061199,
+        "actual_win_rate": 0.975,
+        "avg_predicted_prob": 0.6491776852105388,
         "bucket_end": 0.7,
         "bucket_start": 0.6,
-        "count": 19
-      },
-      {
-        "actual_win_rate": 0.88,
-        "avg_predicted_prob": 0.7560181033135562,
-        "bucket_end": 0.8,
-        "bucket_start": 0.7,
-        "count": 25
-      },
-      {
-        "actual_win_rate": 0.8378378378378378,
-        "avg_predicted_prob": 0.8505739230632149,
-        "bucket_end": 0.9,
-        "bucket_start": 0.8,
-        "count": 37
+        "count": 80
       },
       {
         "actual_win_rate": 1.0,
-        "avg_predicted_prob": 0.955541641265981,
+        "avg_predicted_prob": 0.7427328111849176,
+        "bucket_end": 0.8,
+        "bucket_start": 0.7,
+        "count": 23
+      },
+      {
+        "actual_win_rate": 1.0,
+        "avg_predicted_prob": 0.8219140220562073,
+        "bucket_end": 0.9,
+        "bucket_start": 0.8,
+        "count": 2
+      },
+      {
+        "actual_win_rate": 1.0,
+        "avg_predicted_prob": 0.9648212756077361,
         "bucket_end": 1.0,
         "bucket_start": 0.9,
-        "count": 36
+        "count": 60
       }
     ],
-    "date_max": "2026-08-12T19:53:41.696000+00:00",
-    "date_min": "2026-08-12T15:20:37.315000+00:00",
+    "date_max": "2026-08-13T18:39:59.046000+00:00",
+    "date_min": "2026-08-13T16:05:18.996000+00:00",
     "groups": {
       "elapsed_bucket": [
         {
-          "accuracy": 0.48314606741573035,
-          "brier_score": 0.29926214968392634,
+          "accuracy": 0.7514450867052023,
+          "brier_score": 0.18924181389606898,
           "elapsed_bucket": "00-10",
           "is_small_sample": false,
-          "log_loss": 0.8192486479865106,
-          "num_predictions": 89
+          "log_loss": 0.5645993172323034,
+          "num_predictions": 173
         },
         {
-          "accuracy": 0.8,
-          "brier_score": 0.1436953230483283,
+          "accuracy": 0.9572649572649573,
+          "brier_score": 0.11228442235792298,
           "elapsed_bucket": "10-20",
           "is_small_sample": false,
-          "log_loss": 0.4493154036109369,
-          "num_predictions": 210
+          "log_loss": 0.38473970207628017,
+          "num_predictions": 117
         },
         {
-          "accuracy": 0.7116564417177914,
-          "brier_score": 0.19201186481831026,
+          "accuracy": 0.8020833333333334,
+          "brier_score": 0.10300181971534728,
           "elapsed_bucket": "20-30",
           "is_small_sample": false,
-          "log_loss": 0.5572667595696709,
-          "num_predictions": 163
+          "log_loss": 0.3252693127636158,
+          "num_predictions": 192
         },
         {
-          "accuracy": 0.7325581395348837,
-          "brier_score": 0.23328763072669415,
+          "accuracy": 0.7631578947368421,
+          "brier_score": 0.11468597088823625,
           "elapsed_bucket": "30-40",
           "is_small_sample": false,
-          "log_loss": 1.3928002501083363,
-          "num_predictions": 86
+          "log_loss": 0.31581189017627936,
+          "num_predictions": 76
         },
         {
           "accuracy": 1.0,
-          "brier_score": 0.07160126373913976,
+          "brier_score": 0.09550563145007566,
           "elapsed_bucket": "40+",
           "is_small_sample": false,
-          "log_loss": 0.2328818002452105,
-          "num_predictions": 32
+          "log_loss": 0.3042018942999391,
+          "num_predictions": 24
         }
       ],
       "model_version": [
         {
-          "accuracy": 0.7275862068965517,
-          "brier_score": 0.19045217208543297,
+          "accuracy": 0.8213058419243986,
+          "brier_score": 0.13171946657654873,
           "is_small_sample": false,
-          "log_loss": 0.664373940269166,
+          "log_loss": 0.40626200032873416,
           "model_version": "live_logistic_vps",
-          "num_predictions": 580
+          "num_predictions": 582
         }
       ]
     },
     "include_empty_calibration_buckets": false,
-    "log_loss": 0.664373940269166,
+    "log_loss": 0.40626200032873416,
     "model_versions": [
       "live_logistic_vps"
     ],
-    "num_predictions": 580,
+    "num_predictions": 582,
     "operational_summary": {
       "bucket_metrics": [
         {
-          "accuracy": 0.48314606741573035,
-          "brier_score": 0.29926214968392634,
+          "accuracy": 0.7514450867052023,
+          "brier_score": 0.18924181389606898,
           "elapsed_bucket": "00-10",
-          "is_display_candidate": false,
+          "is_display_candidate": true,
           "is_small_sample": false,
-          "log_loss": 0.8192486479865106,
-          "num_predictions": 89
+          "log_loss": 0.5645993172323034,
+          "num_predictions": 173
         },
         {
-          "accuracy": 0.8,
-          "brier_score": 0.1436953230483283,
+          "accuracy": 0.9572649572649573,
+          "brier_score": 0.11228442235792298,
           "elapsed_bucket": "10-20",
           "is_display_candidate": true,
           "is_small_sample": false,
-          "log_loss": 0.4493154036109369,
-          "num_predictions": 210
+          "log_loss": 0.38473970207628017,
+          "num_predictions": 117
         },
         {
-          "accuracy": 0.7116564417177914,
-          "brier_score": 0.19201186481831026,
+          "accuracy": 0.8020833333333334,
+          "brier_score": 0.10300181971534728,
           "elapsed_bucket": "20-30",
           "is_display_candidate": true,
           "is_small_sample": false,
-          "log_loss": 0.5572667595696709,
-          "num_predictions": 163
+          "log_loss": 0.3252693127636158,
+          "num_predictions": 192
         },
         {
-          "accuracy": 0.7325581395348837,
-          "brier_score": 0.23328763072669415,
+          "accuracy": 0.7631578947368421,
+          "brier_score": 0.11468597088823625,
           "elapsed_bucket": "30-40",
-          "is_display_candidate": false,
+          "is_display_candidate": true,
           "is_small_sample": false,
-          "log_loss": 1.3928002501083363,
-          "num_predictions": 86
+          "log_loss": 0.31581189017627936,
+          "num_predictions": 76
         },
         {
           "accuracy": 1.0,
-          "brier_score": 0.07160126373913976,
+          "brier_score": 0.09550563145007566,
           "elapsed_bucket": "40+",
           "is_display_candidate": true,
           "is_small_sample": false,
-          "log_loss": 0.2328818002452105,
-          "num_predictions": 32
+          "log_loss": 0.3042018942999391,
+          "num_predictions": 24
         }
       ],
       "display_recommendation": "show_live_probability",
-      "earliest_reliable_bucket": "10-20",
+      "earliest_reliable_bucket": "00-10",
       "max_bucket_brier_score": 0.25,
       "max_bucket_log_loss": 0.7,
       "min_bucket_predictions": 20,
       "notes": [
-        "Live probability display is best supported from bucket 10-20."
+        "Live probability display is best supported from bucket 00-10."
       ]
     },
     "probability_column": "blue_win_prob",
@@ -208,37 +208,37 @@
       "predictions": "data/live/live_replay_predictions.csv",
       "summary": "reports/live_replay_summary.json"
     },
-    "games": 378,
+    "games": 426,
     "latest": {
-      "baron_diff": 1.0,
-      "blue_win_prob": 0.9983829620499564,
-      "cs_diff": 144.0,
-      "dragon_diff": -2.0,
-      "elapsed_seconds": 1335.839,
-      "esports_game_id": 117054582581341066,
+      "baron_diff": -1.0,
+      "blue_win_prob": 0.04578769764813298,
+      "cs_diff": 5.0,
+      "dragon_diff": -4.0,
+      "elapsed_seconds": 1550.815,
+      "esports_game_id": 117087860288882440,
       "game_state": "in_game",
-      "gold_diff": 13052.0,
+      "gold_diff": -6286.0,
       "inhibitor_diff": 0.0,
-      "kill_diff": 11.0,
-      "level_diff": 9.0,
+      "kill_diff": -10.0,
+      "level_diff": -3.0,
       "model_version": "live_logistic_vps",
       "post_draft_blue_win_prob": 0.5,
       "pre_match_blue_win_prob": 0.5,
-      "red_win_prob": 0.0016170379500436427,
-      "timestamp": "2026-08-11T15:25:39.712000Z",
-      "tower_diff": 6.0
+      "red_win_prob": 0.954212302351867,
+      "timestamp": "2026-08-13T17:09:49.541000Z",
+      "tower_diff": -1.0
     },
-    "max_blue_win_prob": 0.9999863534560053,
-    "min_blue_win_prob": 6.011265211060969e-09,
+    "max_blue_win_prob": 0.9999993880874233,
+    "min_blue_win_prob": 1.0302844631704577e-07,
     "model_kind": "json_logistic",
     "model_version": "live_logistic_vps",
     "ok": true,
-    "rows": 13102,
+    "rows": 14871,
     "sampling": {
-      "interval_count": 12724,
+      "interval_count": 14445,
       "max_interval_seconds": 2418.0,
       "median_interval_seconds": 15.0,
-      "pct_intervals_lte_max": 0.9522948758252122,
+      "pct_intervals_lte_max": 0.9530633437175493,
       "target_max_interval_seconds": 30.0
     },
     "warnings": []
@@ -278,22 +278,22 @@
     "empty_game_state_rate": 0.0,
     "empty_game_state_rows": 0,
     "features_path": "data/live/live_features.csv",
-    "games": 88,
-    "labeled_rows": 2890,
+    "games": 83,
+    "labeled_rows": 2723,
     "max_empty_game_state_rate": 0.25,
     "min_games": 5,
     "min_intervals": 25,
     "min_pct_intervals_lte_30s": 0.8,
     "min_rows": 50,
     "ready": true,
-    "rows": 2890,
+    "rows": 2723,
     "sampling": {
-      "interval_count": 2802,
-      "max_interval_seconds": 1088.0,
+      "interval_count": 2640,
+      "max_interval_seconds": 979.0,
       "median_interval_seconds": 15.0,
       "p90_interval_seconds": 30.0,
-      "pct_intervals_lte_30s": 0.9468236973590293,
-      "pct_intervals_lte_60s": 0.9603854389721628
+      "pct_intervals_lte_30s": 0.9462121212121212,
+      "pct_intervals_lte_60s": 0.9602272727272727
     },
     "warning_count": 0,
     "warnings": []
