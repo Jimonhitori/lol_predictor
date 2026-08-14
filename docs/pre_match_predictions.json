@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-08-13T20:53:43.863879Z",
+  "generated_at": "2026-08-14T20:53:07.670544Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -11,38 +11,17 @@
   },
   "predictions": [
     {
-      "event_id": "116566854547835348",
-      "game_id": "116566854547835348",
+      "event_id": "116566854547835292",
+      "game_id": "116566854547835292",
       "league": "LPL",
-      "start_time": "2026-08-13 16:00:00",
-      "blue_team": "weibogaming",
-      "red_team": "shenzhen_ninjas_in_pyjamas",
-      "blue_team_name": "WeiboGaming",
-      "red_team_name": "Shenzhen NINJAS IN PYJAMAS",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "WeiboGaming",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:weibogaming",
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:shenzhen_ninjas_in_pyjamas"
-      ]
-    },
-    {
-      "event_id": "115548147900750225",
-      "game_id": "115548147900750225",
-      "league": "LCK",
-      "start_time": "2026-08-13 17:00:00",
-      "blue_team": "kiwoom_drx",
-      "red_team": "bnk_fearx",
-      "blue_team_name": "KIWOOM DRX",
-      "red_team_name": "BNK FEARX",
-      "blue_win_probability": 0.440517,
-      "red_win_probability": 0.559483,
-      "predicted_winner": "BNK FEARX",
+      "start_time": "2026-08-14 16:00:00",
+      "blue_team": "edward_gaming",
+      "red_team": "lgd_gaming",
+      "blue_team_name": "EDWARD GAMING",
+      "red_team_name": "LGD GAMING",
+      "blue_win_probability": 0.414661,
+      "red_win_probability": 0.585339,
+      "predicted_winner": "LGD GAMING",
       "confidence": "high",
       "model": "elo_fallback",
       "warnings": [
@@ -50,37 +29,113 @@
       ]
     },
     {
-      "event_id": "115570814727903891",
-      "game_id": "115570814727903891",
+      "event_id": "115548147900619041",
+      "game_id": "115548147900619041",
+      "league": "LCK",
+      "start_time": "2026-08-14 17:00:00",
+      "blue_team": "dplus_kia",
+      "red_team": "t1",
+      "blue_team_name": "Dplus KIA",
+      "red_team_name": "T1",
+      "blue_win_probability": 0.512833,
+      "red_win_probability": 0.487167,
+      "predicted_winner": "Dplus KIA",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116769725389404173",
+      "game_id": "116769725389404173",
       "league": "LCP",
-      "start_time": "2026-08-13 18:00:00",
-      "blue_team": "relove_deep_cross_gaming",
-      "red_team": "gam_esports",
-      "blue_team_name": "Relove Deep Cross Gaming",
-      "red_team_name": "GAM Esports",
+      "start_time": "2026-08-14 18:00:00",
+      "blue_team": "ctbc_flying_oyster",
+      "red_team": "mvk_esports",
+      "blue_team_name": "CTBC Flying Oyster",
+      "red_team_name": "MVK Esports",
+      "blue_win_probability": 0.549614,
+      "red_win_probability": 0.450386,
+      "predicted_winner": "CTBC Flying Oyster",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "116566854547769684",
+      "game_id": "116566854547769684",
+      "league": "LPL",
+      "start_time": "2026-08-14 18:00:00",
+      "blue_team": "xian_team_we",
+      "red_team": "top_esports",
+      "blue_team_name": "Xi'an Team WE",
+      "red_team_name": "TOP ESPORTS",
       "blue_win_probability": 0.5,
       "red_win_probability": 0.5,
-      "predicted_winner": "Relove Deep Cross Gaming",
+      "predicted_winner": "Xi'an Team WE",
       "confidence": "low",
       "model": "elo_fallback",
       "warnings": [
-        "blue_team_no_history:relove_deep_cross_gaming",
+        "blue_team_no_history:xian_team_we",
         "elo_fallback_prediction",
         "missing_elo_rating"
       ]
     },
     {
-      "event_id": "116566854547769696",
-      "game_id": "116566854547769696",
+      "event_id": "115548147900684681",
+      "game_id": "115548147900684681",
+      "league": "LCK",
+      "start_time": "2026-08-14 19:00:00",
+      "blue_team": "hanjin_brion",
+      "red_team": "nongshim_red_force",
+      "blue_team_name": "HANJIN BRION",
+      "red_team_name": "NONGSHIM RED FORCE",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "HANJIN BRION",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction",
+        "missing_elo_rating",
+        "red_team_no_history:nongshim_red_force"
+      ]
+    },
+    {
+      "event_id": "116566854547769728",
+      "game_id": "116566854547769728",
       "league": "LPL",
-      "start_time": "2026-08-13 18:00:00",
-      "blue_team": "lgd_gaming",
-      "red_team": "top_esports",
-      "blue_team_name": "LGD GAMING",
-      "red_team_name": "TOP ESPORTS",
-      "blue_win_probability": 0.285176,
-      "red_win_probability": 0.714824,
-      "predicted_winner": "TOP ESPORTS",
+      "start_time": "2026-08-14 20:00:00",
+      "blue_team": "beijing_jdg_esports",
+      "red_team": "anyone_s_legend",
+      "blue_team_name": "Beijing JDG Esports",
+      "red_team_name": "Anyone's Legend",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "Beijing JDG Esports",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "blue_team_no_history:beijing_jdg_esports",
+        "elo_fallback_prediction",
+        "missing_elo_rating"
+      ]
+    },
+    {
+      "event_id": "115548681803406211",
+      "game_id": "115548681803406211",
+      "league": "LEC",
+      "start_time": "2026-08-15 00:00:00",
+      "blue_team": "sk_gaming",
+      "red_team": "shifters",
+      "blue_team_name": "SK Gaming",
+      "red_team_name": "Shifters",
+      "blue_win_probability": 0.497817,
+      "red_win_probability": 0.502183,
+      "predicted_winner": "Shifters",
       "confidence": "high",
       "model": "elo_fallback",
       "warnings": [
@@ -88,43 +143,93 @@
       ]
     },
     {
-      "event_id": "115548147900619021",
-      "game_id": "115548147900619021",
-      "league": "LCK",
-      "start_time": "2026-08-13 19:00:00",
-      "blue_team": "hanwha_life_esports",
-      "red_team": "geng_esports",
-      "blue_team_name": "Hanwha Life Esports",
-      "red_team_name": "Gen.G Esports",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "Hanwha Life Esports",
-      "confidence": "low",
+      "event_id": "115548681803406183",
+      "game_id": "115548681803406183",
+      "league": "LEC",
+      "start_time": "2026-08-15 02:15:00",
+      "blue_team": "giantx",
+      "red_team": "team_vitality",
+      "blue_team_name": "GIANTX",
+      "red_team_name": "Team Vitality",
+      "blue_win_probability": 0.482534,
+      "red_win_probability": 0.517466,
+      "predicted_winner": "Team Vitality",
+      "confidence": "high",
       "model": "elo_fallback",
       "warnings": [
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:geng_esports"
+        "elo_fallback_prediction"
       ]
     },
     {
-      "event_id": "116566854547769680",
-      "game_id": "116566854547769680",
-      "league": "LPL",
-      "start_time": "2026-08-13 20:00:00",
-      "blue_team": "bilibili_gaming",
-      "red_team": "thunder_talk_gaming",
-      "blue_team_name": "BILIBILI GAMING",
-      "red_team_name": "THUNDER TALK GAMING",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "BILIBILI GAMING",
-      "confidence": "low",
+      "event_id": "116769725389404185",
+      "game_id": "116769725389404185",
+      "league": "LCP",
+      "start_time": "2026-08-16 18:00:00",
+      "blue_team": "ctbc_flying_oyster",
+      "red_team": "team_secret_whales",
+      "blue_team_name": "CTBC Flying Oyster",
+      "red_team_name": "Team Secret Whales",
+      "blue_win_probability": 0.262647,
+      "red_win_probability": 0.737353,
+      "predicted_winner": "Team Secret Whales",
+      "confidence": "high",
       "model": "elo_fallback",
       "warnings": [
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:thunder_talk_gaming"
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "115564797163821191",
+      "game_id": "115564797163821191",
+      "league": "LCS",
+      "start_time": "2026-08-17 08:00:00",
+      "blue_team": "lyon",
+      "red_team": "sentinels",
+      "blue_team_name": "LYON",
+      "red_team_name": "Sentinels",
+      "blue_win_probability": 0.784869,
+      "red_win_probability": 0.215131,
+      "predicted_winner": "LYON",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "115548681803340575",
+      "game_id": "115548681803340575",
+      "league": "LEC",
+      "start_time": "2026-08-18 00:00:00",
+      "blue_team": "team_heretics",
+      "red_team": "natus_vincere",
+      "blue_team_name": "Team Heretics",
+      "red_team_name": "Natus Vincere",
+      "blue_win_probability": 0.195113,
+      "red_win_probability": 0.804887,
+      "predicted_winner": "Natus Vincere",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "115548681803406243",
+      "game_id": "115548681803406243",
+      "league": "LEC",
+      "start_time": "2026-08-18 02:15:00",
+      "blue_team": "giantx",
+      "red_team": "karmine_corp",
+      "blue_team_name": "GIANTX",
+      "red_team_name": "Karmine Corp",
+      "blue_win_probability": 0.209406,
+      "red_win_probability": 0.790594,
+      "predicted_winner": "Karmine Corp",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
       ]
     },
     {
@@ -251,8 +356,8 @@
       "red_team": "fnatic",
       "blue_team_name": "SK Gaming",
       "red_team_name": "Fnatic",
-      "blue_win_probability": 0.39934,
-      "red_win_probability": 0.60066,
+      "blue_win_probability": 0.436902,
+      "red_win_probability": 0.563098,
       "predicted_winner": "Fnatic",
       "confidence": "high",
       "model": "elo_fallback",
@@ -289,8 +394,8 @@
       "red_team": "g2_esports",
       "blue_team_name": "Shifters",
       "red_team_name": "G2 Esports",
-      "blue_win_probability": 0.201746,
-      "red_win_probability": 0.798254,
+      "blue_win_probability": 0.17801,
+      "red_win_probability": 0.82199,
       "predicted_winner": "G2 Esports",
       "confidence": "high",
       "model": "elo_fallback",
@@ -425,8 +530,8 @@
       "red_team": "hanjin_brion",
       "blue_team_name": "KIWOOM DRX",
       "red_team_name": "HANJIN BRION",
-      "blue_win_probability": 0.597591,
-      "red_win_probability": 0.402409,
+      "blue_win_probability": 0.615361,
+      "red_win_probability": 0.384639,
       "predicted_winner": "KIWOOM DRX",
       "confidence": "high",
       "model": "elo_fallback",
@@ -443,8 +548,8 @@
       "red_team": "top_esports",
       "blue_team_name": "EDWARD GAMING",
       "red_team_name": "TOP ESPORTS",
-      "blue_win_probability": 0.267212,
-      "red_win_probability": 0.732788,
+      "blue_win_probability": 0.274098,
+      "red_win_probability": 0.725902,
       "predicted_winner": "TOP ESPORTS",
       "confidence": "high",
       "model": "elo_fallback",
@@ -545,164 +650,12 @@
         "elo_fallback_prediction",
         "missing_elo_rating"
       ]
-    },
-    {
-      "event_id": "116566854547835292",
-      "game_id": "116566854547835292",
-      "league": "LPL",
-      "start_time": "2026-08-14 16:00:00",
-      "blue_team": "edward_gaming",
-      "red_team": "lgd_gaming",
-      "blue_team_name": "EDWARD GAMING",
-      "red_team_name": "LGD GAMING",
-      "blue_win_probability": 0.477543,
-      "red_win_probability": 0.522457,
-      "predicted_winner": "LGD GAMING",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "115548147900619041",
-      "game_id": "115548147900619041",
-      "league": "LCK",
-      "start_time": "2026-08-14 17:00:00",
-      "blue_team": "t1",
-      "red_team": "dplus_kia",
-      "blue_team_name": "T1",
-      "red_team_name": "Dplus KIA",
-      "blue_win_probability": 0.529591,
-      "red_win_probability": 0.470409,
-      "predicted_winner": "T1",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "116769725389404173",
-      "game_id": "116769725389404173",
-      "league": "LCP",
-      "start_time": "2026-08-14 18:00:00",
-      "blue_team": "ctbc_flying_oyster",
-      "red_team": "mvk_esports",
-      "blue_team_name": "CTBC Flying Oyster",
-      "red_team_name": "MVK Esports",
-      "blue_win_probability": 0.509974,
-      "red_win_probability": 0.490026,
-      "predicted_winner": "CTBC Flying Oyster",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "116566854547769684",
-      "game_id": "116566854547769684",
-      "league": "LPL",
-      "start_time": "2026-08-14 18:00:00",
-      "blue_team": "xian_team_we",
-      "red_team": "top_esports",
-      "blue_team_name": "Xi'an Team WE",
-      "red_team_name": "TOP ESPORTS",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "Xi'an Team WE",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:xian_team_we",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
-    },
-    {
-      "event_id": "115548147900684681",
-      "game_id": "115548147900684681",
-      "league": "LCK",
-      "start_time": "2026-08-14 19:00:00",
-      "blue_team": "nongshim_red_force",
-      "red_team": "hanjin_brion",
-      "blue_team_name": "NONGSHIM RED FORCE",
-      "red_team_name": "HANJIN BRION",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "NONGSHIM RED FORCE",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:nongshim_red_force",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
-    },
-    {
-      "event_id": "116566854547769728",
-      "game_id": "116566854547769728",
-      "league": "LPL",
-      "start_time": "2026-08-14 20:00:00",
-      "blue_team": "beijing_jdg_esports",
-      "red_team": "anyone_s_legend",
-      "blue_team_name": "Beijing JDG Esports",
-      "red_team_name": "Anyone's Legend",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "Beijing JDG Esports",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:beijing_jdg_esports",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
-    },
-    {
-      "event_id": "115548681803406211",
-      "game_id": "115548681803406211",
-      "league": "LEC",
-      "start_time": "2026-08-15 00:00:00",
-      "blue_team": "shifters",
-      "red_team": "sk_gaming",
-      "blue_team_name": "Shifters",
-      "red_team_name": "SK Gaming",
-      "blue_win_probability": 0.578758,
-      "red_win_probability": 0.421242,
-      "predicted_winner": "Shifters",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "115548681803406183",
-      "game_id": "115548681803406183",
-      "league": "LEC",
-      "start_time": "2026-08-15 02:15:00",
-      "blue_team": "team_vitality",
-      "red_team": "giantx",
-      "blue_team_name": "Team Vitality",
-      "red_team_name": "GIANTX",
-      "blue_win_probability": 0.52288,
-      "red_win_probability": 0.47712,
-      "predicted_winner": "Team Vitality",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
     }
   ],
   "warnings": [
-    "blue_team_no_history:count=7",
+    "blue_team_no_history:count=5",
     "blue_team_no_history:beijing_jdg_esports",
     "blue_team_no_history:cloud9_kia",
-    "blue_team_no_history:nongshim_red_force",
-    "blue_team_no_history:relove_deep_cross_gaming",
     "blue_team_no_history:shenzhen_ninjas_in_pyjamas",
     "blue_team_no_history:weibogaming",
     "blue_team_no_history:xian_team_we",
@@ -710,8 +663,8 @@
     "red_team_no_history:geng_esports",
     "red_team_no_history:leviatán",
     "red_team_no_history:los",
+    "red_team_no_history:nongshim_red_force",
     "red_team_no_history:red_kalunga",
-    "red_team_no_history:shenzhen_ninjas_in_pyjamas",
     "red_team_no_history:suzhou_lng_esports",
     "red_team_no_history:team_liquid_alienware",
     "red_team_no_history:thunder_talk_gaming",
@@ -719,5 +672,5 @@
     "elo_fallback_prediction",
     "missing_elo_rating"
   ],
-  "warning_count": 20
+  "warning_count": 18
 }
