@@ -129,29 +129,29 @@
     "archive": {
       "available": true,
       "empty_game_state_rows": 0,
-      "history_rows": 15918,
-      "latest_timestamp": "2026-08-14T18:55:29.994000Z",
+      "history_rows": 16925,
+      "latest_timestamp": "2026-08-15T20:38:28.658000Z",
       "live_model_prediction_rows": 0,
       "model_version_counts": {},
       "new_rows": 0,
-      "non_empty_game_state_rows": 15918,
+      "non_empty_game_state_rows": 16925,
       "oe_bootstrap_snapshot_rows": 0,
-      "production_live_telemetry_rows": 15918,
+      "production_live_telemetry_rows": 16925,
       "raw_frame_collection_rows": 0,
       "sampling": {
-        "games_with_interval_samples": 440,
+        "games_with_interval_samples": 464,
         "games_with_single_frame": 10,
-        "interval_count": 15468,
+        "interval_count": 16451,
         "max_interval_seconds": 2418.0,
         "median_interval_seconds": 15.0,
         "p90_interval_seconds": 16.0,
-        "pct_intervals_lte_30s": 0.9529350918024309,
-        "pct_intervals_lte_60s": 0.956167571761055,
-        "sub_30s_interval_count": 14740,
-        "sub_60s_interval_count": 14790
+        "pct_intervals_lte_30s": 0.9531335481125768,
+        "pct_intervals_lte_60s": 0.956294450185399,
+        "sub_30s_interval_count": 15680,
+        "sub_60s_interval_count": 15732
       },
-      "unique_games": 450,
-      "unknown_model_version_rows": 15918
+      "unique_games": 474,
+      "unknown_model_version_rows": 16925
     },
     "config": {
       "available": true,
@@ -176,7 +176,7 @@
     }
   },
   "display_ready": true,
-  "generated_at": "2026-08-14T20:54:09.953890+00:00",
+  "generated_at": "2026-08-15T20:54:46.390629+00:00",
   "live_manifest_url": "live_model_manifest.json",
   "live_model_available": true,
   "live_model_url": "live_logistic.json",
@@ -208,10 +208,10 @@
   "production_ready": true,
   "replay": {
     "available": true,
-    "games": 450,
+    "games": 474,
     "ok": true,
-    "pct_intervals_lte_target": 0.9529350918024309,
-    "rows": 15918
+    "pct_intervals_lte_target": 0.9531335481125768,
+    "rows": 16925
   },
   "requirements": [
     {
@@ -228,16 +228,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 450,
-        "interval_count": 15468,
+        "games": 474,
+        "interval_count": 16451,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 15918,
+        "non_empty_game_state_rows": 16925,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9529350918024309,
-        "production_live_telemetry_rows": 15918,
+        "pct_intervals_lte_30s": 0.9531335481125768,
+        "production_live_telemetry_rows": 16925,
         "raw_frame_collection_rows": 0,
-        "rows": 15918,
-        "sub_30s_interval_count": 14740
+        "rows": 16925,
+        "sub_30s_interval_count": 15680
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -245,19 +245,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 2808,
-        "games": 79,
+        "feature_rows": 2305,
+        "games": 64,
         "label_sources": {
-          "combined_rows": 27451,
-          "games_rows": 27451,
+          "combined_rows": 27453,
+          "games_rows": 27453,
           "live_label_rows": 0
         },
-        "labeled_rows": 2808,
-        "pipeline_feature_rows": 2808,
-        "pipeline_labeled_feature_rows": 2808,
+        "labeled_rows": 2305,
+        "pipeline_feature_rows": 2305,
+        "pipeline_labeled_feature_rows": 2305,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 15918,
+        "pipeline_resolved_rows": 16925,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -268,7 +268,7 @@
     {
       "evidence": {
         "display_recommendation": "show_live_probability",
-        "earliest_reliable_bucket": "10-20"
+        "earliest_reliable_bucket": "30-40"
       },
       "id": "live_model_evaluation",
       "label": "Live model evaluated with display-safe elapsed buckets",
@@ -276,9 +276,9 @@
     },
     {
       "evidence": {
-        "games": 450,
-        "pct_intervals_lte_target": 0.9529350918024309,
-        "rows": 15918
+        "games": 474,
+        "pct_intervals_lte_target": 0.9531335481125768,
+        "rows": 16925
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
@@ -310,23 +310,23 @@
   "stage": "production_ready",
   "training": {
     "available": true,
-    "games": 79,
+    "games": 64,
     "min_games": 5,
     "min_rows": 50,
     "pipeline": {
       "available": true,
       "evaluation": {
-        "accuracy": 0.5982758620689655,
-        "brier_score": 0.2310187411333033,
-        "log_loss": 0.6529467603577332
+        "accuracy": 0.6211812627291242,
+        "brier_score": 0.24822839712121392,
+        "log_loss": 0.6993911575150916
       },
-      "feature_rows": 2808,
-      "labeled_feature_rows": 2808,
+      "feature_rows": 2305,
+      "labeled_feature_rows": 2305,
       "mapping": {
-        "accepted_rows": 69,
-        "candidate_rows": 1859,
+        "accepted_rows": 54,
+        "candidate_rows": 1867,
         "direct_id_overlap_games": 0,
-        "map_rows": 518
+        "map_rows": 532
       },
       "priors": {
         "post_draft_non_default_rows": 0,
@@ -334,22 +334,22 @@
         "post_draft_rows": 0,
         "pre_match_non_default_rows": 0,
         "pre_match_path": "data/processed/schedule_predictions.csv",
-        "pre_match_rows": 34
+        "pre_match_rows": 26
       },
       "ready": true,
       "replay": {
-        "games": 450,
+        "games": 474,
         "ok": true,
-        "rows": 15918
+        "rows": 16925
       },
       "replayed": true,
-      "resolved_rows": 15918,
+      "resolved_rows": 16925,
       "trained": true,
       "warning_count": 0,
       "warnings": []
     },
     "ready": true,
-    "rows": 2808
+    "rows": 2305
   },
   "warning_count": 0,
   "warnings": [],
