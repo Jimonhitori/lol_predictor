@@ -10,11 +10,13 @@
     "training_pipeline": "reports/live_training_pipeline.json",
     "training_readiness": "reports/live_training_readiness.json"
   },
-  "blocker_count": 0,
-  "blockers": [],
+  "blocker_count": 1,
+  "blockers": [
+    "live evaluation recommends collecting more data before display"
+  ],
   "checks": {
     "collection_config_valid": true,
-    "evaluation_display_ready": true,
+    "evaluation_display_ready": false,
     "manifest_exposes_model": true,
     "ops_wiring_valid": true,
     "replay_ready": true,
@@ -22,9 +24,11 @@
     "training_pipeline_complete": true,
     "training_ready": true
   },
-  "display_ready": true,
-  "next_actions": [],
-  "production_ready": true,
+  "display_ready": false,
+  "next_actions": [
+    "Train/evaluate the live model until operational_summary recommends display."
+  ],
+  "production_ready": false,
   "requirements": [
     {
       "evidence": {
@@ -40,16 +44,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 497,
-        "interval_count": 17344,
+        "games": 520,
+        "interval_count": 18131,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 17841,
+        "non_empty_game_state_rows": 18651,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9537015682656826,
-        "production_live_telemetry_rows": 17841,
+        "pct_intervals_lte_30s": 0.9537256632287243,
+        "production_live_telemetry_rows": 18651,
         "raw_frame_collection_rows": 0,
-        "rows": 17841,
-        "sub_30s_interval_count": 16541
+        "rows": 18651,
+        "sub_30s_interval_count": 17292
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -57,19 +61,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 1990,
-        "games": 56,
+        "feature_rows": 2521,
+        "games": 71,
         "label_sources": {
           "combined_rows": 27453,
           "games_rows": 27453,
           "live_label_rows": 0
         },
-        "labeled_rows": 1990,
-        "pipeline_feature_rows": 1990,
-        "pipeline_labeled_feature_rows": 1990,
+        "labeled_rows": 2521,
+        "pipeline_feature_rows": 2521,
+        "pipeline_labeled_feature_rows": 2521,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 17841,
+        "pipeline_resolved_rows": 18651,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -79,18 +83,18 @@
     },
     {
       "evidence": {
-        "display_recommendation": "show_live_probability",
-        "earliest_reliable_bucket": "00-10"
+        "display_recommendation": "collect_more_data",
+        "earliest_reliable_bucket": null
       },
       "id": "live_model_evaluation",
       "label": "Live model evaluated with display-safe elapsed buckets",
-      "status": "passed"
+      "status": "blocked"
     },
     {
       "evidence": {
-        "games": 497,
-        "pct_intervals_lte_target": 0.9537015682656826,
-        "rows": 17841
+        "games": 520,
+        "pct_intervals_lte_target": 0.9537256632287243,
+        "rows": 18651
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
@@ -117,7 +121,7 @@
       "status": "passed"
     }
   ],
-  "stage": "production_ready",
+  "stage": "evaluate_live_model",
   "warning_count": 0,
   "warnings": []
 }
