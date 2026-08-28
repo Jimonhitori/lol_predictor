@@ -40,16 +40,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 883,
-        "interval_count": 30808,
+        "games": 902,
+        "interval_count": 31612,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 31691,
+        "non_empty_game_state_rows": 32514,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9535510257076084,
-        "production_live_telemetry_rows": 31691,
+        "pct_intervals_lte_30s": 0.9537201062887511,
+        "production_live_telemetry_rows": 32514,
         "raw_frame_collection_rows": 0,
-        "rows": 31691,
-        "sub_30s_interval_count": 29377
+        "rows": 32514,
+        "sub_30s_interval_count": 30149
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -57,19 +57,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 2956,
-        "games": 94,
+        "feature_rows": 2402,
+        "games": 76,
         "label_sources": {
           "combined_rows": 27453,
           "games_rows": 27453,
           "live_label_rows": 0
         },
-        "labeled_rows": 2956,
-        "pipeline_feature_rows": 2956,
-        "pipeline_labeled_feature_rows": 2956,
+        "labeled_rows": 2402,
+        "pipeline_feature_rows": 2402,
+        "pipeline_labeled_feature_rows": 2402,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 31691,
+        "pipeline_resolved_rows": 32514,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -88,9 +88,9 @@
     },
     {
       "evidence": {
-        "games": 883,
-        "pct_intervals_lte_target": 0.9535510257076084,
-        "rows": 31691
+        "games": 902,
+        "pct_intervals_lte_target": 0.9537201062887511,
+        "rows": 32514
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
