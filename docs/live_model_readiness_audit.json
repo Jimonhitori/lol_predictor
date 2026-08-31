@@ -40,16 +40,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 951,
-        "interval_count": 33697,
+        "games": 968,
+        "interval_count": 34284,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 34648,
+        "non_empty_game_state_rows": 35252,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9540908686233196,
-        "production_live_telemetry_rows": 34648,
+        "pct_intervals_lte_30s": 0.9541768755104422,
+        "production_live_telemetry_rows": 35252,
         "raw_frame_collection_rows": 0,
-        "rows": 34648,
-        "sub_30s_interval_count": 32150
+        "rows": 35252,
+        "sub_30s_interval_count": 32713
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -57,19 +57,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 2858,
-        "games": 74,
+        "feature_rows": 3223,
+        "games": 83,
         "label_sources": {
           "combined_rows": 27453,
           "games_rows": 27453,
           "live_label_rows": 0
         },
-        "labeled_rows": 2858,
-        "pipeline_feature_rows": 2858,
-        "pipeline_labeled_feature_rows": 2858,
+        "labeled_rows": 3223,
+        "pipeline_feature_rows": 3223,
+        "pipeline_labeled_feature_rows": 3223,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 34648,
+        "pipeline_resolved_rows": 35252,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -80,7 +80,7 @@
     {
       "evidence": {
         "display_recommendation": "show_live_probability",
-        "earliest_reliable_bucket": "20-30"
+        "earliest_reliable_bucket": "00-10"
       },
       "id": "live_model_evaluation",
       "label": "Live model evaluated with display-safe elapsed buckets",
@@ -88,9 +88,9 @@
     },
     {
       "evidence": {
-        "games": 951,
-        "pct_intervals_lte_target": 0.9540908686233196,
-        "rows": 34648
+        "games": 968,
+        "pct_intervals_lte_target": 0.9541768755104422,
+        "rows": 35252
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",

@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-08-30T20:54:06.447718Z",
+  "generated_at": "2026-08-31T20:50:48.976228Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -10,57 +10,6 @@
     }
   },
   "predictions": [
-    {
-      "event_id": "115565671526402961",
-      "game_id": "115565671526402961",
-      "league": "CBLOL",
-      "start_time": "2026-08-31 04:00:00",
-      "blue_team": "furia",
-      "red_team": "leviat_n",
-      "blue_team_name": "FURIA",
-      "red_team_name": "LEVIATÁN",
-      "blue_win_probability": 0.490533,
-      "red_win_probability": 0.509467,
-      "predicted_winner": "LEVIATÁN",
-      "confidence": "low",
-      "model": "logistic_regression_actions",
-      "warnings": [
-        "red_team_fallback_slug:LEVIATÁN->leviat_n",
-        "red_team_no_history:leviat_n"
-      ]
-    },
-    {
-      "event_id": "115564797164345567",
-      "game_id": "115564797164345567",
-      "league": "LCS",
-      "start_time": "2026-08-31 05:00:00",
-      "blue_team": "team_liquid",
-      "red_team": "lyon",
-      "blue_team_name": "Team Liquid Alienware",
-      "red_team_name": "LYON",
-      "blue_win_probability": 0.571343,
-      "red_win_probability": 0.428657,
-      "predicted_winner": "Team Liquid Alienware",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "115564797163886755",
-      "game_id": "115564797163886755",
-      "league": "LCS",
-      "start_time": "2026-08-31 08:00:00",
-      "blue_team": "cloud9",
-      "red_team": "shopify_rebellion",
-      "blue_team_name": "Cloud9 Kia",
-      "red_team_name": "Shopify Rebellion",
-      "blue_win_probability": 0.610636,
-      "red_win_probability": 0.389364,
-      "predicted_winner": "Cloud9 Kia",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
     {
       "event_id": "117030752644841601",
       "game_id": "117030752644841601",
@@ -86,8 +35,8 @@
       "red_team": "t1",
       "blue_team_name": "Hanwha Life Esports",
       "red_team_name": "T1",
-      "blue_win_probability": 0.751892,
-      "red_win_probability": 0.248108,
+      "blue_win_probability": 0.7518,
+      "red_win_probability": 0.2482,
       "predicted_winner": "Hanwha Life Esports",
       "confidence": "high",
       "model": "logistic_regression_actions",
@@ -102,8 +51,8 @@
       "red_team": "bnk_fearx",
       "blue_team_name": "Dplus KIA",
       "red_team_name": "BNK FEARX",
-      "blue_win_probability": 0.533286,
-      "red_win_probability": 0.466714,
+      "blue_win_probability": 0.569186,
+      "red_win_probability": 0.430814,
       "predicted_winner": "Dplus KIA",
       "confidence": "high",
       "model": "logistic_regression_actions",
@@ -124,29 +73,8 @@
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
-    },
-    {
-      "event_id": "LCS/2026 Season/Summer Season_Week 6_4",
-      "game_id": "LCS/2026 Season/Summer Season_Week 6_4",
-      "league": "LCS 2026 Summer",
-      "start_time": "2026-08-31 08:00:00",
-      "blue_team": "cloud9",
-      "red_team": "shopify_rebellion",
-      "blue_team_name": "Cloud9",
-      "red_team_name": "Shopify Rebellion",
-      "blue_win_probability": 0.610636,
-      "red_win_probability": 0.389364,
-      "predicted_winner": "Cloud9",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
     }
   ],
-  "warnings": [
-    "red_team_fallback_slug:count=1",
-    "red_team_fallback_slug:LEVIATÁN->leviat_n",
-    "red_team_no_history:count=1",
-    "red_team_no_history:leviat_n"
-  ],
-  "warning_count": 4
+  "warnings": [],
+  "warning_count": 0
 }
