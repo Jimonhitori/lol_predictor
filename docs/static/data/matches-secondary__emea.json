@@ -171,8 +171,8 @@
       "region": "emea",
       "start_time": "2026-09-01T14:00:00Z",
       "status": "unstarted",
-      "blue_team": "EXILE Esports",
-      "red_team": "CITA Kaizen",
+      "blue_team": "CITA Kaizen",
+      "red_team": "EXILE Esports",
       "blue_code": "EE",
       "red_code": "CK",
       "blue_image": "http://static.lolesports.com/teams/1739089858844_exile_color.png",
@@ -184,14 +184,14 @@
       "teams": [
         {
           "id": "",
-          "name": "EXILE Esports",
+          "name": "CITA Kaizen",
           "code": "EE",
           "image": "http://static.lolesports.com/teams/1739089858844_exile_color.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "CITA Kaizen",
+          "name": "EXILE Esports",
           "code": "CK",
           "image": "http://static.lolesports.com/teams/1768642464138_ckz.png",
           "game_wins": ""
@@ -207,8 +207,8 @@
       "region": "emea",
       "start_time": "2026-09-01T15:00:00Z",
       "status": "unstarted",
-      "blue_team": "Unicorns of Love Sexy Edition",
-      "red_team": "Kaufland Hangry Knights",
+      "blue_team": "Kaufland Hangry Knights",
+      "red_team": "Unicorns of Love Sexy Edition",
       "blue_code": "UOLS",
       "red_code": "KHK",
       "blue_image": "http://static.lolesports.com/teams/1674832383233_PRM_USE-FullColorDarkBG.png",
@@ -220,14 +220,14 @@
       "teams": [
         {
           "id": "",
-          "name": "Unicorns of Love Sexy Edition",
+          "name": "Kaufland Hangry Knights",
           "code": "UOLS",
           "image": "http://static.lolesports.com/teams/1674832383233_PRM_USE-FullColorDarkBG.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "Kaufland Hangry Knights",
+          "name": "Unicorns of Love Sexy Edition",
           "code": "KHK",
           "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
           "game_wins": ""
@@ -243,12 +243,12 @@
       "region": "emea",
       "start_time": "2026-09-01T15:00:00Z",
       "status": "unstarted",
-      "blue_team": "PCIFIC Esports",
-      "red_team": "Dark Passage",
+      "blue_team": "Dark Passage",
+      "red_team": "PCIFIC Esports",
       "blue_code": "PE",
       "red_code": "DP",
       "blue_image": "https://static.lolesports.com/teams/1767800848871_PcificLogo2.png",
-      "red_image": "",
+      "red_image": "https://static.lolesports.com/teams/1767800848871_PcificLogo2.png",
       "blue_score": "",
       "red_score": "",
       "best_of": "5",
@@ -256,16 +256,16 @@
       "teams": [
         {
           "id": "",
-          "name": "PCIFIC Esports",
+          "name": "Dark Passage",
           "code": "PE",
           "image": "https://static.lolesports.com/teams/1767800848871_PcificLogo2.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "Dark Passage",
+          "name": "PCIFIC Esports",
           "code": "DP",
-          "image": "",
+          "image": "https://static.lolesports.com/teams/1767800848871_PcificLogo2.png",
           "game_wins": ""
         }
       ],
@@ -315,8 +315,8 @@
       "region": "emea",
       "start_time": "2026-09-01T16:30:00Z",
       "status": "unstarted",
-      "blue_team": "UP2U Meavedron",
-      "red_team": "BRUTE",
+      "blue_team": "BRUTE",
+      "red_team": "UP2U Meavedron",
       "blue_code": "UM",
       "red_code": "BRUT",
       "blue_image": "http://static.lolesports.com/teams/1704376811202_Meavedronlogo.png",
@@ -328,14 +328,14 @@
       "teams": [
         {
           "id": "",
-          "name": "UP2U Meavedron",
+          "name": "BRUTE",
           "code": "UM",
           "image": "http://static.lolesports.com/teams/1704376811202_Meavedronlogo.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "BRUTE",
+          "name": "UP2U Meavedron",
           "code": "BRUT",
           "image": "http://static.lolesports.com/teams/1643479836323_HM_BRT_white.png",
           "game_wins": ""
@@ -698,6 +698,42 @@
           "name": "BRUTE",
           "code": "BRUT",
           "image": "http://static.lolesports.com/teams/1643479836323_HM_BRT_white.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "116713193618227901",
+      "source_match_id": "",
+      "league": "Prime League",
+      "league_group": "secondary",
+      "region": "emea",
+      "start_time": "2026-09-03T15:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Kaufland Hangry Knights",
+      "red_team": "Berlin International Gaming",
+      "blue_code": "KHK",
+      "red_code": "BIG",
+      "blue_image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+      "red_image": "http://static.lolesports.com/teams/1674839453682_PRM_BIG-MonochromeLightBG.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "Kaufland Hangry Knights",
+          "code": "KHK",
+          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Berlin International Gaming",
+          "code": "BIG",
+          "image": "http://static.lolesports.com/teams/1674839453682_PRM_BIG-MonochromeLightBG.png",
           "game_wins": ""
         }
       ],
