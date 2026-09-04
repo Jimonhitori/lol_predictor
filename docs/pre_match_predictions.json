@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-09-03T20:53:12.857139Z",
+  "generated_at": "2026-09-04T20:53:08.596309Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -11,44 +11,6 @@
   },
   "predictions": [
     {
-      "event_id": "117030752644841613",
-      "game_id": "117030752644841613",
-      "league": "LCK",
-      "start_time": "2026-09-03 17:00:00",
-      "blue_team": "bnk_fearx",
-      "red_team": "dplus_kia",
-      "blue_team_name": "BNK FEARX",
-      "red_team_name": "Dplus KIA",
-      "blue_win_probability": 0.247872,
-      "red_win_probability": 0.752128,
-      "predicted_winner": "Dplus KIA",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "117155436343202154",
-      "game_id": "117155436343202154",
-      "league": "LPL",
-      "start_time": "2026-09-03 18:00:00",
-      "blue_team": "xian_team_we",
-      "red_team": "bilibili_gaming",
-      "blue_team_name": "Xi'an Team WE",
-      "red_team_name": "BILIBILI GAMING",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "Xi'an Team WE",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:xian_team_we",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
-    },
-    {
       "event_id": "117030752644841625",
       "game_id": "117030752644841625",
       "league": "LCK",
@@ -57,65 +19,9 @@
       "red_team": "dplus_kia",
       "blue_team_name": "kt Rolster",
       "red_team_name": "Dplus KIA",
-      "blue_win_probability": 0.323038,
-      "red_win_probability": 0.676962,
+      "blue_win_probability": 0.302167,
+      "red_win_probability": 0.697833,
       "predicted_winner": "Dplus KIA",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "115565671526403057",
-      "game_id": "115565671526403057",
-      "league": "CBLOL",
-      "start_time": "2026-09-07 01:00:00",
-      "blue_team": "furia",
-      "red_team": "red_kalunga",
-      "blue_team_name": "FURIA",
-      "red_team_name": "RED Kalunga",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "FURIA",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:red_kalunga"
-      ]
-    },
-    {
-      "event_id": "115564797164345555",
-      "game_id": "115564797164345555",
-      "league": "LCS",
-      "start_time": "2026-09-07 05:00:00",
-      "blue_team": "flyquest",
-      "red_team": "shopify_rebellion",
-      "blue_team_name": "FlyQuest",
-      "red_team_name": "Shopify Rebellion",
-      "blue_win_probability": 0.744693,
-      "red_win_probability": 0.255307,
-      "predicted_winner": "FlyQuest",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "115564797163886787",
-      "game_id": "115564797163886787",
-      "league": "LCS",
-      "start_time": "2026-09-07 08:00:00",
-      "blue_team": "disguised",
-      "red_team": "lyon",
-      "blue_team_name": "Disguised",
-      "red_team_name": "LYON",
-      "blue_win_probability": 0.111829,
-      "red_win_probability": 0.888171,
-      "predicted_winner": "LYON",
       "confidence": "high",
       "model": "elo_fallback",
       "warnings": [
@@ -131,9 +37,45 @@
       "red_team": "anyone_s_legend",
       "blue_team_name": "LGD GAMING",
       "red_team_name": "Anyone's Legend",
-      "blue_win_probability": 0.250244,
-      "red_win_probability": 0.749756,
+      "blue_win_probability": 0.246325,
+      "red_win_probability": 0.753675,
       "predicted_winner": "Anyone's Legend",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "117030752644841631",
+      "game_id": "117030752644841631",
+      "league": "LCK",
+      "start_time": "2026-09-06 17:00:00",
+      "blue_team": "dplus_kia",
+      "red_team": "t1",
+      "blue_team_name": "Dplus KIA",
+      "red_team_name": "T1",
+      "blue_win_probability": 0.458334,
+      "red_win_probability": 0.541666,
+      "predicted_winner": "T1",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "117155436343202172",
+      "game_id": "117155436343202172",
+      "league": "LPL",
+      "start_time": "2026-09-07 18:00:00",
+      "blue_team": "bilibili_gaming",
+      "red_team": "anyone_s_legend",
+      "blue_team_name": "BILIBILI GAMING",
+      "red_team_name": "Anyone's Legend",
+      "blue_win_probability": 0.758605,
+      "red_win_probability": 0.241395,
+      "predicted_winner": "BILIBILI GAMING",
       "confidence": "high",
       "model": "elo_fallback",
       "warnings": [
@@ -165,11 +107,11 @@
       "start_time": "2026-09-05 17:00:00",
       "blue_team": "geng_esports",
       "red_team": "hanwha_life_esports",
-      "blue_team_name": "Hanwha Life Esports",
-      "red_team_name": "Gen.G Esports",
+      "blue_team_name": "Gen.G Esports",
+      "red_team_name": "Hanwha Life Esports",
       "blue_win_probability": 0.5,
       "red_win_probability": 0.5,
-      "predicted_winner": "Hanwha Life Esports",
+      "predicted_winner": "Gen.G Esports",
       "confidence": "low",
       "model": "elo_fallback",
       "warnings": [
@@ -292,13 +234,68 @@
         "missing_elo_rating",
         "red_team_no_history:team_liquid_alienware"
       ]
+    },
+    {
+      "event_id": "115565671526403057",
+      "game_id": "115565671526403057",
+      "league": "CBLOL",
+      "start_time": "2026-09-07 01:00:00",
+      "blue_team": "furia",
+      "red_team": "red_kalunga",
+      "blue_team_name": "FURIA",
+      "red_team_name": "RED Kalunga",
+      "blue_win_probability": 0.5,
+      "red_win_probability": 0.5,
+      "predicted_winner": "FURIA",
+      "confidence": "low",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction",
+        "missing_elo_rating",
+        "red_team_no_history:red_kalunga"
+      ]
+    },
+    {
+      "event_id": "115564797164345555",
+      "game_id": "115564797164345555",
+      "league": "LCS",
+      "start_time": "2026-09-07 05:00:00",
+      "blue_team": "flyquest",
+      "red_team": "shopify_rebellion",
+      "blue_team_name": "FlyQuest",
+      "red_team_name": "Shopify Rebellion",
+      "blue_win_probability": 0.744693,
+      "red_win_probability": 0.255307,
+      "predicted_winner": "FlyQuest",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
+    },
+    {
+      "event_id": "115564797163886787",
+      "game_id": "115564797163886787",
+      "league": "LCS",
+      "start_time": "2026-09-07 08:00:00",
+      "blue_team": "disguised",
+      "red_team": "lyon",
+      "blue_team_name": "Disguised",
+      "red_team_name": "LYON",
+      "blue_win_probability": 0.111829,
+      "red_win_probability": 0.888171,
+      "predicted_winner": "LYON",
+      "confidence": "high",
+      "model": "elo_fallback",
+      "warnings": [
+        "elo_fallback_prediction"
+      ]
     }
   ],
   "warnings": [
-    "blue_team_no_history:count=3",
+    "blue_team_no_history:count=2",
     "blue_team_no_history:geng_esports",
     "blue_team_no_history:shenzhen_ninjas_in_pyjamas",
-    "blue_team_no_history:xian_team_we",
     "red_team_no_history:count=4",
     "red_team_no_history:beijing_jdg_esports",
     "red_team_no_history:cloud9_kia",
@@ -307,5 +304,5 @@
     "elo_fallback_prediction",
     "missing_elo_rating"
   ],
-  "warning_count": 11
+  "warning_count": 10
 }
