@@ -820,8 +820,8 @@
     },
     {
       "id": "LJL/2026 Season/Summer Championship_Finals_1",
-      "source_match_id": "",
-      "league": "LJL 2026 Summer Championship",
+      "source_match_id": "116917034792783759",
+      "league": "LJL",
       "league_group": "secondary",
       "region": "pacific",
       "start_time": "2026-09-06T05:00:00Z",
@@ -835,7 +835,7 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "5",
-      "source": "leaguepedia",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
@@ -856,14 +856,14 @@
     },
     {
       "id": "PCS/2026 Season/Summer Season_Finals_1",
-      "source_match_id": "",
-      "league": "PCS 2026 Summer",
+      "source_match_id": "116951349275577706",
+      "league": "PCS",
       "league_group": "secondary",
       "region": "pacific",
       "start_time": "2026-09-06T09:00:00Z",
       "status": "unstarted",
-      "blue_team": "Frank Esports",
-      "red_team": "CTBC Flying Oyster Academy",
+      "blue_team": "CTBC Flying Oyster Academy",
+      "red_team": "Frank Esports",
       "blue_code": "FE",
       "red_code": "CFOA",
       "blue_image": "https://static.lolesports.com/teams/1656308269827_220621_FRANK_Final_Logo_W.png",
@@ -871,18 +871,18 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "5",
-      "source": "leaguepedia",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
-          "name": "Frank Esports",
+          "name": "CTBC Flying Oyster Academy",
           "code": "FE",
           "image": "https://static.lolesports.com/teams/1656308269827_220621_FRANK_Final_Logo_W.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "CTBC Flying Oyster Academy",
+          "name": "Frank Esports",
           "code": "CFOA",
           "image": "https://static.lolesports.com/teams/1738762962228_1000_CFOA-FlyingOyster.png",
           "game_wins": ""
@@ -920,6 +920,78 @@
           "id": "",
           "name": "Never Give Up (Thai Team)",
           "code": "NGUT",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "116952475624036329",
+      "source_match_id": "",
+      "league": "VCS",
+      "league_group": "secondary",
+      "region": "pacific",
+      "start_time": "2026-09-11T09:00:00Z",
+      "status": "unstarted",
+      "blue_team": "TP.HCM SN CyberCore Esports",
+      "red_team": "Saigon 1TAP DINO",
+      "blue_code": "THSC",
+      "red_code": "S1D",
+      "blue_image": "http://static.lolesports.com/teams/1739952109504_image11.png",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "TP.HCM SN CyberCore Esports",
+          "code": "THSC",
+          "image": "http://static.lolesports.com/teams/1739952109504_image11.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Saigon 1TAP DINO",
+          "code": "S1D",
+          "image": "",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "116952475624364037",
+      "source_match_id": "",
+      "league": "VCS",
+      "league_group": "secondary",
+      "region": "pacific",
+      "start_time": "2026-09-11T12:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Saigon Warrior",
+      "red_team": "Saigon 9Gaming Esports",
+      "blue_code": "SW",
+      "red_code": "S9E",
+      "blue_image": "https://static.lolesports.com/teams/1771230875226_logo_SW-removebg-preview.png",
+      "red_image": "",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "3",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "Saigon Warrior",
+          "code": "SW",
+          "image": "https://static.lolesports.com/teams/1771230875226_logo_SW-removebg-preview.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "Saigon 9Gaming Esports",
+          "code": "S9E",
           "image": "",
           "game_wins": ""
         }
