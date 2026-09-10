@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-09-09T20:51:37.570883Z",
+  "generated_at": "2026-09-10T20:51:51.960718Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -38,38 +38,6 @@
       "blue_win_probability": 0.415442,
       "red_win_probability": 0.584558,
       "predicted_winner": "Movistar KOI",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "115565004607949375",
-      "game_id": "115565004607949375",
-      "league": "LCS",
-      "start_time": "2026-09-13 05:00:00",
-      "blue_team": "cloud9",
-      "red_team": "shopify_rebellion",
-      "blue_team_name": "Cloud9 Kia",
-      "red_team_name": "Shopify Rebellion",
-      "blue_win_probability": 0.638578,
-      "red_win_probability": 0.361422,
-      "predicted_winner": "Cloud9 Kia",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "115565004607949381",
-      "game_id": "115565004607949381",
-      "league": "LCS",
-      "start_time": "2026-09-14 05:00:00",
-      "blue_team": "sentinels",
-      "red_team": "flyquest",
-      "blue_team_name": "Sentinels",
-      "red_team_name": "FlyQuest",
-      "blue_win_probability": 0.382755,
-      "red_win_probability": 0.617245,
-      "predicted_winner": "FlyQuest",
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
@@ -155,6 +123,22 @@
       "warnings": []
     },
     {
+      "event_id": "115565004607949375",
+      "game_id": "115565004607949375",
+      "league": "LCS",
+      "start_time": "2026-09-13 05:00:00",
+      "blue_team": "cloud9",
+      "red_team": "shopify_rebellion",
+      "blue_team_name": "Cloud9 Kia",
+      "red_team_name": "Shopify Rebellion",
+      "blue_win_probability": 0.638578,
+      "red_win_probability": 0.361422,
+      "predicted_winner": "Cloud9 Kia",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
       "event_id": "115565671526403075",
       "game_id": "115565671526403075",
       "league": "CBLOL",
@@ -166,6 +150,22 @@
       "blue_win_probability": 0.526068,
       "red_win_probability": 0.473932,
       "predicted_winner": "LOUD",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
+      "event_id": "115565004607949381",
+      "game_id": "115565004607949381",
+      "league": "LCS",
+      "start_time": "2026-09-14 05:00:00",
+      "blue_team": "sentinels",
+      "red_team": "flyquest",
+      "blue_team_name": "Sentinels",
+      "red_team_name": "FlyQuest",
+      "blue_win_probability": 0.382755,
+      "red_win_probability": 0.617245,
+      "predicted_winner": "FlyQuest",
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
