@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-09-10T20:51:51.960718Z",
+  "generated_at": "2026-09-11T20:53:03.851652Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -10,22 +10,6 @@
     }
   },
   "predictions": [
-    {
-      "event_id": "115548681803406309",
-      "game_id": "115548681803406309",
-      "league": "LEC",
-      "start_time": "2026-09-12 00:00:00",
-      "blue_team": "giantx",
-      "red_team": "natus_vincere",
-      "blue_team_name": "GIANTX",
-      "red_team_name": "Natus Vincere",
-      "blue_win_probability": 0.543484,
-      "red_win_probability": 0.456516,
-      "predicted_winner": "GIANTX",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
     {
       "event_id": "115548681803406315",
       "game_id": "115548681803406315",
@@ -38,22 +22,6 @@
       "blue_win_probability": 0.415442,
       "red_win_probability": 0.584558,
       "predicted_winner": "Movistar KOI",
-      "confidence": "high",
-      "model": "logistic_regression_actions",
-      "warnings": []
-    },
-    {
-      "event_id": "LEC/2026 Season/Summer Playoffs_Round 1_3",
-      "game_id": "LEC/2026 Season/Summer Playoffs_Round 1_3",
-      "league": "LEC 2026 Summer Playoffs",
-      "start_time": "2026-09-12 00:00:00",
-      "blue_team": "giantx",
-      "red_team": "natus_vincere",
-      "blue_team_name": "GIANTX",
-      "red_team_name": "Natus Vincere",
-      "blue_win_probability": 0.543484,
-      "red_win_probability": 0.456516,
-      "predicted_winner": "GIANTX",
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
@@ -83,8 +51,8 @@
       "red_team": "anyone_s_legend",
       "blue_team_name": "Invictus Gaming",
       "red_team_name": "Anyone's Legend",
-      "blue_win_probability": 0.226608,
-      "red_win_probability": 0.773392,
+      "blue_win_probability": 0.219929,
+      "red_win_probability": 0.780071,
       "predicted_winner": "Anyone's Legend",
       "confidence": "high",
       "model": "logistic_regression_actions",
