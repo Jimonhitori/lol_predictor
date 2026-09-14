@@ -40,16 +40,16 @@
     {
       "evidence": {
         "empty_game_state_rate": 0.0,
-        "games": 1366,
-        "interval_count": 48841,
+        "games": 1391,
+        "interval_count": 49819,
         "live_model_prediction_rows": 0,
-        "non_empty_game_state_rows": 50207,
+        "non_empty_game_state_rows": 51210,
         "oe_bootstrap_snapshot_rows": 0,
-        "pct_intervals_lte_30s": 0.9544440122028623,
-        "production_live_telemetry_rows": 50207,
+        "pct_intervals_lte_30s": 0.9544551275617736,
+        "production_live_telemetry_rows": 51210,
         "raw_frame_collection_rows": 0,
-        "rows": 50207,
-        "sub_30s_interval_count": 46616
+        "rows": 51210,
+        "sub_30s_interval_count": 47550
       },
       "id": "live_frame_collection",
       "label": "Collected live frames at <=30s cadence",
@@ -57,19 +57,19 @@
     },
     {
       "evidence": {
-        "feature_rows": 1763,
-        "games": 50,
+        "feature_rows": 2126,
+        "games": 60,
         "label_sources": {
-          "combined_rows": 27452,
-          "games_rows": 27452,
+          "combined_rows": 27453,
+          "games_rows": 27453,
           "live_label_rows": 0
         },
-        "labeled_rows": 1763,
-        "pipeline_feature_rows": 1763,
-        "pipeline_labeled_feature_rows": 1763,
+        "labeled_rows": 2126,
+        "pipeline_feature_rows": 2126,
+        "pipeline_labeled_feature_rows": 2126,
         "pipeline_ready": true,
         "pipeline_replayed": true,
-        "pipeline_resolved_rows": 50207,
+        "pipeline_resolved_rows": 51210,
         "pipeline_trained": true,
         "pipeline_warnings": []
       },
@@ -88,9 +88,9 @@
     },
     {
       "evidence": {
-        "games": 1366,
-        "pct_intervals_lte_target": 0.9544440122028623,
-        "rows": 50207
+        "games": 1391,
+        "pct_intervals_lte_target": 0.9544551275617736,
+        "rows": 51210
       },
       "id": "live_replay",
       "label": "Saved live frames can be replay-scored by the trained model",
