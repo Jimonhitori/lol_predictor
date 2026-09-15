@@ -92,42 +92,6 @@
       "source": "lolesports_api"
     },
     {
-      "id": "116713193618227907",
-      "source_match_id": "",
-      "league": "Prime League",
-      "league_group": "secondary",
-      "region": "emea",
-      "start_time": "2026-09-12T12:00:00Z",
-      "status": "unstarted",
-      "blue_team": "G2 NORD",
-      "red_team": "Berlin International Gaming",
-      "blue_code": "BIG",
-      "red_code": "GN",
-      "blue_image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-      "red_image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-      "blue_score": "",
-      "red_score": "",
-      "best_of": "5",
-      "source": "lolesports_api",
-      "teams": [
-        {
-          "id": "",
-          "name": "G2 NORD",
-          "code": "BIG",
-          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-          "game_wins": ""
-        },
-        {
-          "id": "",
-          "name": "Berlin International Gaming",
-          "code": "GN",
-          "image": "http://static.lolesports.com/teams/1767714240621_G2_Nord_White.png",
-          "game_wins": ""
-        }
-      ],
-      "games": []
-    },
-    {
       "id": "116996464901637008",
       "source_match_id": "",
       "league": "Hitpoint Masters",
@@ -381,14 +345,14 @@
     },
     {
       "id": "116996464901637002",
-      "source_match_id": "Hitpoint Masters/2026 Season/Summer Playoffs_Round 3_1",
-      "league": "Hitpoint Masters 2026 Summer Playoffs",
+      "source_match_id": "",
+      "league": "Hitpoint Masters",
       "league_group": "secondary",
       "region": "emea",
       "start_time": "2026-09-15T14:00:00Z",
       "status": "unstarted",
-      "blue_team": "Nightbirds",
-      "red_team": "CITA Kaizen",
+      "blue_team": "CITA Kaizen",
+      "red_team": "NightBirds",
       "blue_code": "NIGH",
       "red_code": "CK",
       "blue_image": "http://static.lolesports.com/teams/1739978270852_NBS_BIG.png",
@@ -396,20 +360,56 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "5",
-      "source": "leaguepedia",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
-          "name": "Nightbirds",
+          "name": "CITA Kaizen",
           "code": "NIGH",
           "image": "http://static.lolesports.com/teams/1739978270852_NBS_BIG.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "CITA Kaizen",
+          "name": "NightBirds",
           "code": "CK",
           "image": "http://static.lolesports.com/teams/1768642464138_ckz.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "116764875786772510",
+      "source_match_id": "",
+      "league": "Arabian League",
+      "league_group": "secondary",
+      "region": "emea",
+      "start_time": "2026-09-15T16:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Anubis Gaming",
+      "red_team": "JSK Gamefy",
+      "blue_code": "AG",
+      "red_code": "JG",
+      "blue_image": "http://static.lolesports.com/teams/1738571384294_.png",
+      "red_image": "http://static.lolesports.com/teams/1738571384294_.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "Anubis Gaming",
+          "code": "AG",
+          "image": "http://static.lolesports.com/teams/1738571384294_.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "JSK Gamefy",
+          "code": "JG",
+          "image": "http://static.lolesports.com/teams/1738571384294_.png",
           "game_wins": ""
         }
       ],
@@ -452,6 +452,42 @@
       "games": []
     },
     {
+      "id": "116996464901702556",
+      "source_match_id": "",
+      "league": "Hitpoint Masters",
+      "league_group": "secondary",
+      "region": "emea",
+      "start_time": "2026-09-16T14:00:00Z",
+      "status": "unstarted",
+      "blue_team": "eSuba",
+      "red_team": "UP2U Meavedron",
+      "blue_code": "ESUB",
+      "red_code": "UM",
+      "blue_image": "http://static.lolesports.com/teams/1705300013762_HM_ESB_logo.png",
+      "red_image": "http://static.lolesports.com/teams/1704376811202_Meavedronlogo.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "eSuba",
+          "code": "ESUB",
+          "image": "http://static.lolesports.com/teams/1705300013762_HM_ESB_logo.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "UP2U Meavedron",
+          "code": "UM",
+          "image": "http://static.lolesports.com/teams/1704376811202_Meavedronlogo.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
       "id": "Hitpoint Masters/2026 Season/Summer Playoffs_Round 2_1",
       "source_match_id": "",
       "league": "Hitpoint Masters 2026 Summer Playoffs",
@@ -488,15 +524,51 @@
       "games": []
     },
     {
-      "id": "NLC/2026 Season/Summer Split_Finals_1",
+      "id": "116764875786772520",
       "source_match_id": "",
-      "league": "NLC 2026 Summer",
+      "league": "Arabian League",
       "league_group": "secondary",
       "region": "emea",
       "start_time": "2026-09-16T16:00:00Z",
       "status": "unstarted",
-      "blue_team": "Ruddy Corporation",
-      "red_team": "Verdant",
+      "blue_team": "Pyramid IV Esports",
+      "red_team": "JSK Gamefy",
+      "blue_code": "PIE",
+      "red_code": "JG",
+      "blue_image": "http://static.lolesports.com/teams/1738571697908_logo.png",
+      "red_image": "http://static.lolesports.com/teams/1738571384294_.png",
+      "blue_score": "",
+      "red_score": "",
+      "best_of": "5",
+      "source": "lolesports_api",
+      "teams": [
+        {
+          "id": "",
+          "name": "Pyramid IV Esports",
+          "code": "PIE",
+          "image": "http://static.lolesports.com/teams/1738571697908_logo.png",
+          "game_wins": ""
+        },
+        {
+          "id": "",
+          "name": "JSK Gamefy",
+          "code": "JG",
+          "image": "http://static.lolesports.com/teams/1738571384294_.png",
+          "game_wins": ""
+        }
+      ],
+      "games": []
+    },
+    {
+      "id": "NLC/2026 Season/Summer Split_Finals_1",
+      "source_match_id": "116878159559860117",
+      "league": "NLC",
+      "league_group": "secondary",
+      "region": "emea",
+      "start_time": "2026-09-16T16:00:00Z",
+      "status": "unstarted",
+      "blue_team": "Verdant",
+      "red_team": "Ruddy Corporation",
       "blue_code": "RC",
       "red_code": "VERD",
       "blue_image": "https://static.lolesports.com/teams/1767962931112_rud.png",
@@ -504,18 +576,18 @@
       "blue_score": "",
       "red_score": "",
       "best_of": "5",
-      "source": "leaguepedia",
+      "source": "lolesports_api",
       "teams": [
         {
           "id": "",
-          "name": "Ruddy Corporation",
+          "name": "Verdant",
           "code": "RC",
           "image": "https://static.lolesports.com/teams/1767962931112_rud.png",
           "game_wins": ""
         },
         {
           "id": "",
-          "name": "Verdant",
+          "name": "Ruddy Corporation",
           "code": "VERD",
           "image": "http://static.lolesports.com/teams/1776929487394_DREAMWHITE.png",
           "game_wins": ""
