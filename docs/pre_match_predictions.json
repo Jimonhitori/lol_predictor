@@ -1,6 +1,6 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-09-15T20:51:10.054429Z",
+  "generated_at": "2026-09-16T20:51:45.162156Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
@@ -11,33 +11,101 @@
   },
   "predictions": [
     {
-      "event_id": "115565004607949399",
-      "game_id": "115565004607949399",
-      "league": "LCS",
-      "start_time": "2026-09-19 05:00:00",
-      "blue_team": "sentinels",
-      "red_team": "shopify_rebellion",
-      "blue_team_name": "Sentinels",
-      "red_team_name": "Shopify Rebellion",
-      "blue_win_probability": 0.536621,
-      "red_win_probability": 0.463379,
-      "predicted_winner": "Sentinels",
-      "confidence": "high",
+      "event_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 2_5",
+      "game_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 2_5",
+      "league": "LCP Wildcard 2026 Last Chance Qualifier",
+      "start_time": "2026-09-17 22:00:00",
+      "blue_team": "somethin_here",
+      "red_team": "day_after_today",
+      "blue_team_name": "Somethin'Here",
+      "red_team_name": "Day After Today",
+      "blue_win_probability": 0.49775,
+      "red_win_probability": 0.50225,
+      "predicted_winner": "Day After Today",
+      "confidence": "low",
       "model": "logistic_regression_actions",
-      "warnings": []
+      "warnings": [
+        "blue_team_fallback_slug:Somethin'Here->somethin_here",
+        "blue_team_no_history:somethin_here",
+        "red_team_fallback_slug:Day After Today->day_after_today",
+        "red_team_no_history:day_after_today"
+      ]
     },
     {
-      "event_id": "115565004607949393",
-      "game_id": "115565004607949393",
-      "league": "LCS",
-      "start_time": "2026-09-21 05:00:00",
-      "blue_team": "flyquest",
-      "red_team": "team_liquid",
-      "blue_team_name": "FlyQuest",
-      "red_team_name": "Team Liquid Alienware",
-      "blue_win_probability": 0.395979,
-      "red_win_probability": 0.604021,
-      "predicted_winner": "Team Liquid Alienware",
+      "event_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 2_6",
+      "game_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 2_6",
+      "league": "LCP Wildcard 2026 Last Chance Qualifier",
+      "start_time": "2026-09-17 22:00:00",
+      "blue_team": "clown_squad",
+      "red_team": "go_home_speedrun",
+      "blue_team_name": "Clown Squad",
+      "red_team_name": "Go Home Speedrun",
+      "blue_win_probability": 0.49775,
+      "red_win_probability": 0.50225,
+      "predicted_winner": "Go Home Speedrun",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:Clown Squad->clown_squad",
+        "blue_team_no_history:clown_squad",
+        "red_team_fallback_slug:Go Home Speedrun->go_home_speedrun",
+        "red_team_no_history:go_home_speedrun"
+      ]
+    },
+    {
+      "event_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 2_7",
+      "game_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 2_7",
+      "league": "LCP Wildcard 2026 Last Chance Qualifier",
+      "start_time": "2026-09-17 22:00:00",
+      "blue_team": "pagle48",
+      "red_team": "last_stand_esports",
+      "blue_team_name": "PAGLE48",
+      "red_team_name": "Last Stand Esports",
+      "blue_win_probability": 0.49775,
+      "red_win_probability": 0.50225,
+      "predicted_winner": "Last Stand Esports",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:PAGLE48->pagle48",
+        "blue_team_no_history:pagle48",
+        "red_team_fallback_slug:Last Stand Esports->last_stand_esports",
+        "red_team_no_history:last_stand_esports"
+      ]
+    },
+    {
+      "event_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 4_2",
+      "game_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 4_2",
+      "league": "LCP Wildcard 2026 Last Chance Qualifier",
+      "start_time": "2026-09-18 22:00:00",
+      "blue_team": "outside_leaked",
+      "red_team": "part_timers",
+      "blue_team_name": "outside leaked",
+      "red_team_name": "PART TIMERS",
+      "blue_win_probability": 0.49775,
+      "red_win_probability": 0.50225,
+      "predicted_winner": "PART TIMERS",
+      "confidence": "low",
+      "model": "logistic_regression_actions",
+      "warnings": [
+        "blue_team_fallback_slug:outside leaked->outside_leaked",
+        "blue_team_no_history:outside_leaked",
+        "red_team_fallback_slug:PART TIMERS->part_timers",
+        "red_team_no_history:part_timers"
+      ]
+    },
+    {
+      "event_id": "LEC/2026 Season/Summer Playoffs_Round 2_1",
+      "game_id": "LEC/2026 Season/Summer Playoffs_Round 2_1",
+      "league": "LEC 2026 Summer Playoffs",
+      "start_time": "2026-09-19 00:00:00",
+      "blue_team": "natus_vincere",
+      "red_team": "movistar_koi",
+      "blue_team_name": "Natus Vincere",
+      "red_team_name": "Movistar KOI",
+      "blue_win_probability": 0.414223,
+      "red_win_probability": 0.585777,
+      "predicted_winner": "Movistar KOI",
       "confidence": "high",
       "model": "logistic_regression_actions",
       "warnings": []
@@ -191,10 +259,28 @@
     }
   ],
   "warnings": [
-    "blue_team_fallback_slug:count=1",
+    "blue_team_fallback_slug:count=5",
+    "blue_team_fallback_slug:Clown Squad->clown_squad",
+    "blue_team_fallback_slug:PAGLE48->pagle48",
     "blue_team_fallback_slug:RED Kalunga->red_kalunga",
-    "blue_team_no_history:count=1",
-    "blue_team_no_history:red_kalunga"
+    "blue_team_fallback_slug:Somethin'Here->somethin_here",
+    "blue_team_fallback_slug:outside leaked->outside_leaked",
+    "blue_team_no_history:count=5",
+    "blue_team_no_history:clown_squad",
+    "blue_team_no_history:outside_leaked",
+    "blue_team_no_history:pagle48",
+    "blue_team_no_history:red_kalunga",
+    "blue_team_no_history:somethin_here",
+    "red_team_fallback_slug:count=4",
+    "red_team_fallback_slug:Day After Today->day_after_today",
+    "red_team_fallback_slug:Go Home Speedrun->go_home_speedrun",
+    "red_team_fallback_slug:Last Stand Esports->last_stand_esports",
+    "red_team_fallback_slug:PART TIMERS->part_timers",
+    "red_team_no_history:count=4",
+    "red_team_no_history:day_after_today",
+    "red_team_no_history:go_home_speedrun",
+    "red_team_no_history:last_stand_esports",
+    "red_team_no_history:part_timers"
   ],
-  "warning_count": 4
+  "warning_count": 22
 }
