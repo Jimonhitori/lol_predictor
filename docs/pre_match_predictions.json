@@ -1,1166 +1,148 @@
 {
   "schema": "lol_predictions_public_v1",
-  "generated_at": "2026-09-20T20:54:11.307672Z",
+  "generated_at": "2026-09-21T20:52:28.977396Z",
   "source": "lol-pros-analyzer train workflow",
   "models": {
     "pre_match": {
-      "name": "elo_fallback",
-      "version": "elo_fallback",
+      "name": "logistic_regression_actions",
+      "version": "logistic_regression_actions",
       "metrics": {}
     }
   },
   "predictions": [
     {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_1",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_1",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 14:00:00",
-      "blue_team": "gen_g_scholars",
-      "red_team": "hanwha_life_esports_academy",
-      "blue_team_name": "Gen.G Scholars",
-      "red_team_name": "Hanwha Life Esports Academy",
-      "blue_win_probability": 0.335176,
-      "red_win_probability": 0.664824,
-      "predicted_winner": "Hanwha Life Esports Academy",
+      "event_id": "117171782819665583",
+      "game_id": "117171782819665583",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 00:00:00",
+      "blue_team": "lodis",
+      "red_team": "skillcamp",
+      "blue_team_name": "LODIS",
+      "red_team_name": "Skillcamp",
+      "blue_win_probability": 0.965894,
+      "red_win_probability": 0.034106,
+      "predicted_winner": "LODIS",
       "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     },
     {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_2",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_2",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 14:00:00",
-      "blue_team": "t1_esports_academy_rookies",
-      "red_team": "eunpyeong_meditech_high_school",
-      "blue_team_name": "T1 Esports Academy Rookies",
-      "red_team_name": "Eunpyeong Meditech High School",
-      "blue_win_probability": 0.82158,
-      "red_win_probability": 0.17842,
-      "predicted_winner": "T1 Esports Academy Rookies",
+      "event_id": "117171782819731133",
+      "game_id": "117171782819731133",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 00:00:00",
+      "blue_team": "cita_kaizen",
+      "red_team": "unicorns_of_love_sexy_edition",
+      "blue_team_name": "CITA Kaizen",
+      "red_team_name": "Unicorns of Love Sexy Edition",
+      "blue_win_probability": 0.441487,
+      "red_win_probability": 0.558513,
+      "predicted_winner": "Unicorns of Love Sexy Edition",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
+      "event_id": "117171782819731147",
+      "game_id": "117171782819731147",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 00:00:00",
+      "blue_team": "ucam_esports_club",
+      "red_team": "avella_su_esports",
+      "blue_team_name": "UCAM Esports Club",
+      "red_team_name": "Avella SU Esports",
+      "blue_win_probability": 0.672221,
+      "red_win_probability": 0.327779,
+      "predicted_winner": "UCAM Esports Club",
       "confidence": "low",
-      "model": "elo_fallback",
+      "model": "logistic_regression_actions",
       "warnings": [
-        "elo_fallback_prediction"
+        "red_team_fallback_slug:Avella SU Esports->avella_su_esports",
+        "red_team_no_history:avella_su_esports"
       ]
     },
     {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_3",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_3",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 14:00:00",
-      "blue_team": "kiwoom_drx_academy",
-      "red_team": "dn_soopers_academy",
-      "blue_team_name": "Kiwoom DRX Academy",
-      "red_team_name": "DN SOOPers Academy",
-      "blue_win_probability": 0.41629,
-      "red_win_probability": 0.58371,
-      "predicted_winner": "DN SOOPers Academy",
+      "event_id": "117171782819731161",
+      "game_id": "117171782819731161",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 00:00:00",
+      "blue_team": "gamespace_m_c",
+      "red_team": "bar_a_esports",
+      "blue_team_name": "Gamespace M.C.",
+      "red_team_name": "Barça Esports",
+      "blue_win_probability": 0.428951,
+      "red_win_probability": 0.571049,
+      "predicted_winner": "Barça Esports",
       "confidence": "low",
-      "model": "elo_fallback",
+      "model": "logistic_regression_actions",
       "warnings": [
-        "elo_fallback_prediction"
+        "blue_team_fallback_slug:Gamespace M.C.->gamespace_m_c",
+        "blue_team_no_history:gamespace_m_c"
       ]
     },
     {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_4",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_4",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 14:00:00",
-      "blue_team": "dplus_kia_youth",
-      "red_team": "nongshim_redforce_academy",
-      "blue_team_name": "Dplus Kia Youth",
-      "red_team_name": "Nongshim RedForce Academy",
-      "blue_win_probability": 0.756762,
-      "red_win_probability": 0.243238,
-      "predicted_winner": "Dplus Kia Youth",
+      "event_id": "117173205363099673",
+      "game_id": "117173205363099673",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 03:00:00",
+      "blue_team": "pyramid_iv_esports",
+      "red_team": "arctic_pandas",
+      "blue_team_name": "Pyramid IV Esports",
+      "red_team_name": "Arctic Pandas",
+      "blue_win_probability": 0.442075,
+      "red_win_probability": 0.557925,
+      "predicted_winner": "Arctic Pandas",
+      "confidence": "high",
+      "model": "logistic_regression_actions",
+      "warnings": []
+    },
+    {
+      "event_id": "117173205363099681",
+      "game_id": "117173205363099681",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 03:00:00",
+      "blue_team": "team_aqua_asd",
+      "red_team": "otter_side",
+      "blue_team_name": "TEAM AQUA",
+      "red_team_name": "Otter Side",
+      "blue_win_probability": 0.323229,
+      "red_win_probability": 0.676771,
+      "predicted_winner": "Otter Side",
       "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     },
     {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_5",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_5",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 14:00:00",
-      "blue_team": "hanjin_brion_academy",
-      "red_team": "kt_rolster_academy",
-      "blue_team_name": "HANJIN BRION Academy",
-      "red_team_name": "KT Rolster Academy",
-      "blue_win_probability": 0.369053,
-      "red_win_probability": 0.630947,
-      "predicted_winner": "KT Rolster Academy",
+      "event_id": "117173205363099689",
+      "game_id": "117173205363099689",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 03:00:00",
+      "blue_team": "mcon_esports",
+      "red_team": "verdant",
+      "blue_team_name": "mCon Esports",
+      "red_team_name": "Verdant",
+      "blue_win_probability": 0.297456,
+      "red_win_probability": 0.702544,
+      "predicted_winner": "Verdant",
       "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     },
     {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_1",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_1",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 15:00:00",
-      "blue_team": "edward_gaming_youth_team",
-      "red_team": "t1_esports_academy",
-      "blue_team_name": "EDward Gaming Youth Team",
-      "red_team_name": "T1 Esports Academy",
-      "blue_win_probability": 0.356919,
-      "red_win_probability": 0.643081,
-      "predicted_winner": "T1 Esports Academy",
+      "event_id": "117173205363099697",
+      "game_id": "117173205363099697",
+      "league": "EMEA Masters",
+      "start_time": "2026-09-23 03:00:00",
+      "blue_team": "only_the_family",
+      "red_team": "bubliki",
+      "blue_team_name": "ONLY THE FAMILY",
+      "red_team_name": "Bubliki",
+      "blue_win_probability": 0.437301,
+      "red_win_probability": 0.562699,
+      "predicted_winner": "Bubliki",
       "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_10",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_10",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 16:00:00",
-      "blue_team": "hanjin_brion_academy",
-      "red_team": "nongshim_redforce_academy",
-      "blue_team_name": "HANJIN BRION Academy",
-      "red_team_name": "Nongshim RedForce Academy",
-      "blue_win_probability": 0.554002,
-      "red_win_probability": 0.445998,
-      "predicted_winner": "HANJIN BRION Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_6",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_6",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 16:00:00",
-      "blue_team": "eunpyeong_meditech_high_school",
-      "red_team": "gen_g_scholars",
-      "blue_team_name": "Eunpyeong Meditech High School",
-      "red_team_name": "Gen.G Scholars",
-      "blue_win_probability": 0.391168,
-      "red_win_probability": 0.608832,
-      "predicted_winner": "Gen.G Scholars",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_7",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_7",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 16:00:00",
-      "blue_team": "hanwha_life_esports_academy",
-      "red_team": "dn_soopers_academy",
-      "blue_team_name": "Hanwha Life Esports Academy",
-      "red_team_name": "DN SOOPers Academy",
-      "blue_win_probability": 0.697294,
-      "red_win_probability": 0.302706,
-      "predicted_winner": "Hanwha Life Esports Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_8",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_8",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 16:00:00",
-      "blue_team": "dplus_kia_youth",
-      "red_team": "t1_esports_academy_rookies",
-      "blue_team_name": "Dplus Kia Youth",
-      "red_team_name": "T1 Esports Academy Rookies",
-      "blue_win_probability": 0.254463,
-      "red_win_probability": 0.745537,
-      "predicted_winner": "T1 Esports Academy Rookies",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_9",
-      "game_id": "LCK Academy Series/2026 Season/2nd Championship_Day 4_9",
-      "league": "LCK AS 2026 2nd Championship",
-      "start_time": "2026-09-20 16:00:00",
-      "blue_team": "kt_rolster_academy",
-      "red_team": "kiwoom_drx_academy",
-      "blue_team_name": "KT Rolster Academy",
-      "red_team_name": "Kiwoom DRX Academy",
-      "blue_win_probability": 0.528834,
-      "red_win_probability": 0.471166,
-      "predicted_winner": "KT Rolster Academy",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_2",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_2",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 16:00:00",
-      "blue_team": "fuego",
-      "red_team": "dn_soopers_challengers",
-      "blue_team_name": "Fuego",
-      "red_team_name": "DN SOOPers Challengers",
-      "blue_win_probability": 0.642899,
-      "red_win_probability": 0.357101,
-      "predicted_winner": "Fuego",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_3",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_3",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 17:00:00",
-      "blue_team": "kt_rolster_challengers",
-      "red_team": "bilibili_gaming_junior",
-      "blue_team_name": "KT Rolster Challengers",
-      "red_team_name": "Bilibili Gaming Junior",
-      "blue_win_probability": 0.718154,
-      "red_win_probability": 0.281846,
-      "predicted_winner": "KT Rolster Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_4",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_4",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 18:00:00",
-      "blue_team": "movistar_koi_f_nix",
-      "red_team": "ctbc_flying_oyster_academy",
-      "blue_team_name": "Movistar KOI Fénix",
-      "red_team_name": "CTBC Flying Oyster Academy",
-      "blue_win_probability": 0.729858,
-      "red_win_probability": 0.270142,
-      "predicted_winner": "Movistar KOI Fénix",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 6_2",
-      "game_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Round 6_2",
-      "league": "LCP Wildcard 2026 Last Chance Qualifier",
-      "start_time": "2026-09-20 19:00:00",
-      "blue_team": "jolly_bee",
-      "red_team": "sparky_(malaysian_team)",
-      "blue_team_name": "Jolly Bee",
-      "red_team_name": "Sparky (Malaysian Team)",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "Jolly Bee",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:jolly_bee",
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:sparky_(malaysian_team)"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_5",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_5",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 19:00:00",
-      "blue_team": "dn_soopers_challengers",
-      "red_team": "t1_esports_academy",
-      "blue_team_name": "DN SOOPers Challengers",
-      "red_team_name": "T1 Esports Academy",
-      "blue_win_probability": 0.461424,
-      "red_win_probability": 0.538576,
-      "predicted_winner": "T1 Esports Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_6",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_6",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 20:00:00",
-      "blue_team": "fuego",
-      "red_team": "edward_gaming_youth_team",
-      "blue_team_name": "Fuego",
-      "red_team_name": "EDward Gaming Youth Team",
-      "blue_win_probability": 0.735386,
-      "red_win_probability": 0.264614,
-      "predicted_winner": "Fuego",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_7",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_7",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 21:00:00",
-      "blue_team": "ctbc_flying_oyster_academy",
-      "red_team": "bilibili_gaming_junior",
-      "blue_team_name": "CTBC Flying Oyster Academy",
-      "red_team_name": "Bilibili Gaming Junior",
-      "blue_win_probability": 0.679617,
-      "red_win_probability": 0.320383,
-      "predicted_winner": "CTBC Flying Oyster Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Finals_1",
-      "game_id": "LCP Wildcard/2026 Season/Regional Qualifiers/LCQ_Finals_1",
-      "league": "LCP Wildcard 2026 Last Chance Qualifier",
-      "start_time": "2026-09-20 22:00:00",
-      "blue_team": "part_timers",
-      "red_team": "sparky_(malaysian_team)",
-      "blue_team_name": "PART TIMERS",
-      "red_team_name": "Sparky (Malaysian Team)",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "PART TIMERS",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:part_timers",
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:sparky_(malaysian_team)"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 1_8",
-      "game_id": "2026 World Star Challengers Invitational_Day 1_8",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-20 22:00:00",
-      "blue_team": "movistar_koi_f_nix",
-      "red_team": "kt_rolster_challengers",
-      "blue_team_name": "Movistar KOI Fénix",
-      "red_team_name": "KT Rolster Challengers",
-      "blue_win_probability": 0.692235,
-      "red_win_probability": 0.307765,
-      "predicted_winner": "Movistar KOI Fénix",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LEC/2026 Season/Summer Playoffs_Finals_1",
-      "game_id": "LEC/2026 Season/Summer Playoffs_Finals_1",
-      "league": "LEC 2026 Summer Playoffs",
-      "start_time": "2026-09-21 00:00:00",
-      "blue_team": "g2_esports",
-      "red_team": "movistar_koi",
-      "blue_team_name": "G2 Esports",
-      "red_team_name": "Movistar KOI",
-      "blue_win_probability": 0.66624,
-      "red_win_probability": 0.33376,
-      "predicted_winner": "G2 Esports",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "CBLOL/2026 Season/Split 2 Playoffs_Round 2_3",
-      "game_id": "CBLOL/2026 Season/Split 2 Playoffs_Round 2_3",
-      "league": "CBLOL 2026 Split 2 Playoffs",
-      "start_time": "2026-09-21 01:00:00",
-      "blue_team": "pain_gaming",
-      "red_team": "red_canids",
-      "blue_team_name": "paiN Gaming",
-      "red_team_name": "RED Canids",
-      "blue_win_probability": 0.299959,
-      "red_win_probability": 0.700041,
-      "predicted_winner": "RED Canids",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "LCS/2026 Season/Summer Playoffs_Round 2_2",
-      "game_id": "LCS/2026 Season/Summer Playoffs_Round 2_2",
-      "league": "LCS 2026 Summer Playoffs",
-      "start_time": "2026-09-21 05:00:00",
-      "blue_team": "team_liquid",
-      "red_team": "flyquest",
-      "blue_team_name": "Team Liquid",
-      "red_team_name": "FlyQuest",
-      "blue_win_probability": 0.632707,
-      "red_win_probability": 0.367293,
-      "predicted_winner": "Team Liquid",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_1",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_1",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 15:00:00",
-      "blue_team": "vivo_keyd_stars_academy",
-      "red_team": "dplus_kia_challengers",
-      "blue_team_name": "Vivo Keyd Stars Academy",
-      "red_team_name": "Dplus Kia Challengers",
-      "blue_win_probability": 0.486007,
-      "red_win_probability": 0.513993,
-      "predicted_winner": "Dplus Kia Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_2",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_2",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 16:00:00",
-      "blue_team": "fennel",
-      "red_team": "cupid_esports",
-      "blue_team_name": "FENNEL",
-      "red_team_name": "Cupid Esports",
-      "blue_win_probability": 0.728921,
-      "red_win_probability": 0.271079,
-      "predicted_winner": "FENNEL",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_3",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_3",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 17:00:00",
-      "blue_team": "galions",
-      "red_team": "saigon_warriors",
-      "blue_team_name": "Galions",
-      "red_team_name": "Saigon Warriors",
-      "blue_win_probability": 0.754303,
-      "red_win_probability": 0.245697,
-      "predicted_winner": "Galions",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_4",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_4",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 18:00:00",
-      "blue_team": "solary",
-      "red_team": "zsk_(chinese_team)",
-      "blue_team_name": "Solary",
-      "red_team_name": "ZSK (Chinese Team)",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "Solary",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:zsk_(chinese_team)"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_5",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_5",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 19:00:00",
-      "blue_team": "cupid_esports",
-      "red_team": "dplus_kia_challengers",
-      "blue_team_name": "Cupid Esports",
-      "red_team_name": "Dplus Kia Challengers",
-      "blue_win_probability": 0.275696,
-      "red_win_probability": 0.724304,
-      "predicted_winner": "Dplus Kia Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_6",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_6",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 20:00:00",
-      "blue_team": "fennel",
-      "red_team": "vivo_keyd_stars_academy",
-      "blue_team_name": "FENNEL",
-      "red_team_name": "Vivo Keyd Stars Academy",
-      "blue_win_probability": 0.519796,
-      "red_win_probability": 0.480204,
-      "predicted_winner": "FENNEL",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_7",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_7",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 21:00:00",
-      "blue_team": "zsk_(chinese_team)",
-      "red_team": "saigon_warriors",
-      "blue_team_name": "ZSK (Chinese Team)",
-      "red_team_name": "Saigon Warriors",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "ZSK (Chinese Team)",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:zsk_(chinese_team)",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 2_8",
-      "game_id": "2026 World Star Challengers Invitational_Day 2_8",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-21 22:00:00",
-      "blue_team": "solary",
-      "red_team": "galions",
-      "blue_team_name": "Solary",
-      "red_team_name": "Galions",
-      "blue_win_probability": 0.460308,
-      "red_win_probability": 0.539692,
-      "predicted_winner": "Galions",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_1",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_1",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 15:00:00",
-      "blue_team": "movistar_koi_f_nix",
-      "red_team": "bilibili_gaming_junior",
-      "blue_team_name": "Movistar KOI Fénix",
-      "red_team_name": "Bilibili Gaming Junior",
-      "blue_win_probability": 0.851437,
-      "red_win_probability": 0.148563,
-      "predicted_winner": "Movistar KOI Fénix",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_2",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_2",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 16:00:00",
-      "blue_team": "ctbc_flying_oyster_academy",
-      "red_team": "kt_rolster_challengers",
-      "blue_team_name": "CTBC Flying Oyster Academy",
-      "red_team_name": "KT Rolster Challengers",
-      "blue_win_probability": 0.4543,
-      "red_win_probability": 0.5457,
-      "predicted_winner": "KT Rolster Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_3",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_3",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 17:00:00",
-      "blue_team": "fuego",
-      "red_team": "t1_esports_academy",
-      "blue_team_name": "Fuego",
-      "red_team_name": "T1 Esports Academy",
-      "blue_win_probability": 0.606676,
-      "red_win_probability": 0.393324,
-      "predicted_winner": "Fuego",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_4",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_4",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 18:00:00",
-      "blue_team": "dn_soopers_challengers",
-      "red_team": "edward_gaming_youth_team",
-      "blue_team_name": "DN SOOPers Challengers",
-      "red_team_name": "EDward Gaming Youth Team",
-      "blue_win_probability": 0.606865,
-      "red_win_probability": 0.393135,
-      "predicted_winner": "DN SOOPers Challengers",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_5",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_5",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 19:00:00",
-      "blue_team": "kt_rolster_challengers",
-      "red_team": "bilibili_gaming_junior",
-      "blue_team_name": "KT Rolster Challengers",
-      "red_team_name": "Bilibili Gaming Junior",
-      "blue_win_probability": 0.718154,
-      "red_win_probability": 0.281846,
-      "predicted_winner": "KT Rolster Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_6",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_6",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 20:00:00",
-      "blue_team": "movistar_koi_f_nix",
-      "red_team": "ctbc_flying_oyster_academy",
-      "blue_team_name": "Movistar KOI Fénix",
-      "red_team_name": "CTBC Flying Oyster Academy",
-      "blue_win_probability": 0.729858,
-      "red_win_probability": 0.270142,
-      "predicted_winner": "Movistar KOI Fénix",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_7",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_7",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 21:00:00",
-      "blue_team": "edward_gaming_youth_team",
-      "red_team": "t1_esports_academy",
-      "blue_team_name": "EDward Gaming Youth Team",
-      "red_team_name": "T1 Esports Academy",
-      "blue_win_probability": 0.356919,
-      "red_win_probability": 0.643081,
-      "predicted_winner": "T1 Esports Academy",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 3_8",
-      "game_id": "2026 World Star Challengers Invitational_Day 3_8",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-22 22:00:00",
-      "blue_team": "fuego",
-      "red_team": "dn_soopers_challengers",
-      "blue_team_name": "Fuego",
-      "red_team_name": "DN SOOPers Challengers",
-      "blue_win_probability": 0.642899,
-      "red_win_probability": 0.357101,
-      "predicted_winner": "Fuego",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_1",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_1",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 15:00:00",
-      "blue_team": "solary",
-      "red_team": "saigon_warriors",
-      "blue_team_name": "Solary",
-      "red_team_name": "Saigon Warriors",
-      "blue_win_probability": 0.723641,
-      "red_win_probability": 0.276359,
-      "predicted_winner": "Solary",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_2",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_2",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 16:00:00",
-      "blue_team": "zsk_(chinese_team)",
-      "red_team": "galions",
-      "blue_team_name": "ZSK (Chinese Team)",
-      "red_team_name": "Galions",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "ZSK (Chinese Team)",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:zsk_(chinese_team)",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_3",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_3",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 17:00:00",
-      "blue_team": "fennel",
-      "red_team": "dplus_kia_challengers",
-      "blue_team_name": "FENNEL",
-      "red_team_name": "Dplus Kia Challengers",
-      "blue_win_probability": 0.50581,
-      "red_win_probability": 0.49419,
-      "predicted_winner": "FENNEL",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_4",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_4",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 18:00:00",
-      "blue_team": "cupid_esports",
-      "red_team": "vivo_keyd_stars_academy",
-      "blue_team_name": "Cupid Esports",
-      "red_team_name": "Vivo Keyd Stars Academy",
-      "blue_win_probability": 0.287014,
-      "red_win_probability": 0.712986,
-      "predicted_winner": "Vivo Keyd Stars Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_5",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_5",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 19:00:00",
-      "blue_team": "galions",
-      "red_team": "saigon_warriors",
-      "blue_team_name": "Galions",
-      "red_team_name": "Saigon Warriors",
-      "blue_win_probability": 0.754303,
-      "red_win_probability": 0.245697,
-      "predicted_winner": "Galions",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_6",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_6",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 20:00:00",
-      "blue_team": "solary",
-      "red_team": "zsk_(chinese_team)",
-      "blue_team_name": "Solary",
-      "red_team_name": "ZSK (Chinese Team)",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "Solary",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction",
-        "missing_elo_rating",
-        "red_team_no_history:zsk_(chinese_team)"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_7",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_7",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 21:00:00",
-      "blue_team": "vivo_keyd_stars_academy",
-      "red_team": "dplus_kia_challengers",
-      "blue_team_name": "Vivo Keyd Stars Academy",
-      "red_team_name": "Dplus Kia Challengers",
-      "blue_win_probability": 0.486007,
-      "red_win_probability": 0.513993,
-      "predicted_winner": "Dplus Kia Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 4_8",
-      "game_id": "2026 World Star Challengers Invitational_Day 4_8",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-23 22:00:00",
-      "blue_team": "fennel",
-      "red_team": "cupid_esports",
-      "blue_team_name": "FENNEL",
-      "red_team_name": "Cupid Esports",
-      "blue_win_probability": 0.728921,
-      "red_win_probability": 0.271079,
-      "predicted_winner": "FENNEL",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_1",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_1",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 15:00:00",
-      "blue_team": "dn_soopers_challengers",
-      "red_team": "t1_esports_academy",
-      "blue_team_name": "DN SOOPers Challengers",
-      "red_team_name": "T1 Esports Academy",
-      "blue_win_probability": 0.461424,
-      "red_win_probability": 0.538576,
-      "predicted_winner": "T1 Esports Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_2",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_2",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 16:00:00",
-      "blue_team": "fuego",
-      "red_team": "edward_gaming_youth_team",
-      "blue_team_name": "Fuego",
-      "red_team_name": "EDward Gaming Youth Team",
-      "blue_win_probability": 0.735386,
-      "red_win_probability": 0.264614,
-      "predicted_winner": "Fuego",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_3",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_3",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 17:00:00",
-      "blue_team": "ctbc_flying_oyster_academy",
-      "red_team": "bilibili_gaming_junior",
-      "blue_team_name": "CTBC Flying Oyster Academy",
-      "red_team_name": "Bilibili Gaming Junior",
-      "blue_win_probability": 0.679617,
-      "red_win_probability": 0.320383,
-      "predicted_winner": "CTBC Flying Oyster Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_4",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_4",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 18:00:00",
-      "blue_team": "movistar_koi_f_nix",
-      "red_team": "kt_rolster_challengers",
-      "blue_team_name": "Movistar KOI Fénix",
-      "red_team_name": "KT Rolster Challengers",
-      "blue_win_probability": 0.692235,
-      "red_win_probability": 0.307765,
-      "predicted_winner": "Movistar KOI Fénix",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_5",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_5",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 19:00:00",
-      "blue_team": "fuego",
-      "red_team": "t1_esports_academy",
-      "blue_team_name": "Fuego",
-      "red_team_name": "T1 Esports Academy",
-      "blue_win_probability": 0.606676,
-      "red_win_probability": 0.393324,
-      "predicted_winner": "Fuego",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_6",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_6",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 20:00:00",
-      "blue_team": "dn_soopers_challengers",
-      "red_team": "edward_gaming_youth_team",
-      "blue_team_name": "DN SOOPers Challengers",
-      "red_team_name": "EDward Gaming Youth Team",
-      "blue_win_probability": 0.606865,
-      "red_win_probability": 0.393135,
-      "predicted_winner": "DN SOOPers Challengers",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_7",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_7",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 21:00:00",
-      "blue_team": "movistar_koi_f_nix",
-      "red_team": "bilibili_gaming_junior",
-      "blue_team_name": "Movistar KOI Fénix",
-      "red_team_name": "Bilibili Gaming Junior",
-      "blue_win_probability": 0.851437,
-      "red_win_probability": 0.148563,
-      "predicted_winner": "Movistar KOI Fénix",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 5_8",
-      "game_id": "2026 World Star Challengers Invitational_Day 5_8",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-24 22:00:00",
-      "blue_team": "ctbc_flying_oyster_academy",
-      "red_team": "kt_rolster_challengers",
-      "blue_team_name": "CTBC Flying Oyster Academy",
-      "red_team_name": "KT Rolster Challengers",
-      "blue_win_probability": 0.4543,
-      "red_win_probability": 0.5457,
-      "predicted_winner": "KT Rolster Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_1",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_1",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 15:00:00",
-      "blue_team": "cupid_esports",
-      "red_team": "dplus_kia_challengers",
-      "blue_team_name": "Cupid Esports",
-      "red_team_name": "Dplus Kia Challengers",
-      "blue_win_probability": 0.275696,
-      "red_win_probability": 0.724304,
-      "predicted_winner": "Dplus Kia Challengers",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_2",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_2",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 16:00:00",
-      "blue_team": "fennel",
-      "red_team": "vivo_keyd_stars_academy",
-      "blue_team_name": "FENNEL",
-      "red_team_name": "Vivo Keyd Stars Academy",
-      "blue_win_probability": 0.519796,
-      "red_win_probability": 0.480204,
-      "predicted_winner": "FENNEL",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_3",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_3",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 17:00:00",
-      "blue_team": "zsk_(chinese_team)",
-      "red_team": "saigon_warriors",
-      "blue_team_name": "ZSK (Chinese Team)",
-      "red_team_name": "Saigon Warriors",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "ZSK (Chinese Team)",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:zsk_(chinese_team)",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_4",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_4",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 18:00:00",
-      "blue_team": "solary",
-      "red_team": "galions",
-      "blue_team_name": "Solary",
-      "red_team_name": "Galions",
-      "blue_win_probability": 0.460308,
-      "red_win_probability": 0.539692,
-      "predicted_winner": "Galions",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_5",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_5",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 19:00:00",
-      "blue_team": "fennel",
-      "red_team": "dplus_kia_challengers",
-      "blue_team_name": "FENNEL",
-      "red_team_name": "Dplus Kia Challengers",
-      "blue_win_probability": 0.50581,
-      "red_win_probability": 0.49419,
-      "predicted_winner": "FENNEL",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_6",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_6",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 20:00:00",
-      "blue_team": "cupid_esports",
-      "red_team": "vivo_keyd_stars_academy",
-      "blue_team_name": "Cupid Esports",
-      "red_team_name": "Vivo Keyd Stars Academy",
-      "blue_win_probability": 0.287014,
-      "red_win_probability": 0.712986,
-      "predicted_winner": "Vivo Keyd Stars Academy",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_7",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_7",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 21:00:00",
-      "blue_team": "solary",
-      "red_team": "saigon_warriors",
-      "blue_team_name": "Solary",
-      "red_team_name": "Saigon Warriors",
-      "blue_win_probability": 0.723641,
-      "red_win_probability": 0.276359,
-      "predicted_winner": "Solary",
-      "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
-    },
-    {
-      "event_id": "2026 World Star Challengers Invitational_Day 6_8",
-      "game_id": "2026 World Star Challengers Invitational_Day 6_8",
-      "league": "World Star Challengers Invitational 2026",
-      "start_time": "2026-09-25 22:00:00",
-      "blue_team": "zsk_(chinese_team)",
-      "red_team": "galions",
-      "blue_team_name": "ZSK (Chinese Team)",
-      "red_team_name": "Galions",
-      "blue_win_probability": 0.5,
-      "red_win_probability": 0.5,
-      "predicted_winner": "ZSK (Chinese Team)",
-      "confidence": "low",
-      "model": "elo_fallback",
-      "warnings": [
-        "blue_team_no_history:zsk_(chinese_team)",
-        "elo_fallback_prediction",
-        "missing_elo_rating"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     },
     {
       "event_id": "CBLOL/2026 Season/Split 2 Playoffs_Round 3_1",
@@ -1171,14 +153,12 @@
       "red_team": "red_canids",
       "blue_team_name": "FURIA",
       "red_team_name": "RED Canids",
-      "blue_win_probability": 0.451556,
-      "red_win_probability": 0.548444,
+      "blue_win_probability": 0.44799,
+      "red_win_probability": 0.55201,
       "predicted_winner": "RED Canids",
       "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     },
     {
       "event_id": "CBLOL/2026 Season/Split 2 Playoffs_Round 4_1",
@@ -1189,26 +169,23 @@
       "red_team": "l_s",
       "blue_team_name": "LOUD",
       "red_team_name": "LØS",
-      "blue_win_probability": 0.342397,
-      "red_win_probability": 0.657603,
+      "blue_win_probability": 0.29652,
+      "red_win_probability": 0.70348,
       "predicted_winner": "LØS",
       "confidence": "high",
-      "model": "elo_fallback",
-      "warnings": [
-        "elo_fallback_prediction"
-      ]
+      "model": "logistic_regression_actions",
+      "warnings": []
     }
   ],
   "warnings": [
-    "blue_team_no_history:count=3",
-    "blue_team_no_history:jolly_bee",
-    "blue_team_no_history:part_timers",
-    "blue_team_no_history:zsk_(chinese_team)",
-    "red_team_no_history:count=2",
-    "red_team_no_history:sparky_(malaysian_team)",
-    "red_team_no_history:zsk_(chinese_team)",
-    "elo_fallback_prediction",
-    "missing_elo_rating"
+    "blue_team_fallback_slug:count=1",
+    "blue_team_fallback_slug:Gamespace M.C.->gamespace_m_c",
+    "blue_team_no_history:count=1",
+    "blue_team_no_history:gamespace_m_c",
+    "red_team_fallback_slug:count=1",
+    "red_team_fallback_slug:Avella SU Esports->avella_su_esports",
+    "red_team_no_history:count=1",
+    "red_team_no_history:avella_su_esports"
   ],
-  "warning_count": 9
+  "warning_count": 8
 }
